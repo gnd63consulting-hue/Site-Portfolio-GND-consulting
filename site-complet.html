@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GND Consulting – Studio créatif humain & IA</title>
+    <meta name="description" content="GND Consulting allie créativité humaine et intelligence artificielle pour proposer des vidéos, designs et automatisations sur mesure.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f0f9ff 100%);
+        }
+        .container-modern {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .hero-section {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: left;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+        .nav-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            border-radius: 0.75rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .nav-primary {
+            background: linear-gradient(135deg, #2563eb 0%, #8b5cf6 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+        .nav-secondary {
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .nav-secondary:hover {
+            color: #1f2937;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .service-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #2563eb 0%, #8b5cf6 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="absolute top-0 left-0 right-0 z-50 py-4">
+        <div class="container-modern">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="/" class="block">
+                        <img src="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/GND%20consulting%20Logo%20Blanc-Photoroom.png" 
+                             alt="Logo GND Consulting" 
+                             class="h-16 w-auto">
+                    </a>
+                </div>
+                
+                <!-- Navigation -->
+                <nav class="hidden lg:flex items-center gap-1 bg-blue-200 rounded-2xl p-1">
+                    <a href="#qui-sommes-nous" class="nav-item nav-primary">
+                        <span>👥</span>
+                        <span>Qui sommes-nous</span>
+                    </a>
+                    <a href="#services" class="nav-item nav-secondary">
+                        <span>⚡</span>
+                        <span>Services</span>
+                    </a>
+                    <a href="#realisations" class="nav-item nav-secondary">
+                        <span>📁</span>
+                        <span>Portfolio</span>
+                    </a>
+                    <a href="#contact" class="nav-item nav-secondary">
+                        <span>📞</span>
+                        <span>Contact</span>
+                    </a>
+                </nav>
+                
+                <!-- Mobile Menu Button -->
+                <button class="lg:hidden text-white text-2xl">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <video class="hero-video" autoplay muted loop>
+            <source src="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Creative_Studio_Video_Generation2.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="text-white text-5xl font-black mb-6 leading-tight">
+                Donnez vie à vos idées créatives
+            </h1>
+            <p class="text-white text-xl font-medium mb-8 leading-relaxed">
+                Chez GND, chaque projet est une aventure créative pensée pour vous inspirer et marquer les esprits.
+            </p>
+            <a href="#contact" class="btn-primary">
+                <span>Démarrer mon projet</span>
+                <span>▶️</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="qui-sommes-nous" class="py-20 bg-white">
+        <div class="container-modern">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Qui sommes-nous ?</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Fondé sur la conviction que chaque projet mérite une approche sur-mesure, GND Consulting s'est imposé comme un partenaire de confiance pour les entreprises ambitieuses.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="service-card text-center">
+                    <div class="text-6xl mb-4">❤️</div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Passion</h3>
+                    <p class="text-gray-600">Nous mettons notre cœur dans chaque projet pour créer des expériences exceptionnelles.</p>
+                </div>
+                
+                <div class="service-card text-center">
+                    <div class="text-6xl mb-4">🛡️</div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Fiabilité</h3>
+                    <p class="text-gray-600">Engagement total envers la qualité et le respect des délais.</p>
+                </div>
+                
+                <div class="service-card text-center">
+                    <div class="text-6xl mb-4">💡</div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Innovation</h3>
+                    <p class="text-gray-600">Toujours à la pointe des dernières technologies et tendances créatives.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-50">
+        <div class="container-modern">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Nos Services</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Une gamme complète de services créatifs pour répondre à tous vos besoins.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="service-card">
+                    <div class="text-5xl mb-4">🎨</div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Design & Identité Visuelle</h3>
+                    <p class="text-gray-600 mb-4">Création d'identités visuelles fortes et cohérentes qui marquent les esprits.</p>
+                    <a href="/services/design-identite-visuelle" class="text-blue-600 font-semibold hover:text-blue-800">En savoir plus →</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="text-5xl mb-4">🎬</div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Motion Design</h3>
+                    <p class="text-gray-600 mb-4">Animations et vidéos dynamiques qui captivent votre audience.</p>
+                    <a href="/services/motion-design" class="text-blue-600 font-semibold hover:text-blue-800">En savoir plus →</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="text-5xl mb-4">🎥</div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Production Audiovisuelle</h3>
+                    <p class="text-gray-600 mb-4">Production vidéo professionnelle de A à Z.</p>
+                    <a href="/services/production-audiovisuelle" class="text-blue-600 font-semibold hover:text-blue-800">En savoir plus →</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="text-5xl mb-4">📸</div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Photographie</h3>
+                    <p class="text-gray-600 mb-4">Sessions photo professionnelles pour tous vos besoins.</p>
+                    <a href="/services/photographie" class="text-blue-600 font-semibold hover:text-blue-800">En savoir plus →</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="text-5xl mb-4">🤖</div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Automatisation & IA</h3>
+                    <p class="text-gray-600 mb-4">Intégration intelligente de l'IA dans vos processus créatifs.</p>
+                    <a href="/services/automatisation-ia" class="text-blue-600 font-semibold hover:text-blue-800">En savoir plus →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="realisations" class="py-20 bg-white">
+        <div class="container-modern">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Nos Réalisations</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Découvrez quelques-unes de nos créations qui témoignent de notre expertise.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                        <span class="text-white text-4xl">🎬</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Production Vidéo</h3>
+                        <p class="text-gray-600">Créations audiovisuelles professionnelles</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-green-500 to-teal-600 flex items-center justify-center">
+                        <span class="text-white text-4xl">🎨</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Design Graphique</h3>
+                        <p class="text-gray-600">Identité visuelle et motion design</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center">
+                        <span class="text-white text-4xl">📸</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Photographie</h3>
+                        <p class="text-gray-600">Sessions photo professionnelles</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-900 text-white">
+        <div class="container-modern">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Contactez-nous</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Prêt à donner vie à votre projet ? Parlons-en !
+                </p>
+            </div>
+            
+            <div class="max-w-2xl mx-auto">
+                <form class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <input type="text" placeholder="Votre nom" class="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500">
+                        <input type="email" placeholder="Votre email" class="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500">
+                    </div>
+                    <input type="text" placeholder="Sujet" class="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500">
+                    <textarea placeholder="Votre message" rows="5" class="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"></textarea>
+                    <button type="submit" class="btn-primary w-full justify-center">
+                        <span>Envoyer le message</span>
+                        <span>📧</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container-modern">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <img src="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/GND%20consulting%20Logo%20Blanc-Photoroom.png" 
+                         alt="Logo GND Consulting" 
+                         class="h-12 w-auto mb-4">
+                    <p class="text-gray-400">Studio créatif spécialisé en production audiovisuelle et design graphique.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Services</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/services/design-identite-visuelle" class="hover:text-white">Design & Identité</a></li>
+                        <li><a href="/services/motion-design" class="hover:text-white">Motion Design</a></li>
+                        <li><a href="/services/production-audiovisuelle" class="hover:text-white">Production Vidéo</a></li>
+                        <li><a href="/services/photographie" class="hover:text-white">Photographie</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>📧 contact@gndconsulting.fr</li>
+                        <li>📞 +33 1 23 45 67 89</li>
+                        <li>📍 Paris, France</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Suivez-nous</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white text-2xl">📘</a>
+                        <a href="#" class="text-gray-400 hover:text-white text-2xl">📷</a>
+                        <a href="#" class="text-gray-400 hover:text-white text-2xl">💼</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 GND Consulting. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling pour les liens d'ancrage
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animation du header au scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(0, 0, 0, 0.9)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'transparent';
+                header.style.backdropFilter = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

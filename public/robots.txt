@@ -1,0 +1,32 @@
+# robots.txt pour gndconsulting.fr
+# https://gndconsulting.fr
+
+User-agent: *
+Allow: /
+
+# Bloquer l'indexation des pages techniques et d'administration
+Disallow: /admin/
+Disallow: /admin
+Disallow: /.env
+Disallow: /api/
+Disallow: /_next/
+Disallow: /node_modules/
+
+# Autoriser l'accès aux ressources publiques
+Allow: /public/
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.webp$
+Allow: /*.mp4$
+Allow: /*.pdf$
+
+# Sitemap
+Sitemap: https://gndconsulting.fr/sitemap.xml
+
+# Crawl-delay pour éviter la surcharge serveur
+Crawl-delay: 1

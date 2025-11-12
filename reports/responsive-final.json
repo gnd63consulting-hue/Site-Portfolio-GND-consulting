@@ -1,0 +1,41 @@
+{
+  "url": "http://localhost:5174",
+  "issues": [
+    {
+      "viewport": "mobile-360x640",
+      "overflow": false,
+      "overlapsCount": 0,
+      "overlaps": []
+    },
+    {
+      "viewport": "mobile-414x896",
+      "overflow": false,
+      "overlapsCount": 0,
+      "overlaps": []
+    },
+    {
+      "viewport": "tablet-768x1024",
+      "overflow": false,
+      "overlapsCount": 0,
+      "overlaps": []
+    },
+    {
+      "viewport": "tablet-1024x1366",
+      "overflow": false,
+      "overlapsCount": 0,
+      "overlaps": []
+    },
+    {
+      "viewport": "desktop-1440x900",
+      "overflow": false,
+      "overlapsCount": 0,
+      "overlaps": []
+    },
+    {
+      "viewport": "desktop-1920x1080",
+      "overflow": false,
+      "overlapsCount": 0,
+      "overlaps": []
+    }
+  ]
+}

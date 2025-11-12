@@ -1,0 +1,559 @@
+[
+  {
+    "path": "/",
+    "url": "http://localhost:5174/",
+    "loadMs": 1699,
+    "errors": [
+      "Cannot convert object to primitive value",
+      "Cannot convert object to primitive value",
+      "Cannot convert object to primitive value",
+      "Cannot convert object to primitive value",
+      "The above error occurred in one of your React components:\n\n    at Lazy\n    at Suspense\n    at div\n    at div\n    at RenderedRoute (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:5595:26)\n    at Routes (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:6358:3)\n    at Router (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:6301:13)\n    at BrowserRouter (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:9396:3)\n    at App (http://localhost:5174/src/App.tsx?t=1760750872731:62:3)\n\nConsider adding an error boundary to your tree to customize error handling behavior.\nVisit https://reactjs.org/link/error-boundaries to learn more about error boundaries.",
+      "The above error occurred in one of your React components:\n\n    at Lazy\n    at Suspense\n    at div\n    at div\n    at RenderedRoute (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:5595:26)\n    at Routes (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:6358:3)\n    at Router (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:6301:13)\n    at BrowserRouter (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:9396:3)\n    at App (http://localhost:5174/src/App.tsx?t=1760750872731:62:3)\n\nConsider adding an error boundary to your tree to customize error handling behavior.\nVisit https://reactjs.org/link/error-boundaries to learn more about error boundaries.",
+      "Cannot convert object to primitive value",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Cannot convert object to primitive value",
+      "Cannot convert object to primitive value",
+      "Cannot convert object to primitive value",
+      "Cannot convert object to primitive value",
+      "The above error occurred in one of your React components:\n\n    at Lazy\n    at Suspense\n    at div\n    at div\n    at RenderedRoute (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:5595:26)\n    at Routes (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:6358:3)\n    at Router (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:6301:13)\n    at BrowserRouter (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:9396:3)\n    at App (http://localhost:5174/src/App.tsx?t=1760750872731:62:3)\n\nConsider adding an error boundary to your tree to customize error handling behavior.\nVisit https://reactjs.org/link/error-boundaries to learn more about error boundaries.",
+      "The above error occurred in one of your React components:\n\n    at Lazy\n    at Suspense\n    at div\n    at div\n    at RenderedRoute (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:5595:26)\n    at Routes (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:6358:3)\n    at Router (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:6301:13)\n    at BrowserRouter (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:9396:3)\n    at App (http://localhost:5174/src/App.tsx?t=1760750872731:62:3)\n\nConsider adding an error boundary to your tree to customize error handling behavior.\nVisit https://reactjs.org/link/error-boundaries to learn more about error boundaries.",
+      "Cannot convert object to primitive value"
+    ],
+    "logs": [
+      "[debug] [vite] connecting...",
+      "[debug] [vite] connected.",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0",
+      "[debug] [vite] connecting...",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[debug] [vite] connected.",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0",
+      "[debug] [vite] connecting...",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[debug] [vite] connected.",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0",
+      "[debug] [vite] connecting...",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0",
+      "[debug] [vite] connected.",
+      "[debug] [vite] connecting...",
+      "[debug] [vite] connected.",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0",
+      "[debug] [vite] connecting...",
+      "[debug] [vite] connected.",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0",
+      "[debug] [vite] connecting...",
+      "[debug] [vite] connected.",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0",
+      "[debug] [vite] connecting...",
+      "[debug] [vite] connected.",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0",
+      "[debug] [vite] connecting...",
+      "[debug] [vite] connected.",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0"
+    ],
+    "requests": [
+      {
+        "url": "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250919_0012_Vibrant%20Digital%20Collab.webp",
+        "error": "net::ERR_BLOCKED_BY_ORB"
+      },
+      {
+        "url": "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250919_0012_Vibrant%20Digital%20Collaboration_remix_01k5fe197ef04btmp486wh6w66.png",
+        "error": "net::ERR_BLOCKED_BY_ORB"
+      },
+      {
+        "url": "http://localhost:5174/",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Video%20page%20Partenaires%20Gnd.mp4",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Video%20page%20Partenaires%20Gnd.mp4",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Esther%20Seems%20-%20Bobine.mp4",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250919_0012_Vibrant%20Digital%20Collaboration_remix_01k5fe197ef04btmp486wh6w66.png",
+        "error": "net::ERR_BLOCKED_BY_ORB"
+      },
+      {
+        "url": "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250919_0012_Vibrant%20Digital%20Collab.webp",
+        "error": "net::ERR_BLOCKED_BY_ORB"
+      }
+    ],
+    "seo": {
+      "title": "gndconsulting.fr - Studio Créatif & Production Audiovisuelle",
+      "metaDescription": "Studio créatif: production vidéo 4K, design graphique, motion design et automatisation IA à Paris.",
+      "h1": []
+    },
+    "linksCount": 0
+  },
+  {
+    "path": "/services/design-identite-visuelle",
+    "url": "http://localhost:5174/services/design-identite-visuelle",
+    "loadMs": 972,
+    "errors": [
+      "Cannot convert object to primitive value",
+      "Cannot convert object to primitive value",
+      "Cannot convert object to primitive value",
+      "Cannot convert object to primitive value",
+      "The above error occurred in one of your React components:\n\n    at Lazy\n    at Suspense\n    at div\n    at div\n    at RenderedRoute (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:5595:26)\n    at Routes (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:6358:3)\n    at Router (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:6301:13)\n    at BrowserRouter (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:9396:3)\n    at App (http://localhost:5174/src/App.tsx?t=1760750872731:62:3)\n\nConsider adding an error boundary to your tree to customize error handling behavior.\nVisit https://reactjs.org/link/error-boundaries to learn more about error boundaries.",
+      "The above error occurred in one of your React components:\n\n    at Lazy\n    at Suspense\n    at div\n    at div\n    at RenderedRoute (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:5595:26)\n    at Routes (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:6358:3)\n    at Router (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:6301:13)\n    at BrowserRouter (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:9396:3)\n    at App (http://localhost:5174/src/App.tsx?t=1760750872731:62:3)\n\nConsider adding an error boundary to your tree to customize error handling behavior.\nVisit https://reactjs.org/link/error-boundaries to learn more about error boundaries.",
+      "Cannot convert object to primitive value"
+    ],
+    "logs": [
+      "[debug] [vite] connecting...",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[debug] [vite] connected.",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0",
+      "[debug] [vite] connecting...",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[debug] [vite] connected.",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0",
+      "[debug] [vite] connecting...",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0",
+      "[debug] [vite] connected.",
+      "[debug] [vite] connecting...",
+      "[debug] [vite] connected.",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0",
+      "[debug] [vite] connecting...",
+      "[debug] [vite] connected.",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0",
+      "[debug] [vite] connecting...",
+      "[debug] [vite] connected.",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0",
+      "[debug] [vite] connecting...",
+      "[debug] [vite] connected.",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0",
+      "[debug] [vite] connecting...",
+      "[debug] [vite] connected.",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0"
+    ],
+    "requests": [
+      {
+        "url": "http://localhost:5174/",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Video%20page%20Partenaires%20Gnd.mp4",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Video%20page%20Partenaires%20Gnd.mp4",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Esther%20Seems%20-%20Bobine.mp4",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250919_0012_Vibrant%20Digital%20Collaboration_remix_01k5fe197ef04btmp486wh6w66.png",
+        "error": "net::ERR_BLOCKED_BY_ORB"
+      },
+      {
+        "url": "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250919_0012_Vibrant%20Digital%20Collab.webp",
+        "error": "net::ERR_BLOCKED_BY_ORB"
+      }
+    ],
+    "seo": {
+      "title": "gndconsulting.fr - Studio Créatif & Production Audiovisuelle",
+      "metaDescription": "Studio créatif: production vidéo 4K, design graphique, motion design et automatisation IA à Paris.",
+      "h1": [
+        "Design & Identité Visuelle",
+        "FAITES PARLER VOTRE IMAGE"
+      ]
+    },
+    "linksCount": 23
+  },
+  {
+    "path": "/services/motion-design",
+    "url": "http://localhost:5174/services/motion-design",
+    "loadMs": 1013,
+    "errors": [
+      "Cannot convert object to primitive value",
+      "Cannot convert object to primitive value",
+      "Cannot convert object to primitive value",
+      "Cannot convert object to primitive value",
+      "The above error occurred in one of your React components:\n\n    at Lazy\n    at Suspense\n    at div\n    at div\n    at RenderedRoute (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:5595:26)\n    at Routes (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:6358:3)\n    at Router (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:6301:13)\n    at BrowserRouter (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:9396:3)\n    at App (http://localhost:5174/src/App.tsx?t=1760750872731:62:3)\n\nConsider adding an error boundary to your tree to customize error handling behavior.\nVisit https://reactjs.org/link/error-boundaries to learn more about error boundaries.",
+      "The above error occurred in one of your React components:\n\n    at Lazy\n    at Suspense\n    at div\n    at div\n    at RenderedRoute (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:5595:26)\n    at Routes (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:6358:3)\n    at Router (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:6301:13)\n    at BrowserRouter (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:9396:3)\n    at App (http://localhost:5174/src/App.tsx?t=1760750872731:62:3)\n\nConsider adding an error boundary to your tree to customize error handling behavior.\nVisit https://reactjs.org/link/error-boundaries to learn more about error boundaries.",
+      "Cannot convert object to primitive value"
+    ],
+    "logs": [
+      "[debug] [vite] connecting...",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[debug] [vite] connected.",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0",
+      "[debug] [vite] connecting...",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0",
+      "[debug] [vite] connected.",
+      "[debug] [vite] connecting...",
+      "[debug] [vite] connected.",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0",
+      "[debug] [vite] connecting...",
+      "[debug] [vite] connected.",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0",
+      "[debug] [vite] connecting...",
+      "[debug] [vite] connected.",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0",
+      "[debug] [vite] connecting...",
+      "[debug] [vite] connected.",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0",
+      "[debug] [vite] connecting...",
+      "[debug] [vite] connected.",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0"
+    ],
+    "requests": [
+      {
+        "url": "http://localhost:5174/",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Video%20page%20Partenaires%20Gnd.mp4",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Video%20page%20Partenaires%20Gnd.mp4",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Esther%20Seems%20-%20Bobine.mp4",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250919_0012_Vibrant%20Digital%20Collaboration_remix_01k5fe197ef04btmp486wh6w66.png",
+        "error": "net::ERR_BLOCKED_BY_ORB"
+      },
+      {
+        "url": "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250919_0012_Vibrant%20Digital%20Collab.webp",
+        "error": "net::ERR_BLOCKED_BY_ORB"
+      }
+    ],
+    "seo": {
+      "title": "gndconsulting.fr - Studio Créatif & Production Audiovisuelle",
+      "metaDescription": "Studio créatif: production vidéo 4K, design graphique, motion design et automatisation IA à Paris.",
+      "h1": [
+        "Motion Design",
+        "🎥 MOTION DESIGN SUR MESURE"
+      ]
+    },
+    "linksCount": 23
+  },
+  {
+    "path": "/services/production-audiovisuelle",
+    "url": "http://localhost:5174/services/production-audiovisuelle",
+    "loadMs": 854,
+    "errors": [
+      "Cannot convert object to primitive value",
+      "Cannot convert object to primitive value",
+      "Cannot convert object to primitive value",
+      "Cannot convert object to primitive value",
+      "The above error occurred in one of your React components:\n\n    at Lazy\n    at Suspense\n    at div\n    at div\n    at RenderedRoute (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:5595:26)\n    at Routes (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:6358:3)\n    at Router (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:6301:13)\n    at BrowserRouter (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:9396:3)\n    at App (http://localhost:5174/src/App.tsx?t=1760750872731:62:3)\n\nConsider adding an error boundary to your tree to customize error handling behavior.\nVisit https://reactjs.org/link/error-boundaries to learn more about error boundaries.",
+      "The above error occurred in one of your React components:\n\n    at Lazy\n    at Suspense\n    at div\n    at div\n    at RenderedRoute (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:5595:26)\n    at Routes (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:6358:3)\n    at Router (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:6301:13)\n    at BrowserRouter (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:9396:3)\n    at App (http://localhost:5174/src/App.tsx?t=1760750872731:62:3)\n\nConsider adding an error boundary to your tree to customize error handling behavior.\nVisit https://reactjs.org/link/error-boundaries to learn more about error boundaries.",
+      "Cannot convert object to primitive value"
+    ],
+    "logs": [
+      "[debug] [vite] connecting...",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0",
+      "[debug] [vite] connected.",
+      "[debug] [vite] connecting...",
+      "[debug] [vite] connected.",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0",
+      "[debug] [vite] connecting...",
+      "[debug] [vite] connected.",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0",
+      "[debug] [vite] connecting...",
+      "[debug] [vite] connected.",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0",
+      "[debug] [vite] connecting...",
+      "[debug] [vite] connected.",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0",
+      "[debug] [vite] connecting...",
+      "[debug] [vite] connected.",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0"
+    ],
+    "requests": [
+      {
+        "url": "http://localhost:5174/",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Video%20page%20Partenaires%20Gnd.mp4",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Video%20page%20Partenaires%20Gnd.mp4",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Esther%20Seems%20-%20Bobine.mp4",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250919_0012_Vibrant%20Digital%20Collaboration_remix_01k5fe197ef04btmp486wh6w66.png",
+        "error": "net::ERR_BLOCKED_BY_ORB"
+      },
+      {
+        "url": "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250919_0012_Vibrant%20Digital%20Collab.webp",
+        "error": "net::ERR_BLOCKED_BY_ORB"
+      }
+    ],
+    "seo": {
+      "title": "gndconsulting.fr - Studio Créatif & Production Audiovisuelle",
+      "metaDescription": "Studio créatif: production vidéo 4K, design graphique, motion design et automatisation IA à Paris.",
+      "h1": [
+        "Production Audiovisuelle",
+        "IMMORTALISEZ L'INSTANT"
+      ]
+    },
+    "linksCount": 23
+  },
+  {
+    "path": "/services/photographie",
+    "url": "http://localhost:5174/services/photographie",
+    "loadMs": 887,
+    "errors": [
+      "Cannot convert object to primitive value",
+      "Cannot convert object to primitive value",
+      "Cannot convert object to primitive value",
+      "Cannot convert object to primitive value",
+      "The above error occurred in one of your React components:\n\n    at Lazy\n    at Suspense\n    at div\n    at div\n    at RenderedRoute (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:5595:26)\n    at Routes (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:6358:3)\n    at Router (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:6301:13)\n    at BrowserRouter (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:9396:3)\n    at App (http://localhost:5174/src/App.tsx?t=1760750872731:62:3)\n\nConsider adding an error boundary to your tree to customize error handling behavior.\nVisit https://reactjs.org/link/error-boundaries to learn more about error boundaries.",
+      "The above error occurred in one of your React components:\n\n    at Lazy\n    at Suspense\n    at div\n    at div\n    at RenderedRoute (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:5595:26)\n    at Routes (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:6358:3)\n    at Router (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:6301:13)\n    at BrowserRouter (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:9396:3)\n    at App (http://localhost:5174/src/App.tsx?t=1760750872731:62:3)\n\nConsider adding an error boundary to your tree to customize error handling behavior.\nVisit https://reactjs.org/link/error-boundaries to learn more about error boundaries.",
+      "Cannot convert object to primitive value"
+    ],
+    "logs": [
+      "[debug] [vite] connecting...",
+      "[debug] [vite] connected.",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0",
+      "[debug] [vite] connecting...",
+      "[debug] [vite] connected.",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0",
+      "[debug] [vite] connecting...",
+      "[debug] [vite] connected.",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0",
+      "[debug] [vite] connecting...",
+      "[debug] [vite] connected.",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0",
+      "[debug] [vite] connecting...",
+      "[debug] [vite] connected.",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0"
+    ],
+    "requests": [
+      {
+        "url": "http://localhost:5174/",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Video%20page%20Partenaires%20Gnd.mp4",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Video%20page%20Partenaires%20Gnd.mp4",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Esther%20Seems%20-%20Bobine.mp4",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250919_0012_Vibrant%20Digital%20Collaboration_remix_01k5fe197ef04btmp486wh6w66.png",
+        "error": "net::ERR_BLOCKED_BY_ORB"
+      },
+      {
+        "url": "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250919_0012_Vibrant%20Digital%20Collab.webp",
+        "error": "net::ERR_BLOCKED_BY_ORB"
+      }
+    ],
+    "seo": {
+      "title": "gndconsulting.fr - Studio Créatif & Production Audiovisuelle",
+      "metaDescription": "Studio créatif: production vidéo 4K, design graphique, motion design et automatisation IA à Paris.",
+      "h1": [
+        "Photographie",
+        "PHOTOGRAPHIE PROFESSIONNELLE & CRÉATIVE"
+      ]
+    },
+    "linksCount": 23
+  },
+  {
+    "path": "/services/automatisation-ia",
+    "url": "http://localhost:5174/services/automatisation-ia",
+    "loadMs": 939,
+    "errors": [
+      "Cannot convert object to primitive value",
+      "Cannot convert object to primitive value",
+      "Cannot convert object to primitive value",
+      "Cannot convert object to primitive value",
+      "The above error occurred in one of your React components:\n\n    at Lazy\n    at Suspense\n    at div\n    at div\n    at RenderedRoute (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:5595:26)\n    at Routes (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:6358:3)\n    at Router (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:6301:13)\n    at BrowserRouter (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:9396:3)\n    at App (http://localhost:5174/src/App.tsx?t=1760750872731:62:3)\n\nConsider adding an error boundary to your tree to customize error handling behavior.\nVisit https://reactjs.org/link/error-boundaries to learn more about error boundaries.",
+      "The above error occurred in one of your React components:\n\n    at Lazy\n    at Suspense\n    at div\n    at div\n    at RenderedRoute (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:5595:26)\n    at Routes (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:6358:3)\n    at Router (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:6301:13)\n    at BrowserRouter (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:9396:3)\n    at App (http://localhost:5174/src/App.tsx?t=1760750872731:62:3)\n\nConsider adding an error boundary to your tree to customize error handling behavior.\nVisit https://reactjs.org/link/error-boundaries to learn more about error boundaries.",
+      "Cannot convert object to primitive value"
+    ],
+    "logs": [
+      "[debug] [vite] connecting...",
+      "[debug] [vite] connected.",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0",
+      "[debug] [vite] connecting...",
+      "[debug] [vite] connected.",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0",
+      "[debug] [vite] connecting...",
+      "[debug] [vite] connected.",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0",
+      "[debug] [vite] connecting...",
+      "[debug] [vite] connected.",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0"
+    ],
+    "requests": [
+      {
+        "url": "http://localhost:5174/",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Video%20page%20Partenaires%20Gnd.mp4",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Video%20page%20Partenaires%20Gnd.mp4",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Esther%20Seems%20-%20Bobine.mp4",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250919_0012_Vibrant%20Digital%20Collaboration_remix_01k5fe197ef04btmp486wh6w66.png",
+        "error": "net::ERR_BLOCKED_BY_ORB"
+      },
+      {
+        "url": "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250919_0012_Vibrant%20Digital%20Collab.webp",
+        "error": "net::ERR_BLOCKED_BY_ORB"
+      }
+    ],
+    "seo": {
+      "title": "gndconsulting.fr - Studio Créatif & Production Audiovisuelle",
+      "metaDescription": "Studio créatif: production vidéo 4K, design graphique, motion design et automatisation IA à Paris.",
+      "h1": [
+        "Automatisation & IA",
+        "AUTOMATISATION & IA"
+      ]
+    },
+    "linksCount": 23
+  },
+  {
+    "path": "/partenaires",
+    "url": "http://localhost:5174/partenaires",
+    "loadMs": 1156,
+    "errors": [
+      "Cannot convert object to primitive value",
+      "Cannot convert object to primitive value",
+      "Cannot convert object to primitive value",
+      "Cannot convert object to primitive value",
+      "The above error occurred in one of your React components:\n\n    at Lazy\n    at Suspense\n    at div\n    at div\n    at RenderedRoute (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:5595:26)\n    at Routes (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:6358:3)\n    at Router (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:6301:13)\n    at BrowserRouter (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:9396:3)\n    at App (http://localhost:5174/src/App.tsx?t=1760750872731:62:3)\n\nConsider adding an error boundary to your tree to customize error handling behavior.\nVisit https://reactjs.org/link/error-boundaries to learn more about error boundaries.",
+      "The above error occurred in one of your React components:\n\n    at Lazy\n    at Suspense\n    at div\n    at div\n    at RenderedRoute (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:5595:26)\n    at Routes (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:6358:3)\n    at Router (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:6301:13)\n    at BrowserRouter (http://localhost:5174/node_modules/.vite/deps/react-router-dom.js?v=05d611e0:9396:3)\n    at App (http://localhost:5174/src/App.tsx?t=1760750872731:62:3)\n\nConsider adding an error boundary to your tree to customize error handling behavior.\nVisit https://reactjs.org/link/error-boundaries to learn more about error boundaries.",
+      "Cannot convert object to primitive value"
+    ],
+    "logs": [
+      "[debug] [vite] connecting...",
+      "[debug] [vite] connected.",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0",
+      "[debug] [vite] connecting...",
+      "[debug] [vite] connected.",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0",
+      "[debug] [vite] connecting...",
+      "[debug] [vite] connected.",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0"
+    ],
+    "requests": [
+      {
+        "url": "http://localhost:5174/",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Video%20page%20Partenaires%20Gnd.mp4",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Video%20page%20Partenaires%20Gnd.mp4",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Esther%20Seems%20-%20Bobine.mp4",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250919_0012_Vibrant%20Digital%20Collaboration_remix_01k5fe197ef04btmp486wh6w66.png",
+        "error": "net::ERR_BLOCKED_BY_ORB"
+      },
+      {
+        "url": "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250919_0012_Vibrant%20Digital%20Collab.webp",
+        "error": "net::ERR_BLOCKED_BY_ORB"
+      }
+    ],
+    "seo": {
+      "title": "gndconsulting.fr - Studio Créatif & Production Audiovisuelle",
+      "metaDescription": "Studio créatif: production vidéo 4K, design graphique, motion design et automatisation IA à Paris.",
+      "h1": []
+    },
+    "linksCount": 0
+  },
+  {
+    "path": "/mentions-legales",
+    "url": "http://localhost:5174/mentions-legales",
+    "loadMs": 843,
+    "errors": [],
+    "logs": [
+      "[debug] [vite] connecting...",
+      "[debug] [vite] connected.",
+      "[info] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+      "[log] 🚫 Désactivation FORCÉE de tous les Service Workers: 0"
+    ],
+    "requests": [],
+    "seo": {
+      "title": "gndconsulting.fr - Studio Créatif & Production Audiovisuelle",
+      "metaDescription": "Studio créatif: production vidéo 4K, design graphique, motion design et automatisation IA à Paris.",
+      "h1": [
+        "Mentions légales",
+        "MENTIONS LÉGALES"
+      ]
+    },
+    "linksCount": 30
+  }
+]

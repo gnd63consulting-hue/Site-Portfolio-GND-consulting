@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback, useLayoutEffect } from 'react';
 import { VideoFirstFrame } from './VideoFirstFrame';
 import { Play, Pause, Camera, Video, X, ChevronLeft, ChevronRight, Eye, ChevronUp, ChevronDown, Rewind, FastForward } from 'lucide-react';
 import { useProjects } from '../hooks/useSupabase';
@@ -17,6 +17,218 @@ const getValidVideoUrl = (url: string | undefined): string => {
     console.error('❌ URL vidéo invalide:', url, error);
     return '';
   }
+};
+
+// Composant VideoPlayer pour afficher les vidéos
+interface VideoPlayerProps {
+  currentMedia: MediaItem | undefined;
+  currentIndex?: number;
+}
+
+interface HighlightCardProps {
+  content: string;
+}
+
+interface CreditsCardProps {
+  currentMedia: MediaItem | undefined;
+}
+
+const getYouTubeEmbedUrl = (rawUrl: string | undefined): string => {
+  if (!rawUrl) return '';
+
+  try {
+    const url = new URL(rawUrl);
+
+    // Gestion des URL courtes youtu.be
+    if (url.hostname.includes('youtu.be')) {
+      const videoId = url.pathname.replace('/', '');
+      const startSeconds = url.searchParams.get('t') || url.searchParams.get('start');
+      const startQuery = startSeconds ? `&start=${encodeURIComponent(startSeconds)}` : '';
+      return `https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1&enablejsapi=1${startQuery}`;
+    }
+
+    // URL déjà au format embed
+    if (url.pathname.startsWith('/embed/')) {
+      const separator = url.search ? '&' : '?';
+      return `https://www.youtube-nocookie.com${url.pathname}${url.search}${separator}rel=0&modestbranding=1&enablejsapi=1`;
+    }
+
+    const videoId = url.searchParams.get('v');
+    if (!videoId) return '';
+
+    const startSeconds = url.searchParams.get('t') || url.searchParams.get('start');
+    const startQuery = startSeconds ? `&start=${encodeURIComponent(startSeconds)}` : '';
+
+    return `https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1&enablejsapi=1${startQuery}`;
+  } catch (error) {
+    console.error('❌ Impossible de formater l’URL YouTube:', rawUrl, error);
+    return '';
+  }
+};
+
+const VideoPlayer: React.FC<VideoPlayerProps> = ({ currentMedia, currentIndex }) => {
+  if (!currentMedia) return null;
+
+  const youtubeEmbedUrl = getYouTubeEmbedUrl(currentMedia.youtubeUrl);
+
+  return (
+    <div className="relative w-full">
+      <div className="relative w-full aspect-[16/9] max-h-[640px]">
+        <div
+          className="pointer-events-none absolute inset-0 rounded-[32px] bg-gradient-to-br from-white/0 via-white/45 to-white/0 opacity-70 blur-2xl transition-opacity duration-500 group-hover:opacity-90"
+          aria-hidden="true"
+        />
+        <div className="relative z-10 h-full w-full overflow-hidden rounded-[24px] border border-white/15 bg-slate-950 shadow-[0_45px_140px_rgba(15,23,42,0.35)]">
+          {typeof currentIndex === 'number' && currentIndex < 0 && (
+            <span className="pointer-events-none absolute left-5 top-5 z-20 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/15 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.35em] text-white shadow-[0_12px_35px_rgba(8,47,73,0.45)] backdrop-blur-md">
+              <span className="h-2 w-2 rounded-full bg-gradient-to-br from-sky-400 to-blue-500" />
+              Vidéo {String(currentIndex + 1).padStart(2, '0')}
+            </span>
+          )}
+          {youtubeEmbedUrl ? (
+            <iframe
+              key={`${currentMedia.id}-youtube`}
+              src={youtubeEmbedUrl}
+              className="h-full w-full"
+              title={currentMedia.title}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          ) : currentMedia.mediaUrl ? (
+            <video
+              src={currentMedia.mediaUrl}
+              className="h-full w-full object-cover"
+              controls
+              preload="metadata"
+            />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center bg-slate-900 text-white">
+              Aucune vidéo disponible
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const highlightMeta: Record<string, { label: string; gradient: string; accent: string }> = {
+  '🎬': {
+    label: 'Réalisation',
+    gradient: 'from-white/95 via-white to-white',
+    accent: 'from-indigo-500 to-sky-400'
+  },
+  '📹': {
+    label: 'Production',
+    gradient: 'from-white/95 via-white to-white',
+    accent: 'from-sky-500 to-indigo-400'
+  },
+  '🤝': {
+    label: 'Collaboration',
+    gradient: 'from-white/95 via-white to-white',
+    accent: 'from-sky-500 to-cyan-400'
+  },
+  '📸': {
+    label: 'Photographie',
+    gradient: 'from-white/95 via-white to-white',
+    accent: 'from-amber-500 to-rose-400'
+  },
+  '⚡': {
+    label: 'Point fort',
+    gradient: 'from-white/95 via-white to-white',
+    accent: 'from-sky-500 to-blue-400'
+  },
+  '🎥': {
+    label: 'Direction',
+    gradient: 'from-white/95 via-white to-white',
+    accent: 'from-blue-500 to-indigo-400'
+  }
+};
+
+const HighlightCard: React.FC<HighlightCardProps> = ({ content }) => {
+  const characters = Array.from(content);
+  const emoji = characters[0] ?? '';
+  const rest = characters.slice(1).join('').trim();
+  const { label, gradient, accent } = highlightMeta[emoji] ?? {
+    label: 'Crédit',
+    gradient: 'from-white/95 via-white to-white',
+    accent: 'from-slate-500 to-slate-400'
+  };
+
+  let details = rest;
+  if (label && details.toLowerCase().startsWith(label.toLowerCase())) {
+    details = details.slice(label.length).trim();
+    details = details.replace(/^[:\-–—]+/, '').trim();
+  }
+
+  return (
+    <div className={clsx(
+      'relative overflow-hidden rounded-[26px] border border-white/60 bg-gradient-to-br p-5 shadow-[0_22px_60px_rgba(15,23,42,0.18)] backdrop-blur',
+      gradient
+    )}>
+      <div className="pointer-events-none absolute inset-0 rounded-[26px] border border-white/40 opacity-70" />
+      <div className="relative flex items-start gap-4">
+        <span className={clsx(
+          'flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br text-lg font-semibold text-white shadow-[0_15px_35px_rgba(15,23,42,0.18)]',
+          accent
+        )}>
+          {emoji || '✦'}
+        </span>
+        <div className="flex-1">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.4em] text-slate-500">
+            {label}
+          </p>
+          <p className="mt-2 text-base font-semibold text-slate-800 sm:text-lg">
+            {details || rest}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const CreditsCard: React.FC<CreditsCardProps> = ({ currentMedia }) => {
+  if (!currentMedia) return null;
+
+  const signatureLabel = currentMedia.type === 'video' ? 'Production audiovisuelle' : 'Photographie professionnelle';
+
+  return (
+    <div className="mt-6 overflow-hidden rounded-[30px] border border-white/60 bg-white p-6 shadow-[0_28px_80px_rgba(15,23,42,0.12)] backdrop-blur">
+      <div className="relative flex flex-col gap-5">
+        <div className="flex items-center gap-3">
+          <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 via-indigo-500 to-sky-400 text-lg font-semibold text-white shadow-[0_20px_45px_rgba(37,99,235,0.35)]">
+            ✨
+          </span>
+          <div className="flex flex-col">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.45em] text-slate-400">
+              Crédits principaux
+            </span>
+            <span className="mt-1 text-base font-semibold text-slate-800 sm:text-lg">
+              {signatureLabel}
+            </span>
+          </div>
+        </div>
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="inline-flex items-center gap-3 rounded-[20px] border border-white/60 bg-white/90 px-5 py-3 text-base font-semibold text-slate-700 shadow-[0_14px_35px_rgba(15,23,42,0.12)]">
+            <span className="inline-flex h-2.5 w-2.5 rounded-full bg-gradient-to-br from-indigo-500 to-sky-400" />
+            {signatureLabel}
+          </div>
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="inline-flex items-center gap-2 rounded-full border border-indigo-200/80 bg-indigo-500/10 px-4 py-2 text-sm font-semibold text-indigo-600 shadow-[0_12px_28px_rgba(79,70,229,0.22)]">
+              <span className="h-2 w-2 rounded-full bg-gradient-to-br from-indigo-500 to-sky-400" />
+              GND Consulting
+            </span>
+            {currentMedia.tag && (
+              <span className="inline-flex items-center gap-2 rounded-full border border-slate-200/80 bg-white/85 px-4 py-2 text-sm font-semibold text-slate-600 shadow-[0_10px_24px_rgba(15,23,42,0.12)]">
+                <span className="h-2 w-2 rounded-full bg-gradient-to-br from-slate-400 to-slate-600" />
+                {currentMedia.tag}
+              </span>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 
@@ -77,6 +289,7 @@ interface MediaItem {
   type: 'video' | 'photo';
   thumbnail: string;
   caption: string;
+  description?: string;
   supabaseFileName?: string;
   mediaUrl?: string;
   youtubeUrl?: string;
@@ -110,6 +323,7 @@ export function Portfolio() {
   const youtubeCmdQueue = useRef<Array<{ cmd: string; args: (string | number | boolean)[] }>>([]);
   const ringRef = useRef<HTMLDivElement>(null);
   const thumbsRef = useRef<(HTMLButtonElement | null)[]>([]);
+  const quickNavRef = useRef<HTMLDivElement>(null);
   const imageCache = useRef(new Set<string>());
   const preloadCache = useRef(new Map<string, HTMLVideoElement>());
   const retryCount = useRef(new Map<string, number>());
@@ -120,6 +334,20 @@ export function Portfolio() {
   });
   const lightboxRef = useRef<HTMLDivElement>(null);
   const lightboxCloseBtnRef = useRef<HTMLButtonElement>(null);
+  const [quickScrollState, setQuickScrollState] = useState({ canScrollLeft: false, canScrollRight: false });
+  const { canScrollLeft, canScrollRight } = quickScrollState;
+  const updateQuickScrollState = useCallback(() => {
+    const container = quickNavRef.current;
+    if (!container) return;
+
+    const { scrollLeft, scrollWidth, clientWidth } = container;
+    const maxScrollLeft = Math.max(scrollWidth - clientWidth, 0);
+
+    setQuickScrollState({
+      canScrollLeft: scrollLeft > 8,
+      canScrollRight: scrollLeft < maxScrollLeft - 8
+    });
+  }, []);
 
   // IDs des vidéos YouTube privées à masquer (fallback uniquement)
   const privateVideoIds: string[] = [];
@@ -459,7 +687,7 @@ export function Portfolio() {
 
   // FIXED by audit - Fonctions pour contrôler les vidéos YouTube
   const getYouTubePlayer = () => {
-    return document.querySelector('iframe[src*="youtube.com/embed"]') as HTMLIFrameElement;
+    return document.querySelector('iframe[src*="youtube.com/embed"], iframe[src*="youtube-nocookie.com/embed"]') as HTMLIFrameElement;
   };
 
   const sendYouTubeCommand = (command: string, ...args: (string | number | boolean)[]) => {
@@ -664,6 +892,58 @@ export function Portfolio() {
       setSelectedMediaIndex(0);
     }
   }, [filteredMedia.length, selectedMediaIndex]);
+
+  useEffect(() => {
+    const container = quickNavRef.current;
+    if (!container) return;
+
+    const handleResize = () => updateQuickScrollState();
+    container.addEventListener('scroll', updateQuickScrollState, { passive: true });
+    window.addEventListener('resize', handleResize);
+
+    let observer: ResizeObserver | null = null;
+    if (typeof ResizeObserver !== 'undefined') {
+      observer = new ResizeObserver(() => updateQuickScrollState());
+      observer.observe(container);
+    }
+
+    updateQuickScrollState();
+
+    return () => {
+      container.removeEventListener('scroll', updateQuickScrollState);
+      window.removeEventListener('resize', handleResize);
+      if (observer) {
+        observer.disconnect();
+      }
+    };
+  }, [updateQuickScrollState]);
+
+  useLayoutEffect(() => {
+    updateQuickScrollState();
+  }, [filteredMedia.length, selectedMediaIndex, activeTab, updateQuickScrollState]);
+
+  useEffect(() => {
+    const container = quickNavRef.current;
+    const activeThumb = thumbsRef.current[selectedMediaIndex];
+    if (!container || !activeThumb) return;
+
+    const containerRect = container.getBoundingClientRect();
+    const thumbRect = activeThumb.getBoundingClientRect();
+    const leftThreshold = containerRect.left + 48;
+    const rightThreshold = containerRect.right - 48;
+
+    if (thumbRect.left < leftThreshold) {
+      container.scrollBy({
+        left: thumbRect.left - leftThreshold,
+        behavior: 'smooth'
+      });
+    } else if (thumbRect.right > rightThreshold) {
+      container.scrollBy({
+        left: thumbRect.right - rightThreshold,
+        behavior: 'smooth'
+      });
+    }
+  }, [selectedMediaIndex, activeTab]);
 
   // Update SEO meta tags when selected media changes
   useEffect(() => {
@@ -1044,7 +1324,8 @@ export function Portfolio() {
           } else {
             if (!iframe.src.includes('enablejsapi=1')) {
               const videoId = currentMedia.youtubeUrl.split('v=')[1]?.split('&')[0];
-              iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&enablejsapi=1&controls=0&showinfo=0&iv_load_policy=3&origin=${window.location.origin}`;
+              // Try nocookie first; if onReady fails, fallback handled by timer
+              iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&enablejsapi=1&controls=0&showinfo=0&iv_load_policy=3&origin=${window.location.origin}`;
             } else {
               iframe.contentWindow?.postMessage(JSON.stringify({
                 event: 'command',
@@ -1091,6 +1372,32 @@ export function Portfolio() {
       : (selectedMediaIndex - 1 + filteredMedia.length) % filteredMedia.length;
     
     handleMediaSelect(newIndex);
+  };
+
+  const scrollQuickSelection = (direction: 'prev' | 'next') => {
+    const container = quickNavRef.current;
+    if (!container) return;
+
+    const scrollAmount = container.clientWidth * 0.85;
+    const maxScrollLeft = Math.max(container.scrollWidth - container.clientWidth, 0);
+    const current = container.scrollLeft;
+    const target = direction === 'next'
+      ? Math.min(current + scrollAmount, maxScrollLeft)
+      : Math.max(current - scrollAmount, 0);
+
+    if (Math.abs(target - current) < 1) {
+      return;
+    }
+
+    container.scrollTo({
+      left: target,
+      behavior: 'smooth'
+    });
+
+    if (typeof window !== 'undefined') {
+      window.requestAnimationFrame(updateQuickScrollState);
+      window.setTimeout(updateQuickScrollState, 360);
+    }
   };
 
   const handleVideoPlay = () => {
@@ -1320,7 +1627,7 @@ export function Portfolio() {
     if (!currentMedia || currentMedia.type !== 'video') return;
 
     if (currentMedia.type === 'video' && currentMedia.youtubeUrl) {
-      const iframe = document.querySelector('iframe[src*="youtube.com/embed"]') as HTMLIFrameElement;
+    const iframe = document.querySelector('iframe[src*="youtube.com/embed"], iframe[src*="youtube-nocookie.com/embed"]') as HTMLIFrameElement;
       if (iframe) {
         const videoId = currentMedia.youtubeUrl.split('v=')[1]?.split('&')[0];
         const currentSrc = iframe.src;
@@ -1334,7 +1641,7 @@ export function Portfolio() {
           setIsVideoPlaying(false);
         } else {
           if (!currentSrc.includes('enablejsapi=1')) {
-            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&enablejsapi=1`;
+          iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&enablejsapi=1`;
           } else {
             iframe.contentWindow?.postMessage(JSON.stringify({
               event: 'command',
@@ -1442,6 +1749,24 @@ export function Portfolio() {
     };
   }, [selectedImage]);
 
+  const currentMedia = filteredMedia[selectedMediaIndex];
+  const videoParagraphs = React.useMemo(() => {
+    if (!currentMedia?.caption) return [];
+    return currentMedia.caption.split('\n\n').map((block) => block.trim()).filter(Boolean);
+  }, [currentMedia?.caption]);
+
+  const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
+
+  useEffect(() => {
+    setIsDescriptionExpanded(false);
+  }, [currentMedia?.id]);
+
+  const descriptionBlocks = React.useMemo(() => {
+    if (videoParagraphs.length > 0) return videoParagraphs;
+    if (currentMedia?.description) return [currentMedia.description];
+    return [];
+  }, [videoParagraphs, currentMedia?.description]);
+
   // Section Découvrir nos réalisations – État de chargement
   if (loading) {
     return (
@@ -1454,17 +1779,21 @@ export function Portfolio() {
     );
   }
 
-  const currentMedia = filteredMedia[selectedMediaIndex];
-
   // Section Découvrir nos réalisations – ID utilisé pour scroll via menu Portfolio
   return (
     <section id="realisations" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 lg:px-8 w-full relative overflow-hidden" role="region" aria-label="Portfolio vidéos et photos" style={{ background: 'linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f0f9ff 100%)' }}>
       {/* Éléments décoratifs */}
-      <div className="absolute top-20 -left-20 w-80 h-80 bg-gradient-to-br from-rose-200/40 to-pink-300/40 rounded-full blur-3xl" aria-hidden="true"></div>
-      <div className="absolute bottom-20 -right-20 w-96 h-96 bg-gradient-to-br from-blue-200/40 to-cyan-300/40 rounded-full blur-3xl" aria-hidden="true"></div>
-      <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-br from-purple-200/30 to-indigo-300/30 rounded-full blur-2xl" aria-hidden="true"></div>
+      <div className="absolute top-8 -left-12 h-40 w-40 sm:top-20 sm:-left-20 sm:h-80 sm:w-80 bg-gradient-to-br from-rose-200/40 to-pink-300/40 rounded-full blur-2xl sm:blur-3xl" aria-hidden="true"></div>
+      <div className="absolute bottom-8 -right-12 h-48 w-48 sm:bottom-20 sm:-right-20 sm:h-96 sm:w-96 bg-gradient-to-br from-blue-200/40 to-sky-300/40 rounded-full blur-2xl sm:blur-3xl" aria-hidden="true"></div>
+      <div className="absolute top-1/2 left-1/4 h-48 w-48 sm:left-1/3 sm:h-64 sm:w-64 bg-gradient-to-br from-sky-200/30 to-indigo-300/30 rounded-full blur-xl sm:blur-2xl" aria-hidden="true"></div>
 
       <div className="text-center mb-12 sm:mb-16 md:mb-20 relative z-10 max-w-7xl mx-auto">
+        <div className="mb-6 flex items-center justify-center">
+          <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/70 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.4em] text-slate-900 shadow-[0_12px_28px_rgba(37,99,235,0.18)]">
+            <span className="h-2 w-2 rounded-full bg-gradient-to-br from-blue-500 to-sky-400" />
+            Portfolio Signature
+          </span>
+        </div>
         <h2 className="section-title" style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)' }}>
           Nos Réalisations Audiovisuelles
         </h2>
@@ -1474,8 +1803,8 @@ export function Portfolio() {
       </div>
 
       {/* Menu segmenté (pills) */}
-      <div id="portfolio-tabs" className="flex justify-center mb-8 sm:mb-12 relative z-40 max-w-7xl mx-auto pointer-events-auto">
-        <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-1.5 sm:p-2 inline-flex gap-1.5 sm:gap-2 shadow-lg border border-gray-200/50" role="tablist">
+      <div id="portfolio-tabs" className="flex justify-center mb-8 sm:mb-12 relative z-40 max-w-7xl mx-auto pointer-events-auto px-2 sm:px-0">
+        <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-1.5 sm:p-2 inline-flex flex-wrap items-center justify-center gap-1 sm:gap-2 shadow-lg border border-gray-200/50 max-w-[280px] sm:max-w-none" role="tablist">
           <button
             type="button"
             role="tab"
@@ -1487,13 +1816,13 @@ export function Portfolio() {
               setActiveTab('video');
             }}
             className={clsx(
-              'flex items-center gap-1.5 sm:gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold transition-all duration-300 pointer-events-auto text-sm sm:text-base',
+              'flex items-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold transition-all duration-300 pointer-events-auto text-xs sm:text-base min-w-[120px] justify-center',
               activeTab === 'video'
-                ? 'bg-gradient-to-r from-primary to-secondary text-white shadow-lg'
-                : 'text-gray-600 hover:text-gray-900 hover:bg-white/60'
+                ? 'bg-primary text-white shadow-lg'
+                : 'text-gray-600 hover:text-slate-900 hover:bg-white/60'
             )}
           >
-            <Video className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+            <Video className="w-3 h-3 sm:w-4 sm:h-4" />
             <span className="whitespace-nowrap">Vidéos</span>
           </button>
           <button
@@ -1507,13 +1836,13 @@ export function Portfolio() {
               setActiveTab('photo');
             }}
             className={clsx(
-              'flex items-center gap-1.5 sm:gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold transition-all duration-300 pointer-events-auto text-sm sm:text-base',
+              'flex items-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold transition-all duration-300 pointer-events-auto text-xs sm:text-base min-w-[120px] justify-center',
               activeTab === 'photo'
-                ? 'bg-gradient-to-r from-primary to-secondary text-white shadow-lg'
-                : 'text-gray-600 hover:text-gray-900 hover:bg-white/60'
+                ? 'bg-primary text-white shadow-lg'
+                : 'text-gray-600 hover:text-slate-900 hover:bg-white/60'
             )}
           >
-            <Camera className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+            <Camera className="w-3 h-3 sm:w-4 sm:h-4" />
             <span className="whitespace-nowrap">Photos</span>
           </button>
         </div>
@@ -1522,1299 +1851,283 @@ export function Portfolio() {
       {/* Interface principale : Roue en arc + Visionneuse - Pleine largeur */}
       <div className="relative z-10 w-full max-w-[1800px] mx-auto pointer-events-auto">
         {activeTab === 'video' && (
-          <section
-            id="video-portfolio"
-            data-scope="video-portfolio"
+          <div
+            id="portfolio-videos"
             role="tabpanel"
             aria-labelledby="tab-videos"
-            className="vp-section-wrapper relative grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-20 w-full animate-fade-in"
-            style={{
-              '--ring-size': 'clamp(260px, 60vw, 560px)',
-              '--thumb-size': 'clamp(56px, 10vw, 120px)',
-              '--thumb-gap': 'clamp(8px, 2.5vw, 20px)',
-              '--center-play': 'clamp(56px, 9vw, 120px)'
-            } as React.CSSProperties}
+            className="relative py-10 sm:py-16 lg:py-20 px-3 sm:px-6 lg:px-8 overflow-visible animate-fade-in"
           >
+            <div className="absolute inset-0" aria-hidden="true">
+              <div className="absolute -top-40 -left-32 h-80 w-80 rounded-full bg-gradient-to-br from-sky-200/35 via-white to-transparent blur-3xl" />
+              <div className="absolute -bottom-44 -right-28 h-96 w-96 rounded-full bg-gradient-to-br from-indigo-200/35 via-white to-transparent blur-3xl" />
+          <div className="absolute inset-0 bg-gradient-to-br from-white/98 via-white/95 to-white/90" />
+              <div className="absolute inset-x-4 bottom-10 h-[320px] rounded-[55px] bg-white/35 blur-3xl" />
+            </div>
+
             <style>{`
-              /* ====== Navigation arrows visibility enhancement - Video section only ====== */
-              #video-portfolio[data-scope="video-portfolio"] #portfolio-navigation button {
-                opacity: 1 !important;
-                transform: none;
-                pointer-events: auto;
-
-                width: 44px;
-                height: 44px;
-                border-radius: 12px;
-
-                background: rgba(255, 255, 255, 0.92) !important;
-                color: #111 !important;
-                border: 1px solid rgba(17, 17, 17, 0.08) !important;
-                backdrop-filter: saturate(140%) blur(6px);
-                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18),
-                            0 2px 6px rgba(0, 0, 0, 0.08) !important;
-
-                display: inline-flex !important;
-                align-items: center;
-                justify-content: center;
-                z-index: 30;
+              @media (max-width: 768px) {
+                #portfolio-videos .video-focus-card {
+                  margin-top: 1.5rem;
+                }
+                #portfolio-videos .video-grid {
+                  gap: 2rem !important;
+                }
               }
-
-              #video-portfolio[data-scope="video-portfolio"] #portfolio-navigation button svg {
-                width: 18px !important;
-                height: 18px !important;
-                stroke-width: 2.5;
-                color: #111 !important;
-                filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
-              }
-
-              #video-portfolio[data-scope="video-portfolio"] #portfolio-navigation button:hover {
-                background: rgba(255, 255, 255, 1) !important;
-                transform: translateY(-2px) !important;
-                box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22),
-                            0 3px 8px rgba(0, 0, 0, 0.10) !important;
-              }
-
-              #video-portfolio[data-scope="video-portfolio"] #portfolio-navigation button:hover svg {
-                color: #3b82f6 !important;
-              }
-
-              #video-portfolio[data-scope="video-portfolio"] #portfolio-navigation button:active {
-                transform: translateY(0) !important;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.16),
-                            0 2px 4px rgba(0, 0, 0, 0.08) !important;
-              }
-
-              #video-portfolio[data-scope="video-portfolio"] #portfolio-navigation button:focus-visible {
-                outline: none;
-                box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.55),
-                            0 6px 20px rgba(0, 0, 0, 0.18) !important;
-              }
-
               @media (max-width: 640px) {
-                #video-portfolio[data-scope="video-portfolio"] #portfolio-navigation button {
-                  width: 48px !important;
-                  height: 48px !important;
-                  border-radius: 14px;
+                #portfolio-tabs [role="tab"] {
+                  flex: 1 1 calc(50% - 0.5rem);
+                  text-align: center;
                 }
-
-                #video-portfolio[data-scope="video-portfolio"] #portfolio-navigation button svg {
-                  width: 20px !important;
-                  height: 20px !important;
+                #portfolio-videos .quick-selection-shell {
+                  padding-inline: 0.75rem !important;
+                  gap: 0.75rem !important;
                 }
-              }
-
-              @media (prefers-color-scheme: dark) {
-                #video-portfolio[data-scope="video-portfolio"] #portfolio-navigation button {
-                  background: rgba(28, 28, 28, 0.9) !important;
-                  color: #fff !important;
-                  border-color: rgba(255, 255, 255, 0.08) !important;
-                  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.35),
-                              0 2px 8px rgba(0, 0, 0, 0.18) !important;
+                #portfolio-videos .quick-selection-shell > button[aria-label] {
+                  height: 44px !important;
+                  width: 44px !important;
                 }
-
-                #video-portfolio[data-scope="video-portfolio"] #portfolio-navigation button svg {
-                  color: #fff !important;
+                #portfolio-videos .video-focus-card h3 {
+                  font-size: 1.45rem !important;
+                  line-height: 1.3 !important;
+                }
+                #portfolio-videos .video-description {
+                  font-size: 0.95rem !important;
                 }
               }
-
-              /* Scoped styles for video portfolio only */
-              #video-portfolio[data-scope="video-portfolio"] .vp-thumb {
-                width: var(--thumb-size);
-                height: calc(var(--thumb-size) * 0.714);
-                object-fit: cover;
-              }
-
-              #video-portfolio[data-scope="video-portfolio"] .thumb-media {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                border-radius: inherit;
-                background: #000;
-                display: block;
-              }
-
-              #video-portfolio[data-scope="video-portfolio"] .vp-ring {
-                position: relative;
-                margin-inline: auto;
-                overflow: visible !important;
-                transform: translateZ(0);
-              }
-
-              /* Ensure parent container also allows overflow */
-              #video-portfolio[data-scope="video-portfolio"] .carousel-wheel {
-                overflow: visible !important;
-              }
-
-              /* Anti-superposition : force un espacement minimal */
-              #video-portfolio[data-scope="video-portfolio"] .vp-thumb-btn {
-                margin: 0 !important;
-                padding: 0 !important;
-                width: var(--thumb-size);
-                height: calc(var(--thumb-size) * 0.714);
-                background: transparent !important;
-              }
-
-              #video-portfolio[data-scope="video-portfolio"] .vp-center {
-                display: grid;
-                place-items: center;
-                border-radius: 9999px;
-              }
-
-              /* Suppression de tout fond blanc/bleu parasite */
-              #video-portfolio[data-scope="video-portfolio"] .vp-thumb img,
-              #video-portfolio[data-scope="video-portfolio"] .vp-thumb button,
-              #video-portfolio[data-scope="video-portfolio"] .vp-thumb-btn,
-              #video-portfolio[data-scope="video-portfolio"] .vp-thumb div {
-                background: transparent !important;
-              }
-
-              /* Forcer les fallbacks à utiliser des fonds sombres cohérents */
-              #video-portfolio[data-scope="video-portfolio"] .vp-thumb [class*="bg-gradient"] {
-                background: transparent !important;
-              }
-
-              /* Responsive breakpoints pour éviter l'amas au centre */
-              @media (max-width: 480px) {
-                #video-portfolio[data-scope="video-portfolio"] {
-                  --ring-size: clamp(240px, 78vw, 340px);
-                  --thumb-size: clamp(44px, 12vw, 72px);
-                  --thumb-gap: clamp(6px, 2vw, 14px);
-                  --center-play: clamp(48px, 12vw, 84px);
+              @media (max-width: 520px) {
+                #portfolio-videos .video-focus-card {
+                  padding: 1.25rem !important;
                 }
-                /* Garder les flèches visibles sous 320px de large */
-                #video-portfolio[data-scope="video-portfolio"] #portfolio-navigation button {
-                  transform: translateY(12px) !important;
+                #portfolio-videos .video-focus-card h3 {
+                  font-size: 1.3rem !important;
+                }
+                #portfolio-videos .video-description {
+                  font-size: 0.9rem !important;
+                }
+                #portfolio-videos .quick-selection-shell {
+                  flex-wrap: wrap;
+                  justify-content: center;
+                }
+                #portfolio-videos .quick-selection-shell > div.group {
+                  order: 1;
+                  width: 100%;
+                  max-width: 100%;
+                }
+                #portfolio-videos .quick-selection-shell > button[aria-label] {
+                  order: 2;
+                  height: 44px !important;
+                  width: 44px !important;
+                }
+                #portfolio-videos .quick-selection-shell > button[aria-label="Vidéos suivantes"] {
+                  order: 3;
+                }
+                #portfolio-videos .quick-selection-shell > div.group button.group {
+                  width: 132px !important;
                 }
               }
-
-              /* iPhone XR/11/Plus (≈414px de large) - augmenter l'espacement et réduire le bouton central */
-              @media (min-width: 400px) and (max-width: 430px) {
-                #video-portfolio[data-scope="video-portfolio"] {
-                  --ring-size: clamp(260px, 82vw, 360px);
-                  --thumb-size: clamp(46px, 11.5vw, 70px);
-                  --thumb-gap: clamp(10px, 3vw, 18px);
-                  --center-play: clamp(44px, 10vw, 72px);
+              @media (max-width: 420px) {
+                #portfolio-videos .quick-selection-shell {
+                  row-gap: 0.75rem;
                 }
-              }
-
-              @media (min-width: 481px) and (max-width: 767px) {
-                #video-portfolio[data-scope="video-portfolio"] {
-                  --ring-size: clamp(280px, 65vw, 420px);
-                  --thumb-size: clamp(52px, 10.5vw, 90px);
-                  --thumb-gap: clamp(7px, 2.2vw, 16px);
-                  --center-play: clamp(52px, 10vw, 100px);
-                }
-              }
-
-              @media (min-width: 768px) and (max-width: 1023px) {
-                #video-portfolio[data-scope="video-portfolio"] {
-                  --ring-size: clamp(360px, 56vw, 520px);
-                  --thumb-size: clamp(60px, 8.5vw, 100px);
-                  --thumb-gap: clamp(8px, 1.8vw, 18px);
-                  --center-play: clamp(60px, 9vw, 110px);
-                }
-              }
-
-              @media (min-width: 1024px) {
-                #video-portfolio[data-scope="video-portfolio"] {
-                  --ring-size: clamp(520px, 66vw, 640px);
-                  --thumb-size: clamp(72px, 8.5vw, 112px);
-                  --thumb-gap: clamp(20px, 3.5vw, 28px);
-                  --center-play: clamp(52px, 6.5vw, 90px);
-                }
-              }
-
-              /* Ajustement spécifique tablette large pour éviter chevauchements */
-              @media (min-width: 1024px) and (max-width: 1366px) {
-                #video-portfolio[data-scope="video-portfolio"] .vp-center {
-                  z-index: 30;
-                }
-                #video-portfolio[data-scope="video-portfolio"] .vp-thumb-btn {
-                  z-index: 20;
-                }
-                /* Réduire légèrement la taille et augmenter l'espacement pour limiter les overlaps */
-                #video-portfolio[data-scope="video-portfolio"] {
-                  --thumb-size: clamp(64px, 7.5vw, 96px);
-                  --thumb-gap: clamp(22px, 3.8vw, 32px);
-                  --center-play: clamp(44px, 5.5vw, 78px);
+                #portfolio-videos .quick-selection-shell > div.group button.group {
+                  width: 120px !important;
                 }
               }
             `}</style>
-
-            {/* COLONNE GAUCHE - Roue circulaire complète pleine hauteur */}
-            <div
-              className="relative flex flex-col items-center justify-center min-h-[600px] sm:min-h-[700px] lg:min-h-[900px]"
-              role="region"
-              aria-label="Carrousel de vidéos circulaire"
-            >
-              <div className="relative w-full h-full flex flex-col items-center justify-center">
-                {/* Fond décoratif avec aura futuriste animée */}
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 via-cyan-300/15 to-teal-400/20 rounded-full blur-3xl scale-[2.8] opacity-70 pointer-events-none select-none z-0 animate-pulse" style={{ animationDuration: '5s' }}></div>
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/25 via-secondary/20 to-primary/25 rounded-full blur-2xl scale-[2.4] opacity-80 pointer-events-none select-none z-0 animate-pulse" style={{ animationDuration: '6s', animationDelay: '1s' }}></div>
-                <div className="absolute inset-0 bg-gradient-to-br from-white/25 via-blue-50/20 to-transparent rounded-full blur-xl scale-[2] pointer-events-none select-none z-0"></div>
-
-                {/* Contrôles de navigation de la roue - Design 2025 */}
-                <div id="portfolio-navigation" className="relative flex justify-center mb-8 sm:mb-12 lg:mb-16 z-20 pointer-events-auto mt-8" role="group" aria-label="Navigation du carrousel">
-                  <div className="flex justify-center items-center gap-3 sm:gap-4">
-                    <button
-                      type="button"
-                      onClick={() => rotateWheel('up')}
-                      aria-label="Vidéo précédente"
-                      aria-controls="video-carousel"
-                      className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-white/90 backdrop-blur-lg rounded-2xl flex items-center justify-center text-gray-700 hover:bg-gradient-to-br hover:from-primary hover:to-secondary hover:text-white border-2 border-primary/20 hover:border-primary/50 transition-all duration-300 ease-in-out shadow-lg hover:scale-105 hover:shadow-[0_0_30px_rgba(59,130,246,0.6)] pointer-events-auto group"
-                    >
-                      <ChevronUp className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-white drop-shadow-md group-hover:scale-110 transition-transform duration-300" aria-hidden="true" style={{ minWidth: '24px', minHeight: '24px', maxWidth: '32px', maxHeight: '32px' }} />
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => rotateWheel('down')}
-                      aria-label="Vidéo suivante"
-                      aria-controls="video-carousel"
-                      className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-white/90 backdrop-blur-lg rounded-2xl flex items-center justify-center text-gray-700 hover:bg-gradient-to-br hover:from-primary hover:to-secondary hover:text-white border-2 border-primary/20 hover:border-primary/50 transition-all duration-300 ease-in-out shadow-lg hover:scale-105 hover:shadow-[0_0_30px_rgba(59,130,246,0.6)] pointer-events-auto group"
-                    >
-                      <ChevronDown className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-white drop-shadow-md group-hover:scale-110 transition-transform duration-300" aria-hidden="true" style={{ minWidth: '24px', minHeight: '24px', maxWidth: '32px', maxHeight: '32px' }} />
-                    </button>
+            <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-9 sm:gap-12">
+              <div className="grid video-grid gap-8 md:gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] items-stretch">
+                <div className="group relative">
+                  <div className="pointer-events-none absolute -left-3 -right-3 -top-6 h-[320px] rounded-[36px] bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.15),transparent_55%),radial-gradient(circle_at_bottom,rgba(14,165,233,0.12),transparent_60%)] opacity-60 blur-2xl transition-opacity duration-500 group-hover:opacity-95 sm:-left-10 sm:-right-6 sm:-top-8 sm:h-[440px] sm:rounded-[48px] sm:blur-3xl" aria-hidden="true" />
+                  <div className="relative rounded-[30px] sm:rounded-[38px] bg-white/95 p-[1px] sm:p-[1.5px] shadow-[0_22px_70px_rgba(15,23,42,0.16)] sm:shadow-[0_35px_120px_rgba(15,23,42,0.22)]">
+                    <div className="rounded-[26px] sm:rounded-[34px] bg-white/70 backdrop-blur-2xl p-1 sm:p-1.5">
+                      <VideoPlayer currentMedia={currentMedia} currentIndex={selectedMediaIndex} />
+                    </div>
                   </div>
                 </div>
 
-                {/* Container de la roue circulaire complète */}
-                <div className="relative w-full h-[500px] sm:h-[600px] lg:h-[700px] flex items-center justify-center px-4">
-                  {/* Roue circulaire complète - Design 2025 */}
-                  <div
-                    ref={ringRef}
-                    id="video-carousel"
-                    role="group"
-                    aria-roledescription="carousel"
-                    aria-label="Sélection de vidéos"
-                    className="vp-ring carousel-wheel relative"
-                    style={{
-                      width: 'var(--ring-size)',
-                      height: 'var(--ring-size)',
-                      transform: `perspective(1500px) rotateX(5deg)`,
-                      overflow: 'visible',
-                      touchAction: 'pan-y'
-                    }}
-                  >
-                    {/* Cercle principal avec design premium glow-up */}
-                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#d0f2fe]/95 via-[#a0e7ff]/85 to-[#70d9ff]/90 backdrop-blur-3xl border-[3px] border-white/80 shadow-[0_0_120px_rgba(0,200,255,0.5),0_0_80px_rgba(208,242,254,0.6),0_30px_80px_rgba(0,0,0,0.2),inset_0_0_60px_rgba(255,255,255,0.3)] transition-all duration-700 group-hover/wheel:shadow-[0_0_150px_rgba(0,200,255,0.7),0_0_100px_rgba(208,242,254,0.8),0_35px_90px_rgba(0,0,0,0.25)] pointer-events-none select-none z-0">
-                      {/* Reflet brillant en arc supérieur */}
-                      <div className="absolute top-0 left-1/4 right-1/4 h-1/4 rounded-full bg-gradient-to-b from-white/60 to-transparent blur-xl pointer-events-none"></div>
+                <article className="relative overflow-hidden rounded-[26px] sm:rounded-[32px] border border-white/60 bg-white/95 p-6 sm:p-8 shadow-[0_18px_50px_rgba(15,23,42,0.14)] sm:shadow-[0_25px_70px_rgba(15,23,42,0.12)] backdrop-blur-xl transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_28px_72px_rgba(15,23,42,0.16)] sm:hover:shadow-[0_32px_80px_rgba(15,23,42,0.18)] text-center sm:text-left video-focus-card">
+                  <div className="pointer-events-none absolute inset-0 rounded-[32px] bg-gradient-to-br from-white/0 via-white/40 to-white/0 opacity-0 transition-opacity duration-500 hover:opacity-100" />
+                  <div className="relative flex flex-col gap-5 text-center sm:text-left items-center sm:items-start">
+                    <div className="flex items-center justify-center sm:justify-start gap-2 text-[0.6rem] sm:text-xs font-medium uppercase tracking-[0.3em] sm:tracking-[0.35em] text-slate-400">
+                      <span className="inline-flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-sky-400 text-sm sm:text-base text-white shadow-lg shadow-[rgba(15,23,42,0.18)]">🎬</span>
+                      <span>Focus projet</span>
                     </div>
 
-                    {/* Aura lumineuse externe optimisée (animations réduites) */}
-                    <div className="absolute -inset-4 rounded-full bg-gradient-to-r from-[#00c8ff]/30 via-[#d0f2fe]/35 to-[#00a8e8]/30 blur-xl opacity-40 pointer-events-none select-none z-0"></div>
+                    <h3 className="text-2xl sm:text-3xl font-black leading-tight text-slate-900">
+                      {currentMedia?.title}
+                    </h3>
 
-                    {/* Cercles concentriques avec reflets et profondeur améliorée */}
-                    <div className="absolute inset-12 rounded-full bg-gradient-to-br from-white/40 via-[#d0f2fe]/20 to-transparent border-2 border-white/50 shadow-[inset_0_0_40px_rgba(255,255,255,0.4),0_0_20px_rgba(0,200,255,0.3)] backdrop-blur-sm pointer-events-none select-none z-0"></div>
-                    <div className="absolute inset-20 rounded-full border-2 border-[#00c8ff]/30 opacity-60 shadow-[0_0_15px_rgba(0,200,255,0.4)] pointer-events-none select-none z-0"></div>
-                    <div className="absolute inset-28 rounded-full border border-cyan-300/25 opacity-50 shadow-[0_0_10px_rgba(112,217,255,0.3)] pointer-events-none select-none z-0"></div>
+                    <div className="space-y-3 text-sm sm:text-base leading-relaxed text-slate-600 video-description text-center sm:text-left">
+                      {(isDescriptionExpanded ? descriptionBlocks : descriptionBlocks.slice(0, 1)).map((paragraph, idx) => {
+                        const trimmed = paragraph.replace(/^«|»$/g, '').trim();
+                        const isHighlight = ['🎬', '📹', '🤝', '📸', '⚡', '🎥'].some((emoji) => trimmed.startsWith(emoji));
 
-                    {/* Bouton central premium ultra-moderne avec glow effet */}
+                        return isHighlight ? (
+                          <HighlightCard key={idx} content={trimmed} />
+                        ) : (
+                          <p key={idx} className="text-slate-600">
+                            {trimmed}
+                          </p>
+                        );
+                      })}
+                    </div>
+
+                    {isDescriptionExpanded && <CreditsCard currentMedia={currentMedia} />}
+                    {descriptionBlocks.length > 1 && (
+                      <div className="w-full">
+                        <button
+                          type="button"
+                          onClick={() => setIsDescriptionExpanded((prev) => !prev)}
+                          className="group inline-flex items-center gap-2 rounded-full border border-indigo-200/70 bg-white px-4 py-2 text-[0.7rem] sm:text-xs font-semibold uppercase tracking-[0.25em] sm:tracking-[0.35em] text-indigo-600 shadow-[0_12px_32px_rgba(79,70,229,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-[0_18px_36px_rgba(79,70,229,0.18)] self-center sm:self-start"
+                        >
+                          {isDescriptionExpanded ? 'Réduire' : 'Lire la suite'}
+                          <span className="text-indigo-400 transition-transform duration-300 group-hover:translate-x-1">
+                            {isDescriptionExpanded ? '−' : '→'}
+                          </span>
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                </article>
+              </div>
+
+              <div className="relative flex flex-col gap-6">
+                <div className="flex flex-col items-center justify-center gap-3 text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+                  <p className="inline-flex items-center gap-2 text-sm uppercase tracking-[0.45em] text-center sm:text-left">
+                    <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-br from-blue-500 to-sky-400" />
+                    Sélection rapide
+                  </p>
+                  <div className="hidden sm:block h-[1px] flex-1 ml-6 bg-gradient-to-r from-slate-200 via-slate-300/70 to-transparent" />
+                </div>
+
+                <div className="relative overflow-hidden rounded-[28px] sm:rounded-[34px] border border-white/70 bg-white py-4 sm:py-5 shadow-[0_26px_75px_rgba(15,23,42,0.12)] backdrop-blur-2xl">
+                  <div className="pointer-events-none absolute inset-0 rounded-[34px] border border-white/50 opacity-70" />
+                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.1),transparent_60%),radial-gradient(circle_at_bottom_right,rgba(14,165,233,0.1),transparent_55%)] opacity-70" />
+
+                  <div className="relative z-10 flex w-full flex-wrap items-center justify-center gap-3 px-3 sm:flex-nowrap sm:justify-between sm:gap-4 sm:px-6 lg:px-8 quick-selection-shell">
                     <button
                       type="button"
-                      onClick={handleCentralPlayClick}
-                      aria-label={isVideoPlaying && videoRef.current && !videoRef.current.paused ? "Mettre en pause la vidéo" : "Lire la vidéo sélectionnée"}
-                      className={`vp-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gradient-to-br rounded-full z-50 border-[5px] hover:scale-125 active:scale-95 transition-all duration-500 cursor-pointer pointer-events-auto group/center focus:outline-none focus:ring-4 ${
-                        isVideoPlaying && videoRef.current && !videoRef.current.paused
-                          ? 'from-[#ff6b6b] via-[#ee5a52] to-[#dc4040] shadow-[0_0_50px_rgba(255,107,107,0.9),0_0_80px_rgba(255,107,107,0.6),0_10px_40px_rgba(0,0,0,0.3)] border-white/95 hover:shadow-[0_0_70px_rgba(255,107,107,1),0_0_100px_rgba(255,107,107,0.8),0_15px_50px_rgba(0,0,0,0.4)] hover:border-[#ffe0e0] focus:ring-[#ff6b6b]/70'
-                          : 'from-[#00c8ff] via-[#0096cc] to-[#007899] shadow-[0_0_50px_rgba(0,200,255,0.9),0_0_80px_rgba(0,200,255,0.6),0_10px_40px_rgba(0,0,0,0.3)] border-white/95 hover:shadow-[0_0_70px_rgba(0,200,255,1),0_0_100px_rgba(0,200,255,0.8),0_15px_50px_rgba(0,0,0,0.4)] hover:border-[#d0f2fe] focus:ring-[#00c8ff]/70'
-                      }`}
-                      style={{
-                        width: 'var(--center-play)',
-                        height: 'var(--center-play)'
-                      }}
+                      aria-label="Vidéos précédentes"
+                      onClick={() => scrollQuickSelection('prev')}
+                      aria-disabled={!canScrollLeft}
+                      className={clsx(
+                        'relative z-20 pointer-events-auto flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/80 bg-white text-slate-600 shadow-[0_12px_26px_rgba(15,23,42,0.2)] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500/50 sm:h-12 sm:w-12 sm:shadow-[0_16px_34px_rgba(15,23,42,0.22)]',
+                        canScrollLeft
+                          ? 'hover:-translate-x-1 hover:text-slate-900'
+                          : 'opacity-40'
+                      )}
                     >
-                      {/* Effet de lueur interne premium */}
-                      <div className="absolute inset-2 rounded-full bg-gradient-to-br from-white/50 via-[#d0f2fe]/30 to-transparent shadow-[inset_0_0_20px_rgba(255,255,255,0.6)] pointer-events-none select-none"></div>
-
-                      {/* Reflet brillant supérieur */}
-                      <div className="absolute top-1 left-1/4 right-1/4 h-1/3 rounded-full bg-gradient-to-b from-white/60 to-transparent blur-sm pointer-events-none select-none"></div>
-
-                      {/* Pictogramme Play/Pause animé avec glow */}
-                      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
-                        {isVideoPlaying && videoRef.current && !videoRef.current.paused ? (
-                          <Pause className="w-8 h-8 text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.8)] group-hover/center:scale-110 group-hover/center:drop-shadow-[0_0_25px_rgba(255,255,255,1)] transition-all duration-300" />
-                        ) : (
-                          <Play className="w-8 h-8 text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.8)] group-hover/center:scale-110 group-hover/center:drop-shadow-[0_0_25px_rgba(255,255,255,1)] transition-all duration-300 ml-1" />
-                        )}
-                      </div>
-
-                      {/* Animation de pulsation améliorée */}
-                      <div className="absolute -inset-3 rounded-full border-2 border-[#00c8ff]/60 animate-ping opacity-75 shadow-[0_0_20px_rgba(0,200,255,0.5)]" style={{ animationDuration: '2s' }}></div>
-                      <div className="absolute -inset-4 rounded-full border border-white/40 animate-ping opacity-50 shadow-[0_0_15px_rgba(255,255,255,0.4)]" style={{ animationDuration: '2.5s', animationDelay: '0.5s' }}></div>
+                      <ChevronLeft className="h-5 w-5" strokeWidth={2.5} />
                     </button>
 
-                    {/* Vignettes disposées en cercle complet */}
-                    {filteredMedia.map((media, index) => {
-                      // Dev-only check to ensure parity of thumbnails vs data
-                      if (import.meta.env.MODE !== 'production' && (!media || !media.thumbnail)) {
-                        console.warn('thumbnail mismatch or missing', { index, media });
-                      }
-                      const isSelected = index === selectedMediaIndex;
-                      const totalItems = filteredMedia.length;
-
-                      // Effets visuels selon la position
-                      const distanceFromCenter = Math.abs(index - selectedMediaIndex);
-                      const normalizedDistance = Math.min(distanceFromCenter, totalItems - distanceFromCenter);
-                      const opacity = isSelected ? 1 : Math.max(0.75, 1 - normalizedDistance * 0.08);
-                      const scale = isSelected ? 1.6 : Math.max(0.9, 1 - normalizedDistance * 0.05);
-                      const zIndex = isSelected ? 40 : Math.max(10, 20 - normalizedDistance);
-
-                      return (
-                        <button
-                          key={media.id}
-                          type="button"
-                          data-index={index}
-                          ref={(el) => (thumbsRef.current[index] = el)}
-                          onClick={() => handleThumbnailClick(index)}
-                          role="button"
-                          aria-label={isSelected && media.type === 'video' ? (isVideoPlaying ? `Mettre en pause ${media.title}` : `Lire ${media.title}`) : `Sélectionner la vidéo ${media.title}`}
-                          aria-current={isSelected ? 'true' : 'false'}
-                          tabIndex={isSelected ? 0 : -1}
-                          className="vp-thumb-btn thumbnail cursor-pointer transition-all duration-300 ease-in-out transform-gpu hover:z-40 hover:scale-105 group/vignette pointer-events-auto focus:outline-none rounded-2xl"
-                          style={{
-                            position: 'absolute',
-                            opacity,
-                            zIndex,
-                            transformStyle: 'preserve-3d',
-                            margin: 0,
-                            padding: 0,
-                            background: 'transparent',
-                            border: 'none',
-                            willChange: 'transform'
-                          }}
-                        >
-                          {/* Effet de lueur externe premium pour l'élément sélectionné */}
-                          {isSelected && (
-                            <>
-                              <div className="absolute -inset-3 bg-[#00c8ff]/40 rounded-2xl blur-2xl animate-pulse pointer-events-none" style={{ animationDuration: '2s' }}></div>
-                              <div className="absolute -inset-2 bg-[#d0f2fe]/50 rounded-2xl blur-xl animate-pulse pointer-events-none" style={{ animationDuration: '2.5s', animationDelay: '0.5s' }}></div>
-                            </>
-                          )}
-
-                          {/* Vignette premium avec glow-up */}
-                          <div className={`vp-thumb relative rounded-2xl overflow-hidden transition-all duration-500 ${
-                            isSelected
-                              ? 'ring-[3px] ring-[#00c8ff] shadow-[0_0_40px_rgba(0,200,255,0.9),0_0_20px_rgba(208,242,254,0.7),inset_0_0_10px_rgba(255,255,255,0.3)]'
-                              : 'ring-2 ring-white/50 shadow-[0_0_10px_rgba(255,255,255,0.3)] group-hover/vignette:ring-[3px] group-hover/vignette:ring-cyan-300 group-hover/vignette:shadow-[0_0_25px_rgba(0,200,255,0.6),0_0_15px_rgba(112,217,255,0.5)]'
-                          }`}
-                          style={{
-                            background: 'transparent',
-                            padding: 0,
-                            margin: 0
-                          }}>
-                            {/* Micro-interaction overlay */}
-                            <div className="pointer-events-none absolute inset-0 opacity-0 group-hover/vignette:opacity-100 transition-opacity duration-300">
-                              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-                            </div>
-
-                            {/* Image/Vidéo thumbnail */}
-                            {media.type === 'video' && (media.mediaUrl || media.youtubeUrl) ? (
-                              <div className="relative w-full h-full rounded-2xl overflow-hidden" style={{ background: 'transparent', padding: 0, margin: 0 }}>
-                                {/* THUMBNAIL RÉELLE - visible sur toutes résolutions */}
-                                {media.youtubeUrl ? (
-                                  <img
-                                    src={media.thumbnail}
-                                    alt={`Miniature vidéo - ${media.title} - Production audiovisuelle GND Consulting`}
-                                    loading="lazy"
-                                    decoding="async"
-                                    className="w-full h-full object-cover transition-transform duration-500 group-hover/vignette:scale-110"
-                                    style={{
-                                      display: 'block',
-                                      background: 'transparent',
-                                      margin: 0,
-                                      padding: 0
-                                    }}
-                                    onError={(e) => {
-                                      e.currentTarget.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="120" height="68"%3E%3Crect fill="%23374151" width="120" height="68"/%3E%3C/svg%3E';
-                                    }}
-                                  />
-                                ) : media.mediaUrl ? (
+                    <div
+                      ref={quickNavRef}
+                      className="group relative flex min-w-0 flex-1 gap-3 sm:gap-4 overflow-x-auto px-2 sm:px-4 py-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+                      style={{ scrollbarWidth: 'none' }}
+                    >
+                      <div
+                        className={clsx(
+                          'pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-20 bg-white/90 transition-opacity duration-300',
+                          canScrollLeft ? 'opacity-100' : 'opacity-0'
+                        )}
+                      />
+                      <div
+                        className={clsx(
+                          'pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-20 bg-gradient-to-l from-white via-white/90 to-transparent transition-opacity duration-300',
+                          canScrollRight ? 'opacity-100' : 'opacity-0'
+                        )}
+                      />
+                      <div className="relative z-10 flex min-w-full gap-3 sm:gap-4">
+                        {filteredMedia.map((media, idx) => {
+                          const active = idx === selectedMediaIndex;
+                          const badgeLabel = media.tag || (media.type === 'video' ? 'Vidéo' : 'Photo');
+                          return (
+                            <button
+                              key={media.id}
+                              type="button"
+                              onClick={() => setSelectedMediaIndex(idx)}
+                              ref={(el) => { thumbsRef.current[idx] = el; }}
+                              className={clsx(
+                                'group relative flex w-[140px] sm:w-[190px] shrink-0 flex-col overflow-hidden rounded-[22px] sm:rounded-[24px] border backdrop-blur transition-all duration-500',
+                                active
+                                  ? 'border-blue-300/60 bg-white shadow-[0_16px_36px_rgba(59,130,246,0.18)] scale-[1.02]'
+                                  : 'border-white/60 bg-white/85 hover:-translate-y-1 hover:border-blue-200/60 hover:shadow-[0_18px_42px_rgba(15,23,42,0.14)]'
+                              )}
+                              aria-label={`Lire ${media.title}`}
+                            >
+                              <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                                <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/70 via-white/30 to-white/0" />
+                              </div>
+                              <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[18px] sm:rounded-[20px]">
+                                {media.type === 'video' && media.mediaUrl ? (
                                   <VideoFirstFrame
                                     src={media.mediaUrl}
-                                    poster={media.thumbnail}
-                                    alt={`Miniature vidéo - ${media.title} - Production audiovisuelle GND Consulting`}
+                                    poster={media.thumbnail || media.posterUrl || currentMedia?.thumbnail}
+                                    alt={media.title}
                                     width={320}
                                     height={180}
-                                    className="w-full h-full object-cover transition-transform duration-500 group-hover/vignette:scale-110"
-                                    style={{
-                                      display: 'block',
-                                      background: 'transparent',
-                                      margin: 0,
-                                      padding: 0
-                                    }}
+                                    className={clsx(
+                                      'h-full w-full object-cover transition-transform duration-500',
+                                      active ? 'scale-105' : 'scale-100 group-hover:scale-105'
+                                    )}
                                   />
                                 ) : (
                                   <img
-                                    src={media.thumbnail}
-                                    alt={`Miniature vidéo - ${media.title} - Production audiovisuelle GND Consulting`}
-                                    loading="lazy"
-                                    decoding="async"
-                                    width={320}
-                                    height={180}
-                                    className="w-full h-full object-cover transition-transform duration-500 group-hover/vignette:scale-110"
-                                    style={{
-                                      display: 'block',
-                                      background: 'transparent',
-                                      margin: 0,
-                                      padding: 0
-                                    }}
+                                    src={media.thumbnail || media.posterUrl || currentMedia?.thumbnail}
+                                    alt={media.title}
+                                    className={clsx(
+                                      'h-full w-full object-cover transition-transform duration-500',
+                                      active ? 'scale-105' : 'scale-100 group-hover:scale-105'
+                                    )}
                                   />
                                 )}
-
-                                {/* Overlay Play/Pause - fond semi-transparent */}
-                                <div className={`absolute inset-0 flex items-center justify-center rounded-2xl transition-opacity duration-300 ${
-                                  isSelected
-                                    ? 'bg-black/30'
-                                    : 'bg-black/20 opacity-0 group-hover/vignette:opacity-100'
-                                }`}>
-                                  <div className={`w-10 h-10 rounded-full flex items-center justify-center shadow-xl transition-all duration-300 ${
-                                    isSelected && isVideoPlaying && videoRef.current && !videoRef.current.paused
-                                      ? 'bg-gradient-to-br from-red-500 to-red-600'
-                                      : 'bg-gradient-to-br from-primary to-secondary'
-                                  }`}>
-                                    {isSelected && isVideoPlaying && videoRef.current && !videoRef.current.paused ? (
-                                      <Pause className="w-5 h-5 text-white drop-shadow-lg" />
-                                    ) : (
-                                      <Play className="w-5 h-5 text-white drop-shadow-lg ml-0.5" />
-                                    )}
-                                  </div>
-                                </div>
+                                {active && (
+                                  <span className="pointer-events-none absolute right-3 top-3 inline-flex items-center gap-1 rounded-full border border-white/60 bg-white/85 px-2 py-1 text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.28em] sm:tracking-[0.3em] text-slate-900 shadow-[0_6px_18px_rgba(59,130,246,0.25)]">
+                                    En lecture
+                                  </span>
+                                )}
                               </div>
-                            ) : (
-                                  <img
-                                src={media.thumbnail}
-                                alt={`Photo - ${media.title} - Photographie professionnelle GND Consulting`}
-                                loading="lazy"
-                                    decoding="async"
-                                    width={320}
-                                    height={180}
-                                className="w-full h-full object-cover transition-transform duration-500 group-hover/vignette:scale-110"
-                                style={{
-                                  display: 'block',
-                                  background: 'transparent',
-                                  margin: 0,
-                                  padding: 0
-                                }}
-                              />
-                            )}
-                          </div>
-
-                          {/* Capsule titre discrète sous la vignette sélectionnée */}
-                          {isSelected && (
-                            <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 z-[35] pointer-events-none animate-fade-in" role="status" aria-live="polite">
-                              <div className="bg-gray-950/90 backdrop-blur-xl rounded-xl px-4 py-2 shadow-[0_4px_24px_rgba(0,0,0,0.5),0_0_1px_rgba(255,255,255,0.1)] border border-white/30">
-                                <span className="text-white text-xs font-bold tracking-wide truncate block max-w-[140px] drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-                                  {media.title.length > 22 ? media.title.substring(0, 22) + '...' : media.title}
+                              <div className="relative mt-3 space-y-1 px-2 pb-3 text-center sm:text-left">
+                                <span className="inline-flex items-center gap-1 rounded-full border border-slate-200/70 bg-white/90 px-2 py-1 text-[0.6rem] sm:text-[10px] font-semibold uppercase tracking-[0.25em] sm:tracking-[0.3em] text-slate-500">
+                                  <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-br from-blue-500 to-sky-400" />
+                                  {badgeLabel}
                                 </span>
+                                <p
+                                  className={clsx(
+                                    'text-[0.65rem] sm:text-xs font-semibold uppercase tracking-[0.24em] sm:tracking-[0.28em] text-slate-500 whitespace-nowrap overflow-hidden text-ellipsis',
+                                    active && 'text-slate-900'
+                                  )}
+                                >
+                                  {media.title}
+                                </p>
                               </div>
-                            </div>
-                          )}
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-                
-                {/* Indicateur de progression modernisé 2025 */}
-                <div className="relative flex justify-center mt-8 sm:mt-10 lg:mt-12 z-20 pointer-events-none" role="status" aria-live="polite" aria-atomic="true">
-                  <div className="flex items-center justify-center gap-2 sm:gap-3 md:gap-4 lg:gap-6 bg-white/95 backdrop-blur-xl rounded-3xl px-4 sm:px-6 md:px-8 lg:px-12 py-3 sm:py-4 lg:py-6 shadow-[0_10px_40px_rgba(0,0,0,0.15)] border-2 border-primary/30 hover:shadow-[0_15px_50px_rgba(59,130,246,0.25)] transition-all duration-500 ease-in-out">
-                    <div className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 bg-gradient-to-br from-primary to-secondary rounded-full animate-pulse shadow-lg" aria-hidden="true"></div>
-                    <div className="flex flex-col items-center">
-                      <span className="text-sm sm:text-base font-bold text-gray-800" aria-label={`Vidéo ${selectedMediaIndex + 1} sur ${filteredMedia.length}`}>
-                        {selectedMediaIndex + 1} / {filteredMedia.length}
-                      </span>
-                      <span className="text-xs sm:text-sm text-gray-500 mt-0.5 sm:mt-1 font-semibold tracking-wide">Pagination</span>
+                            </button>
+                          );
+                        })}
+                      </div>
                     </div>
-                    <div className="w-16 sm:w-20 md:w-28 lg:w-36 h-2.5 sm:h-3 lg:h-3.5 bg-gray-200/80 rounded-full overflow-hidden shadow-inner" role="progressbar" aria-valuenow={selectedMediaIndex + 1} aria-valuemin={1} aria-valuemax={filteredMedia.length} aria-label="Progression dans le carrousel">
-                      <div
-                        className="h-full bg-gradient-to-r from-primary via-secondary to-primary rounded-full transition-all duration-700 shadow-lg"
-                        style={{
-                          width: `${((selectedMediaIndex + 1) / filteredMedia.length) * 100}%`
-                        }}
-                      ></div>
-                    </div>
-                    <div className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 bg-gradient-to-br from-secondary to-primary rounded-full animate-pulse shadow-lg" style={{ animationDelay: '0.5s' }} aria-hidden="true"></div>
+
+                    <button
+                      type="button"
+                      aria-label="Vidéos suivantes"
+                      onClick={() => scrollQuickSelection('next')}
+                      aria-disabled={!canScrollRight}
+                      className={clsx(
+                        'relative z-20 pointer-events-auto flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/80 bg-white text-slate-600 shadow-[0_12px_26px_rgba(15,23,42,0.2)] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500/50 sm:h-12 sm:w-12 sm:shadow-[0_16px_34px_rgba(15,23,42,0.22)]',
+                        canScrollRight
+                          ? 'hover:translate-x-1 hover:text-slate-900'
+                          : 'opacity-40'
+                      )}
+                    >
+                      <ChevronRight className="h-5 w-5" strokeWidth={2.5} />
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
-            
-            {/* COLONNE DROITE - Visionneuse pleine hauteur modernisée 2025 */}
-            <div className="flex items-center min-h-[600px] sm:min-h-[700px] lg:min-h-[900px]" role="region" aria-label="Lecteur vidéo et détails du projet">
-              {currentMedia && (
-                <div className="space-y-4 sm:space-y-6 lg:space-y-8 w-full">
-                  {/* Visionneuse principale - Design 2025 */}
-                  <div className="relative aspect-video rounded-2xl sm:rounded-3xl lg:rounded-[2rem] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.2)] border-2 border-primary/20 bg-black group hover:-translate-y-2 hover:scale-105 hover:shadow-[0_0_50px_rgba(59,130,246,0.4),0_25px_70px_rgba(0,0,0,0.25)] hover:border-primary/40 transition-all duration-300 ease-in-out" role="region" aria-label="Lecteur vidéo" tabIndex={0}>
-                    {currentMedia && currentMedia.type === 'video' && currentMedia.youtubeUrl && privateVideoIds.includes(currentMedia.id) ? (
-                      <div className="relative w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100">
-                        <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 sm:p-6 lg:p-8 text-center max-w-md mx-4 sm:mx-auto shadow-lg">
-                          <p className="font-medium" style={{ color: '#444', fontSize: 'clamp(0.95rem, 2.5vw, 1.125rem)' }}>
-                            🎬 Vidéo temporairement indisponible
-                          </p>
-                          <p className="mt-2" style={{ color: '#666', fontSize: 'clamp(0.8rem, 2vw, 0.875rem)' }}>
-                            Le contenu sera bientôt de retour.
-                          </p>
-                        </div>
-                      </div>
-                    ) : currentMedia && currentMedia.type === 'video' && currentMedia.youtubeUrl ? (
-                      <div className="relative w-full h-full group/youtube" onMouseMove={() => setShowVideoControls(true)} onTouchStart={() => setShowVideoControls(true)}>
-                        {/* Bouton Play/Pause personnalisé pour YouTube */}
-                        {!isVideoPlaying && (
-                          <button
-                            type="button"
-                            className="absolute inset-0 flex items-center justify-center z-50 cursor-pointer focus:outline-none bg-black/40"
-                            onClick={() => {
-                              const iframe = document.querySelector('iframe[src*="youtube.com/embed"]') as HTMLIFrameElement;
-                              if (iframe) {
-                                iframe.contentWindow?.postMessage(JSON.stringify({
-                                  event: 'command',
-                                  func: 'playVideo',
-                                  args: ''
-                                }), '*');
-                                setIsVideoPlaying(true);
-                              }
-                            }}
-                            aria-label={`Lire la vidéo ${currentMedia.title}`}
-                          >
-                            <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-white/95 backdrop-blur-lg rounded-full flex items-center justify-center shadow-[0_0_40px_rgba(59,130,246,0.5)] transition-all duration-300 hover:scale-110 hover:bg-gradient-to-br hover:from-primary hover:to-secondary hover:text-white hover:shadow-[0_0_60px_rgba(59,130,246,0.7)] border-4 border-white/80">
-                              <Play className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-gray-900 hover:text-white ml-1 sm:ml-1.5 transition-colors duration-300" aria-hidden="true" />
-                            </div>
-                          </button>
-                        )}
-
-                        {/* Overlay de contrôle pendant la lecture - apparaît au survol */}
-                        {isVideoPlaying && (
-                          <div
-                            className="absolute inset-0 z-10 cursor-default opacity-0 bg-black/20"
-                            style={{ pointerEvents: 'none' }}
-                            onClick={() => {
-                              const iframe = document.querySelector('iframe[src*="youtube.com/embed"]') as HTMLIFrameElement;
-                              if (iframe) {
-                                iframe.contentWindow?.postMessage(JSON.stringify({
-                                  event: 'command',
-                                  func: 'pauseVideo',
-                                  args: ''
-                                }), '*');
-                                setIsVideoPlaying(false);
-                              }
-                            }}
-                          >
-                            <div className="absolute inset-0 flex items-center justify-center">
-                              <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-white/90 backdrop-blur-lg rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(59,130,246,0.5)] transition-all duration-300 hover:scale-110 border-3 border-white/80">
-                                <Pause className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-gray-900 transition-colors duration-300" aria-hidden="true" />
-                              </div>
-                            </div>
-                          </div>
-                        )}
-
-                        {/* Contrôles vidéo accessibles avec masquage automatique - YouTube */}
-                        <div 
-                          className={`absolute bottom-0 left-0 right-0 z-30 p-3 sm:p-4 transition-opacity duration-500 ${
-                            showVideoControls ? 'opacity-100' : 'opacity-0'
-                          }`}
-                          style={{ pointerEvents: 'auto' }}
-                          onMouseEnter={() => {
-                            setShowVideoControls(true);
-                            console.log('🎮 Contrôles affichés (survol)');
-                          }}
-                          onMouseLeave={() => {
-                            if (isVideoPlaying) {
-                              setTimeout(() => {
-                                setShowVideoControls(false);
-                                console.log('🎮 Contrôles masqués (fin survol)');
-                              }, 1000);
-                            }
-                          }}
-                        >
-                          <div className="flex items-center gap-1.5 sm:gap-2 bg-black/65 backdrop-blur-xl rounded-2xl px-2.5 sm:px-4 py-2 sm:py-2.5 border border-white/15 shadow-[0_8px_22px_rgba(0,0,0,0.35)]">
-                            <button
-                              type="button"
-                              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/90 text-gray-900 hover:bg-white focus:outline-none focus:ring-2 focus:ring-primary/60 flex items-center justify-center"
-                              onClick={() => {
-                                const media = filteredMedia[selectedMediaIndex];
-                                if (media && media.type === 'video' && media.youtubeUrl) {
-                                  if (isVideoPlaying) {
-                                    sendYouTubeCommand('pauseVideo');
-                                    setIsVideoPlaying(false);
-                                  } else {
-                                    sendYouTubeCommand('playVideo');
-                                    setIsVideoPlaying(true);
-                                  }
-                                }
-                              }}
-                              aria-label={isVideoPlaying ? 'Mettre en pause' : 'Lire la vidéo'}
-                            >
-                              {isVideoPlaying ? (
-                                <Pause className="w-4.5 h-4.5" />
-                              ) : (
-                                <Play className="w-4.5 h-4.5 ml-0.5" />
-                              )}
-                            </button>
-
-                            <button
-                              type="button"
-                              className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full focus:outline-none focus:ring-2 focus:ring-primary/60 bg-white/80 text-gray-900 hover:bg-white flex items-center justify-center`}
-                              onClick={() => { 
-                                const newTime = Math.max(0, (youtubeUiCurrentTime || youtubeCurrentTime || 0) - 10);
-                                seekYouTube(newTime);
-                                console.log('⏪ YouTube -10s, temps:', youtubeUiCurrentTime, '→', newTime);
-                              }}
-                              disabled={false}
-                              aria-label="Reculer de 10 secondes"
-                            >
-                              <Rewind className="w-4.5 h-4.5" />
-                            </button>
-
-                            <button
-                              type="button"
-                              className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full focus:outline-none focus:ring-2 focus:ring-primary/60 bg-white/80 text-gray-900 hover:bg-white flex items-center justify-center`}
-                              onClick={() => { 
-                                const base = (youtubeUiCurrentTime || youtubeCurrentTime || 0);
-                                const newTime = Math.min(youtubeDuration || 0, base + 10);
-                                seekYouTube(newTime);
-                                console.log('⏩ YouTube +10s, temps:', youtubeUiCurrentTime, '→', newTime);
-                              }}
-                              disabled={false}
-                              aria-label="Avancer de 10 secondes"
-                            >
-                              <FastForward className="w-4.5 h-4.5" />
-                            </button>
-
-                            <div className="ml-1.5 text-white text-[11px] sm:text-xs whitespace-nowrap" aria-live="polite">
-                              {formatSeconds(youtubeUiCurrentTime)} / {formatSeconds(youtubeDuration)}
-                            </div>
-                          </div>
-
-                          <input
-                            type="range"
-                            min={0}
-                            max={Math.max(youtubeDuration || 0, 1)}
-                            step={0.1}
-                            value={Math.min(youtubeUiCurrentTime, youtubeDuration || 0)}
-                            onInput={(e) => {
-                              const val = Number((e.target as HTMLInputElement).value);
-                              seekYouTube(val);
-                              setYoutubeUiCurrentTime(val);
-                            }}
-                            onChange={(e) => {
-                              const val = Number(e.target.value);
-                              // Débloquer la seekbar même avec controls=0 en utilisant seekTo(seconds, allowSeekAhead)
-                              seekYouTube(val);
-                              setYoutubeUiCurrentTime(val);
-                              console.log('⏱️ YouTube seek vers:', val, 'secondes (durée:', youtubeDuration, 's)');
-                            }}
-                            aria-label="Barre de progression vidéo"
-                            aria-valuemin={0}
-                            aria-valuemax={Math.max(youtubeDuration || 0, 1)}
-                            aria-valuenow={Math.min(youtubeUiCurrentTime, youtubeDuration || 0)}
-                            aria-valuetext={`${formatSeconds(youtubeUiCurrentTime)} sur ${formatSeconds(youtubeDuration)}`}
-                            className="mt-2 w-full h-2 rounded-full appearance-none cursor-pointer bg-white/20 shadow-inner"
-                            style={{
-                              backgroundImage: `linear-gradient(to right, rgba(255,255,255,0.95) ${((youtubeDuration || 0) > 0 ? (Math.min(youtubeUiCurrentTime, youtubeDuration) / (youtubeDuration || 1)) * 100 : 0)}%, rgba(255,255,255,0.25) ${((youtubeDuration || 0) > 0 ? (Math.min(youtubeUiCurrentTime, youtubeDuration) / (youtubeDuration || 1)) * 100 : 0)}%)`,
-                              backdropFilter: 'saturate(120%) blur(2px)'
-                            }}
-                          />
-                        </div>
-
-                        <iframe
-                          id="youtube-player"
-                          className={`w-full h-full rounded-[2rem] transition-opacity duration-200 ${(youtubeReady || isVideoPlaying) ? 'opacity-100' : 'opacity-0'}`}
-                          key={`yt-${currentMedia.youtubeUrl.split('v=')[1]?.split('&')[0]}`}
-                          src={`https://www.youtube.com/embed/${currentMedia.youtubeUrl.split('v=')[1]?.split('&')[0]}?autoplay=0&rel=0&modestbranding=1&enablejsapi=1&controls=0&disablekb=1&showinfo=0&iv_load_policy=3&playsinline=1&fs=0&origin=${window.location.origin}`}
-                          title={currentMedia.title}
-                          frameBorder="0"
-                          loading="lazy"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
-                          onLoad={() => {
-                            // Dès que l'iframe est chargée, on enregistre les listeners pour éviter la latence
-                            try {
-                              // Handshake requis pour recevoir infoDelivery
-                              const iframe = getYouTubePlayer();
-                              if (iframe && iframe.contentWindow) {
-                                iframe.contentWindow.postMessage(JSON.stringify({ event: 'listening', id: 1 }), '*');
-                              }
-                              sendYouTubeCommand('addEventListener', 'onReady');
-                              sendYouTubeCommand('addEventListener', 'onStateChange');
-                              sendYouTubeCommand('addEventListener', 'infoDelivery');
-                              // Demander immédiatement les infos de durée/temps courant
-                              sendYouTubeCommand('getDuration');
-                              sendYouTubeCommand('getCurrentTime');
-                            } catch {}
-                          }}
-                        ></iframe>
-                      </div>
-                    ) : currentMedia && currentMedia.type === 'video' && currentMedia.mediaUrl ? (
-                      <div className="relative w-full h-full group/video">
-                        {/* Première frame en couverture tant que la vidéo n'est pas en lecture */}
-                        {!isVideoPlaying && !isVideoLoading && !videoError && (
-                          <div className="absolute inset-0 z-0">
-                            <VideoFirstFrame
-                              src={getValidVideoUrl(currentMedia.mediaUrl)}
-                              poster={currentMedia.thumbnail}
-                              alt={`Couverture - ${currentMedia.title}`}
-                              className="w-full h-full object-contain"
-                              width={1280}
-                              height={720}
-                              style={{ background: 'transparent' }}
-                            />
-                          </div>
-                        )}
-                        {/* Indicateur de chargement amélioré */}
-                        {isVideoLoading && (
-                          <div className="absolute inset-0 flex items-center justify-center z-20 bg-black/50 backdrop-blur-sm">
-                            <div className="flex flex-col items-center gap-3">
-                              <div className="w-12 h-12 border-4 border-white/30 border-t-white rounded-full animate-spin"></div>
-                              <p className="text-white text-sm font-medium">
-                                {loadingTimeout ? 'Chargement lent...' : 'Chargement de la vidéo...'}
-                              </p>
-                              {loadingTimeout && (
-                                <p className="text-white/70 text-xs text-center max-w-xs">
-                                  Chargement en cours...<br />
-                                  Les vidéos Supabase peuvent prendre quelques secondes supplémentaires.
-                                </p>
-                              )}
-                            </div>
-                          </div>
-                        )}
-
-                        {/* Overlay Play button pour vidéos modernisé 2025 */}
-                        {!isVideoPlaying && !videoError && !isVideoLoading && videoRef.current && videoRef.current.paused && (
-                          <button
-                            type="button"
-                            className="absolute inset-0 flex items-center justify-center z-10 cursor-pointer focus:outline-none"
-                            onClick={() => {
-                              if (videoRef.current) {
-                                try {
-                                  // FIXED by audit - Vérification supplémentaire avant lecture
-                                  if (videoRef.current.readyState >= 2) {
-                                    videoRef.current.play().catch((error) => {
-                                      console.error('❌ Erreur lors du démarrage de la vidéo:', error);
-                                      setVideoError(true);
-                                    });
-                                  } else {
-                                    console.warn('⚠️ Vidéo pas encore prête pour la lecture');
-                                    setIsVideoLoading(true);
-                                  }
-                                } catch (error) {
-                                  console.error('❌ Erreur lors de l\'interaction avec la vidéo:', error);
-                                  setVideoError(true);
-                                }
-                              } else {
-                                console.warn('⚠️ videoRef.current non défini pour le bouton play');
-                              }
-                            }}
-                            aria-label={`Lire la vidéo ${currentMedia.title}`}
-                          >
-                            <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-white/95 backdrop-blur-lg rounded-full flex items-center justify-center shadow-[0_0_40px_rgba(59,130,246,0.5)] transition-all duration-300 hover:scale-110 hover:bg-gradient-to-br hover:from-primary hover:to-secondary hover:text-white hover:shadow-[0_0_60px_rgba(59,130,246,0.7)] border-4 border-white/80">
-                              <Play className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-gray-900 hover:text-white ml-1 sm:ml-1.5 transition-colors duration-300" aria-hidden="true" />
-                            </div>
-                          </button>
-                        )}
-
-                        {/* Overlay de contrôle pendant la lecture - apparaît au survol */}
-                        {isVideoPlaying && !videoError && videoRef.current && !videoRef.current.paused && (
-                          <div
-                            className="absolute inset-0 z-10 cursor-pointer opacity-0 group-hover/video:opacity-100 transition-opacity duration-300 bg-black/20"
-                            style={{ pointerEvents: 'none' }}
-                            onClick={() => {
-                              if (videoRef.current) {
-                                try {
-                                  videoRef.current.pause();
-                                  console.log('⏸️ Pause via overlay');
-                                } catch (error) {
-                                  console.error('❌ Erreur lors de la pause via overlay:', error);
-                                }
-                              } else {
-                                console.warn('⚠️ videoRef.current non défini pour le bouton pause');
-                              }
-                            }}
-                          >
-                            <div className="absolute inset-0 flex items-center justify-center">
-                              <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-white/90 backdrop-blur-lg rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(59,130,246,0.5)] transition-all duration-300 hover:scale-110 border-3 border-white/80">
-                                <Pause className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-gray-900 transition-colors duration-300" aria-hidden="true" />
-                              </div>
-                            </div>
-                          </div>
-                        )}
-
-                        <video
-                          ref={videoRef}
-                          className="w-full h-full object-contain bg-black relative z-[1]"
-                          playsInline
-                          preload="metadata"
-                          crossOrigin="anonymous"
-                          src={getValidVideoUrl(currentMedia.mediaUrl)}
-                          onPlay={handleVideoPlay}
-                          onPause={handleVideoPause}
-                          onEnded={handleVideoEnded}
-                          onLoadStart={() => {
-                            console.log('📥 Début du chargement de la vidéo...');
-                            setVideoError(false);
-                            setIsVideoLoading(true);
-                            setLoadingTimeout(false);
-                            
-                            // Timeout de 15 secondes pour détecter un chargement lent (FIXED by audit)
-                            setTimeout(() => {
-                              if (isVideoLoading) {
-                                setLoadingTimeout(true);
-                                console.log('⚠️ Chargement lent détecté (>15s)');
-                              }
-                            }, 15000);
-                          }}
-                          onLoadedMetadata={(e) => {
-                            const el = e.currentTarget;
-                            setDuration(el.duration || 0);
-                            console.log('✅ Métadonnées vidéo chargées, durée:', el.duration);
-                            setIsVideoLoading(false);
-                            setLoadingTimeout(false);
-                          }}
-                          onCanPlay={() => {
-                            console.log('🎬 Vidéo prête à être lue');
-                            setVideoError(false);
-                            setIsVideoLoading(false);
-                            setLoadingTimeout(false);
-                            
-                            // Reset le compteur de retry en cas de succès
-                            const currentUrl = getValidVideoUrl(currentMedia.mediaUrl);
-                            if (currentUrl) {
-                              retryCount.current.delete(currentUrl);
-                              
-                              // Mesurer le temps de chargement final
-                              const loadTime = performanceMetrics.current.loadTimes.get(currentUrl);
-                              if (loadTime) {
-                                console.log(`📊 Performance finale pour "${currentMedia.title}": ${loadTime.toFixed(2)}ms`);
-                              }
-                            }
-                          }}
-                          onWaiting={() => {
-                            console.log('⏳ Vidéo en attente de données...');
-                            // Ne pas forcer isLoading=true ici pour éviter les conflits
-                          }}
-                          onCanPlayThrough={() => {
-                            console.log('🎯 Vidéo peut être lue entièrement');
-                            setIsVideoLoading(false);
-                          }}
-                          onTimeUpdate={(e) => {
-                            const el = e.currentTarget;
-                            setCurrentTime(el.currentTime || 0);
-                          }}
-                          onError={(e) => {
-                            console.error('❌ Erreur de lecture vidéo Supabase:', {
-                              title: currentMedia.title,
-                              url: getValidVideoUrl(currentMedia.mediaUrl),
-                              error: e,
-                              timestamp: new Date().toISOString(),
-                              readyState: e.currentTarget.readyState,
-                              networkState: e.currentTarget.networkState
-                            });
-                            
-                            setVideoError(true);
-                            setIsVideoPlaying(false);
-                            setIsVideoLoading(false);
-                            
-                            // Retry automatique avec backoff exponentiel (FIXED by audit)
-                            const currentUrl = getValidVideoUrl(currentMedia.mediaUrl);
-                            if (currentUrl && videoRef.current) {
-                              const retries = retryCount.current.get(currentUrl) || 0;
-                              if (retries < 3) {
-                                const delay = Math.pow(2, retries) * 1000; // 1s, 2s, 4s
-                                console.log(`🔄 Retry ${retries + 1}/3 dans ${delay}ms pour:`, currentUrl);
-                                
-                                setTimeout(() => {
-                                  if (videoRef.current) {
-                                    videoRef.current.load();
-                                    retryCount.current.set(currentUrl, retries + 1);
-                                  }
-                                }, delay);
-                              } else {
-                                console.error('❌ Échec définitif après 3 tentatives pour:', currentUrl);
-                                retryCount.current.delete(currentUrl);
-                                
-                                // Reset simple du player
-                                videoRef.current.pause();
-                                videoRef.current.currentTime = 0;
-                              }
-                            }
-                          }}
-                          aria-label={`Vidéo: ${currentMedia.title}`}
-                        >
-                          {getValidVideoUrl(currentMedia.mediaUrl) && (
-                            <source src={getValidVideoUrl(currentMedia.mediaUrl)} type="video/mp4" />
-                          )}
-                          <div className="flex items-center justify-center h-full bg-gradient-to-br from-gray-50 to-gray-100">
-                            <img src={currentMedia.thumbnail} alt={`Aperçu vidéo - ${currentMedia.title} - Projet audiovisuel`} className="w-full h-full object-cover" loading="lazy" />
-                          </div>
-                        </video>
-
-                        {videoError && (
-                          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-black/60 text-white z-20">
-                            <p className="text-sm font-medium px-4 text-center">Impossible de charger la vidéo. Vous pouvez réessayer.</p>
-                            <button
-                              type="button"
-                              className="px-4 py-2 rounded-lg bg-white/90 text-gray-900 hover:bg-white focus:outline-none focus:ring-2 focus:ring-primary/60"
-                              onClick={() => {
-                                setVideoError(false);
-                                if (videoRef.current) {
-                                  videoRef.current.load();
-                                }
-                              }}
-                            >
-                              Réessayer
-                            </button>
-                          </div>
-                        )}
-
-                        {/* Contrôles vidéo accessibles avec masquage automatique */}
-                        <div 
-                          className={`absolute bottom-0 left-0 right-0 z-20 p-3 sm:p-4 bg-gradient-to-t from-black/70 via-black/30 to-transparent transition-opacity duration-500 ${
-                            showVideoControls ? 'opacity-100' : 'opacity-0'
-                          }`}
-                          onMouseEnter={() => {
-                            setShowVideoControls(true);
-                            console.log('🎮 Contrôles affichés (survol)');
-                          }}
-                          onMouseLeave={() => {
-                            if (isVideoPlaying) {
-                              setTimeout(() => {
-                                setShowVideoControls(false);
-                                console.log('🎮 Contrôles masqués (fin survol)');
-                              }, 1000);
-                            }
-                          }}
-                        >
-                          <div className="flex items-center gap-1.5 sm:gap-2 bg-black/65 backdrop-blur-xl rounded-2xl px-2.5 sm:px-4 py-2 sm:py-2.5 border border-white/15 shadow-[0_8px_22px_rgba(0,0,0,0.35)]">
-                            <button
-                              type="button"
-                              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/90 text-gray-900 hover:bg-white focus:outline-none focus:ring-2 focus:ring-primary/60 flex items-center justify-center"
-                            onClick={() => {
-                              // FIXED by audit - Contrôle universel pour YouTube et Supabase
-                              const media = filteredMedia[selectedMediaIndex];
-                              if (media && media.type === 'video' && media.youtubeUrl) {
-                                // Contrôle YouTube
-                                if (isVideoPlaying) {
-                                  sendYouTubeCommand('pauseVideo');
-                                  setIsVideoPlaying(false);
-                                } else {
-                                  sendYouTubeCommand('playVideo');
-                                  setIsVideoPlaying(true);
-                                }
-                              } else if (videoRef.current) {
-                                // Contrôle Supabase
-                                try {
-                                  if (videoRef.current.paused) {
-                                    videoRef.current.play().catch((error) => {
-                                      console.error('❌ Erreur lors du démarrage:', error);
-                                      setVideoError(true);
-                                    });
-                                  } else {
-                                    videoRef.current.pause();
-                                  }
-                                } catch (error) {
-                                  console.error('❌ Erreur lors de l\'interaction avec la vidéo:', error);
-                                  setVideoError(true);
-                                }
-                              } else {
-                                console.warn('⚠️ videoRef.current non défini');
-                              }
-                            }}
-                              aria-label={isVideoPlaying ? 'Mettre en pause' : 'Lire la vidéo'}
-                            >
-                              {isVideoPlaying ? (
-                                <Pause className="w-4.5 h-4.5" />
-                              ) : (
-                                <Play className="w-4.5 h-4.5 ml-0.5" />
-                              )}
-                            </button>
-
-                            <button
-                              type="button"
-                              className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full focus:outline-none focus:ring-2 focus:ring-primary/60 ${
-                                (() => {
-                                  const media = filteredMedia[selectedMediaIndex];
-                                  return (media && media.type === 'video' && media.youtubeUrl && youtubeDuration > 0) || (videoRef.current && videoRef.current.readyState >= 2 && duration > 0);
-                                })()
-                                  ? 'bg-white/80 text-gray-900 hover:bg-white flex items-center justify-center'
-                                  : 'bg-gray-300/50 text-gray-500 cursor-not-allowed flex items-center justify-center'
-                              }`}
-                              onClick={() => { 
-                                // FIXED by audit - Contrôle universel -10s pour YouTube et Supabase
-                                const media = filteredMedia[selectedMediaIndex];
-                                if (media && media.type === 'video' && media.youtubeUrl) {
-                                  // Contrôle YouTube
-                                  const newTime = Math.max(0, youtubeCurrentTime - 10);
-                                  seekYouTube(newTime);
-                                  console.log('⏪ YouTube -10s, temps:', youtubeCurrentTime, '→', newTime);
-                                } else if (videoRef.current && duration > 0 && videoRef.current.readyState >= 2) {
-                                  // Contrôle Supabase
-                                  try {
-                                    const currentTime = videoRef.current.currentTime;
-                                    const newTime = Math.max(0, currentTime - 10);
-                                    videoRef.current.currentTime = newTime;
-                                    setCurrentTime(newTime);
-                                    console.log('⏪ Supabase -10s, temps:', currentTime, '→', newTime, '(durée:', duration, 's)');
-                                  } catch (error) {
-                                    console.error('❌ Erreur lors du recul de 10s:', error);
-                                    setCurrentTime(videoRef.current.currentTime || 0);
-                                  }
-                                } else {
-                                  const media = filteredMedia[selectedMediaIndex];
-                                  const reason = (media && media.type === 'video' && media.youtubeUrl) ? 'YouTube pas encore chargé' :
-                                                !videoRef.current ? 'videoRef non défini' : 
-                                                duration === 0 ? 'durée non définie' : 
-                                                'vidéo pas encore chargée (readyState: ' + videoRef.current?.readyState + ')';
-                                  console.warn('⚠️ Bouton -10s désactivé:', reason);
-                                }
-                              }}
-                              disabled={(() => {
-                                const media = filteredMedia[selectedMediaIndex];
-                                return (media && media.type === 'video' && media.youtubeUrl && youtubeDuration === 0) || (!videoRef.current || videoRef.current.readyState < 2 || duration === 0);
-                              })()}
-                              aria-label="Reculer de 10 secondes"
-                            >
-                              <Rewind className="w-4.5 h-4.5" />
-                            </button>
-                            <button
-                              type="button"
-                              className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full focus:outline-none focus:ring-2 focus:ring-primary/60 ${
-                                (() => {
-                                  const media = filteredMedia[selectedMediaIndex];
-                                  return (media && media.type === 'video' && media.youtubeUrl && youtubeDuration > 0) || (videoRef.current && videoRef.current.readyState >= 2 && duration > 0);
-                                })()
-                                  ? 'bg-white/80 text-gray-900 hover:bg-white flex items-center justify-center'
-                                  : 'bg-gray-300/50 text-gray-500 cursor-not-allowed flex items-center justify-center'
-                              }`}
-                              onClick={() => { 
-                                // FIXED by audit - Contrôle universel +10s pour YouTube et Supabase
-                                const media = filteredMedia[selectedMediaIndex];
-                                if (media && media.type === 'video' && media.youtubeUrl) {
-                                  // Contrôle YouTube
-                                  const newTime = Math.min(youtubeDuration, youtubeCurrentTime + 10);
-                                  seekYouTube(newTime);
-                                  console.log('⏩ YouTube +10s, temps:', youtubeCurrentTime, '→', newTime);
-                                } else if (videoRef.current && duration > 0 && videoRef.current.readyState >= 2) {
-                                  // Contrôle Supabase
-                                  try {
-                                    const currentTime = videoRef.current.currentTime;
-                                    const newTime = Math.min(duration, currentTime + 10);
-                                    videoRef.current.currentTime = newTime;
-                                    setCurrentTime(newTime);
-                                    console.log('⏩ Supabase +10s, temps:', currentTime, '→', newTime, '(durée:', duration, 's)');
-                                  } catch (error) {
-                                    console.error('❌ Erreur lors de l\'avance de 10s:', error);
-                                    setCurrentTime(videoRef.current.currentTime || 0);
-                                  }
-                                } else {
-                                  const media = filteredMedia[selectedMediaIndex];
-                                  const reason = (media && media.type === 'video' && media.youtubeUrl) ? 'YouTube pas encore chargé' :
-                                                !videoRef.current ? 'videoRef non défini' : 
-                                                duration === 0 ? 'durée non définie' : 
-                                                'vidéo pas encore chargée (readyState: ' + videoRef.current?.readyState + ')';
-                                  console.warn('⚠️ Bouton +10s désactivé:', reason);
-                                }
-                              }}
-                              disabled={(() => {
-                                const media = filteredMedia[selectedMediaIndex];
-                                return (media && media.type === 'video' && media.youtubeUrl && youtubeDuration === 0) || (!videoRef.current || videoRef.current.readyState < 2 || duration === 0);
-                              })()}
-                              aria-label="Avancer de 10 secondes"
-                            >
-                              <FastForward className="w-4.5 h-4.5" />
-                            </button>
-
-                            <div className="ml-1.5 text-white text-[11px] sm:text-xs whitespace-nowrap" aria-live="polite">
-                              {(() => {
-                                const media = filteredMedia[selectedMediaIndex];
-                                if (media && media.type === 'video' && media.youtubeUrl) {
-                                  return (
-                                    <>
-                                      {new Date(youtubeCurrentTime * 1000).toISOString().substring(14, 19)} / {new Date((youtubeDuration || 0) * 1000).toISOString().substring(14, 19)}
-                                    </>
-                                  );
-                                } else {
-                                  return (
-                                    <>
-                                      {new Date(currentTime * 1000).toISOString().substring(14, 19)} / {new Date((duration || 0) * 1000).toISOString().substring(14, 19)}
-                                    </>
-                                  );
-                                }
-                              })()}
-                            </div>
-                          </div>
-
-                          <input
-                            type="range"
-                            min={0}
-                            max={(() => {
-                              const media = filteredMedia[selectedMediaIndex];
-                              return media && media.type === 'video' && media.youtubeUrl ? Math.max(youtubeDuration || 0, 1) : Math.max(duration || 0, 1);
-                            })()}
-                            step={0.1}
-                            value={(() => {
-                              const media = filteredMedia[selectedMediaIndex];
-                              return media && media.type === 'video' && media.youtubeUrl ? Math.min(youtubeCurrentTime, youtubeDuration || 0) : Math.min(currentTime, duration || 0);
-                            })()}
-                            onChange={(e) => {
-                              const val = Number(e.target.value);
-                              const media = filteredMedia[selectedMediaIndex];
-                              
-                              if (media && media.type === 'video' && media.youtubeUrl) {
-                                // Contrôle YouTube
-                                seekYouTube(val);
-                                console.log('⏱️ YouTube seek vers:', val, 'secondes (durée:', youtubeDuration, 's)');
-                              } else {
-                                // Contrôle Supabase
-                                setCurrentTime(val);
-                                
-                                if (videoRef.current && duration > 0 && videoRef.current.readyState >= 2) {
-                                  try {
-                                    const clampedVal = Math.max(0, Math.min(val, duration));
-                                    videoRef.current.currentTime = clampedVal;
-                                    setCurrentTime(clampedVal);
-                                    console.log('⏱️ Supabase seek vers:', clampedVal, 'secondes (durée:', duration, 's)');
-                                  } catch (error) {
-                                    console.error('❌ Erreur lors du seek:', error);
-                                    setCurrentTime(videoRef.current.currentTime || 0);
-                                  }
-                                } else if (videoRef.current && duration === 0) {
-                                  console.warn('⚠️ Impossible de seeker: durée non définie (readyState:', videoRef.current.readyState, ')');
-                                } else if (!videoRef.current) {
-                                  console.warn('⚠️ Impossible de seeker: videoRef non défini');
-                                } else {
-                                  console.warn('⚠️ Impossible de seeker: vidéo pas encore chargée (readyState:', videoRef.current?.readyState, ')');
-                                }
-                              }
-                            }}
-                            aria-label="Barre de progression vidéo"
-                            aria-valuemin={0}
-                            aria-valuemax={(() => {
-                              const media = filteredMedia[selectedMediaIndex];
-                              return media && media.type === 'video' && media.youtubeUrl ? Math.max(youtubeDuration || 0, 1) : Math.max(duration || 0, 1);
-                            })()}
-                            aria-valuenow={(() => {
-                              const media = filteredMedia[selectedMediaIndex];
-                              return media && media.type === 'video' && media.youtubeUrl ? Math.min(youtubeCurrentTime, youtubeDuration || 0) : Math.min(currentTime, duration || 0);
-                            })()}
-                            aria-valuetext={(() => {
-                              const media = filteredMedia[selectedMediaIndex];
-                              const cur = media && media.type === 'video' && media.youtubeUrl ? youtubeCurrentTime : currentTime;
-                              const dur = media && media.type === 'video' && media.youtubeUrl ? youtubeDuration : duration;
-                              return `${formatSeconds(cur)} sur ${formatSeconds(dur)}`;
-                            })()}
-                            className="mt-2 w-full h-2 rounded-full appearance-none cursor-pointer bg-white/20 shadow-inner"
-                            style={{
-                              backgroundImage: (() => {
-                                const media = filteredMedia[selectedMediaIndex];
-                                const dur = media && media.type === 'video' && media.youtubeUrl ? (youtubeDuration || 0) : (duration || 0);
-                                const cur = media && media.type === 'video' && media.youtubeUrl ? Math.min(youtubeCurrentTime, dur) : Math.min(currentTime, dur);
-                                const pct = dur > 0 ? (cur / dur) * 100 : 0;
-                                return `linear-gradient(to right, rgba(255,255,255,0.95) ${pct}%, rgba(255,255,255,0.25) ${pct}%)`;
-                              })(),
-                              backdropFilter: 'saturate(120%) blur(2px)'
-                            }}
-                          />
-                        </div>
-
-                        {/* Gestes mobiles: tap pour play/pause */}
-                        <div
-                          className="absolute inset-0 z-10 sm:hidden"
-                          style={{ pointerEvents: isVideoPlaying ? 'none' : 'auto' }}
-                          onClick={() => { if (videoRef.current) { videoRef.current.paused ? videoRef.current.play() : videoRef.current.pause(); } }}
-                          aria-hidden="true"
-                        />
-                      </div>
-                    ) : (
-                      <div className="relative w-full h-full group cursor-pointer" role="button" tabIndex={0} aria-label={`Voir la photo ${currentMedia.title} en grand`} onKeyDown={(e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                          e.preventDefault();
-                          openImageModal(currentMedia.thumbnail, currentMedia.caption);
-                        }
-                      }}>
-                        <img
-                          src={currentMedia.thumbnail}
-                          alt={`Photo professionnelle - ${currentMedia.title} - ${currentMedia.caption.substring(0, 80)}`}
-                          loading="lazy"
-                          className="w-full h-full object-cover transition-all duration-300 ease-in-out group-hover:scale-105"
-                          onClick={() => openImageModal(currentMedia.thumbnail, currentMedia.caption)}
-                        />
-
-                        {/* Overlay pour agrandir modernisé */}
-                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out bg-black/30 backdrop-blur-sm">
-                          <div
-                            className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 bg-white/95 backdrop-blur-lg rounded-full flex items-center justify-center shadow-[0_0_40px_rgba(59,130,246,0.5)] hover:scale-105 transition-transform duration-300 ease-in-out hover:shadow-[0_0_60px_rgba(59,130,246,0.7)] border-4 border-white/80"
-                            onClick={() => openImageModal(currentMedia.thumbnail, currentMedia.caption)}
-                          >
-                            <Eye className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 text-gray-900" aria-hidden="true" />
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                  
-                  {/* Informations du projet modernisées 2025 - Design élégant et aéré */}
-                  <div className="relative max-w-4xl mx-auto px-2 sm:px-0" role="article" aria-labelledby="project-title">
-                    {/* Halo de fond subtil */}
-                    <div className="absolute -inset-8 bg-gradient-to-br from-primary/10 via-secondary/8 to-primary/10 rounded-[3rem] blur-3xl opacity-60"></div>
-
-                    <div className="relative bg-white/95 backdrop-blur-2xl rounded-2xl sm:rounded-3xl lg:rounded-[2.5rem] p-4 sm:p-6 md:p-8 lg:p-10 border border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.08),0_0_1px_rgba(0,0,0,0.05)] hover:shadow-[0_12px_48px_rgba(59,130,246,0.12),0_0_60px_rgba(59,130,246,0.08)] transition-all duration-500">
-                      <div className="flex items-start gap-3 sm:gap-4 lg:gap-6">
-                        {/* Icône du type de projet - Plus discrète */}
-                        <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-xl sm:rounded-2xl flex items-center justify-center border border-primary/25 flex-shrink-0 shadow-sm hover:shadow-md hover:scale-105 transition-all duration-300">
-                          {currentMedia.type === 'video' ? (
-                            <Video className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-primary" />
-                          ) : (
-                            <Camera className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-primary" />
-                          )}
-                        </div>
-
-                        <div className="flex-1 min-w-0">
-                          {/* Titre */}
-                          <h3 id="project-title" className="font-bold text-gray-900 mb-3 sm:mb-4 lg:mb-5 leading-tight tracking-tight" style={{ fontSize: 'clamp(1rem, 3.5vw, 1.5rem)', wordBreak: 'break-word' }}>
-                            {currentMedia.title}
-                          </h3>
-
-                          {/* Séparateur subtil */}
-                          <div className="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent mb-3 sm:mb-4 lg:mb-5"></div>
-
-                          {/* Description */}
-                          <div className="space-y-2 px-4 sm:px-6 text-left mb-3 sm:mb-4 lg:mb-5">
-                            {currentMedia.caption.split('\n\n').map((paragraph, index) => {
-                              if (paragraph.startsWith('🎬') || paragraph.startsWith('📹') || paragraph.startsWith('🤝') || paragraph.startsWith('📸')) {
-                                return (
-                                  <div key={index} className="pt-2 sm:pt-3 mt-2 sm:mt-3 border-t border-gray-200/60">
-                                    <p className="text-[#081F2C] font-bold text-sm sm:text-base">
-                                      {paragraph}
-                                    </p>
-                                  </div>
-                                );
-                              } else {
-                                return (
-                                  <p key={index} className="text-[#3C4F62] text-[15px] leading-[1.6]">
-                                    {paragraph}
-                                  </p>
-                                );
-                              }
-                            })}
-                          </div>
-
-                          {/* Tags en bas */}
-                          <div className="flex flex-wrap items-center gap-2 sm:gap-3 pt-2" style={{ fontSize: 'clamp(0.75rem, 2vw, 0.875rem)' }}>
-                            <span className="px-3 sm:px-4 py-1.5 sm:py-2 bg-gradient-to-br from-primary/12 to-secondary/12 text-primary rounded-full font-semibold border border-primary/20 hover:border-primary/30 hover:shadow-sm transition-all duration-300 whitespace-nowrap">
-                              {currentMedia.type === 'video' ? 'Production audiovisuelle' : 'Photographie professionnelle'}
-                            </span>
-                            <span className="text-gray-300">•</span>
-                            <span className="font-semibold text-gray-600 whitespace-nowrap">GND Consulting</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          </section>
+          </div>
         )}
+
 
         {activeTab === 'photo' && (
           <div
@@ -2923,7 +2236,7 @@ export function Portfolio() {
             `}</style>
             <div className="relative z-10 max-w-7xl mx-auto">
               <div className="text-center mb-8 sm:mb-10 lg:mb-12 animate-slide-up">
-                <h2 className="font-black text-gray-900 mb-3 sm:mb-4 tracking-tight uppercase" id="portfolio-photo" style={{ fontSize: 'clamp(2rem, 6vw, 3.75rem)', wordBreak: 'break-word' }}>
+                <h2 className="font-black text-slate-900 mb-3 sm:mb-4 tracking-tight uppercase" id="portfolio-photo" style={{ fontSize: 'clamp(2rem, 6vw, 3.75rem)', wordBreak: 'break-word' }}>
                   Photographie Professionnelle
                 </h2>
                 <p className="text-gray-700 max-w-2xl mx-auto leading-relaxed px-4" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1.125rem)' }}>
@@ -2931,14 +2244,14 @@ export function Portfolio() {
                 </p>
               </div>
 
-              <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-10 lg:mb-12 animate-slide-up px-4" style={{ animationDelay: '0.1s' }}>
+              <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-10 lg:mb-12 animate-slide-up px-4 w-full max-w-2xl mx-auto" style={{ animationDelay: '0.1s' }}>
                 {(['TOUS', 'CRÉATIONS', 'AMBIANCES', 'PORTRAITS'] as const).map((category) => (
                   <button
                     key={category}
                     onClick={() => setPhotoFilter(category)}
                     className={`px-4 sm:px-6 py-2 sm:py-2.5 rounded-full font-bold uppercase tracking-wider transition-all duration-300 whitespace-nowrap ${
                       photoFilter === category
-                        ? 'bg-blue-400 text-gray-900 shadow-md scale-105'
+                        ? 'bg-blue-400 text-slate-900 shadow-md scale-105'
                         : 'bg-white text-gray-700 hover:bg-gray-50 shadow-sm'
                     }`}
                     style={{ fontSize: 'clamp(0.65rem, 1.8vw, 0.75rem)' }}
@@ -2973,8 +2286,11 @@ export function Portfolio() {
                           }
                         }}
                       >
-                        <div className="relative h-full rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out overflow-visible">
-                          <div className="absolute inset-0 bg-gradient-to-br from-black/0 to-black/40 group-hover:from-black/40 group-hover:to-black/60 transition-all duration-300 ease-in-out z-10 rounded-2xl overflow-hidden" />
+                        <div className="pointer-events-none absolute inset-0 translate-y-6 scale-[0.98] rounded-[28px] bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.1),transparent_60%),radial-gradient(circle_at_bottom_right,rgba(14,165,233,0.1),transparent_55%)] opacity-0 blur-2xl transition-all duration-500 ease-out group-hover:opacity-60 group-hover:translate-y-4 group-hover:scale-100" />
+                        <div className="pointer-events-none absolute inset-0 rounded-[26px] border border-white/5 bg-white/5 backdrop-blur-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                        <div className="relative h-full rounded-[26px] shadow-[0_28px_60px_rgba(15,23,42,0.22)] hover:shadow-[0_36px_80px_rgba(15,23,42,0.28)] transition-all duration-500 ease-in-out overflow-visible bg-slate-950/40">
+                          <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-white/0 to-white/10 opacity-0 group-hover:opacity-40 transition-opacity duration-500 rounded-[26px]" />
+                          <div className="absolute inset-0 bg-gradient-to-br from-black/0 to-black/40 group-hover:from-black/40 group-hover:to-black/60 transition-all duration-300 ease-in-out z-10 rounded-[26px] overflow-hidden" />
 
                           <img
                             src={photo.thumbnail}
@@ -2982,19 +2298,19 @@ export function Portfolio() {
                             loading={index < 6 ? "eager" : "lazy"}
                             fetchPriority={index < 3 ? "high" : "auto"}
                             decoding="async"
-                            className="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105 rounded-2xl"
+                            className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-[1.08] rounded-[26px]"
                           />
 
-                          <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out z-30 p-4 sm:p-6 md:p-8">
-                            <Eye className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 text-white mb-2 sm:mb-3 drop-shadow-md flex-shrink-0" aria-hidden="true" />
+                          <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 ease-in-out z-30 p-4 sm:p-6 md:p-8">
+                            <Eye className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 text-white mb-2 sm:mb-3 drop-shadow-[0_10px_35px_rgba(15,23,42,0.55)] flex-shrink-0" aria-hidden="true" />
                             <div className="w-full max-w-full overflow-visible">
-                              <h3 className="text-white font-medium text-center mb-1 sm:mb-2 drop-shadow-md whitespace-normal max-w-full" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1.125rem)', wordBreak: 'break-word', overflowWrap: 'break-word' }}>
+                              <h3 className="text-white font-semibold text-center mb-1 sm:mb-2 drop-shadow-[0_14px_32px_rgba(15,23,42,0.55)] whitespace-normal max-w-full" style={{ fontSize: 'clamp(0.95rem, 2.6vw, 1.18rem)', wordBreak: 'break-word', overflowWrap: 'break-word' }}>
                                 {photo.title}
                               </h3>
                               {photo.caption.split('\n\n').map((paragraph, idx) => (
                                 <p
                                   key={idx}
-                                  className={`text-white font-medium text-center drop-shadow-md whitespace-normal max-w-full ${
+                                  className={`text-white font-medium text-center drop-shadow-[0_12px_32px_rgba(15,23,42,0.55)] whitespace-normal max-w-full ${
                                     paragraph.startsWith('📸')
                                       ? 'mt-2 sm:mt-3 opacity-90 italic'
                                       : 'mb-1'
@@ -3008,10 +2324,16 @@ export function Portfolio() {
                           </div>
 
                           <div className="absolute top-2 sm:top-3 left-2 sm:left-3 z-30">
-                            <span className="px-2 sm:px-3 py-1 sm:py-1.5 bg-white text-gray-900 font-bold rounded-full shadow-md uppercase tracking-wide whitespace-nowrap" style={{ fontSize: 'clamp(0.6rem, 1.6vw, 0.7rem)' }}>
+                            <span className="px-2 sm:px-3 py-1 sm:py-1.5 bg-gradient-to-br from-white/95 via-white to-white/90 text-slate-900 font-bold rounded-full shadow-[0_10px_22px_rgba(15,23,42,0.18)] uppercase tracking-wide whitespace-nowrap ring-1 ring-white/60" style={{ fontSize: 'clamp(0.6rem, 1.6vw, 0.7rem)' }}>
                               {photo.category}
                             </span>
                           </div>
+
+                          <div className="pointer-events-none absolute bottom-4 inset-x-6 z-30 hidden sm:flex justify-center">
+                            <span className="h-1 w-32 rounded-full bg-gradient-to-r from-blue-400/0 via-blue-400/40 to-blue-400/0 blur-md opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                          </div>
+
+                          <div className="pointer-events-none absolute -top-6 -right-6 h-16 w-16 rounded-full bg-gradient-to-br from-white/35 via-amber-200/30 to-transparent blur-xl opacity-0 group-hover:opacity-90 transition-opacity duration-500" />
                         </div>
                       </div>
                     );
@@ -3079,14 +2401,14 @@ export function Portfolio() {
                         />
 
                         <div className="absolute top-3 sm:top-4 right-3 sm:right-4">
-                          <span className="px-3 sm:px-4 py-1.5 sm:py-2 bg-gradient-to-r from-primary to-secondary text-white text-xs sm:text-sm font-bold rounded-full shadow-xl">
+                          <span className="px-3 sm:px-4 py-1.5 sm:py-2 bg-primary text-white text-xs sm:text-sm font-bold rounded-full shadow-xl">
                             {currentIndex + 1} / {allPhotos.length}
                           </span>
                         </div>
                       </div>
 
-                      <div className="mt-8 bg-gradient-to-br from-[#D0F2FE]/80 via-white/70 to-blue-50/70 backdrop-blur-xl rounded-3xl p-10 shadow-2xl border border-white/20 lightbox-info">
-                        <h3 id="photo-lightbox-title" className="text-gray-900 text-3xl font-black mb-6 uppercase tracking-wide text-center">
+                      <div className="mt-8 bg-gradient-to-br from-[#F5E8FF]/70 via-white/85 to-white backdrop-blur-xl rounded-3xl p-10 shadow-2xl border border-white/20 lightbox-info">
+                        <h3 id="photo-lightbox-title" className="text-slate-900 text-3xl font-black mb-6 uppercase tracking-wide text-center">
                           {currentPhoto?.title}
                         </h3>
                         <div className="space-y-4">

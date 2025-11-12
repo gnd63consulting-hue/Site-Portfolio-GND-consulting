@@ -1,0 +1,158 @@
+{
+  "baseUrl": "http://localhost:4176",
+  "ts": "2025-10-17T15:25:15.963Z",
+  "summary": {},
+  "items": [
+    {
+      "index": 0,
+      "ariaLabel": "Lire ESTHER SEEMS – BOBINE",
+      "title": "ESTHER SEEMS – BOBINE",
+      "hasIframe": true,
+      "hasVideo": false,
+      "playAttempted": false,
+      "playStateOk": false,
+      "descPresent": true,
+      "creditsHint": false,
+      "lazyOk": false,
+      "fallbackOk": false
+    },
+    {
+      "index": 1,
+      "ariaLabel": "Sélectionner la vidéo LEYEL – MIEL",
+      "title": "LEYEL – MIEL",
+      "hasIframe": true,
+      "hasVideo": false,
+      "playAttempted": false,
+      "playStateOk": false,
+      "descPresent": true,
+      "creditsHint": false,
+      "lazyOk": false,
+      "fallbackOk": false
+    },
+    {
+      "index": 2,
+      "ariaLabel": "Sélectionner la vidéo TRINITY REBEL FT DAFXCX – L'UNIVERS OFFICIEL",
+      "title": "TRINITY REBEL FT DAFXCX – L'UNIVERS OFFICIEL",
+      "hasIframe": false,
+      "hasVideo": false,
+      "playAttempted": false,
+      "playStateOk": false,
+      "descPresent": true,
+      "creditsHint": false,
+      "lazyOk": false,
+      "fallbackOk": false
+    },
+    {
+      "index": 3,
+      "ariaLabel": "Sélectionner la vidéo SABAY FESTIVAL 2023",
+      "title": "SABAY FESTIVAL 2023",
+      "hasIframe": true,
+      "hasVideo": false,
+      "playAttempted": false,
+      "playStateOk": false,
+      "descPresent": true,
+      "creditsHint": false,
+      "lazyOk": false,
+      "fallbackOk": false
+    },
+    {
+      "index": 4,
+      "ariaLabel": "Sélectionner la vidéo CAPTATION LIVE CONCERT ALI 45 SCIENTIFIC",
+      "title": "CAPTATION LIVE CONCERT ALI 45 SCIENTIFIC",
+      "hasIframe": false,
+      "hasVideo": false,
+      "playAttempted": false,
+      "playStateOk": false,
+      "descPresent": true,
+      "creditsHint": false,
+      "lazyOk": false,
+      "fallbackOk": false
+    },
+    {
+      "index": 5,
+      "ariaLabel": "Sélectionner la vidéo SABAY FESTIVAL 2022",
+      "title": "SABAY FESTIVAL 2022",
+      "hasIframe": false,
+      "hasVideo": false,
+      "playAttempted": false,
+      "playStateOk": false,
+      "descPresent": true,
+      "creditsHint": false,
+      "lazyOk": false,
+      "fallbackOk": false
+    },
+    {
+      "index": 6,
+      "ariaLabel": "Sélectionner la vidéo COOK & SOUL AVEC KAOUTAR DE PÉKIN EXPRESS, ÉDITION 14",
+      "title": "COOK & SOUL AVEC KAOUTAR DE PÉKIN EXPRESS, ÉDITION 14",
+      "hasIframe": true,
+      "hasVideo": false,
+      "playAttempted": true,
+      "playStateOk": true,
+      "descPresent": true,
+      "creditsHint": false,
+      "lazyOk": false,
+      "fallbackOk": false
+    },
+    {
+      "index": 7,
+      "ariaLabel": "Sélectionner la vidéo YUNGCALLY – CLIP OFFICIEL",
+      "title": "YUNGCALLY – CLIP OFFICIEL",
+      "hasIframe": false,
+      "hasVideo": false,
+      "playAttempted": false,
+      "playStateOk": false,
+      "descPresent": true,
+      "creditsHint": false,
+      "lazyOk": false,
+      "fallbackOk": false
+    }
+  ],
+  "duplicates": [],
+  "navChecks": [
+    {
+      "size": {
+        "w": 320,
+        "h": 640
+      },
+      "buttons": [
+        {
+          "x": 109.671875,
+          "y": 722.484375,
+          "w": 44.328125,
+          "h": 44.328125,
+          "offscreen": true
+        },
+        {
+          "x": 166,
+          "y": 722.484375,
+          "w": 44.328125,
+          "h": 44.328125,
+          "offscreen": true
+        }
+      ]
+    },
+    {
+      "size": {
+        "w": 360,
+        "h": 640
+      },
+      "buttons": [
+        {
+          "x": 128.1875,
+          "y": 495.8125,
+          "w": 45.8125,
+          "h": 45.8125,
+          "offscreen": false
+        },
+        {
+          "x": 186,
+          "y": 495.8125,
+          "w": 45.8125,
+          "h": 45.8125,
+          "offscreen": false
+        }
+      ]
+    }
+  ]
+}

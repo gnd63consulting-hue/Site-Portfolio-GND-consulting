@@ -1,0 +1,166 @@
+{
+  "baseUrl": "http://localhost:4176",
+  "ts": "2025-10-17T15:35:41.673Z",
+  "summary": {},
+  "items": [
+    {
+      "index": 0,
+      "ariaLabel": "Lire ESTHER SEEMS – BOBINE",
+      "title": "ESTHER SEEMS – BOBINE",
+      "hasIframe": false,
+      "hasVideo": false,
+      "playAttempted": false,
+      "playStateOk": false,
+      "descPresent": true,
+      "creditsHint": false,
+      "lazyOk": false,
+      "fallbackOk": false,
+      "mediaHeadStatus": null
+    },
+    {
+      "index": 1,
+      "ariaLabel": "Sélectionner la vidéo LEYEL – MIEL",
+      "title": "LEYEL – MIEL",
+      "hasIframe": false,
+      "hasVideo": false,
+      "playAttempted": false,
+      "playStateOk": false,
+      "descPresent": true,
+      "creditsHint": false,
+      "lazyOk": false,
+      "fallbackOk": false,
+      "mediaHeadStatus": null
+    },
+    {
+      "index": 2,
+      "ariaLabel": "Sélectionner la vidéo TRINITY REBEL FT DAFXCX – L'UNIVERS OFFICIEL",
+      "title": "TRINITY REBEL FT DAFXCX – L'UNIVERS OFFICIEL",
+      "hasIframe": false,
+      "hasVideo": false,
+      "playAttempted": false,
+      "playStateOk": false,
+      "descPresent": true,
+      "creditsHint": false,
+      "lazyOk": false,
+      "fallbackOk": false,
+      "mediaHeadStatus": 200
+    },
+    {
+      "index": 3,
+      "ariaLabel": "Sélectionner la vidéo SABAY FESTIVAL 2023",
+      "title": "SABAY FESTIVAL 2023",
+      "hasIframe": false,
+      "hasVideo": false,
+      "playAttempted": false,
+      "playStateOk": false,
+      "descPresent": true,
+      "creditsHint": false,
+      "lazyOk": false,
+      "fallbackOk": false,
+      "mediaHeadStatus": null
+    },
+    {
+      "index": 4,
+      "ariaLabel": "Sélectionner la vidéo CAPTATION LIVE CONCERT ALI 45 SCIENTIFIC",
+      "title": "CAPTATION LIVE CONCERT ALI 45 SCIENTIFIC",
+      "hasIframe": false,
+      "hasVideo": false,
+      "playAttempted": false,
+      "playStateOk": false,
+      "descPresent": true,
+      "creditsHint": false,
+      "lazyOk": false,
+      "fallbackOk": false,
+      "mediaHeadStatus": 200
+    },
+    {
+      "index": 5,
+      "ariaLabel": "Sélectionner la vidéo SABAY FESTIVAL 2022",
+      "title": "SABAY FESTIVAL 2022",
+      "hasIframe": false,
+      "hasVideo": false,
+      "playAttempted": false,
+      "playStateOk": false,
+      "descPresent": true,
+      "creditsHint": false,
+      "lazyOk": false,
+      "fallbackOk": false,
+      "mediaHeadStatus": 200
+    },
+    {
+      "index": 6,
+      "ariaLabel": "Sélectionner la vidéo COOK & SOUL AVEC KAOUTAR DE PÉKIN EXPRESS, ÉDITION 14",
+      "title": "COOK & SOUL AVEC KAOUTAR DE PÉKIN EXPRESS, ÉDITION 14",
+      "hasIframe": false,
+      "hasVideo": false,
+      "playAttempted": false,
+      "playStateOk": false,
+      "descPresent": true,
+      "creditsHint": false,
+      "lazyOk": false,
+      "fallbackOk": false,
+      "mediaHeadStatus": null
+    },
+    {
+      "index": 7,
+      "ariaLabel": "Sélectionner la vidéo YUNGCALLY – CLIP OFFICIEL",
+      "title": "YUNGCALLY – CLIP OFFICIEL",
+      "hasIframe": false,
+      "hasVideo": false,
+      "playAttempted": false,
+      "playStateOk": false,
+      "descPresent": true,
+      "creditsHint": false,
+      "lazyOk": false,
+      "fallbackOk": false,
+      "mediaHeadStatus": 200
+    }
+  ],
+  "duplicates": [],
+  "navChecks": [
+    {
+      "size": {
+        "w": 320,
+        "h": 640
+      },
+      "buttons": [
+        {
+          "x": 108.75,
+          "y": 708.328125,
+          "w": 45.25,
+          "h": 45.25,
+          "offscreen": true
+        },
+        {
+          "x": 166,
+          "y": 708.328125,
+          "w": 45.25,
+          "h": 45.25,
+          "offscreen": true
+        }
+      ]
+    },
+    {
+      "size": {
+        "w": 360,
+        "h": 640
+      },
+      "buttons": [
+        {
+          "x": 126.015625,
+          "y": 463.421875,
+          "w": 47.984375,
+          "h": 47.984375,
+          "offscreen": false
+        },
+        {
+          "x": 186,
+          "y": 463.421875,
+          "w": 47.984375,
+          "h": 47.984375,
+          "offscreen": false
+        }
+      ]
+    }
+  ]
+}

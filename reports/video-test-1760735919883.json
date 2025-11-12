@@ -1,0 +1,76 @@
+{
+  "timestamp": "2025-10-17T21:18:39.867Z",
+  "url": "http://localhost:5175/#portfolio",
+  "tests": {
+    "carousel": 8,
+    "videoLoading": [
+      {
+        "video": "ESTHER SEEMS – BOBINE",
+        "status": "not_found",
+        "type": "youtube"
+      },
+      {
+        "video": "LEYEL – MIEL",
+        "status": "not_found",
+        "type": "youtube"
+      },
+      {
+        "video": "TRINITY REBEL FT DAFXCX – L'UNIVERS OFFICIEL",
+        "status": "not_found",
+        "type": "supabase"
+      },
+      {
+        "video": "SABAY FESTIVAL 2023",
+        "status": "not_found",
+        "type": "youtube"
+      },
+      {
+        "video": "CAPTATION LIVE CONCERT ALI 45 SCIENTIFIC",
+        "status": "not_found",
+        "type": "supabase"
+      },
+      {
+        "video": "SABAY FESTIVAL 2022",
+        "status": "not_found",
+        "type": "supabase"
+      },
+      {
+        "video": "L'ANECDOTE",
+        "status": "success",
+        "type": "youtube"
+      },
+      {
+        "video": "COOK & SOUL AVEC KAOUTAR DE PÉKIN EXPRESS, ÉDITION 14",
+        "status": "success",
+        "type": "youtube"
+      },
+      {
+        "video": "LIVE ON STAGE ÉLÉONORE \"SURPRISING\" VERSION ACOUSTIQUE",
+        "status": "failed",
+        "type": "youtube"
+      },
+      {
+        "video": "LIVE ON STAGE LEYEL \"PAPA\" ACOUSTIQUE VERSION",
+        "status": "success",
+        "type": "youtube"
+      },
+      {
+        "video": "YUNGCALLY – CLIP OFFICIEL",
+        "status": "success",
+        "type": "supabase",
+        "duration": 191.509333
+      }
+    ],
+    "controls": [],
+    "errorHandling": [
+      {
+        "test": "console_errors",
+        "count": 0
+      },
+      {
+        "test": "network_errors",
+        "count": 0
+      }
+    ]
+  }
+}

@@ -1,0 +1,159 @@
+/* Styles pour la refonte du header "À PROPOS" - Design Bento Grid moderne */
+
+/* Container principal - Bento Grid */
+.about-header-section {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+  padding: 80px 0;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Badge Studio Créatif - Position asymétrique */
+.about-badge {
+  grid-column: 1 / 4;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20px;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.about-badge:hover {
+  transform: translateY(-5px);
+}
+
+.about-badge-icon {
+  width: 24px;
+  height: 24px;
+  color: white;
+}
+
+.about-badge-text {
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* Titre principal - Grand format */
+.about-title-card {
+  grid-column: 4 / 13;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  border-radius: 30px;
+  padding: 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-title-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+  animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { 
+    transform: scale(1); 
+    opacity: 0.5; 
+  }
+  50% { 
+    transform: scale(1.1); 
+    opacity: 0.8; 
+  }
+}
+
+.about-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, #ffffff 0%, #667eea 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.about-subtitle {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 600px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about-header-section {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 60px 20px;
+  }
+  
+  .about-badge,
+  .about-title-card {
+    grid-column: 1 / -1;
+  }
+  
+  .about-badge {
+    padding: 20px;
+    border-radius: 15px;
+  }
+  
+  .about-title-card {
+    padding: 40px 30px;
+    border-radius: 20px;
+  }
+  
+  .about-title {
+    font-size: clamp(2rem, 6vw, 3rem);
+    margin-bottom: 15px;
+  }
+  
+  .about-subtitle {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-header-section {
+    padding: 40px 15px;
+    gap: 12px;
+  }
+  
+  .about-badge {
+    padding: 15px;
+    gap: 8px;
+  }
+  
+  .about-badge-icon {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .about-badge-text {
+    font-size: 0.9rem;
+  }
+  
+  .about-title-card {
+    padding: 30px 20px;
+  }
+  
+  .about-title {
+    font-size: clamp(1.8rem, 7vw, 2.5rem);
+  }
+  
+  .about-subtitle {
+    font-size: 1rem;
+  }
+}

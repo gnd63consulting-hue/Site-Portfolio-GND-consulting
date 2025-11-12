@@ -1,0 +1,123 @@
+/* Styles pour la vidéo hero - Solution simplifiée et efficace */
+
+/* Conteneur de la vidéo */
+.hero-video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+/* Vidéo hero - Styles de base */
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center; /* Ensure consistent centering */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0.7;
+  display: block;
+  /* Force la vidéo à être visible */
+  visibility: visible !important;
+  pointer-events: none;
+}
+
+/* 
+   ALTERNATIVES POUR AJUSTER LE CADRAGE :
+   
+   Si vous voulez montrer une partie spécifique de la vidéo, ajustez object-position :
+   
+   object-position: center top;     - montre le haut-centre
+   object-position: center 30%;    - montre 30% du haut
+   object-position: 50% 40%;      - positionnement personnalisé
+   object-position: center bottom; - montre le bas-centre
+   
+   Exemples pour différentes scènes :
+   - Pour montrer des visages : object-position: center 20%;
+   - Pour montrer des mains/équipement : object-position: center 60%;
+   - Pour montrer le centre : object-position: center center;
+*/
+
+/* Section hero - Dimensions fixes */
+#hero {
+  position: relative;
+  min-height: 100vh; /* or your desired height */
+  overflow: hidden;
+}
+
+/* Mobile - Cadrage cohérent */
+@media (max-width: 768px) {
+  .hero-video {
+    opacity: 0.6;
+    object-fit: cover;
+    object-position: center center; /* Consistent centering on mobile */
+    display: block !important;
+    visibility: visible !important;
+    z-index: -1 !important;
+  }
+  
+  .hero-video-container {
+    display: block !important;
+    visibility: visible !important;
+    overflow: hidden;
+  }
+  
+  /* Masquer COMPLÈTEMENT l'image de fallback sur mobile pour forcer la vidéo */
+  .hero-video-container picture,
+  .hero-video-container img {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    z-index: -999 !important;
+  }
+}
+
+/* Très petits écrans - Cadrage cohérent */
+@media (max-width: 480px) {
+  .hero-video {
+    object-fit: cover;
+    object-position: center center; /* Consistent centering */
+  }
+}
+
+/* Mode paysage mobile - Cadrage cohérent */
+@media (max-width: 768px) and (orientation: landscape) {
+  .hero-video {
+    object-fit: cover;
+    object-position: center center; /* Consistent centering */
+  }
+}
+
+/* iOS - Support playsinline */
+@supports (-webkit-touch-callout: none) {
+  .hero-video {
+    -webkit-playsinline: true;
+    playsinline: true;
+  }
+}
+
+/* Fallback image - Masquer complètement */
+.no-video .hero-video {
+  display: none;
+}
+
+.no-video .hero-fallback-image {
+  display: block;
+}
+
+/* Masquer l'image de fallback par défaut pour forcer la vidéo */
+.hero-video-container picture,
+.hero-video-container img {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  z-index: -999 !important;
+}

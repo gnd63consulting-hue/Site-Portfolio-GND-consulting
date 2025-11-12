@@ -1,0 +1,17 @@
+{
+  "name": "GND Consulting",
+  "short_name": "GND",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0ea5e9",
+  "icons": [
+    {
+      "src": "/Logogndconsulting1.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
+

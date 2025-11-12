@@ -1,0 +1,202 @@
+{
+  "url": "http://localhost:5174",
+  "issues": [
+    {
+      "viewport": "mobile-360x640",
+      "overflow": false,
+      "overlapsCount": 0,
+      "overlaps": []
+    },
+    {
+      "viewport": "mobile-414x896",
+      "overflow": false,
+      "overlapsCount": 5,
+      "overlaps": [
+        {
+          "a": "button.lg:hidden.w-10.h-10",
+          "b": "button.p-1.hover:bg-gray-100.rounded-lg",
+          "xOverlap": 7,
+          "yOverlap": 5
+        },
+        {
+          "a": "button.absolute.inset-0.flex",
+          "b": "button.px-3.py-2.rounded-lg",
+          "xOverlap": 52,
+          "yOverlap": 42
+        },
+        {
+          "a": "button.absolute.inset-0.flex",
+          "b": "button.px-2.py-2.rounded-lg",
+          "xOverlap": 48,
+          "yOverlap": 42
+        },
+        {
+          "a": "button.absolute.inset-0.flex",
+          "b": "button.px-2.py-2.rounded-lg",
+          "xOverlap": 52,
+          "yOverlap": 42
+        },
+        {
+          "a": "button.absolute.inset-0.flex",
+          "b": "input.mt-2.w-full.h-2",
+          "xOverlap": 354,
+          "yOverlap": 8
+        }
+      ]
+    },
+    {
+      "viewport": "tablet-768x1024",
+      "overflow": false,
+      "overlapsCount": 4,
+      "overlaps": [
+        {
+          "a": "button.absolute.inset-0.flex",
+          "b": "button.px-3.py-2.rounded-lg",
+          "xOverlap": 52,
+          "yOverlap": 42
+        },
+        {
+          "a": "button.absolute.inset-0.flex",
+          "b": "button.px-2.py-2.rounded-lg",
+          "xOverlap": 48,
+          "yOverlap": 42
+        },
+        {
+          "a": "button.absolute.inset-0.flex",
+          "b": "button.px-2.py-2.rounded-lg",
+          "xOverlap": 52,
+          "yOverlap": 42
+        },
+        {
+          "a": "button.absolute.inset-0.flex",
+          "b": "input.mt-2.w-full.h-2",
+          "xOverlap": 684,
+          "yOverlap": 8
+        }
+      ]
+    },
+    {
+      "viewport": "tablet-1024x1366",
+      "overflow": false,
+      "overlapsCount": 9,
+      "overlaps": [
+        {
+          "a": "button.vp-center.absolute.top-1/2",
+          "b": "button.vp-thumb-btn.cursor-pointer.transition-all",
+          "xOverlap": 92,
+          "yOverlap": 19
+        },
+        {
+          "a": "button.vp-thumb-btn.cursor-pointer.transition-all",
+          "b": "button.vp-thumb-btn.cursor-pointer.transition-all",
+          "xOverlap": 3,
+          "yOverlap": 31
+        },
+        {
+          "a": "button.vp-thumb-btn.cursor-pointer.transition-all",
+          "b": "button.vp-thumb-btn.cursor-pointer.transition-all",
+          "xOverlap": 3,
+          "yOverlap": 31
+        },
+        {
+          "a": "button.vp-thumb-btn.cursor-pointer.transition-all",
+          "b": "button.vp-thumb-btn.cursor-pointer.transition-all",
+          "xOverlap": 4,
+          "yOverlap": 32
+        },
+        {
+          "a": "button.vp-thumb-btn.cursor-pointer.transition-all",
+          "b": "button.vp-thumb-btn.cursor-pointer.transition-all",
+          "xOverlap": 4,
+          "yOverlap": 32
+        },
+        {
+          "a": "button.absolute.inset-0.flex",
+          "b": "button.px-3.py-2.rounded-lg",
+          "xOverlap": 52,
+          "yOverlap": 42
+        },
+        {
+          "a": "button.absolute.inset-0.flex",
+          "b": "button.px-2.py-2.rounded-lg",
+          "xOverlap": 48,
+          "yOverlap": 42
+        },
+        {
+          "a": "button.absolute.inset-0.flex",
+          "b": "button.px-2.py-2.rounded-lg",
+          "xOverlap": 52,
+          "yOverlap": 42
+        },
+        {
+          "a": "button.absolute.inset-0.flex",
+          "b": "input.mt-2.w-full.h-2",
+          "xOverlap": 404,
+          "yOverlap": 8
+        }
+      ]
+    },
+    {
+      "viewport": "desktop-1440x900",
+      "overflow": false,
+      "overlapsCount": 4,
+      "overlaps": [
+        {
+          "a": "button.absolute.inset-0.flex",
+          "b": "button.px-3.py-2.rounded-lg",
+          "xOverlap": 52,
+          "yOverlap": 42
+        },
+        {
+          "a": "button.absolute.inset-0.flex",
+          "b": "button.px-2.py-2.rounded-lg",
+          "xOverlap": 48,
+          "yOverlap": 42
+        },
+        {
+          "a": "button.absolute.inset-0.flex",
+          "b": "button.px-2.py-2.rounded-lg",
+          "xOverlap": 52,
+          "yOverlap": 42
+        },
+        {
+          "a": "button.absolute.inset-0.flex",
+          "b": "input.mt-2.w-full.h-2",
+          "xOverlap": 612,
+          "yOverlap": 8
+        }
+      ]
+    },
+    {
+      "viewport": "desktop-1920x1080",
+      "overflow": false,
+      "overlapsCount": 4,
+      "overlaps": [
+        {
+          "a": "button.absolute.inset-0.flex",
+          "b": "button.px-3.py-2.rounded-lg",
+          "xOverlap": 52,
+          "yOverlap": 42
+        },
+        {
+          "a": "button.absolute.inset-0.flex",
+          "b": "button.px-2.py-2.rounded-lg",
+          "xOverlap": 48,
+          "yOverlap": 42
+        },
+        {
+          "a": "button.absolute.inset-0.flex",
+          "b": "button.px-2.py-2.rounded-lg",
+          "xOverlap": 52,
+          "yOverlap": 42
+        },
+        {
+          "a": "button.absolute.inset-0.flex",
+          "b": "input.mt-2.w-full.h-2",
+          "xOverlap": 824,
+          "yOverlap": 8
+        }
+      ]
+    }
+  ]
+}

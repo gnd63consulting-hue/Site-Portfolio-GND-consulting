@@ -171,20 +171,10 @@ export function UnifiedFAQ({
 
               <button
                 onClick={scrollToContact}
-                className="inline-flex items-center gap-3 px-8 py-4 text-white font-bold rounded-full transition-all duration-500 hover:scale-105 uppercase tracking-wider shadow-lg group/cta focus:outline-none focus:ring-4"
-                style={{
-                  background: theme.gradient,
-                  boxShadow: `0 10px 30px ${theme.primary}40`
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.boxShadow = `0 15px 40px ${theme.primary}66`;
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.boxShadow = `0 10px 30px ${theme.primary}40`;
-                }}
+                className="inline-flex items-center gap-3 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold rounded-xl shadow-lg shadow-blue-600/25 hover:shadow-xl hover:shadow-blue-600/30 transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-blue-200"
               >
-                <MessageCircle className="w-5 h-5 group-hover/cta:rotate-12 transition-transform duration-300" />
-                <span className="text-sm md:text-base">{ctaText}</span>
+                <MessageCircle className="w-5 h-5" />
+                <span>{ctaText}</span>
               </button>
             </div>
           </div>

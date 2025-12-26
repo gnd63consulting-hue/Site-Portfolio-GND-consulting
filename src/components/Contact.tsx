@@ -578,7 +578,7 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="cta-submit relative mt-2 inline-flex w-full items-center justify-center overflow-hidden rounded-xl bg-[#2563eb] px-5 py-4 text-base sm:text-lg font-bold uppercase tracking-[0.32em] text-white shadow-[0_24px_45px_rgba(15,23,42,0.18)] transition-all duration-300 hover:bg-[#1d4ed8] hover:-translate-y-1 hover:shadow-[0_28px_60px_rgba(15,23,42,0.2)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#bfdbfe] disabled:translate-y-0 disabled:opacity-60 disabled:shadow-none"
+              className="cta-submit relative mt-2 inline-flex w-full items-center justify-center rounded-xl bg-blue-600 hover:bg-blue-700 px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-blue-600/25 hover:shadow-xl hover:shadow-blue-600/30 transition-all duration-200 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-200 disabled:opacity-60 disabled:shadow-none"
               onClick={() => { if (!isSubmitting) trackEvent('conversion_cta_click', { form: 'contact' }); }}
             >
               {isSubmitting ? (

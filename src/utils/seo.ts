@@ -73,39 +73,39 @@ export const pageSEO = {
     url: 'https://www.gndconsulting.fr/',
   },
   about: {
-    title: 'À Propos - gndconsulting.fr | Notre Histoire & Valeurs',
+    title: 'À Propos | GND Consulting – Studio créatif Paris',
     description: 'GND Consulting: studio créatif hybride alliant créativité humaine et intelligence artificielle.',
   },
   portfolio: {
-    title: 'Portfolio - Nos Réalisations Créatives | gndconsulting.fr',
-    description: 'Réalisations: production audiovisuelle 4K, motion design et photographie professionnelle.',
+    title: 'Portfolio & Réalisations | GND Consulting',
+    description: 'Découvrez nos réalisations: production audiovisuelle 4K, motion design et photographie professionnelle.',
   },
   services: {
-    title: 'Nos Services Créatifs - Production & Design | gndconsulting.fr',
+    title: 'Nos Services Créatifs | GND Consulting',
     description: 'Services: production vidéo 4K, design d\'identité, motion design, photo, automatisation IA.',
   },
   contact: {
-    title: 'Contact - Parlons de Votre Projet | gndconsulting.fr',
+    title: 'Contact | GND Consulting – Devis gratuit',
     description: 'Contactez GND Consulting: devis gratuit sous 2h pour vos projets créatifs.',
   },
   designService: {
-    title: 'Design & Identité Visuelle | Services gndconsulting.fr',
-    description: 'Design & Identité: logos, chartes graphiques et identités visuelles sur mesure.',
+    title: 'Design & Identité Visuelle | GND Consulting',
+    description: 'Création de logos, chartes graphiques et identités visuelles sur mesure par GND Consulting.',
   },
   motionDesignService: {
-    title: 'Motion Design & Animation 2D/3D | Services gndconsulting.fr',
-    description: 'Motion Design: animations 2D/3D, vidéos explicatives et contenus animés.',
+    title: 'Motion Design & Animation 2D/3D | GND Consulting',
+    description: 'Création de vidéos motion design, animations 2D/3D et contenus animés captivants.',
   },
   productionService: {
-    title: 'Production Audiovisuelle 4K | Services gndconsulting.fr',
-    description: 'Production Audiovisuelle 4K: clips, corporate, captations et films publicitaires.',
+    title: 'Production Audiovisuelle 4K | GND Consulting',
+    description: 'Production vidéo professionnelle: clips, corporate, captations live et films publicitaires.',
   },
   photographyService: {
-    title: 'Photographie Professionnelle | Services gndconsulting.fr',
-    description: 'Photographie: portraits corporate, produits, événementiel et créations artistiques.',
+    title: 'Photographie Professionnelle | GND Consulting',
+    description: 'Photographie: portraits corporate, packshots produits, événementiel et créations artistiques.',
   },
   aiService: {
-    title: 'Automatisation & Intelligence Artificielle | Services gndconsulting.fr',
-    description: 'Automatisation & IA: intégration IA générative et workflows automatisés.',
+    title: 'Automatisation & IA | GND Consulting',
+    description: 'Solutions d\'automatisation et intelligence artificielle pour optimiser vos workflows.',
   }
 };

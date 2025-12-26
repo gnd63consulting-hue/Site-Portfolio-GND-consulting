@@ -65,8 +65,9 @@ export const defaultSEO: SEOMetaData = {
 
 export const pageSEO = {
   home: {
-    title: 'gndconsulting.fr - Studio Créatif & Production Audiovisuelle',
-    description: 'Studio créatif: production vidéo 4K, design graphique, motion design et automatisation IA à Paris.',
+    title: 'GND Consulting – Studio créatif humain & IA',
+    description: 'Studio créatif: production vidéo, motion design, design graphique, automatisation IA.',
+    url: 'https://www.gndconsulting.fr/',
   },
   about: {
     title: 'À Propos - gndconsulting.fr | Notre Histoire & Valeurs',

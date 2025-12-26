@@ -3,7 +3,6 @@ import { VideoFirstFrame } from './VideoFirstFrame';
 import { Play, Pause, Camera, Video, X, ChevronLeft, ChevronRight, Eye, ChevronUp, ChevronDown, Rewind, FastForward } from 'lucide-react';
 import { useProjects } from '../hooks/useSupabase';
 import clsx from 'clsx';
-import { updateMetaTags } from '../utils/seo';
 
 // Fonction utilitaire pour valider et nettoyer les URLs de vidéos
 const getValidVideoUrl = (url: string | undefined): string => {
@@ -945,22 +944,6 @@ export function Portfolio() {
     }
   }, [selectedMediaIndex, activeTab]);
 
-  // Update SEO meta tags when selected media changes
-  useEffect(() => {
-    if (filteredMedia.length > 0 && filteredMedia[selectedMediaIndex]) {
-      const currentMedia = filteredMedia[selectedMediaIndex];
-      const baseUrl = window.location.origin;
-
-      updateMetaTags({
-        title: `${currentMedia.title} - Portfolio GND Consulting`,
-        description: currentMedia.caption.split('\n\n')[0].replace(/[«»""]/g, '').trim(),
-        image: currentMedia.thumbnail,
-        url: `${baseUrl}/#portfolio`,
-        type: 'article'
-      });
-    }
-  }, [selectedMediaIndex, filteredMedia]);
-
   // Listen to YouTube IFrame API events for play/pause state
   useEffect(() => {
     const handleYouTubeMessage = (event: MessageEvent) => {
@@ -1273,18 +1256,6 @@ export function Portfolio() {
         setVideoError(true);
         setIsVideoLoading(false);
       }
-    }
-
-    // Update SEO meta tags for selected media
-    if (media) {
-      const baseUrl = window.location.origin;
-      updateMetaTags({
-        title: `${media.title} - Portfolio GND Consulting`,
-        description: media.caption.split('\n\n')[0].replace(/[«»""]/g, '').trim(),
-        image: media.thumbnail,
-        url: `${baseUrl}/#realisations`,
-        type: 'article'
-      });
     }
   };
 

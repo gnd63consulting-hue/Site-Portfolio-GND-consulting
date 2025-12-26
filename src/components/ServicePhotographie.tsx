@@ -166,7 +166,7 @@ export function ServicePhotographie() {
           </p>
           <button
             onClick={scrollToContact}
-            className="hero-cta inline-flex w-full max-w-md items-center justify-center gap-3 rounded-2xl bg-primary px-6 py-4 text-[clamp(0.95rem,2.4vw,1.2rem)] font-bold text-white shadow-lg transition-transform duration-300 hover:scale-[1.02] hover:shadow-[0_0_35px_rgba(59,130,246,0.45)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/40 sm:max-w-lg sm:px-8 sm:py-5 lg:max-w-xl lg:px-12 lg:py-6"
+            className="hero-cta inline-flex w-full max-w-md items-center justify-center gap-3 rounded-2xl bg-primary px-6 py-4 text-[clamp(0.95rem,2.4vw,1.2rem)] font-bold text-white shadow-lg transition-transform duration-300 hover:scale-[1.02] hover:shadow-xl shadow-blue-600/30 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/40 sm:max-w-lg sm:px-8 sm:py-5 lg:max-w-xl lg:px-12 lg:py-6"
           >
             <Camera className="h-5 w-5 sm:h-6 sm:w-6" />
             Réserver une séance sur mesure
@@ -243,7 +243,7 @@ export function ServicePhotographie() {
               return (
                 <article
                   key={service.title}
-                  className="flex h-full flex-col rounded-3xl border border-white/70 bg-white/95 p-6 shadow-[0_18px_44px_rgba(15,23,42,0.08)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(15,23,42,0.12)] sm:p-8"
+                  className="flex h-full flex-col rounded-3xl border border-white/70 bg-white/95 p-6 shadow-lg transition-all duration-500 hover:-translate-y-1 hover:shadow-xl sm:p-8"
                 >
                   <div className="flex items-center justify-between gap-3">
                     <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-secondary text-white shadow-lg">
@@ -362,7 +362,7 @@ export function ServicePhotographie() {
           <div className="mt-8 flex w-full flex-col gap-4 sm:flex-row sm:justify-center">
             <button
               onClick={scrollToContact}
-              className="inline-flex w-full max-w-sm items-center justify-center gap-3 rounded-2xl bg-primary px-6 py-4 text-[clamp(1rem,2.6vw,1.25rem)] font-bold text-white shadow-lg transition-transform duration-300 hover:scale-[1.02] hover:shadow-[0_0_35px_rgba(59,130,246,0.45)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/40 sm:w-auto sm:px-10 sm:py-5"
+              className="inline-flex w-full max-w-sm items-center justify-center gap-3 rounded-2xl bg-primary px-6 py-4 text-[clamp(1rem,2.6vw,1.25rem)] font-bold text-white shadow-lg transition-transform duration-300 hover:scale-[1.02] hover:shadow-xl shadow-blue-600/30 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/40 sm:w-auto sm:px-10 sm:py-5"
             >
               <Heart className="h-5 w-5 sm:h-6 sm:w-6" />
               Réserver une séance

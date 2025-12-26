@@ -78,7 +78,7 @@ const About: React.FC<AboutProps> = ({ testimonials = [] }) => {
       {/* Section Avantages déplacée ici */}
       <div className="mt-12 sm:mt-16 px-4">
         <div className="mx-auto max-w-[1180px]">
-          <div className="relative overflow-hidden rounded-2xl border border-blue-100/50 bg-white/95 shadow-[0_18px_55px_rgba(15,23,42,0.08)]">
+          <div className="relative overflow-hidden rounded-2xl border border-blue-100/50 bg-white/95 shadow-xl">
             <div className="absolute inset-0 bg-gradient-to-br from-white via-blue-50/35 to-white opacity-90 pointer-events-none" />
             <div className="relative px-6 py-10 sm:px-10 sm:py-12">
               <h3
@@ -89,8 +89,8 @@ const About: React.FC<AboutProps> = ({ testimonials = [] }) => {
               </h3>
 
               <div className="mt-8 grid grid-cols-1 gap-5 sm:mt-10 sm:grid-cols-3">
-                <div className="group rounded-2xl border border-blue-100/60 bg-white/95 p-6 sm:p-7 shadow-[0_10px_32px_rgba(15,23,42,0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_44px_rgba(15,23,42,0.08)]">
-                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500/12 text-slate-900 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.8)]">
+                <div className="group rounded-2xl border border-blue-100/60 bg-white/95 p-6 sm:p-7 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500/12 text-slate-900 ring-1 ring-white/80">
                     <CheckCircle className="h-6 w-6" />
                   </div>
                   <h4
@@ -108,8 +108,8 @@ const About: React.FC<AboutProps> = ({ testimonials = [] }) => {
                   <div className="mx-auto mt-6 h-[2px] w-12 rounded-full bg-gradient-to-r from-transparent via-blue-400/60 to-transparent transition-transform duration-300 group-hover:scale-x-110" />
                 </div>
 
-                <div className="group rounded-2xl border border-blue-100/60 bg-white/95 p-6 sm:p-7 shadow-[0_10px_32px_rgba(15,23,42,0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_44px_rgba(15,23,42,0.08)]">
-                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500/12 text-slate-900 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.8)]">
+                <div className="group rounded-2xl border border-blue-100/60 bg-white/95 p-6 sm:p-7 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500/12 text-slate-900 ring-1 ring-white/80">
                     <Star className="h-6 w-6" />
                   </div>
                   <h4
@@ -127,8 +127,8 @@ const About: React.FC<AboutProps> = ({ testimonials = [] }) => {
                   <div className="mx-auto mt-6 h-[2px] w-12 rounded-full bg-gradient-to-r from-transparent via-blue-400/60 to-transparent transition-transform duration-300 group-hover:scale-x-110" />
                 </div>
 
-                <div className="group rounded-2xl border border-blue-100/60 bg-white/95 p-6 sm:p-7 shadow-[0_10px_32px_rgba(15,23,42,0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_44px_rgba(15,23,42,0.08)]">
-                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500/12 text-slate-900 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.8)]">
+                <div className="group rounded-2xl border border-blue-100/60 bg-white/95 p-6 sm:p-7 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500/12 text-slate-900 ring-1 ring-white/80">
                     <Clock className="h-6 w-6" />
                   </div>
                   <h4

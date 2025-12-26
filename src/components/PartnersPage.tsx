@@ -319,7 +319,7 @@ export function PartnersPage() {
                     nocuemSection.scrollIntoView({ behavior: 'smooth' });
                   }
                 }}
-                className="inline-flex items-center gap-3 px-12 py-6 bg-rose-500 text-white font-bold text-xl rounded-2xl transition-all duration-500 hover:scale-105 hover:shadow-[0_0_40px_rgba(236,72,153,0.6)] cursor-pointer"
+                className="inline-flex items-center gap-3 px-12 py-6 bg-rose-500 text-white font-bold text-xl rounded-2xl transition-all duration-500 hover:scale-105 hover:shadow-xl cursor-pointer"
               >
                 <Heart className="w-6 h-6" />
                 Découvrir Nocéum
@@ -471,7 +471,7 @@ export function PartnersPage() {
                     href="https://noceum.fr"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 px-10 py-5 bg-rose-500 text-white font-bold text-lg rounded-2xl transition-all duration-500 hover:scale-105 hover:shadow-[0_0_30px_rgba(236,72,153,0.5)]"
+                    className="inline-flex items-center gap-3 px-10 py-5 bg-rose-500 text-white font-bold text-lg rounded-2xl transition-all duration-500 hover:scale-105 hover:shadow-xl"
                   >
                     <ExternalLink className="w-5 h-5" />
                     Découvrir Nocéum.fr
@@ -822,7 +822,7 @@ export function PartnersPage() {
                 <div className="flex flex-col sm:flex-row gap-6 justify-center">
                   <button 
                     onClick={scrollToContact}
-                    className="inline-flex items-center gap-3 px-12 py-6 bg-primary text-white font-bold text-xl rounded-2xl transition-all duration-500 hover:scale-105 hover:shadow-[0_0_40px_rgba(59,130,246,0.5)]"
+                    className="inline-flex items-center gap-3 px-12 py-6 bg-primary text-white font-bold text-xl rounded-2xl transition-all duration-500 hover:scale-105 hover:shadow-xl shadow-blue-600/30"
                   >
                     <MessageCircle className="w-6 h-6" />
                     Discutons de votre projet

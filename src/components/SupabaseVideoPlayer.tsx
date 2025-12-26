@@ -104,7 +104,7 @@ export function SupabaseVideoPlayer({
         </div>
 
         {/* Video Container */}
-        <div className="glass rounded-2xl overflow-hidden border border-[#20C2A3]/30 shadow-[0_0_50px_rgba(32,194,163,0.3)] bg-black relative group">
+        <div className="glass rounded-2xl overflow-hidden border border-[#20C2A3]/30 shadow-xl bg-black relative group">
           <video
             ref={videoRef}
             className="w-full aspect-video"

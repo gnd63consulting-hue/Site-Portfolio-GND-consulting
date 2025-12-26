@@ -90,7 +90,7 @@ export function Header() {
                       <button
                         className={`flex items-center gap-2 px-4 py-2.5 rounded-xl font-medium text-sm transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400/60 ${
                           index === 0 
-                            ? 'bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 text-white shadow-[0_12px_35px_rgba(59,130,246,0.35)]' 
+                            ? 'bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 text-white shadow-lg shadow-blue-600/25' 
                             : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/50 uppercase tracking-wide'
                         }`}
                         style={{ fontFamily: 'Space Grotesk, sans-serif', fontWeight: '700' }}
@@ -140,7 +140,7 @@ export function Header() {
                         }}
                         className={`flex items-center gap-2 px-4 py-2.5 rounded-xl font-medium text-sm transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400/60 ${
                           index === 0
-                            ? 'bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 text-white shadow-[0_12px_35px_rgba(59,130,246,0.35)]'
+                            ? 'bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 text-white shadow-lg shadow-blue-600/25'
                             : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/50 uppercase tracking-wide'
                         }`}
                         style={{ fontFamily: 'Space Grotesk, sans-serif', fontWeight: '700' }}

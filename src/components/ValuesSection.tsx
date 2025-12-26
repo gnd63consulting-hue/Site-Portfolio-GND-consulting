@@ -84,9 +84,9 @@ export function ValuesSection() {
           {values.map((value, index) => (
             <div
               key={value.id}
-              className="group relative overflow-hidden rounded-[28px] border border-white/60 bg-white/80 p-[1px] shadow-[0_22px_60px_rgba(15,23,42,0.08)] backdrop-blur-xl transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_32px_70px_rgba(15,23,42,0.12)]"
+              className="group relative overflow-hidden rounded-2xl border border-white/60 bg-white/80 p-[1px] shadow-[0_22px_60px_rgba(15,23,42,0.08)] backdrop-blur-xl transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_32px_70px_rgba(15,23,42,0.12)]"
             >
-              <div className="relative rounded-[27px] bg-white/95 px-5 py-7 sm:px-6 sm:py-9">
+              <div className="relative rounded-2xl bg-white/95 px-5 py-7 sm:px-6 sm:py-9">
                 <div
                   className={`pointer-events-none absolute inset-x-6 -top-20 h-44 bg-gradient-to-br ${value.accent.aura} blur-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100`}
                 />

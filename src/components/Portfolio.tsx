@@ -74,10 +74,10 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ currentMedia, currentIndex })
     <div className="relative w-full">
       <div className="relative w-full aspect-[16/9] max-h-[640px]">
         <div
-          className="pointer-events-none absolute inset-0 rounded-[32px] bg-gradient-to-br from-white/0 via-white/45 to-white/0 opacity-70 blur-2xl transition-opacity duration-500 group-hover:opacity-90"
+          className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-white/0 via-white/45 to-white/0 opacity-70 blur-2xl transition-opacity duration-500 group-hover:opacity-90"
           aria-hidden="true"
         />
-        <div className="relative z-10 h-full w-full overflow-hidden rounded-[24px] border border-white/15 bg-slate-950 shadow-[0_45px_140px_rgba(15,23,42,0.35)]">
+        <div className="relative z-10 h-full w-full overflow-hidden rounded-2xl border border-white/15 bg-slate-950 shadow-[0_45px_140px_rgba(15,23,42,0.35)]">
           {typeof currentIndex === 'number' && currentIndex < 0 && (
             <span className="pointer-events-none absolute left-5 top-5 z-20 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/15 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.35em] text-white shadow-[0_12px_35px_rgba(8,47,73,0.45)] backdrop-blur-md">
               <span className="h-2 w-2 rounded-full bg-gradient-to-br from-blue-400 to-blue-500" />
@@ -162,10 +162,10 @@ const HighlightCard: React.FC<HighlightCardProps> = ({ content }) => {
 
   return (
     <div className={clsx(
-      'relative overflow-hidden rounded-[26px] border border-white/60 bg-gradient-to-br p-5 shadow-[0_22px_60px_rgba(15,23,42,0.18)] backdrop-blur',
+      'relative overflow-hidden rounded-2xl border border-white/60 bg-gradient-to-br p-5 shadow-[0_22px_60px_rgba(15,23,42,0.18)] backdrop-blur',
       gradient
     )}>
-      <div className="pointer-events-none absolute inset-0 rounded-[26px] border border-white/40 opacity-70" />
+      <div className="pointer-events-none absolute inset-0 rounded-2xl border border-white/40 opacity-70" />
       <div className="relative flex items-start gap-4">
         <span className={clsx(
           'flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br text-lg font-semibold text-white shadow-[0_15px_35px_rgba(15,23,42,0.18)]',
@@ -192,7 +192,7 @@ const CreditsCard: React.FC<CreditsCardProps> = ({ currentMedia }) => {
   const signatureLabel = currentMedia.type === 'video' ? 'Production audiovisuelle' : 'Photographie professionnelle';
 
   return (
-    <div className="mt-6 overflow-hidden rounded-[30px] border border-white/60 bg-white p-6 shadow-[0_28px_80px_rgba(15,23,42,0.12)] backdrop-blur">
+    <div className="mt-6 overflow-hidden rounded-2xl border border-white/60 bg-white p-6 shadow-[0_28px_80px_rgba(15,23,42,0.12)] backdrop-blur">
       <div className="relative flex flex-col gap-5">
         <div className="flex items-center gap-3">
           <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 via-blue-500 to-blue-400 text-lg font-semibold text-white shadow-[0_20px_45px_rgba(37,99,235,0.35)]">
@@ -208,7 +208,7 @@ const CreditsCard: React.FC<CreditsCardProps> = ({ currentMedia }) => {
           </div>
         </div>
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <div className="inline-flex items-center gap-3 rounded-[20px] border border-white/60 bg-white/90 px-5 py-3 text-base font-semibold text-slate-700 shadow-[0_14px_35px_rgba(15,23,42,0.12)]">
+          <div className="inline-flex items-center gap-3 rounded-xl border border-white/60 bg-white/90 px-5 py-3 text-base font-semibold text-slate-700 shadow-[0_14px_35px_rgba(15,23,42,0.12)]">
             <span className="inline-flex h-2.5 w-2.5 rounded-full bg-gradient-to-br from-blue-500 to-blue-400" />
             {signatureLabel}
           </div>
@@ -1832,7 +1832,7 @@ export function Portfolio() {
               <div className="absolute -top-40 -left-32 h-80 w-80 rounded-full bg-gradient-to-br from-blue-200/35 via-white to-transparent blur-3xl" />
               <div className="absolute -bottom-44 -right-28 h-96 w-96 rounded-full bg-gradient-to-br from-blue-200/35 via-white to-transparent blur-3xl" />
           <div className="absolute inset-0 bg-gradient-to-br from-white/98 via-white/95 to-white/90" />
-              <div className="absolute inset-x-4 bottom-10 h-[320px] rounded-[55px] bg-white/35 blur-3xl" />
+              <div className="absolute inset-x-4 bottom-10 h-[320px] rounded-2xl bg-white/35 blur-3xl" />
             </div>
 
             <style>{`
@@ -1908,16 +1908,16 @@ export function Portfolio() {
             <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-9 sm:gap-12">
               <div className="grid video-grid gap-8 md:gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] items-stretch">
                 <div className="group relative">
-                  <div className="pointer-events-none absolute -left-3 -right-3 -top-6 h-[320px] rounded-[36px] bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.15),transparent_55%),radial-gradient(circle_at_bottom,rgba(14,165,233,0.12),transparent_60%)] opacity-60 blur-2xl transition-opacity duration-500 group-hover:opacity-95 sm:-left-10 sm:-right-6 sm:-top-8 sm:h-[440px] sm:rounded-[48px] sm:blur-3xl" aria-hidden="true" />
-                  <div className="relative rounded-[30px] sm:rounded-[38px] bg-white/95 p-[1px] sm:p-[1.5px] shadow-[0_22px_70px_rgba(15,23,42,0.16)] sm:shadow-[0_35px_120px_rgba(15,23,42,0.22)]">
-                    <div className="rounded-[26px] sm:rounded-[34px] bg-white/70 backdrop-blur-2xl p-1 sm:p-1.5">
+                  <div className="pointer-events-none absolute -left-3 -right-3 -top-6 h-[320px] rounded-2xl bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.15),transparent_55%),radial-gradient(circle_at_bottom,rgba(14,165,233,0.12),transparent_60%)] opacity-60 blur-2xl transition-opacity duration-500 group-hover:opacity-95 sm:-left-10 sm:-right-6 sm:-top-8 sm:h-[440px] sm:rounded-2xl sm:blur-3xl" aria-hidden="true" />
+                  <div className="relative rounded-2xl sm:rounded-2xl bg-white/95 p-[1px] sm:p-[1.5px] shadow-[0_22px_70px_rgba(15,23,42,0.16)] sm:shadow-[0_35px_120px_rgba(15,23,42,0.22)]">
+                    <div className="rounded-2xl sm:rounded-2xl bg-white/70 backdrop-blur-2xl p-1 sm:p-1.5">
                       <VideoPlayer currentMedia={currentMedia} currentIndex={selectedMediaIndex} />
                     </div>
                   </div>
                 </div>
 
-                <article className="relative overflow-hidden rounded-[26px] sm:rounded-[32px] border border-white/60 bg-white/95 p-6 sm:p-8 shadow-[0_18px_50px_rgba(15,23,42,0.14)] sm:shadow-[0_25px_70px_rgba(15,23,42,0.12)] backdrop-blur-xl transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_28px_72px_rgba(15,23,42,0.16)] sm:hover:shadow-[0_32px_80px_rgba(15,23,42,0.18)] text-center sm:text-left video-focus-card">
-                  <div className="pointer-events-none absolute inset-0 rounded-[32px] bg-gradient-to-br from-white/0 via-white/40 to-white/0 opacity-0 transition-opacity duration-500 hover:opacity-100" />
+                <article className="relative overflow-hidden rounded-2xl sm:rounded-2xl border border-white/60 bg-white/95 p-6 sm:p-8 shadow-[0_18px_50px_rgba(15,23,42,0.14)] sm:shadow-[0_25px_70px_rgba(15,23,42,0.12)] backdrop-blur-xl transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_28px_72px_rgba(15,23,42,0.16)] sm:hover:shadow-[0_32px_80px_rgba(15,23,42,0.18)] text-center sm:text-left video-focus-card">
+                  <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-white/0 via-white/40 to-white/0 opacity-0 transition-opacity duration-500 hover:opacity-100" />
                   <div className="relative flex flex-col gap-5 text-center sm:text-left items-center sm:items-start">
                     <div className="flex items-center justify-center sm:justify-start gap-2 text-[0.6rem] sm:text-xs font-medium uppercase tracking-[0.3em] sm:tracking-[0.35em] text-slate-400">
                       <span className="inline-flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-400 text-sm sm:text-base text-white shadow-lg shadow-[rgba(15,23,42,0.18)]">🎬</span>
@@ -1971,8 +1971,8 @@ export function Portfolio() {
                   <div className="hidden sm:block h-[1px] flex-1 ml-6 bg-gradient-to-r from-slate-200 via-slate-300/70 to-transparent" />
                 </div>
 
-                <div className="relative overflow-hidden rounded-[28px] sm:rounded-[34px] border border-white/70 bg-white py-4 sm:py-5 shadow-[0_26px_75px_rgba(15,23,42,0.12)] backdrop-blur-2xl">
-                  <div className="pointer-events-none absolute inset-0 rounded-[34px] border border-white/50 opacity-70" />
+                <div className="relative overflow-hidden rounded-2xl sm:rounded-2xl border border-white/70 bg-white py-4 sm:py-5 shadow-[0_26px_75px_rgba(15,23,42,0.12)] backdrop-blur-2xl">
+                  <div className="pointer-events-none absolute inset-0 rounded-2xl border border-white/50 opacity-70" />
                   <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.1),transparent_60%),radial-gradient(circle_at_bottom_right,rgba(14,165,233,0.1),transparent_55%)] opacity-70" />
 
                   <div className="relative z-10 flex w-full flex-wrap items-center justify-center gap-3 px-3 sm:flex-nowrap sm:justify-between sm:gap-4 sm:px-6 lg:px-8 quick-selection-shell">
@@ -2019,7 +2019,7 @@ export function Portfolio() {
                               onClick={() => setSelectedMediaIndex(idx)}
                               ref={(el) => { thumbsRef.current[idx] = el; }}
                               className={clsx(
-                                'group relative flex w-[140px] sm:w-[190px] shrink-0 flex-col overflow-hidden rounded-[22px] sm:rounded-[24px] border backdrop-blur transition-all duration-500',
+                                'group relative flex w-[140px] sm:w-[190px] shrink-0 flex-col overflow-hidden rounded-xl sm:rounded-2xl border backdrop-blur transition-all duration-500',
                                 active
                                   ? 'border-blue-300/60 bg-white shadow-[0_16px_36px_rgba(59,130,246,0.18)] scale-[1.02]'
                                   : 'border-white/60 bg-white/85 hover:-translate-y-1 hover:border-blue-200/60 hover:shadow-[0_18px_42px_rgba(15,23,42,0.14)]'
@@ -2029,7 +2029,7 @@ export function Portfolio() {
                               <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
                                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/70 via-white/30 to-white/0" />
                               </div>
-                              <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[18px] sm:rounded-[20px]">
+                              <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl sm:rounded-xl">
                                 {media.type === 'video' && media.mediaUrl ? (
                                   <VideoFirstFrame
                                     src={media.mediaUrl}
@@ -2257,11 +2257,11 @@ export function Portfolio() {
                           }
                         }}
                       >
-                        <div className="pointer-events-none absolute inset-0 translate-y-6 scale-[0.98] rounded-[28px] bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.1),transparent_60%),radial-gradient(circle_at_bottom_right,rgba(14,165,233,0.1),transparent_55%)] opacity-0 blur-2xl transition-all duration-500 ease-out group-hover:opacity-60 group-hover:translate-y-4 group-hover:scale-100" />
-                        <div className="pointer-events-none absolute inset-0 rounded-[26px] border border-white/5 bg-white/5 backdrop-blur-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                        <div className="relative h-full rounded-[26px] shadow-[0_28px_60px_rgba(15,23,42,0.22)] hover:shadow-[0_36px_80px_rgba(15,23,42,0.28)] transition-all duration-500 ease-in-out overflow-visible bg-slate-950/40">
-                          <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-white/0 to-white/10 opacity-0 group-hover:opacity-40 transition-opacity duration-500 rounded-[26px]" />
-                          <div className="absolute inset-0 bg-gradient-to-br from-black/0 to-black/40 group-hover:from-black/40 group-hover:to-black/60 transition-all duration-300 ease-in-out z-10 rounded-[26px] overflow-hidden" />
+                        <div className="pointer-events-none absolute inset-0 translate-y-6 scale-[0.98] rounded-2xl bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.1),transparent_60%),radial-gradient(circle_at_bottom_right,rgba(14,165,233,0.1),transparent_55%)] opacity-0 blur-2xl transition-all duration-500 ease-out group-hover:opacity-60 group-hover:translate-y-4 group-hover:scale-100" />
+                        <div className="pointer-events-none absolute inset-0 rounded-2xl border border-white/5 bg-white/5 backdrop-blur-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                        <div className="relative h-full rounded-2xl shadow-[0_28px_60px_rgba(15,23,42,0.22)] hover:shadow-[0_36px_80px_rgba(15,23,42,0.28)] transition-all duration-500 ease-in-out overflow-visible bg-slate-950/40">
+                          <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-white/0 to-white/10 opacity-0 group-hover:opacity-40 transition-opacity duration-500 rounded-2xl" />
+                          <div className="absolute inset-0 bg-gradient-to-br from-black/0 to-black/40 group-hover:from-black/40 group-hover:to-black/60 transition-all duration-300 ease-in-out z-10 rounded-2xl overflow-hidden" />
 
                           <img
                             src={photo.thumbnail}
@@ -2269,7 +2269,7 @@ export function Portfolio() {
                             loading={index < 6 ? "eager" : "lazy"}
                             fetchPriority={index < 3 ? "high" : "auto"}
                             decoding="async"
-                            className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-[1.08] rounded-[26px]"
+                            className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-[1.08] rounded-2xl"
                           />
 
                           <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 ease-in-out z-30 p-4 sm:p-6 md:p-8">

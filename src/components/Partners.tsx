@@ -146,12 +146,12 @@ export function Partners() {
       {/* Contenu du partenaire actif */}
       <div className="relative z-10">
         {/* Carte principale avec design organique */}
-        <div className="bg-white/95 backdrop-blur-sm rounded-[2.5rem] border border-slate-200/50 shadow-2xl overflow-hidden relative">
+        <div className="bg-white/95 backdrop-blur-sm rounded-2xl border border-slate-200/50 shadow-2xl overflow-hidden relative">
           {/* Effet de lueur subtile */}
-          <div className="absolute -inset-1 bg-primary/10 rounded-[2.5rem] blur-sm opacity-60"></div>
+          <div className="absolute -inset-1 bg-primary/10 rounded-2xl blur-sm opacity-60"></div>
           
           {/* Contenu principal */}
-          <div className="relative bg-white/95 backdrop-blur-sm rounded-[2.5rem] border border-white/50">
+          <div className="relative bg-white/95 backdrop-blur-sm rounded-2xl border border-white/50">
         
             {/* Section principale */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
@@ -373,7 +373,7 @@ export function Partners() {
 
       {/* CTA final */}
       <div className="text-center mt-16 relative z-10">
-        <div className="bg-white/90 backdrop-blur-sm rounded-[2.5rem] p-12 border border-slate-200/50 shadow-2xl relative overflow-hidden">
+        <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-12 border border-slate-200/50 shadow-2xl relative overflow-hidden">
           {/* Formes décoratives dans le CTA */}
           <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full -translate-x-16 -translate-y-16"></div>
           <div className="absolute bottom-0 right-0 w-40 h-40 bg-gradient-to-br from-accent/20 to-primary/20 rounded-full translate-x-20 translate-y-20"></div>

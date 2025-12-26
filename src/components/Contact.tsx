@@ -275,7 +275,7 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
       <div className="relative z-10 max-w-[960px] mx-auto flex flex-col gap-12 items-center px-2 sm:px-6">
         <form
           onSubmit={handleSubmit}
-          className="contact-form-main relative w-full max-w-[820px] overflow-hidden rounded-[28px] border border-slate-200/40 bg-white/75 shadow-[0_40px_90px_rgba(15,23,42,0.18)] backdrop-blur-2xl"
+          className="contact-form-main relative w-full max-w-[820px] overflow-hidden rounded-2xl border border-slate-200/40 bg-white/75 shadow-[0_40px_90px_rgba(15,23,42,0.18)] backdrop-blur-2xl"
         >
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/70 via-white/40 to-white/75" />
           <div className="pointer-events-none absolute inset-x-6 -top-16 h-32 rounded-full bg-white/30 blur-3xl" />
@@ -578,7 +578,7 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="cta-submit relative mt-2 inline-flex w-full items-center justify-center overflow-hidden rounded-[20px] bg-[#2563eb] px-5 py-4 text-base sm:text-lg font-bold uppercase tracking-[0.32em] text-white shadow-[0_24px_45px_rgba(15,23,42,0.18)] transition-all duration-300 hover:bg-[#1d4ed8] hover:-translate-y-1 hover:shadow-[0_28px_60px_rgba(15,23,42,0.2)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#bfdbfe] disabled:translate-y-0 disabled:opacity-60 disabled:shadow-none"
+              className="cta-submit relative mt-2 inline-flex w-full items-center justify-center overflow-hidden rounded-xl bg-[#2563eb] px-5 py-4 text-base sm:text-lg font-bold uppercase tracking-[0.32em] text-white shadow-[0_24px_45px_rgba(15,23,42,0.18)] transition-all duration-300 hover:bg-[#1d4ed8] hover:-translate-y-1 hover:shadow-[0_28px_60px_rgba(15,23,42,0.2)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#bfdbfe] disabled:translate-y-0 disabled:opacity-60 disabled:shadow-none"
               onClick={() => { if (!isSubmitting) trackEvent('conversion_cta_click', { form: 'contact' }); }}
             >
               {isSubmitting ? (

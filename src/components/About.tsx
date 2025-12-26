@@ -79,7 +79,7 @@ const About: React.FC<AboutProps> = ({ testimonials = [] }) => {
       {/* Section Avantages déplacée ici */}
       <div className="mt-12 sm:mt-16 px-4">
         <div className="mx-auto max-w-[1180px]">
-          <div className="relative overflow-hidden rounded-[26px] border border-blue-100/50 bg-white/95 shadow-[0_18px_55px_rgba(15,23,42,0.08)]">
+          <div className="relative overflow-hidden rounded-2xl border border-blue-100/50 bg-white/95 shadow-[0_18px_55px_rgba(15,23,42,0.08)]">
             <div className="absolute inset-0 bg-gradient-to-br from-white via-blue-50/35 to-white opacity-90 pointer-events-none" />
             <div className="relative px-6 py-10 sm:px-10 sm:py-12">
               <h3

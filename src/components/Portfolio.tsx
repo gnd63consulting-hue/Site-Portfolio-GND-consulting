@@ -1765,10 +1765,10 @@ export function Portfolio() {
             Portfolio Signature
           </span>
         </div>
-        <h2 className="section-title" style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)' }}>
+        <h2 className="section-title text-[clamp(1.75rem,5vw,2.5rem)]">
           Nos Réalisations Audiovisuelles
         </h2>
-        <p className="section-description text-slate-700" style={{ fontSize: 'clamp(0.95rem, 2.5vw, 1.125rem)' }}>
+        <p className="section-description text-slate-700 text-[clamp(0.95rem,2.5vw,1.125rem)]">
           Vidéos corporate, captations live, motion design : découvrez nos projets audiovisuels qui allient créativité et expertise technique
         </p>
       </div>
@@ -2105,8 +2105,7 @@ export function Portfolio() {
             id="portfolio-photos"
             role="tabpanel"
             aria-labelledby="tab-photos"
-            className="relative py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 overflow-visible animate-fade-in"
-            style={{ background: 'linear-gradient(180deg, #e0f2fe 0%, #f0f9ff 50%, #fef3f2 100%)' }}
+            className="relative py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 overflow-visible animate-fade-in bg-[linear-gradient(180deg,#e0f2fe_0%,#f0f9ff_50%,#fef3f2_100%)]"
           >
             <style>{`
               /* === Responsive mobile – Section PHOTOS uniquement === */
@@ -2207,15 +2206,15 @@ export function Portfolio() {
             `}</style>
             <div className="relative z-10 max-w-7xl mx-auto">
               <div className="text-center mb-8 sm:mb-10 lg:mb-12 animate-slide-up">
-                <h2 className="font-black text-slate-900 mb-3 sm:mb-4 tracking-tight uppercase" id="portfolio-photo" style={{ fontSize: 'clamp(2rem, 6vw, 3.75rem)', wordBreak: 'break-word' }}>
+                <h2 className="font-black text-slate-900 mb-3 sm:mb-4 tracking-tight uppercase text-[clamp(2rem,6vw,3.75rem)] break-words" id="portfolio-photo">
                   Photographie Professionnelle
                 </h2>
-                <p className="text-slate-700 max-w-2xl mx-auto leading-relaxed px-4" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1.125rem)' }}>
+                <p className="text-slate-700 max-w-2xl mx-auto leading-relaxed px-4 text-[clamp(0.9rem,2.5vw,1.125rem)]">
                   Portraits corporate, créations artistiques et reportages : nos shootings photos capturent l'essence de votre identité visuelle
                 </p>
               </div>
 
-              <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-10 lg:mb-12 animate-slide-up px-4 w-full max-w-2xl mx-auto" style={{ animationDelay: '0.1s' }}>
+              <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-10 lg:mb-12 animate-slide-up px-4 w-full max-w-2xl mx-auto [animation-delay:0.1s]">
                 {(['TOUS', 'CRÉATIONS', 'AMBIANCES', 'PORTRAITS'] as const).map((category) => (
                   <button
                     key={category}
@@ -2224,8 +2223,7 @@ export function Portfolio() {
                       photoFilter === category
                         ? 'bg-blue-400 text-slate-900 shadow-md scale-105'
                         : 'bg-white text-slate-700 hover:bg-slate-50 shadow-sm'
-                    }`}
-                    style={{ fontSize: 'clamp(0.65rem, 1.8vw, 0.75rem)' }}
+                    } text-[clamp(0.65rem,1.8vw,0.75rem)]`}
                   >
                     {category}
                   </button>
@@ -2275,7 +2273,7 @@ export function Portfolio() {
                           <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 ease-in-out z-30 p-4 sm:p-6 md:p-8">
                             <Eye className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 text-white mb-2 sm:mb-3 drop-shadow-lg flex-shrink-0" aria-hidden="true" />
                             <div className="w-full max-w-full overflow-visible">
-                              <h3 className="text-white font-semibold text-center mb-1 sm:mb-2 drop-shadow-lg whitespace-normal max-w-full" style={{ fontSize: 'clamp(0.95rem, 2.6vw, 1.18rem)', wordBreak: 'break-word', overflowWrap: 'break-word' }}>
+                              <h3 className="text-white font-semibold text-center mb-1 sm:mb-2 drop-shadow-lg whitespace-normal max-w-full text-[clamp(0.95rem,2.6vw,1.18rem)] break-words">
                                 {photo.title}
                               </h3>
                               {photo.caption.split('\n\n').map((paragraph, idx) => (
@@ -2295,7 +2293,7 @@ export function Portfolio() {
                           </div>
 
                           <div className="absolute top-2 sm:top-3 left-2 sm:left-3 z-30">
-                            <span className="px-2 sm:px-3 py-1 sm:py-1.5 bg-gradient-to-br from-white/95 via-white to-white/90 text-slate-900 font-bold rounded-full shadow-lg uppercase tracking-wide whitespace-nowrap ring-1 ring-white/60" style={{ fontSize: 'clamp(0.6rem, 1.6vw, 0.7rem)' }}>
+                            <span className="px-2 sm:px-3 py-1 sm:py-1.5 bg-gradient-to-br from-white/95 via-white to-white/90 text-slate-900 font-bold rounded-full shadow-lg uppercase tracking-wide whitespace-nowrap ring-1 ring-white/60 text-[clamp(0.6rem,1.6vw,0.7rem)]">
                               {photo.category}
                             </span>
                           </div>
@@ -2348,7 +2346,7 @@ export function Portfolio() {
                       }}
                       aria-label="Photo précédente"
                     >
-                      <ChevronLeft className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white drop-shadow-md" aria-hidden="true" style={{ minWidth: '24px', minHeight: '24px', maxWidth: '32px', maxHeight: '32px' }} />
+                      <ChevronLeft className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white drop-shadow-md min-w-6 min-h-6 max-w-8 max-h-8" aria-hidden="true" />
                     </button>
 
                     <button
@@ -2360,7 +2358,7 @@ export function Portfolio() {
                       }}
                       aria-label="Photo suivante"
                     >
-                      <ChevronRight className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white drop-shadow-md" aria-hidden="true" style={{ minWidth: '24px', minHeight: '24px', maxWidth: '32px', maxHeight: '32px' }} />
+                      <ChevronRight className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white drop-shadow-md min-w-6 min-h-6 max-w-8 max-h-8" aria-hidden="true" />
                     </button>
 
                     <div className="max-w-6xl w-full" onClick={(e) => e.stopPropagation()}>

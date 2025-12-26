@@ -84,16 +84,11 @@ export function MentionsLegales() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50/30 text-slate-900 relative overflow-hidden mentions-legales-page">
       {/* Effet de fond subtil */}
-      <div className="absolute inset-0 opacity-30 pointer-events-none" style={{
-        backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(147, 51, 234, 0.1) 0%, transparent 50%)'
-      }}></div>
+      <div className="absolute inset-0 opacity-30 pointer-events-none bg-[radial-gradient(circle_at_20%_50%,rgba(59,130,246,0.1)_0%,transparent_50%),radial-gradient(circle_at_80%_80%,rgba(147,51,234,0.1)_0%,transparent_50%)]"></div>
 
       {/* Header avec fond dégradé pour visibilité du logo */}
       <div
-        className="absolute top-0 left-0 right-0 z-[140] h-40 backdrop-blur-sm"
-        style={{
-          background: 'linear-gradient(to bottom, #d0f2fe 0%, #e0f4fc 60%, #f2f9fc 100%)'
-        }}
+        className="absolute top-0 left-0 right-0 z-[140] h-40 backdrop-blur-sm bg-[linear-gradient(to_bottom,#d0f2fe_0%,#e0f4fc_60%,#f2f9fc_100%)]"
       ></div>
 
       <Header />

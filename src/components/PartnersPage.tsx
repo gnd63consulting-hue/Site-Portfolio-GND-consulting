@@ -786,7 +786,7 @@ export function PartnersPage() {
                       {openFAQ === index ? (
                         <ChevronUp className="w-6 h-6 text-primary" />
                       ) : (
-                        <ChevronDown className="w-6 h-6 text-slate-400 group-hover:text-primary transition-colors duration-300" />
+                        <ChevronDown className="w-6 h-6 text-slate-500 group-hover:text-primary transition-colors duration-300" />
                       )}
                     </div>
                   </div>

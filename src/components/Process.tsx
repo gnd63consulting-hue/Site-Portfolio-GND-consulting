@@ -32,18 +32,18 @@ export function Process() {
   return (
     <section className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 lg:px-12 max-w-[1200px] mx-auto relative" style={{ background: 'linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f0f9ff 100%)' }}>
       {/* Effet de fond */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-blue-50/30"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-blue-50/30"></div>
       
       {/* Éléments décoratifs */}
       <div className="absolute top-20 -left-20 w-80 h-80 bg-gradient-to-br from-rose-200/40 to-pink-300/40 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-20 -right-20 w-96 h-96 bg-gradient-to-br from-blue-200/40 to-sky-300/40 rounded-full blur-3xl"></div>
-      <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-br from-sky-200/30 to-indigo-300/30 rounded-full blur-2xl"></div>
+      <div className="absolute bottom-20 -right-20 w-96 h-96 bg-gradient-to-br from-blue-200/40 to-blue-300/40 rounded-full blur-3xl"></div>
+      <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-br from-blue-200/30 to-blue-300/30 rounded-full blur-2xl"></div>
       
       <div className="text-center mb-12 sm:mb-16 relative z-10">
         <h2 className="section-title" id="process" style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)' }}>
           Notre Méthode de Travail
         </h2>
-        <p className="section-description text-gray-700" style={{ fontSize: 'clamp(0.95rem, 2.5vw, 1.125rem)' }}>
+        <p className="section-description text-slate-700" style={{ fontSize: 'clamp(0.95rem, 2.5vw, 1.125rem)' }}>
           Un processus collaboratif en 4 étapes pour garantir la réussite de vos projets créatifs
         </p>
       </div>
@@ -91,7 +91,7 @@ export function Process() {
                   {step.description}
                 </p>
 
-                <p className="card-text group-hover:text-gray-800 transition-colors duration-300 leading-[1.6]" style={{ fontSize: 'clamp(0.8rem, 2.2vw, 0.95rem)' }}>
+                <p className="card-text group-hover:text-slate-800 transition-colors duration-300 leading-[1.6]" style={{ fontSize: 'clamp(0.8rem, 2.2vw, 0.95rem)' }}>
                   {step.details}
                 </p>
 
@@ -107,12 +107,12 @@ export function Process() {
           <div className="inline-flex flex-col sm:flex-row items-center gap-3 sm:gap-4 bg-white/80 backdrop-blur-sm rounded-2xl px-4 sm:px-6 py-3 border border-primary/20 shadow-lg">
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 bg-primary rounded-full"></div>
-              <span className="text-sm text-gray-600 font-medium">Processus optimisé</span>
+              <span className="text-sm text-slate-600 font-medium">Processus optimisé</span>
             </div>
-            <div className="hidden sm:block w-px h-4 bg-gray-300"></div>
+            <div className="hidden sm:block w-px h-4 bg-slate-300"></div>
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-              <span className="text-sm text-gray-600 font-medium">Suivi en temps réel</span>
+              <span className="text-sm text-slate-600 font-medium">Suivi en temps réel</span>
             </div>
           </div>
         </div>

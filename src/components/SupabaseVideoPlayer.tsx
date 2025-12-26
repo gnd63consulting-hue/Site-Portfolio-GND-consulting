@@ -130,7 +130,7 @@ export function SupabaseVideoPlayer({
                 max={duration || 0}
                 value={currentTime}
                 onChange={handleSeek}
-                className="w-full h-1 bg-gray-600 rounded-lg appearance-none cursor-pointer slider"
+                className="w-full h-1 bg-slate-600 rounded-lg appearance-none cursor-pointer slider"
                 style={{
                   background: `linear-gradient(to right, #20C2A3 0%, #20C2A3 ${(currentTime / duration) * 100}%, #4B5563 ${(currentTime / duration) * 100}%, #4B5563 100%)`
                 }}
@@ -190,7 +190,7 @@ export function SupabaseVideoPlayer({
         </div>
 
         {/* Effet de lueur */}
-        <div className="absolute -inset-4 bg-gradient-to-r from-[#20C2A3]/20 via-sky-500/20 to-[#20C2A3]/20 rounded-3xl blur-xl opacity-50 animate-pulse -z-10"></div>
+        <div className="absolute -inset-4 bg-gradient-to-r from-[#20C2A3]/20 via-blue-500/20 to-[#20C2A3]/20 rounded-3xl blur-xl opacity-50 animate-pulse -z-10"></div>
       </div>
     </div>
   );

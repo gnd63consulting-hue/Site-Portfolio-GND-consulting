@@ -119,8 +119,8 @@ const CookiePreferencesModal: React.FC<CookiePreferencesModalProps> = ({ isOpen,
       title: 'Personnalisation',
       description: 'Sauvegarde de vos préférences visuelles',
       alwaysActive: false,
-      color: 'text-sky-600',
-      bgColor: 'bg-sky-50',
+      color: 'text-blue-600',
+      bgColor: 'bg-blue-50',
     },
     {
       key: 'advertising' as keyof CookiePreferences,
@@ -128,8 +128,8 @@ const CookiePreferencesModal: React.FC<CookiePreferencesModalProps> = ({ isOpen,
       title: 'Publicité ciblée',
       description: 'Publicités personnalisées & retargeting',
       alwaysActive: false,
-      color: 'text-cyan-600',
-      bgColor: 'bg-cyan-50',
+      color: 'text-blue-600',
+      bgColor: 'bg-blue-50',
     },
     {
       key: 'social' as keyof CookiePreferences,
@@ -157,18 +157,18 @@ const CookiePreferencesModal: React.FC<CookiePreferencesModalProps> = ({ isOpen,
             </div>
             <button
               onClick={onClose}
-              className="p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200"
+              className="p-2 hover:bg-slate-100 rounded-lg transition-colors duration-200"
               aria-label="Fermer"
             >
-              <X className="w-5 h-5 text-gray-500" />
+              <X className="w-5 h-5 text-slate-500" />
             </button>
           </div>
 
           <div className="space-y-4 mb-6">
-            <p className="text-gray-700 leading-relaxed">
+            <p className="text-slate-700 leading-relaxed">
               GND Consulting utilise quelques cookies pour améliorer votre expérience. Vous pouvez accepter, continuer sans accepter, ou personnaliser vos choix.
             </p>
-            <p className="text-sm text-gray-600 leading-relaxed">
+            <p className="text-sm text-slate-600 leading-relaxed">
               En cliquant sur "Accepter tous les cookies", vous consentez à l'utilisation de cookies à des fins de mesure d'audience uniquement. Aucune donnée personnelle n'est utilisée à des fins commerciales.
             </p>
           </div>
@@ -183,7 +183,7 @@ const CookiePreferencesModal: React.FC<CookiePreferencesModalProps> = ({ isOpen,
 
             <button
               onClick={handleRejectNonEssential}
-              className="flex-1 px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold rounded-xl transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+              className="flex-1 px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
             >
               Refuser non essentiels
             </button>
@@ -210,10 +210,10 @@ const CookiePreferencesModal: React.FC<CookiePreferencesModalProps> = ({ isOpen,
             </div>
             <button
               onClick={onClose}
-              className="p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200"
+              className="p-2 hover:bg-slate-100 rounded-lg transition-colors duration-200"
               aria-label="Fermer"
             >
-              <X className="w-5 h-5 text-gray-500" />
+              <X className="w-5 h-5 text-slate-500" />
             </button>
           </div>
 
@@ -227,8 +227,8 @@ const CookiePreferencesModal: React.FC<CookiePreferencesModalProps> = ({ isOpen,
                   key={category.key}
                   className={`p-4 rounded-xl border transition-all duration-200 ${
                     category.alwaysActive
-                      ? 'bg-gray-50 border-gray-200'
-                      : 'bg-white border-gray-200 hover:border-blue-300'
+                      ? 'bg-slate-50 border-slate-200'
+                      : 'bg-white border-slate-200 hover:border-blue-300'
                   }`}
                 >
                   <div className="flex items-start justify-between gap-3">
@@ -240,7 +240,7 @@ const CookiePreferencesModal: React.FC<CookiePreferencesModalProps> = ({ isOpen,
                         <h3 className="text-sm font-semibold text-slate-900 leading-tight">
                           {category.title}
                         </h3>
-                        <p className="text-xs text-gray-600 mt-1 leading-relaxed">
+                        <p className="text-xs text-slate-600 mt-1 leading-relaxed">
                           {category.description}
                         </p>
                       </div>
@@ -254,7 +254,7 @@ const CookiePreferencesModal: React.FC<CookiePreferencesModalProps> = ({ isOpen,
                         <button
                           onClick={() => togglePreference(category.key)}
                           className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-200 ${
-                            isActive ? 'bg-blue-500' : 'bg-gray-300'
+                            isActive ? 'bg-blue-500' : 'bg-slate-300'
                           }`}
                           aria-label={isActive ? 'Désactiver' : 'Activer'}
                         >
@@ -282,7 +282,7 @@ const CookiePreferencesModal: React.FC<CookiePreferencesModalProps> = ({ isOpen,
 
             <button
               onClick={handleBack}
-              className="px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold rounded-xl transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+              className="px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
             >
               Retour
             </button>

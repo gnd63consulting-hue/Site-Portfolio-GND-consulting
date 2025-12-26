@@ -238,7 +238,7 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
     setFormData({ ...formData, files: newFiles });
   };
 
-  const baseFieldClasses = 'w-full px-4 py-3.5 rounded-2xl border border-slate-200/60 bg-white/85 text-slate-900 font-inter text-sm sm:text-base shadow-[0_16px_40px_rgba(15,23,42,0.08)] transition-all duration-300 focus:outline-none focus:border-sky-400/70 focus:ring-2 focus:ring-sky-200/70 focus:ring-offset-2 focus:ring-offset-white placeholder:text-slate-400/80 backdrop-blur-xl hover:border-sky-200/80 disabled:cursor-not-allowed disabled:opacity-60 disabled:bg-white/70';
+  const baseFieldClasses = 'w-full px-4 py-3.5 rounded-2xl border border-slate-200/60 bg-white/85 text-slate-900 font-inter text-sm sm:text-base shadow-[0_16px_40px_rgba(15,23,42,0.08)] transition-all duration-300 focus:outline-none focus:border-blue-400/70 focus:ring-2 focus:ring-blue-200/70 focus:ring-offset-2 focus:ring-offset-white placeholder:text-slate-400/80 backdrop-blur-xl hover:border-blue-200/80 disabled:cursor-not-allowed disabled:opacity-60 disabled:bg-white/70';
   const selectFieldClasses = `${baseFieldClasses} appearance-none pr-12 cursor-pointer`;
   const textAreaClasses = `${baseFieldClasses} min-h-[140px] sm:min-h-[160px] leading-relaxed resize-none`;
 
@@ -260,15 +260,15 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
       </div>
 
       {/* Éléments décoratifs colorés */}
-      <div className="absolute top-6 -left-12 h-40 w-40 sm:top-16 sm:-left-20 sm:h-72 sm:w-72 bg-gradient-to-br from-sky-300/45 to-blue-200/35 rounded-full blur-2xl sm:blur-3xl" />
-      <div className="absolute bottom-8 -right-10 h-48 w-48 sm:bottom-16 sm:-right-20 sm:h-96 sm:w-96 bg-gradient-to-br from-blue-500/25 to-indigo-400/20 rounded-full blur-2xl sm:blur-3xl" />
-      <div className="absolute top-1/2 left-1/4 h-44 w-44 sm:left-1/3 sm:h-64 sm:w-64 bg-gradient-to-br from-slate-900/10 to-sky-300/25 rounded-full blur-xl sm:blur-2xl" />
+      <div className="absolute top-6 -left-12 h-40 w-40 sm:top-16 sm:-left-20 sm:h-72 sm:w-72 bg-gradient-to-br from-blue-300/45 to-blue-200/35 rounded-full blur-2xl sm:blur-3xl" />
+      <div className="absolute bottom-8 -right-10 h-48 w-48 sm:bottom-16 sm:-right-20 sm:h-96 sm:w-96 bg-gradient-to-br from-blue-500/25 to-blue-400/20 rounded-full blur-2xl sm:blur-3xl" />
+      <div className="absolute top-1/2 left-1/4 h-44 w-44 sm:left-1/3 sm:h-64 sm:w-64 bg-gradient-to-br from-slate-900/10 to-blue-300/25 rounded-full blur-xl sm:blur-2xl" />
 
       <div className="text-center mb-8 sm:mb-12 md:mb-16 px-2 contact-header-wrapper">
         <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 mb-4 sm:mb-6 uppercase tracking-tight contact-form-title text-slate-900" id="contact">
           Contactez-Nous
         </h2>
-        <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto px-2 contact-form-subtitle">
+        <p className="text-sm sm:text-base md:text-lg text-slate-700 leading-relaxed max-w-2xl mx-auto px-2 contact-form-subtitle">
           Prêt à donner vie à vos projets créatifs ? Échangeons sur vos besoins et transformons vos idées en réalité
         </p>
       </div>
@@ -293,7 +293,7 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
           <div className="relative z-10 grid gap-6 p-6 sm:p-8 md:p-10 form-inner w-full">
             <div className="flex flex-col gap-2 text-center sm:text-left items-center sm:items-start">
               <span className="badge-title inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">
-                <Sparkles className="h-4 w-4 text-sky-400" />
+                <Sparkles className="h-4 w-4 text-blue-400" />
                 Formulaire
               </span>
               <h3 className="text-xl sm:text-2xl font-semibold text-slate-900 tracking-tight">
@@ -306,7 +306,7 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div className="relative">
-                <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-sky-400">
+                <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-blue-400">
                   <User className="h-4 w-4" />
                 </span>
                 <input
@@ -319,7 +319,7 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
                 />
               </div>
               <div className="relative">
-                <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-sky-400">
+                <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-blue-400">
                   <User className="h-4 w-4" />
                 </span>
                 <input
@@ -336,7 +336,7 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div className="relative">
-                <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-sky-400">
+                <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-blue-400">
                   <Mail className="h-4 w-4" />
                 </span>
                 <input
@@ -352,7 +352,7 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
                 />
               </div>
               <div className="relative">
-                <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-sky-400">
+                <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-blue-400">
                   <Smartphone className="h-4 w-4" />
                 </span>
                 <input
@@ -368,7 +368,7 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
             </div>
 
             <div className="relative">
-              <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-sky-400">
+              <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-blue-400">
                 <Building2 className="h-4 w-4" />
               </span>
               <input
@@ -383,7 +383,7 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div className="relative">
-                <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-sky-400">
+                <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-blue-400">
                   <Briefcase className="h-4 w-4" />
                 </span>
                 <select
@@ -410,7 +410,7 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
                 </div>
               </div>
               <div className="relative">
-                <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-sky-400">
+                <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-blue-400">
                   <Coins className="h-4 w-4" />
                 </span>
                 <select
@@ -437,7 +437,7 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
             </div>
 
             <div className="relative">
-              <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-sky-400">
+              <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-blue-400">
                 <CalendarDays className="h-4 w-4" />
               </span>
               <select
@@ -477,7 +477,7 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
                   className="file-upload-label group flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 cursor-pointer text-left"
                 >
                   <div className="flex items-center gap-3 w-full sm:w-auto">
-                    <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-sky-500 to-sky-500 text-white shadow-lg shadow-sky-500/25">
+                    <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-500 text-white shadow-lg shadow-blue-500/25">
                       <Upload className="w-5 h-5" />
                     </span>
                     <div className="space-y-1">
@@ -495,7 +495,7 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
                     {formData.files.map((file, index) => (
                       <div key={index} className="flex items-center justify-between rounded-xl border border-slate-200/70 bg-white/80 px-3 py-2.5">
                         <div className="flex flex-wrap items-center gap-2 text-sm text-slate-600">
-                          <span className="text-sky-500 text-base leading-none">📎</span>
+                          <span className="text-blue-500 text-base leading-none">📎</span>
                           <span className="font-medium text-slate-700">{file.name}</span>
                           <span className="text-slate-400 text-xs">({(file.size / 1024 / 1024).toFixed(1)} MB)</span>
                         </div>
@@ -516,7 +516,7 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
 
             <div className="space-y-3">
               <div className="relative">
-                <span className="pointer-events-none absolute left-4 top-4 text-sky-400">
+                <span className="pointer-events-none absolute left-4 top-4 text-blue-400">
                   <MessageCircle className="h-4 w-4" />
                 </span>
                 <textarea
@@ -533,7 +533,7 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
               <button
                 type="button"
                 onClick={() => setIsAIChatOpen(true)}
-                className="ai-trigger inline-flex items-center gap-2 self-stretch sm:self-start justify-center rounded-full border border-sky-200 bg-sky-50/60 px-4 py-2.5 text-xs sm:text-sm font-semibold text-sky-600 shadow-[0_14px_40px_rgba(14,165,233,0.2)] transition-all duration-300 hover:scale-[1.02] hover:border-sky-300 hover:text-sky-700 disabled:opacity-50"
+                className="ai-trigger inline-flex items-center gap-2 self-stretch sm:self-start justify-center rounded-full border border-blue-200 bg-blue-50/60 px-4 py-2.5 text-xs sm:text-sm font-semibold text-blue-600 shadow-[0_14px_40px_rgba(14,165,233,0.2)] transition-all duration-300 hover:scale-[1.02] hover:border-blue-300 hover:text-blue-700 disabled:opacity-50"
                 disabled={isSubmitting}
               >
                 <MessageCircle className="w-4 h-4" />
@@ -593,11 +593,11 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
 
             <div className="grid gap-2 rounded-2xl border border-slate-200/70 bg-white/80 px-4 py-3 text-xs sm:text-sm text-slate-500 shadow-[0_16px_45px_rgba(15,23,42,0.12)]">
               <p className="flex items-center justify-center gap-2">
-                <ShieldCheck className="h-4 w-4 text-sky-400" />
+                <ShieldCheck className="h-4 w-4 text-blue-400" />
                 <span>Vos données sont sécurisées et ne seront jamais partagées</span>
               </p>
               <p className="flex items-center justify-center gap-2">
-                <Sparkles className="h-4 w-4 text-sky-400" />
+                <Sparkles className="h-4 w-4 text-blue-400" />
                 <span>Réponse garantie sous 2h en jours ouvrés</span>
               </p>
             </div>

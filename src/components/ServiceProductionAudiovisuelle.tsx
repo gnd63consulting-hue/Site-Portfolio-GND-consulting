@@ -232,10 +232,10 @@ export function ServiceProductionAudiovisuelle() {
       {/* INTRO */}
       <section
         data-service-section="intro"
-        className="bg-gradient-to-b from-white to-gray-50 px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24"
+        className="bg-gradient-to-b from-white to-slate-50 px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24"
       >
         <div className="mx-auto max-w-4xl text-center">
-          <p className="text-balance text-[clamp(1rem,2.6vw,1.5rem)] leading-relaxed text-gray-700">
+          <p className="text-balance text-[clamp(1rem,2.6vw,1.5rem)] leading-relaxed text-slate-700">
             Deux décennies de captation, montage et post-production nous ont appris une chose : une vidéo réussie est un
             savant mélange d’émotion, de rythme et d’exigence technique. Chez GND Consulting, nous concevons des contenus
             audiovisuels qui <strong className="text-primary">attirent l’attention, racontent votre histoire</strong> et
@@ -247,14 +247,14 @@ export function ServiceProductionAudiovisuelle() {
       {/* EXPERTISES */}
       <section
         data-service-section="services"
-        className="bg-gray-50 px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24"
+        className="bg-slate-50 px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24"
       >
         <div className="mx-auto max-w-7xl">
           <div className="text-center">
             <h2 className="text-balance text-[clamp(1.875rem,4vw,3rem)] font-black text-slate-900">
               Nos expertises vidéo
             </h2>
-            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.25rem)] text-gray-600">
+            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.25rem)] text-slate-600">
               Une offre complète, de la captation live au montage final, pour couvrir tous vos besoins audiovisuels.
             </p>
           </div>
@@ -265,13 +265,13 @@ export function ServiceProductionAudiovisuelle() {
               return (
                 <article
                   key={item.title}
-                  className="flex h-full flex-col rounded-3xl border border-gray-100 bg-white p-6 shadow-lg transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl sm:p-8"
+                  className="flex h-full flex-col rounded-3xl border border-slate-100 bg-white p-6 shadow-lg transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl sm:p-8"
                 >
                   <span className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-secondary text-white shadow-lg">
                     <IconComponent className="h-7 w-7" />
                   </span>
                   <h3 className="text-[clamp(1.125rem,2.6vw,1.35rem)] font-bold text-slate-900">{item.title}</h3>
-                  <p className="mt-2 text-[clamp(0.9375rem,2.3vw,1rem)] leading-relaxed text-gray-600">
+                  <p className="mt-2 text-[clamp(0.9375rem,2.3vw,1rem)] leading-relaxed text-slate-600">
                     {item.description}
                   </p>
                   <ul className="mt-4 space-y-2 text-[clamp(0.9rem,2.2vw,0.975rem)] text-slate-600">
@@ -303,7 +303,7 @@ export function ServiceProductionAudiovisuelle() {
             <h2 className="text-balance text-[clamp(1.875rem,4vw,3rem)] font-black text-slate-900">
               Un processus cadré et transparent
             </h2>
-            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.2rem)] text-gray-600">
+            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.2rem)] text-slate-600">
               Nous orchestrons chaque étape pour vous livrer une production fluide, sereine et fidèle à votre vision.
             </p>
           </div>
@@ -325,7 +325,7 @@ export function ServiceProductionAudiovisuelle() {
                     </span>
                     <h3 className="text-[clamp(1.0625rem,2.3vw,1.2rem)] font-semibold text-slate-900">{step.title}</h3>
                   </div>
-                  <p className="pl-[3.6rem] text-[clamp(0.9375rem,2.2vw,1.05rem)] leading-relaxed text-gray-600">
+                  <p className="pl-[3.6rem] text-[clamp(0.9375rem,2.2vw,1.05rem)] leading-relaxed text-slate-600">
                     {step.description}
                   </p>
                 </article>
@@ -338,7 +338,7 @@ export function ServiceProductionAudiovisuelle() {
       {/* PILIERS */}
       <section
         data-service-section="advantages"
-        className="bg-gradient-to-br from-blue-50 via-sky-50 to-white px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24"
+        className="bg-gradient-to-br from-blue-50 via-blue-50 to-white px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24"
       >
         <div className="mx-auto max-w-7xl">
           <div className="text-center">
@@ -359,7 +359,7 @@ export function ServiceProductionAudiovisuelle() {
                     <IconComponent className="h-7 w-7" />
                   </span>
                   <h3 className="text-[clamp(1.05rem,2.4vw,1.2rem)] font-semibold text-slate-900">{pillar.title}</h3>
-                  <p className="text-[clamp(0.9375rem,2.2vw,1.05rem)] leading-relaxed text-gray-600">
+                  <p className="text-[clamp(0.9375rem,2.2vw,1.05rem)] leading-relaxed text-slate-600">
                     {pillar.description}
                   </p>
                 </article>
@@ -379,7 +379,7 @@ export function ServiceProductionAudiovisuelle() {
             <h2 className="text-balance text-[clamp(1.875rem,4vw,2.75rem)] font-black text-slate-900">
               Pourquoi miser sur la vidéo ?
             </h2>
-            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.2rem)] text-gray-600">
+            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.2rem)] text-slate-600">
               Des chiffres clés qui montrent la puissance de l’audiovisuel pour votre communication.
             </p>
           </div>
@@ -396,7 +396,7 @@ export function ServiceProductionAudiovisuelle() {
                     <IconComponent className="h-6 w-6" />
                   </span>
                   <h3 className="text-[clamp(1.0625rem,2.3vw,1.2rem)] font-semibold text-slate-900">{impact.title}</h3>
-                  <p className="text-[clamp(0.9375rem,2.2vw,1.05rem)] leading-relaxed text-gray-600">
+                  <p className="text-[clamp(0.9375rem,2.2vw,1.05rem)] leading-relaxed text-slate-600">
                     {impact.description}
                   </p>
                 </article>
@@ -420,16 +420,16 @@ export function ServiceProductionAudiovisuelle() {
       {/* CTA FINAL */}
       <section
         data-service-section="cta-final"
-        className="relative overflow-hidden bg-gradient-to-br from-[#F5E8FF] via-white to-sky-50 px-4 py-16 sm:px-6 sm:py-20"
+        className="relative overflow-hidden bg-gradient-to-br from-[#F5E8FF] via-white to-blue-50 px-4 py-16 sm:px-6 sm:py-20"
       >
-        <div className="pointer-events-none absolute top-16 -left-24 h-72 w-72 rounded-full bg-gradient-to-br from-blue-300/30 to-sky-400/30 blur-3xl sm:h-80 sm:w-80" />
-        <div className="pointer-events-none absolute bottom-10 -right-24 h-80 w-80 rounded-full bg-gradient-to-br from-blue-300/30 to-sky-400/30 blur-3xl sm:h-96 sm:w-96" />
+        <div className="pointer-events-none absolute top-16 -left-24 h-72 w-72 rounded-full bg-gradient-to-br from-blue-300/30 to-blue-400/30 blur-3xl sm:h-80 sm:w-80" />
+        <div className="pointer-events-none absolute bottom-10 -right-24 h-80 w-80 rounded-full bg-gradient-to-br from-blue-300/30 to-blue-400/30 blur-3xl sm:h-96 sm:w-96" />
 
         <div className="relative mx-auto flex max-w-4xl flex-col items-center text-center">
           <h2 className="text-balance text-[clamp(1.875rem,5vw,3.5rem)] font-black text-slate-900">
             Prêt à tourner votre prochaine vidéo ?
           </h2>
-          <p className="mt-4 max-w-3xl text-balance text-[clamp(1rem,2.5vw,1.5rem)] leading-relaxed text-gray-700">
+          <p className="mt-4 max-w-3xl text-balance text-[clamp(1rem,2.5vw,1.5rem)] leading-relaxed text-slate-700">
             Nous mettons notre énergie créative et notre expertise technique au service de vos ambitions. Briefons-nous et
             imaginons ensemble la production qui marquera votre audience.
           </p>
@@ -445,7 +445,7 @@ export function ServiceProductionAudiovisuelle() {
               onClick={() => {
                 window.location.href = '#realisations';
               }}
-              className="inline-flex w-full max-w-sm items-center justify-center gap-3 rounded-2xl border-2 border-slate-300 px-6 py-4 text-[clamp(1rem,2.4vw,1.15rem)] font-bold text-gray-700 transition-all duration-300 hover:border-slate-500 hover:bg-white/60 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-slate-300/60 sm:w-auto sm:px-10 sm:py-5"
+              className="inline-flex w-full max-w-sm items-center justify-center gap-3 rounded-2xl border-2 border-slate-300 px-6 py-4 text-[clamp(1rem,2.4vw,1.15rem)] font-bold text-slate-700 transition-all duration-300 hover:border-slate-500 hover:bg-white/60 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-slate-300/60 sm:w-auto sm:px-10 sm:py-5"
             >
               <Sparkles className="h-5 w-5 sm:h-6 sm:w-6" />
               Voir nos réalisations

@@ -75,7 +75,7 @@ export function Partners() {
       tagline: "Innovation & Transformation Digitale",
       description: "Spécialiste de la transformation digitale et de l'innovation technologique pour les entreprises modernes.",
       icon: Zap,
-      color: "from-blue-500 to-sky-500",
+      color: "from-blue-500 to-blue-500",
       bgColor: "bg-blue-50",
       url: "#",
       quote: "L'innovation au service de votre croissance.",
@@ -87,8 +87,8 @@ export function Partners() {
       tagline: "Production Audiovisuelle Premium",
       description: "Production audiovisuelle haut de gamme avec une expertise technique reconnue dans l'industrie.",
       icon: Camera,
-      color: "from-sky-500 to-indigo-500",
-      bgColor: "bg-sky-50",
+      color: "from-blue-500 to-blue-500",
+      bgColor: "bg-blue-50",
       url: "#",
       quote: "Excellence technique et créativité sans limites.",
       features: ["Production 4K/8K", "Équipe experte", "Matériel professionnel", "Post-production avancée"]
@@ -99,7 +99,7 @@ export function Partners() {
       tagline: "Design & Créativité",
       description: "Solutions créatives et design premium pour les marques qui veulent se démarquer.",
       icon: Star,
-      color: "from-sky-500 to-pink-500",
+      color: "from-blue-500 to-pink-500",
       bgColor: "bg-pink-50",
       url: "#",
       quote: "Votre vision, notre créativité.",
@@ -113,16 +113,16 @@ export function Partners() {
   return (
     <section id="partners" className="py-12 px-6 max-w-7xl mx-auto relative overflow-hidden">
       {/* Fond avec formes organiques */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-blue-50/30"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-blue-50/30"></div>
       
       {/* Formes décoratives organiques */}
       <div className="absolute top-20 -left-20 w-80 h-80 bg-gradient-to-br from-rose-200/40 to-pink-300/40 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-20 -right-20 w-96 h-96 bg-gradient-to-br from-blue-200/40 to-sky-300/40 rounded-full blur-3xl"></div>
-      <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-br from-sky-200/30 to-indigo-300/30 rounded-full blur-2xl"></div>
+      <div className="absolute bottom-20 -right-20 w-96 h-96 bg-gradient-to-br from-blue-200/40 to-blue-300/40 rounded-full blur-3xl"></div>
+      <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-br from-blue-200/30 to-blue-300/30 rounded-full blur-2xl"></div>
       
       {/* Navigation par onglets */}
       <div className="flex justify-center mb-10 relative z-10">
-        <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-3 inline-flex gap-3 shadow-xl border border-gray-200/50">
+        <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-3 inline-flex gap-3 shadow-xl border border-slate-200/50">
           {partners.map((partner) => {
             const PartnerIcon = partner.icon;
             return (
@@ -132,7 +132,7 @@ export function Partners() {
                 className={`flex items-center gap-3 px-6 py-4 rounded-2xl font-semibold transition-all duration-500 ${
                   activeTab === partner.id
                     ? 'bg-primary text-white shadow-lg scale-105'
-                    : 'text-gray-600 hover:text-slate-900 hover:bg-white/60'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
                 }`}
               >
                 <PartnerIcon className="w-5 h-5" />
@@ -146,7 +146,7 @@ export function Partners() {
       {/* Contenu du partenaire actif */}
       <div className="relative z-10">
         {/* Carte principale avec design organique */}
-        <div className="bg-white/95 backdrop-blur-sm rounded-[2.5rem] border border-gray-200/50 shadow-2xl overflow-hidden relative">
+        <div className="bg-white/95 backdrop-blur-sm rounded-[2.5rem] border border-slate-200/50 shadow-2xl overflow-hidden relative">
           {/* Effet de lueur subtile */}
           <div className="absolute -inset-1 bg-primary/10 rounded-[2.5rem] blur-sm opacity-60"></div>
           
@@ -166,11 +166,11 @@ export function Partners() {
                   {currentPartner.name}
                 </h3>
                 
-                <p className="text-xl font-semibold text-gray-600 mb-8">
+                <p className="text-xl font-semibold text-slate-600 mb-8">
                   {currentPartner.tagline}
                 </p>
                 
-                <p className="text-gray-700 text-lg leading-relaxed mb-8">
+                <p className="text-slate-700 text-lg leading-relaxed mb-8">
                   {currentPartner.description}
                 </p>
                 
@@ -178,8 +178,8 @@ export function Partners() {
                 <div className="relative mb-8">
                   <div className={`${currentPartner.bgColor} rounded-3xl p-8 relative overflow-hidden`}>
                     <div className="absolute top-0 right-0 w-32 h-32 bg-white/20 rounded-full -translate-y-16 translate-x-16"></div>
-                    <Quote className="w-10 h-10 text-gray-400 mb-4 relative z-10" />
-                    <blockquote className="text-gray-800 text-lg font-medium italic relative z-10">
+                    <Quote className="w-10 h-10 text-slate-400 mb-4 relative z-10" />
+                    <blockquote className="text-slate-800 text-lg font-medium italic relative z-10">
                       "{currentPartner.quote}"
                     </blockquote>
                     </div>
@@ -197,7 +197,7 @@ export function Partners() {
                     <span>Découvrir</span>
                     <ExternalLink className="w-5 h-5" />
                   </a>
-                  <button className="flex items-center gap-3 px-8 py-4 bg-white border-2 border-gray-200 text-gray-700 rounded-2xl font-semibold hover:bg-gray-50 hover:border-gray-300 transition-all duration-500 hover:scale-105">
+                  <button className="flex items-center gap-3 px-8 py-4 bg-white border-2 border-slate-200 text-slate-700 rounded-2xl font-semibold hover:bg-slate-50 hover:border-slate-300 transition-all duration-500 hover:scale-105">
                     <span>En savoir plus</span>
                     <ArrowRight className="w-5 h-5" />
                   </button>
@@ -205,20 +205,20 @@ export function Partners() {
               </div>
               
               {/* Colonne droite - Visuel avec design organique */}
-              <div className="relative bg-gradient-to-br from-gray-100 to-gray-200">
+              <div className="relative bg-gradient-to-br from-slate-100 to-slate-200">
                 {activeTab === 'noceum' ? (
                   // Écran Society Studios style moderne
                   <div className="h-full min-h-[600px] rounded-r-[2.5rem] overflow-hidden bg-black relative">
                     {/* Formes géométriques en arrière-plan */}
                     <div className="absolute inset-0">
                       {/* Cercles flottants */}
-                      <div className="absolute top-20 right-20 w-32 h-32 bg-gradient-to-br from-gray-600/30 to-gray-800/30 rounded-full blur-sm"></div>
-                      <div className="absolute top-40 right-40 w-24 h-24 bg-gradient-to-br from-gray-500/20 to-gray-700/20 rounded-full blur-md"></div>
-                      <div className="absolute bottom-32 right-16 w-40 h-40 bg-gradient-to-br from-gray-700/25 to-gray-900/25 rounded-full blur-lg"></div>
+                      <div className="absolute top-20 right-20 w-32 h-32 bg-gradient-to-br from-slate-600/30 to-slate-800/30 rounded-full blur-sm"></div>
+                      <div className="absolute top-40 right-40 w-24 h-24 bg-gradient-to-br from-slate-500/20 to-slate-700/20 rounded-full blur-md"></div>
+                      <div className="absolute bottom-32 right-16 w-40 h-40 bg-gradient-to-br from-slate-700/25 to-slate-900/25 rounded-full blur-lg"></div>
                       
                       {/* Formes géométriques abstraites */}
-                      <div className="absolute top-16 left-20 w-20 h-20 border border-gray-600/30 rounded-lg rotate-45 blur-sm"></div>
-                      <div className="absolute bottom-20 left-32 w-16 h-16 border border-gray-500/20 rounded-full blur-md"></div>
+                      <div className="absolute top-16 left-20 w-20 h-20 border border-slate-600/30 rounded-lg rotate-45 blur-sm"></div>
+                      <div className="absolute bottom-20 left-32 w-16 h-16 border border-slate-500/20 rounded-full blur-md"></div>
                     </div>
                     
                     {/* Boutons de navigation en haut */}
@@ -262,7 +262,7 @@ export function Partners() {
                     
                     {/* Miniature vidéo en bas à gauche */}
                     <div className="absolute bottom-6 left-6 z-20">
-                      <div className="w-48 h-32 bg-gray-800 rounded-xl overflow-hidden border border-white/20 relative group cursor-pointer hover:scale-105 transition-transform duration-300">
+                      <div className="w-48 h-32 bg-slate-800 rounded-xl overflow-hidden border border-white/20 relative group cursor-pointer hover:scale-105 transition-transform duration-300">
                         {/* Images carousel dans la miniature */}
                         {nocuemGallery.map((item, index) => (
                           <div
@@ -338,7 +338,7 @@ export function Partners() {
                 ) : (
                   // Design organique pour les autres partenaires
                   <div className="h-full min-h-[500px] flex items-center justify-center rounded-r-[2.5rem] relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-gray-100 via-white to-gray-50"></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-slate-100 via-white to-slate-50"></div>
                     <div className={`relative w-40 h-40 bg-gradient-to-br ${currentPartner.color} rounded-full flex items-center justify-center shadow-2xl`}>
                       <div className="absolute inset-4 bg-white/20 rounded-full"></div>
                       <IconComponent className="w-20 h-20 text-white relative z-10" />
@@ -360,12 +360,12 @@ export function Partners() {
         ].map((stat, index) => {
           const StatIcon = stat.icon;
           return (
-            <div key={index} className="text-center bg-white/90 backdrop-blur-sm rounded-3xl p-8 border border-gray-200/50 hover:shadow-xl transition-all duration-500 hover:scale-105 hover:-translate-y-2">
-              <div className="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-                <StatIcon className="w-6 h-6 text-gray-600" />
+            <div key={index} className="text-center bg-white/90 backdrop-blur-sm rounded-3xl p-8 border border-slate-200/50 hover:shadow-xl transition-all duration-500 hover:scale-105 hover:-translate-y-2">
+              <div className="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <StatIcon className="w-6 h-6 text-slate-600" />
               </div>
               <div className="text-2xl font-black text-slate-900 mb-2">{stat.number}</div>
-              <div className="text-gray-600 font-medium text-sm">{stat.label}</div>
+              <div className="text-slate-600 font-medium text-sm">{stat.label}</div>
             </div>
           );
         })}
@@ -373,7 +373,7 @@ export function Partners() {
 
       {/* CTA final */}
       <div className="text-center mt-16 relative z-10">
-        <div className="bg-white/90 backdrop-blur-sm rounded-[2.5rem] p-12 border border-gray-200/50 shadow-2xl relative overflow-hidden">
+        <div className="bg-white/90 backdrop-blur-sm rounded-[2.5rem] p-12 border border-slate-200/50 shadow-2xl relative overflow-hidden">
           {/* Formes décoratives dans le CTA */}
           <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full -translate-x-16 -translate-y-16"></div>
           <div className="absolute bottom-0 right-0 w-40 h-40 bg-gradient-to-br from-accent/20 to-primary/20 rounded-full translate-x-20 translate-y-20"></div>
@@ -381,19 +381,19 @@ export function Partners() {
           <h3 className="text-2xl font-black text-slate-900 mb-4">
             Rejoignez Notre Écosystème
           </h3>
-          <p className="text-gray-600 text-base mb-6 max-w-2xl mx-auto">
+          <p className="text-slate-600 text-base mb-6 max-w-2xl mx-auto">
             Découvrez comment nos partenariats d'exception peuvent transformer votre projet en une réalisation extraordinaire.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
               href="#contact"
-              className="px-10 py-5 bg-gradient-to-r from-gray-900 to-gray-700 text-white font-bold rounded-2xl transition-all duration-500 hover:scale-105 hover:shadow-xl relative z-10"
+              className="px-10 py-5 bg-gradient-to-r from-slate-900 to-slate-700 text-white font-bold rounded-2xl transition-all duration-500 hover:scale-105 hover:shadow-xl relative z-10"
             >
               Démarrer un Projet
             </a>
             <a 
               href="#realisations"
-              className="px-10 py-5 border-2 border-gray-300 text-gray-700 font-bold rounded-2xl transition-all duration-500 hover:bg-gray-50 hover:border-gray-400 hover:scale-105 relative z-10"
+              className="px-10 py-5 border-2 border-slate-300 text-slate-700 font-bold rounded-2xl transition-all duration-500 hover:bg-slate-50 hover:border-slate-400 hover:scale-105 relative z-10"
             >
               Voir Nos Réalisations
             </a>
@@ -421,7 +421,7 @@ export function Partners() {
                 setSelectedImage(nocuemGallery[prevIdx].image);
                 setSelectedCaption(nocuemGallery[prevIdx].caption);
               }}
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-14 h-14 bg-black/70 backdrop-blur-xl rounded-full flex items-center justify-center text-cyan-400 hover:bg-cyan-400/20 hover:border-cyan-400 border border-white/20 transition-all duration-300 z-10 shadow-lg hover:scale-110"
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-14 h-14 bg-black/70 backdrop-blur-xl rounded-full flex items-center justify-center text-blue-400 hover:bg-blue-400/20 hover:border-blue-400 border border-white/20 transition-all duration-300 z-10 shadow-lg hover:scale-110"
             >
               <ChevronLeft className="w-7 h-7" />
             </button>
@@ -434,7 +434,7 @@ export function Partners() {
                 setSelectedImage(nocuemGallery[nextIdx].image);
                 setSelectedCaption(nocuemGallery[nextIdx].caption);
               }}
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-14 h-14 bg-black/70 backdrop-blur-xl rounded-full flex items-center justify-center text-cyan-400 hover:bg-cyan-400/20 hover:border-cyan-400 border border-white/20 transition-all duration-300 z-10 shadow-lg hover:scale-110"
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-14 h-14 bg-black/70 backdrop-blur-xl rounded-full flex items-center justify-center text-blue-400 hover:bg-blue-400/20 hover:border-blue-400 border border-white/20 transition-all duration-300 z-10 shadow-lg hover:scale-110"
             >
               <ChevronRight className="w-7 h-7" />
             </button>
@@ -442,12 +442,12 @@ export function Partners() {
             <img
               src={selectedImage}
               alt={`Image agrandie - ${selectedCaption} - Projet NOCUEM showcase GND Consulting`}
-              className="w-full h-full object-contain rounded-3xl shadow-2xl border border-cyan-400/30"
+              className="w-full h-full object-contain rounded-3xl shadow-2xl border border-blue-400/30"
               onClick={(e) => e.stopPropagation()}
             />
             
             {selectedCaption && (
-              <div className="absolute bottom-6 left-6 right-6 bg-black/80 backdrop-blur-xl rounded-2xl p-6 border border-cyan-400/30">
+              <div className="absolute bottom-6 left-6 right-6 bg-black/80 backdrop-blur-xl rounded-2xl p-6 border border-blue-400/30">
                 <p className="text-white text-center font-medium italic text-lg">"{selectedCaption}"</p>
                 <div className="flex justify-center mt-3">
                   <div className="w-16 h-0.5 bg-gradient-to-r from-blue-400 to-blue-400 rounded-full"></div>
@@ -469,8 +469,8 @@ export function Partners() {
                     }}
                     className={`w-3 h-3 rounded-full transition-all duration-300 ${
                       index === currentIdx 
-                        ? 'bg-cyan-400 scale-125 shadow-lg shadow-cyan-400/50 border-2 border-white/30' 
-                        : 'bg-white/30 hover:bg-cyan-400/70 border border-white/20'
+                        ? 'bg-blue-400 scale-125 shadow-lg shadow-blue-400/50 border-2 border-white/30' 
+                        : 'bg-white/30 hover:bg-blue-400/70 border border-white/20'
                     }`}
                   />
                 );

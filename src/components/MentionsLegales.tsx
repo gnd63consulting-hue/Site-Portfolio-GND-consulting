@@ -82,7 +82,7 @@ export function MentionsLegales() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50/30 text-slate-900 relative overflow-hidden mentions-legales-page">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50/30 text-slate-900 relative overflow-hidden mentions-legales-page">
       {/* Effet de fond subtil */}
       <div className="absolute inset-0 opacity-30 pointer-events-none" style={{
         backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(147, 51, 234, 0.1) 0%, transparent 50%)'
@@ -107,18 +107,18 @@ export function MentionsLegales() {
           <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-bold bg-gradient-to-r from-primary via-blue-600 to-secondary bg-clip-text text-transparent mb-2 sm:mb-3 md:mb-4 tracking-wide leading-tight px-2">
             MENTIONS LÉGALES
           </h1>
-          <p className="text-gray-600 text-[13px] sm:text-sm md:text-base lg:text-lg max-w-[300px] sm:max-w-md md:max-w-2xl mx-auto leading-[1.6] sm:leading-relaxed px-4 text-justify">
+          <p className="text-slate-600 text-[13px] sm:text-sm md:text-base lg:text-lg max-w-[300px] sm:max-w-md md:max-w-2xl mx-auto leading-[1.6] sm:leading-relaxed px-4 text-justify">
             Conformément à la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique (LCEN)
           </p>
         </div>
       </section>
 
       {/* Table des matières - Desktop uniquement */}
-      <div className="hidden lg:block fixed left-8 top-1/2 -translate-y-1/2 z-20 bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-gray-100 overflow-hidden max-h-[calc(100vh-8rem)]">
-        <div className="p-4 pb-2 border-b border-gray-100">
+      <div className="hidden lg:block fixed left-8 top-1/2 -translate-y-1/2 z-20 bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-slate-100 overflow-hidden max-h-[calc(100vh-8rem)]">
+        <div className="p-4 pb-2 border-b border-slate-100">
           <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider">Sommaire</h3>
         </div>
-        <nav className="space-y-1 p-4 pt-3 overflow-y-auto max-h-[calc(100vh-12rem)] scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent">
+        <nav className="space-y-1 p-4 pt-3 overflow-y-auto max-h-[calc(100vh-12rem)] scrollbar-thin scrollbar-thumb-slate-300 scrollbar-track-transparent">
           {sections.map((section, index) => {
             const Icon = section.icon;
             const isActive = activeSection === section.id;
@@ -133,7 +133,7 @@ export function MentionsLegales() {
                   transition-all duration-300 ease-in-out group relative overflow-hidden
                   ${isActive
                     ? 'bg-slate-900 text-white shadow-lg shadow-blue-500/30 scale-[1.02] font-semibold'
-                    : 'text-gray-700 hover:bg-gradient-to-r hover:from-gray-50 hover:to-blue-50/50 hover:text-slate-900 hover:shadow-sm'
+                    : 'text-slate-700 hover:bg-gradient-to-r hover:from-slate-50 hover:to-blue-50/50 hover:text-slate-900 hover:shadow-sm'
                   }
                 `}
                 style={{ willChange: isActive ? 'transform' : 'auto' }}
@@ -166,7 +166,7 @@ export function MentionsLegales() {
         <div className="max-w-4xl mx-auto space-y-8 md:space-y-16">
 
           {/* 1. Éditeur du site */}
-          <section id="section-1" className="scroll-mt-40 animate-fade-in border-t border-gray-200 pt-6">
+          <section id="section-1" className="scroll-mt-40 animate-fade-in border-t border-slate-200 pt-6">
             <div className="flex flex-col items-start gap-2 mb-4 sm:mb-6 px-0 sm:px-4">
               <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-xl flex-shrink-0 mb-2 mx-auto sm:mx-0">
                 <Building2 className="w-5 h-5 text-primary" />
@@ -176,7 +176,7 @@ export function MentionsLegales() {
                 <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 tracking-tight leading-tight mt-1">ÉDITEUR DU SITE</h2>
               </div>
             </div>
-            <div className="space-y-2 text-gray-700 text-[14px] sm:text-base leading-relaxed px-0 sm:px-4 md:pl-16 text-left max-w-[95%] sm:max-w-full mx-auto">
+            <div className="space-y-2 text-slate-700 text-[14px] sm:text-base leading-relaxed px-0 sm:px-4 md:pl-16 text-left max-w-[95%] sm:max-w-full mx-auto">
               <p><strong className="text-slate-900">Nom commercial :</strong> GND Consulting</p>
               <p><strong className="text-slate-900">Forme juridique :</strong> Entrepreneur Individuel (EI) – Auto-entrepreneur</p>
               <p><strong className="text-slate-900">SIREN :</strong> 939 676 136</p>
@@ -188,11 +188,11 @@ export function MentionsLegales() {
               <p><strong className="text-slate-900">TVA :</strong> Franchise en base de TVA – article 293 B du CGI (TVA non applicable)</p>
               <p><strong className="text-slate-900">Siège social :</strong> Paris, France</p>
             </div>
-            <div className="mt-6 sm:mt-8 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
+            <div className="mt-6 sm:mt-8 h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent"></div>
           </section>
 
           {/* 2. Responsabilité éditoriale */}
-          <section id="section-2" className="scroll-mt-40 animate-fade-in border-t border-gray-200 pt-6 mt-8">
+          <section id="section-2" className="scroll-mt-40 animate-fade-in border-t border-slate-200 pt-6 mt-8">
             <div className="flex flex-col items-start gap-2 mb-4 sm:mb-6 px-0 sm:px-4">
               <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-xl flex-shrink-0 mb-2 mx-auto sm:mx-0">
                 <FileText className="w-5 h-5 text-primary" />
@@ -202,16 +202,16 @@ export function MentionsLegales() {
                 <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 tracking-tight leading-tight mt-1">RESPONSABILITÉ ÉDITORIALE</h2>
               </div>
             </div>
-            <div className="space-y-1.5 sm:space-y-2 text-gray-700 text-[13.5px] sm:text-base leading-snug sm:leading-relaxed px-0 sm:px-4 md:pl-16 text-left max-w-[95%] sm:max-w-full mx-auto">
+            <div className="space-y-1.5 sm:space-y-2 text-slate-700 text-[13.5px] sm:text-base leading-snug sm:leading-relaxed px-0 sm:px-4 md:pl-16 text-left max-w-[95%] sm:max-w-full mx-auto">
               <p><strong className="text-slate-900">Directeur de la publication :</strong> Pierre Roodny</p>
               <p><strong className="text-slate-900">Responsable éditorial :</strong> Pierre Roodny</p>
               <p><strong className="text-slate-900">Délégué à la protection des données (DPO) :</strong> Pierre Roodny</p>
             </div>
-            <div className="mt-6 sm:mt-8 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
+            <div className="mt-6 sm:mt-8 h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent"></div>
           </section>
 
           {/* 3. Contact */}
-          <section id="section-3" className="scroll-mt-40 animate-fade-in border-t border-gray-200 pt-6 mt-8">
+          <section id="section-3" className="scroll-mt-40 animate-fade-in border-t border-slate-200 pt-6 mt-8">
             <div className="flex flex-col items-start gap-2 mb-4 sm:mb-6 px-0 sm:px-4">
               <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-xl flex-shrink-0 mb-2 mx-auto sm:mx-0">
                 <Mail className="w-5 h-5 text-primary" />
@@ -221,31 +221,31 @@ export function MentionsLegales() {
                 <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 tracking-tight leading-tight mt-1">CONTACT</h2>
               </div>
             </div>
-            <div className="flex flex-col space-y-4 text-gray-700 px-0 sm:px-4 md:pl-16 max-w-[95%] sm:max-w-full mx-auto">
+            <div className="flex flex-col space-y-4 text-slate-700 px-0 sm:px-4 md:pl-16 max-w-[95%] sm:max-w-full mx-auto">
               <div className="flex items-center gap-2 p-4 bg-white/60 rounded-xl hover:bg-white/80 transition-colors">
                 <Mail className="w-5 h-5 text-primary flex-shrink-0" />
                 <div>
-                  <span className="text-[13px] text-gray-500 block">Email</span>
+                  <span className="text-[13px] text-slate-500 block">Email</span>
                   <a href="mailto:contact@gndconsulting.fr" className="block text-[14px] text-primary hover:underline font-medium transition-colors">
                     contact@gndconsulting.fr
                   </a>
                 </div>
               </div>
-              <div className="flex items-center gap-2 p-4 bg-white/60 rounded-xl hover:bg-white/80 transition-colors border-t border-gray-200 mt-3 pt-3">
+              <div className="flex items-center gap-2 p-4 bg-white/60 rounded-xl hover:bg-white/80 transition-colors border-t border-slate-200 mt-3 pt-3">
                 <Phone className="w-5 h-5 text-primary flex-shrink-0" />
                 <div>
-                  <span className="text-[13px] text-gray-500 block">Téléphone</span>
+                  <span className="text-[13px] text-slate-500 block">Téléphone</span>
                   <a href="tel:+33759506322" className="block text-[14px] text-primary hover:underline font-medium transition-colors">
                     07 59 50 63 22
                   </a>
                 </div>
               </div>
             </div>
-            <div className="mt-6 sm:mt-8 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
+            <div className="mt-6 sm:mt-8 h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent"></div>
           </section>
 
           {/* 4. Hébergement */}
-          <section id="section-4" className="scroll-mt-40 animate-fade-in border-t border-gray-200 pt-6 mt-8">
+          <section id="section-4" className="scroll-mt-40 animate-fade-in border-t border-slate-200 pt-6 mt-8">
             <div className="flex flex-col items-start gap-2 mb-4 sm:mb-6 px-0 sm:px-4">
               <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-xl flex-shrink-0 mb-2 mx-auto sm:mx-0">
                 <Globe className="w-5 h-5 text-primary" />
@@ -255,7 +255,7 @@ export function MentionsLegales() {
                 <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 tracking-tight leading-tight mt-1">HÉBERGEMENT DU SITE</h2>
               </div>
             </div>
-            <div className="space-y-2 text-gray-700 text-[14px] sm:text-base leading-relaxed px-0 sm:px-4 md:pl-16 text-left max-w-[95%] sm:max-w-full mx-auto py-4">
+            <div className="space-y-2 text-slate-700 text-[14px] sm:text-base leading-relaxed px-0 sm:px-4 md:pl-16 text-left max-w-[95%] sm:max-w-full mx-auto py-4">
               <p><strong className="text-slate-900">Hébergeur :</strong> Hostinger International Ltd.</p>
               <p><strong className="text-slate-900">Adresse :</strong> Jonavos g. 60C, 44192 Kaunas, Lituanie</p>
               <p>
@@ -265,11 +265,11 @@ export function MentionsLegales() {
                 </a>
               </p>
             </div>
-            <div className="mt-8 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
+            <div className="mt-8 h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent"></div>
           </section>
 
           {/* 5. Propriété intellectuelle */}
-          <section id="section-5" className="scroll-mt-40 animate-fade-in border-t border-gray-200 pt-6 mt-8">
+          <section id="section-5" className="scroll-mt-40 animate-fade-in border-t border-slate-200 pt-6 mt-8">
             <div className="flex flex-col items-start gap-2 mb-4 sm:mb-6 px-0 sm:px-4">
               <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-xl flex-shrink-0 mb-2 mx-auto sm:mx-0">
                 <FileText className="w-5 h-5 text-primary" />
@@ -279,7 +279,7 @@ export function MentionsLegales() {
                 <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 tracking-tight leading-tight mt-1">PROPRIÉTÉ INTELLECTUELLE</h2>
               </div>
             </div>
-            <div className="space-y-4 sm:space-y-5 text-gray-800 text-[14px] sm:text-base leading-snug sm:leading-relaxed px-4 text-justify tracking-tight max-w-[95%] sm:max-w-full mx-auto md:pl-12 md:max-w-none">
+            <div className="space-y-4 sm:space-y-5 text-slate-800 text-[14px] sm:text-base leading-snug sm:leading-relaxed px-4 text-justify tracking-tight max-w-[95%] sm:max-w-full mx-auto md:pl-12 md:max-w-none">
               <p>
                 L'ensemble du contenu présent sur ce site web (textes, visuels, photographies, vidéos, logos, graphismes, éléments sonores, bases de données, etc.)
                 est la propriété exclusive de <strong className="text-slate-900">GND Consulting</strong>, sauf mention contraire explicite.
@@ -297,11 +297,11 @@ export function MentionsLegales() {
                 Toute reproduction totale ou partielle de ces marques ou logos effectuée à partir des éléments du site sans l'autorisation expresse de GND Consulting est prohibée.
               </p>
             </div>
-            <div className="mt-8 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
+            <div className="mt-8 h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent"></div>
           </section>
 
           {/* 6. Protection des données personnelles - RGPD */}
-          <section id="section-6" className="scroll-mt-40 animate-fade-in border-t border-gray-200 pt-6 mt-8">
+          <section id="section-6" className="scroll-mt-40 animate-fade-in border-t border-slate-200 pt-6 mt-8">
             <div className="flex flex-col items-start gap-2 mb-4 sm:mb-6 px-0 sm:px-4">
               <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-xl flex-shrink-0 mb-2 mx-auto sm:mx-0">
                 <Shield className="w-5 h-5 text-primary" />
@@ -311,7 +311,7 @@ export function MentionsLegales() {
                 <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 tracking-tight leading-tight mt-1">PROTECTION DES DONNÉES PERSONNELLES (RGPD)</h2>
               </div>
             </div>
-            <div className="space-y-6 text-gray-700 px-4 sm:px-4 md:pl-16 max-w-[95%] sm:max-w-full mx-auto md:max-w-none">
+            <div className="space-y-6 text-slate-700 px-4 sm:px-4 md:pl-16 max-w-[95%] sm:max-w-full mx-auto md:max-w-none">
               <p className="text-[13.5px] sm:text-base leading-relaxed">
                 Conformément au <strong className="text-slate-900">Règlement Général sur la Protection des Données (RGPD – UE 2016/679)</strong> et à la
                 <strong className="text-slate-900"> loi Informatique et Libertés du 6 janvier 1978 modifiée</strong>, vous disposez de droits sur vos données personnelles.
@@ -326,7 +326,7 @@ export function MentionsLegales() {
               <div className="space-y-3 bg-white/60 rounded-2xl p-4 sm:p-6">
                 <h3 className="font-semibold text-slate-900 text-[15px] sm:text-xl mt-6 mb-2">6.2 Données collectées</h3>
                 <p className="text-[13.5px] sm:text-base leading-relaxed">Nous sommes susceptibles de collecter les données personnelles suivantes :</p>
-                <ul className="list-disc pl-5 space-y-1 text-[13.5px] sm:text-base leading-snug text-gray-800">
+                <ul className="list-disc pl-5 space-y-1 text-[13.5px] sm:text-base leading-snug text-slate-800">
                   <li>Nom et prénom</li>
                   <li>Adresse email</li>
                   <li>Numéro de téléphone</li>
@@ -339,7 +339,7 @@ export function MentionsLegales() {
               <div className="space-y-3 bg-white/60 rounded-2xl p-4 sm:p-6">
                 <h3 className="font-semibold text-slate-900 text-[15px] sm:text-xl mt-6 mb-2">6.3 Finalités du traitement</h3>
                 <p className="text-[13.5px] sm:text-base leading-relaxed">Les données personnelles sont collectées et traitées pour les finalités suivantes :</p>
-                <ul className="list-disc pl-5 space-y-1 text-[13.5px] sm:text-base leading-snug text-gray-800">
+                <ul className="list-disc pl-5 space-y-1 text-[13.5px] sm:text-base leading-snug text-slate-800">
                   <li>Gestion de la relation client</li>
                   <li>Réponse aux demandes de contact et de devis</li>
                   <li>Amélioration de nos services et de l'expérience utilisateur</li>
@@ -351,7 +351,7 @@ export function MentionsLegales() {
               <div className="space-y-3 bg-white/60 rounded-2xl p-4 sm:p-6">
                 <h3 className="font-semibold text-slate-900 text-[15px] sm:text-xl mt-6 mb-2">6.4 Base légale des traitements</h3>
                 <p className="text-[13.5px] sm:text-base leading-relaxed">Les traitements de données personnelles reposent sur les bases légales suivantes (RGPD Art. 6) :</p>
-                <ul className="list-disc pl-5 space-y-1 text-[13.5px] sm:text-base leading-snug text-gray-800">
+                <ul className="list-disc pl-5 space-y-1 text-[13.5px] sm:text-base leading-snug text-slate-800">
                   <li><strong className="text-slate-900">Article 6.1.a :</strong> Consentement de la personne concernée</li>
                   <li><strong className="text-slate-900">Article 6.1.b :</strong> Exécution d'un contrat ou de mesures précontractuelles</li>
                   <li><strong className="text-slate-900">Article 6.1.c :</strong> Respect d'une obligation légale</li>
@@ -370,7 +370,7 @@ export function MentionsLegales() {
               <div className="space-y-3 bg-white/60 rounded-2xl p-4 sm:p-6">
                 <h3 className="font-semibold text-slate-900 text-[15px] sm:text-xl mt-6 mb-2">6.6 Durée de conservation</h3>
                 <p className="text-[13.5px] sm:text-base leading-relaxed">Les données personnelles sont conservées pendant les durées suivantes :</p>
-                <ul className="list-disc pl-5 space-y-1 text-[13.5px] sm:text-base leading-snug text-gray-800">
+                <ul className="list-disc pl-5 space-y-1 text-[13.5px] sm:text-base leading-snug text-slate-800">
                   <li>Prospects non-clients : <strong className="text-slate-900">3 ans</strong> maximum à compter du dernier contact</li>
                   <li>Clients : pendant la durée contractuelle + <strong className="text-slate-900">5 ans</strong> (prescription commerciale)</li>
                   <li>Données comptables : <strong className="text-slate-900">10 ans</strong> (obligation légale)</li>
@@ -381,7 +381,7 @@ export function MentionsLegales() {
               <div className="space-y-3 bg-white/60 rounded-2xl p-4 sm:p-6">
                 <h3 className="font-semibold text-slate-900 text-[15px] sm:text-xl mt-6 mb-2">6.7 Vos droits</h3>
                 <p className="text-[13.5px] sm:text-base leading-relaxed">Conformément au RGPD et à la loi Informatique et Libertés, vous disposez des droits suivants :</p>
-                <ul className="list-disc pl-5 space-y-1 text-[13.5px] sm:text-base leading-snug text-gray-800">
+                <ul className="list-disc pl-5 space-y-1 text-[13.5px] sm:text-base leading-snug text-slate-800">
                   <li><strong className="text-slate-900">Droit d'accès</strong> : obtenir la confirmation que vos données sont traitées et y accéder</li>
                   <li><strong className="text-slate-900">Droit de rectification</strong> : corriger vos données inexactes ou incomplètes</li>
                   <li><strong className="text-slate-900">Droit à l'effacement</strong> ("droit à l'oubli") : supprimer vos données personnelles</li>
@@ -401,18 +401,18 @@ export function MentionsLegales() {
                 <p className="text-[13.5px] sm:text-base leading-relaxed">
                   Vous disposez également du droit d'introduire une réclamation auprès de la <strong className="text-slate-900">CNIL</strong> (Commission Nationale de l'Informatique et des Libertés) :
                 </p>
-                <div className="space-y-1 mt-3 p-4 rounded-lg border border-gray-300 bg-gray-50">
+                <div className="space-y-1 mt-3 p-4 rounded-lg border border-slate-300 bg-slate-50">
                   <p className="font-medium text-slate-900 text-[13px] sm:text-base">CNIL – 3 Place de Fontenoy, TSA 80715 – 75334 Paris Cedex 07</p>
                   <p className="text-[13px] sm:text-base">Téléphone : 01 53 73 22 22</p>
                   <p className="text-[13px] sm:text-base">Site web : <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">www.cnil.fr</a></p>
                 </div>
               </div>
             </div>
-            <div className="mt-8 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
+            <div className="mt-8 h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent"></div>
           </section>
 
           {/* 7. Cookies */}
-          <section id="section-7" className="scroll-mt-40 animate-fade-in border-t border-gray-200 pt-6 mt-8">
+          <section id="section-7" className="scroll-mt-40 animate-fade-in border-t border-slate-200 pt-6 mt-8">
             <div className="flex flex-col items-start gap-2 mb-4 sm:mb-6 px-0 sm:px-4">
               <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-xl flex-shrink-0 mb-2 mx-auto sm:mx-0">
                 <Cookie className="w-5 h-5 text-primary" />
@@ -422,7 +422,7 @@ export function MentionsLegales() {
                 <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 tracking-tight leading-tight mt-1">POLITIQUE DE COOKIES</h2>
               </div>
             </div>
-            <div className="space-y-6 text-gray-700 px-4 sm:px-4 md:pl-16 max-w-[95%] sm:max-w-full mx-auto md:max-w-none">
+            <div className="space-y-6 text-slate-700 px-4 sm:px-4 md:pl-16 max-w-[95%] sm:max-w-full mx-auto md:max-w-none">
               <p className="text-[13.5px] sm:text-base leading-relaxed">
                 Conformément à la <strong className="text-slate-900">délibération CNIL n° 2020-091 du 17 septembre 2020</strong>, ce site est susceptible d'utiliser des cookies
                 pour améliorer l'expérience utilisateur et analyser le trafic.
@@ -473,7 +473,7 @@ export function MentionsLegales() {
                 <p className="text-[13.5px] sm:text-base leading-relaxed">
                   Vous pouvez à tout moment gérer vos préférences en matière de cookies via :
                 </p>
-                <ul className="list-disc pl-5 space-y-1 text-[13.5px] sm:text-base leading-snug text-gray-800">
+                <ul className="list-disc pl-5 space-y-1 text-[13.5px] sm:text-base leading-snug text-slate-800">
                   <li>La bannière de consentement qui s'affiche lors de votre première visite</li>
                   <li>Les paramètres de votre navigateur (Chrome, Firefox, Safari, Edge, etc.)</li>
                 </ul>
@@ -490,22 +490,22 @@ export function MentionsLegales() {
                 </p>
               </div>
             </div>
-            <div className="mt-8 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
+            <div className="mt-8 h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent"></div>
           </section>
 
           {/* 8. Intelligence Artificielle - AI Act */}
-          <section id="section-8" className="scroll-mt-40 animate-fade-in border-t border-gray-200 pt-6 mt-8">
+          <section id="section-8" className="scroll-mt-40 animate-fade-in border-t border-slate-200 pt-6 mt-8">
             <div className="flex flex-col items-start gap-2 mb-4 sm:mb-6 px-0 sm:px-4">
-              <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-sky-500/10 to-blue-500/10 rounded-xl flex-shrink-0 mb-2 mx-auto sm:mx-0">
-                <Brain className="w-5 h-5 text-sky-600" />
+              <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-blue-500/10 to-blue-500/10 rounded-xl flex-shrink-0 mb-2 mx-auto sm:mx-0">
+                <Brain className="w-5 h-5 text-blue-600" />
               </div>
               <div className="text-center sm:text-left w-full">
-                <span className="text-[11px] sm:text-xs font-bold text-sky-600 uppercase tracking-wider block">Article 8</span>
+                <span className="text-[11px] sm:text-xs font-bold text-blue-600 uppercase tracking-wider block">Article 8</span>
                 <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 tracking-tight leading-tight mt-1">UTILISATION DE L'INTELLIGENCE ARTIFICIELLE</h2>
               </div>
             </div>
-            <div className="bg-gradient-to-br from-blue-50/50 to-blue-50/50 rounded-2xl p-4 sm:p-6 md:p-8 border border-sky-100/50 mx-auto max-w-[95%] sm:max-w-full">
-              <div className="space-y-6 text-gray-700">
+            <div className="bg-gradient-to-br from-blue-50/50 to-blue-50/50 rounded-2xl p-4 sm:p-6 md:p-8 border border-blue-100/50 mx-auto max-w-[95%] sm:max-w-full">
+              <div className="space-y-6 text-slate-700">
                 <p className="text-[13.5px] sm:text-base leading-relaxed">
                   GND Consulting intègre dans ses processus créatifs et opérationnels des outils d'<strong className="text-slate-900">intelligence artificielle (IA)</strong>
                   pour optimiser certaines prestations (automatisation, génération de visuels, traitement de données, analyse, amélioration de contenus, etc.).
@@ -514,7 +514,7 @@ export function MentionsLegales() {
                 <div className="space-y-3 bg-white/80 rounded-2xl p-4 sm:p-6">
                   <h3 className="font-semibold text-slate-900 text-[15px] sm:text-lg mt-4">8.1 Engagement éthique et responsable</h3>
                   <p className="text-[13.5px] sm:text-base leading-relaxed">Nous nous engageons à :</p>
-                  <ul className="list-disc pl-5 space-y-1 text-[13.5px] sm:text-base leading-snug text-gray-800">
+                  <ul className="list-disc pl-5 space-y-1 text-[13.5px] sm:text-base leading-snug text-slate-800">
                     <li>Utiliser l'IA de manière éthique, transparente et sécurisée</li>
                     <li>Respecter la confidentialité et la vie privée de nos clients</li>
                     <li>Garantir un usage conforme au <strong className="text-slate-900">RGPD</strong> et à l'<strong className="text-slate-900">AI Act européen</strong> (Règlement UE 2024/1689 entré en vigueur en août 2024)</li>
@@ -539,11 +539,11 @@ export function MentionsLegales() {
                 </div>
               </div>
             </div>
-            <div className="mt-8 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
+            <div className="mt-8 h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent"></div>
           </section>
 
           {/* 9. Limitation de responsabilité */}
-          <section id="section-9" className="scroll-mt-40 animate-fade-in border-t border-gray-200 pt-6 mt-8">
+          <section id="section-9" className="scroll-mt-40 animate-fade-in border-t border-slate-200 pt-6 mt-8">
             <div className="flex flex-col items-start gap-2 mb-4 sm:mb-6 px-0 sm:px-4">
               <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-xl flex-shrink-0 mb-2 mx-auto sm:mx-0">
                 <Scale className="w-5 h-5 text-primary" />
@@ -553,7 +553,7 @@ export function MentionsLegales() {
                 <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 tracking-tight leading-tight mt-1">LIMITATION DE RESPONSABILITÉ</h2>
               </div>
             </div>
-            <div className="space-y-4 text-gray-700 px-4 sm:px-4 md:pl-16 max-w-[95%] sm:max-w-full mx-auto md:max-w-none">
+            <div className="space-y-4 text-slate-700 px-4 sm:px-4 md:pl-16 max-w-[95%] sm:max-w-full mx-auto md:max-w-none">
               <p className="text-[13.5px] sm:text-base leading-relaxed">
                 GND Consulting s'efforce d'assurer l'exactitude et la mise à jour des informations diffusées sur ce site.
                 Toutefois, <strong className="text-slate-900">GND Consulting ne saurait être tenu responsable</strong> :
@@ -585,11 +585,11 @@ export function MentionsLegales() {
                 GND Consulting se réserve le droit de modifier ou corriger le contenu du site à tout moment sans préavis.
               </p>
             </div>
-            <div className="mt-8 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
+            <div className="mt-8 h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent"></div>
           </section>
 
           {/* 10. Droit applicable et litiges */}
-          <section id="section-10" className="scroll-mt-40 animate-fade-in border-t border-gray-200 pt-6 mt-8">
+          <section id="section-10" className="scroll-mt-40 animate-fade-in border-t border-slate-200 pt-6 mt-8">
             <div className="flex flex-col items-start gap-2 mb-4 sm:mb-6 px-0 sm:px-4">
               <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-xl flex-shrink-0 mb-2 mx-auto sm:mx-0">
                 <Gavel className="w-5 h-5 text-primary" />
@@ -599,7 +599,7 @@ export function MentionsLegales() {
                 <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 tracking-tight leading-tight mt-1">DROIT APPLICABLE ET RÈGLEMENT DES LITIGES</h2>
               </div>
             </div>
-            <div className="space-y-6 text-gray-700 px-4 sm:px-4 md:pl-16 max-w-[95%] sm:max-w-full mx-auto md:max-w-none">
+            <div className="space-y-6 text-slate-700 px-4 sm:px-4 md:pl-16 max-w-[95%] sm:max-w-full mx-auto md:max-w-none">
               <p className="text-[13.5px] sm:text-base leading-relaxed">
                 Les présentes mentions légales sont régies par le <strong className="text-slate-900">droit français</strong>.
                 En cas de litige, les <strong className="text-slate-900">tribunaux français</strong> seront seuls compétents.
@@ -614,18 +614,18 @@ export function MentionsLegales() {
                 <p className="text-[13.5px] sm:text-base leading-relaxed">
                   <strong className="text-slate-900">Aucun médiateur spécifique n'est actuellement désigné.</strong> Toutefois, vous pouvez soumettre votre litige à la plateforme de règlement en ligne des litiges de l'Union Européenne :
                 </p>
-                <p className="mt-3 p-4 rounded-lg border border-gray-300 bg-gray-50">
+                <p className="mt-3 p-4 rounded-lg border border-slate-300 bg-slate-50">
                   <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer" className="text-[13px] sm:text-base text-blue-500 hover:underline font-medium break-all">
                     https://ec.europa.eu/consumers/odr
                   </a>
                 </p>
               </div>
             </div>
-            <div className="mt-8 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
+            <div className="mt-8 h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent"></div>
           </section>
 
           {/* 11. Évolution des mentions légales */}
-          <section id="section-11" className="scroll-mt-40 animate-fade-in border-t border-gray-200 pt-6 mt-8">
+          <section id="section-11" className="scroll-mt-40 animate-fade-in border-t border-slate-200 pt-6 mt-8">
             <div className="flex flex-col items-start gap-2 mb-4 sm:mb-6 px-0 sm:px-4">
               <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-xl flex-shrink-0 mb-2 mx-auto sm:mx-0">
                 <FileText className="w-5 h-5 text-primary" />
@@ -635,7 +635,7 @@ export function MentionsLegales() {
                 <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 tracking-tight leading-tight mt-1">ÉVOLUTION DES MENTIONS LÉGALES</h2>
               </div>
             </div>
-            <div className="space-y-3 text-gray-700 px-4 sm:px-4 md:pl-16 max-w-[95%] sm:max-w-full mx-auto md:max-w-none">
+            <div className="space-y-3 text-slate-700 px-4 sm:px-4 md:pl-16 max-w-[95%] sm:max-w-full mx-auto md:max-w-none">
               <p className="text-[14px] sm:text-base leading-snug sm:leading-relaxed">
                 GND Consulting se réserve le droit de modifier les présentes mentions légales à tout moment, notamment pour les adapter
                 aux évolutions législatives, réglementaires, jurisprudentielles et techniques.
@@ -644,11 +644,11 @@ export function MentionsLegales() {
                 Il est recommandé de consulter régulièrement cette page pour prendre connaissance des éventuelles modifications.
               </p>
             </div>
-            <div className="mt-8 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
+            <div className="mt-8 h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent"></div>
           </section>
 
           {/* 12. Crédits */}
-          <section id="section-12" className="scroll-mt-40 animate-fade-in border-t border-gray-200 pt-6 mt-8">
+          <section id="section-12" className="scroll-mt-40 animate-fade-in border-t border-slate-200 pt-6 mt-8">
             <div className="flex flex-col items-start gap-2 mb-4 sm:mb-6 px-0 sm:px-4">
               <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-xl flex-shrink-0 mb-2 mx-auto sm:mx-0">
                 <Building2 className="w-5 h-5 text-primary" />
@@ -658,7 +658,7 @@ export function MentionsLegales() {
                 <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 tracking-tight leading-tight mt-1">CRÉDITS</h2>
               </div>
             </div>
-            <div className="space-y-2 text-gray-700 text-[14px] sm:text-base leading-relaxed px-4 sm:px-4 md:pl-16 max-w-[95%] sm:max-w-full mx-auto md:max-w-none">
+            <div className="space-y-2 text-slate-700 text-[14px] sm:text-base leading-relaxed px-4 sm:px-4 md:pl-16 max-w-[95%] sm:max-w-full mx-auto md:max-w-none">
               <p><strong className="text-slate-900">Conception et design :</strong> GND Consulting</p>
               <p><strong className="text-slate-900">Développement web :</strong> GND Consulting</p>
               <p><strong className="text-slate-900">Réalisation :</strong> Pierre Roodny</p>
@@ -667,8 +667,8 @@ export function MentionsLegales() {
           </section>
 
           {/* Note de mise à jour */}
-          <section className="pt-12 pb-6 border-t border-gray-200">
-            <p className="text-[13px] sm:text-sm text-gray-500 italic text-center px-4">
+          <section className="pt-12 pb-6 border-t border-slate-200">
+            <p className="text-[13px] sm:text-sm text-slate-500 italic text-center px-4">
               Dernière mise à jour : octobre 2025
             </p>
           </section>

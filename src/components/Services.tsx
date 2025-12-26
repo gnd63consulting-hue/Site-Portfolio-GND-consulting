@@ -82,7 +82,7 @@ export function Services() {
       emoji: "📱",
       title: "Stratégie digitale & identité de marque",
       subtitle: "Animation intelligente & IA créative",
-      color: "from-sky-500 to-indigo-500",
+      color: "from-blue-500 to-blue-500",
       services: [
         { name: "Motion graphics pro", price: "Sur devis" },
         { name: "Vidéos réseaux sociaux", price: "≥ Sur devis" },
@@ -97,7 +97,7 @@ export function Services() {
       emoji: "🎬",
       title: "Automatisation & IA créative",
       subtitle: "Excellence technique & créative",
-      color: "from-blue-500 to-sky-500",
+      color: "from-blue-500 to-blue-500",
       services: [
         { name: "Captation multi-caméras", price: "Sur devis" },
         { name: "Montage professionnel", price: "≥ Sur devis" },
@@ -112,7 +112,7 @@ export function Services() {
       emoji: "⚡",
       title: "Accompagnement stratégique & pilotage de projet",
       subtitle: "Workflows intelligents pour votre business",
-      color: "from-indigo-500 to-sky-500",
+      color: "from-blue-500 to-blue-500",
       services: [
         { name: "Agents IA personnalisés", price: "Sur devis" },
         { name: "Automatisation processus", price: "≥ Sur devis" },
@@ -192,7 +192,7 @@ export function Services() {
                       
                       <ul className="space-y-2">
                         {offer.features.map((feature, featureIdx) => (
-                          <li key={featureIdx} className="flex items-start gap-2 text-gray-600 text-sm">
+                          <li key={featureIdx} className="flex items-start gap-2 text-slate-600 text-sm">
                             <CheckCircle className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
                             <span>{feature}</span>
                           </li>
@@ -223,7 +223,7 @@ export function Services() {
         <h2 className="section-title" style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)' }}>
           Nos Services Créatifs
         </h2>
-        <p className="section-description text-gray-700" style={{ fontSize: 'clamp(0.95rem, 2.5vw, 1.125rem)' }}>
+        <p className="section-description text-slate-700" style={{ fontSize: 'clamp(0.95rem, 2.5vw, 1.125rem)' }}>
           Production audiovisuelle, design graphique, automatisation IA découvrez notre gamme complète de services sur mesure
         </p>
       </div>

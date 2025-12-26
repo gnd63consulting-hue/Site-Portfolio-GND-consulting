@@ -23,7 +23,7 @@ const About: React.FC<AboutProps> = ({ testimonials = [] }) => {
   };
 
   return (
-    <section id="qui-sommes-nous" className="py-16 sm:py-20 md:py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+    <section id="qui-sommes-nous" className="py-16 sm:py-20 md:py-24 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
       {/* Éléments décoratifs de fond */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(6)].map((_, i) => (
@@ -40,8 +40,8 @@ const About: React.FC<AboutProps> = ({ testimonials = [] }) => {
             }}
           />
         ))}
-        <div className="absolute top-10 right-10 w-32 h-32 bg-gradient-to-br from-blue-100/20 to-sky-100/20 rounded-full blur-xl" />
-        <div className="absolute bottom-20 left-10 w-24 h-24 bg-gradient-to-br from-sky-100/20 to-blue-100/20 rounded-full blur-lg" />
+        <div className="absolute top-10 right-10 w-32 h-32 bg-gradient-to-br from-blue-100/20 to-blue-100/20 rounded-full blur-xl" />
+        <div className="absolute bottom-20 left-10 w-24 h-24 bg-gradient-to-br from-blue-100/20 to-blue-100/20 rounded-full blur-lg" />
       </div>
       
       {/* Header Bento Grid dynamique moderne */}
@@ -53,7 +53,7 @@ const About: React.FC<AboutProps> = ({ testimonials = [] }) => {
         <div className="text-center mb-12">
           <button
             onClick={toggleHistorySection}
-            className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 via-sky-500 to-blue-600 text-white font-bold text-lg rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-[0_12px_35px_rgba(59,130,246,0.35)] focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-400/50"
+            className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 text-white font-bold text-lg rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-[0_12px_35px_rgba(59,130,246,0.35)] focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-400/50"
           >
             <span className="relative z-10">
               {isHistorySectionVisible ? 'Masquer notre histoire' : 'Découvrir notre histoire'}
@@ -101,7 +101,7 @@ const About: React.FC<AboutProps> = ({ testimonials = [] }) => {
                     Bénéfices Garantis
                   </h4>
                   <p
-                    className="mt-3 text-center text-sm text-gray-600 leading-relaxed sm:text-base"
+                    className="mt-3 text-center text-sm text-slate-600 leading-relaxed sm:text-base"
                     style={{ wordBreak: 'break-word' }}
                   >
                     Résultats concrets et mesurables pour votre entreprise
@@ -120,7 +120,7 @@ const About: React.FC<AboutProps> = ({ testimonials = [] }) => {
                     Excellence Créative
                   </h4>
                   <p
-                    className="mt-3 text-center text-sm text-gray-600 leading-relaxed sm:text-base"
+                    className="mt-3 text-center text-sm text-slate-600 leading-relaxed sm:text-base"
                     style={{ wordBreak: 'break-word' }}
                   >
                     Des créations uniques qui marquent les esprits
@@ -139,7 +139,7 @@ const About: React.FC<AboutProps> = ({ testimonials = [] }) => {
                     Respect des Délais
                   </h4>
                   <p
-                    className="mt-3 text-center text-sm text-gray-600 leading-relaxed sm:text-base"
+                    className="mt-3 text-center text-sm text-slate-600 leading-relaxed sm:text-base"
                     style={{ wordBreak: 'break-word' }}
                   >
                     Livraison dans les temps, qualité préservée
@@ -162,7 +162,7 @@ const About: React.FC<AboutProps> = ({ testimonials = [] }) => {
             <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-4 sm:mb-6">
               Ce Que Disent Nos Clients
             </h3>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
               Des témoignages authentiques qui reflètent notre engagement envers l'excellence
             </p>
           </div>
@@ -171,7 +171,7 @@ const About: React.FC<AboutProps> = ({ testimonials = [] }) => {
             {testimonials.slice(0, 3).map((testimonial, index) => (
               <div
                 key={index}
-                className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
+                className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-100"
               >
                 <div className="flex items-center mb-4 sm:mb-6">
                   <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
@@ -181,10 +181,10 @@ const About: React.FC<AboutProps> = ({ testimonials = [] }) => {
                   </div>
                   <div className="ml-4">
                     <h4 className="font-bold text-slate-900">{testimonial.nom_client || 'Client'}</h4>
-                    <p className="text-gray-600 text-sm">{testimonial.poste_client || 'Directeur'}</p>
+                    <p className="text-slate-600 text-sm">{testimonial.poste_client || 'Directeur'}</p>
                   </div>
                 </div>
-                <p className="text-gray-700 leading-relaxed italic">
+                <p className="text-slate-700 leading-relaxed italic">
                   "{testimonial.contenu_temoignage || 'Excellent travail, très professionnel.'}"
                 </p>
                 <div className="flex items-center mt-4">

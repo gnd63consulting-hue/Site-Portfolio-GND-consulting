@@ -19,8 +19,8 @@ export function ValuesSection() {
       title: 'Fiabilité',
       description: 'Engagement total envers la qualité et les délais',
       accent: {
-        badge: 'from-blue-600 to-indigo-500',
-        aura: 'from-blue-400/25 via-indigo-300/15 to-transparent',
+        badge: 'from-blue-600 to-blue-500',
+        aura: 'from-blue-400/25 via-blue-300/15 to-transparent',
         text: 'text-slate-900'
       }
     },
@@ -41,9 +41,9 @@ export function ValuesSection() {
       title: 'Collaboration',
       description: 'Partenaire de confiance dans votre réussite',
       accent: {
-        badge: 'from-sky-500 to-blue-400',
-        aura: 'from-sky-300/25 via-blue-200/10 to-transparent',
-        text: 'text-sky-500'
+        badge: 'from-blue-500 to-blue-400',
+        aura: 'from-blue-300/25 via-blue-200/10 to-transparent',
+        text: 'text-blue-500'
       }
     },
     {
@@ -52,9 +52,9 @@ export function ValuesSection() {
       title: 'Innovation IA',
       description: "Intégration de l'IA et de l'automatisation quand c'est un vrai plus",
       accent: {
-        badge: 'from-sky-500 to-sky-500',
-        aura: 'from-sky-300/25 via-blue-200/10 to-transparent',
-        text: 'text-sky-500'
+        badge: 'from-blue-500 to-blue-500',
+        aura: 'from-blue-300/25 via-blue-200/10 to-transparent',
+        text: 'text-blue-500'
       }
     }
   ];
@@ -62,8 +62,8 @@ export function ValuesSection() {
   return (
     <section id="values-section" className="relative overflow-hidden py-24 px-6">
       <div className="absolute inset-0 bg-gradient-to-b from-white via-blue-50/20 to-white" />
-      <div className="absolute -top-32 -right-16 h-64 w-64 rounded-full bg-gradient-to-br from-sky-100 via-white to-blue-100 opacity-70 blur-3xl" />
-      <div className="absolute -bottom-28 -left-20 h-72 w-72 rounded-full bg-gradient-to-br from-indigo-200 via-white to-blue-100 opacity-60 blur-3xl" />
+      <div className="absolute -top-32 -right-16 h-64 w-64 rounded-full bg-gradient-to-br from-blue-100 via-white to-blue-100 opacity-70 blur-3xl" />
+      <div className="absolute -bottom-28 -left-20 h-72 w-72 rounded-full bg-gradient-to-br from-blue-200 via-white to-blue-100 opacity-60 blur-3xl" />
 
       <div className="relative mx-auto flex max-w-6xl flex-col items-center gap-16">
         <div className="flex flex-col items-center text-center gap-6">

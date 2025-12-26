@@ -77,7 +77,7 @@ export function Header() {
 
           {/* Navigation Desktop - Style exact de l'image */}
           <nav className="hidden lg:flex items-center justify-center flex-1">
-            <div style={{ backgroundColor: '#bbcde8' }} className="backdrop-blur-sm rounded-2xl p-1 inline-flex gap-1 border border-gray-200/50">
+            <div style={{ backgroundColor: '#bbcde8' }} className="backdrop-blur-sm rounded-2xl p-1 inline-flex gap-1 border border-slate-200/50">
               {navItems.map((item, index) => {
                 const IconComponent = item.icon;
                 return (
@@ -90,8 +90,8 @@ export function Header() {
                       <button
                         className={`flex items-center gap-2 px-4 py-2.5 rounded-xl font-medium text-sm transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400/60 ${
                           index === 0 
-                            ? 'bg-gradient-to-r from-blue-600 via-sky-500 to-blue-600 text-white shadow-[0_12px_35px_rgba(59,130,246,0.35)]' 
-                            : 'text-gray-600 hover:text-slate-900 hover:bg-gray-100/50 uppercase tracking-wide'
+                            ? 'bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 text-white shadow-[0_12px_35px_rgba(59,130,246,0.35)]' 
+                            : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/50 uppercase tracking-wide'
                         }`}
                         style={{ fontFamily: 'Space Grotesk, sans-serif', fontWeight: '700' }}
                       >
@@ -140,8 +140,8 @@ export function Header() {
                         }}
                         className={`flex items-center gap-2 px-4 py-2.5 rounded-xl font-medium text-sm transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400/60 ${
                           index === 0
-                            ? 'bg-gradient-to-r from-blue-600 via-sky-500 to-blue-600 text-white shadow-[0_12px_35px_rgba(59,130,246,0.35)]'
-                            : 'text-gray-600 hover:text-slate-900 hover:bg-gray-100/50 uppercase tracking-wide'
+                            ? 'bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 text-white shadow-[0_12px_35px_rgba(59,130,246,0.35)]'
+                            : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/50 uppercase tracking-wide'
                         }`}
                         style={{ fontFamily: 'Space Grotesk, sans-serif', fontWeight: '700' }}
                       >
@@ -152,12 +152,12 @@ export function Header() {
                     
                     {/* Dropdown Menu */}
                     {item.hasDropdown && activeDropdown === item.label && (
-                      <div className="absolute top-full left-0 mt-2 w-64 bg-white/95 backdrop-blur-sm rounded-2xl border border-gray-200/50 shadow-xl py-2 z-50">
+                      <div className="absolute top-full left-0 mt-2 w-64 bg-white/95 backdrop-blur-sm rounded-2xl border border-slate-200/50 shadow-xl py-2 z-50">
                         {item.dropdownItems?.map((dropdownItem, dropdownIndex) => (
                           <a
                             key={dropdownItem.href}
                             href={dropdownItem.href}
-                            className="flex items-center gap-3 px-4 py-3 text-gray-600 hover:text-slate-900 hover:bg-gray-100/50 transition-all duration-300 text-sm font-medium"
+                            className="flex items-center gap-3 px-4 py-3 text-slate-600 hover:text-slate-900 hover:bg-slate-100/50 transition-all duration-300 text-sm font-medium"
                             style={{ fontFamily: 'Space Grotesk, sans-serif', fontWeight: '700' }}
                             onClick={closeDropdown}
                           >
@@ -199,7 +199,7 @@ export function Header() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden bg-white/95 border-t border-gray-200/50 animate-slide-up shadow-lg relative z-10">
+          <div className="lg:hidden bg-white/95 border-t border-slate-200/50 animate-slide-up shadow-lg relative z-10">
             <nav className="flex flex-col p-6 gap-4">
               {navItems.map((item, index) => {
                 const IconComponent = item.icon;
@@ -207,7 +207,7 @@ export function Header() {
                 if (item.hasDropdown) {
                   return (
                     <div key={item.href}>
-                      <div className="flex items-center gap-3 text-gray-600 hover:text-slate-900 transition-colors duration-300 font-medium py-2">
+                      <div className="flex items-center gap-3 text-slate-600 hover:text-slate-900 transition-colors duration-300 font-medium py-2">
                         <IconComponent className="w-4 h-4" strokeWidth={1.5} />
                         {item.label}
                       </div>
@@ -217,7 +217,7 @@ export function Header() {
                             key={dropdownItem.href}
                             href={dropdownItem.href}
                             onClick={() => setIsMobileMenuOpen(false)}
-                            className="flex items-center gap-2 text-gray-500 hover:text-gray-700 transition-colors duration-300 font-medium py-1 text-sm"
+                            className="flex items-center gap-2 text-slate-500 hover:text-slate-700 transition-colors duration-300 font-medium py-1 text-sm"
                             style={{ fontFamily: 'Inter, sans-serif', fontWeight: '500' }}
                           >
                             <span>{dropdownItem.icon}</span>
@@ -279,7 +279,7 @@ export function Header() {
                           setIsMobileMenuOpen(false);
                         }
                     }}
-                    className="flex items-center gap-3 text-gray-600 hover:text-slate-900 transition-colors duration-300 font-medium py-2"
+                    className="flex items-center gap-3 text-slate-600 hover:text-slate-900 transition-colors duration-300 font-medium py-2"
                     style={{ fontFamily: 'Space Grotesk, sans-serif', fontWeight: '700' }}
                   >
                     <IconComponent className="w-4 h-4" strokeWidth={1.5} />

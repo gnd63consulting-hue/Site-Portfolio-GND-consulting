@@ -80,7 +80,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ currentMedia, currentIndex })
         <div className="relative z-10 h-full w-full overflow-hidden rounded-[24px] border border-white/15 bg-slate-950 shadow-[0_45px_140px_rgba(15,23,42,0.35)]">
           {typeof currentIndex === 'number' && currentIndex < 0 && (
             <span className="pointer-events-none absolute left-5 top-5 z-20 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/15 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.35em] text-white shadow-[0_12px_35px_rgba(8,47,73,0.45)] backdrop-blur-md">
-              <span className="h-2 w-2 rounded-full bg-gradient-to-br from-sky-400 to-blue-500" />
+              <span className="h-2 w-2 rounded-full bg-gradient-to-br from-blue-400 to-blue-500" />
               Vidéo {String(currentIndex + 1).padStart(2, '0')}
             </span>
           )}
@@ -115,17 +115,17 @@ const highlightMeta: Record<string, { label: string; gradient: string; accent: s
   '🎬': {
     label: 'Réalisation',
     gradient: 'from-white/95 via-white to-white',
-    accent: 'from-indigo-500 to-sky-400'
+    accent: 'from-blue-500 to-blue-400'
   },
   '📹': {
     label: 'Production',
     gradient: 'from-white/95 via-white to-white',
-    accent: 'from-sky-500 to-indigo-400'
+    accent: 'from-blue-500 to-blue-400'
   },
   '🤝': {
     label: 'Collaboration',
     gradient: 'from-white/95 via-white to-white',
-    accent: 'from-sky-500 to-cyan-400'
+    accent: 'from-blue-500 to-blue-400'
   },
   '📸': {
     label: 'Photographie',
@@ -135,12 +135,12 @@ const highlightMeta: Record<string, { label: string; gradient: string; accent: s
   '⚡': {
     label: 'Point fort',
     gradient: 'from-white/95 via-white to-white',
-    accent: 'from-sky-500 to-blue-400'
+    accent: 'from-blue-500 to-blue-400'
   },
   '🎥': {
     label: 'Direction',
     gradient: 'from-white/95 via-white to-white',
-    accent: 'from-blue-500 to-indigo-400'
+    accent: 'from-blue-500 to-blue-400'
   }
 };
 
@@ -195,7 +195,7 @@ const CreditsCard: React.FC<CreditsCardProps> = ({ currentMedia }) => {
     <div className="mt-6 overflow-hidden rounded-[30px] border border-white/60 bg-white p-6 shadow-[0_28px_80px_rgba(15,23,42,0.12)] backdrop-blur">
       <div className="relative flex flex-col gap-5">
         <div className="flex items-center gap-3">
-          <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 via-indigo-500 to-sky-400 text-lg font-semibold text-white shadow-[0_20px_45px_rgba(37,99,235,0.35)]">
+          <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 via-blue-500 to-blue-400 text-lg font-semibold text-white shadow-[0_20px_45px_rgba(37,99,235,0.35)]">
             ✨
           </span>
           <div className="flex flex-col">
@@ -209,12 +209,12 @@ const CreditsCard: React.FC<CreditsCardProps> = ({ currentMedia }) => {
         </div>
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div className="inline-flex items-center gap-3 rounded-[20px] border border-white/60 bg-white/90 px-5 py-3 text-base font-semibold text-slate-700 shadow-[0_14px_35px_rgba(15,23,42,0.12)]">
-            <span className="inline-flex h-2.5 w-2.5 rounded-full bg-gradient-to-br from-indigo-500 to-sky-400" />
+            <span className="inline-flex h-2.5 w-2.5 rounded-full bg-gradient-to-br from-blue-500 to-blue-400" />
             {signatureLabel}
           </div>
           <div className="flex flex-wrap items-center gap-3">
-            <span className="inline-flex items-center gap-2 rounded-full border border-indigo-200/80 bg-indigo-500/10 px-4 py-2 text-sm font-semibold text-indigo-600 shadow-[0_12px_28px_rgba(79,70,229,0.22)]">
-              <span className="h-2 w-2 rounded-full bg-gradient-to-br from-indigo-500 to-sky-400" />
+            <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/80 bg-blue-500/10 px-4 py-2 text-sm font-semibold text-blue-600 shadow-[0_12px_28px_rgba(79,70,229,0.22)]">
+              <span className="h-2 w-2 rounded-full bg-gradient-to-br from-blue-500 to-blue-400" />
               GND Consulting
             </span>
             {currentMedia.tag && (
@@ -1744,7 +1744,7 @@ export function Portfolio() {
       <section className="py-[10rem] px-[5%] max-w-[1400px] mx-auto relative">
         <div className="text-center">
           <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
-          <p className="text-gray-600 mt-4">Chargement du portfolio...</p>
+          <p className="text-slate-600 mt-4">Chargement du portfolio...</p>
         </div>
       </section>
     );
@@ -1755,27 +1755,27 @@ export function Portfolio() {
     <section id="realisations" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 lg:px-8 w-full relative overflow-hidden" role="region" aria-label="Portfolio vidéos et photos" style={{ background: 'linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f0f9ff 100%)' }}>
       {/* Éléments décoratifs */}
       <div className="absolute top-8 -left-12 h-40 w-40 sm:top-20 sm:-left-20 sm:h-80 sm:w-80 bg-gradient-to-br from-rose-200/40 to-pink-300/40 rounded-full blur-2xl sm:blur-3xl" aria-hidden="true"></div>
-      <div className="absolute bottom-8 -right-12 h-48 w-48 sm:bottom-20 sm:-right-20 sm:h-96 sm:w-96 bg-gradient-to-br from-blue-200/40 to-sky-300/40 rounded-full blur-2xl sm:blur-3xl" aria-hidden="true"></div>
-      <div className="absolute top-1/2 left-1/4 h-48 w-48 sm:left-1/3 sm:h-64 sm:w-64 bg-gradient-to-br from-sky-200/30 to-indigo-300/30 rounded-full blur-xl sm:blur-2xl" aria-hidden="true"></div>
+      <div className="absolute bottom-8 -right-12 h-48 w-48 sm:bottom-20 sm:-right-20 sm:h-96 sm:w-96 bg-gradient-to-br from-blue-200/40 to-blue-300/40 rounded-full blur-2xl sm:blur-3xl" aria-hidden="true"></div>
+      <div className="absolute top-1/2 left-1/4 h-48 w-48 sm:left-1/3 sm:h-64 sm:w-64 bg-gradient-to-br from-blue-200/30 to-blue-300/30 rounded-full blur-xl sm:blur-2xl" aria-hidden="true"></div>
 
       <div className="text-center mb-12 sm:mb-16 md:mb-20 relative z-10 max-w-7xl mx-auto">
         <div className="mb-6 flex items-center justify-center">
           <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/70 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.4em] text-slate-900 shadow-[0_12px_28px_rgba(37,99,235,0.18)]">
-            <span className="h-2 w-2 rounded-full bg-gradient-to-br from-blue-500 to-sky-400" />
+            <span className="h-2 w-2 rounded-full bg-gradient-to-br from-blue-500 to-blue-400" />
             Portfolio Signature
           </span>
         </div>
         <h2 className="section-title" style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)' }}>
           Nos Réalisations Audiovisuelles
         </h2>
-        <p className="section-description text-gray-700" style={{ fontSize: 'clamp(0.95rem, 2.5vw, 1.125rem)' }}>
+        <p className="section-description text-slate-700" style={{ fontSize: 'clamp(0.95rem, 2.5vw, 1.125rem)' }}>
           Vidéos corporate, captations live, motion design : découvrez nos projets audiovisuels qui allient créativité et expertise technique
         </p>
       </div>
 
       {/* Menu segmenté (pills) */}
       <div id="portfolio-tabs" className="flex justify-center mb-8 sm:mb-12 relative z-40 max-w-7xl mx-auto pointer-events-auto px-2 sm:px-0">
-        <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-1.5 sm:p-2 inline-flex flex-wrap items-center justify-center gap-1 sm:gap-2 shadow-lg border border-gray-200/50 max-w-[280px] sm:max-w-none" role="tablist">
+        <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-1.5 sm:p-2 inline-flex flex-wrap items-center justify-center gap-1 sm:gap-2 shadow-lg border border-slate-200/50 max-w-[280px] sm:max-w-none" role="tablist">
           <button
             type="button"
             role="tab"
@@ -1790,7 +1790,7 @@ export function Portfolio() {
               'flex items-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold transition-all duration-300 pointer-events-auto text-xs sm:text-base min-w-[120px] justify-center',
               activeTab === 'video'
                 ? 'bg-primary text-white shadow-lg'
-                : 'text-gray-600 hover:text-slate-900 hover:bg-white/60'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
             )}
           >
             <Video className="w-3 h-3 sm:w-4 sm:h-4" />
@@ -1810,7 +1810,7 @@ export function Portfolio() {
               'flex items-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold transition-all duration-300 pointer-events-auto text-xs sm:text-base min-w-[120px] justify-center',
               activeTab === 'photo'
                 ? 'bg-primary text-white shadow-lg'
-                : 'text-gray-600 hover:text-slate-900 hover:bg-white/60'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
             )}
           >
             <Camera className="w-3 h-3 sm:w-4 sm:h-4" />
@@ -1829,8 +1829,8 @@ export function Portfolio() {
             className="relative py-10 sm:py-16 lg:py-20 px-3 sm:px-6 lg:px-8 overflow-visible animate-fade-in"
           >
             <div className="absolute inset-0" aria-hidden="true">
-              <div className="absolute -top-40 -left-32 h-80 w-80 rounded-full bg-gradient-to-br from-sky-200/35 via-white to-transparent blur-3xl" />
-              <div className="absolute -bottom-44 -right-28 h-96 w-96 rounded-full bg-gradient-to-br from-indigo-200/35 via-white to-transparent blur-3xl" />
+              <div className="absolute -top-40 -left-32 h-80 w-80 rounded-full bg-gradient-to-br from-blue-200/35 via-white to-transparent blur-3xl" />
+              <div className="absolute -bottom-44 -right-28 h-96 w-96 rounded-full bg-gradient-to-br from-blue-200/35 via-white to-transparent blur-3xl" />
           <div className="absolute inset-0 bg-gradient-to-br from-white/98 via-white/95 to-white/90" />
               <div className="absolute inset-x-4 bottom-10 h-[320px] rounded-[55px] bg-white/35 blur-3xl" />
             </div>
@@ -1920,7 +1920,7 @@ export function Portfolio() {
                   <div className="pointer-events-none absolute inset-0 rounded-[32px] bg-gradient-to-br from-white/0 via-white/40 to-white/0 opacity-0 transition-opacity duration-500 hover:opacity-100" />
                   <div className="relative flex flex-col gap-5 text-center sm:text-left items-center sm:items-start">
                     <div className="flex items-center justify-center sm:justify-start gap-2 text-[0.6rem] sm:text-xs font-medium uppercase tracking-[0.3em] sm:tracking-[0.35em] text-slate-400">
-                      <span className="inline-flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-sky-400 text-sm sm:text-base text-white shadow-lg shadow-[rgba(15,23,42,0.18)]">🎬</span>
+                      <span className="inline-flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-400 text-sm sm:text-base text-white shadow-lg shadow-[rgba(15,23,42,0.18)]">🎬</span>
                       <span>Focus projet</span>
                     </div>
 
@@ -1949,10 +1949,10 @@ export function Portfolio() {
                         <button
                           type="button"
                           onClick={() => setIsDescriptionExpanded((prev) => !prev)}
-                          className="group inline-flex items-center gap-2 rounded-full border border-indigo-200/70 bg-white px-4 py-2 text-[0.7rem] sm:text-xs font-semibold uppercase tracking-[0.25em] sm:tracking-[0.35em] text-indigo-600 shadow-[0_12px_32px_rgba(79,70,229,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-[0_18px_36px_rgba(79,70,229,0.18)] self-center sm:self-start"
+                          className="group inline-flex items-center gap-2 rounded-full border border-blue-200/70 bg-white px-4 py-2 text-[0.7rem] sm:text-xs font-semibold uppercase tracking-[0.25em] sm:tracking-[0.35em] text-blue-600 shadow-[0_12px_32px_rgba(79,70,229,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:border-blue-300 hover:shadow-[0_18px_36px_rgba(79,70,229,0.18)] self-center sm:self-start"
                         >
                           {isDescriptionExpanded ? 'Réduire' : 'Lire la suite'}
-                          <span className="text-indigo-400 transition-transform duration-300 group-hover:translate-x-1">
+                          <span className="text-blue-400 transition-transform duration-300 group-hover:translate-x-1">
                             {isDescriptionExpanded ? '−' : '→'}
                           </span>
                         </button>
@@ -1965,7 +1965,7 @@ export function Portfolio() {
               <div className="relative flex flex-col gap-6">
                 <div className="flex flex-col items-center justify-center gap-3 text-slate-500 sm:flex-row sm:items-center sm:justify-between">
                   <p className="inline-flex items-center gap-2 text-sm uppercase tracking-[0.45em] text-center sm:text-left">
-                    <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-br from-blue-500 to-sky-400" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-br from-blue-500 to-blue-400" />
                     Sélection rapide
                   </p>
                   <div className="hidden sm:block h-[1px] flex-1 ml-6 bg-gradient-to-r from-slate-200 via-slate-300/70 to-transparent" />
@@ -2060,7 +2060,7 @@ export function Portfolio() {
                               </div>
                               <div className="relative mt-3 space-y-1 px-2 pb-3 text-center sm:text-left">
                                 <span className="inline-flex items-center gap-1 rounded-full border border-slate-200/70 bg-white/90 px-2 py-1 text-[0.6rem] sm:text-[10px] font-semibold uppercase tracking-[0.25em] sm:tracking-[0.3em] text-slate-500">
-                                  <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-br from-blue-500 to-sky-400" />
+                                  <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-br from-blue-500 to-blue-400" />
                                   {badgeLabel}
                                 </span>
                                 <p
@@ -2210,7 +2210,7 @@ export function Portfolio() {
                 <h2 className="font-black text-slate-900 mb-3 sm:mb-4 tracking-tight uppercase" id="portfolio-photo" style={{ fontSize: 'clamp(2rem, 6vw, 3.75rem)', wordBreak: 'break-word' }}>
                   Photographie Professionnelle
                 </h2>
-                <p className="text-gray-700 max-w-2xl mx-auto leading-relaxed px-4" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1.125rem)' }}>
+                <p className="text-slate-700 max-w-2xl mx-auto leading-relaxed px-4" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1.125rem)' }}>
                   Portraits corporate, créations artistiques et reportages : nos shootings photos capturent l'essence de votre identité visuelle
                 </p>
               </div>
@@ -2223,7 +2223,7 @@ export function Portfolio() {
                     className={`px-4 sm:px-6 py-2 sm:py-2.5 rounded-full font-bold uppercase tracking-wider transition-all duration-300 whitespace-nowrap ${
                       photoFilter === category
                         ? 'bg-blue-400 text-slate-900 shadow-md scale-105'
-                        : 'bg-white text-gray-700 hover:bg-gray-50 shadow-sm'
+                        : 'bg-white text-slate-700 hover:bg-slate-50 shadow-sm'
                     }`}
                     style={{ fontSize: 'clamp(0.65rem, 1.8vw, 0.75rem)' }}
                   >
@@ -2386,13 +2386,13 @@ export function Portfolio() {
                           {selectedCaption.split('\n\n').map((paragraph, index) => {
                             if (paragraph.startsWith('📸')) {
                               return (
-                                <p key={index} className="text-gray-700 text-base italic text-center mt-8 pt-4 border-t border-gray-300/30">
+                                <p key={index} className="text-slate-700 text-base italic text-center mt-8 pt-4 border-t border-slate-300/30">
                                   {paragraph}
                                 </p>
                               );
                             } else {
                               return (
-                                <p key={index} className="text-gray-800 text-lg leading-relaxed text-center">
+                                <p key={index} className="text-slate-800 text-lg leading-relaxed text-center">
                                   {paragraph}
                                 </p>
                               );

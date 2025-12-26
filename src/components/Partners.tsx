@@ -253,6 +253,7 @@ export function Partners() {
                                 src={item.image}
                                 alt={`Photo showcase - ${item.caption} - Projet NOCUEM par GND Consulting`}
                                 className="w-full h-full object-cover cursor-pointer"
+                                loading="lazy"
                               />
                             </div>
                           ))}
@@ -278,6 +279,7 @@ export function Partners() {
                               src={item.image}
                               alt={`Miniature showcase - ${item.caption} - Projet NOCUEM`}
                               className="w-full h-full object-cover"
+                              loading="lazy"
                             />
                             
                             {/* Overlay play button */}

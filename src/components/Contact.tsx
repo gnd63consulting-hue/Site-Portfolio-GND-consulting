@@ -545,14 +545,14 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
               <div className="rounded-2xl border border-emerald-300/40 bg-emerald-50/85 px-5 py-4 text-center shadow-lg" role="status" aria-live="polite">
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 mb-2">
                   <CheckCircle className="w-6 h-6 text-emerald-500" />
-                  <h3 className="text-emerald-700 font-semibold" style={{ fontSize: 'clamp(0.95rem, 3vw, 1.125rem)', wordBreak: 'break-word' }}>
+                  <h3 className="text-emerald-700 font-semibold text-[clamp(0.95rem,3vw,1.125rem)] break-words">
                     Demande envoyée avec succès !
                   </h3>
                 </div>
-                <p className="text-emerald-600" style={{ fontSize: 'clamp(0.8rem, 2.4vw, 1rem)', wordBreak: 'break-word' }}>
+                <p className="text-emerald-600 text-[clamp(0.8rem,2.4vw,1rem)] break-words">
                   🎉 Merci ! Votre demande a bien été enregistrée et envoyée.
                 </p>
-                <p className="text-emerald-500" style={{ fontSize: 'clamp(0.7rem, 2vw, 0.9rem)', wordBreak: 'break-word' }}>
+                <p className="text-emerald-500 text-[clamp(0.7rem,2vw,0.9rem)] break-words">
                   Nous revenons vers vous sous 2h maximum par email ou téléphone.
                 </p>
               </div>
@@ -562,14 +562,14 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
               <div className="rounded-2xl border border-rose-300/50 bg-rose-50/85 px-5 py-4 text-center shadow-lg" role="alert" aria-live="assertive">
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 mb-2">
                   <AlertCircle className="w-6 h-6 text-rose-500" />
-                  <h3 className="text-rose-600 font-semibold" style={{ fontSize: 'clamp(0.95rem, 3vw, 1.125rem)', wordBreak: 'break-word' }}>
+                  <h3 className="text-rose-600 font-semibold text-[clamp(0.95rem,3vw,1.125rem)] break-words">
                     Erreur lors de l'envoi
                   </h3>
                 </div>
-                <p className="text-rose-500" style={{ fontSize: 'clamp(0.8rem, 2.4vw, 1rem)', wordBreak: 'break-word' }}>
+                <p className="text-rose-500 text-[clamp(0.8rem,2.4vw,1rem)] break-words">
                   {errorMessage || "Une erreur est survenue lors de l'envoi de votre demande."}
                 </p>
-                <p className="text-rose-500/90" style={{ fontSize: 'clamp(0.7rem, 2vw, 0.9rem)', wordBreak: 'break-word' }}>
+                <p className="text-rose-500/90 text-[clamp(0.7rem,2vw,0.9rem)] break-words">
                   Veuillez réessayer ou nous contacter directement à gnd63consulting@gmail.com
                 </p>
               </div>

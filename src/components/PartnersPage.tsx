@@ -543,10 +543,10 @@ export function PartnersPage() {
         <section id="portfolio-section" className="py-12 sm:py-16 md:py-24 relative overflow-hidden">
           <div className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8">
             <div className="text-center mb-12 sm:mb-16 md:mb-20">
-              <h2 className="section-title text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-8" style={{ wordBreak: 'break-word' }}>
+              <h2 className="section-title text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-8 break-words">
                 Portfolio Créatif
               </h2>
-              <p className="section-description text-xl text-slate-700 max-w-4xl mx-auto" style={{ wordBreak: 'break-word' }}>
+              <p className="section-description text-xl text-slate-700 max-w-4xl mx-auto break-words">
                 Découvrez nos réalisations et celles de nos partenaires d'exception
               </p>
             </div>
@@ -630,7 +630,8 @@ export function PartnersPage() {
                     <img
                       src={filteredMedia[currentSlide]?.thumbnail}
                       alt={`${filteredMedia[currentSlide]?.title} - ${filteredMedia[currentSlide]?.description} - Portfolio partenaire GND Consulting`}
-                      className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
                       onClick={(e) => {
                         e.stopPropagation();
                         if (filteredMedia[currentSlide]) {
@@ -648,7 +649,7 @@ export function PartnersPage() {
                       ) : (
                         <Camera className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-primary" />
                       )}
-                      <span className="text-slate-900 font-bold text-xs sm:text-sm uppercase tracking-wide whitespace-nowrap" style={{ wordBreak: 'break-word' }}>
+                      <span className="text-slate-900 font-bold text-xs sm:text-sm uppercase tracking-wide whitespace-nowrap break-words">
                         {filteredMedia[currentSlide]?.tag || (filteredMedia[currentSlide]?.type === 'video' ? 'Vidéo GND' : 'Photo GND')}
                       </span>
                     </div>
@@ -701,10 +702,10 @@ export function PartnersPage() {
 
                 {/* Informations du média */}
                 <div className="mt-6 sm:mt-8 text-center px-2">
-                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-2 sm:mb-3" style={{ wordBreak: 'break-word' }}>
+                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-2 sm:mb-3 break-words">
                     {filteredMedia[currentSlide]?.title}
                   </h3>
-                  <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-3xl mx-auto" style={{ wordBreak: 'break-word' }}>
+                  <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-3xl mx-auto break-words">
                     {filteredMedia[currentSlide]?.description}
                   </p>
                 </div>

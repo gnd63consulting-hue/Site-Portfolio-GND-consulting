@@ -70,12 +70,7 @@ export function Hero() {
       <section
         ref={heroRef}
         id="hero"
-        className="relative overflow-hidden"
-        style={{
-          minHeight: '100vh',
-          paddingTop: 'clamp(4.5rem, 18vh, 12rem)',
-          paddingBottom: 'clamp(2rem, 10vh, 5rem)'
-        }}
+        className="relative overflow-hidden min-h-screen pt-[clamp(4.5rem,18vh,12rem)] pb-[clamp(2rem,10vh,5rem)]"
       >
         {/* Vidéo d'arrière-plan */}
         <div className="hero-video-container">
@@ -117,13 +112,13 @@ export function Hero() {
         {/* Texte d'introduction sur la vidéo */}
         <div className="absolute inset-0 z-20 flex items-center justify-center">
           <div className="text-left px-4 sm:px-6 max-w-5xl ml-2 sm:ml-4">
-            <h1 className="font-black text-white mb-4 sm:mb-6 leading-tight drop-shadow-2xl" style={{ fontSize: 'clamp(1.75rem, 7vw, 4.5rem)' }}>
+            <h1 className="font-black text-white mb-4 sm:mb-6 leading-tight drop-shadow-2xl text-[clamp(1.75rem,7vw,4.5rem)]">
               <span className="block font-bold tracking-wide leading-tight uppercase" role="heading" aria-level="1">Donnez vie à vos idées créatives</span>
             </h1>
-            <p className="text-white font-medium leading-relaxed drop-shadow-xl mb-6 sm:mb-8" style={{ fontSize: 'clamp(1rem, 4vw, 1.5rem)' }} role="text">
+            <p className="text-white font-medium leading-relaxed drop-shadow-xl mb-6 sm:mb-8 text-[clamp(1rem,4vw,1.5rem)]" role="text">
               Chez GND, chaque projet est une aventure créative pensée pour vous inspirer et marquer les esprits.
             </p>
-            <ButtonGND as="a" href="#realisations" className="rounded-full" style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1.125rem)', minWidth: '200px' }} onClick={() => trackEvent('cta_click', { location: 'hero' })} feedbackLabel="">
+            <ButtonGND as="a" href="#realisations" className="rounded-full text-[clamp(0.9rem,2.5vw,1.125rem)] min-w-[200px]" onClick={() => trackEvent('cta_click', { location: 'hero' })} feedbackLabel="">
               <span>Voir nos réalisations</span>
               <Play className="w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" />
             </ButtonGND>

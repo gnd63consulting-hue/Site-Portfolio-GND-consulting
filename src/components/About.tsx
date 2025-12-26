@@ -82,8 +82,7 @@ const About: React.FC<AboutProps> = ({ testimonials = [] }) => {
             <div className="absolute inset-0 bg-gradient-to-br from-white via-blue-50/35 to-white opacity-90 pointer-events-none" />
             <div className="relative px-6 py-10 sm:px-10 sm:py-12">
               <h3
-                className="text-center font-black text-slate-900"
-                style={{ fontSize: 'clamp(1.35rem, 3.6vw, 2rem)', wordBreak: 'break-word' }}
+                className="text-center font-black text-slate-900 text-[clamp(1.35rem,3.6vw,2rem)] break-words"
               >
                 Pourquoi Choisir GND Consulting ?
               </h3>
@@ -94,14 +93,12 @@ const About: React.FC<AboutProps> = ({ testimonials = [] }) => {
                     <CheckCircle className="h-6 w-6" />
                   </div>
                   <h4
-                    className="mt-5 text-center font-semibold text-slate-900 tracking-tight"
-                    style={{ fontSize: 'clamp(1rem, 2.5vw, 1.15rem)', wordBreak: 'break-word' }}
+                    className="mt-5 text-center font-semibold text-slate-900 tracking-tight text-[clamp(1rem,2.5vw,1.15rem)] break-words"
                   >
                     Bénéfices Garantis
                   </h4>
                   <p
-                    className="mt-3 text-center text-sm text-slate-600 leading-relaxed sm:text-base"
-                    style={{ wordBreak: 'break-word' }}
+                    className="mt-3 text-center text-sm text-slate-600 leading-relaxed sm:text-base break-words"
                   >
                     Résultats concrets et mesurables pour votre entreprise
                   </p>
@@ -113,14 +110,12 @@ const About: React.FC<AboutProps> = ({ testimonials = [] }) => {
                     <Star className="h-6 w-6" />
                   </div>
                   <h4
-                    className="mt-5 text-center font-semibold text-slate-900 tracking-tight"
-                    style={{ fontSize: 'clamp(1rem, 2.5vw, 1.15rem)', wordBreak: 'break-word' }}
+                    className="mt-5 text-center font-semibold text-slate-900 tracking-tight text-[clamp(1rem,2.5vw,1.15rem)] break-words"
                   >
                     Excellence Créative
                   </h4>
                   <p
-                    className="mt-3 text-center text-sm text-slate-600 leading-relaxed sm:text-base"
-                    style={{ wordBreak: 'break-word' }}
+                    className="mt-3 text-center text-sm text-slate-600 leading-relaxed sm:text-base break-words"
                   >
                     Des créations uniques qui marquent les esprits
                   </p>
@@ -132,14 +127,12 @@ const About: React.FC<AboutProps> = ({ testimonials = [] }) => {
                     <Clock className="h-6 w-6" />
                   </div>
                   <h4
-                    className="mt-5 text-center font-semibold text-slate-900 tracking-tight"
-                    style={{ fontSize: 'clamp(1rem, 2.5vw, 1.15rem)', wordBreak: 'break-word' }}
+                    className="mt-5 text-center font-semibold text-slate-900 tracking-tight text-[clamp(1rem,2.5vw,1.15rem)] break-words"
                   >
                     Respect des Délais
                   </h4>
                   <p
-                    className="mt-3 text-center text-sm text-slate-600 leading-relaxed sm:text-base"
-                    style={{ wordBreak: 'break-word' }}
+                    className="mt-3 text-center text-sm text-slate-600 leading-relaxed sm:text-base break-words"
                   >
                     Livraison dans les temps, qualité préservée
                   </p>

@@ -116,6 +116,8 @@ export function ServiceDesign() {
             src="/20250923_1821_Vibrant Design Collaboration_simple_compose_01k5vnxw54fz9v244n3dr8mgjr copy.png"
             alt="Studio créatif moderne - Design graphique et identité visuelle sur mesure"
             className="h-full w-full object-cover"
+            loading="eager"
+            fetchpriority="high"
           />
           <div className="absolute inset-0 bg-slate-900/45 lg:bg-slate-900/35" />
         </div>
@@ -240,6 +242,7 @@ export function ServiceDesign() {
                   src="/20250923_1821_Vibrant Design Collaboration_simple_compose_01k5vnxw55e4evcwhnpmf5f7eb.png"
                   alt="Équipe créative au travail"
                   className="h-[260px] w-full object-cover sm:h-[320px] lg:h-[460px]"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
               </div>

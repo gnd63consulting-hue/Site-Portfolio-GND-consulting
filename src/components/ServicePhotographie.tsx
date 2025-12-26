@@ -150,6 +150,8 @@ export function ServicePhotographie() {
             src="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250924_2210_Elegant%20Studio%20Photography_simple_compose_01k5ynf4s3ea582mksy2kf032p.png"
             alt="Studio photo contemporain avec éclairages professionnels"
             className="h-full w-full object-cover"
+            loading="eager"
+            fetchpriority="high"
           />
           <div className="absolute inset-0 bg-slate-900/55 lg:bg-slate-900/45" />
         </div>

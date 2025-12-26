@@ -171,7 +171,7 @@ export function Services() {
             return (
               <div className="relative z-10">
                 <div className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8">
-                  <h3 className="font-bold text-primary" style={{ fontSize: 'clamp(1.25rem, 4vw, 1.5rem)' }}>
+                  <h3 className="font-bold text-primary text-[clamp(1.25rem,4vw,1.5rem)]">
                     {getCategoryIcon(service.categorie)} {service.nom} - Nos Offres
                   </h3>
                   <button
@@ -220,10 +220,10 @@ export function Services() {
 
       {/* Titre de section */}
       <div className="text-center space-y-4 mb-8 sm:mb-12 relative z-10">
-        <h2 className="section-title" style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)' }}>
+        <h2 className="section-title text-[clamp(1.75rem,5vw,2.5rem)]">
           Nos Services Créatifs
         </h2>
-        <p className="section-description text-slate-700" style={{ fontSize: 'clamp(0.95rem, 2.5vw, 1.125rem)' }}>
+        <p className="section-description text-slate-700 text-[clamp(0.95rem,2.5vw,1.125rem)]">
           Production audiovisuelle, design graphique, automatisation IA découvrez notre gamme complète de services sur mesure
         </p>
       </div>

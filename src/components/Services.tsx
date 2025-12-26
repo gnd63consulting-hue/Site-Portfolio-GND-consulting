@@ -243,7 +243,7 @@ export function Services() {
               Services Signature
             </span>
             <div className="max-w-3xl space-y-3 px-2 sm:px-0">
-              <h3 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight text-slate-900">
+              <h3 className="text-xl md:text-2xl font-bold tracking-tight text-slate-900">
                 Nos Expertises Clés
               </h3>
               <p className="max-w-3xl text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed">
@@ -280,7 +280,7 @@ export function Services() {
                     </div>
 
                     <div className="relative flex flex-col gap-2 sm:gap-3 text-center sm:text-left">
-                      <h4 className="text-base sm:text-lg font-bold leading-tight text-slate-900">
+                      <h4 className="text-lg font-semibold leading-tight text-slate-900">
                         {category.title}
                       </h4>
                       <p className="text-xs sm:text-sm text-slate-500">

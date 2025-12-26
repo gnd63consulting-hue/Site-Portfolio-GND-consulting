@@ -96,7 +96,7 @@ export function Footer() {
         <div className="mt-12 rounded-2xl border border-slate-200/70 bg-white/80 shadow-[0_22px_55px_rgba(15,23,42,0.08)] backdrop-blur-sm">
           <div className="footer-columns grid grid-cols-1 gap-12 p-8 sm:p-10 md:grid-cols-3">
             <div className="footer-column text-center md:text-left">
-              <h3 className="footer-column-title">Plan du site</h3>
+              <p className="footer-column-title">Plan du site</p>
               <nav className="flex flex-col items-center gap-2 md:items-start">
                 {sitemapLinks.map((link) => (
                   <a
@@ -111,7 +111,7 @@ export function Footer() {
             </div>
 
             <div className="footer-column text-center md:text-left">
-              <h3 className="footer-column-title">Nos expertises</h3>
+              <p className="footer-column-title">Nos expertises</p>
               <ul className="space-y-2.5 md:space-y-3">
                 {services.map(({ name, href, Icon }) => (
                   <li key={name}>
@@ -133,7 +133,7 @@ export function Footer() {
             </div>
 
             <div className="footer-column text-center md:text-left">
-              <h3 className="footer-column-title">Contact</h3>
+              <p className="footer-column-title">Contact</p>
               <div className="flex flex-col gap-3">
                 {contactChannels.map(({ label, value, href, Icon }) => (
                   <a

@@ -357,7 +357,7 @@ export function PartnersPage() {
               <span className="text-primary font-semibold">Collaborations • Excellence • Innovation</span>
             </div>
             
-            <h2 className="section-title text-5xl md:text-6xl font-black text-slate-900 mb-8">
+            <h2 className="section-title text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-8">
               L'Art de la Collaboration Créative
             </h2>
             
@@ -379,7 +379,7 @@ export function PartnersPage() {
                   <Users className="w-12 h-12 text-white" />
                 </div>
                 
-                <h3 className="text-4xl font-black text-slate-900 mb-8 group-hover:text-rose-600 transition-colors duration-300">
+                <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-8 group-hover:text-rose-600 transition-colors duration-300">
                   Un Réseau d'Excellence à Votre Service
                 </h3>
                 
@@ -426,7 +426,7 @@ export function PartnersPage() {
               <span className="text-rose-700 font-semibold">Partenaire Premium • Films de Mariage</span>
             </div>
             
-            <h2 className="section-title text-5xl md:text-6xl font-black text-slate-900 mb-8">
+            <h2 className="section-title text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-8">
               NOCÉUM
             </h2>
             
@@ -485,7 +485,7 @@ export function PartnersPage() {
         {/* L'expertise Nocéum - 4 piliers */}
         <section className="py-24 relative">
           <div className="text-center mb-20">
-            <h3 className="text-4xl font-black text-slate-900 mb-6">
+            <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-6">
               L'Expertise Nocéum
             </h3>
             <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
@@ -527,7 +527,7 @@ export function PartnersPage() {
                   </span>
                 </div>
                 
-                <h4 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-rose-600 transition-colors duration-300">
+                <h4 className="text-lg font-semibold text-slate-900 mb-4 group-hover:text-rose-600 transition-colors duration-300">
                   {feature.title}
                 </h4>
                 
@@ -543,7 +543,7 @@ export function PartnersPage() {
         <section id="portfolio-section" className="py-12 sm:py-16 md:py-24 relative overflow-hidden">
           <div className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8">
             <div className="text-center mb-12 sm:mb-16 md:mb-20">
-              <h2 className="section-title text-5xl md:text-6xl font-black text-slate-900 mb-8" style={{ wordBreak: 'break-word' }}>
+              <h2 className="section-title text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-8" style={{ wordBreak: 'break-word' }}>
                 Portfolio Créatif
               </h2>
               <p className="section-description text-xl text-slate-700 max-w-4xl mx-auto" style={{ wordBreak: 'break-word' }}>
@@ -761,7 +761,7 @@ export function PartnersPage() {
               <span className="text-primary font-semibold">Questions • Réponses • Transparence</span>
             </div>
             
-            <h2 className="section-title text-5xl md:text-6xl font-black text-slate-900 mb-8">
+            <h2 className="section-title text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-8">
               Questions Fréquentes
             </h2>
             
@@ -811,7 +811,7 @@ export function PartnersPage() {
               <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-br from-blue-200/20 to-blue-300/20 rounded-full translate-y-16 -translate-x-16"></div>
               
               <div className="relative z-10">
-                <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-8">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-8">
                   Prêt à Créer Ensemble ?
                 </h2>
                 

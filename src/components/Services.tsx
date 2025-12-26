@@ -220,7 +220,7 @@ export function Services() {
 
       {/* Titre de section */}
       <div className="text-center space-y-4 mb-8 sm:mb-12 relative z-10">
-        <h2 className="section-title" id="services" style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)' }}>
+        <h2 className="section-title" style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)' }}>
           Nos Services Créatifs
         </h2>
         <p className="section-description text-gray-700" style={{ fontSize: 'clamp(0.95rem, 2.5vw, 1.125rem)' }}>

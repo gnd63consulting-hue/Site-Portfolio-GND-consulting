@@ -46,9 +46,11 @@ export const updateMetaTags = (metadata: SEOMetaData) => {
   updateOrCreateMeta('og:image', metadata.image || defaultImage);
   updateOrCreateMeta('og:url', currentUrl);
   updateOrCreateMeta('og:type', metadata.type || 'website');
-  updateOrCreateMeta('og:site_name', 'gndconsulting.fr');
+  updateOrCreateMeta('og:locale', 'fr_FR');
+  updateOrCreateMeta('og:site_name', 'GND Consulting');
 
   updateOrCreateMeta('twitter:card', 'summary_large_image');
+  updateOrCreateMeta('twitter:site', '@gndconsulting');
   updateOrCreateMeta('twitter:title', metadata.title);
   updateOrCreateMeta('twitter:description', metadata.description);
   updateOrCreateMeta('twitter:image', metadata.image || defaultImage);

@@ -229,12 +229,12 @@ export function Services() {
       </div>
 
       {/* Résumé des services */}
-      <section className="relative overflow-hidden rounded-[28px] sm:rounded-[36px] border border-white/60 bg-white shadow-[0_18px_60px_rgba(15,23,42,0.08)] backdrop-blur-xl px-4 sm:px-10 py-12 sm:py-14 mb-16">
+      <section className="relative overflow-hidden rounded-2xl sm:rounded-2xl border border-white/60 bg-white shadow-[0_18px_60px_rgba(15,23,42,0.08)] backdrop-blur-xl px-4 sm:px-10 py-12 sm:py-14 mb-16">
         <div className="absolute inset-0">
           <div className="absolute -top-44 -left-36 h-80 w-80 rounded-full bg-gradient-to-br from-rose-300/35 via-white to-transparent blur-3xl" />
           <div className="absolute -bottom-48 -right-32 h-96 w-96 rounded-full bg-gradient-to-br from-slate-200/28 via-white to-transparent blur-3xl" />
           <div className="absolute inset-0 bg-gradient-to-br from-white/98 via-white/95 to-white/90" />
-          <div className="absolute inset-x-10 top-1/2 h-[70%] rounded-[40px] bg-white/35 blur-3xl" />
+          <div className="absolute inset-x-10 top-1/2 h-[70%] rounded-2xl bg-white/35 blur-3xl" />
         </div>
 
         <div className="relative z-10 flex flex-col gap-10 sm:gap-12">
@@ -255,7 +255,7 @@ export function Services() {
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {serviceCategories.map((category, index) => {
               const isActive = selectedCategory === category.id;
-              const baseCardClass = 'group relative overflow-hidden rounded-[28px] border border-white/40 bg-white/80 p-[1px] shadow-[0_20px_55px_rgba(15,23,42,0.08)] transition-all duration-500 focus:outline-none focus-visible:ring-4 focus-visible:ring-slate-300/40';
+              const baseCardClass = 'group relative overflow-hidden rounded-2xl border border-white/40 bg-white/80 p-[1px] shadow-[0_20px_55px_rgba(15,23,42,0.08)] transition-all duration-500 focus:outline-none focus-visible:ring-4 focus-visible:ring-slate-300/40';
               const activeClass = isActive
                 ? ' ring-2 ring-blue-400/40 hover:ring-blue-400/50'
                 : ' hover:-translate-y-2 hover:shadow-[0_28px_70px_rgba(15,23,42,0.12)]';
@@ -268,8 +268,8 @@ export function Services() {
                   aria-label={`Explorer ${category.title}`}
                   className={`${baseCardClass}${activeClass}`}
                 >
-                  <div className="relative flex h-full flex-col gap-5 sm:gap-6 rounded-[26px] sm:rounded-[27px] bg-white/95 px-5 py-6 sm:px-6 sm:py-7">
-                    <div className="pointer-events-none absolute inset-0 rounded-[27px] bg-gradient-to-br from-white/0 via-white/45 to-white/0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                  <div className="relative flex h-full flex-col gap-5 sm:gap-6 rounded-2xl sm:rounded-2xl bg-white/95 px-5 py-6 sm:px-6 sm:py-7">
+                    <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-white/0 via-white/45 to-white/0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                     <div className="relative flex flex-col items-center justify-center gap-4 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
                       <div className={`flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${category.color} text-xl sm:text-2xl shadow-lg shadow-[rgba(37,99,235,0.25)]`}>
                         <span>{category.emoji}</span>

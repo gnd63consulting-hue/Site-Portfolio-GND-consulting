@@ -93,7 +93,7 @@ export function Footer() {
           </p>
         </div>
 
-        <div className="mt-12 rounded-[28px] border border-slate-200/70 bg-white/80 shadow-[0_22px_55px_rgba(15,23,42,0.08)] backdrop-blur-sm">
+        <div className="mt-12 rounded-2xl border border-slate-200/70 bg-white/80 shadow-[0_22px_55px_rgba(15,23,42,0.08)] backdrop-blur-sm">
           <div className="footer-columns grid grid-cols-1 gap-12 p-8 sm:p-10 md:grid-cols-3">
             <div className="footer-column text-center md:text-left">
               <h3 className="footer-column-title">Plan du site</h3>

@@ -14,8 +14,8 @@ export function AboutHeaderBento() {
         <div className="grid grid-cols-1 gap-8 sm:gap-12 lg:grid-cols-[minmax(0,1.65fr)_minmax(0,1fr)]">
           {/* GRANDE CARTE PRINCIPALE */}
           <div className="relative">
-            <div className="absolute -inset-1 hidden sm:block rounded-[2.75rem] bg-gradient-to-br from-blue-100/90 via-white to-blue-100/90 opacity-70 blur-xl" />
-            <div className="relative h-full rounded-3xl sm:rounded-[2.5rem] bg-white/90 p-6 sm:p-8 lg:p-14 shadow-xl ring-1 ring-blue-100/70 backdrop-blur">
+            <div className="absolute -inset-1 hidden sm:block rounded-2xl bg-gradient-to-br from-blue-100/90 via-white to-blue-100/90 opacity-70 blur-xl" />
+            <div className="relative h-full rounded-3xl sm:rounded-2xl bg-white/90 p-6 sm:p-8 lg:p-14 shadow-xl ring-1 ring-blue-100/70 backdrop-blur">
               {/* Badge */}
               <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 sm:gap-4 text-center sm:text-left">
                 <span className="inline-flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg shadow-blue-500/30">
@@ -55,8 +55,8 @@ export function AboutHeaderBento() {
             <div className="relative grid gap-4 sm:gap-6">
               <div className="relative pl-0 lg:pl-12">
                 <div className="absolute left-0 top-8 hidden h-3 w-3 rounded-full bg-blue-500 shadow-md shadow-blue-500/30 lg:block" />
-                <div className="group relative rounded-3xl sm:rounded-[2rem] bg-gradient-to-br from-white via-blue-50/60 to-white p-[1px] shadow-lg shadow-blue-500/5 transition-all duration-300 hover:-translate-y-1">
-                  <div className="rounded-[calc(2rem-1px)] bg-white/90 p-6 sm:p-8 text-center backdrop-blur group-hover:bg-white">
+                <div className="group relative rounded-3xl sm:rounded-2xl bg-gradient-to-br from-white via-blue-50/60 to-white p-[1px] shadow-lg shadow-blue-500/5 transition-all duration-300 hover:-translate-y-1">
+                  <div className="rounded-2xl bg-white/90 p-6 sm:p-8 text-center backdrop-blur group-hover:bg-white">
                     <span className="mb-4 sm:mb-6 block text-3xl sm:text-4xl">🎨</span>
                     <h3 className="text-lg sm:text-xl font-bold text-slate-800">Créativité</h3>
                     <p className="mt-2 text-sm text-slate-500">100% humaine</p>
@@ -66,8 +66,8 @@ export function AboutHeaderBento() {
 
               <div className="relative pl-0 lg:pl-12">
                 <div className="absolute left-0 top-8 hidden h-3 w-3 rounded-full bg-blue-500 shadow-md shadow-blue-500/30 lg:block" />
-                <div className="group relative rounded-3xl sm:rounded-[2rem] bg-gradient-to-br from-white via-blue-50/60 to-white p-[1px] shadow-lg shadow-blue-500/5 transition-all duration-300 hover:-translate-y-1">
-                  <div className="rounded-[calc(2rem-1px)] bg-white/90 p-6 sm:p-8 text-center backdrop-blur group-hover:bg-white">
+                <div className="group relative rounded-3xl sm:rounded-2xl bg-gradient-to-br from-white via-blue-50/60 to-white p-[1px] shadow-lg shadow-blue-500/5 transition-all duration-300 hover:-translate-y-1">
+                  <div className="rounded-2xl bg-white/90 p-6 sm:p-8 text-center backdrop-blur group-hover:bg-white">
                     <span className="mb-4 sm:mb-6 block text-3xl sm:text-4xl">⚡</span>
                     <h3 className="text-lg sm:text-xl font-bold text-slate-800">Technologie</h3>
                     <p className="mt-2 text-sm text-slate-500">IA &amp; Automation</p>
@@ -77,8 +77,8 @@ export function AboutHeaderBento() {
 
               <div className="relative pl-0 lg:pl-12">
                 <div className="absolute left-0 top-8 hidden h-3 w-3 rounded-full bg-blue-500 shadow-md shadow-blue-500/30 lg:block" />
-                <div className="group relative rounded-3xl sm:rounded-[2rem] bg-gradient-to-br from-white via-blue-50/60 to-white p-[1px] shadow-lg shadow-blue-500/5 transition-all duration-300 hover:-translate-y-1">
-                  <div className="rounded-[calc(2rem-1px)] bg-white/90 p-6 sm:p-8 text-center backdrop-blur group-hover:bg-white">
+                <div className="group relative rounded-3xl sm:rounded-2xl bg-gradient-to-br from-white via-blue-50/60 to-white p-[1px] shadow-lg shadow-blue-500/5 transition-all duration-300 hover:-translate-y-1">
+                  <div className="rounded-2xl bg-white/90 p-6 sm:p-8 text-center backdrop-blur group-hover:bg-white">
                     <span className="mb-4 sm:mb-6 block text-3xl sm:text-4xl">📈</span>
                     <h3 className="text-lg sm:text-xl font-bold text-slate-800">Résultats</h3>
                     <p className="mt-2 text-sm text-slate-500">Garantis</p>

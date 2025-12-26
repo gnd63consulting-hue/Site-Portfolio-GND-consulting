@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Palette, Layers, Sparkles, Users, Zap, Shield, Pen, RefreshCw, Monitor, Printer, Heart } from 'lucide-react';
 import { UnifiedFAQ } from './UnifiedFAQ';
 import { updateMetaTags, pageSEO } from '../utils/seo';
+import { ButtonGND } from './ButtonGND';
 
 export function ServiceDesign() {
   useEffect(() => {
@@ -132,13 +133,14 @@ export function ServiceDesign() {
           <p className="text-balance text-[clamp(1.125rem,3vw,1.75rem)] font-light leading-relaxed text-white/90">
             Design graphique & identité visuelle sur mesure
           </p>
-          <button
+          <ButtonGND
+            variant="primary"
             onClick={scrollToContact}
-            className="hero-cta inline-flex w-full max-w-md items-center justify-center gap-3 rounded-2xl bg-primary px-6 py-4 text-[clamp(1rem,2.6vw,1.25rem)] font-bold text-white shadow-lg transition-transform duration-300 hover:scale-[1.02] hover:shadow-xl shadow-blue-600/30 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/40 sm:max-w-lg sm:px-8 sm:py-5 lg:max-w-xl lg:px-12 lg:py-6"
+            className="w-full max-w-md sm:max-w-lg lg:max-w-xl text-[clamp(1rem,2.6vw,1.25rem)] px-6 py-4 sm:px-8 sm:py-5 lg:px-12 lg:py-6"
           >
             <Heart className="h-5 w-5 sm:h-6 sm:w-6" />
             Demander un devis personnalisé
-          </button>
+          </ButtonGND>
         </div>
       </section>
 
@@ -226,13 +228,14 @@ export function ServiceDesign() {
                 </p>
               </div>
               <div>
-                <button
+                <ButtonGND
+                  variant="primary"
                   onClick={scrollToContact}
-                  className="inline-flex w-full max-w-sm items-center justify-center gap-3 rounded-2xl bg-primary px-6 py-3 text-[clamp(0.95rem,2.5vw,1.0625rem)] font-bold text-white transition-transform duration-300 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/40 sm:w-auto sm:px-8 sm:py-4"
+                  className="w-full max-w-sm sm:w-auto"
                 >
                   <Sparkles className="h-5 w-5" />
                   Découvrir notre approche
-                </button>
+                </ButtonGND>
               </div>
             </div>
 
@@ -320,22 +323,23 @@ export function ServiceDesign() {
             approche sur-mesure et créative.
           </p>
           <div className="mt-8 flex w-full flex-col gap-4 sm:flex-row sm:justify-center">
-            <button
+            <ButtonGND
+              variant="primary"
               onClick={scrollToContact}
-              className="inline-flex w-full max-w-sm items-center justify-center gap-3 rounded-2xl bg-primary px-6 py-4 text-[clamp(1rem,2.6vw,1.25rem)] font-bold text-white shadow-lg transition-transform duration-300 hover:scale-[1.02] hover:shadow-xl shadow-blue-600/30 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/40 sm:w-auto sm:px-10 sm:py-5"
+              className="w-full max-w-sm sm:w-auto"
             >
               <Heart className="h-5 w-5 sm:h-6 sm:w-6" />
               Demander un devis personnalisé
-            </button>
-            <button
-              onClick={() => {
-                window.location.href = '#realisations';
-              }}
-              className="inline-flex w-full max-w-sm items-center justify-center gap-3 rounded-2xl border-2 border-slate-300 px-6 py-4 text-[clamp(1rem,2.4vw,1.15rem)] font-bold text-slate-700 transition-all duration-300 hover:border-slate-500 hover:bg-white/60 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-slate-300/60 sm:w-auto sm:px-10 sm:py-5"
+            </ButtonGND>
+            <ButtonGND
+              variant="secondary"
+              as="a"
+              href="/#realisations"
+              className="w-full max-w-sm sm:w-auto"
             >
               <Palette className="h-5 w-5 sm:h-6 sm:w-6" />
               Voir nos réalisations
-            </button>
+            </ButtonGND>
           </div>
         </div>
       </section>

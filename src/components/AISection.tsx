@@ -163,7 +163,7 @@ export function AISection() {
           </p>
           <a
             href="#contact"
-            className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-5 bg-primary text-white font-bold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(99,102,241,0.5)] uppercase tracking-wider focus:outline-none focus:ring-4 focus:ring-white/50"
+            className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-5 bg-primary text-white font-bold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-blue-600/30 uppercase tracking-wider focus:outline-none focus:ring-4 focus:ring-white/50"
             style={{ fontSize: 'clamp(0.9rem, 3vw, 1.25rem)', minHeight: 'clamp(48px, 10vw, 60px)' }}
           >
             Découvrir nos solutions IA

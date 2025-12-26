@@ -77,9 +77,9 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ currentMedia, currentIndex })
           className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-white/0 via-white/45 to-white/0 opacity-70 blur-2xl transition-opacity duration-500 group-hover:opacity-90"
           aria-hidden="true"
         />
-        <div className="relative z-10 h-full w-full overflow-hidden rounded-2xl border border-white/15 bg-slate-950 shadow-[0_45px_140px_rgba(15,23,42,0.35)]">
+        <div className="relative z-10 h-full w-full overflow-hidden rounded-2xl border border-white/15 bg-slate-950 shadow-2xl">
           {typeof currentIndex === 'number' && currentIndex < 0 && (
-            <span className="pointer-events-none absolute left-5 top-5 z-20 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/15 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.35em] text-white shadow-[0_12px_35px_rgba(8,47,73,0.45)] backdrop-blur-md">
+            <span className="pointer-events-none absolute left-5 top-5 z-20 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/15 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.35em] text-white shadow-lg backdrop-blur-md">
               <span className="h-2 w-2 rounded-full bg-gradient-to-br from-blue-400 to-blue-500" />
               Vidéo {String(currentIndex + 1).padStart(2, '0')}
             </span>
@@ -162,13 +162,13 @@ const HighlightCard: React.FC<HighlightCardProps> = ({ content }) => {
 
   return (
     <div className={clsx(
-      'relative overflow-hidden rounded-2xl border border-white/60 bg-gradient-to-br p-5 shadow-[0_22px_60px_rgba(15,23,42,0.18)] backdrop-blur',
+      'relative overflow-hidden rounded-2xl border border-white/60 bg-gradient-to-br p-5 shadow-xl backdrop-blur',
       gradient
     )}>
       <div className="pointer-events-none absolute inset-0 rounded-2xl border border-white/40 opacity-70" />
       <div className="relative flex items-start gap-4">
         <span className={clsx(
-          'flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br text-lg font-semibold text-white shadow-[0_15px_35px_rgba(15,23,42,0.18)]',
+          'flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br text-lg font-semibold text-white shadow-lg',
           accent
         )}>
           {emoji || '✦'}
@@ -192,10 +192,10 @@ const CreditsCard: React.FC<CreditsCardProps> = ({ currentMedia }) => {
   const signatureLabel = currentMedia.type === 'video' ? 'Production audiovisuelle' : 'Photographie professionnelle';
 
   return (
-    <div className="mt-6 overflow-hidden rounded-2xl border border-white/60 bg-white p-6 shadow-[0_28px_80px_rgba(15,23,42,0.12)] backdrop-blur">
+    <div className="mt-6 overflow-hidden rounded-2xl border border-white/60 bg-white p-6 shadow-xl backdrop-blur">
       <div className="relative flex flex-col gap-5">
         <div className="flex items-center gap-3">
-          <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 via-blue-500 to-blue-400 text-lg font-semibold text-white shadow-[0_20px_45px_rgba(37,99,235,0.35)]">
+          <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 via-blue-500 to-blue-400 text-lg font-semibold text-white shadow-lg shadow-blue-600/25">
             ✨
           </span>
           <div className="flex flex-col">
@@ -208,17 +208,17 @@ const CreditsCard: React.FC<CreditsCardProps> = ({ currentMedia }) => {
           </div>
         </div>
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <div className="inline-flex items-center gap-3 rounded-xl border border-white/60 bg-white/90 px-5 py-3 text-base font-semibold text-slate-700 shadow-[0_14px_35px_rgba(15,23,42,0.12)]">
+          <div className="inline-flex items-center gap-3 rounded-xl border border-white/60 bg-white/90 px-5 py-3 text-base font-semibold text-slate-700 shadow-lg">
             <span className="inline-flex h-2.5 w-2.5 rounded-full bg-gradient-to-br from-blue-500 to-blue-400" />
             {signatureLabel}
           </div>
           <div className="flex flex-wrap items-center gap-3">
-            <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/80 bg-blue-500/10 px-4 py-2 text-sm font-semibold text-blue-600 shadow-[0_12px_28px_rgba(79,70,229,0.22)]">
+            <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/80 bg-blue-500/10 px-4 py-2 text-sm font-semibold text-blue-600 shadow-md shadow-blue-500/20">
               <span className="h-2 w-2 rounded-full bg-gradient-to-br from-blue-500 to-blue-400" />
               GND Consulting
             </span>
             {currentMedia.tag && (
-              <span className="inline-flex items-center gap-2 rounded-full border border-slate-200/80 bg-white/85 px-4 py-2 text-sm font-semibold text-slate-600 shadow-[0_10px_24px_rgba(15,23,42,0.12)]">
+              <span className="inline-flex items-center gap-2 rounded-full border border-slate-200/80 bg-white/85 px-4 py-2 text-sm font-semibold text-slate-600 shadow-md">
                 <span className="h-2 w-2 rounded-full bg-gradient-to-br from-slate-400 to-slate-600" />
                 {currentMedia.tag}
               </span>
@@ -1760,7 +1760,7 @@ export function Portfolio() {
 
       <div className="text-center mb-12 sm:mb-16 md:mb-20 relative z-10 max-w-7xl mx-auto">
         <div className="mb-6 flex items-center justify-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/70 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.4em] text-slate-900 shadow-[0_12px_28px_rgba(37,99,235,0.18)]">
+          <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/70 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.4em] text-slate-900 shadow-md shadow-blue-500/20">
             <span className="h-2 w-2 rounded-full bg-gradient-to-br from-blue-500 to-blue-400" />
             Portfolio Signature
           </span>
@@ -1909,18 +1909,18 @@ export function Portfolio() {
               <div className="grid video-grid gap-8 md:gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] items-stretch">
                 <div className="group relative">
                   <div className="pointer-events-none absolute -left-3 -right-3 -top-6 h-[320px] rounded-2xl bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.15),transparent_55%),radial-gradient(circle_at_bottom,rgba(14,165,233,0.12),transparent_60%)] opacity-60 blur-2xl transition-opacity duration-500 group-hover:opacity-95 sm:-left-10 sm:-right-6 sm:-top-8 sm:h-[440px] sm:rounded-2xl sm:blur-3xl" aria-hidden="true" />
-                  <div className="relative rounded-2xl sm:rounded-2xl bg-white/95 p-[1px] sm:p-[1.5px] shadow-[0_22px_70px_rgba(15,23,42,0.16)] sm:shadow-[0_35px_120px_rgba(15,23,42,0.22)]">
+                  <div className="relative rounded-2xl sm:rounded-2xl bg-white/95 p-[1px] sm:p-[1.5px] shadow-xl sm:shadow-2xl">
                     <div className="rounded-2xl sm:rounded-2xl bg-white/70 backdrop-blur-2xl p-1 sm:p-1.5">
                       <VideoPlayer currentMedia={currentMedia} currentIndex={selectedMediaIndex} />
                     </div>
                   </div>
                 </div>
 
-                <article className="relative overflow-hidden rounded-2xl sm:rounded-2xl border border-white/60 bg-white/95 p-6 sm:p-8 shadow-[0_18px_50px_rgba(15,23,42,0.14)] sm:shadow-[0_25px_70px_rgba(15,23,42,0.12)] backdrop-blur-xl transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_28px_72px_rgba(15,23,42,0.16)] sm:hover:shadow-[0_32px_80px_rgba(15,23,42,0.18)] text-center sm:text-left video-focus-card">
+                <article className="relative overflow-hidden rounded-2xl sm:rounded-2xl border border-white/60 bg-white/95 p-6 sm:p-8 shadow-xl sm:shadow-xl backdrop-blur-xl transition-all duration-700 hover:-translate-y-2 hover:shadow-xl sm:hover:shadow-2xl text-center sm:text-left video-focus-card">
                   <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-white/0 via-white/40 to-white/0 opacity-0 transition-opacity duration-500 hover:opacity-100" />
                   <div className="relative flex flex-col gap-5 text-center sm:text-left items-center sm:items-start">
                     <div className="flex items-center justify-center sm:justify-start gap-2 text-[0.6rem] sm:text-xs font-medium uppercase tracking-[0.3em] sm:tracking-[0.35em] text-slate-400">
-                      <span className="inline-flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-400 text-sm sm:text-base text-white shadow-lg shadow-[rgba(15,23,42,0.18)]">🎬</span>
+                      <span className="inline-flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-400 text-sm sm:text-base text-white shadow-lg shadow-lg">🎬</span>
                       <span>Focus projet</span>
                     </div>
 
@@ -1971,7 +1971,7 @@ export function Portfolio() {
                   <div className="hidden sm:block h-[1px] flex-1 ml-6 bg-gradient-to-r from-slate-200 via-slate-300/70 to-transparent" />
                 </div>
 
-                <div className="relative overflow-hidden rounded-2xl sm:rounded-2xl border border-white/70 bg-white py-4 sm:py-5 shadow-[0_26px_75px_rgba(15,23,42,0.12)] backdrop-blur-2xl">
+                <div className="relative overflow-hidden rounded-2xl sm:rounded-2xl border border-white/70 bg-white py-4 sm:py-5 shadow-xl backdrop-blur-2xl">
                   <div className="pointer-events-none absolute inset-0 rounded-2xl border border-white/50 opacity-70" />
                   <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.1),transparent_60%),radial-gradient(circle_at_bottom_right,rgba(14,165,233,0.1),transparent_55%)] opacity-70" />
 
@@ -1982,7 +1982,7 @@ export function Portfolio() {
                       onClick={() => scrollQuickSelection('prev')}
                       aria-disabled={!canScrollLeft}
                       className={clsx(
-                        'relative z-20 pointer-events-auto flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/80 bg-white text-slate-600 shadow-[0_12px_26px_rgba(15,23,42,0.2)] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500/50 sm:h-12 sm:w-12 sm:shadow-[0_16px_34px_rgba(15,23,42,0.22)]',
+                        'relative z-20 pointer-events-auto flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/80 bg-white text-slate-600 shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500/50 sm:h-12 sm:w-12 sm:shadow-lg',
                         canScrollLeft
                           ? 'hover:-translate-x-1 hover:text-slate-900'
                           : 'opacity-40'
@@ -2021,8 +2021,8 @@ export function Portfolio() {
                               className={clsx(
                                 'group relative flex w-[140px] sm:w-[190px] shrink-0 flex-col overflow-hidden rounded-xl sm:rounded-2xl border backdrop-blur transition-all duration-500',
                                 active
-                                  ? 'border-blue-300/60 bg-white shadow-[0_16px_36px_rgba(59,130,246,0.18)] scale-[1.02]'
-                                  : 'border-white/60 bg-white/85 hover:-translate-y-1 hover:border-blue-200/60 hover:shadow-[0_18px_42px_rgba(15,23,42,0.14)]'
+                                  ? 'border-blue-300/60 bg-white shadow-lg shadow-blue-500/20 scale-[1.02]'
+                                  : 'border-white/60 bg-white/85 hover:-translate-y-1 hover:border-blue-200/60 hover:shadow-lg'
                               )}
                               aria-label={`Lire ${media.title}`}
                             >
@@ -2053,7 +2053,7 @@ export function Portfolio() {
                                   />
                                 )}
                                 {active && (
-                                  <span className="pointer-events-none absolute right-3 top-3 inline-flex items-center gap-1 rounded-full border border-white/60 bg-white/85 px-2 py-1 text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.28em] sm:tracking-[0.3em] text-slate-900 shadow-[0_6px_18px_rgba(59,130,246,0.25)]">
+                                  <span className="pointer-events-none absolute right-3 top-3 inline-flex items-center gap-1 rounded-full border border-white/60 bg-white/85 px-2 py-1 text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.28em] sm:tracking-[0.3em] text-slate-900 shadow-md shadow-blue-500/20">
                                     En lecture
                                   </span>
                                 )}
@@ -2084,7 +2084,7 @@ export function Portfolio() {
                       onClick={() => scrollQuickSelection('next')}
                       aria-disabled={!canScrollRight}
                       className={clsx(
-                        'relative z-20 pointer-events-auto flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/80 bg-white text-slate-600 shadow-[0_12px_26px_rgba(15,23,42,0.2)] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500/50 sm:h-12 sm:w-12 sm:shadow-[0_16px_34px_rgba(15,23,42,0.22)]',
+                        'relative z-20 pointer-events-auto flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/80 bg-white text-slate-600 shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500/50 sm:h-12 sm:w-12 sm:shadow-lg',
                         canScrollRight
                           ? 'hover:translate-x-1 hover:text-slate-900'
                           : 'opacity-40'
@@ -2259,7 +2259,7 @@ export function Portfolio() {
                       >
                         <div className="pointer-events-none absolute inset-0 translate-y-6 scale-[0.98] rounded-2xl bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.1),transparent_60%),radial-gradient(circle_at_bottom_right,rgba(14,165,233,0.1),transparent_55%)] opacity-0 blur-2xl transition-all duration-500 ease-out group-hover:opacity-60 group-hover:translate-y-4 group-hover:scale-100" />
                         <div className="pointer-events-none absolute inset-0 rounded-2xl border border-white/5 bg-white/5 backdrop-blur-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                        <div className="relative h-full rounded-2xl shadow-[0_28px_60px_rgba(15,23,42,0.22)] hover:shadow-[0_36px_80px_rgba(15,23,42,0.28)] transition-all duration-500 ease-in-out overflow-visible bg-slate-950/40">
+                        <div className="relative h-full rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 ease-in-out overflow-visible bg-slate-950/40">
                           <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-white/0 to-white/10 opacity-0 group-hover:opacity-40 transition-opacity duration-500 rounded-2xl" />
                           <div className="absolute inset-0 bg-gradient-to-br from-black/0 to-black/40 group-hover:from-black/40 group-hover:to-black/60 transition-all duration-300 ease-in-out z-10 rounded-2xl overflow-hidden" />
 
@@ -2273,15 +2273,15 @@ export function Portfolio() {
                           />
 
                           <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 ease-in-out z-30 p-4 sm:p-6 md:p-8">
-                            <Eye className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 text-white mb-2 sm:mb-3 drop-shadow-[0_10px_35px_rgba(15,23,42,0.55)] flex-shrink-0" aria-hidden="true" />
+                            <Eye className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 text-white mb-2 sm:mb-3 drop-shadow-lg flex-shrink-0" aria-hidden="true" />
                             <div className="w-full max-w-full overflow-visible">
-                              <h3 className="text-white font-semibold text-center mb-1 sm:mb-2 drop-shadow-[0_14px_32px_rgba(15,23,42,0.55)] whitespace-normal max-w-full" style={{ fontSize: 'clamp(0.95rem, 2.6vw, 1.18rem)', wordBreak: 'break-word', overflowWrap: 'break-word' }}>
+                              <h3 className="text-white font-semibold text-center mb-1 sm:mb-2 drop-shadow-lg whitespace-normal max-w-full" style={{ fontSize: 'clamp(0.95rem, 2.6vw, 1.18rem)', wordBreak: 'break-word', overflowWrap: 'break-word' }}>
                                 {photo.title}
                               </h3>
                               {photo.caption.split('\n\n').map((paragraph, idx) => (
                                 <p
                                   key={idx}
-                                  className={`text-white font-medium text-center drop-shadow-[0_12px_32px_rgba(15,23,42,0.55)] whitespace-normal max-w-full ${
+                                  className={`text-white font-medium text-center drop-shadow-lg whitespace-normal max-w-full ${
                                     paragraph.startsWith('📸')
                                       ? 'mt-2 sm:mt-3 opacity-90 italic'
                                       : 'mb-1'
@@ -2295,7 +2295,7 @@ export function Portfolio() {
                           </div>
 
                           <div className="absolute top-2 sm:top-3 left-2 sm:left-3 z-30">
-                            <span className="px-2 sm:px-3 py-1 sm:py-1.5 bg-gradient-to-br from-white/95 via-white to-white/90 text-slate-900 font-bold rounded-full shadow-[0_10px_22px_rgba(15,23,42,0.18)] uppercase tracking-wide whitespace-nowrap ring-1 ring-white/60" style={{ fontSize: 'clamp(0.6rem, 1.6vw, 0.7rem)' }}>
+                            <span className="px-2 sm:px-3 py-1 sm:py-1.5 bg-gradient-to-br from-white/95 via-white to-white/90 text-slate-900 font-bold rounded-full shadow-lg uppercase tracking-wide whitespace-nowrap ring-1 ring-white/60" style={{ fontSize: 'clamp(0.6rem, 1.6vw, 0.7rem)' }}>
                               {photo.category}
                             </span>
                           </div>

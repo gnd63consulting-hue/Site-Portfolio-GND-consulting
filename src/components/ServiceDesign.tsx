@@ -132,7 +132,7 @@ export function ServiceDesign() {
           </p>
           <button
             onClick={scrollToContact}
-            className="hero-cta inline-flex w-full max-w-md items-center justify-center gap-3 rounded-2xl bg-primary px-6 py-4 text-[clamp(1rem,2.8vw,1.25rem)] font-bold text-white transition-transform duration-300 hover:scale-[1.025] hover:shadow-[0_0_35px_rgba(59,130,246,0.45)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/40 sm:max-w-lg sm:px-8 sm:py-5 lg:max-w-xl lg:px-12 lg:py-6"
+            className="hero-cta inline-flex w-full max-w-md items-center justify-center gap-3 rounded-2xl bg-primary px-6 py-4 text-[clamp(1rem,2.8vw,1.25rem)] font-bold text-white transition-transform duration-300 hover:scale-[1.025] hover:shadow-xl shadow-blue-600/30 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/40 sm:max-w-lg sm:px-8 sm:py-5 lg:max-w-xl lg:px-12 lg:py-6"
           >
             <Heart className="h-5 w-5 sm:h-6 sm:w-6" />
             Demander un devis personnalisé
@@ -271,7 +271,7 @@ export function ServiceDesign() {
               return (
                 <article
                   key={advantage.title}
-                  className="group flex h-full flex-col items-center rounded-3xl border border-white/60 bg-white/90 p-6 text-center shadow-[0_18px_44px_rgba(15,23,42,0.08)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(15,23,42,0.12)] sm:p-8"
+                  className="group flex h-full flex-col items-center rounded-3xl border border-white/60 bg-white/90 p-6 text-center shadow-lg transition-all duration-500 hover:-translate-y-1 hover:shadow-xl sm:p-8"
                 >
                   <span className="mb-6 inline-flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-primary to-secondary text-white shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
                     <IconComponent className="h-10 w-10" />
@@ -319,7 +319,7 @@ export function ServiceDesign() {
           <div className="mt-8 flex w-full flex-col gap-4 sm:flex-row sm:justify-center">
             <button
               onClick={scrollToContact}
-              className="inline-flex w-full max-w-sm items-center justify-center gap-3 rounded-2xl bg-primary px-6 py-4 text-[clamp(1rem,2.6vw,1.25rem)] font-bold text-white shadow-lg transition-transform duration-300 hover:scale-[1.02] hover:shadow-[0_0_35px_rgba(59,130,246,0.45)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/40 sm:w-auto sm:px-10 sm:py-5"
+              className="inline-flex w-full max-w-sm items-center justify-center gap-3 rounded-2xl bg-primary px-6 py-4 text-[clamp(1rem,2.6vw,1.25rem)] font-bold text-white shadow-lg transition-transform duration-300 hover:scale-[1.02] hover:shadow-xl shadow-blue-600/30 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/40 sm:w-auto sm:px-10 sm:py-5"
             >
               <Heart className="h-5 w-5 sm:h-6 sm:w-6" />
               Demander un devis personnalisé

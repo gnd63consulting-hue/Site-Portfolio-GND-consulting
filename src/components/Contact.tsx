@@ -238,7 +238,7 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
     setFormData({ ...formData, files: newFiles });
   };
 
-  const baseFieldClasses = 'w-full px-4 py-3.5 rounded-2xl border border-slate-200/60 bg-white/85 text-slate-900 font-inter text-sm sm:text-base shadow-[0_16px_40px_rgba(15,23,42,0.08)] transition-all duration-300 focus:outline-none focus:border-blue-400/70 focus:ring-2 focus:ring-blue-200/70 focus:ring-offset-2 focus:ring-offset-white placeholder:text-slate-400/80 backdrop-blur-xl hover:border-blue-200/80 disabled:cursor-not-allowed disabled:opacity-60 disabled:bg-white/70';
+  const baseFieldClasses = 'w-full px-4 py-3.5 rounded-2xl border border-slate-200/60 bg-white/85 text-slate-900 font-inter text-sm sm:text-base shadow-sm transition-all duration-300 focus:outline-none focus:border-blue-400/70 focus:ring-2 focus:ring-blue-200/70 focus:ring-offset-2 focus:ring-offset-white focus:shadow-md placeholder:text-slate-400/80 backdrop-blur-xl hover:border-blue-200/80 disabled:cursor-not-allowed disabled:opacity-60 disabled:bg-white/70';
   const selectFieldClasses = `${baseFieldClasses} appearance-none pr-12 cursor-pointer`;
   const textAreaClasses = `${baseFieldClasses} min-h-[140px] sm:min-h-[160px] leading-relaxed resize-none`;
 
@@ -275,7 +275,7 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
       <div className="relative z-10 max-w-[960px] mx-auto flex flex-col gap-12 items-center px-2 sm:px-6">
         <form
           onSubmit={handleSubmit}
-          className="contact-form-main relative w-full max-w-[820px] overflow-hidden rounded-2xl border border-slate-200/40 bg-white/75 shadow-[0_40px_90px_rgba(15,23,42,0.18)] backdrop-blur-2xl"
+          className="contact-form-main relative w-full max-w-[820px] overflow-hidden rounded-2xl border border-slate-200/40 bg-white/75 shadow-2xl backdrop-blur-2xl"
         >
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/70 via-white/40 to-white/75" />
           <div className="pointer-events-none absolute inset-x-6 -top-16 h-32 rounded-full bg-white/30 blur-3xl" />
@@ -462,7 +462,7 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
             </div>
 
             <div>
-              <div className="relative overflow-hidden rounded-2xl border border-slate-200/60 bg-white/85 px-4 py-5 shadow-[0_18px_45px_rgba(15,23,42,0.12)]">
+              <div className="relative overflow-hidden rounded-2xl border border-slate-200/60 bg-white/85 px-4 py-5 shadow-lg">
                 <input
                   type="file"
                   multiple
@@ -533,7 +533,7 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
               <button
                 type="button"
                 onClick={() => setIsAIChatOpen(true)}
-                className="ai-trigger inline-flex items-center gap-2 self-stretch sm:self-start justify-center rounded-full border border-blue-200 bg-blue-50/60 px-4 py-2.5 text-xs sm:text-sm font-semibold text-blue-600 shadow-[0_14px_40px_rgba(14,165,233,0.2)] transition-all duration-300 hover:scale-[1.02] hover:border-blue-300 hover:text-blue-700 disabled:opacity-50"
+                className="ai-trigger inline-flex items-center gap-2 self-stretch sm:self-start justify-center rounded-full border border-blue-200 bg-blue-50/60 px-4 py-2.5 text-xs sm:text-sm font-semibold text-blue-600 shadow-md shadow-blue-500/20 transition-all duration-300 hover:scale-[1.02] hover:border-blue-300 hover:text-blue-700 disabled:opacity-50"
                 disabled={isSubmitting}
               >
                 <MessageCircle className="w-4 h-4" />
@@ -542,7 +542,7 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
             </div>
 
             {submitStatus === 'success' && (
-              <div className="rounded-2xl border border-emerald-300/40 bg-emerald-50/85 px-5 py-4 text-center shadow-[0_18px_48px_rgba(16,185,129,0.22)]" role="status" aria-live="polite">
+              <div className="rounded-2xl border border-emerald-300/40 bg-emerald-50/85 px-5 py-4 text-center shadow-lg" role="status" aria-live="polite">
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 mb-2">
                   <CheckCircle className="w-6 h-6 text-emerald-500" />
                   <h3 className="text-emerald-700 font-semibold" style={{ fontSize: 'clamp(0.95rem, 3vw, 1.125rem)', wordBreak: 'break-word' }}>
@@ -559,7 +559,7 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
             )}
 
             {submitStatus === 'error' && (
-              <div className="rounded-2xl border border-rose-300/50 bg-rose-50/85 px-5 py-4 text-center shadow-[0_18px_48px_rgba(244,63,94,0.18)]" role="alert" aria-live="assertive">
+              <div className="rounded-2xl border border-rose-300/50 bg-rose-50/85 px-5 py-4 text-center shadow-lg" role="alert" aria-live="assertive">
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 mb-2">
                   <AlertCircle className="w-6 h-6 text-rose-500" />
                   <h3 className="text-rose-600 font-semibold" style={{ fontSize: 'clamp(0.95rem, 3vw, 1.125rem)', wordBreak: 'break-word' }}>
@@ -591,7 +591,7 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
               )}
             </button>
 
-            <div className="grid gap-2 rounded-2xl border border-slate-200/70 bg-white/80 px-4 py-3 text-xs sm:text-sm text-slate-500 shadow-[0_16px_45px_rgba(15,23,42,0.12)]">
+            <div className="grid gap-2 rounded-2xl border border-slate-200/70 bg-white/80 px-4 py-3 text-xs sm:text-sm text-slate-500 shadow-lg">
               <p className="flex items-center justify-center gap-2">
                 <ShieldCheck className="h-4 w-4 text-blue-400" />
                 <span>Vos données sont sécurisées et ne seront jamais partagées</span>

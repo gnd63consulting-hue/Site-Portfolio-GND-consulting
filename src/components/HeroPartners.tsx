@@ -114,7 +114,7 @@ export function HeroPartners({
             <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start">
               <button 
                 onClick={handlePrimaryCta}
-                className="inline-flex items-center gap-3 px-10 py-5 bg-rose-500 text-white font-bold text-lg rounded-2xl transition-all duration-500 hover:scale-105 hover:shadow-[0_0_30px_rgba(236,72,153,0.5)] cursor-pointer"
+                className="inline-flex items-center gap-3 px-10 py-5 bg-rose-500 text-white font-bold text-lg rounded-2xl transition-all duration-500 hover:scale-105 hover:shadow-xl cursor-pointer"
               >
                 <Users className="w-5 h-5" />
                 {primaryCta.label}

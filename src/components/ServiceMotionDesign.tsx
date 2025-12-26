@@ -188,10 +188,9 @@ export function ServiceMotionDesign() {
           <ButtonGND
             variant="primary"
             onClick={scrollToContact}
-            className="w-full max-w-md items-center justify-center gap-3 rounded-2xl px-6 py-4 text-[clamp(1rem,2.6vw,1.25rem)] hover:scale-[1.02] sm:max-w-lg sm:px-8 sm:py-5 lg:max-w-xl lg:px-12 lg:py-6"
+            className="w-full max-w-md items-center justify-center gap-3 rounded-2xl px-6 py-4 text-[clamp(1rem,2.6vw,1.25rem)] hover:scale-[1.02] sm:max-w-lg sm:px-8 sm:py-5 lg:max-w-xl lg:px-12 lg:py-6 shadow-xl shadow-blue-600/30"
             style={{
-              backgroundImage: 'linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #60a5fa 100%)',
-              boxShadow: '0 0 35px rgba(59, 130, 246, 0.45)'
+              backgroundImage: 'linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #60a5fa 100%)'
             }}
           >
             <Play className="h-5 w-5 sm:h-6 sm:w-6" />
@@ -321,7 +320,7 @@ export function ServiceMotionDesign() {
               return (
                 <article
                   key={item.title}
-                  className="flex h-full flex-col gap-4 rounded-3xl border border-white/70 bg-white/90 p-6 text-center shadow-[0_18px_44px_rgba(15,23,42,0.08)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(15,23,42,0.12)]"
+                  className="flex h-full flex-col gap-4 rounded-3xl border border-white/70 bg-white/90 p-6 text-center shadow-lg transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl"
                 >
                   <span className="mx-auto inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-secondary text-white shadow-lg">
                     <IconComponent className="h-7 w-7" />
@@ -382,7 +381,7 @@ export function ServiceMotionDesign() {
           <div className="mt-8 flex w-full flex-col gap-4 sm:flex-row sm:justify-center">
             <button
               onClick={scrollToContact}
-              className="inline-flex w-full max-w-sm items-center justify-center gap-3 rounded-2xl bg-primary px-6 py-4 text-[clamp(1rem,2.6vw,1.25rem)] font-bold text-white shadow-lg transition-transform duration-300 hover:scale-[1.02] hover:shadow-[0_0_35px_rgba(59,130,246,0.45)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/40 sm:w-auto sm:px-10 sm:py-5"
+              className="inline-flex w-full max-w-sm items-center justify-center gap-3 rounded-2xl bg-primary px-6 py-4 text-[clamp(1rem,2.6vw,1.25rem)] font-bold text-white shadow-lg transition-transform duration-300 hover:scale-[1.02] hover:shadow-xl shadow-blue-600/30 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/40 sm:w-auto sm:px-10 sm:py-5"
             >
               <Heart className="h-5 w-5 sm:h-6 sm:w-6" />
               Demander un devis personnalisé

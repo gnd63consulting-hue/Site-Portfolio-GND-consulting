@@ -67,7 +67,7 @@ export function ValuesSection() {
 
       <div className="relative mx-auto flex max-w-6xl flex-col items-center gap-16">
         <div className="flex flex-col items-center text-center gap-6">
-          <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/60 bg-white/70 px-6 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-slate-900 shadow-[0_12px_35px_rgba(59,130,246,0.15)]">
+          <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/60 bg-white/70 px-6 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-slate-900 shadow-md shadow-blue-500/20">
             ADN GND
           </span>
           <div className="space-y-4">
@@ -84,7 +84,7 @@ export function ValuesSection() {
           {values.map((value, index) => (
             <div
               key={value.id}
-              className="group relative overflow-hidden rounded-2xl border border-white/60 bg-white/80 p-[1px] shadow-[0_22px_60px_rgba(15,23,42,0.08)] backdrop-blur-xl transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_32px_70px_rgba(15,23,42,0.12)]"
+              className="group relative overflow-hidden rounded-2xl border border-white/60 bg-white/80 p-[1px] shadow-xl backdrop-blur-xl transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl"
             >
               <div className="relative rounded-2xl bg-white/95 px-5 py-7 sm:px-6 sm:py-9">
                 <div
@@ -92,7 +92,7 @@ export function ValuesSection() {
                 />
 
                 <div className="relative flex flex-col items-center justify-center gap-4 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
-                  <div className={`flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${value.accent.badge} text-xl sm:text-2xl shadow-lg shadow-[rgba(37,99,235,0.2)]`}>
+                  <div className={`flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${value.accent.badge} text-xl sm:text-2xl shadow-lg shadow-blue-500/20`}>
                     <span>{value.icon}</span>
                   </div>
                   <span className="text-xs sm:text-sm font-semibold uppercase tracking-[0.28em] text-slate-400">

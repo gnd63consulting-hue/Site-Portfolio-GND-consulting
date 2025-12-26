@@ -238,9 +238,9 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
     setFormData({ ...formData, files: newFiles });
   };
 
-  const baseFieldClasses = 'w-full px-4 py-3.5 rounded-2xl border border-slate-200/60 bg-white/85 text-slate-900 font-inter text-sm sm:text-base shadow-sm transition-all duration-300 focus:outline-none focus:border-blue-400/70 focus:ring-2 focus:ring-blue-200/70 focus:ring-offset-2 focus:ring-offset-white focus:shadow-md placeholder:text-slate-400/80 backdrop-blur-xl hover:border-blue-200/80 disabled:cursor-not-allowed disabled:opacity-60 disabled:bg-white/70';
+  const baseFieldClasses = 'w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-200 disabled:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-60';
   const selectFieldClasses = `${baseFieldClasses} appearance-none pr-12 cursor-pointer`;
-  const textAreaClasses = `${baseFieldClasses} min-h-[140px] sm:min-h-[160px] leading-relaxed resize-none`;
+  const textAreaClasses = `${baseFieldClasses} min-h-[120px] resize-y`;
 
   return (
     <section id="contact-form" className="py-24 px-4 sm:px-6 max-w-4xl mx-auto relative contact-section-wrapper bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
@@ -462,7 +462,7 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
             </div>
 
             <div>
-              <div className="relative overflow-hidden rounded-2xl border border-slate-200/60 bg-white/85 px-4 py-5 shadow-lg">
+              <div className="relative overflow-hidden rounded-xl border border-slate-200 bg-white px-4 py-4 shadow-md">
                 <input
                   type="file"
                   multiple
@@ -477,7 +477,7 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
                   className="file-upload-label group flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 cursor-pointer text-left"
                 >
                   <div className="flex items-center gap-3 w-full sm:w-auto">
-                    <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-500 text-white shadow-lg shadow-blue-500/25">
+                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600 text-white shadow-md shadow-blue-600/25">
                       <Upload className="w-5 h-5" />
                     </span>
                     <div className="space-y-1">

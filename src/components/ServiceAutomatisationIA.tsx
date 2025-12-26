@@ -214,7 +214,7 @@ export function ServiceAutomatisationIA() {
   };
 
   return (
-    <div className="service-page service-ai min-h-screen bg-white text-slate-900">
+    <main id="main-content" className="service-page service-ai min-h-screen bg-white text-slate-900">
       {/* HERO */}
       <section
         data-service-section="hero"
@@ -456,6 +456,6 @@ export function ServiceAutomatisationIA() {
           </div>
         </div>
       </section>
-    </div>
+    </main>
   );
 }

@@ -159,7 +159,7 @@ export function ServiceMotionDesign() {
   };
 
   return (
-    <div className="service-page service-motion min-h-screen bg-white text-slate-900">
+    <main id="main-content" className="service-page service-motion min-h-screen bg-white text-slate-900">
       {/* HERO */}
       <section
         data-service-section="hero"
@@ -400,6 +400,6 @@ export function ServiceMotionDesign() {
           </div>
         </div>
       </section>
-    </div>
+    </main>
   );
 }

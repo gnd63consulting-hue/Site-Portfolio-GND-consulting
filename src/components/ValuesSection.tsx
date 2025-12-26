@@ -95,7 +95,7 @@ export function ValuesSection() {
                   <div className={`flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${value.accent.badge} text-xl sm:text-2xl shadow-lg shadow-blue-500/20`}>
                     <span>{value.icon}</span>
                   </div>
-                  <span className="text-xs sm:text-sm font-semibold uppercase tracking-[0.28em] text-slate-400">
+                  <span className="text-xs sm:text-sm font-semibold uppercase tracking-[0.28em] text-slate-500">
                     {String(index + 1).padStart(2, '0')}
                   </span>
                 </div>
@@ -113,9 +113,9 @@ export function ValuesSection() {
                   <span className={`text-[0.65rem] sm:text-xs font-bold uppercase tracking-[0.26em] sm:tracking-[0.3em] ${value.accent.text}`}>
                     Valeur clé
                   </span>
-                  <div className="flex items-center gap-2 text-slate-400">
+                  <div className="flex items-center gap-2 text-slate-500">
                     <span className="h-[1px] w-10 sm:w-12 bg-gradient-to-r from-transparent via-slate-300 to-transparent" />
-                    <span className="text-[0.65rem] sm:text-xs uppercase tracking-[0.32em] sm:tracking-[0.35em] text-slate-400">
+                    <span className="text-[0.65rem] sm:text-xs uppercase tracking-[0.32em] sm:tracking-[0.35em] text-slate-500">
                       GND
                     </span>
                   </div>

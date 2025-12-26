@@ -59,7 +59,16 @@ export function Header() {
   };
 
   return (
-    <header className="absolute top-0 left-0 right-0 z-[150] transition-all duration-300" onMouseLeave={closeDropdown}>
+    <>
+      {/* Skip link for accessibility */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[200] bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300"
+      >
+        Aller au contenu principal
+      </a>
+
+      <header className="absolute top-0 left-0 right-0 z-[150] transition-all duration-300" onMouseLeave={closeDropdown}>
       
       <div className="container-modern">
         <div className="flex justify-between items-center py-3 sm:py-4 relative z-10">
@@ -315,5 +324,6 @@ export function Header() {
         )}
       </div>
     </header>
+    </>
   );
 }

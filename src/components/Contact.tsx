@@ -243,7 +243,7 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
   const textAreaClasses = `${baseFieldClasses} min-h-[120px] resize-y`;
 
   return (
-    <section id="contact-form" className="py-24 px-4 sm:px-6 max-w-4xl mx-auto relative contact-section-wrapper bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
+    <section id="contact-form" className="py-24 px-4 sm:px-6 max-w-4xl mx-auto relative contact-section-wrapper bg-gradient-to-br from-slate-50 via-white to-blue-50/30" aria-labelledby="contact-title">
       {/* Effet de particules */}
       <div className="absolute inset-0 opacity-25">
         {Array.from({ length: 20 }).map((_, i) => (
@@ -265,7 +265,7 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
       <div className="absolute top-1/2 left-1/4 h-44 w-44 sm:left-1/3 sm:h-64 sm:w-64 bg-gradient-to-br from-slate-900/10 to-blue-300/25 rounded-full blur-xl sm:blur-2xl" />
 
       <div className="text-center mb-8 sm:mb-12 md:mb-16 px-2 contact-header-wrapper">
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-4 sm:mb-6 uppercase tracking-tight contact-form-title" id="contact">
+        <h2 id="contact-title" className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-4 sm:mb-6 uppercase tracking-tight contact-form-title">
           Contactez-Nous
         </h2>
         <p className="text-sm sm:text-base md:text-lg text-slate-700 leading-relaxed max-w-2xl mx-auto px-2 contact-form-subtitle">
@@ -292,7 +292,7 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
 
           <div className="relative z-10 grid gap-6 p-6 sm:p-8 md:p-10 form-inner w-full">
             <div className="flex flex-col gap-2 text-center sm:text-left items-center sm:items-start">
-              <span className="badge-title inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">
+              <span className="badge-title inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                 <Sparkles className="h-4 w-4 text-blue-400" />
                 Formulaire
               </span>
@@ -482,10 +482,10 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
                     </span>
                     <div className="space-y-1">
                       <p className="text-sm font-semibold text-slate-800">Joindre des fichiers (optionnel)</p>
-                      <p className="text-xs text-slate-400">PDF, images, briefs… max 10 Mo</p>
+                      <p className="text-xs text-slate-500">PDF, images, briefs… max 10 Mo</p>
                     </div>
                   </div>
-                  <span className="text-[0.6rem] sm:text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">
+                  <span className="text-[0.6rem] sm:text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                     Glisser-déposer
                   </span>
                 </label>
@@ -497,7 +497,7 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
                         <div className="flex flex-wrap items-center gap-2 text-sm text-slate-600">
                           <span className="text-blue-500 text-base leading-none">📎</span>
                           <span className="font-medium text-slate-700">{file.name}</span>
-                          <span className="text-slate-400 text-xs">({(file.size / 1024 / 1024).toFixed(1)} MB)</span>
+                          <span className="text-slate-500 text-xs">({(file.size / 1024 / 1024).toFixed(1)} MB)</span>
                         </div>
                         <button
                           type="button"

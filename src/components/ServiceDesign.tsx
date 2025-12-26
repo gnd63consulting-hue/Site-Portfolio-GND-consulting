@@ -104,7 +104,7 @@ export function ServiceDesign() {
   };
 
   return (
-    <div className="service-page service-design min-h-screen bg-white text-slate-900">
+    <main id="main-content" className="service-page service-design min-h-screen bg-white text-slate-900">
       {/* HERO */}
       <section
         data-service-section="hero"
@@ -339,6 +339,6 @@ export function ServiceDesign() {
           </div>
         </div>
       </section>
-    </div>
+    </main>
   );
 }

@@ -67,9 +67,9 @@ export function Hero() {
 
   return (
     <>
-      <section
+      <main
         ref={heroRef}
-        id="hero"
+        id="main-content"
         className="relative overflow-hidden min-h-screen pt-[clamp(4.5rem,18vh,12rem)] pb-[clamp(2rem,10vh,5rem)]"
       >
         {/* Vidéo d'arrière-plan */}
@@ -140,8 +140,8 @@ export function Hero() {
           ))}
         </div>
 
-      </section>
-      
+      </main>
+
     </>
   );
 }

@@ -199,7 +199,7 @@ const CreditsCard: React.FC<CreditsCardProps> = ({ currentMedia }) => {
             ✨
           </span>
           <div className="flex flex-col">
-            <span className="text-[11px] font-semibold uppercase tracking-[0.45em] text-slate-400">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.45em] text-slate-500">
               Crédits principaux
             </span>
             <span className="mt-1 text-base font-semibold text-slate-800 sm:text-lg">
@@ -1919,7 +1919,7 @@ export function Portfolio() {
                 <article className="relative overflow-hidden rounded-2xl sm:rounded-2xl border border-white/60 bg-white/95 p-6 sm:p-8 shadow-xl sm:shadow-xl backdrop-blur-xl transition-all duration-700 hover:-translate-y-2 hover:shadow-xl sm:hover:shadow-2xl text-center sm:text-left video-focus-card">
                   <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-white/0 via-white/40 to-white/0 opacity-0 transition-opacity duration-500 hover:opacity-100" />
                   <div className="relative flex flex-col gap-5 text-center sm:text-left items-center sm:items-start">
-                    <div className="flex items-center justify-center sm:justify-start gap-2 text-[0.6rem] sm:text-xs font-medium uppercase tracking-[0.3em] sm:tracking-[0.35em] text-slate-400">
+                    <div className="flex items-center justify-center sm:justify-start gap-2 text-[0.6rem] sm:text-xs font-medium uppercase tracking-[0.3em] sm:tracking-[0.35em] text-slate-500">
                       <span className="inline-flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-400 text-sm sm:text-base text-white shadow-lg shadow-lg">🎬</span>
                       <span>Focus projet</span>
                     </div>
@@ -2329,7 +2329,7 @@ export function Portfolio() {
                   >
                     <button
                       ref={lightboxCloseBtnRef}
-                      className="absolute top-8 right-8 w-16 h-16 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110 z-[210] group cursor-pointer"
+                      className="absolute top-8 right-8 w-16 h-16 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110 z-[210] group cursor-pointer focus:outline-none focus:ring-2 focus:ring-white/50"
                       onClick={(e) => {
                         e.stopPropagation();
                         closeImageModal();
@@ -2340,7 +2340,7 @@ export function Portfolio() {
                     </button>
 
                     <button
-                      className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-all duration-300 ease-in-out hover:scale-105 z-[210]"
+                      className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-all duration-300 ease-in-out hover:scale-105 z-[210] focus:outline-none focus:ring-2 focus:ring-white/50"
                       onClick={(e) => {
                         e.stopPropagation();
                         const prevIndex = (currentIndex - 1 + allPhotos.length) % allPhotos.length;
@@ -2352,7 +2352,7 @@ export function Portfolio() {
                     </button>
 
                     <button
-                      className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-all duration-300 ease-in-out hover:scale-105 z-[210]"
+                      className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-all duration-300 ease-in-out hover:scale-105 z-[210] focus:outline-none focus:ring-2 focus:ring-white/50"
                       onClick={(e) => {
                         e.stopPropagation();
                         const nextIndex = (currentIndex + 1) % allPhotos.length;

@@ -145,7 +145,7 @@ export function Services() {
   }
 
   return (
-    <section id="services" className="py-24 lg:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative bg-slate-50">
+    <section id="services" className="py-24 lg:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative bg-slate-50" aria-labelledby="services-title">
       {/* Éléments décoratifs */}
       <div className="absolute top-20 -left-20 w-80 h-80 bg-gradient-to-br from-rose-200/40 to-pink-300/40 rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 -right-20 w-96 h-96 bg-gradient-to-br from-slate-200/30 via-white to-transparent rounded-full blur-3xl"></div>
@@ -220,7 +220,7 @@ export function Services() {
 
       {/* Titre de section */}
       <div className="text-center space-y-4 mb-8 sm:mb-12 relative z-10">
-        <h2 className="section-title text-[clamp(1.75rem,5vw,2.5rem)]">
+        <h2 id="services-title" className="section-title text-[clamp(1.75rem,5vw,2.5rem)]">
           Nos Services Créatifs
         </h2>
         <p className="section-description text-slate-700 text-[clamp(0.95rem,2.5vw,1.125rem)]">
@@ -274,7 +274,7 @@ export function Services() {
                       <div className={`flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${category.color} text-xl sm:text-2xl shadow-lg shadow-blue-600/25`}>
                         <span>{category.emoji}</span>
                       </div>
-                      <span className="text-[0.7rem] sm:text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">
+                      <span className="text-[0.7rem] sm:text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                         {String(index + 1).padStart(2, '0')}
                       </span>
                     </div>
@@ -289,7 +289,7 @@ export function Services() {
                     </div>
 
                     <div className="relative mt-auto flex flex-col items-center justify-center gap-3 border-t border-slate-200/70 pt-4 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left sm:gap-6">
-                      <span className="text-[0.6rem] sm:text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-slate-400">
+                      <span className="text-[0.6rem] sm:text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-slate-500">
                         Découvrir
                       </span>
                       <span className="text-sm font-semibold text-slate-500 transition-transform duration-300 group-hover:translate-x-1">

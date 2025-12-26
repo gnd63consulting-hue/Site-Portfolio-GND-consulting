@@ -145,7 +145,7 @@ export function Footer() {
                       <Icon className="h-5 w-5" />
                     </span>
                     <span className="flex flex-col text-left leading-tight">
-                      <span className="text-[11px] font-semibold uppercase tracking-[0.32em] text-slate-400">
+                      <span className="text-[11px] font-semibold uppercase tracking-[0.32em] text-slate-500">
                         {label}
                       </span>
                       <span className="text-sm font-semibold text-slate-700 transition-colors duration-200 group-hover:text-primary">
@@ -182,7 +182,7 @@ export function Footer() {
             <MapPin className="h-4 w-4 text-primary" />
             <span>GND Consulting — Paris, France</span>
           </div>
-          <p className="text-xs font-medium uppercase tracking-[0.28em] text-slate-400">
+          <p className="text-xs font-medium uppercase tracking-[0.28em] text-slate-500">
             © 2025 gndconsulting.fr — Tous droits réservés
           </p>
         </div>

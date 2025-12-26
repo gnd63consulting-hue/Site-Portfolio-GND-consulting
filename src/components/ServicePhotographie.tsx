@@ -138,7 +138,7 @@ export function ServicePhotographie() {
   };
 
   return (
-    <div className="service-page service-photo min-h-screen bg-white text-slate-900">
+    <main id="main-content" className="service-page service-photo min-h-screen bg-white text-slate-900">
       {/* HERO */}
       <section
         data-service-section="hero"
@@ -381,6 +381,6 @@ export function ServicePhotographie() {
           </div>
         </div>
       </section>
-    </div>
+    </main>
   );
 }

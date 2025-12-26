@@ -5,11 +5,12 @@ import reactRefresh from 'eslint-plugin-react-refresh';
 import tseslint from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
 
-export default tseslint.config(
-  { ignores: ['dist'] },
+export default [
   {
-    extends: [js.configs.recommended],
-    files: ['**/*.{ts,tsx}'],
+    ignores: ['dist'],
+  },
+  {
+    files: ['**/*.{ts,tsx,js,jsx}'],
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
@@ -28,12 +29,13 @@ export default tseslint.config(
       '@typescript-eslint': tseslint,
     },
     rules: {
-      ...reactHooks.configs.recommended.rules,
+      ...js.configs.recommended.rules,
       ...tseslint.configs.recommended.rules,
+      ...reactHooks.configs.recommended.rules,
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },
       ],
     },
-  }
-);
+  },
+];

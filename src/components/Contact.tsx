@@ -265,7 +265,7 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
       <div className="absolute top-1/2 left-1/4 h-44 w-44 sm:left-1/3 sm:h-64 sm:w-64 bg-gradient-to-br from-slate-900/10 to-blue-300/25 rounded-full blur-xl sm:blur-2xl" />
 
       <div className="text-center mb-8 sm:mb-12 md:mb-16 px-2 contact-header-wrapper">
-        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 mb-4 sm:mb-6 uppercase tracking-tight contact-form-title text-slate-900" id="contact">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-4 sm:mb-6 uppercase tracking-tight contact-form-title" id="contact">
           Contactez-Nous
         </h2>
         <p className="text-sm sm:text-base md:text-lg text-slate-700 leading-relaxed max-w-2xl mx-auto px-2 contact-form-subtitle">

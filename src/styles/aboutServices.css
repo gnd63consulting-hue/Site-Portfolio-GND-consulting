@@ -165,10 +165,10 @@
 }
 
 .feature-title {
-  font-size: clamp(1.9rem, 4vw, 2.55rem);
-  font-weight: 800;
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  font-weight: 700;
   color: #0f172a;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   margin: 0;
 }
 
@@ -282,7 +282,7 @@
 
 .fullwidth-overlay .feature-title {
   color: white;
-  font-size: clamp(2.1rem, 4.5vw, 2.8rem);
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
 }
 
 .fullwidth-overlay .feature-description {
@@ -382,7 +382,7 @@
   }
 
   .feature-title {
-    font-size: clamp(1.6rem, 7vw, 2.2rem);
+    font-size: clamp(1.125rem, 5vw, 1.5rem);
   }
 
   .feature-description {
@@ -434,7 +434,7 @@
   }
 
   .fullwidth-overlay .feature-title {
-    font-size: clamp(1.8rem, 7vw, 2.3rem);
+    font-size: clamp(1.125rem, 5vw, 1.5rem);
   }
 
   .fullwidth-overlay .feature-description {

@@ -15,10 +15,10 @@ import {
 import CookiePreferencesModal from './CookiePreferences';
 
 const sitemapLinks = [
-  { name: 'Accueil', href: '#home' },
-  { name: 'À propos', href: '#about' },
+  { name: 'Accueil', href: '#hero' },
+  { name: 'À propos', href: '#qui-sommes-nous' },
   { name: 'Nos services', href: '#services' },
-  { name: 'Portfolio', href: '#portfolio' },
+  { name: 'Portfolio', href: '#realisations' },
   { name: 'Mentions légales', href: '/mentions-legales' }
 ];
 

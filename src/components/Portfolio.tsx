@@ -1787,10 +1787,10 @@ export function Portfolio() {
               setActiveTab('video');
             }}
             className={clsx(
-              'flex items-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold transition-all duration-300 pointer-events-auto text-xs sm:text-base min-w-[120px] justify-center',
+              'flex items-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold transition-all duration-200 pointer-events-auto text-xs sm:text-base min-w-[120px] justify-center',
               activeTab === 'video'
-                ? 'bg-primary text-white shadow-lg'
-                : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
+                ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/25'
+                : 'bg-transparent hover:bg-slate-100 text-slate-700'
             )}
           >
             <Video className="w-3 h-3 sm:w-4 sm:h-4" />
@@ -1807,10 +1807,10 @@ export function Portfolio() {
               setActiveTab('photo');
             }}
             className={clsx(
-              'flex items-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold transition-all duration-300 pointer-events-auto text-xs sm:text-base min-w-[120px] justify-center',
+              'flex items-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold transition-all duration-200 pointer-events-auto text-xs sm:text-base min-w-[120px] justify-center',
               activeTab === 'photo'
-                ? 'bg-primary text-white shadow-lg'
-                : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
+                ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/25'
+                : 'bg-transparent hover:bg-slate-100 text-slate-700'
             )}
           >
             <Camera className="w-3 h-3 sm:w-4 sm:h-4" />
@@ -1949,7 +1949,7 @@ export function Portfolio() {
                         <button
                           type="button"
                           onClick={() => setIsDescriptionExpanded((prev) => !prev)}
-                          className="group inline-flex items-center gap-2 rounded-full border border-blue-200/70 bg-white px-4 py-2 text-[0.7rem] sm:text-xs font-semibold uppercase tracking-[0.25em] sm:tracking-[0.35em] text-blue-600 shadow-[0_12px_32px_rgba(79,70,229,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:border-blue-300 hover:shadow-[0_18px_36px_rgba(79,70,229,0.18)] self-center sm:self-start"
+                          className="group inline-flex items-center gap-2 bg-blue-50 hover:bg-blue-100 text-blue-600 font-medium px-4 py-2 rounded-full text-sm transition-all duration-200"
                         >
                           {isDescriptionExpanded ? 'Réduire' : 'Lire la suite'}
                           <span className="text-blue-400 transition-transform duration-300 group-hover:translate-x-1">

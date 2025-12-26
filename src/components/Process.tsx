@@ -129,8 +129,7 @@ export function Process() {
           </p>
           <a
             href="#contact"
-            className="inline-block px-6 sm:px-8 py-3 sm:py-5 bg-primary text-white font-bold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(99,102,241,0.5)] uppercase tracking-wider flex items-center justify-center"
-            style={{ fontSize: 'clamp(0.9rem, 3vw, 1.25rem)', minHeight: 'clamp(48px, 10vw, 60px)' }}
+            className="inline-flex items-center justify-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold rounded-xl shadow-lg shadow-blue-600/25 hover:shadow-xl hover:shadow-blue-600/30 transition-all duration-200"
             onClick={(e) => {
               const el = e.currentTarget;
               el.setAttribute('aria-busy', 'true');

@@ -53,9 +53,9 @@ const About: React.FC<AboutProps> = ({ testimonials = [] }) => {
         <div className="text-center mb-12">
           <button
             onClick={toggleHistorySection}
-            className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 text-white font-bold text-lg rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-[0_12px_35px_rgba(59,130,246,0.35)] focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-400/50"
+            className="group inline-flex items-center gap-3 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold rounded-xl shadow-lg shadow-blue-600/25 hover:shadow-xl hover:shadow-blue-600/30 transition-all duration-200 focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-200"
           >
-            <span className="relative z-10">
+            <span>
               {isHistorySectionVisible ? 'Masquer notre histoire' : 'Découvrir notre histoire'}
             </span>
             <div className={`w-6 h-6 transition-transform duration-300 ${isHistorySectionVisible ? 'rotate-180' : ''}`}>
@@ -63,7 +63,6 @@ const About: React.FC<AboutProps> = ({ testimonials = [] }) => {
                 <path d="M6 9L12 15L18 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </div>
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-white/0 via-white/20 to-white/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           </button>
         </div>
 

@@ -978,42 +978,36 @@ a:visited {
 }
 
 .cookie-accept-btn {
-  background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+  background-color: #2563EB;
   color: white;
-  padding: 12px 28px;
-  border-radius: 8px;
+  padding: 12px 24px;
+  border-radius: 12px;
   font-weight: 600;
   border: none;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-  position: relative;
-  overflow: hidden;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
 }
 
 .cookie-accept-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
-  background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+  background-color: #1D4ED8;
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
 }
 
 .cookie-customize-btn {
-  background: transparent;
-  color: #3B82F6;
-  padding: 12px 28px;
-  border: 2px solid rgba(59, 130, 246, 0.3);
-  border-radius: 8px;
+  background-color: white;
+  color: #2563EB;
+  padding: 12px 24px;
+  border: 2px solid rgba(37, 99, 235, 0.2);
+  border-radius: 12px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
+  transition: all 0.2s ease;
 }
 
 .cookie-customize-btn:hover {
-  border-color: #3B82F6;
-  background: rgba(59, 130, 246, 0.08);
-  transform: translateY(-1px);
+  background-color: #F8FAFC;
+  border-color: rgba(37, 99, 235, 0.4);
 }
 
 /* === COOKIE ICON ANIMATION === */
@@ -1271,42 +1265,36 @@ a:visited {
 }
 
 .cookie-accept-btn {
-  background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+  background-color: #2563EB;
   color: white;
-  padding: 12px 28px;
-  border-radius: 8px;
+  padding: 12px 24px;
+  border-radius: 12px;
   font-weight: 600;
   border: none;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-  position: relative;
-  overflow: hidden;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
 }
 
 .cookie-accept-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
-  background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+  background-color: #1D4ED8;
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
 }
 
 .cookie-customize-btn {
-  background: transparent;
-  color: #3B82F6;
-  padding: 12px 28px;
-  border: 2px solid rgba(59, 130, 246, 0.3);
-  border-radius: 8px;
+  background-color: white;
+  color: #2563EB;
+  padding: 12px 24px;
+  border: 2px solid rgba(37, 99, 235, 0.2);
+  border-radius: 12px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
+  transition: all 0.2s ease;
 }
 
 .cookie-customize-btn:hover {
-  border-color: #3B82F6;
-  background: rgba(59, 130, 246, 0.08);
-  transform: translateY(-1px);
+  background-color: #F8FAFC;
+  border-color: rgba(37, 99, 235, 0.4);
 }
 
 /* Bouton de fermeture */

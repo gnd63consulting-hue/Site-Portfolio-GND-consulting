@@ -12,7 +12,7 @@ export function RouteH1() {
   else if (pathname.startsWith('/partenaires')) text = 'Partenaires';
 
   return (
-    <h1 className="sr-only">{text}</h1>
+    <span className="sr-only">{text}</span>
   );
 }
 

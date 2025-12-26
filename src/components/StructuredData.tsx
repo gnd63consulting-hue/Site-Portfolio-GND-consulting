@@ -1,10 +1,27 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
+import { pageSEO } from '../utils/seo';
 
 export function StructuredData() {
   const location = useLocation();
   const baseUrl = 'https://www.gndconsulting.fr';
   const url = `${baseUrl}${location.pathname}`;
+
+  // Déterminer les métadonnées de la page actuelle
+  const getPageMeta = () => {
+    const path = location.pathname;
+    if (path === '/') return pageSEO.home;
+    if (path.startsWith('/services/design')) return pageSEO.designService;
+    if (path.startsWith('/services/motion-design')) return pageSEO.motionDesignService;
+    if (path.startsWith('/services/production-audiovisuelle')) return pageSEO.productionService;
+    if (path.startsWith('/services/photographie')) return pageSEO.photographyService;
+    if (path.startsWith('/services/automatisation-ia')) return pageSEO.aiService;
+    if (path.startsWith('/mentions-legales')) return { title: 'Mentions Légales | GND Consulting', description: 'Mentions légales et informations légales de GND Consulting.' };
+    if (path.startsWith('/partenaires')) return { title: 'Partenaires | GND Consulting', description: 'Nos partenaires et collaborations.' };
+    return pageSEO.home;
+  };
+
+  const pageMeta = getPageMeta();
 
   // Organisation avec noms alternatifs pour améliorer la recherche
   const organization = {
@@ -95,10 +112,30 @@ export function StructuredData() {
     itemListElement: breadcrumbItems
   };
 
+  // Schema WebPage pour renforcer le titre et la description de chaque page
+  const webPage = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${url}#webpage`,
+    url: url,
+    name: pageMeta.title,
+    description: pageMeta.description,
+    isPartOf: {
+      '@id': `${baseUrl}/#website`
+    },
+    about: {
+      '@id': `${baseUrl}/#organization`
+    },
+    inLanguage: 'fr-FR',
+    datePublished: '2023-01-01',
+    dateModified: new Date().toISOString().split('T')[0]
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organization) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(website) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPage) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
     </>
   );

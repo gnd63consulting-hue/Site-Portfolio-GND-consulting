@@ -259,7 +259,7 @@ export function ServiceAutomatisationIA() {
       {/* INTRO */}
       <section
         data-service-section="intro"
-        className="bg-gradient-to-b from-white to-slate-50 px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24"
+        className="bg-gradient-to-b from-white to-slate-50 py-24 lg:py-32 px-4 sm:px-6 lg:px-8 lg:px-10 lg:py-24"
       >
         <div className="mx-auto max-w-4xl text-center">
           <p className="text-balance text-[clamp(1rem,2.6vw,1.5rem)] leading-relaxed text-slate-700">
@@ -272,7 +272,7 @@ export function ServiceAutomatisationIA() {
       {/* METRICS */}
       <section
         data-service-section="metrics"
-        className="bg-white px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24"
+        className="bg-white py-24 lg:py-32 px-4 sm:px-6 lg:px-8 lg:px-10 lg:py-24"
       >
         <div className="mx-auto max-w-6xl">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -301,7 +301,7 @@ export function ServiceAutomatisationIA() {
       {/* SERVICES */}
       <section
         data-service-section="services"
-        className="bg-gradient-to-br from-blue-50 via-white to-blue-50 px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24"
+        className="bg-gradient-to-br from-blue-50 via-white to-blue-50 py-24 lg:py-32 px-4 sm:px-6 lg:px-8 lg:px-10 lg:py-24"
       >
         <div className="mx-auto max-w-7xl">
           <div className="text-center">
@@ -346,7 +346,7 @@ export function ServiceAutomatisationIA() {
       {/* DOMAINES */}
       <section
         data-service-section="domains"
-        className="bg-white px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24"
+        className="bg-white py-24 lg:py-32 px-4 sm:px-6 lg:px-8 lg:px-10 lg:py-24"
       >
         <div className="mx-auto max-w-7xl">
           <div className="text-center">
@@ -387,7 +387,7 @@ export function ServiceAutomatisationIA() {
       {/* WHY NOW */}
       <section
         data-service-section="why-now"
-        className="bg-gradient-to-br from-white via-blue-50 to-blue-100 px-4 py-16 sm:px-6 sm:py-20"
+        className="bg-gradient-to-br from-white via-blue-50 to-blue-100 py-24 lg:py-32 px-4 sm:px-6 lg:px-8"
       >
         <div className="mx-auto max-w-6xl">
           <h2 className="text-center text-[clamp(1.75rem,4vw,2.75rem)] font-black text-slate-900">
@@ -421,7 +421,7 @@ export function ServiceAutomatisationIA() {
       {/* CTA FINAL */}
       <section
         data-service-section="cta-final"
-        className="relative overflow-hidden bg-gradient-to-br from-[#F5E8FF] via-white to-blue-50 px-4 py-16 sm:px-6 sm:py-20"
+        className="relative overflow-hidden bg-gradient-to-br from-[#F5E8FF] via-white to-blue-50 py-24 lg:py-32 px-4 sm:px-6 lg:px-8"
       >
         <div className="pointer-events-none absolute top-16 -left-24 h-72 w-72 rounded-full bg-gradient-to-br from-blue-300/30 to-blue-400/30 blur-3xl sm:h-80 sm:w-80" />
         <div className="pointer-events-none absolute bottom-10 -right-24 h-80 w-80 rounded-full bg-gradient-to-br from-blue-300/30 to-blue-400/30 blur-3xl sm:h-96 sm:w-96" />

@@ -1741,9 +1741,9 @@ export function Portfolio() {
   // Section Découvrir nos réalisations – État de chargement
   if (loading) {
     return (
-      <section className="py-[10rem] px-[5%] max-w-[1400px] mx-auto relative">
+      <section className="py-24 lg:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
         <div className="text-center">
-          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
           <p className="text-slate-600 mt-4">Chargement du portfolio...</p>
         </div>
       </section>
@@ -1752,7 +1752,7 @@ export function Portfolio() {
 
   // Section Découvrir nos réalisations – ID utilisé pour scroll via menu Portfolio
   return (
-    <section id="realisations" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 lg:px-8 w-full relative overflow-hidden" role="region" aria-label="Portfolio vidéos et photos" style={{ background: 'linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f0f9ff 100%)' }}>
+    <section id="realisations" className="py-24 lg:py-32 px-4 sm:px-6 lg:px-8 w-full relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50/30" role="region" aria-label="Portfolio vidéos et photos">
       {/* Éléments décoratifs */}
       <div className="absolute top-8 -left-12 h-40 w-40 sm:top-20 sm:-left-20 sm:h-80 sm:w-80 bg-gradient-to-br from-rose-200/40 to-pink-300/40 rounded-full blur-2xl sm:blur-3xl" aria-hidden="true"></div>
       <div className="absolute bottom-8 -right-12 h-48 w-48 sm:bottom-20 sm:-right-20 sm:h-96 sm:w-96 bg-gradient-to-br from-blue-200/40 to-blue-300/40 rounded-full blur-2xl sm:blur-3xl" aria-hidden="true"></div>

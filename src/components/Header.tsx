@@ -59,7 +59,16 @@ export function Header() {
   };
 
   return (
-    <header className="absolute top-0 left-0 right-0 z-[150] transition-all duration-300" onMouseLeave={closeDropdown}>
+    <>
+      {/* Skip link for accessibility */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[200] bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300"
+      >
+        Aller au contenu principal
+      </a>
+
+      <header className="absolute top-0 left-0 right-0 z-[150] transition-all duration-300" onMouseLeave={closeDropdown}>
       
       <div className="container-modern">
         <div className="flex justify-between items-center py-3 sm:py-4 relative z-10">
@@ -69,15 +78,14 @@ export function Header() {
               <img
                 src="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/GND%20consulting%20Logo%20Blanc-Photoroom.png"
                 alt="Logo GND Consulting - Studio créatif spécialisé en production audiovisuelle et design graphique"
-                className="w-auto transition-all duration-300 hover:scale-105 filter drop-shadow-xl"
-                style={{ height: 'clamp(64px, 17vw, 140px)', maxWidth: '220px' }}
+                className="w-auto transition-all duration-200 hover:scale-105 filter drop-shadow-xl h-[clamp(64px,17vw,140px)] max-w-[220px]"
               />
             </a>
           </div>
 
           {/* Navigation Desktop - Style exact de l'image */}
           <nav className="hidden lg:flex items-center justify-center flex-1">
-            <div style={{ backgroundColor: '#bbcde8' }} className="backdrop-blur-sm rounded-2xl p-1 inline-flex gap-1 border border-slate-200/50">
+            <div className="bg-[#bbcde8] backdrop-blur-sm rounded-2xl p-1 inline-flex gap-1 border border-slate-200/50">
               {navItems.map((item, index) => {
                 const IconComponent = item.icon;
                 return (
@@ -178,20 +186,11 @@ export function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden w-10 h-10 flex items-center justify-center transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-primary/50 rounded-lg relative z-[200]"
-            style={{
-              color: 'white',
-              filter: 'drop-shadow(0 0 2px #000) drop-shadow(0 2px 4px rgba(0,0,0,0.6))'
-            }}
+            className="lg:hidden w-10 h-10 flex items-center justify-center transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-primary/50 rounded-lg relative z-[200] text-white drop-shadow-[0_0_2px_#000,0_2px_4px_rgba(0,0,0,0.6)]"
             aria-label={isMobileMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
             aria-expanded={isMobileMenuOpen}
           >
-            <span style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              textShadow: '0 0 2px rgba(0,0,0,0.8), 0 0 4px rgba(0,0,0,0.6)'
-            }}>
+            <span className="flex items-center justify-center">
               {isMobileMenuOpen ? <X size={24} strokeWidth={2.5} stroke="white" aria-hidden="true" /> : <Menu size={24} strokeWidth={2.5} stroke="white" aria-hidden="true" />}
             </span>
           </button>
@@ -325,5 +324,6 @@ export function Header() {
         )}
       </div>
     </header>
+    </>
   );
 }

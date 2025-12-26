@@ -243,7 +243,7 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
   const textAreaClasses = `${baseFieldClasses} min-h-[120px] resize-y`;
 
   return (
-    <section id="contact-form" className="py-24 px-4 sm:px-6 max-w-4xl mx-auto relative contact-section-wrapper bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
+    <section id="contact-form" className="py-24 px-4 sm:px-6 max-w-4xl mx-auto relative contact-section-wrapper bg-gradient-to-br from-slate-50 via-white to-blue-50/30" aria-labelledby="contact-title">
       {/* Effet de particules */}
       <div className="absolute inset-0 opacity-25">
         {Array.from({ length: 20 }).map((_, i) => (
@@ -265,7 +265,7 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
       <div className="absolute top-1/2 left-1/4 h-44 w-44 sm:left-1/3 sm:h-64 sm:w-64 bg-gradient-to-br from-slate-900/10 to-blue-300/25 rounded-full blur-xl sm:blur-2xl" />
 
       <div className="text-center mb-8 sm:mb-12 md:mb-16 px-2 contact-header-wrapper">
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-4 sm:mb-6 uppercase tracking-tight contact-form-title" id="contact">
+        <h2 id="contact-title" className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-4 sm:mb-6 uppercase tracking-tight contact-form-title">
           Contactez-Nous
         </h2>
         <p className="text-sm sm:text-base md:text-lg text-slate-700 leading-relaxed max-w-2xl mx-auto px-2 contact-form-subtitle">
@@ -292,7 +292,7 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
 
           <div className="relative z-10 grid gap-6 p-6 sm:p-8 md:p-10 form-inner w-full">
             <div className="flex flex-col gap-2 text-center sm:text-left items-center sm:items-start">
-              <span className="badge-title inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">
+              <span className="badge-title inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                 <Sparkles className="h-4 w-4 text-blue-400" />
                 Formulaire
               </span>
@@ -482,10 +482,10 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
                     </span>
                     <div className="space-y-1">
                       <p className="text-sm font-semibold text-slate-800">Joindre des fichiers (optionnel)</p>
-                      <p className="text-xs text-slate-400">PDF, images, briefs… max 10 Mo</p>
+                      <p className="text-xs text-slate-500">PDF, images, briefs… max 10 Mo</p>
                     </div>
                   </div>
-                  <span className="text-[0.6rem] sm:text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">
+                  <span className="text-[0.6rem] sm:text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                     Glisser-déposer
                   </span>
                 </label>
@@ -497,7 +497,7 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
                         <div className="flex flex-wrap items-center gap-2 text-sm text-slate-600">
                           <span className="text-blue-500 text-base leading-none">📎</span>
                           <span className="font-medium text-slate-700">{file.name}</span>
-                          <span className="text-slate-400 text-xs">({(file.size / 1024 / 1024).toFixed(1)} MB)</span>
+                          <span className="text-slate-500 text-xs">({(file.size / 1024 / 1024).toFixed(1)} MB)</span>
                         </div>
                         <button
                           type="button"
@@ -545,14 +545,14 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
               <div className="rounded-2xl border border-emerald-300/40 bg-emerald-50/85 px-5 py-4 text-center shadow-lg" role="status" aria-live="polite">
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 mb-2">
                   <CheckCircle className="w-6 h-6 text-emerald-500" />
-                  <h3 className="text-emerald-700 font-semibold" style={{ fontSize: 'clamp(0.95rem, 3vw, 1.125rem)', wordBreak: 'break-word' }}>
+                  <h3 className="text-emerald-700 font-semibold text-[clamp(0.95rem,3vw,1.125rem)] break-words">
                     Demande envoyée avec succès !
                   </h3>
                 </div>
-                <p className="text-emerald-600" style={{ fontSize: 'clamp(0.8rem, 2.4vw, 1rem)', wordBreak: 'break-word' }}>
+                <p className="text-emerald-600 text-[clamp(0.8rem,2.4vw,1rem)] break-words">
                   🎉 Merci ! Votre demande a bien été enregistrée et envoyée.
                 </p>
-                <p className="text-emerald-500" style={{ fontSize: 'clamp(0.7rem, 2vw, 0.9rem)', wordBreak: 'break-word' }}>
+                <p className="text-emerald-500 text-[clamp(0.7rem,2vw,0.9rem)] break-words">
                   Nous revenons vers vous sous 2h maximum par email ou téléphone.
                 </p>
               </div>
@@ -562,14 +562,14 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
               <div className="rounded-2xl border border-rose-300/50 bg-rose-50/85 px-5 py-4 text-center shadow-lg" role="alert" aria-live="assertive">
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 mb-2">
                   <AlertCircle className="w-6 h-6 text-rose-500" />
-                  <h3 className="text-rose-600 font-semibold" style={{ fontSize: 'clamp(0.95rem, 3vw, 1.125rem)', wordBreak: 'break-word' }}>
+                  <h3 className="text-rose-600 font-semibold text-[clamp(0.95rem,3vw,1.125rem)] break-words">
                     Erreur lors de l'envoi
                   </h3>
                 </div>
-                <p className="text-rose-500" style={{ fontSize: 'clamp(0.8rem, 2.4vw, 1rem)', wordBreak: 'break-word' }}>
+                <p className="text-rose-500 text-[clamp(0.8rem,2.4vw,1rem)] break-words">
                   {errorMessage || "Une erreur est survenue lors de l'envoi de votre demande."}
                 </p>
-                <p className="text-rose-500/90" style={{ fontSize: 'clamp(0.7rem, 2vw, 0.9rem)', wordBreak: 'break-word' }}>
+                <p className="text-rose-500/90 text-[clamp(0.7rem,2vw,0.9rem)] break-words">
                   Veuillez réessayer ou nous contacter directement à gnd63consulting@gmail.com
                 </p>
               </div>

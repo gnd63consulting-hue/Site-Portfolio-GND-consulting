@@ -99,11 +99,11 @@ export function AISection() {
       <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-br from-blue-200/30 to-blue-300/30 rounded-full blur-2xl"></div>
       
       <div className="text-center mb-12 sm:mb-14 md:mb-16 relative z-10">
-        <h2 className="section-title" id="ai" style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)', wordBreak: 'break-word' }}>
+        <h2 className="section-title text-[clamp(1.75rem,5vw,2.5rem)] break-words" id="ai">
           Intelligence Artificielle & Créativité
         </h2>
 
-        <p className="section-description text-slate-700" style={{ fontSize: 'clamp(0.95rem, 2.5vw, 1.125rem)', wordBreak: 'break-word' }}>
+        <p className="section-description text-slate-700 text-[clamp(0.95rem,2.5vw,1.125rem)] break-words">
           Découvrez comment nous intégrons l'IA dans nos processus créatifs pour optimiser vos projets et décupler votre impact
         </p>
       </div>
@@ -117,10 +117,10 @@ export function AISection() {
               <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 border border-primary/30">
                 <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 text-primary" aria-hidden="true" />
               </div>
-              <div className={`font-bold ${metric.color} mb-2`} style={{ fontSize: 'clamp(1.25rem, 4vw, 1.5rem)' }}>
+              <div className={`font-bold ${metric.color} mb-2 text-[clamp(1.25rem,4vw,1.5rem)]`}>
                 {metric.value}
               </div>
-              <div className="text-slate-600 font-medium" style={{ fontSize: 'clamp(0.75rem, 2vw, 0.875rem)' }}>
+              <div className="text-slate-600 font-medium text-[clamp(0.75rem,2vw,0.875rem)]">
                 {metric.label}
               </div>
             </div>
@@ -139,10 +139,10 @@ export function AISection() {
                   <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-primary" aria-hidden="true" />
                 </div>
                 <div className="min-w-0">
-                  <h3 className="text-slate-900 font-bold mb-2 sm:mb-3 group-hover:text-primary transition-colors duration-300" style={{ fontSize: 'clamp(1rem, 3vw, 1.25rem)', wordBreak: 'break-word' }}>
+                  <h3 className="text-slate-900 font-bold mb-2 sm:mb-3 group-hover:text-primary text-[clamp(1rem,3vw,1.25rem)] break-words">
                     {feature.title}
                   </h3>
-                  <p className="text-slate-600 leading-relaxed group-hover:text-slate-800 transition-colors duration-300" style={{ fontSize: 'clamp(0.875rem, 2.5vw, 1rem)', wordBreak: 'break-word' }}>
+                  <p className="text-slate-600 leading-relaxed text-[clamp(0.875rem,2.5vw,1rem)] break-words">
                     {feature.description}
                   </p>
                 </div>
@@ -155,16 +155,15 @@ export function AISection() {
       {/* CTA */}
       <div className="text-center mt-12 sm:mt-14 md:mt-16 relative z-10">
         <div className="glass rounded-3xl p-4 sm:p-6 md:p-8 border border-primary/30 inline-block max-w-full">
-          <h3 className="section-subtitle text-center mb-3 sm:mb-4" style={{ fontSize: 'clamp(1.25rem, 4vw, 1.75rem)', wordBreak: 'break-word' }}>
+          <h3 className="section-subtitle text-center mb-3 sm:mb-4 text-[clamp(1.25rem,4vw,1.75rem)] break-words">
             Prêt à intégrer l'IA dans vos projets ?
           </h3>
-          <p className="card-text mb-4 sm:mb-6 max-w-md text-center mx-auto" style={{ fontSize: 'clamp(0.875rem, 2.5vw, 1rem)', wordBreak: 'break-word' }}>
+          <p className="card-text mb-4 sm:mb-6 max-w-md text-center mx-auto text-[clamp(0.875rem,2.5vw,1rem)] break-words">
             Découvrez comment nos solutions IA peuvent transformer votre workflow créatif.
           </p>
           <a
             href="#contact"
-            className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-5 bg-primary text-white font-bold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-blue-600/30 uppercase tracking-wider focus:outline-none focus:ring-4 focus:ring-white/50"
-            style={{ fontSize: 'clamp(0.9rem, 3vw, 1.25rem)', minHeight: 'clamp(48px, 10vw, 60px)' }}
+            className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-5 bg-primary text-white font-bold rounded-full transition-all duration-200 hover:scale-105 hover:shadow-xl shadow-blue-600/30 uppercase tracking-wider focus:outline-none focus:ring-4 focus:ring-white/50 text-[clamp(0.9rem,3vw,1.25rem)] min-h-[clamp(48px,10vw,60px)]"
           >
             Découvrir nos solutions IA
           </a>

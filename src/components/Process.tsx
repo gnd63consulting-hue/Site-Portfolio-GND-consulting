@@ -40,10 +40,10 @@ export function Process() {
       <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-br from-blue-200/30 to-blue-300/30 rounded-full blur-2xl"></div>
       
       <div className="text-center mb-12 sm:mb-16 relative z-10">
-        <h2 className="section-title" id="process" style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)' }}>
+        <h2 className="section-title text-[clamp(1.75rem,5vw,2.5rem)]" id="process">
           Notre Méthode de Travail
         </h2>
-        <p className="section-description text-slate-700" style={{ fontSize: 'clamp(0.95rem, 2.5vw, 1.125rem)' }}>
+        <p className="section-description text-slate-700 text-[clamp(0.95rem,2.5vw,1.125rem)]">
           Un processus collaboratif en 4 étapes pour garantir la réussite de vos projets créatifs
         </p>
       </div>
@@ -83,15 +83,15 @@ export function Process() {
                   Étape {index + 1}/4
                 </div>
 
-                <h3 className="text-slate-900 font-bold mb-3 mt-2" style={{ fontSize: 'clamp(1rem, 3vw, 1.25rem)' }}>
+                <h3 className="text-slate-900 font-bold mb-3 mt-2 text-[clamp(1rem,3vw,1.25rem)]">
                   {step.title}
                 </h3>
 
-                <p className="text-primary font-medium mb-3 sm:mb-4 group-hover:text-secondary transition-colors duration-300 leading-relaxed" style={{ fontSize: 'clamp(0.875rem, 2.5vw, 1rem)' }}>
+                <p className="text-primary font-medium mb-3 sm:mb-4 leading-relaxed text-[clamp(0.875rem,2.5vw,1rem)]">
                   {step.description}
                 </p>
 
-                <p className="card-text group-hover:text-slate-800 transition-colors duration-300 leading-[1.6]" style={{ fontSize: 'clamp(0.8rem, 2.2vw, 0.95rem)' }}>
+                <p className="card-text leading-[1.6] text-[clamp(0.8rem,2.2vw,0.95rem)]">
                   {step.details}
                 </p>
 
@@ -121,10 +121,10 @@ export function Process() {
       {/* CTA */}
       <div className="text-center mt-12 sm:mt-16 relative z-10">
         <div className="glass rounded-3xl p-4 sm:p-6 md:p-8 border border-primary/30 inline-block max-w-full">
-          <h3 className="section-subtitle text-center mb-3 sm:mb-4" style={{ fontSize: 'clamp(1.25rem, 4vw, 1.75rem)' }}>
+          <h3 className="section-subtitle text-center mb-3 sm:mb-4 text-[clamp(1.25rem,4vw,1.75rem)]">
             Prêt à démarrer votre projet ?
           </h3>
-          <p className="card-text mb-4 sm:mb-6 max-w-md text-center" style={{ fontSize: 'clamp(0.875rem, 2.5vw, 1rem)' }}>
+          <p className="card-text mb-4 sm:mb-6 max-w-md text-center text-[clamp(0.875rem,2.5vw,1rem)]">
             Contactez-nous dès maintenant pour un premier échange gratuit et sans engagement.
           </p>
           <a

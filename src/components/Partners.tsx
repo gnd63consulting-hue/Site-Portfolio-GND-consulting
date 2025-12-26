@@ -223,8 +223,8 @@ export function Partners() {
                     
                     {/* Boutons de navigation en haut */}
                     <div className="absolute top-6 left-6 z-20">
-                      <button className="w-8 h-8 bg-white/10 backdrop-blur-sm rounded-lg flex items-center justify-center border border-white/20 hover:bg-white/20 transition-all duration-300">
-                        <span className="text-white text-lg font-light">+</span>
+                      <button className="w-8 h-8 bg-white/10 backdrop-blur-sm rounded-lg flex items-center justify-center border border-white/20 hover:bg-white/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50" aria-label="Agrandir l'image">
+                        <span className="text-white text-lg font-light" aria-hidden="true">+</span>
                       </button>
                     </div>
                     
@@ -253,6 +253,7 @@ export function Partners() {
                                 src={item.image}
                                 alt={`Photo showcase - ${item.caption} - Projet NOCUEM par GND Consulting`}
                                 className="w-full h-full object-cover cursor-pointer"
+                                loading="lazy"
                               />
                             </div>
                           ))}
@@ -278,6 +279,7 @@ export function Partners() {
                               src={item.image}
                               alt={`Miniature showcase - ${item.caption} - Projet NOCUEM`}
                               className="w-full h-full object-cover"
+                              loading="lazy"
                             />
                             
                             {/* Overlay play button */}
@@ -309,15 +311,17 @@ export function Partners() {
                     {/* Contrôles de navigation pour les images */}
                     <button
                       onClick={prevSlide}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/20 border border-white/20 transition-all duration-300 z-30 opacity-50 hover:opacity-100"
+                      className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/20 border border-white/20 transition-all duration-300 z-30 opacity-50 hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-white/50"
+                      aria-label="Image précédente"
                     >
-                      <ChevronLeft className="w-5 h-5" />
+                      <ChevronLeft className="w-5 h-5" aria-hidden="true" />
                     </button>
                     <button
                       onClick={nextSlide}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/20 border border-white/20 transition-all duration-300 z-30 opacity-50 hover:opacity-100"
+                      className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/20 border border-white/20 transition-all duration-300 z-30 opacity-50 hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-white/50"
+                      aria-label="Image suivante"
                     >
-                      <ChevronRight className="w-5 h-5" />
+                      <ChevronRight className="w-5 h-5" aria-hidden="true" />
                     </button>
                     
                     {/* Indicateurs de slide */}
@@ -326,9 +330,10 @@ export function Partners() {
                         <button
                           key={index}
                           onClick={() => setCurrentSlide(index)}
-                          className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                            index === currentSlide 
-                              ? 'bg-white scale-125' 
+                          aria-label={`Aller à l'image ${index + 1}`}
+                          className={`w-2 h-2 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 ${
+                            index === currentSlide
+                              ? 'bg-white scale-125'
                               : 'bg-white/40 hover:bg-white/70'
                           }`}
                         />
@@ -407,9 +412,10 @@ export function Partners() {
           <div className="relative max-w-6xl max-h-[90vh] w-full">
             <button
               onClick={closeImageModal}
-              className="absolute -top-12 right-0 w-12 h-12 bg-red-500/20 hover:bg-red-500/40 rounded-full flex items-center justify-center transition-all duration-300 border border-red-500/40 z-10"
+              className="absolute -top-12 right-0 w-12 h-12 bg-red-500/20 hover:bg-red-500/40 rounded-full flex items-center justify-center transition-all duration-300 border border-red-500/40 z-10 focus:outline-none focus:ring-2 focus:ring-red-400/50"
+              aria-label="Fermer la galerie"
             >
-              <span className="text-red-400 text-xl font-bold">×</span>
+              <span className="text-red-400 text-xl font-bold" aria-hidden="true">×</span>
             </button>
             
             {/* Navigation dans le modal */}
@@ -421,9 +427,10 @@ export function Partners() {
                 setSelectedImage(nocuemGallery[prevIdx].image);
                 setSelectedCaption(nocuemGallery[prevIdx].caption);
               }}
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-14 h-14 bg-black/70 backdrop-blur-xl rounded-full flex items-center justify-center text-blue-400 hover:bg-blue-400/20 hover:border-blue-400 border border-white/20 transition-all duration-300 z-10 shadow-lg hover:scale-110"
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-14 h-14 bg-black/70 backdrop-blur-xl rounded-full flex items-center justify-center text-blue-400 hover:bg-blue-400/20 hover:border-blue-400 border border-white/20 transition-all duration-300 z-10 shadow-lg hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-400/50"
+              aria-label="Image précédente"
             >
-              <ChevronLeft className="w-7 h-7" />
+              <ChevronLeft className="w-7 h-7" aria-hidden="true" />
             </button>
             
             <button
@@ -434,9 +441,10 @@ export function Partners() {
                 setSelectedImage(nocuemGallery[nextIdx].image);
                 setSelectedCaption(nocuemGallery[nextIdx].caption);
               }}
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-14 h-14 bg-black/70 backdrop-blur-xl rounded-full flex items-center justify-center text-blue-400 hover:bg-blue-400/20 hover:border-blue-400 border border-white/20 transition-all duration-300 z-10 shadow-lg hover:scale-110"
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-14 h-14 bg-black/70 backdrop-blur-xl rounded-full flex items-center justify-center text-blue-400 hover:bg-blue-400/20 hover:border-blue-400 border border-white/20 transition-all duration-300 z-10 shadow-lg hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-400/50"
+              aria-label="Image suivante"
             >
-              <ChevronRight className="w-7 h-7" />
+              <ChevronRight className="w-7 h-7" aria-hidden="true" />
             </button>
             
             <img
@@ -467,9 +475,10 @@ export function Partners() {
                       setSelectedImage(nocuemGallery[index].image);
                       setSelectedCaption(nocuemGallery[index].caption);
                     }}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      index === currentIdx 
-                        ? 'bg-blue-400 scale-125 shadow-lg shadow-blue-400/50 border-2 border-white/30' 
+                    aria-label={`Aller à l'image ${index + 1}`}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400/50 ${
+                      index === currentIdx
+                        ? 'bg-blue-400 scale-125 shadow-lg shadow-blue-400/50 border-2 border-white/30'
                         : 'bg-white/30 hover:bg-blue-400/70 border border-white/20'
                     }`}
                   />

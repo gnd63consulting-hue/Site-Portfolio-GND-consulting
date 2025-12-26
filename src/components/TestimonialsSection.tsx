@@ -46,12 +46,12 @@ export function TestimonialsSection() {
           <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
             <Quote className="w-5 h-5 sm:w-6 sm:h-6 text-white" aria-hidden="true" />
           </div>
-          <h2 className="section-title" id="testimonials" style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)', wordBreak: 'break-word' }}>
+          <h2 className="section-title text-[clamp(1.75rem,5vw,2.5rem)] break-words" id="testimonials">
             Avis de Nos Clients
           </h2>
         </div>
 
-        <p className="section-description text-slate-700" style={{ fontSize: 'clamp(0.95rem, 2.5vw, 1.125rem)', wordBreak: 'break-word' }}>
+        <p className="section-description text-slate-700 text-[clamp(0.95rem,2.5vw,1.125rem)] break-words">
           Retours d'expérience authentiques de nos clients : découvrez pourquoi ils nous font confiance pour leurs projets créatifs
         </p>
       </div>
@@ -64,7 +64,7 @@ export function TestimonialsSection() {
           {/* Citation */}
           <Quote className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 text-primary/30 mx-auto mb-6 sm:mb-8" aria-hidden="true" />
 
-          <blockquote className="text-white font-medium italic leading-relaxed mb-6 sm:mb-8" style={{ fontSize: 'clamp(1.1rem, 3.5vw, 1.5rem)', wordBreak: 'break-word' }}>
+          <blockquote className="text-white font-medium italic leading-relaxed mb-6 sm:mb-8 text-[clamp(1.1rem,3.5vw,1.5rem)] break-words">
             "{currentTestimonial.citation}"
           </blockquote>
           
@@ -96,17 +96,17 @@ export function TestimonialsSection() {
               />
             )}
             <div className="text-center sm:text-left">
-              <h4 className="card-title" style={{ fontSize: 'clamp(1rem, 3vw, 1.125rem)', wordBreak: 'break-word' }}>
+              <h4 className="card-title text-[clamp(1rem,3vw,1.125rem)] break-words">
                 {currentTestimonial.nom_client}
               </h4>
               {currentTestimonial.fonction && (
-                <p className="card-text" style={{ fontSize: 'clamp(0.8rem, 2.2vw, 0.875rem)', wordBreak: 'break-word' }}>
+                <p className="card-text text-[clamp(0.8rem,2.2vw,0.875rem)] break-words">
                   {currentTestimonial.fonction}
                   {currentTestimonial.entreprise && ` • ${currentTestimonial.entreprise}`}
                 </p>
               )}
               {currentTestimonial.projet_concerne && (
-                <p className="text-primary/80 mt-1" style={{ fontSize: 'clamp(0.75rem, 2vw, 0.875rem)', wordBreak: 'break-word' }}>
+                <p className="text-primary/80 mt-1 text-[clamp(0.75rem,2vw,0.875rem)] break-words">
                   Projet: {currentTestimonial.projet_concerne}
                 </p>
               )}

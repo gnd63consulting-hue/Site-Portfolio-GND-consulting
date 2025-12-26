@@ -159,7 +159,7 @@ export function ServiceMotionDesign() {
   };
 
   return (
-    <div className="service-page service-motion min-h-screen bg-white text-slate-900">
+    <main id="main-content" className="service-page service-motion min-h-screen bg-white text-slate-900">
       {/* HERO */}
       <section
         data-service-section="hero"
@@ -171,6 +171,8 @@ export function ServiceMotionDesign() {
             src="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250923_2241_Atelier%20Motion%20Design_simple_compose_01k5w4v1pkee2r37dkh7ppkb18.png"
             alt="Atelier Motion Design - Équipe créative en pleine production vidéo animée"
             className="h-full w-full object-cover"
+            loading="eager"
+            fetchpriority="high"
           />
           <div className="absolute inset-0 bg-slate-900/55 lg:bg-slate-900/45" />
         </div>
@@ -398,6 +400,6 @@ export function ServiceMotionDesign() {
           </div>
         </div>
       </section>
-    </div>
+    </main>
   );
 }

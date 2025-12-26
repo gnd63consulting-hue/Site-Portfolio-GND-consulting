@@ -188,7 +188,7 @@ export function ServiceProductionAudiovisuelle() {
   };
 
   return (
-    <div className="service-page service-production min-h-screen bg-white text-slate-900">
+    <main id="main-content" className="service-page service-production min-h-screen bg-white text-slate-900">
       {/* HERO */}
       <section
         data-service-section="hero"
@@ -453,6 +453,6 @@ export function ServiceProductionAudiovisuelle() {
           </div>
         </div>
       </section>
-    </div>
+    </main>
   );
 }

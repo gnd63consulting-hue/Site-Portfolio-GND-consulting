@@ -17,7 +17,6 @@ import {
 } from 'lucide-react';
 import { UnifiedFAQ } from './UnifiedFAQ';
 import { updateMetaTags, pageSEO } from '../utils/seo';
-import { ButtonGND } from './ButtonGND';
 
 export function ServiceMotionDesign() {
   useEffect(() => {
@@ -187,17 +186,13 @@ export function ServiceMotionDesign() {
           <p className="text-balance text-[clamp(1.125rem,3vw,1.75rem)] font-light leading-relaxed text-white/90">
             Animez vos idées. Dynamisez votre image. Attirez votre public.
           </p>
-          <ButtonGND
-            variant="primary"
+          <button
             onClick={scrollToContact}
-            className="w-full max-w-md items-center justify-center gap-3 rounded-2xl px-6 py-4 text-[clamp(1rem,2.6vw,1.25rem)] hover:scale-[1.02] sm:max-w-lg sm:px-8 sm:py-5 lg:max-w-xl lg:px-12 lg:py-6 shadow-xl shadow-blue-600/30"
-            style={{
-              backgroundImage: 'linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #60a5fa 100%)'
-            }}
+            className="hero-cta inline-flex w-full max-w-md items-center justify-center gap-3 rounded-2xl bg-primary px-6 py-4 text-[clamp(1rem,2.6vw,1.25rem)] font-bold text-white shadow-lg transition-transform duration-300 hover:scale-[1.02] hover:shadow-xl shadow-blue-600/30 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/40 sm:max-w-lg sm:px-8 sm:py-5 lg:max-w-xl lg:px-12 lg:py-6"
           >
             <Play className="h-5 w-5 sm:h-6 sm:w-6" />
             Demander un devis personnalisé
-          </ButtonGND>
+          </button>
         </div>
       </section>
 
@@ -344,7 +339,7 @@ export function ServiceMotionDesign() {
             </p>
             <button
               onClick={scrollToContact}
-              className="inline-flex w-full max-w-xs items-center justify-center gap-3 rounded-2xl bg-slate-900 px-6 py-3 text-[clamp(0.95rem,2.3vw,1.1rem)] font-bold text-white transition-transform duration-300 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-slate-500/40 sm:w-auto sm:px-8 sm:py-4"
+              className="inline-flex w-full max-w-xs items-center justify-center gap-3 rounded-2xl bg-primary px-6 py-3 text-[clamp(1rem,2.6vw,1.25rem)] font-bold text-white shadow-lg transition-transform duration-300 hover:scale-[1.02] hover:shadow-xl shadow-blue-600/30 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/40 sm:w-auto sm:px-8 sm:py-4"
             >
               <Heart className="h-5 w-5" />
               Demander un devis

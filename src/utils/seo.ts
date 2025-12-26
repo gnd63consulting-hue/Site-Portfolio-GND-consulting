@@ -40,6 +40,7 @@ export const updateMetaTags = (metadata: SEOMetaData) => {
   };
 
   updateOrCreateMeta('description', metadata.description);
+  updateOrCreateMeta('robots', 'index, follow');
 
   updateOrCreateMeta('og:title', metadata.title);
   updateOrCreateMeta('og:description', metadata.description);

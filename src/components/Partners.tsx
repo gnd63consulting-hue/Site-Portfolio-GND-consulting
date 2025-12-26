@@ -111,7 +111,7 @@ export function Partners() {
   const IconComponent = currentPartner.icon;
 
   return (
-    <section id="partners" className="py-12 px-6 max-w-7xl mx-auto relative overflow-hidden">
+    <section id="partners" className="py-24 lg:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative overflow-hidden">
       {/* Fond avec formes organiques */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-blue-50/30"></div>
       

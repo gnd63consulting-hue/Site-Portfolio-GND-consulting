@@ -92,7 +92,7 @@ export function AISection() {
   ];
 
   return (
-    <section id="ai-section" className="py-16 sm:py-20 md:py-32 px-4 sm:px-6 lg:px-12 max-w-[1400px] mx-auto relative" style={{ background: 'linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f0f9ff 100%)' }}>
+    <section id="ai-section" className="py-24 lg:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
       {/* Éléments décoratifs */}
       <div className="absolute top-20 -left-20 w-80 h-80 bg-gradient-to-br from-rose-200/40 to-pink-300/40 rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 -right-20 w-96 h-96 bg-gradient-to-br from-blue-200/40 to-blue-300/40 rounded-full blur-3xl"></div>

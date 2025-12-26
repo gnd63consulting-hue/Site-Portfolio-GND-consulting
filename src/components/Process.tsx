@@ -30,7 +30,7 @@ export function Process() {
   ];
 
   return (
-    <section className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 lg:px-12 max-w-[1200px] mx-auto relative" style={{ background: 'linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f0f9ff 100%)' }}>
+    <section className="py-24 lg:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
       {/* Effet de fond */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-blue-50/30"></div>
       

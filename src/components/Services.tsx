@@ -125,10 +125,10 @@ export function Services() {
 
   if (loading) {
     return (
-      <section id="services" className="py-[10rem] px-[5%] max-w-[1400px] mx-auto relative">
+      <section id="services" className="py-24 lg:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
         <div className="text-center">
-          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-[#20C2A3]"></div>
-          <p className="text-[#A0AEC0] mt-4">Chargement des services...</p>
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+          <p className="text-slate-500 mt-4">Chargement des services...</p>
         </div>
       </section>
     );
@@ -136,16 +136,16 @@ export function Services() {
 
   if (error) {
     return (
-      <section id="services" className="py-[10rem] px-[5%] max-w-[1400px] mx-auto relative">
+      <section id="services" className="py-24 lg:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
         <div className="text-center">
-          <p className="text-red-400">Erreur lors du chargement des services</p>
+          <p className="text-red-500">Erreur lors du chargement des services</p>
         </div>
       </section>
     );
   }
 
   return (
-    <section id="services" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 lg:px-12 max-w-[1400px] mx-auto relative" style={{ background: '#f8fafc' }}>
+    <section id="services" className="py-24 lg:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative bg-slate-50">
       {/* Éléments décoratifs */}
       <div className="absolute top-20 -left-20 w-80 h-80 bg-gradient-to-br from-rose-200/40 to-pink-300/40 rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 -right-20 w-96 h-96 bg-gradient-to-br from-slate-200/30 via-white to-transparent rounded-full blur-3xl"></div>

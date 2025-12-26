@@ -243,7 +243,7 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
   const textAreaClasses = `${baseFieldClasses} min-h-[140px] sm:min-h-[160px] leading-relaxed resize-none`;
 
   return (
-    <section id="contact-form" className="py-8 sm:py-12 md:py-16 px-4 sm:px-6 max-w-[900px] mx-auto relative contact-section-wrapper" style={{ background: 'linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f0f9ff 100%)' }}>
+    <section id="contact-form" className="py-24 px-4 sm:px-6 max-w-4xl mx-auto relative contact-section-wrapper bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
       {/* Effet de particules */}
       <div className="absolute inset-0 opacity-25">
         {Array.from({ length: 20 }).map((_, i) => (

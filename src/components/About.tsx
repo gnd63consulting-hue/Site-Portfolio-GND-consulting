@@ -23,7 +23,7 @@ const About: React.FC<AboutProps> = ({ testimonials = [] }) => {
   };
 
   return (
-    <section id="qui-sommes-nous" className="py-16 sm:py-20 md:py-24 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
+    <section id="qui-sommes-nous" className="py-24 lg:py-32 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
       {/* Éléments décoratifs de fond */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(6)].map((_, i) => (

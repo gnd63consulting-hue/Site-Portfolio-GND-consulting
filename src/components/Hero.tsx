@@ -87,7 +87,7 @@ export function Hero() {
             playsInline
             webkit-playsinline="true"
             preload="metadata"
-            poster="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250919_0012_Vibrant%20Digital%20Collaboration_remix_01k5fe197ef04btmp486wh6w66.png"
+            poster="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250919_0006_Vibrant%20Digital%20Collaboration_remix_01k5fdpkfdemjrbt49q10rx0hx.png"
           >
             <source src="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Creative_Studio_Video_Generation2.mp4" type="video/mp4" />
             Votre navigateur ne supporte pas la lecture vidéo.
@@ -98,10 +98,9 @@ export function Hero() {
 
           {/* Fallback image masquée - La vidéo est forcée à s'afficher */}
           <picture style={{ display: 'none', visibility: 'hidden', opacity: 0 }}>
-            <source srcSet="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250919_0012_Vibrant%20Digital%20Collab.webp 1920w" type="image/webp" />
-            <source srcSet="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250919_0012_Vibrant%20Digital%20Collaboration_remix_01k5fe197ef04btmp486wh6w66.png 1920w" type="image/png" />
+            <source srcSet="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250919_0006_Vibrant%20Digital%20Collaboration_remix_01k5fdpkfdemjrbt49q10rx0hx.png 1920w" type="image/png" />
             <img
-              src="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250919_0012_Vibrant%20Digital%20Collaboration_remix_01k5fe197ef04btmp486wh6w66.png"
+              src="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250919_0006_Vibrant%20Digital%20Collaboration_remix_01k5fdpkfdemjrbt49q10rx0hx.png"
               alt=""
               className="absolute inset-0 w-full h-full object-cover"
               style={{ zIndex: -999, display: 'none', visibility: 'hidden', opacity: 0 }}

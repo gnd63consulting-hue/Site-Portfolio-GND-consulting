@@ -6,7 +6,7 @@ export function AboutServicesBlocks({ isVisible }: { isVisible: boolean }) {
   const images = {
     studio: "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250919_0006_Vibrant%20Digital%20Collaboration_remix_01k5fdpkfdemjrbt49q10rx0hx.png", // Photo d'équipe collaborative
     expertise: "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20251006_2055_Espace%20Travail%20Futuriste_simple_compose_01k6xdztmrewrv8rq637vqqpnp.png", // Réunion stratégique
-    innovation: "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250925_0058_Espace%20Collaboratif%20Futuriste_simple_compose_01k5yz5snhfbsaage8pcpcxk8q.png" // Scène innovation/IA
+    innovation: "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20251006_2055_Espace%20Travail%20Futuriste_simple_compose_01k6xdztmrewrv8rq637vqqpnp.png" // Scène innovation/IA
   };
   
   // Images de backup spécifiques

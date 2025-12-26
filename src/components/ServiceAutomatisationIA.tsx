@@ -223,7 +223,7 @@ export function ServiceAutomatisationIA() {
       >
         <div className="absolute inset-0">
           <img
-            src="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250925_0058_Espace%20Collaboratif%20Futuriste_simple_compose_01k5yz5snhfbsaage8pcpcxk8q.png"
+            src="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20251006_2055_Espace%20Travail%20Futuriste_simple_compose_01k6xdztmrewrv8rq637vqqpnp.png"
             alt="Espace collaboratif futuriste - Automatisation et intelligence artificielle"
             className="h-full w-full object-cover"
           />

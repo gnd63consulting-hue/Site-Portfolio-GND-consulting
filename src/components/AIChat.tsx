@@ -215,13 +215,13 @@ export function AIChat({ isOpen, onClose, onProjectUpdate }: AIChatProps) {
               onChange={(e) => setInputText(e.target.value)}
               onKeyPress={handleKeyPress}
               placeholder="Décrivez votre projet..."
-              className="flex-1 p-4 bg-black/50 border-2 border-[#20C2A3]/30 rounded-2xl text-white font-inter text-sm transition-all duration-300 focus:outline-none focus:border-[#20C2A3] focus:shadow-lg backdrop-blur-sm"
+              className="flex-1 px-4 py-3 bg-black/50 border border-[#20C2A3]/30 rounded-xl text-white text-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#20C2A3]/20 focus:border-[#20C2A3] backdrop-blur-sm disabled:opacity-60 disabled:cursor-not-allowed"
               disabled={isTyping}
             />
             <button
               onClick={handleSendMessage}
               disabled={!inputText.trim() || isTyping}
-              className="w-12 h-12 bg-gradient-to-br from-[#20C2A3] to-[#40D4B8] rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-105 hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-12 h-12 bg-gradient-to-br from-[#20C2A3] to-[#40D4B8] rounded-xl flex items-center justify-center transition-all duration-200 hover:scale-105 hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <Send className="w-5 h-5 text-black" />
             </button>

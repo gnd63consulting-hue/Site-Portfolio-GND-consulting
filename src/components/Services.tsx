@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { trackEvent } from '../utils/analytics';
-import { Play, Clock, CheckCircle, Star } from 'lucide-react';
+import { Play, Clock, CheckCircle, Star, Video, Palette, Sparkles, Monitor, TrendingUp, Smartphone, Zap, LucideIcon } from 'lucide-react';
 import { useServices } from '../hooks/useSupabase';
 
 export function Services() {
@@ -8,14 +8,14 @@ export function Services() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   // Fonction pour générer les icônes selon la catégorie
-  const getCategoryIcon = (categorie: string) => {
+  const getCategoryIcon = (categorie: string): LucideIcon => {
     switch (categorie) {
-      case 'production_audiovisuelle': return '🎬';
-      case 'design_graphique': return '🎨';
-      case 'motion_design': return '✨';
-      case 'web_digital': return '💻';
-      case 'strategie_communication': return '📈';
-      default: return '⭐';
+      case 'production_audiovisuelle': return Video;
+      case 'design_graphique': return Palette;
+      case 'motion_design': return Sparkles;
+      case 'web_digital': return Monitor;
+      case 'strategie_communication': return TrendingUp;
+      default: return Star;
     }
   };
 
@@ -64,7 +64,7 @@ export function Services() {
     {
       id: 'content',
       matchCategories: ['production_audiovisuelle', 'design_graphique'],
-      emoji: "🎨",
+      icon: Palette,
       title: "Création de contenus & production visuelle",
       subtitle: "Créativité sur mesure pour votre image",
       color: "from-pink-500 to-rose-500",
@@ -79,7 +79,7 @@ export function Services() {
     {
       id: 'branding',
       matchCategories: ['strategie_communication', 'web_digital'],
-      emoji: "📱",
+      icon: Smartphone,
       title: "Stratégie digitale & identité de marque",
       subtitle: "Animation intelligente & IA créative",
       color: "from-blue-500 to-blue-500",
@@ -94,7 +94,7 @@ export function Services() {
     {
       id: 'automation',
       matchCategories: ['automatisation', 'motion_design', 'production_audiovisuelle'],
-      emoji: "🎬",
+      icon: Video,
       title: "Automatisation & IA créative",
       subtitle: "Excellence technique & créative",
       color: "from-blue-500 to-blue-500",
@@ -109,7 +109,7 @@ export function Services() {
     {
       id: 'strategy',
       matchCategories: ['strategie_communication', 'pilotage_projet'],
-      emoji: "⚡",
+      icon: Zap,
       title: "Accompagnement stratégique & pilotage de projet",
       subtitle: "Workflows intelligents pour votre business",
       color: "from-blue-500 to-blue-500",
@@ -271,8 +271,8 @@ export function Services() {
                   <div className="relative flex h-full flex-col gap-5 sm:gap-6 rounded-2xl sm:rounded-2xl bg-white/95 px-5 py-6 sm:px-6 sm:py-7">
                     <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-white/0 via-white/45 to-white/0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                     <div className="relative flex flex-col items-center justify-center gap-4 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
-                      <div className={`flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${category.color} text-xl sm:text-2xl shadow-lg shadow-blue-600/25`}>
-                        <span>{category.emoji}</span>
+                      <div className={`flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${category.color} shadow-lg shadow-blue-600/25`}>
+                        <category.icon className="h-6 w-6 sm:h-7 sm:w-7 text-white" />
                       </div>
                       <span className="text-[0.7rem] sm:text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                         {String(index + 1).padStart(2, '0')}

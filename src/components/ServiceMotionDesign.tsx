@@ -180,9 +180,10 @@ export function ServiceMotionDesign() {
         <div className="relative mx-auto flex min-h-[70vh] w-full max-w-5xl flex-col items-center justify-end gap-6 px-4 pb-16 pt-28 text-center sm:px-6 sm:pb-20 sm:pt-36 lg:min-h-[90vh] lg:pb-24">
           <h1
             id="service-motion-hero-title"
-            className="text-balance text-[clamp(2.1rem,5.1vw,4.6rem)] font-black leading-[1.05] tracking-tight text-white"
+            className="text-balance text-[clamp(2.1rem,5.1vw,4.6rem)] font-black leading-[1.05] tracking-tight text-white flex items-center justify-center gap-4"
           >
-            🎥 Motion design sur mesure
+            <Video className="h-10 w-10 sm:h-12 sm:w-12 lg:h-14 lg:w-14" />
+            Motion design sur mesure
           </h1>
           <p className="text-balance text-[clamp(1.125rem,3vw,1.75rem)] font-light leading-relaxed text-white/90">
             Animez vos idées. Dynamisez votre image. Attirez votre public.
@@ -221,8 +222,9 @@ export function ServiceMotionDesign() {
       >
         <div className="mx-auto max-w-7xl">
           <div className="text-center">
-            <h2 className="text-balance text-[clamp(1.875rem,4vw,3rem)] font-black text-slate-900">
-              ✨ Nos expertises motion design
+            <h2 className="text-balance text-[clamp(1.875rem,4vw,3rem)] font-black text-slate-900 flex items-center justify-center gap-3">
+              <Sparkles className="h-8 w-8 text-blue-500" />
+              Nos expertises motion design
             </h2>
             <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.25rem)] text-slate-600">
               Des contenus animés qui captent l’attention et transmettent vos messages en un clin d’œil.

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Users, Zap, Folder, Handshake, Phone, Heart, Camera, Star, ChevronDown } from 'lucide-react';
+import { Menu, X, Users, Zap, Folder, Handshake, Phone, Heart, Camera, Star, ChevronDown, Palette, Video, Bot, LucideIcon } from 'lucide-react';
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -38,11 +38,11 @@ export function Header() {
       icon: Zap,
       hasDropdown: true,
       dropdownItems: [
-        { href: '/services/design-identite-visuelle', label: 'Design & Identité Visuelle', icon: '🎨' },
-        { href: '/services/motion-design', label: 'Motion Design', icon: '🎬' },
-        { href: '/services/production-audiovisuelle', label: 'Production Audiovisuelle', icon: '🎬' },
-        { href: '/services/photographie', label: 'Photographie', icon: '📸' },
-        { href: '/services/automatisation-ia', label: 'Automatisation & IA', icon: '⚡' }
+        { href: '/services/design-identite-visuelle', label: 'Design & Identité Visuelle', icon: Palette },
+        { href: '/services/motion-design', label: 'Motion Design', icon: Video },
+        { href: '/services/production-audiovisuelle', label: 'Production Audiovisuelle', icon: Video },
+        { href: '/services/photographie', label: 'Photographie', icon: Camera },
+        { href: '/services/automatisation-ia', label: 'Automatisation & IA', icon: Bot }
       ]
     },
     { href: '#realisations', label: 'Portfolio', icon: Folder },
@@ -169,7 +169,7 @@ export function Header() {
                             style={{ fontFamily: 'Space Grotesk, sans-serif', fontWeight: '700' }}
                             onClick={closeDropdown}
                           >
-                            <span className="text-lg">{dropdownItem.icon}</span>
+                            <dropdownItem.icon className="h-5 w-5 text-blue-600" />
                             <span>{dropdownItem.label}</span>
                           </a>
                         ))}
@@ -219,7 +219,7 @@ export function Header() {
                             className="flex items-center gap-2 text-slate-500 hover:text-slate-700 transition-colors duration-300 font-medium py-1 text-sm"
                             style={{ fontFamily: 'Inter, sans-serif', fontWeight: '500' }}
                           >
-                            <span>{dropdownItem.icon}</span>
+                            <dropdownItem.icon className="h-4 w-4 text-blue-600" />
                             {dropdownItem.label}
                           </a>
                         ))}

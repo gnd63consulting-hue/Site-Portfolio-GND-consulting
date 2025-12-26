@@ -1,10 +1,11 @@
 import React from 'react';
+import { Heart, Shield, Lightbulb, Users, Bot } from 'lucide-react';
 
 export function ValuesSection() {
   const values = [
     {
       id: 'passion',
-      icon: '❤️',
+      icon: Heart,
       title: 'Passion',
       description: 'Nous mettons notre cœur dans chaque projet',
       accent: {
@@ -15,7 +16,7 @@ export function ValuesSection() {
     },
     {
       id: 'reliability',
-      icon: '🛡️',
+      icon: Shield,
       title: 'Fiabilité',
       description: 'Engagement total envers la qualité et les délais',
       accent: {
@@ -26,7 +27,7 @@ export function ValuesSection() {
     },
     {
       id: 'innovation',
-      icon: '💡',
+      icon: Lightbulb,
       title: 'Innovation',
       description: 'Toujours à la pointe des dernières technologies',
       accent: {
@@ -37,7 +38,7 @@ export function ValuesSection() {
     },
     {
       id: 'collaboration',
-      icon: '🤝',
+      icon: Users,
       title: 'Collaboration',
       description: 'Partenaire de confiance dans votre réussite',
       accent: {
@@ -48,7 +49,7 @@ export function ValuesSection() {
     },
     {
       id: 'ai',
-      icon: '🤖',
+      icon: Bot,
       title: 'Innovation IA',
       description: "Intégration de l'IA et de l'automatisation quand c'est un vrai plus",
       accent: {
@@ -92,8 +93,8 @@ export function ValuesSection() {
                 />
 
                 <div className="relative flex flex-col items-center justify-center gap-4 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
-                  <div className={`flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${value.accent.badge} text-xl sm:text-2xl shadow-lg shadow-blue-500/20`}>
-                    <span>{value.icon}</span>
+                  <div className={`flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${value.accent.badge} shadow-lg shadow-blue-500/20`}>
+                    <value.icon className="h-6 w-6 sm:h-7 sm:w-7 text-white" />
                   </div>
                   <span className="text-xs sm:text-sm font-semibold uppercase tracking-[0.28em] text-slate-500">
                     {String(index + 1).padStart(2, '0')}

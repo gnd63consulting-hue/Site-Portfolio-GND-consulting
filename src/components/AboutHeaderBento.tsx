@@ -1,5 +1,5 @@
 import React from 'react';
-import { Users } from 'lucide-react';
+import { Users, Palette, Zap, TrendingUp } from 'lucide-react';
 
 export function AboutHeaderBento() {
   return (
@@ -57,7 +57,9 @@ export function AboutHeaderBento() {
                 <div className="absolute left-0 top-8 hidden h-3 w-3 rounded-full bg-blue-500 shadow-md shadow-blue-500/30 lg:block" />
                 <div className="group relative rounded-3xl sm:rounded-2xl bg-gradient-to-br from-white via-blue-50/60 to-white p-[1px] shadow-lg shadow-blue-500/5 transition-all duration-300 hover:-translate-y-1">
                   <div className="rounded-2xl bg-white/90 p-6 sm:p-8 text-center backdrop-blur group-hover:bg-white">
-                    <span className="mb-4 sm:mb-6 block text-3xl sm:text-4xl">🎨</span>
+                    <div className="mb-4 sm:mb-6 mx-auto flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-xl bg-blue-100">
+                      <Palette className="h-6 w-6 sm:h-7 sm:w-7 text-blue-600" />
+                    </div>
                     <h3 className="text-lg sm:text-xl font-bold text-slate-800">Créativité</h3>
                     <p className="mt-2 text-sm text-slate-500">100% humaine</p>
                   </div>
@@ -68,7 +70,9 @@ export function AboutHeaderBento() {
                 <div className="absolute left-0 top-8 hidden h-3 w-3 rounded-full bg-blue-500 shadow-md shadow-blue-500/30 lg:block" />
                 <div className="group relative rounded-3xl sm:rounded-2xl bg-gradient-to-br from-white via-blue-50/60 to-white p-[1px] shadow-lg shadow-blue-500/5 transition-all duration-300 hover:-translate-y-1">
                   <div className="rounded-2xl bg-white/90 p-6 sm:p-8 text-center backdrop-blur group-hover:bg-white">
-                    <span className="mb-4 sm:mb-6 block text-3xl sm:text-4xl">⚡</span>
+                    <div className="mb-4 sm:mb-6 mx-auto flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-xl bg-amber-100">
+                      <Zap className="h-6 w-6 sm:h-7 sm:w-7 text-amber-600" />
+                    </div>
                     <h3 className="text-lg sm:text-xl font-bold text-slate-800">Technologie</h3>
                     <p className="mt-2 text-sm text-slate-500">IA &amp; Automation</p>
                   </div>
@@ -79,7 +83,9 @@ export function AboutHeaderBento() {
                 <div className="absolute left-0 top-8 hidden h-3 w-3 rounded-full bg-blue-500 shadow-md shadow-blue-500/30 lg:block" />
                 <div className="group relative rounded-3xl sm:rounded-2xl bg-gradient-to-br from-white via-blue-50/60 to-white p-[1px] shadow-lg shadow-blue-500/5 transition-all duration-300 hover:-translate-y-1">
                   <div className="rounded-2xl bg-white/90 p-6 sm:p-8 text-center backdrop-blur group-hover:bg-white">
-                    <span className="mb-4 sm:mb-6 block text-3xl sm:text-4xl">📈</span>
+                    <div className="mb-4 sm:mb-6 mx-auto flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-xl bg-green-100">
+                      <TrendingUp className="h-6 w-6 sm:h-7 sm:w-7 text-green-600" />
+                    </div>
                     <h3 className="text-lg sm:text-xl font-bold text-slate-800">Résultats</h3>
                     <p className="mt-2 text-sm text-slate-500">Garantis</p>
                   </div>

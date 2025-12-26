@@ -143,10 +143,10 @@ export function ServiceDesign() {
       {/* INTRO */}
       <section
         data-service-section="intro"
-        className="bg-gradient-to-b from-white to-gray-50 px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24"
+        className="bg-gradient-to-b from-white to-slate-50 px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24"
       >
         <div className="mx-auto max-w-4xl text-center">
-          <p className="text-balance text-[clamp(1rem,2.6vw,1.5rem)] leading-relaxed text-gray-700">
+          <p className="text-balance text-[clamp(1rem,2.6vw,1.5rem)] leading-relaxed text-slate-700">
             Chez GND Consulting, nous croyons que le design graphique n&apos;est pas qu&apos;une question
             d&apos;esthétique. C&apos;est un <strong className="text-primary">pilier stratégique</strong> qui raconte votre
             histoire, transmet vos valeurs et crée une connexion émotionnelle durable avec votre audience. Chaque trait,
@@ -160,14 +160,14 @@ export function ServiceDesign() {
       {/* SERVICES */}
       <section
         data-service-section="services"
-        className="bg-gray-50 px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24"
+        className="bg-slate-50 px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24"
       >
         <div className="mx-auto max-w-7xl">
           <div className="text-center">
             <h2 className="text-balance text-[clamp(1.875rem,4vw,3rem)] font-black text-slate-900">
               Nos services Design &amp; Identité Visuelle
             </h2>
-            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.25rem)] text-gray-600">
+            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.25rem)] text-slate-600">
               Des solutions créatives complètes pour donner vie à votre univers visuel
             </p>
           </div>
@@ -178,7 +178,7 @@ export function ServiceDesign() {
               return (
                 <article
                   key={service.title}
-                  className="group flex h-full flex-col rounded-3xl border border-gray-100 bg-white p-6 shadow-lg transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl sm:p-8"
+                  className="group flex h-full flex-col rounded-3xl border border-slate-100 bg-white p-6 shadow-lg transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl sm:p-8"
                 >
                   <span className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-secondary text-white transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 sm:h-18 sm:w-18">
                     <IconComponent className="h-8 w-8" />
@@ -186,7 +186,7 @@ export function ServiceDesign() {
                   <h3 className="text-[clamp(1.125rem,2.6vw,1.35rem)] font-bold text-slate-900 transition-colors duration-300 group-hover:text-primary">
                     {service.title}
                   </h3>
-                  <p className="mt-3 text-[clamp(0.9375rem,2.3vw,1rem)] leading-relaxed text-gray-600">
+                  <p className="mt-3 text-[clamp(0.9375rem,2.3vw,1rem)] leading-relaxed text-slate-600">
                     {service.description}
                   </p>
                 </article>
@@ -207,7 +207,7 @@ export function ServiceDesign() {
               <h2 className="text-balance text-[clamp(1.875rem,4.2vw,3rem)] font-black text-slate-900">
                 Une identité qui vous ressemble vraiment
               </h2>
-              <div className="space-y-5 text-[clamp(0.95rem,2.3vw,1.1rem)] leading-relaxed text-gray-700">
+              <div className="space-y-5 text-[clamp(0.95rem,2.3vw,1.1rem)] leading-relaxed text-slate-700">
                 <p>
                   Notre approche commence toujours par <strong className="text-primary">l&apos;écoute</strong>. Nous prenons
                   le temps de comprendre votre histoire, vos ambitions, votre personnalité unique. Car avant de créer, il
@@ -244,7 +244,7 @@ export function ServiceDesign() {
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
               </div>
               <div className="absolute -right-4 -top-4 h-16 w-16 rounded-full bg-gradient-to-br from-blue-500 to-secondary opacity-80 blur-md lg:h-24 lg:w-24" />
-              <div className="absolute -bottom-4 -left-4 h-20 w-20 rounded-full bg-gradient-to-br from-blue-400 to-sky-500 opacity-60 blur-md lg:h-28 lg:w-28" />
+              <div className="absolute -bottom-4 -left-4 h-20 w-20 rounded-full bg-gradient-to-br from-blue-400 to-blue-500 opacity-60 blur-md lg:h-28 lg:w-28" />
             </div>
           </div>
         </div>
@@ -253,14 +253,14 @@ export function ServiceDesign() {
       {/* AVANTAGES */}
       <section
         data-service-section="advantages"
-        className="bg-gradient-to-b from-gray-50 to-white px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24"
+        className="bg-gradient-to-b from-slate-50 to-white px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24"
       >
         <div className="mx-auto max-w-7xl">
           <div className="text-center">
             <h2 className="text-balance text-[clamp(1.875rem,4vw,3rem)] font-black text-slate-900">
               Pourquoi choisir GND Consulting ?
             </h2>
-            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.25rem)] text-gray-600">
+            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.25rem)] text-slate-600">
               4 raisons qui font la différence dans votre projet créatif
             </p>
           </div>
@@ -279,7 +279,7 @@ export function ServiceDesign() {
                   <h3 className="text-[clamp(1.125rem,2.6vw,1.35rem)] font-bold text-slate-900 transition-colors duration-300 group-hover:text-primary">
                     {advantage.title}
                   </h3>
-                  <p className="mt-3 text-[clamp(0.9375rem,2.3vw,1.05rem)] leading-relaxed text-gray-600">
+                  <p className="mt-3 text-[clamp(0.9375rem,2.3vw,1.05rem)] leading-relaxed text-slate-600">
                     {advantage.description}
                   </p>
                 </article>
@@ -303,16 +303,16 @@ export function ServiceDesign() {
       {/* CTA FINAL */}
       <section
         data-service-section="cta-final"
-        className="relative overflow-hidden bg-gradient-to-br from-[#F5E8FF] via-white to-sky-50 px-4 py-16 sm:px-6 sm:py-20"
+        className="relative overflow-hidden bg-gradient-to-br from-[#F5E8FF] via-white to-blue-50 px-4 py-16 sm:px-6 sm:py-20"
       >
-        <div className="pointer-events-none absolute top-20 -left-20 h-72 w-72 rounded-full bg-gradient-to-br from-blue-300/30 to-sky-400/30 blur-3xl sm:h-80 sm:w-80" />
-        <div className="pointer-events-none absolute bottom-10 -right-24 h-80 w-80 rounded-full bg-gradient-to-br from-blue-300/30 to-sky-400/30 blur-3xl sm:h-96 sm:w-96" />
+        <div className="pointer-events-none absolute top-20 -left-20 h-72 w-72 rounded-full bg-gradient-to-br from-blue-300/30 to-blue-400/30 blur-3xl sm:h-80 sm:w-80" />
+        <div className="pointer-events-none absolute bottom-10 -right-24 h-80 w-80 rounded-full bg-gradient-to-br from-blue-300/30 to-blue-400/30 blur-3xl sm:h-96 sm:w-96" />
 
         <div className="relative mx-auto flex max-w-4xl flex-col items-center text-center">
           <h2 className="text-balance text-[clamp(1.875rem,5vw,3.5rem)] font-black text-slate-900">
             Prêt à donner vie à votre univers visuel ?
           </h2>
-          <p className="mt-4 max-w-3xl text-balance text-[clamp(1rem,2.5vw,1.5rem)] leading-relaxed text-gray-700">
+          <p className="mt-4 max-w-3xl text-balance text-[clamp(1rem,2.5vw,1.5rem)] leading-relaxed text-slate-700">
             Créons ensemble une identité visuelle qui vous ressemble et qui marquera les esprits. Votre projet mérite une
             approche sur-mesure et créative.
           </p>
@@ -328,7 +328,7 @@ export function ServiceDesign() {
               onClick={() => {
                 window.location.href = '#realisations';
               }}
-              className="inline-flex w-full max-w-sm items-center justify-center gap-3 rounded-2xl border-2 border-slate-300 px-6 py-4 text-[clamp(1rem,2.4vw,1.15rem)] font-bold text-gray-700 transition-all duration-300 hover:border-slate-500 hover:bg-white/60 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-slate-300/60 sm:w-auto sm:px-10 sm:py-5"
+              className="inline-flex w-full max-w-sm items-center justify-center gap-3 rounded-2xl border-2 border-slate-300 px-6 py-4 text-[clamp(1rem,2.4vw,1.15rem)] font-bold text-slate-700 transition-all duration-300 hover:border-slate-500 hover:bg-white/60 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-slate-300/60 sm:w-auto sm:px-10 sm:py-5"
             >
               <Palette className="h-5 w-5 sm:h-6 sm:w-6" />
               Voir nos réalisations

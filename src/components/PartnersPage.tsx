@@ -254,7 +254,7 @@ export function PartnersPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50/30 text-slate-900 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50/30 text-slate-900 relative overflow-hidden">
       {/* Header global */}
       <Header />
       
@@ -298,9 +298,9 @@ export function PartnersPage() {
         <div className="absolute inset-0 z-10 flex items-center justify-center pt-16">
           <div className="text-center px-6 max-w-6xl">
             {/* Badge d'introduction */}
-            <div className="inline-flex items-center gap-3 mb-8 bg-white/90 backdrop-blur-sm rounded-full px-8 py-4 shadow-lg border border-gray-200/50">
+            <div className="inline-flex items-center gap-3 mb-8 bg-white/90 backdrop-blur-sm rounded-full px-8 py-4 shadow-lg border border-slate-200/50">
               <Users className="w-6 h-6 text-primary" />
-              <span className="text-gray-800 font-bold text-lg uppercase tracking-wide">Écosystème Créatif</span>
+              <span className="text-slate-800 font-bold text-lg uppercase tracking-wide">Écosystème Créatif</span>
             </div>
             
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-8 leading-tight tracking-tight">
@@ -344,15 +344,15 @@ export function PartnersPage() {
       
       {/* Éléments décoratifs de fond */}
       <div className="absolute top-20 -left-20 w-80 h-80 bg-gradient-to-br from-rose-200/40 to-pink-300/40 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-20 -right-20 w-96 h-96 bg-gradient-to-br from-blue-200/40 to-sky-300/40 rounded-full blur-3xl"></div>
-      <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-br from-sky-200/30 to-indigo-300/30 rounded-full blur-2xl"></div>
+      <div className="absolute bottom-20 -right-20 w-96 h-96 bg-gradient-to-br from-blue-200/40 to-blue-300/40 rounded-full blur-3xl"></div>
+      <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-br from-blue-200/30 to-blue-300/30 rounded-full blur-2xl"></div>
       
       <div className="relative z-10 pt-32 pb-16 px-6 max-w-7xl mx-auto">
         
         {/* Section Présentation - Partenariats d'Excellence */}
         <section className="py-24 relative">
           <div className="text-center mb-20">
-            <div className="inline-flex items-center gap-3 mb-8 bg-white/90 backdrop-blur-sm rounded-full px-6 py-3 border border-gray-200/50 shadow-lg">
+            <div className="inline-flex items-center gap-3 mb-8 bg-white/90 backdrop-blur-sm rounded-full px-6 py-3 border border-slate-200/50 shadow-lg">
               <Sparkles className="w-5 h-5 text-primary" />
               <span className="text-primary font-semibold">Collaborations • Excellence • Innovation</span>
             </div>
@@ -361,7 +361,7 @@ export function PartnersPage() {
               L'Art de la Collaboration Créative
             </h2>
             
-            <p className="section-description text-xl text-gray-700 max-w-5xl mx-auto leading-relaxed">
+            <p className="section-description text-xl text-slate-700 max-w-5xl mx-auto leading-relaxed">
               Chez GND Consulting, nous croyons que les plus belles créations naissent de la rencontre entre talents complémentaires. 
               Notre écosystème de partenaires d'exception nous permet de vous offrir une expertise complète, 
               alliant vision artistique, excellence technique et innovation permanente.
@@ -372,7 +372,7 @@ export function PartnersPage() {
           <div className="flex justify-center mb-20">
             <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-16 shadow-2xl border border-white/50 relative overflow-hidden max-w-5xl hover:scale-[1.02] hover:shadow-3xl transition-all duration-500 group">
               <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-rose-200/30 to-pink-300/30 rounded-full -translate-y-20 translate-x-20"></div>
-              <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-br from-blue-200/20 to-sky-300/20 rounded-full translate-y-16 -translate-x-16"></div>
+              <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-br from-blue-200/20 to-blue-300/20 rounded-full translate-y-16 -translate-x-16"></div>
               
               <div className="relative z-10 text-center">
                 <div className="w-24 h-24 bg-gradient-to-br from-rose-500 to-pink-500 rounded-3xl flex items-center justify-center mb-10 shadow-xl mx-auto group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
@@ -383,34 +383,34 @@ export function PartnersPage() {
                   Un Réseau d'Excellence à Votre Service
                 </h3>
                 
-                <p className="text-gray-700 leading-relaxed mb-10 text-lg max-w-3xl mx-auto">
+                <p className="text-slate-700 leading-relaxed mb-10 text-lg max-w-3xl mx-auto">
                   Chaque partenaire de notre écosystème a été sélectionné pour son expertise unique et sa capacité à sublimer vos projets. 
                   Ensemble, nous formons une équipe créative complète, capable de répondre à tous vos besoins avec excellence et passion.
                 </p>
                 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                   <div className="text-center">
-                    <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-sky-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
                       <Target className="w-8 h-8 text-white" />
                     </div>
                     <h4 className="font-bold text-slate-900 mb-2">Vision Partagée</h4>
-                    <p className="text-gray-600 text-sm">Excellence créative et satisfaction client au cœur de chaque collaboration</p>
+                    <p className="text-slate-600 text-sm">Excellence créative et satisfaction client au cœur de chaque collaboration</p>
                   </div>
                   
                   <div className="text-center">
-                    <div className="w-16 h-16 bg-gradient-to-br from-sky-500 to-indigo-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
                       <Shield className="w-8 h-8 text-white" />
                     </div>
                     <h4 className="font-bold text-slate-900 mb-2">Qualité Garantie</h4>
-                    <p className="text-gray-600 text-sm">Standards élevés et processus rigoureux pour des résultats exceptionnels</p>
+                    <p className="text-slate-600 text-sm">Standards élevés et processus rigoureux pour des résultats exceptionnels</p>
                   </div>
                   
                   <div className="text-center">
-                    <div className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-sky-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
                       <Zap className="w-8 h-8 text-white" />
                     </div>
                     <h4 className="font-bold text-slate-900 mb-2">Innovation Continue</h4>
-                    <p className="text-gray-600 text-sm">Veille technologique et créative pour rester à la pointe</p>
+                    <p className="text-slate-600 text-sm">Veille technologique et créative pour rester à la pointe</p>
                   </div>
                 </div>
               </div>
@@ -439,19 +439,19 @@ export function PartnersPage() {
           <div className="max-w-6xl mx-auto mb-20">
             <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-16 shadow-2xl border border-rose-200/50 relative overflow-hidden">
               <div className="absolute top-0 left-0 w-40 h-40 bg-gradient-to-br from-rose-200/30 to-pink-300/30 rounded-full -translate-x-20 -translate-y-20"></div>
-              <div className="absolute bottom-0 right-0 w-48 h-48 bg-gradient-to-br from-blue-200/20 to-sky-300/20 rounded-full translate-x-24 translate-y-24"></div>
+              <div className="absolute bottom-0 right-0 w-48 h-48 bg-gradient-to-br from-blue-200/20 to-blue-300/20 rounded-full translate-x-24 translate-y-24"></div>
               
               <div className="relative z-10">
                 {/* Citation mise en avant */}
                 <div className="text-center mb-12">
                   <Quote className="w-16 h-16 text-rose-400/50 mx-auto mb-6" />
-                  <blockquote className="text-3xl md:text-4xl font-light italic text-gray-800 leading-relaxed">
+                  <blockquote className="text-3xl md:text-4xl font-light italic text-slate-800 leading-relaxed">
                     "Ce que vous vivez aujourd'hui mérite d'être transmis demain."
                   </blockquote>
                 </div>
                 
                 {/* Texte principal - Préservé intégralement */}
-                <div className="prose prose-xl max-w-none text-gray-700 leading-relaxed">
+                <div className="prose prose-xl max-w-none text-slate-700 leading-relaxed">
                   <p className="text-lg md:text-xl font-light leading-relaxed mb-8">
                     Nocéum transforme vos moments les plus précieux en œuvres cinématographiques intemporelles. 
                     À travers des interviews intimes et une narration soignée, nous créons l'héritage visuel de votre amour. 
@@ -488,7 +488,7 @@ export function PartnersPage() {
             <h3 className="text-4xl font-black text-slate-900 mb-6">
               L'Expertise Nocéum
             </h3>
-            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
               Quatre piliers fondamentaux qui font l'excellence de nos films de mariage
             </p>
           </div>
@@ -505,22 +505,22 @@ export function PartnersPage() {
                 title: "Interviews intimes",
                 description: "Captation authentique des émotions et témoignages de vos proches pour enrichir votre récit",
                 icon: "💝",
-                color: "from-sky-500 to-indigo-500"
+                color: "from-blue-500 to-blue-500"
               },
               {
                 title: "Narration personnalisée",
                 description: "Storytelling unique adapté à chaque couple, racontant votre histoire avec sensibilité",
                 icon: "📖",
-                color: "from-blue-500 to-sky-500"
+                color: "from-blue-500 to-blue-500"
               },
               {
                 title: "Héritage familial",
                 description: "Création d'un patrimoine visuel transmissible aux générations futures",
                 icon: "👨‍👩‍👧‍👦",
-                color: "from-indigo-500 to-sky-500"
+                color: "from-blue-500 to-blue-500"
               }
             ].map((feature, index) => (
-              <div key={index} className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 border border-gray-200/50 hover:border-rose-400/50 transition-all duration-500 hover:scale-105 group text-center shadow-lg hover:shadow-xl">
+              <div key={index} className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 border border-slate-200/50 hover:border-rose-400/50 transition-all duration-500 hover:scale-105 group text-center shadow-lg hover:shadow-xl">
                 <div className={`w-20 h-20 bg-gradient-to-br ${feature.color} rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg`}>
                   <span className="text-white text-3xl">
                     {feature.icon}
@@ -531,7 +531,7 @@ export function PartnersPage() {
                   {feature.title}
                 </h4>
                 
-                <p className="text-gray-600 leading-relaxed text-sm">
+                <p className="text-slate-600 leading-relaxed text-sm">
                   {feature.description}
                 </p>
               </div>
@@ -546,20 +546,20 @@ export function PartnersPage() {
               <h2 className="section-title text-5xl md:text-6xl font-black text-slate-900 mb-8" style={{ wordBreak: 'break-word' }}>
                 Portfolio Créatif
               </h2>
-              <p className="section-description text-xl text-gray-700 max-w-4xl mx-auto" style={{ wordBreak: 'break-word' }}>
+              <p className="section-description text-xl text-slate-700 max-w-4xl mx-auto" style={{ wordBreak: 'break-word' }}>
                 Découvrez nos réalisations et celles de nos partenaires d'exception
               </p>
             </div>
 
             {/* Menu segmenté (pills) */}
             <div className="flex justify-center items-center mb-8 sm:mb-10 md:mb-12">
-              <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-1.5 sm:p-2 inline-flex flex-wrap justify-center gap-2 shadow-lg border border-gray-200/50">
+              <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-1.5 sm:p-2 inline-flex flex-wrap justify-center gap-2 shadow-lg border border-slate-200/50">
                 <button
                   onClick={() => setActiveFilter('all')}
                   className={`flex items-center justify-center gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold transition-all duration-300 min-w-[100px] text-sm sm:text-base ${
                     activeFilter === 'all'
                       ? 'bg-primary text-white shadow-lg'
-                      : 'text-gray-600 hover:text-slate-900 hover:bg-white/60'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
                   }`}
                 >
                   <span className="whitespace-nowrap">Tous</span>
@@ -569,7 +569,7 @@ export function PartnersPage() {
                   className={`flex items-center justify-center gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold transition-all duration-300 min-w-[100px] text-sm sm:text-base ${
                     activeFilter === 'video'
                       ? 'bg-primary text-white shadow-lg'
-                      : 'text-gray-600 hover:text-slate-900 hover:bg-white/60'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
                   }`}
                 >
                   <Video className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -580,7 +580,7 @@ export function PartnersPage() {
                   className={`flex items-center justify-center gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold transition-all duration-300 min-w-[100px] text-sm sm:text-base ${
                     activeFilter === 'photo'
                       ? 'bg-primary text-white shadow-lg'
-                      : 'text-gray-600 hover:text-slate-900 hover:bg-white/60'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
                   }`}
                 >
                   <Camera className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -704,7 +704,7 @@ export function PartnersPage() {
                   <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-2 sm:mb-3" style={{ wordBreak: 'break-word' }}>
                     {filteredMedia[currentSlide]?.title}
                   </h3>
-                  <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto" style={{ wordBreak: 'break-word' }}>
+                  <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-3xl mx-auto" style={{ wordBreak: 'break-word' }}>
                     {filteredMedia[currentSlide]?.description}
                   </p>
                 </div>
@@ -719,7 +719,7 @@ export function PartnersPage() {
                         className={`relative flex-shrink-0 w-20 h-14 sm:w-24 sm:h-16 rounded-lg sm:rounded-xl overflow-hidden border-2 transition-all duration-300 ${
                           index === currentSlide
                             ? 'border-primary shadow-lg scale-110'
-                            : 'border-gray-200 hover:border-primary/50 hover:scale-105'
+                            : 'border-slate-200 hover:border-primary/50 hover:scale-105'
                         }`}
                         aria-label={`Sélectionner ${media.title}`}
                       >
@@ -756,7 +756,7 @@ export function PartnersPage() {
         {/* FAQ Section */}
         <section className="py-24 relative">
           <div className="text-center mb-20">
-            <div className="inline-flex items-center gap-3 mb-8 bg-white/90 backdrop-blur-sm rounded-full px-6 py-3 border border-gray-200/50 shadow-lg">
+            <div className="inline-flex items-center gap-3 mb-8 bg-white/90 backdrop-blur-sm rounded-full px-6 py-3 border border-slate-200/50 shadow-lg">
               <MessageCircle className="w-5 h-5 text-primary" />
               <span className="text-primary font-semibold">Questions • Réponses • Transparence</span>
             </div>
@@ -765,7 +765,7 @@ export function PartnersPage() {
               Questions Fréquentes
             </h2>
             
-            <p className="section-description text-xl text-gray-700 max-w-4xl mx-auto">
+            <p className="section-description text-xl text-slate-700 max-w-4xl mx-auto">
               Tout ce que vous devez savoir sur nos services et nos partenariats
             </p>
           </div>
@@ -775,7 +775,7 @@ export function PartnersPage() {
               <div key={index} className="mb-6">
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full bg-white/90 backdrop-blur-sm rounded-2xl p-8 border border-gray-200/50 hover:border-primary/30 transition-all duration-300 text-left group shadow-lg hover:shadow-xl"
+                  className="w-full bg-white/90 backdrop-blur-sm rounded-2xl p-8 border border-slate-200/50 hover:border-primary/30 transition-all duration-300 text-left group shadow-lg hover:shadow-xl"
                 >
                   <div className="flex items-center justify-between">
                     <h3 className="text-xl font-bold text-slate-900 group-hover:text-primary transition-colors duration-300 pr-4">
@@ -785,14 +785,14 @@ export function PartnersPage() {
                       {openFAQ === index ? (
                         <ChevronUp className="w-6 h-6 text-primary" />
                       ) : (
-                        <ChevronDown className="w-6 h-6 text-gray-400 group-hover:text-primary transition-colors duration-300" />
+                        <ChevronDown className="w-6 h-6 text-slate-400 group-hover:text-primary transition-colors duration-300" />
                       )}
                     </div>
                   </div>
                   
                   {openFAQ === index && (
-                    <div className="mt-6 pt-6 border-t border-gray-200/50">
-                      <p className="text-gray-700 leading-relaxed text-lg">
+                    <div className="mt-6 pt-6 border-t border-slate-200/50">
+                      <p className="text-slate-700 leading-relaxed text-lg">
                         {item.answer}
                       </p>
                     </div>
@@ -808,14 +808,14 @@ export function PartnersPage() {
           <div className="text-center">
             <div className="bg-gradient-to-br from-primary/10 via-secondary/10 to-primary/10 rounded-3xl p-16 border border-primary/20 shadow-2xl backdrop-blur-sm relative overflow-hidden">
               <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-rose-200/30 to-pink-300/30 rounded-full -translate-y-20 translate-x-20"></div>
-              <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-br from-blue-200/20 to-sky-300/20 rounded-full translate-y-16 -translate-x-16"></div>
+              <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-br from-blue-200/20 to-blue-300/20 rounded-full translate-y-16 -translate-x-16"></div>
               
               <div className="relative z-10">
                 <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-8">
                   Prêt à Créer Ensemble ?
                 </h2>
                 
-                <p className="text-xl text-gray-700 mb-12 max-w-3xl mx-auto leading-relaxed">
+                <p className="text-xl text-slate-700 mb-12 max-w-3xl mx-auto leading-relaxed">
                   Découvrez comment notre écosystème de partenaires d'exception peut transformer vos projets en réalisations extraordinaires.
                 </p>
                 
@@ -850,7 +850,7 @@ export function PartnersPage() {
           <div className="relative max-w-6xl max-h-full">
             <button
               onClick={closeImageModal}
-              className="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors duration-300"
+              className="absolute -top-12 right-0 text-white hover:text-slate-300 transition-colors duration-300"
             >
               <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

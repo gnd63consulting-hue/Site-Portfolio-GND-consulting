@@ -58,7 +58,7 @@ export function AISection() {
       icon: TrendingUp,
       label: "Productivité",
       value: "+" + Math.floor(animationProgress * 0.4 + 40) + "%",
-      color: "text-sky-400"
+      color: "text-blue-400"
     },
     {
       icon: Zap,
@@ -95,15 +95,15 @@ export function AISection() {
     <section id="ai-section" className="py-16 sm:py-20 md:py-32 px-4 sm:px-6 lg:px-12 max-w-[1400px] mx-auto relative" style={{ background: 'linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f0f9ff 100%)' }}>
       {/* Éléments décoratifs */}
       <div className="absolute top-20 -left-20 w-80 h-80 bg-gradient-to-br from-rose-200/40 to-pink-300/40 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-20 -right-20 w-96 h-96 bg-gradient-to-br from-blue-200/40 to-sky-300/40 rounded-full blur-3xl"></div>
-      <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-br from-sky-200/30 to-indigo-300/30 rounded-full blur-2xl"></div>
+      <div className="absolute bottom-20 -right-20 w-96 h-96 bg-gradient-to-br from-blue-200/40 to-blue-300/40 rounded-full blur-3xl"></div>
+      <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-br from-blue-200/30 to-blue-300/30 rounded-full blur-2xl"></div>
       
       <div className="text-center mb-12 sm:mb-14 md:mb-16 relative z-10">
         <h2 className="section-title" id="ai" style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)', wordBreak: 'break-word' }}>
           Intelligence Artificielle & Créativité
         </h2>
 
-        <p className="section-description text-gray-700" style={{ fontSize: 'clamp(0.95rem, 2.5vw, 1.125rem)', wordBreak: 'break-word' }}>
+        <p className="section-description text-slate-700" style={{ fontSize: 'clamp(0.95rem, 2.5vw, 1.125rem)', wordBreak: 'break-word' }}>
           Découvrez comment nous intégrons l'IA dans nos processus créatifs pour optimiser vos projets et décupler votre impact
         </p>
       </div>
@@ -120,7 +120,7 @@ export function AISection() {
               <div className={`font-bold ${metric.color} mb-2`} style={{ fontSize: 'clamp(1.25rem, 4vw, 1.5rem)' }}>
                 {metric.value}
               </div>
-              <div className="text-gray-600 font-medium" style={{ fontSize: 'clamp(0.75rem, 2vw, 0.875rem)' }}>
+              <div className="text-slate-600 font-medium" style={{ fontSize: 'clamp(0.75rem, 2vw, 0.875rem)' }}>
                 {metric.label}
               </div>
             </div>
@@ -142,7 +142,7 @@ export function AISection() {
                   <h3 className="text-slate-900 font-bold mb-2 sm:mb-3 group-hover:text-primary transition-colors duration-300" style={{ fontSize: 'clamp(1rem, 3vw, 1.25rem)', wordBreak: 'break-word' }}>
                     {feature.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed group-hover:text-gray-800 transition-colors duration-300" style={{ fontSize: 'clamp(0.875rem, 2.5vw, 1rem)', wordBreak: 'break-word' }}>
+                  <p className="text-slate-600 leading-relaxed group-hover:text-slate-800 transition-colors duration-300" style={{ fontSize: 'clamp(0.875rem, 2.5vw, 1rem)', wordBreak: 'break-word' }}>
                     {feature.description}
                   </p>
                 </div>

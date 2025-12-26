@@ -180,7 +180,7 @@ export function ServicePhotographie() {
         className="bg-gradient-to-b from-white to-slate-50 px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24"
       >
         <div className="mx-auto max-w-4xl text-center">
-          <p className="text-balance text-[clamp(1rem,2.6vw,1.45rem)] leading-relaxed text-gray-700">
+          <p className="text-balance text-[clamp(1rem,2.6vw,1.45rem)] leading-relaxed text-slate-700">
             Plus qu’un simple shooting, nous créons une expérience. Chaque séance est pensée pour refléter votre identité,
             votre équipe ou vos produits sous leur meilleur angle, avec une direction artistique sur-mesure et un workflow
             parfaitement orchestré.
@@ -212,7 +212,7 @@ export function ServicePhotographie() {
                     <IconComponent className="h-7 w-7" />
                   </span>
                   <h3 className="text-[clamp(1.05rem,2.4vw,1.2rem)] font-semibold text-slate-900">{pillar.title}</h3>
-                  <p className="text-[clamp(0.9375rem,2.2vw,1.05rem)] leading-relaxed text-gray-600">
+                  <p className="text-[clamp(0.9375rem,2.2vw,1.05rem)] leading-relaxed text-slate-600">
                     {pillar.description}
                   </p>
                 </article>
@@ -225,14 +225,14 @@ export function ServicePhotographie() {
       {/* SERVICES */}
       <section
         data-service-section="services"
-        className="bg-gradient-to-br from-blue-50 via-white to-sky-50 px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24"
+        className="bg-gradient-to-br from-blue-50 via-white to-blue-50 px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24"
       >
         <div className="mx-auto max-w-7xl">
           <div className="text-center">
             <h2 className="text-balance text-[clamp(1.875rem,4vw,3rem)] font-black text-slate-900">
               Nos prestations photo
             </h2>
-            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.25rem)] text-gray-600">
+            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.25rem)] text-slate-600">
               Une palette complète pour nourrir vos campagnes, votre communication interne ou vos réseaux sociaux.
             </p>
           </div>
@@ -254,7 +254,7 @@ export function ServicePhotographie() {
                     </span>
                   </div>
                   <h3 className="mt-4 text-[clamp(1.125rem,2.6vw,1.35rem)] font-bold text-slate-900">{service.title}</h3>
-                  <p className="mt-2 text-[clamp(0.9375rem,2.3vw,1rem)] leading-relaxed text-gray-600">
+                  <p className="mt-2 text-[clamp(0.9375rem,2.3vw,1rem)] leading-relaxed text-slate-600">
                     {service.description}
                   </p>
                   <ul className="mt-4 space-y-2 text-[clamp(0.9rem,2.2vw,0.975rem)] text-slate-600">
@@ -282,7 +282,7 @@ export function ServicePhotographie() {
             <h2 className="text-balance text-[clamp(1.875rem,4vw,2.75rem)] font-black text-slate-900">
               Un workflow fluide et cadré
             </h2>
-            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.2rem)] text-gray-600">
+            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.2rem)] text-slate-600">
               De la préparation à la livraison, chaque étape est maîtrisée pour garantir un résultat impeccable.
             </p>
           </div>
@@ -323,7 +323,7 @@ export function ServicePhotographie() {
                   </span>
                   <h3 className="text-[clamp(1.0625rem,2.3vw,1.2rem)] font-semibold text-slate-900">{step.title}</h3>
                 </div>
-                <p className="pl-[3.6rem] text-[clamp(0.9375rem,2.2vw,1.05rem)] leading-relaxed text-gray-600">
+                <p className="pl-[3.6rem] text-[clamp(0.9375rem,2.2vw,1.05rem)] leading-relaxed text-slate-600">
                   {step.description}
                 </p>
               </article>
@@ -346,16 +346,16 @@ export function ServicePhotographie() {
       {/* CTA FINAL */}
       <section
         data-service-section="cta-final"
-        className="relative overflow-hidden bg-gradient-to-br from-[#F5E8FF] via-white to-sky-50 px-4 py-16 sm:px-6 sm:py-20"
+        className="relative overflow-hidden bg-gradient-to-br from-[#F5E8FF] via-white to-blue-50 px-4 py-16 sm:px-6 sm:py-20"
       >
-        <div className="pointer-events-none absolute top-16 -left-24 h-72 w-72 rounded-full bg-gradient-to-br from-blue-300/30 to-sky-400/30 blur-3xl sm:h-80 sm:w-80" />
-        <div className="pointer-events-none absolute bottom-10 -right-24 h-80 w-80 rounded-full bg-gradient-to-br from-blue-300/30 to-sky-400/30 blur-3xl sm:h-96 sm:w-96" />
+        <div className="pointer-events-none absolute top-16 -left-24 h-72 w-72 rounded-full bg-gradient-to-br from-blue-300/30 to-blue-400/30 blur-3xl sm:h-80 sm:w-80" />
+        <div className="pointer-events-none absolute bottom-10 -right-24 h-80 w-80 rounded-full bg-gradient-to-br from-blue-300/30 to-blue-400/30 blur-3xl sm:h-96 sm:w-96" />
 
         <div className="relative mx-auto flex max-w-4xl flex-col items-center text-center">
           <h2 className="text-balance text-[clamp(1.875rem,5vw,3.4rem)] font-black text-slate-900">
             Prêt à créer des visuels inoubliables ?
           </h2>
-          <p className="mt-4 max-w-3xl text-balance text-[clamp(1rem,2.5vw,1.5rem)] leading-relaxed text-gray-700">
+          <p className="mt-4 max-w-3xl text-balance text-[clamp(1rem,2.5vw,1.5rem)] leading-relaxed text-slate-700">
             Transformons vos idées en images qui inspirent confiance, désir et engagement. Parlez-nous de votre projet et
             imaginons ensemble la séance idéale.
           </p>
@@ -371,7 +371,7 @@ export function ServicePhotographie() {
               onClick={() => {
                 window.location.href = '#realisations';
               }}
-              className="inline-flex w-full max-w-sm items-center justify-center gap-3 rounded-2xl border-2 border-slate-300 px-6 py-4 text-[clamp(1rem,2.4vw,1.15rem)] font-bold text-gray-700 transition-all duration-300 hover:border-slate-500 hover:bg-white/60 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-slate-300/60 sm:w-auto sm:px-10 sm:py-5"
+              className="inline-flex w-full max-w-sm items-center justify-center gap-3 rounded-2xl border-2 border-slate-300 px-6 py-4 text-[clamp(1rem,2.4vw,1.15rem)] font-bold text-slate-700 transition-all duration-300 hover:border-slate-500 hover:bg-white/60 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-slate-300/60 sm:w-auto sm:px-10 sm:py-5"
             >
               <Sparkles className="h-5 w-5 sm:h-6 sm:w-6" />
               Voir nos réalisations

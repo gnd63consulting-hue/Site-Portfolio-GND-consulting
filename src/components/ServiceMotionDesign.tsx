@@ -203,10 +203,10 @@ export function ServiceMotionDesign() {
       {/* INTRO */}
       <section
         data-service-section="intro"
-        className="bg-gradient-to-b from-white to-gray-50 px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24"
+        className="bg-gradient-to-b from-white to-slate-50 px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24"
       >
         <div className="mx-auto max-w-4xl text-center">
-          <p className="text-balance text-[clamp(1rem,2.6vw,1.5rem)] leading-relaxed text-gray-700">
+          <p className="text-balance text-[clamp(1rem,2.6vw,1.5rem)] leading-relaxed text-slate-700">
             Chez GND Consulting, nous créons des vidéos en motion design qui{' '}
             <strong className="text-slate-900">informent, séduisent et déclenchent l’action</strong>. Simplifier un concept
             complexe, dynamiser vos réseaux sociaux ou présenter votre marque : chaque animation est pensée pour{' '}
@@ -219,14 +219,14 @@ export function ServiceMotionDesign() {
       {/* SERVICES */}
       <section
         data-service-section="services"
-        className="bg-gray-50 px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24"
+        className="bg-slate-50 px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24"
       >
         <div className="mx-auto max-w-7xl">
           <div className="text-center">
             <h2 className="text-balance text-[clamp(1.875rem,4vw,3rem)] font-black text-slate-900">
               ✨ Nos expertises motion design
             </h2>
-            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.25rem)] text-gray-600">
+            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.25rem)] text-slate-600">
               Des contenus animés qui captent l’attention et transmettent vos messages en un clin d’œil.
             </p>
           </div>
@@ -237,15 +237,15 @@ export function ServiceMotionDesign() {
               return (
                 <article
                   key={service.title}
-                  className="group relative flex h-full flex-col rounded-3xl border border-gray-100 bg-white p-6 shadow-lg transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl sm:p-8"
+                  className="group relative flex h-full flex-col rounded-3xl border border-slate-100 bg-white p-6 shadow-lg transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl sm:p-8"
                 >
-                  <span className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-sky-500 text-white transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 sm:h-18 sm:w-18">
+                  <span className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-blue-500 text-white transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 sm:h-18 sm:w-18">
                     <IconComponent className="h-8 w-8" />
                   </span>
                   <h3 className="text-[clamp(1.125rem,2.6vw,1.35rem)] font-bold text-slate-900 transition-colors duration-300 group-hover:text-primary">
                     {service.title}
                   </h3>
-                  <p className="mt-3 text-[clamp(0.9375rem,2.3vw,1rem)] leading-relaxed text-gray-600">
+                  <p className="mt-3 text-[clamp(0.9375rem,2.3vw,1rem)] leading-relaxed text-slate-600">
                     {service.description}
                   </p>
                 </article>
@@ -265,7 +265,7 @@ export function ServiceMotionDesign() {
             <h2 className="text-balance text-[clamp(1.875rem,4vw,3rem)] font-black text-slate-900">
               Un processus fluide et collaboratif
             </h2>
-            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.2rem)] text-gray-600">
+            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.2rem)] text-slate-600">
               De la première idée à la livraison finale, nous orchestrons chaque étape pour garantir un résultat à la hauteur
               de vos attentes.
             </p>
@@ -290,7 +290,7 @@ export function ServiceMotionDesign() {
                       {step.title}
                     </h3>
                   </div>
-                  <p className="pl-[3.6rem] text-[clamp(0.9375rem,2.2vw,1.05rem)] leading-relaxed text-gray-600">
+                  <p className="pl-[3.6rem] text-[clamp(0.9375rem,2.2vw,1.05rem)] leading-relaxed text-slate-600">
                     {step.description}
                   </p>
                 </li>
@@ -303,7 +303,7 @@ export function ServiceMotionDesign() {
       {/* AVANTAGES */}
       <section
         data-service-section="advantages"
-        className="bg-gradient-to-br from-blue-50 via-sky-50 to-white px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24"
+        className="bg-gradient-to-br from-blue-50 via-blue-50 to-white px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24"
       >
         <div className="mx-auto max-w-6xl">
           <div className="text-center">
@@ -329,7 +329,7 @@ export function ServiceMotionDesign() {
                   <h3 className="text-[clamp(1.05rem,2.4vw,1.2rem)] font-semibold text-slate-900">
                     {item.title}
                   </h3>
-                  <p className="text-[clamp(0.9375rem,2.2vw,1.05rem)] leading-relaxed text-gray-600">
+                  <p className="text-[clamp(0.9375rem,2.2vw,1.05rem)] leading-relaxed text-slate-600">
                     {item.description}
                   </p>
                 </article>
@@ -366,16 +366,16 @@ export function ServiceMotionDesign() {
       {/* CTA FINAL */}
       <section
         data-service-section="cta-final"
-        className="relative overflow-hidden bg-gradient-to-br from-[#F5E8FF] via-white to-sky-50 px-4 py-16 sm:px-6 sm:py-20"
+        className="relative overflow-hidden bg-gradient-to-br from-[#F5E8FF] via-white to-blue-50 px-4 py-16 sm:px-6 sm:py-20"
       >
-        <div className="pointer-events-none absolute top-16 -left-24 h-72 w-72 rounded-full bg-gradient-to-br from-blue-300/30 to-sky-400/30 blur-3xl sm:h-80 sm:w-80" />
-        <div className="pointer-events-none absolute bottom-10 -right-24 h-80 w-80 rounded-full bg-gradient-to-br from-blue-300/30 to-sky-400/30 blur-3xl sm:h-96 sm:w-96" />
+        <div className="pointer-events-none absolute top-16 -left-24 h-72 w-72 rounded-full bg-gradient-to-br from-blue-300/30 to-blue-400/30 blur-3xl sm:h-80 sm:w-80" />
+        <div className="pointer-events-none absolute bottom-10 -right-24 h-80 w-80 rounded-full bg-gradient-to-br from-blue-300/30 to-blue-400/30 blur-3xl sm:h-96 sm:w-96" />
 
         <div className="relative mx-auto flex max-w-4xl flex-col items-center text-center">
           <h2 className="text-balance text-[clamp(1.875rem,5vw,3.5rem)] font-black text-slate-900">
             Donnez du mouvement à vos messages
           </h2>
-          <p className="mt-4 max-w-3xl text-balance text-[clamp(1rem,2.5vw,1.5rem)] leading-relaxed text-gray-700">
+          <p className="mt-4 max-w-3xl text-balance text-[clamp(1rem,2.5vw,1.5rem)] leading-relaxed text-slate-700">
             Animation produit, storytelling, lancement de marque ou formation interne : nous composons le motion design
             qui fera vibrer votre audience.
           </p>
@@ -391,7 +391,7 @@ export function ServiceMotionDesign() {
               onClick={() => {
                 window.location.href = '#realisations';
               }}
-              className="inline-flex w-full max-w-sm items-center justify-center gap-3 rounded-2xl border-2 border-slate-300 px-6 py-4 text-[clamp(1rem,2.4vw,1.15rem)] font-bold text-gray-700 transition-all duration-300 hover:border-slate-500 hover:bg-white/60 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-slate-300/60 sm:w-auto sm:px-10 sm:py-5"
+              className="inline-flex w-full max-w-sm items-center justify-center gap-3 rounded-2xl border-2 border-slate-300 px-6 py-4 text-[clamp(1rem,2.4vw,1.15rem)] font-bold text-slate-700 transition-all duration-300 hover:border-slate-500 hover:bg-white/60 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-slate-300/60 sm:w-auto sm:px-10 sm:py-5"
             >
               <Sparkles className="h-5 w-5 sm:h-6 sm:w-6" />
               Voir nos réalisations

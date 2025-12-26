@@ -65,7 +65,7 @@ export function Footer() {
   return (
     <footer
       id="footer"
-      className="footer relative bg-gradient-to-b from-white via-gray-50 to-gray-100 text-slate-900"
+      className="footer relative bg-gradient-to-b from-white via-slate-50 to-slate-100 text-slate-900"
     >
       <div
         className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"

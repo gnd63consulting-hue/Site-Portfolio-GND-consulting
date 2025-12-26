@@ -57,8 +57,8 @@ export function UnifiedFAQ({
       background: 'linear-gradient(135deg, #ffffff 0%, #f8fafc 30%, #f0f9ff 70%, #fef7f7 100%)'
     }}>
       <div className="absolute top-20 -left-20 w-80 h-80 bg-gradient-to-br from-rose-200/30 to-pink-300/30 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-20 -right-20 w-96 h-96 bg-gradient-to-br from-blue-200/30 to-sky-300/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-      <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-br from-sky-200/20 to-indigo-300/20 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+      <div className="absolute bottom-20 -right-20 w-96 h-96 bg-gradient-to-br from-blue-200/30 to-blue-300/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+      <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-br from-blue-200/20 to-blue-300/20 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '2s' }}></div>
 
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-20 relative z-10 faq-header-unified">
@@ -76,13 +76,13 @@ export function UnifiedFAQ({
           </h2>
 
           {subtitle && (
-            <p className="text-lg text-gray-600 font-light italic mb-4 max-w-3xl mx-auto leading-relaxed faq-subtitle-unified">
+            <p className="text-lg text-slate-600 font-light italic mb-4 max-w-3xl mx-auto leading-relaxed faq-subtitle-unified">
               {subtitle}
             </p>
           )}
 
           {description && (
-            <p className="text-base text-gray-700 font-medium max-w-2xl mx-auto faq-description-unified">
+            <p className="text-base text-slate-700 font-medium max-w-2xl mx-auto faq-description-unified">
               {description}
             </p>
           )}
@@ -99,7 +99,7 @@ export function UnifiedFAQ({
               >
                 <div className="absolute -inset-1 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500 blur-sm" style={{ background: `${theme.gradient}20` }}></div>
 
-                <div className="relative glass rounded-2xl border border-gray-200/60 hover:border-primary/40 transition-all duration-500 overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-1">
+                <div className="relative glass rounded-2xl border border-slate-200/60 hover:border-primary/40 transition-all duration-500 overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-1">
                   <div className="absolute top-0 left-0 right-0 h-1 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" style={{ background: theme.gradient }}></div>
 
                   <button
@@ -143,10 +143,10 @@ export function UnifiedFAQ({
                       isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                     }`}
                   >
-                    <div className="px-6 md:px-8 pb-6 md:pb-8 border-t border-gray-200/50">
+                    <div className="px-6 md:px-8 pb-6 md:pb-8 border-t border-slate-200/50">
                       <div className="pt-6 relative">
                         <div className="absolute top-0 left-0 w-16 h-0.5 rounded-full" style={{ background: theme.gradient }}></div>
-                        <p className="text-sm md:text-base text-gray-700 leading-relaxed">
+                        <p className="text-sm md:text-base text-slate-700 leading-relaxed">
                           {item.answer}
                         </p>
                       </div>
@@ -165,7 +165,7 @@ export function UnifiedFAQ({
             <div className="relative glass rounded-3xl p-8 border shadow-xl hover:shadow-2xl transition-all duration-500" style={{ borderColor: `${theme.primary}30` }}>
               <div className="absolute top-0 left-0 right-0 h-1 rounded-t-3xl" style={{ background: theme.gradient }}></div>
 
-              <p className="text-base md:text-lg mb-6 text-gray-700 font-medium">
+              <p className="text-base md:text-lg mb-6 text-slate-700 font-medium">
                 Une autre question ? N'hésitez pas à nous contacter !
               </p>
 

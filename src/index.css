@@ -123,23 +123,23 @@ select:focus {
 /* Renforcement automatique des contrastes pour accessibilité */
 
 /* Textes sur fond pastel - forcer contraste minimum 4.5:1 */
-.bg-gray-50, .bg-blue-50, .bg-green-50, .bg-yellow-50,
-.bg-pink-50, .bg-purple-50, .bg-orange-50, .bg-cyan-50,
-.bg-emerald-50, .bg-indigo-50, .bg-violet-50,
-.bg-gray-100, .bg-blue-100 {
+.bg-slate-50, .bg-blue-50, .bg-green-50, .bg-yellow-50,
+.bg-pink-50, .bg-purple-50, .bg-orange-50, .bg-blue-50,
+.bg-emerald-50, .bg-blue-50, .bg-violet-50,
+.bg-slate-100, .bg-blue-100 {
   color: #1e293b !important;
 }
 
 /* Renforcement des textes gris clairs */
-.text-gray-400 {
+.text-slate-400 {
   color: #64748b !important; /* De 400 à 500 pour contraste */
 }
 
-.text-gray-500 {
+.text-slate-500 {
   color: #475569 !important; /* De 500 à 600 pour contraste */
 }
 
-.text-gray-600 {
+.text-slate-600 {
   color: #334155 !important; /* De 600 à 700 pour contraste */
 }
 
@@ -163,9 +163,9 @@ select:focus {
   }
 
   /* Forcer texte noir en mode contraste élevé */
-  .text-gray-400,
-  .text-gray-500,
-  .text-gray-600,
+  .text-slate-400,
+  .text-slate-500,
+  .text-slate-600,
   .text-slate-400,
   .text-slate-500,
   .text-slate-600 {
@@ -769,12 +769,12 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   /* Textes plus foncés en mobile pour meilleure lisibilité */
-  .text-gray-500,
+  .text-slate-500,
   .text-slate-500 {
     color: #334155 !important; /* Plus foncé que 600 */
   }
 
-  .text-gray-600,
+  .text-slate-600,
   .text-slate-600 {
     color: #1e293b !important; /* Presque noir */
   }

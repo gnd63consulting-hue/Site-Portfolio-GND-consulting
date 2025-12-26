@@ -259,10 +259,10 @@ export function ServiceAutomatisationIA() {
       {/* INTRO */}
       <section
         data-service-section="intro"
-        className="bg-gradient-to-b from-white to-gray-50 px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24"
+        className="bg-gradient-to-b from-white to-slate-50 px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24"
       >
         <div className="mx-auto max-w-4xl text-center">
-          <p className="text-balance text-[clamp(1rem,2.6vw,1.5rem)] leading-relaxed text-gray-700">
+          <p className="text-balance text-[clamp(1rem,2.6vw,1.5rem)] leading-relaxed text-slate-700">
             De l’automatisation de processus aux agents IA spécialisés, nous concevons des solutions pragmatiques qui
             s’intègrent à votre stack, délivrent des gains rapides et s’échelonnent en toute sécurité.
           </p>
@@ -301,14 +301,14 @@ export function ServiceAutomatisationIA() {
       {/* SERVICES */}
       <section
         data-service-section="services"
-        className="bg-gradient-to-br from-blue-50 via-white to-sky-50 px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24"
+        className="bg-gradient-to-br from-blue-50 via-white to-blue-50 px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24"
       >
         <div className="mx-auto max-w-7xl">
           <div className="text-center">
             <h2 className="text-balance text-[clamp(1.875rem,4vw,3rem)] font-black text-slate-900">
               Nos briques IA & automatisation
             </h2>
-            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.25rem)] text-gray-600">
+            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.25rem)] text-slate-600">
               Des modules combinables pour bâtir votre feuille de route IA, du POC au déploiement à l’échelle.
             </p>
           </div>
@@ -325,7 +325,7 @@ export function ServiceAutomatisationIA() {
                     <IconComponent className="h-7 w-7" />
                   </span>
                   <h3 className="mt-4 text-[clamp(1.125rem,2.6vw,1.35rem)] font-bold text-slate-900">{service.title}</h3>
-                  <p className="mt-2 text-[clamp(0.9375rem,2.3vw,1rem)] leading-relaxed text-gray-600">
+                  <p className="mt-2 text-[clamp(0.9375rem,2.3vw,1rem)] leading-relaxed text-slate-600">
                     {service.description}
                   </p>
                   <ul className="mt-4 space-y-2 text-[clamp(0.9rem,2.2vw,0.975rem)] text-slate-600">
@@ -387,7 +387,7 @@ export function ServiceAutomatisationIA() {
       {/* WHY NOW */}
       <section
         data-service-section="why-now"
-        className="bg-gradient-to-br from-white via-blue-50 to-sky-100 px-4 py-16 sm:px-6 sm:py-20"
+        className="bg-gradient-to-br from-white via-blue-50 to-blue-100 px-4 py-16 sm:px-6 sm:py-20"
       >
         <div className="mx-auto max-w-6xl">
           <h2 className="text-center text-[clamp(1.75rem,4vw,2.75rem)] font-black text-slate-900">
@@ -421,16 +421,16 @@ export function ServiceAutomatisationIA() {
       {/* CTA FINAL */}
       <section
         data-service-section="cta-final"
-        className="relative overflow-hidden bg-gradient-to-br from-[#F5E8FF] via-white to-sky-50 px-4 py-16 sm:px-6 sm:py-20"
+        className="relative overflow-hidden bg-gradient-to-br from-[#F5E8FF] via-white to-blue-50 px-4 py-16 sm:px-6 sm:py-20"
       >
-        <div className="pointer-events-none absolute top-16 -left-24 h-72 w-72 rounded-full bg-gradient-to-br from-blue-300/30 to-sky-400/30 blur-3xl sm:h-80 sm:w-80" />
-        <div className="pointer-events-none absolute bottom-10 -right-24 h-80 w-80 rounded-full bg-gradient-to-br from-blue-300/30 to-sky-400/30 blur-3xl sm:h-96 sm:w-96" />
+        <div className="pointer-events-none absolute top-16 -left-24 h-72 w-72 rounded-full bg-gradient-to-br from-blue-300/30 to-blue-400/30 blur-3xl sm:h-80 sm:w-80" />
+        <div className="pointer-events-none absolute bottom-10 -right-24 h-80 w-80 rounded-full bg-gradient-to-br from-blue-300/30 to-blue-400/30 blur-3xl sm:h-96 sm:w-96" />
 
         <div className="relative mx-auto flex max-w-4xl flex-col items-center text-center">
           <h2 className="text-balance text-[clamp(1.875rem,5vw,3.4rem)] font-black text-slate-900">
             Prêt à industrialiser vos workflows ?
           </h2>
-          <p className="mt-4 max-w-3xl text-balance text-[clamp(1rem,2.5vw,1.5rem)] leading-relaxed text-gray-700">
+          <p className="mt-4 max-w-3xl text-balance text-[clamp(1rem,2.5vw,1.5rem)] leading-relaxed text-slate-700">
             Audit offert, feuille de route priorisée, accompagnement humain et sécurisation totale. Lançons ensemble vos
             premières automatisations IA.
           </p>
@@ -446,7 +446,7 @@ export function ServiceAutomatisationIA() {
               onClick={() => {
                 window.location.href = '#realisations';
               }}
-              className="inline-flex w-full max-w-sm items-center justify-center gap-3 rounded-2xl border-2 border-slate-300 px-6 py-4 text-[clamp(1rem,2.4vw,1.15rem)] font-bold text-gray-700 transition-all duration-300 hover:border-slate-500 hover:bg-white/60 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-slate-300/60 sm:w-auto sm:px-10 sm:py-5"
+              className="inline-flex w-full max-w-sm items-center justify-center gap-3 rounded-2xl border-2 border-slate-300 px-6 py-4 text-[clamp(1rem,2.4vw,1.15rem)] font-bold text-slate-700 transition-all duration-300 hover:border-slate-500 hover:bg-white/60 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-slate-300/60 sm:w-auto sm:px-10 sm:py-5"
             >
               <Sparkles className="h-5 w-5 sm:h-6 sm:w-6" />
               Voir nos réalisations

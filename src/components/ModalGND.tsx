@@ -19,9 +19,9 @@ export const ModalGND: React.FC<ModalGNDProps> = ({ isOpen, onClose, title, chil
         aria-hidden="true"
       />
       <div className="fixed inset-0 z-[9999] flex items-end sm:items-center justify-center p-4 pointer-events-none">
-        <div className={`pointer-events-auto w-full ${widthClassName} bg-white rounded-2xl shadow-2xl border border-gray-200/50 overflow-hidden animate-fade-in-up`} role="dialog" aria-modal="true" aria-labelledby={title ? 'modal-gnd-title' : undefined}>
+        <div className={`pointer-events-auto w-full ${widthClassName} bg-white rounded-2xl shadow-2xl border border-slate-200/50 overflow-hidden animate-fade-in-up`} role="dialog" aria-modal="true" aria-labelledby={title ? 'modal-gnd-title' : undefined}>
           {title && (
-            <div className="px-6 py-4 border-b border-gray-100">
+            <div className="px-6 py-4 border-b border-slate-100">
               <h2 id="modal-gnd-title" className="text-xl sm:text-2xl font-bold text-slate-900">{title}</h2>
             </div>
           )}

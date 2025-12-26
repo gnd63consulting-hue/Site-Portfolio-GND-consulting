@@ -34,12 +34,12 @@ export function TestimonialsSection() {
   return (
     <section className="py-16 sm:py-20 md:py-32 px-4 sm:px-6 lg:px-12 max-w-[1200px] mx-auto relative" style={{ background: 'linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f0f9ff 100%)' }}>
       {/* Effet de fond */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-blue-50/30"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-blue-50/30"></div>
       
       {/* Éléments décoratifs */}
       <div className="absolute top-20 -left-20 w-80 h-80 bg-gradient-to-br from-rose-200/40 to-pink-300/40 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-20 -right-20 w-96 h-96 bg-gradient-to-br from-blue-200/40 to-sky-300/40 rounded-full blur-3xl"></div>
-      <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-br from-sky-200/30 to-indigo-300/30 rounded-full blur-2xl"></div>
+      <div className="absolute bottom-20 -right-20 w-96 h-96 bg-gradient-to-br from-blue-200/40 to-blue-300/40 rounded-full blur-3xl"></div>
+      <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-br from-blue-200/30 to-blue-300/30 rounded-full blur-2xl"></div>
       
       <div className="text-center mb-12 sm:mb-14 md:mb-16 relative z-10">
         <div className="flex items-center justify-center gap-3 sm:gap-4 mb-6 sm:mb-8">
@@ -51,7 +51,7 @@ export function TestimonialsSection() {
           </h2>
         </div>
 
-        <p className="section-description text-gray-700" style={{ fontSize: 'clamp(0.95rem, 2.5vw, 1.125rem)', wordBreak: 'break-word' }}>
+        <p className="section-description text-slate-700" style={{ fontSize: 'clamp(0.95rem, 2.5vw, 1.125rem)', wordBreak: 'break-word' }}>
           Retours d'expérience authentiques de nos clients : découvrez pourquoi ils nous font confiance pour leurs projets créatifs
         </p>
       </div>
@@ -77,7 +77,7 @@ export function TestimonialsSection() {
                   className={`w-5 h-5 sm:w-6 sm:h-6 ${
                     i < currentTestimonial.note!
                       ? 'text-blue-400 fill-current'
-                      : 'text-gray-600'
+                      : 'text-slate-600'
                   }`}
                   aria-hidden="true"
                 />
@@ -165,12 +165,12 @@ export function TestimonialsSection() {
                     className={`w-4 h-4 ${
                       i < (testimonial.note || 5) 
                         ? 'text-blue-400 fill-current' 
-                        : 'text-gray-600'
+                        : 'text-slate-600'
                     }`} 
                   />
                 ))}
               </div>
-              <p className="text-gray-600 text-sm leading-relaxed mb-4 italic">
+              <p className="text-slate-600 text-sm leading-relaxed mb-4 italic">
                 "{testimonial.citation.length > 120 
                   ? testimonial.citation.substring(0, 120) + '...' 
                   : testimonial.citation}"

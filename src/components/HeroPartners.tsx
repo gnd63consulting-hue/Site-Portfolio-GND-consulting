@@ -83,8 +83,8 @@ export function HeroPartners({
       {/* Decorative elements */}
       <div className="absolute inset-0 z-5">
         <div className="absolute top-20 -left-20 w-80 h-80 bg-gradient-to-br from-rose-200/30 to-pink-300/30 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 -right-20 w-96 h-96 bg-gradient-to-br from-blue-200/30 to-sky-300/30 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-br from-sky-200/20 to-indigo-300/20 rounded-full blur-2xl"></div>
+        <div className="absolute bottom-20 -right-20 w-96 h-96 bg-gradient-to-br from-blue-200/30 to-blue-300/30 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-br from-blue-200/20 to-blue-300/20 rounded-full blur-2xl"></div>
       </div>
 
       {/* Content */}
@@ -95,9 +95,9 @@ export function HeroPartners({
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
           }`}>
             {/* Chip */}
-            <div className="inline-flex items-center gap-3 mb-8 bg-white/90 backdrop-blur-sm rounded-full px-6 py-3 shadow-lg border border-gray-200/50">
+            <div className="inline-flex items-center gap-3 mb-8 bg-white/90 backdrop-blur-sm rounded-full px-6 py-3 shadow-lg border border-slate-200/50">
               <Handshake className="w-5 h-5 text-primary" />
-              <span className="text-gray-800 font-semibold uppercase tracking-wide text-sm">Nos Partenaires</span>
+              <span className="text-slate-800 font-semibold uppercase tracking-wide text-sm">Nos Partenaires</span>
             </div>
             
             {/* Main title */}

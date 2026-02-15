@@ -1,51 +1,25 @@
 import React, { useEffect } from 'react';
+import {
+  Camera,
+  Sparkles,
+  Film,
+  Smartphone,
+  Monitor,
+  Target,
+  CheckCircle,
+  Users,
+  Zap,
+  Shield,
+  Heart,
+  TrendingUp,
+  Eye,
+  Award,
+  Clock,
+  PenSquare
+} from 'lucide-react';
+import { UnifiedFAQ } from './UnifiedFAQ';
 import { updateMetaTags, pageSEO } from '../utils/seo';
-
-const expertises = [
-  {
-    icon: 'videocam',
-    title: 'Captation live & technique',
-    description: 'Conférences, cultes, concerts ou événements à grande échelle. Régie, multi-caméras, diffusion live, retours écrans.',
-    features: ['Multi-caméras 4K/8K', 'Régie vidéo (ATEM, OBS)', 'Projection & retours écrans', 'Streaming multiplateforme'],
-  },
-  {
-    icon: 'edit_note',
-    title: 'Montage vidéo',
-    description: 'Un montage rythmé, clair et optimisé pour le format cible. Nous transformons vos rushs en histoires puissantes.',
-    features: ['Montage professionnel', 'Étalonnage couleur', 'Sound design', 'Effets visuels'],
-  },
-  {
-    icon: 'auto_awesome',
-    title: 'Clips & contenus artistiques',
-    description: 'Pour artistes, performeurs ou associations : des visuels sur-mesure, riches en narration.',
-    features: ['Clips musicaux', 'Vidéos créatives', 'Univers stylisés', 'Narration immersive'],
-  },
-  {
-    icon: 'movie',
-    title: 'Captation événementielle',
-    description: 'Interviews, reportages, conférences. Nous capturons chaque instant avec finesse et discrétion.',
-    features: ['Tournage terrain', 'Reportages dynamiques', 'Captation discrète', 'Interviews pro'],
-  },
-  {
-    icon: 'smartphone',
-    title: 'Vidéos social media',
-    description: 'Formats courts, immersifs et engageants pour TikTok, Instagram, YouTube Shorts ou LinkedIn.',
-    features: ['Reels dynamiques', 'Stories animées', 'Formats verticaux', 'Contenus viraux'],
-  },
-  {
-    icon: 'desktop_windows',
-    title: 'Corporate & e-learning',
-    description: 'Présentations d\'entreprise, vidéos de formation, contenus internes, témoignages clients.',
-    features: ['Vidéos corporate', 'Formations e-learning', 'Présentation produit', 'Contenus pédagogiques'],
-  },
-];
-
-const processSteps = [
-  { num: '01', title: 'Préparation & brief', description: 'Brief créatif, repérages, scénario, moodboard et rétroplanning détaillé.' },
-  { num: '02', title: 'Captation', description: 'Tournage professionnel avec équipe dédiée et matériel adapté à votre projet.' },
-  { num: '03', title: 'Montage & post-production', description: 'Montage, étalonnage, sound design, motion graphics, sous-titres et versions sociales.' },
-  { num: '04', title: 'Finalisation & livraison', description: 'Validation finale et export de tous les formats nécessaires + archivage des sources.' },
-];
+import { ButtonGND } from './ButtonGND';
 
 export function ServiceProductionAudiovisuelle() {
   useEffect(() => {
@@ -55,170 +29,431 @@ export function ServiceProductionAudiovisuelle() {
     });
   }, []);
 
-  useEffect(() => {
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add('visible');
-        });
-      },
-      { threshold: 0.1 }
-    );
-    reveals.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
-
   const scrollToContact = () => {
-    const footer = document.querySelector('footer');
-    if (footer) footer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const contactSection = document.querySelector('footer');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  const expertises = [
+    {
+      icon: Camera,
+      title: 'Captation live & technique',
+      description:
+        'Conférences, cultes, concerts ou événements à grande échelle… nous gérons toute la partie technique : régie, multi-caméras, diffusion live, retours écrans.',
+      features: ['Multi-caméras 4K/8K', 'Régie vidéo (ATEM, OBS…)', 'Projection & retours écrans', 'Streaming multiplateforme'],
+      delay: '1 à 2 semaines (hors live)'
+    },
+    {
+      icon: PenSquare,
+      title: 'Montage vidéo',
+      description: 'Un montage rythmé, clair et optimisé pour le format cible. Nous transformons vos rushs en histoires puissantes.',
+      features: ['Montage professionnel', 'Étalonnage couleur', 'Sound design', 'Effets visuels'],
+      delay: '5 à 10 jours'
+    },
+    {
+      icon: Sparkles,
+      title: 'Clips & contenus artistiques',
+      description:
+        'Pour artistes, performeurs ou associations : nous sublimons votre univers avec des visuels sur-mesure, riches en narration.',
+      features: ['Clips musicaux', 'Vidéos créatives', 'Univers stylisés', 'Narration immersive'],
+      delay: '2 à 4 semaines'
+    },
+    {
+      icon: Film,
+      title: 'Captation événementielle',
+      description:
+        'Interviews, reportages, conférences… nous capturons chaque instant avec finesse, émotion et discrétion.',
+      features: ['Tournage terrain', 'Reportages dynamiques', 'Captation discrète', 'Interviews pro'],
+      delay: '1 à 2 semaines'
+    },
+    {
+      icon: Smartphone,
+      title: 'Vidéos social media',
+      description: 'Formats courts, immersifs et engageants pour TikTok, Instagram, YouTube Shorts ou LinkedIn.',
+      features: ['Reels dynamiques', 'Stories animées', 'Formats verticaux', 'Contenus viraux'],
+      delay: '3 à 7 jours'
+    },
+    {
+      icon: Monitor,
+      title: 'Corporate & e-learning',
+      description:
+        'Présentations d’entreprise, vidéos de formation, contenus internes, témoignages clients ou onboarding.',
+      features: ['Vidéos corporate', 'Formations e-learning', 'Présentation produit', 'Contenus pédagogiques'],
+      delay: '1 à 3 semaines'
+    }
+  ];
+
+  const methodology = [
+    {
+      icon: Target,
+      title: 'Préparation & brief',
+      description: 'Brief créatif, repérages, scénario, moodboard et rétroplanning détaillé.'
+    },
+    {
+      icon: Camera,
+      title: 'Captation',
+      description: 'Tournage professionnel avec équipe dédiée et matériel adapté à votre projet.'
+    },
+    {
+      icon: PenSquare,
+      title: 'Montage & post-production',
+      description: 'Montage, étalonnage, sound design, motion graphics, sous-titres et versions sociales.'
+    },
+    {
+      icon: CheckCircle,
+      title: 'Finalisation & livraison',
+      description: 'Validation finale et export de tous les formats nécessaires + archivage des sources.'
+    }
+  ];
+
+  const pillars = [
+    {
+      icon: Sparkles,
+      title: 'Créativité sur-mesure',
+      description: 'Chaque projet est pensé pour être unique, impactant et aligné sur votre stratégie de marque.'
+    },
+    {
+      icon: Zap,
+      title: 'Agilité & réactivité',
+      description: 'Micro-structure flexible, épaulée par un réseau d’experts activable selon les besoins.'
+    },
+    {
+      icon: Users,
+      title: 'Accompagnement personnalisé',
+      description: 'Nous co-construisons avec vos équipes pour créer des contenus qui vous ressemblent.'
+    },
+    {
+      icon: Shield,
+      title: 'Outils modernes intégrés',
+      description: 'Workflow optimisé avec IA, automatisations et process fluides pour livrer plus vite.'
+    }
+  ];
+
+  const videoImpacts = [
+    {
+      icon: TrendingUp,
+      title: '1200% de partages',
+      description: 'Les vidéos génèrent jusqu’à 12 fois plus de partages que du contenu image ou texte.'
+    },
+    {
+      icon: Eye,
+      title: '95% de mémorisation',
+      description: 'Un message en vidéo est retenu beaucoup plus longtemps qu’un message uniquement textuel.'
+    },
+    {
+      icon: Heart,
+      title: '80% des utilisateurs',
+      description: 'Préfèrent découvrir un produit ou un service via une vidéo plutôt que du texte.'
+    },
+    {
+      icon: Award,
+      title: '5x plus d’engagement',
+      description: 'Les campagnes intégrant la vidéo déclenchent plus d’interactions et de conversions.'
+    }
+  ];
+
+  const faqItems = [
+    {
+      question: 'Combien de temps dure une production vidéo ?',
+      answer:
+        'Selon la complexité : montage simple (5-10 jours), production complète avec tournage (2-4 semaines), projets multicaméras (3-6 semaines). Nous vous transmettons un planning détaillé dès la validation du brief.'
+    },
+    {
+      question: 'Peut-on filmer dans plusieurs lieux ?',
+      answer:
+        'Oui. Nous nous adaptons à vos contraintes géographiques : studio, locaux, extérieur ou multi-sites. Nous organisons logistique, autorisations et repérages.'
+    },
+    {
+      question: 'Pouvez-vous gérer uniquement le montage ?',
+      answer:
+        'Bien sûr. Nous proposons des prestations “post-production only” si vous disposez déjà de rushs. Nous travaillons avec tous les formats (caméra, smartphone, DSLR…).'
+    },
+    {
+      question: 'Quel budget prévoir ?',
+      answer:
+        'Nous avons des solutions pour toutes les enveloppes. Formats courts, équipe réduite ou tournage complet : nous ajustons la proposition pour maximiser votre impact.'
+    },
+    {
+      question: 'Comment se déroule le premier brief ?',
+      answer:
+        'Un échange (visio ou téléphone) nous permet de cerner vos objectifs, votre audience et vos contraintes. Nous vous envoyons ensuite un devis détaillé avec planning et livrables.'
+    }
+  ];
+
+  const themeColors = {
+    primary: '#3b82f6',
+    secondary: '#8b5cf6',
+    gradient: 'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)'
   };
 
   return (
-    <main id="main-content" className="min-h-screen bg-white">
+    <main id="main-content" className="service-page service-production min-h-screen bg-white text-slate-900">
       {/* HERO */}
-      <section className="relative min-h-[60vh] pt-32 pb-20 overflow-hidden">
+      <section
+        data-service-section="hero"
+        className="relative overflow-hidden"
+        aria-labelledby="service-production-hero-title"
+      >
         <div className="absolute inset-0">
           <video
-            className="w-full h-full object-cover"
-            autoPlay muted loop playsInline preload="auto"
+            className="h-full w-full object-cover object-center"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
           >
-            <source src="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Creative_Studio_Video_Generation2.mp4" type="video/mp4" />
+            <source src="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Creative_Studio_Video_Generation2.mp4.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/55 to-slate-900/70" />
         </div>
 
-        <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12 flex flex-col justify-end min-h-[60vh]">
-          <div className="reveal">
-            <span className="inline-block border border-white/30 rounded-full px-4 py-1.5 text-xs uppercase tracking-[0.3em] text-white/70 mb-6">
-              Production Audiovisuelle
-            </span>
-            <h1 className="font-display font-semibold text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.9] tracking-tight text-white mb-4">
-              Production audiovisuelle<br />sur-mesure
-            </h1>
-            <p className="text-lg text-white/70 max-w-2xl leading-relaxed">
-              Captation live, montage, clips, corporate : nous sublimons vos histoires en images.
+        <div className="relative mx-auto flex min-h-[70vh] w-full max-w-5xl flex-col items-center justify-end gap-6 px-4 pb-16 pt-28 text-center sm:px-6 sm:pb-20 sm:pt-36 lg:min-h-[92vh] lg:pb-24">
+          <h1
+            id="service-production-hero-title"
+            className="text-balance text-[clamp(2.1rem,5vw,4.5rem)] font-black leading-[1.05] tracking-tight text-white"
+          >
+            Production audiovisuelle sur-mesure
+          </h1>
+          <p className="text-balance text-[clamp(1.125rem,3vw,1.75rem)] font-light leading-relaxed text-white/90">
+            Captation live, montage, clips, corporate : nous sublimons vos histoires en images.
+          </p>
+          <ButtonGND
+            variant="primary"
+            onClick={scrollToContact}
+            className="w-full max-w-md sm:max-w-lg lg:max-w-xl text-[clamp(1rem,2.6vw,1.25rem)] px-6 py-4 sm:px-8 sm:py-5 lg:px-12 lg:py-6"
+          >
+            <Camera className="h-5 w-5 sm:h-6 sm:w-6" />
+            Demander un devis personnalisé
+          </ButtonGND>
+        </div>
+      </section>
+
+      {/* INTRO */}
+      <section
+        data-service-section="intro"
+        className="bg-gradient-to-b from-white to-slate-50 py-24 lg:py-32 px-4 sm:px-6 lg:px-8 lg:px-10 lg:py-24"
+      >
+        <div className="mx-auto max-w-4xl text-center">
+          <p className="text-balance text-[clamp(1rem,2.6vw,1.5rem)] leading-relaxed text-slate-700">
+            Deux décennies de captation, montage et post-production nous ont appris une chose : une vidéo réussie est un
+            savant mélange d’émotion, de rythme et d’exigence technique. Chez GND Consulting, nous concevons des contenus
+            audiovisuels qui <strong className="text-primary">attirent l’attention, racontent votre histoire</strong> et
+            génèrent le bon impact, quel que soit le support de diffusion.
+          </p>
+        </div>
+      </section>
+
+      {/* EXPERTISES */}
+      <section
+        data-service-section="services"
+        className="bg-slate-50 py-24 lg:py-32 px-4 sm:px-6 lg:px-8 lg:px-10 lg:py-24"
+      >
+        <div className="mx-auto max-w-7xl">
+          <div className="text-center">
+            <h2 className="text-balance text-[clamp(1.875rem,4vw,3rem)] font-black text-slate-900">
+              Nos expertises vidéo
+            </h2>
+            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.25rem)] text-slate-600">
+              Une offre complète, de la captation live au montage final, pour couvrir tous vos besoins audiovisuels.
             </p>
           </div>
-        </div>
-      </section>
 
-      {/* HERO IMAGE */}
-      <section className="py-16 reveal">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-          <div className="aspect-[16/9] rounded-2xl overflow-hidden bg-gray-200">
-            <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400" />
-          </div>
-        </div>
-      </section>
-
-      {/* DESCRIPTION */}
-      <section className="py-32">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-            {/* Text left */}
-            <div className="reveal">
-              <p className="text-lg text-gray-500 leading-relaxed">
-                Deux décennies de captation, montage et post-production nous ont appris une chose : une vidéo réussie est un
-                savant mélange d'émotion, de rythme et d'exigence technique. Chez GND Consulting, nous concevons des contenus
-                audiovisuels qui attirent l'attention, racontent votre histoire et
-                génèrent le bon impact, quel que soit le support de diffusion.
-              </p>
-            </div>
-
-            {/* Prestations list right */}
-            <div className="reveal delay-100">
-              <h3 className="font-display font-semibold text-xl text-black mb-6">Nos prestations</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {expertises.map((item) => (
-                  <div key={item.title} className="flex items-start gap-3">
-                    <span className="material-symbols-outlined text-xl text-gray-400 mt-0.5">{item.icon}</span>
-                    <span className="text-sm text-gray-600">{item.title}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* PROCESSUS */}
-      <section className="py-32 bg-gray-100">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-          <div className="reveal text-center mb-16">
-            <span className="inline-block border border-gray-300 rounded-full px-4 py-1.5 text-xs uppercase tracking-[0.3em] text-gray-500 mb-4">
-              Processus
-            </span>
-            <h2 className="font-display font-semibold text-3xl sm:text-4xl md:text-5xl leading-[0.9] tracking-tight text-black">
-              Notre processus
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {processSteps.map((step, index) => (
-              <div key={step.num} className={`reveal delay-${index === 0 ? '75' : index === 1 ? '100' : index === 2 ? '150' : '200'}`}>
-                <div className="border-t-2 border-black pt-6">
-                  <span className="font-display font-bold text-4xl text-gray-200 block mb-4">{step.num}</span>
-                  <h3 className="font-display font-semibold text-lg text-black mb-2">{step.title}</h3>
-                  <p className="text-sm text-gray-500 leading-relaxed">{step.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* PROJETS LIÉS */}
-      <section className="py-32">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-          <div className="reveal text-center mb-16">
-            <span className="inline-block border border-gray-300 rounded-full px-4 py-1.5 text-xs uppercase tracking-[0.3em] text-gray-500 mb-4">
-              Portfolio
-            </span>
-            <h2 className="font-display font-semibold text-3xl sm:text-4xl md:text-5xl leading-[0.9] tracking-tight text-black">
-              Projets audiovisuels
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-            {/* Project placeholders */}
-            {[
-              { title: 'ESTHER SEEMS – BOBINE', tag: 'Clip musical' },
-              { title: 'SABAY FESTIVAL 2023', tag: 'Événementiel' },
-            ].map((project, index) => (
-              <div key={project.title} className={`reveal ${index % 2 === 1 ? 'delay-150 md:mt-24' : 'delay-75'}`}>
-                <div className={`relative overflow-hidden rounded-2xl ${index % 2 === 1 ? 'aspect-[3/4]' : 'aspect-[4/3]'} bg-gray-200 group`}>
-                  <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 transition-transform duration-700 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
-                </div>
-                <div className="mt-4">
-                  <h3 className="font-display font-semibold text-lg text-black">{project.title}</h3>
-                  <span className="border border-gray-300 rounded-full text-xs uppercase tracking-[0.15em] px-3 py-1 text-gray-500 mt-2 inline-block">
-                    {project.tag}
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
+            {expertises.map((item) => {
+              const IconComponent = item.icon;
+              return (
+                <article
+                  key={item.title}
+                  className="flex h-full flex-col rounded-3xl border border-slate-100 bg-white p-6 shadow-lg transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl sm:p-8"
+                >
+                  <span className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-secondary text-white shadow-lg">
+                    <IconComponent className="h-7 w-7" />
                   </span>
-                </div>
-              </div>
-            ))}
+                  <h3 className="text-[clamp(1.125rem,2.6vw,1.35rem)] font-bold text-slate-900">{item.title}</h3>
+                  <p className="mt-2 text-[clamp(0.9375rem,2.3vw,1rem)] leading-relaxed text-slate-600">
+                    {item.description}
+                  </p>
+                  <ul className="mt-4 space-y-2 text-[clamp(0.9rem,2.2vw,0.975rem)] text-slate-600">
+                    {item.features.map((feature) => (
+                      <li key={feature} className="flex items-start gap-2">
+                        <span className="mt-1 h-2 w-2 rounded-full bg-primary"></span>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <span className="mt-5 inline-flex w-fit items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-[0.85rem] font-semibold text-primary">
+                    <Clock className="h-4 w-4" />
+                    {item.delay}
+                  </span>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>
+
+      {/* MÉTHODOLOGIE */}
+      <section
+        data-service-section="methodology"
+        className="bg-white py-24 lg:py-32 px-4 sm:px-6 lg:px-8 lg:px-10 lg:py-24"
+      >
+        <div className="mx-auto max-w-6xl">
+          <div className="text-center">
+            <h2 className="text-balance text-[clamp(1.875rem,4vw,3rem)] font-black text-slate-900">
+              Un processus cadré et transparent
+            </h2>
+            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.2rem)] text-slate-600">
+              Nous orchestrons chaque étape pour vous livrer une production fluide, sereine et fidèle à votre vision.
+            </p>
+          </div>
+
+          <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
+            {methodology.map((step, index) => {
+              const IconComponent = step.icon;
+              return (
+                <article
+                  key={step.title}
+                  className="flex h-full flex-col gap-4 rounded-3xl border border-slate-100 bg-slate-50/70 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg"
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/15 text-sm font-semibold text-primary">
+                      {index + 1}
+                    </span>
+                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-primary to-secondary text-white">
+                      <IconComponent className="h-5 w-5" />
+                    </span>
+                    <h3 className="text-[clamp(1.0625rem,2.3vw,1.2rem)] font-semibold text-slate-900">{step.title}</h3>
+                  </div>
+                  <p className="pl-[3.6rem] text-[clamp(0.9375rem,2.2vw,1.05rem)] leading-relaxed text-slate-600">
+                    {step.description}
+                  </p>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* PILIERS */}
+      <section
+        data-service-section="advantages"
+        className="bg-gradient-to-br from-blue-50 via-blue-50 to-white py-24 lg:py-32 px-4 sm:px-6 lg:px-8 lg:px-10 lg:py-24"
+      >
+        <div className="mx-auto max-w-7xl">
+          <div className="text-center">
+            <h2 className="text-balance text-[clamp(1.875rem,4vw,2.75rem)] font-black text-slate-900">
+              Nos 4 piliers pour une vidéo réussie
+            </h2>
+          </div>
+
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
+            {pillars.map((pillar) => {
+              const IconComponent = pillar.icon;
+              return (
+                <article
+                  key={pillar.title}
+                  className="flex h-full flex-col gap-4 rounded-3xl border border-white/80 bg-white/95 p-6 text-center shadow-lg transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl"
+                >
+                  <span className="mx-auto inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-secondary text-white shadow-lg">
+                    <IconComponent className="h-7 w-7" />
+                  </span>
+                  <h3 className="text-[clamp(1.05rem,2.4vw,1.2rem)] font-semibold text-slate-900">{pillar.title}</h3>
+                  <p className="text-[clamp(0.9375rem,2.2vw,1.05rem)] leading-relaxed text-slate-600">
+                    {pillar.description}
+                  </p>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* IMPACTS */}
+      <section
+        data-service-section="impact"
+        className="bg-white py-24 lg:py-32 px-4 sm:px-6 lg:px-8 lg:px-10 lg:py-24"
+      >
+        <div className="mx-auto max-w-6xl">
+          <div className="text-center">
+            <h2 className="text-balance text-[clamp(1.875rem,4vw,2.75rem)] font-black text-slate-900">
+              Pourquoi miser sur la vidéo ?
+            </h2>
+            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.2rem)] text-slate-600">
+              Des chiffres clés qui montrent la puissance de l’audiovisuel pour votre communication.
+            </p>
+          </div>
+
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2">
+            {videoImpacts.map((impact) => {
+              const IconComponent = impact.icon;
+              return (
+                <article
+                  key={impact.title}
+                  className="flex h-full flex-col gap-3 rounded-3xl border border-slate-100 bg-slate-50/60 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg"
+                >
+                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-secondary text-white shadow-lg">
+                    <IconComponent className="h-6 w-6" />
+                  </span>
+                  <h3 className="text-[clamp(1.0625rem,2.3vw,1.2rem)] font-semibold text-slate-900">{impact.title}</h3>
+                  <p className="text-[clamp(0.9375rem,2.2vw,1.05rem)] leading-relaxed text-slate-600">
+                    {impact.description}
+                  </p>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <UnifiedFAQ
+        title="QUESTIONS FRÉQUENTES"
+        subtitle="Toutes les réponses à vos interrogations sur nos productions vidéo."
+        description="Processus, formats, budget : nous clarifions les points clés pour lancer votre projet sereinement."
+        emoji="🎬"
+        faqItems={faqItems}
+        themeColor={themeColors}
+        ctaText="Démarrer mon projet"
+        ctaLink="#contact"
+      />
 
       {/* CTA FINAL */}
-      <section className="py-20 reveal">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12 text-center">
-          <h2 className="font-display font-semibold text-3xl sm:text-4xl md:text-5xl leading-[0.9] tracking-tight text-black mb-4">
-            Prêt à donner vie à votre projet ?
+      <section
+        data-service-section="cta-final"
+        className="relative overflow-hidden bg-gradient-to-br from-[#F5E8FF] via-white to-blue-50 py-24 lg:py-32 px-4 sm:px-6 lg:px-8"
+      >
+        <div className="pointer-events-none absolute top-16 -left-24 h-72 w-72 rounded-full bg-gradient-to-br from-blue-300/30 to-blue-400/30 blur-3xl sm:h-80 sm:w-80" />
+        <div className="pointer-events-none absolute bottom-10 -right-24 h-80 w-80 rounded-full bg-gradient-to-br from-blue-300/30 to-blue-400/30 blur-3xl sm:h-96 sm:w-96" />
+
+        <div className="relative mx-auto flex max-w-4xl flex-col items-center text-center">
+          <h2 className="text-balance text-[clamp(1.875rem,5vw,3.5rem)] font-black text-slate-900">
+            Prêt à tourner votre prochaine vidéo ?
           </h2>
-          <p className="text-lg text-gray-500 max-w-xl mx-auto mb-8">
-            Nous mettons notre énergie créative et notre expertise technique au service de vos ambitions.
+          <p className="mt-4 max-w-3xl text-balance text-[clamp(1rem,2.5vw,1.5rem)] leading-relaxed text-slate-700">
+            Nous mettons notre énergie créative et notre expertise technique au service de vos ambitions. Briefons-nous et
+            imaginons ensemble la production qui marquera votre audience.
           </p>
-          <button
-            onClick={scrollToContact}
-            className="inline-flex items-center gap-2 bg-black text-white rounded-full px-8 py-4 font-medium text-sm hover:bg-gray-800 hover:scale-105 transition-all duration-300"
-          >
-            Discutons-en
-            <span className="material-symbols-outlined text-sm">arrow_outward</span>
-          </button>
+          <div className="mt-8 flex w-full flex-col gap-4 sm:flex-row sm:justify-center">
+            <ButtonGND
+              variant="primary"
+              onClick={scrollToContact}
+              className="w-full max-w-sm sm:w-auto"
+            >
+              <Heart className="h-5 w-5 sm:h-6 sm:w-6" />
+              Demander un devis personnalisé
+            </ButtonGND>
+            <ButtonGND
+              variant="secondary"
+              as="a"
+              href="/#realisations"
+              className="w-full max-w-sm sm:w-auto"
+            >
+              <Sparkles className="h-5 w-5 sm:h-6 sm:w-6" />
+              Voir nos réalisations
+            </ButtonGND>
+          </div>
         </div>
       </section>
     </main>

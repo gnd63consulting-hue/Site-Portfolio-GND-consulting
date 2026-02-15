@@ -1,8 +1,22 @@
 import React, { useEffect } from 'react';
-import { Palette, Layers, Sparkles, Users, Zap, Shield, Pen, RefreshCw, Monitor, Printer, Heart } from 'lucide-react';
-import { UnifiedFAQ } from './UnifiedFAQ';
 import { updateMetaTags, pageSEO } from '../utils/seo';
-import { ButtonGND } from './ButtonGND';
+
+const prestations = [
+  { icon: 'brush', title: 'Logo & identité visuelle' },
+  { icon: 'palette', title: 'Charte graphique' },
+  { icon: 'print', title: 'Supports print' },
+  { icon: 'inventory_2', title: 'Packaging' },
+  { icon: 'devices', title: 'UI/UX Design' },
+  { icon: 'auto_fix_high', title: 'Refonte d\'identité existante' },
+];
+
+const processSteps = [
+  { num: '01', title: 'Brief', description: 'Écoute approfondie de votre histoire, vos valeurs, votre audience et vos objectifs pour poser les fondations créatives.' },
+  { num: '02', title: 'Recherche', description: 'Analyse concurrentielle, moodboards, exploration typographique et chromatic pour définir la direction artistique.' },
+  { num: '03', title: 'Concepts', description: 'Création de plusieurs pistes créatives originales, chaque proposition racontant votre histoire de manière unique.' },
+  { num: '04', title: 'Validation', description: 'Affinage collaboratif du concept retenu : 3 rounds de modifications inclus pour atteindre la perfection.' },
+  { num: '05', title: 'Livraison', description: 'Export de tous les formats nécessaires (AI, EPS, SVG, PNG, JPG) accompagnés d\'un guide d\'utilisation complet.' },
+];
 
 export function ServiceDesign() {
   useEffect(() => {
@@ -12,335 +26,175 @@ export function ServiceDesign() {
     });
   }, []);
 
+  useEffect(() => {
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      },
+      { threshold: 0.1 }
+    );
+    reveals.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   const scrollToContact = () => {
-    const contactSection = document.querySelector('footer');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
-
-  const services = [
-    {
-      icon: Pen,
-      title: 'Création de logo',
-      description: "Conception d'un logo unique qui incarne parfaitement votre identité et vos valeurs"
-    },
-    {
-      icon: Layers,
-      title: 'Déclinaisons visuelles',
-      description: 'Adaptation de votre identité sur tous vos supports digitaux et réseaux sociaux'
-    },
-    {
-      icon: Palette,
-      title: 'Charte graphique complète',
-      description: "Guide complet définissant couleurs, typographies et règles d'usage de votre marque"
-    },
-    {
-      icon: RefreshCw,
-      title: "Refonte d'identité existante",
-      description: 'Modernisation et optimisation de votre identité visuelle actuelle'
-    },
-    {
-      icon: Monitor,
-      title: 'Bannières & miniatures',
-      description: 'Création de visuels optimisés pour vos contenus web et vidéos'
-    },
-    {
-      icon: Printer,
-      title: 'Supports imprimés',
-      description: 'Conception de cartes de visite, flyers et tous supports print professionnels'
-    }
-  ];
-
-  const advantages = [
-    {
-      icon: Sparkles,
-      title: 'Créativité & personnalisation',
-      description: 'Chaque création est unique et pensée spécifiquement pour votre univers'
-    },
-    {
-      icon: Users,
-      title: 'Accompagnement humain + IA',
-      description: "Alliance parfaite entre expertise humaine et outils d'intelligence artificielle"
-    },
-    {
-      icon: Zap,
-      title: 'Flexibilité & accessibilité',
-      description: 'Solutions adaptées à tous les budgets avec une approche modulaire'
-    },
-    {
-      icon: Shield,
-      title: "Réseau d'experts à la demande",
-      description: 'Accès à un écosystème de spécialistes selon vos besoins spécifiques'
-    }
-  ];
-
-  const faqItems = [
-    {
-      question: 'Quels sont les délais de réalisation ?',
-      answer:
-        "Les délais varient selon la complexité : logo simple (5-7 jours), identité complète (2-3 semaines), refonte globale (3-4 semaines). Nous établissons un planning précis dès le brief validé."
-    },
-    {
-      question: 'Combien de modifications sont incluses ?',
-      answer:
-        "Nous incluons 3 rounds de modifications dans nos prestations standard. Chaque étape fait l'objet d'une validation avant passage à la suivante pour optimiser le processus créatif."
-    },
-    {
-      question: 'Quels formats de fichiers livrez-vous ?',
-      answer:
-        'Nous livrons tous les formats nécessaires : vectoriels (AI, EPS, SVG), haute résolution (PNG, JPG), et formats web optimisés. Vous recevez également un guide d’utilisation complet.'
-    },
-    {
-      question: "Et si je n'ai aucune idée du design souhaité ?",
-      answer:
-        "C'est notre spécialité ! Nous commençons par un brief approfondi pour comprendre votre univers, vos valeurs et vos objectifs. Notre processus créatif vous guide étape par étape vers votre identité idéale."
-    }
-  ];
-
-  const themeColors = {
-    primary: '#3b82f6',
-    secondary: '#8b5cf6',
-    gradient: 'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)'
+    const footer = document.querySelector('footer');
+    if (footer) footer.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   return (
-    <main id="main-content" className="service-page service-design min-h-screen bg-white text-slate-900">
+    <main id="main-content" className="min-h-screen bg-white">
       {/* HERO */}
-      <section
-        data-service-section="hero"
-        className="relative overflow-hidden"
-        aria-labelledby="service-design-hero-title"
-      >
+      <section className="relative min-h-[60vh] pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0">
           <img
             src="/20250923_1821_Vibrant Design Collaboration_simple_compose_01k5vnxw54fz9v244n3dr8mgjr copy.png"
             alt="Studio créatif moderne - Design graphique et identité visuelle sur mesure"
-            className="h-full w-full object-cover"
+            className="w-full h-full object-cover"
             loading="eager"
             fetchpriority="high"
           />
-          <div className="absolute inset-0 bg-slate-900/45 lg:bg-slate-900/35" />
+          <div className="absolute inset-0 bg-black/50" />
         </div>
 
-        <div className="relative mx-auto flex min-h-[70vh] w-full max-w-5xl flex-col items-center justify-end gap-6 px-4 pb-16 pt-32 text-center sm:px-6 sm:pb-20 sm:pt-36 lg:min-h-[88vh] lg:pb-24">
-          <h1
-            id="service-design-hero-title"
-            className="text-balance text-[clamp(2.1rem,5vw,4.5rem)] font-black leading-[1.05] tracking-tight text-white"
-          >
-            Faites parler votre image
-          </h1>
-          <p className="text-balance text-[clamp(1.125rem,3vw,1.75rem)] font-light leading-relaxed text-white/90">
-            Design graphique & identité visuelle sur mesure
-          </p>
-          <ButtonGND
-            variant="primary"
-            onClick={scrollToContact}
-            className="w-full max-w-md sm:max-w-lg lg:max-w-xl text-[clamp(1rem,2.6vw,1.25rem)] px-6 py-4 sm:px-8 sm:py-5 lg:px-12 lg:py-6"
-          >
-            <Heart className="h-5 w-5 sm:h-6 sm:w-6" />
-            Demander un devis personnalisé
-          </ButtonGND>
-        </div>
-      </section>
-
-      {/* INTRO */}
-      <section
-        data-service-section="intro"
-        className="bg-gradient-to-b from-white to-slate-50 py-24 lg:py-32 px-4 sm:px-6 lg:px-8 lg:px-10 lg:py-24"
-      >
-        <div className="mx-auto max-w-4xl text-center">
-          <p className="text-balance text-[clamp(1rem,2.6vw,1.5rem)] leading-relaxed text-slate-700">
-            Chez GND Consulting, nous croyons que le design graphique n&apos;est pas qu&apos;une question
-            d&apos;esthétique. C&apos;est un <strong className="text-primary">pilier stratégique</strong> qui raconte votre
-            histoire, transmet vos valeurs et crée une connexion émotionnelle durable avec votre audience. Chaque trait,
-            chaque couleur, chaque forme est pensée pour{' '}
-            <strong className="text-primary">faire vibrer votre marque</strong> et la rendre inoubliable. Studio créatif à
-            Paris, identité visuelle et branding sur mesure pour marques ambitieuses.
-          </p>
-        </div>
-      </section>
-
-      {/* SERVICES */}
-      <section
-        data-service-section="services"
-        className="bg-slate-50 py-24 lg:py-32 px-4 sm:px-6 lg:px-8 lg:px-10 lg:py-24"
-      >
-        <div className="mx-auto max-w-7xl">
-          <div className="text-center">
-            <h2 className="text-balance text-[clamp(1.875rem,4vw,3rem)] font-black text-slate-900">
-              Nos services Design &amp; Identité Visuelle
-            </h2>
-            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.25rem)] text-slate-600">
-              Des solutions créatives complètes pour donner vie à votre univers visuel
+        <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12 flex flex-col justify-end min-h-[60vh]">
+          <div className="reveal">
+            <span className="inline-block border border-white/30 rounded-full px-4 py-1.5 text-xs uppercase tracking-[0.3em] text-white/70 mb-6">
+              Design & Identité Visuelle
+            </span>
+            <h1 className="font-display font-semibold text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.9] tracking-tight text-white mb-4">
+              Faites parler<br />votre image
+            </h1>
+            <p className="text-lg text-white/70 max-w-2xl leading-relaxed">
+              Design graphique & identité visuelle sur mesure pour marques ambitieuses.
             </p>
           </div>
+        </div>
+      </section>
 
-          <div className="mt-12 grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {services.map((service) => {
-              const IconComponent = service.icon;
-              return (
-                <article
-                  key={service.title}
-                  className="group flex h-full flex-col rounded-3xl border border-slate-100 bg-white p-6 shadow-lg transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl sm:p-8"
-                >
-                  <span className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-secondary text-white transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 sm:h-18 sm:w-18">
-                    <IconComponent className="h-8 w-8" />
-                  </span>
-                  <h3 className="text-[clamp(1.125rem,2.6vw,1.35rem)] font-bold text-slate-900 transition-colors duration-300 group-hover:text-primary">
-                    {service.title}
-                  </h3>
-                  <p className="mt-3 text-[clamp(0.9375rem,2.3vw,1rem)] leading-relaxed text-slate-600">
-                    {service.description}
-                  </p>
-                </article>
-              );
-            })}
+      {/* HERO IMAGE */}
+      <section className="py-16 reveal">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+          <div className="aspect-[16/9] rounded-2xl overflow-hidden bg-gray-200">
+            <img
+              src="/20250923_1821_Vibrant Design Collaboration_simple_compose_01k5vnxw55e4evcwhnpmf5f7eb.png"
+              alt="Équipe créative au travail - Design et branding"
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
           </div>
         </div>
       </section>
 
-      {/* APPROCHE */}
-      <section
-        data-service-section="approach"
-        className="bg-white py-24 lg:py-32 px-4 sm:px-6 lg:px-8 lg:px-10 lg:py-24"
-      >
-        <div className="mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
-            <div className="space-y-6">
-              <h2 className="text-balance text-[clamp(1.875rem,4.2vw,3rem)] font-black text-slate-900">
-                Une identité qui vous ressemble vraiment
-              </h2>
-              <div className="space-y-5 text-[clamp(0.95rem,2.3vw,1.1rem)] leading-relaxed text-slate-700">
-                <p>
-                  Notre approche commence toujours par <strong className="text-primary">l&apos;écoute</strong>. Nous prenons
-                  le temps de comprendre votre histoire, vos ambitions, votre personnalité unique. Car avant de créer, il
-                  faut ressentir.
-                </p>
-                <p>
-                  Ensuite vient la <strong className="text-primary">co-création</strong>. Vous n&apos;êtes pas spectateur,
-                  vous êtes acteur de votre identité visuelle. Nous travaillons main dans la main, dans un processus
-                  itératif où chaque étape est validée ensemble.
-                </p>
-                <p>
-                  Le résultat ? Une identité visuelle <strong className="text-primary">authentique et impactante</strong>,
-                  qui vous ressemble vraiment et qui saura toucher votre audience au cœur.
-                </p>
-              </div>
-              <div>
-                <ButtonGND
-                  variant="primary"
-                  onClick={scrollToContact}
-                  className="w-full max-w-sm sm:w-auto"
-                >
-                  <Sparkles className="h-5 w-5" />
-                  Découvrir notre approche
-                </ButtonGND>
-              </div>
+      {/* DESCRIPTION */}
+      <section className="py-32">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+            {/* Text left */}
+            <div className="reveal">
+              <p className="text-lg text-gray-500 leading-relaxed">
+                Chez GND Consulting, nous croyons que le design graphique n'est pas qu'une question
+                d'esthétique. C'est un pilier stratégique qui raconte votre histoire, transmet vos valeurs
+                et crée une connexion émotionnelle durable avec votre audience. Chaque trait, chaque couleur,
+                chaque forme est pensée pour faire vibrer votre marque et la rendre inoubliable.
+              </p>
             </div>
 
-            <div className="relative mx-auto max-w-xl lg:max-w-none">
-              <div className="relative overflow-hidden rounded-3xl shadow-2xl">
-                <img
-                  src="/20250923_1821_Vibrant Design Collaboration_simple_compose_01k5vnxw55e4evcwhnpmf5f7eb.png"
-                  alt="Équipe créative au travail"
-                  className="h-[260px] w-full object-cover sm:h-[320px] lg:h-[460px]"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
+            {/* Prestations list right */}
+            <div className="reveal delay-100">
+              <h3 className="font-display font-semibold text-xl text-black mb-6">Nos prestations</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {prestations.map((item) => (
+                  <div key={item.title} className="flex items-start gap-3">
+                    <span className="material-symbols-outlined text-xl text-gray-400 mt-0.5">{item.icon}</span>
+                    <span className="text-sm text-gray-600">{item.title}</span>
+                  </div>
+                ))}
               </div>
-              <div className="absolute -right-4 -top-4 h-16 w-16 rounded-full bg-gradient-to-br from-blue-500 to-secondary opacity-80 blur-md lg:h-24 lg:w-24" />
-              <div className="absolute -bottom-4 -left-4 h-20 w-20 rounded-full bg-gradient-to-br from-blue-400 to-blue-500 opacity-60 blur-md lg:h-28 lg:w-28" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* AVANTAGES */}
-      <section
-        data-service-section="advantages"
-        className="bg-gradient-to-b from-slate-50 to-white py-24 lg:py-32 px-4 sm:px-6 lg:px-8 lg:px-10 lg:py-24"
-      >
-        <div className="mx-auto max-w-7xl">
-          <div className="text-center">
-            <h2 className="text-balance text-[clamp(1.875rem,4vw,3rem)] font-black text-slate-900">
-              Pourquoi choisir GND Consulting ?
+      {/* PROCESSUS */}
+      <section className="py-32 bg-gray-100">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+          <div className="reveal text-center mb-16">
+            <span className="inline-block border border-gray-300 rounded-full px-4 py-1.5 text-xs uppercase tracking-[0.3em] text-gray-500 mb-4">
+              Processus
+            </span>
+            <h2 className="font-display font-semibold text-3xl sm:text-4xl md:text-5xl leading-[0.9] tracking-tight text-black">
+              Notre processus
             </h2>
-            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.25rem)] text-slate-600">
-              4 raisons qui font la différence dans votre projet créatif
-            </p>
           </div>
 
-          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-4">
-            {advantages.map((advantage) => {
-              const IconComponent = advantage.icon;
-              return (
-                <article
-                  key={advantage.title}
-                  className="group flex h-full flex-col items-center rounded-3xl border border-white/60 bg-white/90 p-6 text-center shadow-lg transition-all duration-500 hover:-translate-y-1 hover:shadow-xl sm:p-8"
-                >
-                  <span className="mb-6 inline-flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-primary to-secondary text-white shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
-                    <IconComponent className="h-10 w-10" />
-                  </span>
-                  <h3 className="text-[clamp(1.125rem,2.6vw,1.35rem)] font-bold text-slate-900 transition-colors duration-300 group-hover:text-primary">
-                    {advantage.title}
-                  </h3>
-                  <p className="mt-3 text-[clamp(0.9375rem,2.3vw,1.05rem)] leading-relaxed text-slate-600">
-                    {advantage.description}
-                  </p>
-                </article>
-              );
-            })}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+            {processSteps.map((step, index) => (
+              <div key={step.num} className={`reveal delay-${index === 0 ? '75' : index === 1 ? '100' : index === 2 ? '150' : index === 3 ? '200' : '300'}`}>
+                <div className="border-t-2 border-black pt-6">
+                  <span className="font-display font-bold text-4xl text-gray-200 block mb-4">{step.num}</span>
+                  <h3 className="font-display font-semibold text-lg text-black mb-2">{step.title}</h3>
+                  <p className="text-sm text-gray-500 leading-relaxed">{step.description}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <UnifiedFAQ
-        title="QUESTIONS FRÉQUENTES"
-        subtitle="Retrouvez ici toutes les réponses aux interrogations fréquentes sur nos services design."
-        description="Tout ce que vous devez savoir sur nos services design et identité visuelle"
-        emoji="🎨"
-        faqItems={faqItems}
-        themeColor={themeColors}
-        ctaText="Démarrer mon projet"
-        ctaLink="#contact"
-      />
+      {/* PROJETS LIÉS */}
+      <section className="py-32">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+          <div className="reveal text-center mb-16">
+            <span className="inline-block border border-gray-300 rounded-full px-4 py-1.5 text-xs uppercase tracking-[0.3em] text-gray-500 mb-4">
+              Portfolio
+            </span>
+            <h2 className="font-display font-semibold text-3xl sm:text-4xl md:text-5xl leading-[0.9] tracking-tight text-black">
+              Projets design
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+            {[
+              { title: 'IDENTITÉ VISUELLE – MARQUE LIFESTYLE', tag: 'Branding' },
+              { title: 'CHARTE GRAPHIQUE – STARTUP TECH', tag: 'Identité visuelle' },
+            ].map((project, index) => (
+              <div key={project.title} className={`reveal ${index % 2 === 1 ? 'delay-150 md:mt-24' : 'delay-75'}`}>
+                <div className={`relative overflow-hidden rounded-2xl ${index % 2 === 1 ? 'aspect-[3/4]' : 'aspect-[4/3]'} bg-gray-200 group`}>
+                  <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 transition-transform duration-700 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
+                </div>
+                <div className="mt-4">
+                  <h3 className="font-display font-semibold text-lg text-black">{project.title}</h3>
+                  <span className="border border-gray-300 rounded-full text-xs uppercase tracking-[0.15em] px-3 py-1 text-gray-500 mt-2 inline-block">
+                    {project.tag}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* CTA FINAL */}
-      <section
-        data-service-section="cta-final"
-        className="relative overflow-hidden bg-gradient-to-br from-[#F5E8FF] via-white to-blue-50 py-24 lg:py-32 px-4 sm:px-6 lg:px-8"
-      >
-        <div className="pointer-events-none absolute top-20 -left-20 h-72 w-72 rounded-full bg-gradient-to-br from-blue-300/30 to-blue-400/30 blur-3xl sm:h-80 sm:w-80" />
-        <div className="pointer-events-none absolute bottom-10 -right-24 h-80 w-80 rounded-full bg-gradient-to-br from-blue-300/30 to-blue-400/30 blur-3xl sm:h-96 sm:w-96" />
-
-        <div className="relative mx-auto flex max-w-4xl flex-col items-center text-center">
-          <h2 className="text-balance text-[clamp(1.875rem,5vw,3.5rem)] font-black text-slate-900">
-            Prêt à donner vie à votre univers visuel ?
+      <section className="py-20 reveal">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12 text-center">
+          <h2 className="font-display font-semibold text-3xl sm:text-4xl md:text-5xl leading-[0.9] tracking-tight text-black mb-4">
+            Prêt à donner vie à votre projet ?
           </h2>
-          <p className="mt-4 max-w-3xl text-balance text-[clamp(1rem,2.5vw,1.5rem)] leading-relaxed text-slate-700">
-            Créons ensemble une identité visuelle qui vous ressemble et qui marquera les esprits. Votre projet mérite une
-            approche sur-mesure et créative.
+          <p className="text-lg text-gray-500 max-w-xl mx-auto mb-8">
+            Créons ensemble une identité visuelle qui vous ressemble et qui marquera les esprits.
           </p>
-          <div className="mt-8 flex w-full flex-col gap-4 sm:flex-row sm:justify-center">
-            <ButtonGND
-              variant="primary"
-              onClick={scrollToContact}
-              className="w-full max-w-sm sm:w-auto"
-            >
-              <Heart className="h-5 w-5 sm:h-6 sm:w-6" />
-              Demander un devis personnalisé
-            </ButtonGND>
-            <ButtonGND
-              variant="secondary"
-              as="a"
-              href="/#realisations"
-              className="w-full max-w-sm sm:w-auto"
-            >
-              <Palette className="h-5 w-5 sm:h-6 sm:w-6" />
-              Voir nos réalisations
-            </ButtonGND>
-          </div>
+          <button
+            onClick={scrollToContact}
+            className="inline-flex items-center gap-2 bg-black text-white rounded-full px-8 py-4 font-medium text-sm hover:bg-gray-800 hover:scale-105 transition-all duration-300"
+          >
+            Discutons-en
+            <span className="material-symbols-outlined text-sm">arrow_outward</span>
+          </button>
         </div>
       </section>
     </main>

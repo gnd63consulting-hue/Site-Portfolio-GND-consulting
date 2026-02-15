@@ -1,23 +1,48 @@
 import React, { useEffect } from 'react';
-import {
-  Zap,
-  Brain,
-  Target,
-  Clock,
-  TrendingUp,
-  Users,
-  Shield,
-  Settings,
-  Sparkles,
-  Eye,
-  Cog,
-  Monitor,
-  Smartphone,
-  Heart
-} from 'lucide-react';
-import { UnifiedFAQ } from './UnifiedFAQ';
 import { updateMetaTags, pageSEO } from '../utils/seo';
-import { ButtonGND } from './ButtonGND';
+
+const prestations = [
+  { icon: 'conversion_path', label: 'Workflows N8N' },
+  { icon: 'smart_toy', label: 'Chatbots IA' },
+  { icon: 'api', label: 'Intégrations API' },
+  { icon: 'neurology', label: 'Agents autonomes' },
+  { icon: 'campaign', label: 'Automatisation marketing' },
+  { icon: 'school', label: 'Formation & adoption IA' },
+];
+
+const processSteps = [
+  { num: '01', title: 'Audit & stratégie', description: 'Cartographie de vos flux, identification des opportunités IA et feuille de route priorisée avec ROI estimé.' },
+  { num: '02', title: 'Prototypage rapide', description: 'POC fonctionnel en quelques semaines pour valider l\'impact sur un cas d\'usage concret.' },
+  { num: '03', title: 'Déploiement progressif', description: 'Intégration dans votre stack existante, tests, monitoring et montée en charge maîtrisée.' },
+  { num: '04', title: 'Formation & itération', description: 'Ateliers métiers, documentation interne, coaching d\'équipes et amélioration continue.' },
+];
+
+const faqItems = [
+  {
+    question: 'Est-ce adapté à mon entreprise ?',
+    answer: 'Oui. Nos solutions sont modulaires et s\'adaptent à votre taille, votre secteur et votre maturité numérique. Nous concevons des automatisations proportionnées à vos besoins.',
+  },
+  {
+    question: 'Dois-je déjà disposer d\'outils spécifiques ?',
+    answer: 'Pas nécessairement. Nous partons de votre stack actuelle et la complétons si besoin. L\'objectif : valoriser l\'existant avant d\'introduire de nouveaux outils.',
+  },
+  {
+    question: 'Combien de temps pour un premier résultat ?',
+    answer: 'Quelques semaines pour un POC, 1 à 3 mois pour un déploiement progressif selon le périmètre. Nous privilégions des cycles courts avec des gains mesurables à chaque étape.',
+  },
+  {
+    question: 'Quel ROI attendre ?',
+    answer: 'Nous estimons le ROI dès l\'audit. Selon les cas, un retour sur investissement est observé entre 3 et 6 mois grâce aux gains de temps, à la réduction des erreurs et à l\'amélioration de la conversion.',
+  },
+  {
+    question: 'Comment garantissez-vous la sécurité des données ?',
+    answer: 'Conformité RGPD, chiffrement, contrôle d\'accès, audit trail... et possibilité de travailler en mode on-premise. La sécurité est intégrée à chaque étape.',
+  },
+  {
+    question: 'Proposez-vous de la formation ?',
+    answer: 'Absolument. L\'adoption humaine est clé : ateliers, guides d\'usage, coaching d\'équipes et support continu font partie de notre accompagnement.',
+  },
+];
 
 export function ServiceAutomatisationIA() {
   useEffect(() => {
@@ -27,436 +52,391 @@ export function ServiceAutomatisationIA() {
     });
   }, []);
 
+  useEffect(() => {
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      },
+      { threshold: 0.1 }
+    );
+    reveals.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   const scrollToContact = () => {
-    const contactSection = document.querySelector('footer');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
-
-  const keyMetrics = [
-    {
-      icon: TrendingUp,
-      value: '+40%',
-      label: 'Gains de productivité',
-      description: 'Automatisation des tâches répétitives et optimisation des processus end-to-end.'
-    },
-    {
-      icon: Clock,
-      value: '20 min/jour',
-      label: 'Temps économisé par collaborateur',
-      description: 'Comptes-rendus automatiques, recherche accélérée, routage intelligent.'
-    },
-    {
-      icon: Zap,
-      value: '+66%',
-      label: 'Débit opérationnel',
-      description: 'Des workflows orchestrés qui accélèrent la prise en charge des demandes.'
-    },
-    {
-      icon: Target,
-      value: '25%',
-      label: 'Économies constatées',
-      description: 'Effets combinés sur les coûts opérationnels et la qualité de service.'
-    }
-  ];
-
-  const services = [
-    {
-      icon: Brain,
-      title: 'Agents IA personnalisés',
-      description: 'Assistants digitaux entraînés sur vos données pour répondre, qualifier, exécuter.',
-      features: [
-        'Support client 24/7',
-        'Qualification & nurturing de leads',
-        'Assistance interne (RH, IT, finance)',
-        'Supervision & audit trail'
-      ]
-    },
-    {
-      icon: Settings,
-      title: 'Automatisation de processus',
-      description: 'Orchestration des tâches répétitives et validations multi-applications.',
-      features: [
-        'Onboarding client/fournisseur',
-        'Génération & routage de documents',
-        'Synchronisation CRM / ERP',
-        'Notifications & relances intelligentes'
-      ]
-    },
-    {
-      icon: Cog,
-      title: 'Intégrations sur-mesure',
-      description: 'Connecter votre écosystème pour éviter les silos de données.',
-      features: [
-        'CRM, suites bureautiques, Notion, Slack…',
-        'APIs, webhooks, connecteurs iPaaS',
-        'Normalisation & monitoring',
-        'Sécurité & gouvernance'
-      ]
-    },
-    {
-      icon: Sparkles,
-      title: 'Création assistée par IA',
-      description: 'Accélérer sans renoncer à la qualité et à la cohérence éditoriale.',
-      features: [
-        'Rédaction guidée (articles, scripts, emails)',
-        'Aide à la conception visuelle',
-        'Génération de présentations & résumés',
-        'Contrôles : ton, marque, validation humaine'
-      ]
-    },
-    {
-      icon: Users,
-      title: 'Formation & adoption',
-      description: "Ateliers métiers et conduite du changement pour ancrer l'usage.",
-      features: [
-        'Workshops marketing, vente, ops, RH',
-        'Guides & politiques IA',
-        "Coaching d’équipes, gouvernance",
-        'Support continu'
-      ]
-    },
-    {
-      icon: Eye,
-      title: 'Audit & stratégie IA',
-      description: 'Cartographier vos opportunités, prioriser et chiffrer le ROI.',
-      features: ['Diagnostic des flux', 'Feuille de route 90 jours', 'POC rapide', 'Déploiement progressif']
-    }
-  ];
-
-  const applicationDomains = [
-    {
-      icon: Target,
-      title: 'Marketing & communication',
-      points: [
-        'Génération & déclinaison de contenus multicanaux',
-        'Analyse de tendances et social listening',
-        'Personnalisation en temps réel',
-        'Orchestration automatisée des campagnes'
-      ]
-    },
-    {
-      icon: Users,
-      title: 'Ventes & relation client',
-      points: [
-        'Agents conversationnels & self-service',
-        'Qualification intelligente des prospects',
-        'Follow-up automatisés',
-        'Coaching commercial assisté'
-      ]
-    },
-    {
-      icon: Monitor,
-      title: 'Opérations & finance',
-      points: [
-        'Automatisation back-office',
-        'Pilotage dashboards & alertes',
-        'Prévisions & reporting assistés',
-        'Gestion des risques et conformité'
-      ]
-    },
-    {
-      icon: Smartphone,
-      title: 'RH & expérience collaborateur',
-      points: [
-        'Onboarding & demandes internes',
-        'FAQ RH intelligentes',
-        'Formation personnalisée',
-        'Suivi bien-être & feedback'
-      ]
-    }
-  ];
-
-  const whyNowStats = [
-    { value: '+60%', label: 'de croissance des revenus chez les leaders IA' },
-    { value: '+30%', label: "d’économies potentielles grâce à l’automatisation" },
-    { value: '+66%', label: 'de débit opérationnel sur des processus récurrents' },
-    { value: '~26%', label: 'des organisations capturent déjà une valeur IA tangible' }
-  ];
-
-  const faqItems = [
-    {
-      question: 'Est-ce adapté à mon entreprise ?',
-      answer:
-        "Oui. Nos solutions sont modulaires et s'adaptent à votre taille, votre secteur et votre maturité numérique. Nous concevons des automatisations proportionnées à vos besoins."
-    },
-    {
-      question: 'Dois-je déjà disposer d’outils spécifiques ?',
-      answer:
-        "Pas nécessairement. Nous partons de votre stack actuelle et la complétons si besoin. L'objectif : valoriser l'existant avant d'introduire de nouveaux outils."
-    },
-    {
-      question: 'Combien de temps pour un premier résultat ?',
-      answer:
-        'Quelques semaines pour un POC, 1 à 3 mois pour un déploiement progressif selon le périmètre. Nous privilégions des cycles courts avec des gains mesurables à chaque étape.'
-    },
-    {
-      question: 'Quel ROI attendre ?',
-      answer:
-        "Nous estimons le ROI dès l'audit. Selon les cas, un retour sur investissement est observé entre 3 et 6 mois grâce aux gains de temps, à la réduction des erreurs et à l'amélioration de la conversion."
-    },
-    {
-      question: 'Comment garantissez-vous la sécurité des données ?',
-      answer:
-        "Conformité RGPD, chiffrement, contrôle d'accès, audit trail… et possibilité de travailler en mode on-premise. La sécurité est intégrée à chaque étape."
-    },
-    {
-      question: 'Proposez-vous de la formation ?',
-      answer:
-        "Absolument. L'adoption humaine est clé : ateliers, guides d'usage, coaching d'équipes et support continu font partie de notre accompagnement."
-    }
-  ];
-
-  const themeColors = {
-    primary: '#3b82f6',
-    secondary: '#8b5cf6',
-    gradient: 'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)'
+    const footer = document.querySelector('footer');
+    if (footer) footer.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   return (
-    <main id="main-content" className="service-page service-ai min-h-screen bg-white text-slate-900">
+    <main id="main-content" className="min-h-screen bg-white">
       {/* HERO */}
-      <section
-        data-service-section="hero"
-        className="relative overflow-hidden"
-        aria-labelledby="service-ai-hero-title"
-      >
+      <section className="relative min-h-[60vh] pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0">
           <img
             src="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20251006_2055_Espace%20Travail%20Futuriste_simple_compose_01k6xdztmrewrv8rq637vqqpnp.png"
             alt="Espace collaboratif futuriste - Automatisation et intelligence artificielle"
-            className="h-full w-full object-cover"
+            className="w-full h-full object-cover"
             loading="eager"
-            fetchpriority="high"
+            fetchPriority="high"
           />
-          <div className="absolute inset-0 bg-slate-900/55 lg:bg-slate-900/45" />
+          <div className="absolute inset-0 bg-black/55" />
         </div>
 
-        <div className="relative mx-auto flex min-h-[70vh] w-full max-w-5xl flex-col items-center justify-end gap-6 px-4 pb-16 pt-32 text-center sm:px-6 sm:pb-20 sm:pt-36 lg:min-h-[90vh] lg:pb-24">
-          <h1
-            id="service-ai-hero-title"
-            className="text-balance text-[clamp(2.1rem,5vw,4.6rem)] font-black leading-[1.05] tracking-tight text-white"
-          >
-            Automatisation & IA sur mesure
-          </h1>
-          <p className="text-balance text-[clamp(1.125rem,3vw,1.75rem)] font-light leading-relaxed text-white/90">
-            Des workflows intelligents pour booster la productivité, la qualité et l’engagement.
-          </p>
-          <div className="flex flex-col items-center gap-3">
-            <ButtonGND
-              variant="primary"
-              onClick={scrollToContact}
-              className="w-full max-w-md sm:max-w-lg lg:max-w-xl text-[clamp(1rem,2.6vw,1.25rem)] px-6 py-4 sm:px-8 sm:py-5 lg:px-12 lg:py-6"
-            >
-              <Zap className="h-5 w-5 sm:h-6 sm:w-6" />
-              Démarrer un projet pilote
-            </ButtonGND>
-            <div className="inline-flex items-center gap-2 text-sm font-medium text-white/80">
-              <Shield className="h-4 w-4" />
-              <span>RGPD & sécurité intégrées</span>
+        <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12 flex flex-col justify-end min-h-[60vh]">
+          <div className="reveal">
+            <span className="inline-block border border-blue-400/40 rounded-full px-4 py-1.5 text-xs uppercase tracking-[0.3em] text-blue-300 mb-6">
+              Automatisation & IA
+            </span>
+            <h1 className="font-display font-semibold text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.9] tracking-tight text-white mb-4">
+              Automatisation & IA<br />sur mesure
+            </h1>
+            <p className="text-lg text-white/70 max-w-2xl leading-relaxed">
+              Des workflows intelligents pour booster la productivité, la qualité et l'engagement.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* HERO IMAGE */}
+      <section className="py-16 reveal">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+          <div className="aspect-[16/9] rounded-2xl overflow-hidden bg-gray-200">
+            <div className="w-full h-full bg-gradient-to-br from-blue-200 to-blue-400" />
+          </div>
+        </div>
+      </section>
+
+      {/* DESCRIPTION */}
+      <section className="py-32">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+            {/* Text left */}
+            <div className="reveal">
+              <p className="text-lg text-gray-500 leading-relaxed">
+                De l'automatisation de processus aux agents IA spécialisés, nous concevons des solutions pragmatiques qui
+                s'intègrent à votre stack, délivrent des gains rapides et s'échelonnent en toute sécurité. Chez GND Consulting,
+                chaque workflow est pensé pour éliminer les tâches répétitives, accélérer la prise de décision et libérer
+                vos équipes sur les missions à forte valeur ajoutée.
+              </p>
+            </div>
+
+            {/* Prestations list right */}
+            <div className="reveal delay-100">
+              <h3 className="font-display font-semibold text-xl text-black mb-6">Nos prestations</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {prestations.map((item) => (
+                  <div key={item.label} className="flex items-start gap-3">
+                    <span className="material-symbols-outlined text-xl text-blue-400 mt-0.5">{item.icon}</span>
+                    <span className="text-sm text-gray-600">{item.label}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* INTRO */}
-      <section
-        data-service-section="intro"
-        className="bg-gradient-to-b from-white to-slate-50 py-24 lg:py-32 px-4 sm:px-6 lg:px-8 lg:px-10 lg:py-24"
-      >
-        <div className="mx-auto max-w-4xl text-center">
-          <p className="text-balance text-[clamp(1rem,2.6vw,1.5rem)] leading-relaxed text-slate-700">
-            De l’automatisation de processus aux agents IA spécialisés, nous concevons des solutions pragmatiques qui
-            s’intègrent à votre stack, délivrent des gains rapides et s’échelonnent en toute sécurité.
-          </p>
-        </div>
-      </section>
-
-      {/* METRICS */}
-      <section
-        data-service-section="metrics"
-        className="bg-white py-24 lg:py-32 px-4 sm:px-6 lg:px-8 lg:px-10 lg:py-24"
-      >
-        <div className="mx-auto max-w-6xl">
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {keyMetrics.map((metric) => {
-              const IconComponent = metric.icon;
-              return (
-                <article
-                  key={metric.label}
-                  className="flex h-full flex-col gap-3 rounded-3xl border border-slate-100 bg-slate-50/70 p-6 shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg"
-                >
-                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-secondary text-white shadow-lg">
-                    <IconComponent className="h-6 w-6" />
-                  </span>
-                  <div>
-                    <p className="text-[clamp(1.5rem,4vw,2.25rem)] font-black text-slate-900">{metric.value}</p>
-                    <p className="text-[clamp(0.95rem,2.3vw,1.1rem)] font-semibold text-slate-700">{metric.label}</p>
-                  </div>
-                  <p className="text-[clamp(0.9rem,2.2vw,1rem)] text-slate-600">{metric.description}</p>
-                </article>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* SERVICES */}
-      <section
-        data-service-section="services"
-        className="bg-gradient-to-br from-blue-50 via-white to-blue-50 py-24 lg:py-32 px-4 sm:px-6 lg:px-8 lg:px-10 lg:py-24"
-      >
-        <div className="mx-auto max-w-7xl">
-          <div className="text-center">
-            <h2 className="text-balance text-[clamp(1.875rem,4vw,3rem)] font-black text-slate-900">
-              Nos briques IA & automatisation
-            </h2>
-            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.25rem)] text-slate-600">
-              Des modules combinables pour bâtir votre feuille de route IA, du POC au déploiement à l’échelle.
-            </p>
-          </div>
-
-          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
-            {services.map((service) => {
-              const IconComponent = service.icon;
-              return (
-                <article
-                  key={service.title}
-                  className="flex h-full flex-col rounded-3xl border border-white/70 bg-white/95 p-6 shadow-lg transition-all duration-500 hover:-translate-y-1 hover:shadow-xl sm:p-8"
-                >
-                  <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-secondary text-white shadow-lg">
-                    <IconComponent className="h-7 w-7" />
-                  </span>
-                  <h3 className="mt-4 text-[clamp(1.125rem,2.6vw,1.35rem)] font-bold text-slate-900">{service.title}</h3>
-                  <p className="mt-2 text-[clamp(0.9375rem,2.3vw,1rem)] leading-relaxed text-slate-600">
-                    {service.description}
-                  </p>
-                  <ul className="mt-4 space-y-2 text-[clamp(0.9rem,2.2vw,0.975rem)] text-slate-600">
-                    {service.features.map((feature) => (
-                      <li key={feature} className="flex items-start gap-2">
-                        <span className="mt-1 h-2 w-2 rounded-full bg-primary"></span>
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </article>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* DOMAINES */}
-      <section
-        data-service-section="domains"
-        className="bg-white py-24 lg:py-32 px-4 sm:px-6 lg:px-8 lg:px-10 lg:py-24"
-      >
-        <div className="mx-auto max-w-7xl">
-          <div className="text-center">
-            <h2 className="text-balance text-[clamp(1.875rem,4vw,2.8rem)] font-black text-slate-900">
-              Domaines d’application prioritaires
+      {/* CHIFFRES CLÉS */}
+      <section className="py-32 bg-blue-950">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+          <div className="reveal text-center mb-16">
+            <span className="inline-block border border-blue-400/30 rounded-full px-4 py-1.5 text-xs uppercase tracking-[0.3em] text-blue-300 mb-4">
+              Impact
+            </span>
+            <h2 className="font-display font-semibold text-3xl sm:text-4xl md:text-5xl leading-[0.9] tracking-tight text-white">
+              Des résultats mesurables
             </h2>
           </div>
 
-          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2">
-            {applicationDomains.map((domain) => {
-              const IconComponent = domain.icon;
-              return (
-                <article
-                  key={domain.title}
-                  className="flex h-full flex-col gap-4 rounded-3xl border border-slate-100 bg-slate-50/70 p-6 shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg"
-                >
-                  <div className="flex items-center gap-3">
-                    <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-secondary text-white shadow-lg">
-                      <IconComponent className="h-6 w-6" />
-                    </span>
-                    <h3 className="text-[clamp(1.0625rem,2.3vw,1.2rem)] font-semibold text-slate-900">{domain.title}</h3>
-                  </div>
-                  <ul className="space-y-2 text-[clamp(0.9rem,2.2vw,1rem)] text-slate-600">
-                    {domain.points.map((point) => (
-                      <li key={point} className="flex items-start gap-2">
-                        <span className="mt-1 h-2 w-2 rounded-full bg-primary"></span>
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </article>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* WHY NOW */}
-      <section
-        data-service-section="why-now"
-        className="bg-gradient-to-br from-white via-blue-50 to-blue-100 py-24 lg:py-32 px-4 sm:px-6 lg:px-8"
-      >
-        <div className="mx-auto max-w-6xl">
-          <h2 className="text-center text-[clamp(1.75rem,4vw,2.75rem)] font-black text-slate-900">
-            Pourquoi accélérer maintenant ?
-          </h2>
-          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
-            {whyNowStats.map((stat) => (
-              <article
-                key={stat.label}
-                className="rounded-3xl border border-primary/15 bg-white/90 p-6 text-slate-800 shadow-lg shadow-blue-500/20 backdrop-blur-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl shadow-blue-500/20"
-              >
-                <p className="text-[clamp(1.5rem,4vw,2.25rem)] font-black text-primary">{stat.value}</p>
-                <p className="mt-2 text-[clamp(0.95rem,2.3vw,1.1rem)] text-slate-600">{stat.label}</p>
-              </article>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { value: '+40%', label: 'Gains de productivité', description: 'Automatisation des tâches répétitives et optimisation des processus end-to-end.' },
+              { value: '20 min/j', label: 'Temps économisé par collaborateur', description: 'Comptes-rendus automatiques, recherche accélérée, routage intelligent.' },
+              { value: '+66%', label: 'Débit opérationnel', description: 'Workflows orchestrés qui accélèrent la prise en charge des demandes.' },
+              { value: '25%', label: 'Économies constatées', description: 'Effets combinés sur les coûts opérationnels et la qualité de service.' },
+            ].map((metric, index) => (
+              <div key={metric.label} className={`reveal delay-${index === 0 ? '75' : index === 1 ? '100' : index === 2 ? '150' : '200'}`}>
+                <div className="border-t border-blue-400/30 pt-6">
+                  <p className="font-display font-bold text-4xl text-blue-400 mb-2">{metric.value}</p>
+                  <h3 className="font-display font-semibold text-lg text-white mb-2">{metric.label}</h3>
+                  <p className="text-sm text-white/50 leading-relaxed">{metric.description}</p>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      <UnifiedFAQ
-        title="QUESTIONS FRÉQUENTES"
-        subtitle="Clarifiez vos interrogations avant d’automatiser."
-        description="Notre approche met l’humain et la sécurité au cœur de chaque projet."
-        emoji="⚡"
-        faqItems={faqItems}
-        themeColor={themeColors}
-        ctaText="Parler à un expert"
-        ctaLink="#contact"
-      />
+      {/* NOS BRIQUES IA */}
+      <section className="py-32">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+          <div className="reveal text-center mb-16">
+            <span className="inline-block border border-gray-300 rounded-full px-4 py-1.5 text-xs uppercase tracking-[0.3em] text-gray-500 mb-4">
+              Expertises
+            </span>
+            <h2 className="font-display font-semibold text-3xl sm:text-4xl md:text-5xl leading-[0.9] tracking-tight text-black">
+              Nos briques IA & automatisation
+            </h2>
+            <p className="text-lg text-gray-500 max-w-3xl mx-auto mt-4 leading-relaxed">
+              Des modules combinables pour bâtir votre feuille de route IA, du POC au déploiement à l'échelle.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                icon: 'neurology',
+                title: 'Agents IA personnalisés',
+                description: 'Assistants digitaux entraînés sur vos données pour répondre, qualifier, exécuter.',
+                features: ['Support client 24/7', 'Qualification & nurturing de leads', 'Assistance interne (RH, IT, finance)', 'Supervision & audit trail'],
+              },
+              {
+                icon: 'settings',
+                title: 'Automatisation de processus',
+                description: 'Orchestration des tâches répétitives et validations multi-applications.',
+                features: ['Onboarding client/fournisseur', 'Génération & routage de documents', 'Synchronisation CRM / ERP', 'Notifications & relances intelligentes'],
+              },
+              {
+                icon: 'api',
+                title: 'Intégrations sur-mesure',
+                description: 'Connecter votre écosystème pour éviter les silos de données.',
+                features: ['CRM, suites bureautiques, Notion, Slack...', 'APIs, webhooks, connecteurs iPaaS', 'Normalisation & monitoring', 'Sécurité & gouvernance'],
+              },
+              {
+                icon: 'auto_awesome',
+                title: 'Création assistée par IA',
+                description: 'Accélérer sans renoncer à la qualité et à la cohérence éditoriale.',
+                features: ['Rédaction guidée (articles, scripts, emails)', 'Aide à la conception visuelle', 'Génération de présentations & résumés', 'Contrôles : ton, marque, validation humaine'],
+              },
+              {
+                icon: 'groups',
+                title: 'Formation & adoption',
+                description: 'Ateliers métiers et conduite du changement pour ancrer l\'usage.',
+                features: ['Workshops marketing, vente, ops, RH', 'Guides & politiques IA', 'Coaching d\'équipes, gouvernance', 'Support continu'],
+              },
+              {
+                icon: 'query_stats',
+                title: 'Audit & stratégie IA',
+                description: 'Cartographier vos opportunités, prioriser et chiffrer le ROI.',
+                features: ['Diagnostic des flux', 'Feuille de route 90 jours', 'POC rapide', 'Déploiement progressif'],
+              },
+            ].map((service, index) => (
+              <div key={service.title} className={`reveal delay-${index < 2 ? '75' : index < 4 ? '100' : '150'}`}>
+                <div className="h-full rounded-2xl border border-gray-100 bg-white p-8 transition-all duration-300 hover:border-blue-200 hover:shadow-lg">
+                  <span className="material-symbols-outlined text-3xl text-blue-500">{service.icon}</span>
+                  <h3 className="font-display font-semibold text-lg text-black mt-4 mb-2">{service.title}</h3>
+                  <p className="text-sm text-gray-500 leading-relaxed mb-4">{service.description}</p>
+                  <ul className="space-y-2">
+                    {service.features.map((feature) => (
+                      <li key={feature} className="flex items-start gap-2 text-sm text-gray-500">
+                        <span className="material-symbols-outlined text-sm text-blue-400 mt-0.5">check</span>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* DOMAINES D'APPLICATION */}
+      <section className="py-32 bg-gray-50">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+          <div className="reveal text-center mb-16">
+            <span className="inline-block border border-gray-300 rounded-full px-4 py-1.5 text-xs uppercase tracking-[0.3em] text-gray-500 mb-4">
+              Cas d'usage
+            </span>
+            <h2 className="font-display font-semibold text-3xl sm:text-4xl md:text-5xl leading-[0.9] tracking-tight text-black">
+              Domaines d'application prioritaires
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            {[
+              {
+                icon: 'ads_click',
+                title: 'Marketing & communication',
+                points: ['Génération & déclinaison de contenus multicanaux', 'Analyse de tendances et social listening', 'Personnalisation en temps réel', 'Orchestration automatisée des campagnes'],
+              },
+              {
+                icon: 'handshake',
+                title: 'Ventes & relation client',
+                points: ['Agents conversationnels & self-service', 'Qualification intelligente des prospects', 'Follow-up automatisés', 'Coaching commercial assisté'],
+              },
+              {
+                icon: 'monitoring',
+                title: 'Opérations & finance',
+                points: ['Automatisation back-office', 'Pilotage dashboards & alertes', 'Prévisions & reporting assistés', 'Gestion des risques et conformité'],
+              },
+              {
+                icon: 'badge',
+                title: 'RH & expérience collaborateur',
+                points: ['Onboarding & demandes internes', 'FAQ RH intelligentes', 'Formation personnalisée', 'Suivi bien-être & feedback'],
+              },
+            ].map((domain, index) => (
+              <div key={domain.title} className={`reveal delay-${index < 2 ? '75' : '150'}`}>
+                <div className="h-full rounded-2xl border border-gray-100 bg-white p-8 transition-all duration-300 hover:border-blue-200 hover:shadow-lg">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="material-symbols-outlined text-2xl text-blue-500">{domain.icon}</span>
+                    <h3 className="font-display font-semibold text-lg text-black">{domain.title}</h3>
+                  </div>
+                  <ul className="space-y-2">
+                    {domain.points.map((point) => (
+                      <li key={point} className="flex items-start gap-2 text-sm text-gray-500">
+                        <span className="material-symbols-outlined text-sm text-blue-400 mt-0.5">arrow_right_alt</span>
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PROCESSUS */}
+      <section className="py-32 bg-gray-100">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+          <div className="reveal text-center mb-16">
+            <span className="inline-block border border-gray-300 rounded-full px-4 py-1.5 text-xs uppercase tracking-[0.3em] text-gray-500 mb-4">
+              Processus
+            </span>
+            <h2 className="font-display font-semibold text-3xl sm:text-4xl md:text-5xl leading-[0.9] tracking-tight text-black">
+              Notre processus
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {processSteps.map((step, index) => (
+              <div key={step.num} className={`reveal delay-${index === 0 ? '75' : index === 1 ? '100' : index === 2 ? '150' : '200'}`}>
+                <div className="border-t-2 border-blue-500 pt-6">
+                  <span className="font-display font-bold text-4xl text-blue-200 block mb-4">{step.num}</span>
+                  <h3 className="font-display font-semibold text-lg text-black mb-2">{step.title}</h3>
+                  <p className="text-sm text-gray-500 leading-relaxed">{step.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* POURQUOI MAINTENANT */}
+      <section className="py-32 bg-blue-600">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+          <div className="reveal text-center mb-16">
+            <span className="inline-block border border-white/30 rounded-full px-4 py-1.5 text-xs uppercase tracking-[0.3em] text-white/70 mb-4">
+              Contexte
+            </span>
+            <h2 className="font-display font-semibold text-3xl sm:text-4xl md:text-5xl leading-[0.9] tracking-tight text-white">
+              Pourquoi accélérer maintenant ?
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            {[
+              { value: '+60%', label: 'de croissance des revenus chez les leaders IA' },
+              { value: '+30%', label: 'd\'économies potentielles grâce à l\'automatisation' },
+              { value: '+66%', label: 'de débit opérationnel sur des processus récurrents' },
+              { value: '~26%', label: 'des organisations capturent déjà une valeur IA tangible' },
+            ].map((stat, index) => (
+              <div key={stat.label} className={`reveal delay-${index < 2 ? '75' : '150'}`}>
+                <div className="border-t border-white/20 pt-6">
+                  <p className="font-display font-bold text-4xl sm:text-5xl text-white mb-2">{stat.value}</p>
+                  <p className="text-white/70 leading-relaxed">{stat.label}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PROJETS LIES */}
+      <section className="py-32">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+          <div className="reveal text-center mb-16">
+            <span className="inline-block border border-gray-300 rounded-full px-4 py-1.5 text-xs uppercase tracking-[0.3em] text-gray-500 mb-4">
+              Portfolio
+            </span>
+            <h2 className="font-display font-semibold text-3xl sm:text-4xl md:text-5xl leading-[0.9] tracking-tight text-black">
+              Projets d'automatisation
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+            {[
+              { title: 'WORKFLOW N8N - GESTION DE LEADS', tag: 'Automatisation' },
+              { title: 'CHATBOT IA - SERVICE CLIENT', tag: 'Agent IA' },
+            ].map((project, index) => (
+              <div key={project.title} className={`reveal ${index % 2 === 1 ? 'delay-150 md:mt-24' : 'delay-75'}`}>
+                <div className={`relative overflow-hidden rounded-2xl ${index % 2 === 1 ? 'aspect-[3/4]' : 'aspect-[4/3]'} bg-gray-200 group`}>
+                  <div className="w-full h-full bg-gradient-to-br from-blue-100 to-blue-300 transition-transform duration-700 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
+                </div>
+                <div className="mt-4">
+                  <h3 className="font-display font-semibold text-lg text-black">{project.title}</h3>
+                  <span className="border border-gray-300 rounded-full text-xs uppercase tracking-[0.15em] px-3 py-1 text-gray-500 mt-2 inline-block">
+                    {project.tag}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-32 bg-gray-50">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+          <div className="reveal text-center mb-16">
+            <span className="inline-block border border-gray-300 rounded-full px-4 py-1.5 text-xs uppercase tracking-[0.3em] text-gray-500 mb-4">
+              FAQ
+            </span>
+            <h2 className="font-display font-semibold text-3xl sm:text-4xl md:text-5xl leading-[0.9] tracking-tight text-black">
+              Questions fréquentes
+            </h2>
+            <p className="text-lg text-gray-500 max-w-2xl mx-auto mt-4 leading-relaxed">
+              Clarifiez vos interrogations avant d'automatiser.
+            </p>
+          </div>
+
+          <div className="max-w-3xl mx-auto divide-y divide-gray-200">
+            {faqItems.map((item) => (
+              <details key={item.question} className="group reveal">
+                <summary className="flex items-center justify-between cursor-pointer py-6 text-left">
+                  <h3 className="font-display font-semibold text-lg text-black pr-4">{item.question}</h3>
+                  <span className="material-symbols-outlined text-xl text-gray-400 transition-transform duration-300 group-open:rotate-45 flex-shrink-0">add</span>
+                </summary>
+                <p className="pb-6 text-gray-500 leading-relaxed">{item.answer}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* CTA FINAL */}
-      <section
-        data-service-section="cta-final"
-        className="relative overflow-hidden bg-gradient-to-br from-[#F5E8FF] via-white to-blue-50 py-24 lg:py-32 px-4 sm:px-6 lg:px-8"
-      >
-        <div className="pointer-events-none absolute top-16 -left-24 h-72 w-72 rounded-full bg-gradient-to-br from-blue-300/30 to-blue-400/30 blur-3xl sm:h-80 sm:w-80" />
-        <div className="pointer-events-none absolute bottom-10 -right-24 h-80 w-80 rounded-full bg-gradient-to-br from-blue-300/30 to-blue-400/30 blur-3xl sm:h-96 sm:w-96" />
-
-        <div className="relative mx-auto flex max-w-4xl flex-col items-center text-center">
-          <h2 className="text-balance text-[clamp(1.875rem,5vw,3.4rem)] font-black text-slate-900">
+      <section className="py-20 reveal">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12 text-center">
+          <h2 className="font-display font-semibold text-3xl sm:text-4xl md:text-5xl leading-[0.9] tracking-tight text-black mb-4">
             Prêt à industrialiser vos workflows ?
           </h2>
-          <p className="mt-4 max-w-3xl text-balance text-[clamp(1rem,2.5vw,1.5rem)] leading-relaxed text-slate-700">
-            Audit offert, feuille de route priorisée, accompagnement humain et sécurisation totale. Lançons ensemble vos
-            premières automatisations IA.
+          <p className="text-lg text-gray-500 max-w-xl mx-auto mb-8">
+            Audit offert, feuille de route priorisée, accompagnement humain et sécurisation totale.
+            Lançons ensemble vos premières automatisations IA.
           </p>
-          <div className="mt-8 flex w-full flex-col gap-4 sm:flex-row sm:justify-center">
-            <ButtonGND
-              variant="primary"
-              onClick={scrollToContact}
-              className="w-full max-w-sm sm:w-auto"
-            >
-              <Heart className="h-5 w-5 sm:h-6 sm:w-6" />
-              Planifier un audit gratuit
-            </ButtonGND>
-            <ButtonGND
-              variant="secondary"
-              as="a"
-              href="/#realisations"
-              className="w-full max-w-sm sm:w-auto"
-            >
-              <Sparkles className="h-5 w-5 sm:h-6 sm:w-6" />
-              Voir nos réalisations
-            </ButtonGND>
-          </div>
+          <button
+            onClick={scrollToContact}
+            className="inline-flex items-center gap-2 bg-black text-white rounded-full px-8 py-4 font-medium text-sm hover:bg-gray-800 hover:scale-105 transition-all duration-300"
+          >
+            Planifier un audit gratuit
+            <span className="material-symbols-outlined text-sm">arrow_outward</span>
+          </button>
         </div>
       </section>
     </main>

@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { Header } from './Header';
+import { Footer } from './Footer';
+import { BackToTop } from './BackToTop';
 import { Building2, Mail, Phone, Scale, Shield, Cookie, Brain, Gavel, FileText, Globe, ChevronRight } from 'lucide-react';
 
 export function MentionsLegales() {
@@ -79,24 +82,83 @@ export function MentionsLegales() {
   ];
 
   return (
-    <div className="min-h-screen bg-white text-black relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50/30 text-slate-900 relative overflow-hidden mentions-legales-page">
+      {/* Effet de fond subtil */}
+      <div className="absolute inset-0 opacity-30 pointer-events-none bg-[radial-gradient(circle_at_20%_50%,rgba(59,130,246,0.1)_0%,transparent_50%),radial-gradient(circle_at_80%_80%,rgba(147,51,234,0.1)_0%,transparent_50%)]"></div>
+
+      {/* Header avec fond dégradé pour visibilité du logo */}
+      <div
+        className="absolute top-0 left-0 right-0 z-[140] h-40 backdrop-blur-sm bg-[linear-gradient(to_bottom,#d0f2fe_0%,#e0f4fc_60%,#f2f9fc_100%)]"
+      ></div>
+
+      <Header />
+
       {/* Hero Section */}
-      <section className="pt-40 md:pt-48 pb-8 md:pb-16 px-6 lg:px-12 relative z-10">
-        <div className="max-w-[1400px] mx-auto">
-          <span className="inline-block border border-gray-300 rounded-full px-4 py-1.5 text-xs uppercase tracking-[0.3em] text-gray-500 mb-6">
-            Juridique
-          </span>
-          <h1 className="font-display font-semibold text-4xl sm:text-5xl md:text-6xl leading-[0.9] tracking-tight text-black mb-4">
-            Mentions Légales
+      <section className="pt-40 md:pt-48 pb-4 md:pb-16 px-4 sm:px-6 text-center relative z-10">
+        <div className="max-w-4xl mx-auto">
+          <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-gradient-to-br from-primary to-secondary rounded-3xl mb-2 sm:mb-4 md:mb-6 shadow-lg transform hover:scale-105 transition-transform duration-300 mx-auto">
+            <Scale className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-white" />
+          </div>
+          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-bold bg-gradient-to-r from-primary via-blue-600 to-secondary bg-clip-text text-transparent mb-2 sm:mb-3 md:mb-4 tracking-wide leading-tight px-2">
+            MENTIONS LÉGALES
           </h1>
-          <p className="text-lg text-gray-500 max-w-2xl leading-relaxed">
+          <p className="text-slate-600 text-[13px] sm:text-sm md:text-base lg:text-lg max-w-[300px] sm:max-w-md md:max-w-2xl mx-auto leading-[1.6] sm:leading-relaxed px-4 text-justify">
             Conformément à la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique (LCEN)
           </p>
         </div>
       </section>
 
-      <main className="pb-20 px-6 lg:px-12 relative z-10">
-        <div className="max-w-[1400px] mx-auto space-y-12">
+      {/* Table des matières - Desktop uniquement */}
+      <div className="hidden lg:block fixed left-8 top-1/2 -translate-y-1/2 z-20 bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-slate-100 overflow-hidden max-h-[calc(100vh-8rem)]">
+        <div className="p-4 pb-2 border-b border-slate-100">
+          <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider">Sommaire</h3>
+        </div>
+        <nav className="space-y-1 p-4 pt-3 overflow-y-auto max-h-[calc(100vh-12rem)] scrollbar-thin scrollbar-thumb-slate-300 scrollbar-track-transparent">
+          {sections.map((section, index) => {
+            const Icon = section.icon;
+            const isActive = activeSection === section.id;
+            return (
+              <button
+                key={section.id}
+                onClick={() => scrollToSection(section.id)}
+                aria-current={isActive ? 'true' : 'false'}
+                aria-label={`Aller à la section ${index + 1}: ${section.title}`}
+                className={`
+                  w-full flex items-center gap-2.5 px-3 py-2.5 text-left text-xs rounded-xl
+                  transition-all duration-300 ease-in-out group relative overflow-hidden
+                  ${isActive
+                    ? 'bg-slate-900 text-white shadow-lg shadow-blue-500/30 scale-[1.02] font-semibold'
+                    : 'text-slate-700 hover:bg-gradient-to-r hover:from-slate-50 hover:to-blue-50/50 hover:text-slate-900 hover:shadow-sm'
+                  }
+                `}
+                style={{ willChange: isActive ? 'transform' : 'auto' }}
+              >
+                <Icon className={`
+                  w-3.5 h-3.5 flex-shrink-0 transition-all duration-300
+                  ${isActive ? 'text-white scale-110' : 'text-slate-900 group-hover:scale-105'}
+                `} />
+                <span className="truncate flex-1">{index + 1}. {section.title}</span>
+                <ChevronRight className={`
+                  w-3.5 h-3.5 flex-shrink-0 transition-all duration-300
+                  ${isActive
+                    ? 'opacity-100 translate-x-0 text-white'
+                    : 'opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 text-slate-900'
+                  }
+                `} />
+                {isActive && (
+                  <div
+                    className="absolute -left-0.5 top-1/2 -translate-y-1/2 w-1 h-10 bg-gradient-to-b from-blue-400 via-blue-500 to-blue-600 rounded-r-full shadow-sm"
+                    style={{ animation: 'fadeIn 0.3s ease-in-out' }}
+                  ></div>
+                )}
+              </button>
+            );
+          })}
+        </nav>
+      </div>
+
+      <main className="pb-20 px-4 sm:px-6 relative z-10">
+        <div className="max-w-4xl mx-auto space-y-8 md:space-y-16">
 
           {/* 1. Éditeur du site */}
           <section id="section-1" className="scroll-mt-40 animate-fade-in border-t border-slate-200 pt-6">
@@ -608,6 +670,9 @@ export function MentionsLegales() {
 
         </div>
       </main>
+
+      <Footer />
+      <BackToTop />
     </div>
   );
 }

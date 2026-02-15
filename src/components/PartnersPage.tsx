@@ -347,7 +347,7 @@ export function PartnersPage() {
       <div className="absolute bottom-20 -right-20 w-96 h-96 bg-gradient-to-br from-blue-200/40 to-blue-300/40 rounded-full blur-3xl"></div>
       <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-br from-blue-200/30 to-blue-300/30 rounded-full blur-2xl"></div>
       
-      <div className="relative z-10 pt-32 pb-16 px-6 max-w-7xl mx-auto">
+      <div className="relative z-10 pt-32 pb-16 px-6 lg:px-12 max-w-[1400px] mx-auto">
         
         {/* Section Présentation - Partenariats d'Excellence */}
         <section className="py-24 relative">

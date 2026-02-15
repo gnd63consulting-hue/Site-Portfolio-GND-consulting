@@ -289,8 +289,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .section-subtitle {
   font-size: 1rem;
-  font-weight: 400;
-  color: #64748B;
+  font-weight: 300;
+  color: #9CA3AF;
   margin-bottom: 1rem;
   letter-spacing: 0;
   text-transform: none;
@@ -531,7 +531,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-primary:hover {
-  background: #374151;
+  background: #1F2937;
   transform: scale(1.05);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
@@ -610,7 +610,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .back-to-top:hover {
   transform: scale(1.1) translateY(-3px);
-  background: #374151;
+  background: #1F2937;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 

@@ -5,6 +5,7 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
 
   // Empêcher le scroll du body quand le menu mobile est ouvert
   useEffect(() => {
@@ -28,6 +29,34 @@ export function Header() {
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Track active section via IntersectionObserver
+  useEffect(() => {
+    if (window.location.pathname !== '/' && window.location.pathname !== '') {
+      return;
+    }
+    const sectionIds = ['qui-sommes-nous', 'services', 'realisations', 'footer'];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            if (id === 'footer') {
+              setActiveSection('#contact');
+            } else {
+              setActiveSection(`#${id}`);
+            }
+          }
+        }
+      },
+      { rootMargin: '-30% 0px -60% 0px', threshold: 0 }
+    );
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
   }, []);
 
   const navItems = [
@@ -125,6 +154,12 @@ export function Header() {
             <nav className="hidden lg:flex items-center justify-center flex-1">
               <div className="glass-nav p-1.5 inline-flex gap-1 shadow-sm">
                 {navItems.map((item) => {
+                  const isActive = activeSection === item.href;
+                  const baseClasses = "flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent/60";
+                  const activeClasses = isActive
+                    ? "bg-black text-white"
+                    : "text-gray-600 hover:text-black hover:bg-gray-100/80";
+
                   return (
                     <div
                       key={item.href}
@@ -133,7 +168,7 @@ export function Header() {
                     >
                       {item.hasDropdown ? (
                         <button
-                          className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 text-gray-600 hover:text-black hover:bg-gray-100/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent/60"
+                          className={`${baseClasses} ${activeClasses}`}
                           style={{ fontFamily: '"Clash Display", Syne, sans-serif' }}
                         >
                           <span>{item.label}</span>
@@ -143,7 +178,7 @@ export function Header() {
                         <a
                           href={item.href.startsWith('#') ? '/' + item.href : item.href}
                           onClick={(e) => handleNavClick(e, item)}
-                          className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 text-gray-600 hover:text-black hover:bg-gray-100/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent/60"
+                          className={`${baseClasses} ${activeClasses}`}
                           style={{ fontFamily: '"Clash Display", Syne, sans-serif' }}
                         >
                           <span>{item.label}</span>

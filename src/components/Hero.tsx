@@ -10,12 +10,12 @@ export function Hero() {
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12 w-full py-32 lg:py-40">
         {/* Titre principal — Stitch editorial */}
         <h1
-          className="font-display font-semibold text-[#1A1A1A] leading-[0.9] tracking-tight reveal text-[clamp(3rem,8vw,7rem)]"
+          className="font-display font-semibold text-[#1A1A1A] leading-[0.9] tracking-tight reveal text-6xl md:text-8xl lg:text-[7rem]"
           role="heading"
           aria-level={1}
         >
           <span className="block">L'Art de la</span>
-          <span className="block italic font-light text-[#4A4A4A]">Clarté Digitale</span>
+          <span className="block italic font-light text-gray-400">Clarté Digitale</span>
         </h1>
 
         {/* Sous-titre */}

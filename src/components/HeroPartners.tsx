@@ -88,7 +88,7 @@ export function HeroPartners({
       </div>
 
       {/* Content */}
-      <div className="relative z-10 px-6 max-w-7xl mx-auto w-full">
+      <div className="relative z-10 px-6 lg:px-12 max-w-[1400px] mx-auto w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Text content */}
           <div className={`text-center lg:text-left transform transition-all duration-600 ${

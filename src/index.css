@@ -1,32 +1,37 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap&subset=latin');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Syne:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap&subset=latin');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* === NOUVELLE PALETTE MODERNE 2025 === */
+/* === STITCH DESIGN SYSTEM — GND CONSULTING === */
 :root {
   /* Couleurs principales */
-  --primary: #3b82f6; /* Bleu moderne */
-  --primary-dark: #2563eb;
-  --secondary: #0ea5e9; /* Bleu clair */
-  --accent: #f97316; /* Orange doux */
-  
-  /* Neutres modernes */
-  --dark: #ffffff; /* Blanc pur */
+  --primary: #1A1A1A; /* Noir profond */
+  --primary-dark: #000000;
+  --secondary: #4A4A4A; /* Gris foncé */
+  --accent: #3B82F6; /* Bleu subtil */
+
+  /* Fonds */
+  --background-light: #FFFFFF;
+  --background-alt: #F3F4F6;
+
+  /* Neutres */
+  --dark: #ffffff;
   --dark-light: #f1f5f9;
-  --gray: #f8fafc; /* Gris très clair */
+  --gray: #f8fafc;
   --gray-light: #cbd5e1;
-  --text: #1e293b; /* Texte sombre sur fond clair */
-  --text-muted: #475569;
-  
+  --text: #1A1A1A; /* Texte principal */
+  --text-muted: #64748B;
+  --text-main: #1A1A1A;
+
   /* Couleurs d'accent */
   --success: #10b981;
   --warning: #f59e0b;
   --error: #ef4444;
-  
-  /* Gradients */
-  --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #0ea5e9 100%);
-  --gradient-secondary: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 100%);
+
+  /* Gradients (adaptés au design system) */
+  --gradient-primary: linear-gradient(135deg, #1A1A1A 0%, #4A4A4A 100%);
+  --gradient-secondary: linear-gradient(135deg, #3B82F6 0%, #60a5fa 100%);
   --gradient-dark: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
 }
 
@@ -55,8 +60,8 @@ body,
 
 body {
   font-family: 'Inter', sans-serif;
-  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f0f9ff 100%);
-  color: #1e293b;
+  background: #FFFFFF;
+  color: #1A1A1A;
   overflow-x: hidden;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -260,44 +265,46 @@ select:focus {
   }
 }
 
-/* === TYPOGRAPHIES MODERNES === */
+/* === TYPOGRAPHIES STITCH DESIGN SYSTEM === */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: #1e293b;
+  font-family: 'Clash Display', 'Syne', sans-serif;
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: #1A1A1A;
 }
 
-/* Titres principaux avec style moderne */
+/* Titres principaux — Stitch style */
 .section-title {
+  font-family: 'Clash Display', 'Syne', sans-serif;
   font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 900;
-  color: #1e293b;
+  font-weight: 600;
+  color: #1A1A1A;
   margin-bottom: 2rem;
   text-align: center;
-  line-height: 1.1;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: none;
 }
 
 .section-subtitle {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #3b82f6;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #64748B;
   margin-bottom: 1rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
+  font-style: italic;
 }
 
 .card-title {
+  font-family: 'Clash Display', 'Syne', sans-serif;
   font-size: 1.25rem;
-  font-weight: 700;
-  color: #1e293b;
+  font-weight: 600;
+  color: #1A1A1A;
   margin-bottom: 0.75rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  text-transform: none;
 }
 
 .text-gradient {
@@ -317,7 +324,7 @@ h1, h2, h3, h4, h5, h6 {
 .section-description {
   font-size: 1.125rem;
   line-height: 1.75;
-  color: #475569;
+  color: #64748B;
   max-width: 48rem;
   margin: 0 auto 3rem auto;
   text-align: center;
@@ -423,41 +430,90 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* === GLASS MORPHISM MODERNE AVEC CONTRASTE === */
+/* === STITCH REVEAL ANIMATION === */
+@keyframes stitch-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal.delay-75 { transition-delay: 75ms; }
+.reveal.delay-100 { transition-delay: 100ms; }
+.reveal.delay-150 { transition-delay: 150ms; }
+.reveal.delay-200 { transition-delay: 200ms; }
+.reveal.delay-300 { transition-delay: 300ms; }
+
+/* === STITCH GLASS NAV === */
+.glass-nav {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 9999px;
+}
+
+/* === STITCH CLIP TEXT IMAGE === */
+.clip-text-image {
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: cover;
+  background-position: center;
+}
+
+/* === GLASS MORPHISM — Stitch style === */
 .glass {
-  background: rgba(255, 255, 255, 0.97); /* Plus opaque pour lisibilité */
-  backdrop-filter: blur(20px);
-  border: 2px solid rgba(203, 213, 225, 0.6); /* Bordure plus visible */
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15); /* Ombre plus marquée */
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border-radius: 1rem;
 }
 
 .glass:focus-within {
-  outline: 3px solid rgba(59, 130, 246, 0.8);
+  outline: 3px solid rgba(59, 130, 246, 0.5);
   outline-offset: 3px;
 }
 
 .glass-dark {
-  background: rgba(248, 250, 252, 0.95); /* Plus opaque */
-  backdrop-filter: blur(20px);
-  border: 2px solid rgba(226, 232, 240, 0.6); /* Bordure plus visible */
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  background: rgba(248, 250, 252, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  border-radius: 1rem;
 }
 
-/* === BOUTONS MODERNES AVEC CONTRASTE RENFORCÉ === */
+/* === BOUTONS STITCH DESIGN SYSTEM === */
 .btn-primary {
-  background: var(--gradient-primary);
+  background: #1A1A1A;
   color: white;
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
   padding: 16px 32px;
-  border-radius: 16px;
+  border-radius: 9999px;
   border: none;
   cursor: pointer;
-  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-size: 16px;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: none;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 15px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -469,14 +525,15 @@ h1, h2, h3, h4, h5, h6 {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
   opacity: 0;
-  transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-primary:hover {
-  transform: scale(1.05) translateY(-2px);
-  box-shadow: 0 15px 40px rgba(59, 130, 246, 0.6), 0 0 20px rgba(59, 130, 246, 0.4);
+  background: #374151;
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 .btn-primary:hover::before {
@@ -494,30 +551,30 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-secondary {
-  background: white;
-  color: #2563eb; /* Bleu plus foncé pour contraste WCAG AA */
-  border: 2px solid #2563eb;
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 700;
+  background: transparent;
+  color: #1A1A1A;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
   padding: 14px 30px;
-  border-radius: 16px;
+  border-radius: 9999px;
   cursor: pointer;
-  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
-  font-size: 16px;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 15px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  text-transform: none;
+  letter-spacing: 0;
   position: relative;
-  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.15);
+  box-shadow: none;
 }
 
 .btn-secondary:hover {
-  background: var(--primary);
+  background: #1A1A1A;
   color: white;
-  transform: scale(1.05) translateY(-2px);
-  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4), 0 0 15px rgba(59, 130, 246, 0.3);
+  border-color: #1A1A1A;
+  transform: scale(1.05);
 }
 
 .btn-secondary:focus-visible {
@@ -536,7 +593,7 @@ h1, h2, h3, h4, h5, h6 {
   bottom: 2rem;
   right: 2rem;
   z-index: 100;
-  background: var(--gradient-primary);
+  background: #1A1A1A;
   color: white;
   width: 48px;
   height: 48px;
@@ -546,14 +603,15 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
   cursor: pointer;
   border: none;
-  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
-  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
   animation: fade-in 300ms ease-out;
 }
 
 .back-to-top:hover {
   transform: scale(1.1) translateY(-3px);
-  box-shadow: 0 15px 40px rgba(59, 130, 246, 0.6), 0 0 25px rgba(59, 130, 246, 0.5);
+  background: #374151;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 .back-to-top:focus-visible {
@@ -610,19 +668,19 @@ h1, h2, h3, h4, h5, h6 {
   border-width: 0;
 }
 
-/* === CARDS MODERNES AVEC CONTRASTE AMÉLIORÉ === */
+/* === CARDS STITCH DESIGN SYSTEM === */
 .card-modern {
-  background: rgba(255, 255, 255, 0.95); /* Fond plus opaque */
-  border-radius: 24px;
-  border: 2px solid rgba(203, 213, 225, 0.5); /* Bordure plus visible */
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12); /* Ombre plus marquée */
-  transition: all 0.4s ease;
+  background: #F9FAFB;
+  border-radius: 1rem;
+  border: 1px solid #E5E7EB;
+  box-shadow: none;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   overflow: hidden;
   position: relative;
 }
 
 .card-modern:focus-within {
-  outline: 3px solid rgba(59, 130, 246, 0.8);
+  outline: 3px solid rgba(59, 130, 246, 0.5);
   outline-offset: 3px;
 }
 
@@ -632,25 +690,29 @@ h1, h2, h3, h4, h5, h6 {
   top: 0;
   left: 0;
   right: 0;
-  height: 2px;
-  background: var(--gradient-primary);
+  height: 0;
+  background: transparent;
   transform: scaleX(0);
   transition: transform 0.3s ease;
 }
 
 .card-modern:hover::before {
-  transform: scaleX(1);
+  transform: scaleX(0);
 }
 
 .card-modern:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
-  border-color: rgba(59, 130, 246, 0.3);
+  background: #1A1A1A;
+  color: white;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-color: transparent;
 }
 
-/* === SECTIONS === */
+/* === SECTIONS STITCH === */
 .section-padding {
-  padding: 120px 5% 120px 5%;
+  padding: 8rem 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .container-modern {
@@ -713,22 +775,22 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* === SCROLLBAR === */
+/* === SCROLLBAR STITCH === */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #F3F4F6;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--gradient-primary);
-  border-radius: 4px;
+  background: #1A1A1A;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-dark);
+  background: #4A4A4A;
 }
 
 /* === RESPONSIVE === */
@@ -782,7 +844,7 @@ h1, h2, h3, h4, h5, h6 {
   /* Cards avec bordure plus visible en mobile */
   .card-modern,
   .glass {
-    border: 2px solid rgba(203, 213, 225, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.1);
   }
 }
 

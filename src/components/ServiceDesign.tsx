@@ -105,7 +105,7 @@ export function ServiceDesign() {
   };
 
   return (
-    <main id="main-content" className="service-page service-design min-h-screen bg-white text-slate-900">
+    <main id="main-content" className="service-page service-design min-h-screen bg-white text-[#1A1A1A] font-sans">
       {/* HERO */}
       <section
         data-service-section="hero"
@@ -120,13 +120,13 @@ export function ServiceDesign() {
             loading="eager"
             fetchpriority="high"
           />
-          <div className="absolute inset-0 bg-slate-900/45 lg:bg-slate-900/35" />
+          <div className="absolute inset-0 bg-black/50" />
         </div>
 
-        <div className="relative mx-auto flex min-h-[70vh] w-full max-w-5xl flex-col items-center justify-end gap-6 px-4 pb-16 pt-32 text-center sm:px-6 sm:pb-20 sm:pt-36 lg:min-h-[88vh] lg:pb-24">
+        <div className="relative mx-auto flex min-h-[70vh] w-full max-w-[1400px] flex-col items-center justify-end gap-6 px-6 pb-16 pt-32 text-center lg:px-12 lg:min-h-[88vh] lg:pb-24">
           <h1
             id="service-design-hero-title"
-            className="text-balance text-[clamp(2.1rem,5vw,4.5rem)] font-black leading-[1.05] tracking-tight text-white"
+            className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] tracking-tight text-white"
           >
             Faites parler votre image
           </h1>
@@ -136,7 +136,7 @@ export function ServiceDesign() {
           <ButtonGND
             variant="primary"
             onClick={scrollToContact}
-            className="w-full max-w-md sm:max-w-lg lg:max-w-xl text-[clamp(1rem,2.6vw,1.25rem)] px-6 py-4 sm:px-8 sm:py-5 lg:px-12 lg:py-6"
+            className="w-full max-w-md sm:max-w-lg lg:max-w-xl text-[clamp(1rem,2.6vw,1.25rem)] bg-black text-white rounded-full px-8 py-4 hover:bg-gray-800 hover:scale-105"
           >
             <Heart className="h-5 w-5 sm:h-6 sm:w-6" />
             Demander un devis personnalisé
@@ -147,15 +147,15 @@ export function ServiceDesign() {
       {/* INTRO */}
       <section
         data-service-section="intro"
-        className="bg-gradient-to-b from-white to-slate-50 py-24 lg:py-32 px-4 sm:px-6 lg:px-8 lg:px-10 lg:py-24"
+        className="reveal bg-white py-32 px-6 lg:px-12"
       >
-        <div className="mx-auto max-w-4xl text-center">
-          <p className="text-balance text-[clamp(1rem,2.6vw,1.5rem)] leading-relaxed text-slate-700">
+        <div className="mx-auto max-w-[1400px] text-center">
+          <p className="text-balance text-[clamp(1rem,2.6vw,1.5rem)] leading-relaxed text-text-muted">
             Chez GND Consulting, nous croyons que le design graphique n&apos;est pas qu&apos;une question
-            d&apos;esthétique. C&apos;est un <strong className="text-primary">pilier stratégique</strong> qui raconte votre
+            d&apos;esthétique. C&apos;est un <strong className="text-accent">pilier stratégique</strong> qui raconte votre
             histoire, transmet vos valeurs et crée une connexion émotionnelle durable avec votre audience. Chaque trait,
             chaque couleur, chaque forme est pensée pour{' '}
-            <strong className="text-primary">faire vibrer votre marque</strong> et la rendre inoubliable. Studio créatif à
+            <strong className="text-accent">faire vibrer votre marque</strong> et la rendre inoubliable. Studio créatif à
             Paris, identité visuelle et branding sur mesure pour marques ambitieuses.
           </p>
         </div>
@@ -164,14 +164,14 @@ export function ServiceDesign() {
       {/* SERVICES */}
       <section
         data-service-section="services"
-        className="bg-slate-50 py-24 lg:py-32 px-4 sm:px-6 lg:px-8 lg:px-10 lg:py-24"
+        className="reveal bg-background-alt py-32 px-6 lg:px-12"
       >
-        <div className="mx-auto max-w-7xl">
+        <div className="mx-auto max-w-[1400px]">
           <div className="text-center">
-            <h2 className="text-balance text-[clamp(1.875rem,4vw,3rem)] font-black text-slate-900">
+            <h2 className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] text-[#1A1A1A]">
               Nos services Design &amp; Identité Visuelle
             </h2>
-            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.25rem)] text-slate-600">
+            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.25rem)] text-text-muted">
               Des solutions créatives complètes pour donner vie à votre univers visuel
             </p>
           </div>
@@ -182,15 +182,15 @@ export function ServiceDesign() {
               return (
                 <article
                   key={service.title}
-                  className="group flex h-full flex-col rounded-3xl border border-slate-100 bg-white p-6 shadow-lg transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl sm:p-8"
+                  className="group flex h-full flex-col bg-gray-50 rounded-2xl p-8 transition-all duration-500 hover:bg-black hover:text-white"
                 >
-                  <span className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-secondary text-white transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 sm:h-18 sm:w-18">
+                  <span className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-black text-white transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 sm:h-18 sm:w-18">
                     <IconComponent className="h-8 w-8" />
                   </span>
-                  <h3 className="text-[clamp(1.125rem,2.6vw,1.35rem)] font-bold text-slate-900 transition-colors duration-300 group-hover:text-primary">
+                  <h3 className="text-[clamp(1.125rem,2.6vw,1.35rem)] font-bold text-[#1A1A1A] transition-colors duration-300 group-hover:text-white">
                     {service.title}
                   </h3>
-                  <p className="mt-3 text-[clamp(0.9375rem,2.3vw,1rem)] leading-relaxed text-slate-600">
+                  <p className="mt-3 text-[clamp(0.9375rem,2.3vw,1rem)] leading-relaxed text-text-muted">
                     {service.description}
                   </p>
                 </article>
@@ -203,27 +203,27 @@ export function ServiceDesign() {
       {/* APPROCHE */}
       <section
         data-service-section="approach"
-        className="bg-white py-24 lg:py-32 px-4 sm:px-6 lg:px-8 lg:px-10 lg:py-24"
+        className="reveal bg-white py-32 px-6 lg:px-12"
       >
-        <div className="mx-auto max-w-7xl">
+        <div className="mx-auto max-w-[1400px]">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
             <div className="space-y-6">
-              <h2 className="text-balance text-[clamp(1.875rem,4.2vw,3rem)] font-black text-slate-900">
+              <h2 className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] text-[#1A1A1A]">
                 Une identité qui vous ressemble vraiment
               </h2>
-              <div className="space-y-5 text-[clamp(0.95rem,2.3vw,1.1rem)] leading-relaxed text-slate-700">
+              <div className="space-y-5 text-[clamp(0.95rem,2.3vw,1.1rem)] leading-relaxed text-text-muted">
                 <p>
-                  Notre approche commence toujours par <strong className="text-primary">l&apos;écoute</strong>. Nous prenons
+                  Notre approche commence toujours par <strong className="text-accent">l&apos;écoute</strong>. Nous prenons
                   le temps de comprendre votre histoire, vos ambitions, votre personnalité unique. Car avant de créer, il
                   faut ressentir.
                 </p>
                 <p>
-                  Ensuite vient la <strong className="text-primary">co-création</strong>. Vous n&apos;êtes pas spectateur,
+                  Ensuite vient la <strong className="text-accent">co-création</strong>. Vous n&apos;êtes pas spectateur,
                   vous êtes acteur de votre identité visuelle. Nous travaillons main dans la main, dans un processus
                   itératif où chaque étape est validée ensemble.
                 </p>
                 <p>
-                  Le résultat ? Une identité visuelle <strong className="text-primary">authentique et impactante</strong>,
+                  Le résultat ? Une identité visuelle <strong className="text-accent">authentique et impactante</strong>,
                   qui vous ressemble vraiment et qui saura toucher votre audience au cœur.
                 </p>
               </div>
@@ -247,10 +247,10 @@ export function ServiceDesign() {
                   className="h-[260px] w-full object-cover sm:h-[320px] lg:h-[460px]"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
               </div>
-              <div className="absolute -right-4 -top-4 h-16 w-16 rounded-full bg-gradient-to-br from-blue-500 to-secondary opacity-80 blur-md lg:h-24 lg:w-24" />
-              <div className="absolute -bottom-4 -left-4 h-20 w-20 rounded-full bg-gradient-to-br from-blue-400 to-blue-500 opacity-60 blur-md lg:h-28 lg:w-28" />
+              <div className="absolute -right-4 -top-4 h-16 w-16 rounded-full bg-black/20 blur-md lg:h-24 lg:w-24" />
+              <div className="absolute -bottom-4 -left-4 h-20 w-20 rounded-full bg-black/15 blur-md lg:h-28 lg:w-28" />
             </div>
           </div>
         </div>
@@ -259,14 +259,14 @@ export function ServiceDesign() {
       {/* AVANTAGES */}
       <section
         data-service-section="advantages"
-        className="bg-gradient-to-b from-slate-50 to-white py-24 lg:py-32 px-4 sm:px-6 lg:px-8 lg:px-10 lg:py-24"
+        className="reveal bg-background-alt py-32 px-6 lg:px-12"
       >
-        <div className="mx-auto max-w-7xl">
+        <div className="mx-auto max-w-[1400px]">
           <div className="text-center">
-            <h2 className="text-balance text-[clamp(1.875rem,4vw,3rem)] font-black text-slate-900">
+            <h2 className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] text-[#1A1A1A]">
               Pourquoi choisir GND Consulting ?
             </h2>
-            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.25rem)] text-slate-600">
+            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.25rem)] text-text-muted">
               4 raisons qui font la différence dans votre projet créatif
             </p>
           </div>
@@ -277,15 +277,15 @@ export function ServiceDesign() {
               return (
                 <article
                   key={advantage.title}
-                  className="group flex h-full flex-col items-center rounded-3xl border border-white/60 bg-white/90 p-6 text-center shadow-lg transition-all duration-500 hover:-translate-y-1 hover:shadow-xl sm:p-8"
+                  className="group flex h-full flex-col items-center bg-gray-50 rounded-2xl p-8 text-center transition-all duration-500 hover:bg-black hover:text-white"
                 >
-                  <span className="mb-6 inline-flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-primary to-secondary text-white shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
+                  <span className="mb-6 inline-flex h-20 w-20 items-center justify-center rounded-2xl bg-black text-white transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
                     <IconComponent className="h-10 w-10" />
                   </span>
-                  <h3 className="text-[clamp(1.125rem,2.6vw,1.35rem)] font-bold text-slate-900 transition-colors duration-300 group-hover:text-primary">
+                  <h3 className="text-[clamp(1.125rem,2.6vw,1.35rem)] font-bold text-[#1A1A1A] transition-colors duration-300 group-hover:text-white">
                     {advantage.title}
                   </h3>
-                  <p className="mt-3 text-[clamp(0.9375rem,2.3vw,1.05rem)] leading-relaxed text-slate-600">
+                  <p className="mt-3 text-[clamp(0.9375rem,2.3vw,1.05rem)] leading-relaxed text-text-muted">
                     {advantage.description}
                   </p>
                 </article>
@@ -309,16 +309,13 @@ export function ServiceDesign() {
       {/* CTA FINAL */}
       <section
         data-service-section="cta-final"
-        className="relative overflow-hidden bg-gradient-to-br from-[#F5E8FF] via-white to-blue-50 py-24 lg:py-32 px-4 sm:px-6 lg:px-8"
+        className="reveal bg-background-alt py-32 px-6 lg:px-12"
       >
-        <div className="pointer-events-none absolute top-20 -left-20 h-72 w-72 rounded-full bg-gradient-to-br from-blue-300/30 to-blue-400/30 blur-3xl sm:h-80 sm:w-80" />
-        <div className="pointer-events-none absolute bottom-10 -right-24 h-80 w-80 rounded-full bg-gradient-to-br from-blue-300/30 to-blue-400/30 blur-3xl sm:h-96 sm:w-96" />
-
-        <div className="relative mx-auto flex max-w-4xl flex-col items-center text-center">
-          <h2 className="text-balance text-[clamp(1.875rem,5vw,3.5rem)] font-black text-slate-900">
+        <div className="mx-auto flex max-w-[1400px] flex-col items-center text-center">
+          <h2 className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] text-[#1A1A1A]">
             Prêt à donner vie à votre univers visuel ?
           </h2>
-          <p className="mt-4 max-w-3xl text-balance text-[clamp(1rem,2.5vw,1.5rem)] leading-relaxed text-slate-700">
+          <p className="mt-4 max-w-3xl text-balance text-[clamp(1rem,2.5vw,1.5rem)] leading-relaxed text-text-muted">
             Créons ensemble une identité visuelle qui vous ressemble et qui marquera les esprits. Votre projet mérite une
             approche sur-mesure et créative.
           </p>

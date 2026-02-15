@@ -34,9 +34,9 @@ export function UnifiedFAQ({
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const defaultTheme = {
-    primary: '#ec4899',
-    secondary: '#f472b6',
-    gradient: 'linear-gradient(135deg, #ec4899 0%, #f472b6 100%)'
+    primary: '#1A1A1A',
+    secondary: '#3B82F6',
+    gradient: 'linear-gradient(135deg, #1A1A1A 0%, #4A4A4A 100%)'
   };
 
   const theme = themeColor || defaultTheme;
@@ -53,12 +53,7 @@ export function UnifiedFAQ({
   };
 
   return (
-    <section id="faq" className="py-24 px-6 bg-white relative overflow-hidden faq-section-unified" style={{
-      background: 'linear-gradient(135deg, #ffffff 0%, #f8fafc 30%, #f0f9ff 70%, #fef7f7 100%)'
-    }}>
-      <div className="absolute top-20 -left-20 w-80 h-80 bg-gradient-to-br from-rose-200/30 to-pink-300/30 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-20 -right-20 w-96 h-96 bg-gradient-to-br from-blue-200/30 to-blue-300/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-      <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-br from-blue-200/20 to-blue-300/20 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+    <section id="faq" className="py-32 px-6 lg:px-12 bg-background-alt relative overflow-hidden faq-section-unified">
 
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-20 relative z-10 faq-header-unified">
@@ -71,12 +66,12 @@ export function UnifiedFAQ({
             </div>
           </div>
 
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-6 uppercase tracking-tight faq-title-unified">
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-text-main mb-6 tracking-tight faq-title-unified">
             {title}
           </h2>
 
           {subtitle && (
-            <p className="text-lg text-slate-600 font-light italic mb-4 max-w-3xl mx-auto leading-relaxed faq-subtitle-unified">
+            <p className="text-lg text-text-muted font-light italic mb-4 max-w-3xl mx-auto leading-relaxed faq-subtitle-unified">
               {subtitle}
             </p>
           )}
@@ -99,7 +94,7 @@ export function UnifiedFAQ({
               >
                 <div className="absolute -inset-1 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500 blur-sm" style={{ background: `${theme.gradient}20` }}></div>
 
-                <div className="relative glass rounded-2xl border border-slate-200/60 hover:border-primary/40 transition-all duration-500 overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-1">
+                <div className="relative bg-white rounded-2xl border border-gray-200 hover:border-black/20 transition-all duration-500 overflow-hidden shadow-sm hover:shadow-md transform hover:-translate-y-1">
                   <div className="absolute top-0 left-0 right-0 h-1 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" style={{ background: theme.gradient }}></div>
 
                   <button
@@ -119,7 +114,7 @@ export function UnifiedFAQ({
                         <span className="text-xl">{emoji}</span>
                       </div>
 
-                      <h3 className="text-base md:text-lg font-bold text-slate-900 group-hover/button:transition-colors duration-300" style={{ '--hover-color': theme.primary } as React.CSSProperties}>
+                      <h3 className="font-display text-base md:text-lg font-semibold text-text-main group-hover/button:transition-colors duration-300" style={{ '--hover-color': theme.primary } as React.CSSProperties}>
                         {item.question}
                       </h3>
                     </div>
@@ -146,7 +141,7 @@ export function UnifiedFAQ({
                     <div className="px-6 md:px-8 pb-6 md:pb-8 border-t border-slate-200/50">
                       <div className="pt-6 relative">
                         <div className="absolute top-0 left-0 w-16 h-0.5 rounded-full" style={{ background: theme.gradient }}></div>
-                        <p className="text-sm md:text-base text-slate-700 leading-relaxed">
+                        <p className="text-sm md:text-base text-text-muted leading-relaxed">
                           {item.answer}
                         </p>
                       </div>
@@ -162,16 +157,17 @@ export function UnifiedFAQ({
           <div className="relative group">
             <div className="absolute -inset-2 rounded-3xl opacity-0 group-hover:opacity-100 transition-all duration-500 blur-lg" style={{ background: `${theme.gradient}30` }}></div>
 
-            <div className="relative glass rounded-3xl p-8 border shadow-xl hover:shadow-2xl transition-all duration-500" style={{ borderColor: `${theme.primary}30` }}>
+            <div className="relative bg-white rounded-2xl p-8 border border-gray-200 shadow-sm hover:shadow-md transition-all duration-500">
               <div className="absolute top-0 left-0 right-0 h-1 rounded-t-3xl" style={{ background: theme.gradient }}></div>
 
-              <p className="text-base md:text-lg mb-6 text-slate-700 font-medium">
+              <p className="text-base md:text-lg mb-6 text-text-muted font-medium">
                 Une autre question ? N'hésitez pas à nous contacter !
               </p>
 
               <button
                 onClick={scrollToContact}
-                className="inline-flex items-center gap-3 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold rounded-xl shadow-lg shadow-blue-600/25 hover:shadow-xl hover:shadow-blue-600/30 transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-blue-200"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-black hover:bg-gray-800 text-white text-sm font-medium rounded-full transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-gray-300"
+                style={{ fontFamily: '"Clash Display", Syne, sans-serif' }}
               >
                 <MessageCircle className="w-5 h-5" />
                 <span>{ctaText}</span>

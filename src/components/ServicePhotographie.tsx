@@ -139,7 +139,7 @@ export function ServicePhotographie() {
   };
 
   return (
-    <main id="main-content" className="service-page service-photo min-h-screen bg-white text-slate-900">
+    <main id="main-content" className="service-page service-photo min-h-screen bg-white text-[#1A1A1A] font-sans">
       {/* HERO */}
       <section
         data-service-section="hero"
@@ -154,13 +154,13 @@ export function ServicePhotographie() {
             loading="eager"
             fetchpriority="high"
           />
-          <div className="absolute inset-0 bg-slate-900/55 lg:bg-slate-900/45" />
+          <div className="absolute inset-0 bg-black/55" />
         </div>
 
-        <div className="relative mx-auto flex min-h-[70vh] w-full max-w-4xl flex-col items-center justify-end gap-5 px-4 pb-16 pt-28 text-center sm:px-6 sm:pb-20 sm:pt-36 lg:min-h-[88vh] lg:pb-24">
+        <div className="relative mx-auto flex min-h-[70vh] w-full max-w-[1400px] flex-col items-center justify-end gap-5 px-6 pb-16 pt-28 text-center lg:px-12 lg:min-h-[88vh] lg:pb-24">
           <h1
             id="service-photo-hero-title"
-            className="text-balance text-[clamp(1.85rem,5vw,3.75rem)] font-black leading-tight tracking-tight text-white"
+            className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] tracking-tight text-white"
           >
             Photographie professionnelle & direction artistique
           </h1>
@@ -170,7 +170,7 @@ export function ServicePhotographie() {
           <ButtonGND
             variant="primary"
             onClick={scrollToContact}
-            className="w-full max-w-md sm:max-w-lg lg:max-w-xl text-[clamp(1rem,2.6vw,1.25rem)] px-6 py-4 sm:px-8 sm:py-5 lg:px-12 lg:py-6"
+            className="w-full max-w-md sm:max-w-lg lg:max-w-xl text-[clamp(1rem,2.6vw,1.25rem)] bg-black text-white rounded-full px-8 py-4 hover:bg-gray-800 hover:scale-105"
           >
             <Camera className="h-5 w-5 sm:h-6 sm:w-6" />
             Réserver une séance sur mesure
@@ -181,10 +181,10 @@ export function ServicePhotographie() {
       {/* INTRO */}
       <section
         data-service-section="intro"
-        className="bg-gradient-to-b from-white to-slate-50 py-24 lg:py-32 px-4 sm:px-6 lg:px-8 lg:px-10 lg:py-24"
+        className="reveal bg-white py-32 px-6 lg:px-12"
       >
-        <div className="mx-auto max-w-4xl text-center">
-          <p className="text-balance text-[clamp(1rem,2.6vw,1.45rem)] leading-relaxed text-slate-700">
+        <div className="mx-auto max-w-[1400px] text-center">
+          <p className="text-balance text-[clamp(1rem,2.6vw,1.45rem)] leading-relaxed text-text-muted">
             Plus qu’un simple shooting, nous créons une expérience. Chaque séance est pensée pour refléter votre identité,
             votre équipe ou vos produits sous leur meilleur angle, avec une direction artistique sur-mesure et un workflow
             parfaitement orchestré.
@@ -195,11 +195,11 @@ export function ServicePhotographie() {
       {/* PILLARS */}
       <section
         data-service-section="advantages"
-        className="bg-white py-24 lg:py-32 px-4 sm:px-6 lg:px-8 lg:px-10 lg:py-24"
+        className="reveal bg-white py-32 px-6 lg:px-12"
       >
-        <div className="mx-auto max-w-6xl">
+        <div className="mx-auto max-w-[1400px]">
           <div className="text-center">
-            <h2 className="text-balance text-[clamp(1.875rem,4vw,2.75rem)] font-black text-slate-900">
+            <h2 className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] text-[#1A1A1A]">
               Une approche créative & humaine
             </h2>
           </div>
@@ -210,13 +210,13 @@ export function ServicePhotographie() {
               return (
                 <article
                   key={pillar.title}
-                  className="flex h-full flex-col gap-4 rounded-3xl border border-slate-100 bg-slate-50/70 p-6 text-center shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg"
+                  className="flex h-full flex-col gap-4 bg-gray-50 rounded-2xl p-8 text-center transition-all duration-500 hover:bg-black hover:text-white"
                 >
-                  <span className="mx-auto inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-secondary text-white shadow-lg">
+                  <span className="mx-auto inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-black text-white">
                     <IconComponent className="h-7 w-7" />
                   </span>
-                  <h3 className="text-[clamp(1.05rem,2.4vw,1.2rem)] font-semibold text-slate-900">{pillar.title}</h3>
-                  <p className="text-[clamp(0.9375rem,2.2vw,1.05rem)] leading-relaxed text-slate-600">
+                  <h3 className="text-[clamp(1.05rem,2.4vw,1.2rem)] font-semibold text-[#1A1A1A]">{pillar.title}</h3>
+                  <p className="text-[clamp(0.9375rem,2.2vw,1.05rem)] leading-relaxed text-text-muted">
                     {pillar.description}
                   </p>
                 </article>
@@ -229,14 +229,14 @@ export function ServicePhotographie() {
       {/* SERVICES */}
       <section
         data-service-section="services"
-        className="bg-gradient-to-br from-blue-50 via-white to-blue-50 py-24 lg:py-32 px-4 sm:px-6 lg:px-8 lg:px-10 lg:py-24"
+        className="reveal bg-background-alt py-32 px-6 lg:px-12"
       >
-        <div className="mx-auto max-w-7xl">
+        <div className="mx-auto max-w-[1400px]">
           <div className="text-center">
-            <h2 className="text-balance text-[clamp(1.875rem,4vw,3rem)] font-black text-slate-900">
+            <h2 className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] text-[#1A1A1A]">
               Nos prestations photo
             </h2>
-            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.25rem)] text-slate-600">
+            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.25rem)] text-text-muted">
               Une palette complète pour nourrir vos campagnes, votre communication interne ou vos réseaux sociaux.
             </p>
           </div>
@@ -247,24 +247,24 @@ export function ServicePhotographie() {
               return (
                 <article
                   key={service.title}
-                  className="flex h-full flex-col rounded-3xl border border-white/70 bg-white/95 p-6 shadow-lg transition-all duration-500 hover:-translate-y-1 hover:shadow-xl sm:p-8"
+                  className="flex h-full flex-col bg-gray-50 rounded-2xl p-8 transition-all duration-500 hover:bg-black hover:text-white"
                 >
                   <div className="flex items-center justify-between gap-3">
-                    <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-secondary text-white shadow-lg">
+                    <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-black text-white">
                       <IconComponent className="h-7 w-7" />
                     </span>
-                    <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-primary">
+                    <span className="border border-gray-300 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-widest text-accent">
                       {service.tag}
                     </span>
                   </div>
-                  <h3 className="mt-4 text-[clamp(1.125rem,2.6vw,1.35rem)] font-bold text-slate-900">{service.title}</h3>
-                  <p className="mt-2 text-[clamp(0.9375rem,2.3vw,1rem)] leading-relaxed text-slate-600">
+                  <h3 className="mt-4 text-[clamp(1.125rem,2.6vw,1.35rem)] font-bold text-[#1A1A1A]">{service.title}</h3>
+                  <p className="mt-2 text-[clamp(0.9375rem,2.3vw,1rem)] leading-relaxed text-text-muted">
                     {service.description}
                   </p>
-                  <ul className="mt-4 space-y-2 text-[clamp(0.9rem,2.2vw,0.975rem)] text-slate-600">
+                  <ul className="mt-4 space-y-2 text-[clamp(0.9rem,2.2vw,0.975rem)] text-text-muted">
                     {service.features.map((feature) => (
                       <li key={feature} className="flex items-start gap-2">
-                        <span className="mt-1 h-2 w-2 rounded-full bg-primary"></span>
+                        <span className="mt-1 h-2 w-2 rounded-full bg-accent"></span>
                         <span>{feature}</span>
                       </li>
                     ))}
@@ -279,14 +279,14 @@ export function ServicePhotographie() {
       {/* PROCESS */}
       <section
         data-service-section="methodology"
-        className="bg-white py-24 lg:py-32 px-4 sm:px-6 lg:px-8 lg:px-10 lg:py-24"
+        className="reveal bg-white py-32 px-6 lg:px-12"
       >
-        <div className="mx-auto max-w-6xl">
+        <div className="mx-auto max-w-[1400px]">
           <div className="text-center">
-            <h2 className="text-balance text-[clamp(1.875rem,4vw,2.75rem)] font-black text-slate-900">
+            <h2 className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] text-[#1A1A1A]">
               Un workflow fluide et cadré
             </h2>
-            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.2rem)] text-slate-600">
+            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.2rem)] text-text-muted">
               De la préparation à la livraison, chaque étape est maîtrisée pour garantir un résultat impeccable.
             </p>
           </div>
@@ -316,18 +316,18 @@ export function ServicePhotographie() {
             ].map((step, index) => (
               <article
                 key={step.title}
-                className="flex h-full flex-col gap-4 rounded-3xl border border-slate-100 bg-slate-50/70 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg"
+                className="flex h-full flex-col gap-4 bg-gray-50 rounded-2xl p-8 transition-all duration-500 hover:bg-black hover:text-white"
               >
                 <div className="flex items-center gap-3">
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/15 text-sm font-semibold text-primary">
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-background-alt text-sm font-semibold text-accent">
                     {index + 1}
                   </span>
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-primary to-secondary text-white">
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-black text-white">
                     <step.icon className="h-5 w-5" />
                   </span>
-                  <h3 className="text-[clamp(1.0625rem,2.3vw,1.2rem)] font-semibold text-slate-900">{step.title}</h3>
+                  <h3 className="text-[clamp(1.0625rem,2.3vw,1.2rem)] font-semibold text-[#1A1A1A]">{step.title}</h3>
                 </div>
-                <p className="pl-[3.6rem] text-[clamp(0.9375rem,2.2vw,1.05rem)] leading-relaxed text-slate-600">
+                <p className="pl-[3.6rem] text-[clamp(0.9375rem,2.2vw,1.05rem)] leading-relaxed text-text-muted">
                   {step.description}
                 </p>
               </article>
@@ -350,16 +350,13 @@ export function ServicePhotographie() {
       {/* CTA FINAL */}
       <section
         data-service-section="cta-final"
-        className="relative overflow-hidden bg-gradient-to-br from-[#F5E8FF] via-white to-blue-50 py-24 lg:py-32 px-4 sm:px-6 lg:px-8"
+        className="reveal bg-background-alt py-32 px-6 lg:px-12"
       >
-        <div className="pointer-events-none absolute top-16 -left-24 h-72 w-72 rounded-full bg-gradient-to-br from-blue-300/30 to-blue-400/30 blur-3xl sm:h-80 sm:w-80" />
-        <div className="pointer-events-none absolute bottom-10 -right-24 h-80 w-80 rounded-full bg-gradient-to-br from-blue-300/30 to-blue-400/30 blur-3xl sm:h-96 sm:w-96" />
-
-        <div className="relative mx-auto flex max-w-4xl flex-col items-center text-center">
-          <h2 className="text-balance text-[clamp(1.875rem,5vw,3.4rem)] font-black text-slate-900">
+        <div className="mx-auto flex max-w-[1400px] flex-col items-center text-center">
+          <h2 className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] text-[#1A1A1A]">
             Prêt à créer des visuels inoubliables ?
           </h2>
-          <p className="mt-4 max-w-3xl text-balance text-[clamp(1rem,2.5vw,1.5rem)] leading-relaxed text-slate-700">
+          <p className="mt-4 max-w-3xl text-balance text-[clamp(1rem,2.5vw,1.5rem)] leading-relaxed text-text-muted">
             Transformons vos idées en images qui inspirent confiance, désir et engagement. Parlez-nous de votre projet et
             imaginons ensemble la séance idéale.
           </p>

@@ -12,21 +12,21 @@ export default {
         '2xl': '1536px',
       },
       colors: {
-        // Nouvelle palette moderne
+        // Stitch Design System — GND Consulting
         primary: {
-          DEFAULT: '#3b82f6',
-          dark: '#2563eb',
-          light: '#60a5fa',
+          DEFAULT: '#1A1A1A',
+          dark: '#000000',
+          light: '#4A4A4A',
         },
         secondary: {
-          DEFAULT: '#0ea5e9',
-          dark: '#0284c7',
-          light: '#38bdf8',
+          DEFAULT: '#4A4A4A',
+          dark: '#333333',
+          light: '#6B6B6B',
         },
         accent: {
-          DEFAULT: '#f97316',
-          dark: '#ea580c',
-          light: '#fb923c',
+          DEFAULT: '#3B82F6',
+          dark: '#2563eb',
+          light: '#60a5fa',
         },
         dark: {
           DEFAULT: '#ffffff',
@@ -38,18 +38,33 @@ export default {
           light: '#cbd5e1',
           lighter: '#94a3b8',
           bright: '#ffffff',
-          'bright-light': '#f1f5f9',
+          'bright-light': '#F3F4F6',
           'bright-lighter': '#e2e8f0',
+          50: '#F9FAFB',
+          100: '#F3F4F6',
+          200: '#E5E7EB',
+          300: '#D1D5DB',
+          400: '#9CA3AF',
+          500: '#6B7280',
+          600: '#4B5563',
+          700: '#374151',
+          800: '#1F2937',
+          900: '#111827',
         },
         text: {
-          DEFAULT: '#1e293b',
-          muted: '#475569',
+          DEFAULT: '#1A1A1A',
+          muted: '#64748B',
+          main: '#1A1A1A',
         },
+        'background-light': '#FFFFFF',
+        'background-alt': '#F3F4F6',
         success: '#10b981',
         warning: '#f59e0b',
         error: '#ef4444',
       },
       fontFamily: {
+        'display': ['"Clash Display"', 'Syne', 'sans-serif'],
+        'sans': ['Inter', 'sans-serif'],
         'space': ['Space Grotesk', 'sans-serif'],
         'inter': ['Inter', 'sans-serif'],
       },
@@ -59,6 +74,13 @@ export default {
         'slide-up': 'slide-up 0.8s ease-out forwards',
         'scale-in': 'scale-in 0.6s ease-out forwards',
         'float-particle': 'float-particle 8s linear infinite',
+        'reveal': 'reveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+      },
+      keyframes: {
+        reveal: {
+          '0%': { opacity: '0', transform: 'translateY(30px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
       },
       boxShadow: {
         'modern': '0 10px 40px rgba(0, 0, 0, 0.2)',
@@ -71,6 +93,9 @@ export default {
       },
       backdropBlur: {
         'strong': '40px',
+      },
+      maxWidth: {
+        'site': '1400px',
       },
     },
   },

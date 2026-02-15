@@ -159,7 +159,7 @@ export function ServiceMotionDesign() {
   };
 
   return (
-    <main id="main-content" className="service-page service-motion min-h-screen bg-white text-slate-900">
+    <main id="main-content" className="service-page service-motion min-h-screen bg-white text-[#1A1A1A] font-sans">
       {/* HERO */}
       <section
         data-service-section="hero"
@@ -174,13 +174,13 @@ export function ServiceMotionDesign() {
             loading="eager"
             fetchpriority="high"
           />
-          <div className="absolute inset-0 bg-slate-900/55 lg:bg-slate-900/45" />
+          <div className="absolute inset-0 bg-black/55" />
         </div>
 
-        <div className="relative mx-auto flex min-h-[70vh] w-full max-w-5xl flex-col items-center justify-end gap-6 px-4 pb-16 pt-28 text-center sm:px-6 sm:pb-20 sm:pt-36 lg:min-h-[90vh] lg:pb-24">
+        <div className="relative mx-auto flex min-h-[70vh] w-full max-w-[1400px] flex-col items-center justify-end gap-6 px-6 pb-16 pt-28 text-center lg:px-12 lg:min-h-[90vh] lg:pb-24">
           <h1
             id="service-motion-hero-title"
-            className="text-balance text-[clamp(2.1rem,5.1vw,4.6rem)] font-black leading-[1.05] tracking-tight text-white"
+            className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] tracking-tight text-white"
           >
             🎥 Motion design sur mesure
           </h1>
@@ -190,7 +190,7 @@ export function ServiceMotionDesign() {
           <ButtonGND
             variant="primary"
             onClick={scrollToContact}
-            className="w-full max-w-md sm:max-w-lg lg:max-w-xl text-[clamp(1rem,2.6vw,1.25rem)] px-6 py-4 sm:px-8 sm:py-5 lg:px-12 lg:py-6"
+            className="w-full max-w-md sm:max-w-lg lg:max-w-xl text-[clamp(1rem,2.6vw,1.25rem)] bg-black text-white rounded-full px-8 py-4 hover:bg-gray-800 hover:scale-105"
           >
             <Play className="h-5 w-5 sm:h-6 sm:w-6" />
             Demander un devis personnalisé
@@ -201,14 +201,14 @@ export function ServiceMotionDesign() {
       {/* INTRO */}
       <section
         data-service-section="intro"
-        className="bg-gradient-to-b from-white to-slate-50 py-24 lg:py-32 px-4 sm:px-6 lg:px-8 lg:px-10 lg:py-24"
+        className="reveal bg-white py-32 px-6 lg:px-12"
       >
-        <div className="mx-auto max-w-4xl text-center">
-          <p className="text-balance text-[clamp(1rem,2.6vw,1.5rem)] leading-relaxed text-slate-700">
+        <div className="mx-auto max-w-[1400px] text-center">
+          <p className="text-balance text-[clamp(1rem,2.6vw,1.5rem)] leading-relaxed text-text-muted">
             Chez GND Consulting, nous créons des vidéos en motion design qui{' '}
-            <strong className="text-slate-900">informent, séduisent et déclenchent l’action</strong>. Simplifier un concept
+            <strong className="text-[#1A1A1A]">informent, séduisent et déclenchent l’action</strong>. Simplifier un concept
             complexe, dynamiser vos réseaux sociaux ou présenter votre marque : chaque animation est pensée pour{' '}
-            <strong className="text-slate-900">vous démarquer et engager votre audience</strong>. Nos créations sont
+            <strong className="text-[#1A1A1A]">vous démarquer et engager votre audience</strong>. Nos créations sont
             optimisées pour le digital, prêtes à booster votre branding et vos conversions.
           </p>
         </div>
@@ -217,15 +217,15 @@ export function ServiceMotionDesign() {
       {/* SERVICES */}
       <section
         data-service-section="services"
-        className="bg-slate-50 py-24 lg:py-32 px-4 sm:px-6 lg:px-8 lg:px-10 lg:py-24"
+        className="reveal bg-background-alt py-32 px-6 lg:px-12"
       >
-        <div className="mx-auto max-w-7xl">
+        <div className="mx-auto max-w-[1400px]">
           <div className="text-center">
-            <h2 className="text-balance text-[clamp(1.875rem,4vw,3rem)] font-black text-slate-900">
+            <h2 className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] text-[#1A1A1A]">
               ✨ Nos expertises motion design
             </h2>
-            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.25rem)] text-slate-600">
-              Des contenus animés qui captent l’attention et transmettent vos messages en un clin d’œil.
+            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.25rem)] text-text-muted">
+              Des contenus animés qui captent l'attention et transmettent vos messages en un clin d'œil.
             </p>
           </div>
 
@@ -235,15 +235,15 @@ export function ServiceMotionDesign() {
               return (
                 <article
                   key={service.title}
-                  className="group relative flex h-full flex-col rounded-3xl border border-slate-100 bg-white p-6 shadow-lg transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl sm:p-8"
+                  className="group relative flex h-full flex-col bg-gray-50 rounded-2xl p-8 transition-all duration-500 hover:bg-black hover:text-white"
                 >
-                  <span className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-blue-500 text-white transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 sm:h-18 sm:w-18">
+                  <span className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-black text-white transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 sm:h-18 sm:w-18">
                     <IconComponent className="h-8 w-8" />
                   </span>
-                  <h3 className="text-[clamp(1.125rem,2.6vw,1.35rem)] font-bold text-slate-900 transition-colors duration-300 group-hover:text-primary">
+                  <h3 className="text-[clamp(1.125rem,2.6vw,1.35rem)] font-bold text-[#1A1A1A] transition-colors duration-300 group-hover:text-white">
                     {service.title}
                   </h3>
-                  <p className="mt-3 text-[clamp(0.9375rem,2.3vw,1rem)] leading-relaxed text-slate-600">
+                  <p className="mt-3 text-[clamp(0.9375rem,2.3vw,1rem)] leading-relaxed text-text-muted">
                     {service.description}
                   </p>
                 </article>
@@ -256,14 +256,14 @@ export function ServiceMotionDesign() {
       {/* MÉTHODOLOGIE */}
       <section
         data-service-section="methodology"
-        className="bg-white py-24 lg:py-32 px-4 sm:px-6 lg:px-8 lg:px-10 lg:py-24"
+        className="reveal bg-white py-32 px-6 lg:px-12"
       >
-        <div className="mx-auto max-w-6xl">
+        <div className="mx-auto max-w-[1400px]">
           <div className="text-center">
-            <h2 className="text-balance text-[clamp(1.875rem,4vw,3rem)] font-black text-slate-900">
+            <h2 className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] text-[#1A1A1A]">
               Un processus fluide et collaboratif
             </h2>
-            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.2rem)] text-slate-600">
+            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.2rem)] text-text-muted">
               De la première idée à la livraison finale, nous orchestrons chaque étape pour garantir un résultat à la hauteur
               de vos attentes.
             </p>
@@ -275,20 +275,20 @@ export function ServiceMotionDesign() {
               return (
                 <li
                   key={step.step}
-                  className="flex h-full flex-col gap-4 rounded-3xl border border-slate-100 bg-slate-50/60 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg"
+                  className="flex h-full flex-col gap-4 bg-gray-50 rounded-2xl p-8 transition-all duration-500 hover:bg-black hover:text-white"
                 >
                   <div className="flex items-center gap-3">
-                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/15 text-sm font-semibold text-primary">
+                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-background-alt text-sm font-semibold text-accent">
                       {step.step}
                     </span>
-                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-primary to-secondary text-white">
+                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-black text-white">
                       <IconComponent className="h-5 w-5" />
                     </span>
-                    <h3 className="text-[clamp(1.0625rem,2.3vw,1.2rem)] font-semibold text-slate-900">
+                    <h3 className="text-[clamp(1.0625rem,2.3vw,1.2rem)] font-semibold text-[#1A1A1A]">
                       {step.title}
                     </h3>
                   </div>
-                  <p className="pl-[3.6rem] text-[clamp(0.9375rem,2.2vw,1.05rem)] leading-relaxed text-slate-600">
+                  <p className="pl-[3.6rem] text-[clamp(0.9375rem,2.2vw,1.05rem)] leading-relaxed text-text-muted">
                     {step.description}
                   </p>
                 </li>
@@ -301,14 +301,14 @@ export function ServiceMotionDesign() {
       {/* AVANTAGES */}
       <section
         data-service-section="advantages"
-        className="bg-gradient-to-br from-blue-50 via-blue-50 to-white py-24 lg:py-32 px-4 sm:px-6 lg:px-8 lg:px-10 lg:py-24"
+        className="reveal bg-background-alt py-32 px-6 lg:px-12"
       >
-        <div className="mx-auto max-w-6xl">
+        <div className="mx-auto max-w-[1400px]">
           <div className="text-center">
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-2 text-sm font-semibold uppercase tracking-[0.25em] text-slate-700 shadow-sm">
-              <Sparkles className="h-4 w-4 text-primary" /> Avantages exclusifs
+            <div className="inline-flex items-center gap-2 border border-gray-300 rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-widest text-text-muted">
+              <Sparkles className="h-4 w-4 text-accent" /> Avantages exclusifs
             </div>
-            <h2 className="mt-5 text-balance text-[clamp(1.875rem,4vw,2.75rem)] font-black text-slate-900">
+            <h2 className="mt-5 font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] text-[#1A1A1A]">
               Ce qui fait la différence GND
             </h2>
           </div>
@@ -319,15 +319,15 @@ export function ServiceMotionDesign() {
               return (
                 <article
                   key={item.title}
-                  className="flex h-full flex-col gap-4 rounded-3xl border border-white/70 bg-white/90 p-6 text-center shadow-lg transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl"
+                  className="flex h-full flex-col gap-4 bg-gray-50 rounded-2xl p-8 text-center transition-all duration-500 hover:bg-black hover:text-white"
                 >
-                  <span className="mx-auto inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-secondary text-white shadow-lg">
+                  <span className="mx-auto inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-black text-white">
                     <IconComponent className="h-7 w-7" />
                   </span>
-                  <h3 className="text-[clamp(1.05rem,2.4vw,1.2rem)] font-semibold text-slate-900">
+                  <h3 className="text-[clamp(1.05rem,2.4vw,1.2rem)] font-semibold text-[#1A1A1A]">
                     {item.title}
                   </h3>
-                  <p className="text-[clamp(0.9375rem,2.2vw,1.05rem)] leading-relaxed text-slate-600">
+                  <p className="text-[clamp(0.9375rem,2.2vw,1.05rem)] leading-relaxed text-text-muted">
                     {item.description}
                   </p>
                 </article>
@@ -336,7 +336,7 @@ export function ServiceMotionDesign() {
           </div>
 
           <div className="mt-10 flex flex-col items-center gap-4 text-center sm:flex-row sm:justify-center">
-            <p className="max-w-2xl text-[clamp(1rem,2.4vw,1.2rem)] font-medium text-slate-700">
+            <p className="max-w-2xl text-[clamp(1rem,2.4vw,1.2rem)] font-medium text-text-muted">
               Prêt à transformer vos idées en animations percutantes ?
             </p>
             <ButtonGND
@@ -365,16 +365,13 @@ export function ServiceMotionDesign() {
       {/* CTA FINAL */}
       <section
         data-service-section="cta-final"
-        className="relative overflow-hidden bg-gradient-to-br from-[#F5E8FF] via-white to-blue-50 py-24 lg:py-32 px-4 sm:px-6 lg:px-8"
+        className="reveal bg-background-alt py-32 px-6 lg:px-12"
       >
-        <div className="pointer-events-none absolute top-16 -left-24 h-72 w-72 rounded-full bg-gradient-to-br from-blue-300/30 to-blue-400/30 blur-3xl sm:h-80 sm:w-80" />
-        <div className="pointer-events-none absolute bottom-10 -right-24 h-80 w-80 rounded-full bg-gradient-to-br from-blue-300/30 to-blue-400/30 blur-3xl sm:h-96 sm:w-96" />
-
-        <div className="relative mx-auto flex max-w-4xl flex-col items-center text-center">
-          <h2 className="text-balance text-[clamp(1.875rem,5vw,3.5rem)] font-black text-slate-900">
+        <div className="mx-auto flex max-w-[1400px] flex-col items-center text-center">
+          <h2 className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] text-[#1A1A1A]">
             Donnez du mouvement à vos messages
           </h2>
-          <p className="mt-4 max-w-3xl text-balance text-[clamp(1rem,2.5vw,1.5rem)] leading-relaxed text-slate-700">
+          <p className="mt-4 max-w-3xl text-balance text-[clamp(1rem,2.5vw,1.5rem)] leading-relaxed text-text-muted">
             Animation produit, storytelling, lancement de marque ou formation interne : nous composons le motion design
             qui fera vibrer votre audience.
           </p>

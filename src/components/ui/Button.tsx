@@ -19,10 +19,10 @@ interface LinkButtonProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> 
 }
 
 const variants: Record<ButtonVariant, string> = {
-  primary: 'bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-600/25 hover:shadow-xl hover:shadow-blue-600/30',
-  secondary: 'bg-white hover:bg-slate-50 text-blue-600 border-2 border-blue-600/20 hover:border-blue-600/40',
-  ghost: 'bg-transparent hover:bg-slate-100 text-slate-700',
-  pill: 'bg-blue-50 hover:bg-blue-100 text-blue-600 !rounded-full'
+  primary: 'bg-black hover:bg-gray-800 text-white shadow-sm hover:shadow-md hover:scale-105',
+  secondary: 'bg-white hover:bg-gray-50 text-black border border-gray-300 hover:border-black',
+  ghost: 'bg-transparent hover:bg-gray-100 text-gray-700',
+  pill: 'bg-gray-50 hover:bg-gray-100 text-black !rounded-full'
 };
 
 const sizes: Record<ButtonSize, string> = {
@@ -38,7 +38,7 @@ export function Button({
   className = '',
   ...props
 }: ButtonProps) {
-  const baseClasses = 'font-semibold rounded-xl transition-all duration-200 inline-flex items-center justify-center gap-2';
+  const baseClasses = 'font-medium rounded-full transition-all duration-300 inline-flex items-center justify-center gap-2';
   const variantClasses = variants[variant];
   const sizeClasses = sizes[size];
 
@@ -60,7 +60,7 @@ export function LinkButton({
   href,
   ...props
 }: LinkButtonProps) {
-  const baseClasses = 'font-semibold rounded-xl transition-all duration-200 inline-flex items-center justify-center gap-2';
+  const baseClasses = 'font-medium rounded-full transition-all duration-300 inline-flex items-center justify-center gap-2';
   const variantClasses = variants[variant];
   const sizeClasses = sizes[size];
 

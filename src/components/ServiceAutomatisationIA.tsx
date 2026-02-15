@@ -215,7 +215,7 @@ export function ServiceAutomatisationIA() {
   };
 
   return (
-    <main id="main-content" className="service-page service-ai min-h-screen bg-white text-slate-900">
+    <main id="main-content" className="service-page service-ai min-h-screen bg-white text-[#1A1A1A] font-sans">
       {/* HERO */}
       <section
         data-service-section="hero"
@@ -230,13 +230,13 @@ export function ServiceAutomatisationIA() {
             loading="eager"
             fetchpriority="high"
           />
-          <div className="absolute inset-0 bg-slate-900/55 lg:bg-slate-900/45" />
+          <div className="absolute inset-0 bg-black/55" />
         </div>
 
-        <div className="relative mx-auto flex min-h-[70vh] w-full max-w-5xl flex-col items-center justify-end gap-6 px-4 pb-16 pt-32 text-center sm:px-6 sm:pb-20 sm:pt-36 lg:min-h-[90vh] lg:pb-24">
+        <div className="relative mx-auto flex min-h-[70vh] w-full max-w-[1400px] flex-col items-center justify-end gap-6 px-6 pb-16 pt-32 text-center lg:px-12 lg:min-h-[90vh] lg:pb-24">
           <h1
             id="service-ai-hero-title"
-            className="text-balance text-[clamp(2.1rem,5vw,4.6rem)] font-black leading-[1.05] tracking-tight text-white"
+            className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] tracking-tight text-white"
           >
             Automatisation & IA sur mesure
           </h1>
@@ -247,7 +247,7 @@ export function ServiceAutomatisationIA() {
             <ButtonGND
               variant="primary"
               onClick={scrollToContact}
-              className="w-full max-w-md sm:max-w-lg lg:max-w-xl text-[clamp(1rem,2.6vw,1.25rem)] px-6 py-4 sm:px-8 sm:py-5 lg:px-12 lg:py-6"
+              className="w-full max-w-md sm:max-w-lg lg:max-w-xl text-[clamp(1rem,2.6vw,1.25rem)] bg-black text-white rounded-full px-8 py-4 hover:bg-gray-800 hover:scale-105"
             >
               <Zap className="h-5 w-5 sm:h-6 sm:w-6" />
               Démarrer un projet pilote
@@ -263,10 +263,10 @@ export function ServiceAutomatisationIA() {
       {/* INTRO */}
       <section
         data-service-section="intro"
-        className="bg-gradient-to-b from-white to-slate-50 py-24 lg:py-32 px-4 sm:px-6 lg:px-8 lg:px-10 lg:py-24"
+        className="reveal bg-white py-32 px-6 lg:px-12"
       >
-        <div className="mx-auto max-w-4xl text-center">
-          <p className="text-balance text-[clamp(1rem,2.6vw,1.5rem)] leading-relaxed text-slate-700">
+        <div className="mx-auto max-w-[1400px] text-center">
+          <p className="text-balance text-[clamp(1rem,2.6vw,1.5rem)] leading-relaxed text-text-muted">
             De l’automatisation de processus aux agents IA spécialisés, nous concevons des solutions pragmatiques qui
             s’intègrent à votre stack, délivrent des gains rapides et s’échelonnent en toute sécurité.
           </p>
@@ -276,25 +276,25 @@ export function ServiceAutomatisationIA() {
       {/* METRICS */}
       <section
         data-service-section="metrics"
-        className="bg-white py-24 lg:py-32 px-4 sm:px-6 lg:px-8 lg:px-10 lg:py-24"
+        className="reveal bg-white py-32 px-6 lg:px-12"
       >
-        <div className="mx-auto max-w-6xl">
+        <div className="mx-auto max-w-[1400px]">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {keyMetrics.map((metric) => {
               const IconComponent = metric.icon;
               return (
                 <article
                   key={metric.label}
-                  className="flex h-full flex-col gap-3 rounded-3xl border border-slate-100 bg-slate-50/70 p-6 shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg"
+                  className="flex h-full flex-col gap-3 bg-gray-50 rounded-2xl p-8 transition-all duration-500 hover:bg-black hover:text-white"
                 >
-                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-secondary text-white shadow-lg">
+                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-black text-white">
                     <IconComponent className="h-6 w-6" />
                   </span>
                   <div>
-                    <p className="text-[clamp(1.5rem,4vw,2.25rem)] font-black text-slate-900">{metric.value}</p>
-                    <p className="text-[clamp(0.95rem,2.3vw,1.1rem)] font-semibold text-slate-700">{metric.label}</p>
+                    <p className="text-[clamp(1.5rem,4vw,2.25rem)] font-black text-[#1A1A1A]">{metric.value}</p>
+                    <p className="text-[clamp(0.95rem,2.3vw,1.1rem)] font-semibold text-text-muted">{metric.label}</p>
                   </div>
-                  <p className="text-[clamp(0.9rem,2.2vw,1rem)] text-slate-600">{metric.description}</p>
+                  <p className="text-[clamp(0.9rem,2.2vw,1rem)] text-text-muted">{metric.description}</p>
                 </article>
               );
             })}
@@ -305,15 +305,15 @@ export function ServiceAutomatisationIA() {
       {/* SERVICES */}
       <section
         data-service-section="services"
-        className="bg-gradient-to-br from-blue-50 via-white to-blue-50 py-24 lg:py-32 px-4 sm:px-6 lg:px-8 lg:px-10 lg:py-24"
+        className="reveal bg-background-alt py-32 px-6 lg:px-12"
       >
-        <div className="mx-auto max-w-7xl">
+        <div className="mx-auto max-w-[1400px]">
           <div className="text-center">
-            <h2 className="text-balance text-[clamp(1.875rem,4vw,3rem)] font-black text-slate-900">
+            <h2 className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] text-[#1A1A1A]">
               Nos briques IA & automatisation
             </h2>
-            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.25rem)] text-slate-600">
-              Des modules combinables pour bâtir votre feuille de route IA, du POC au déploiement à l’échelle.
+            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.25rem)] text-text-muted">
+              Des modules combinables pour bâtir votre feuille de route IA, du POC au déploiement à l'échelle.
             </p>
           </div>
 
@@ -323,19 +323,19 @@ export function ServiceAutomatisationIA() {
               return (
                 <article
                   key={service.title}
-                  className="flex h-full flex-col rounded-3xl border border-white/70 bg-white/95 p-6 shadow-lg transition-all duration-500 hover:-translate-y-1 hover:shadow-xl sm:p-8"
+                  className="flex h-full flex-col bg-gray-50 rounded-2xl p-8 transition-all duration-500 hover:bg-black hover:text-white"
                 >
-                  <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-secondary text-white shadow-lg">
+                  <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-black text-white">
                     <IconComponent className="h-7 w-7" />
                   </span>
-                  <h3 className="mt-4 text-[clamp(1.125rem,2.6vw,1.35rem)] font-bold text-slate-900">{service.title}</h3>
-                  <p className="mt-2 text-[clamp(0.9375rem,2.3vw,1rem)] leading-relaxed text-slate-600">
+                  <h3 className="mt-4 text-[clamp(1.125rem,2.6vw,1.35rem)] font-bold text-[#1A1A1A]">{service.title}</h3>
+                  <p className="mt-2 text-[clamp(0.9375rem,2.3vw,1rem)] leading-relaxed text-text-muted">
                     {service.description}
                   </p>
-                  <ul className="mt-4 space-y-2 text-[clamp(0.9rem,2.2vw,0.975rem)] text-slate-600">
+                  <ul className="mt-4 space-y-2 text-[clamp(0.9rem,2.2vw,0.975rem)] text-text-muted">
                     {service.features.map((feature) => (
                       <li key={feature} className="flex items-start gap-2">
-                        <span className="mt-1 h-2 w-2 rounded-full bg-primary"></span>
+                        <span className="mt-1 h-2 w-2 rounded-full bg-accent"></span>
                         <span>{feature}</span>
                       </li>
                     ))}
@@ -350,12 +350,12 @@ export function ServiceAutomatisationIA() {
       {/* DOMAINES */}
       <section
         data-service-section="domains"
-        className="bg-white py-24 lg:py-32 px-4 sm:px-6 lg:px-8 lg:px-10 lg:py-24"
+        className="reveal bg-white py-32 px-6 lg:px-12"
       >
-        <div className="mx-auto max-w-7xl">
+        <div className="mx-auto max-w-[1400px]">
           <div className="text-center">
-            <h2 className="text-balance text-[clamp(1.875rem,4vw,2.8rem)] font-black text-slate-900">
-              Domaines d’application prioritaires
+            <h2 className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] text-[#1A1A1A]">
+              Domaines d'application prioritaires
             </h2>
           </div>
 
@@ -365,18 +365,18 @@ export function ServiceAutomatisationIA() {
               return (
                 <article
                   key={domain.title}
-                  className="flex h-full flex-col gap-4 rounded-3xl border border-slate-100 bg-slate-50/70 p-6 shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg"
+                  className="flex h-full flex-col gap-4 bg-gray-50 rounded-2xl p-8 transition-all duration-500 hover:bg-black hover:text-white"
                 >
                   <div className="flex items-center gap-3">
-                    <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-secondary text-white shadow-lg">
+                    <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-black text-white">
                       <IconComponent className="h-6 w-6" />
                     </span>
-                    <h3 className="text-[clamp(1.0625rem,2.3vw,1.2rem)] font-semibold text-slate-900">{domain.title}</h3>
+                    <h3 className="text-[clamp(1.0625rem,2.3vw,1.2rem)] font-semibold text-[#1A1A1A]">{domain.title}</h3>
                   </div>
-                  <ul className="space-y-2 text-[clamp(0.9rem,2.2vw,1rem)] text-slate-600">
+                  <ul className="space-y-2 text-[clamp(0.9rem,2.2vw,1rem)] text-text-muted">
                     {domain.points.map((point) => (
                       <li key={point} className="flex items-start gap-2">
-                        <span className="mt-1 h-2 w-2 rounded-full bg-primary"></span>
+                        <span className="mt-1 h-2 w-2 rounded-full bg-accent"></span>
                         <span>{point}</span>
                       </li>
                     ))}
@@ -391,20 +391,20 @@ export function ServiceAutomatisationIA() {
       {/* WHY NOW */}
       <section
         data-service-section="why-now"
-        className="bg-gradient-to-br from-white via-blue-50 to-blue-100 py-24 lg:py-32 px-4 sm:px-6 lg:px-8"
+        className="reveal bg-background-alt py-32 px-6 lg:px-12"
       >
-        <div className="mx-auto max-w-6xl">
-          <h2 className="text-center text-[clamp(1.75rem,4vw,2.75rem)] font-black text-slate-900">
+        <div className="mx-auto max-w-[1400px]">
+          <h2 className="font-display text-center text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] text-[#1A1A1A]">
             Pourquoi accélérer maintenant ?
           </h2>
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
             {whyNowStats.map((stat) => (
               <article
                 key={stat.label}
-                className="rounded-3xl border border-primary/15 bg-white/90 p-6 text-slate-800 shadow-lg shadow-blue-500/20 backdrop-blur-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl shadow-blue-500/20"
+                className="bg-gray-50 rounded-2xl p-8 transition-all duration-500 hover:bg-black hover:text-white"
               >
-                <p className="text-[clamp(1.5rem,4vw,2.25rem)] font-black text-primary">{stat.value}</p>
-                <p className="mt-2 text-[clamp(0.95rem,2.3vw,1.1rem)] text-slate-600">{stat.label}</p>
+                <p className="text-[clamp(1.5rem,4vw,2.25rem)] font-black text-accent">{stat.value}</p>
+                <p className="mt-2 text-[clamp(0.95rem,2.3vw,1.1rem)] text-text-muted">{stat.label}</p>
               </article>
             ))}
           </div>
@@ -425,16 +425,13 @@ export function ServiceAutomatisationIA() {
       {/* CTA FINAL */}
       <section
         data-service-section="cta-final"
-        className="relative overflow-hidden bg-gradient-to-br from-[#F5E8FF] via-white to-blue-50 py-24 lg:py-32 px-4 sm:px-6 lg:px-8"
+        className="reveal bg-background-alt py-32 px-6 lg:px-12"
       >
-        <div className="pointer-events-none absolute top-16 -left-24 h-72 w-72 rounded-full bg-gradient-to-br from-blue-300/30 to-blue-400/30 blur-3xl sm:h-80 sm:w-80" />
-        <div className="pointer-events-none absolute bottom-10 -right-24 h-80 w-80 rounded-full bg-gradient-to-br from-blue-300/30 to-blue-400/30 blur-3xl sm:h-96 sm:w-96" />
-
-        <div className="relative mx-auto flex max-w-4xl flex-col items-center text-center">
-          <h2 className="text-balance text-[clamp(1.875rem,5vw,3.4rem)] font-black text-slate-900">
+        <div className="mx-auto flex max-w-[1400px] flex-col items-center text-center">
+          <h2 className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] text-[#1A1A1A]">
             Prêt à industrialiser vos workflows ?
           </h2>
-          <p className="mt-4 max-w-3xl text-balance text-[clamp(1rem,2.5vw,1.5rem)] leading-relaxed text-slate-700">
+          <p className="mt-4 max-w-3xl text-balance text-[clamp(1rem,2.5vw,1.5rem)] leading-relaxed text-text-muted">
             Audit offert, feuille de route priorisée, accompagnement humain et sécurisation totale. Lançons ensemble vos
             premières automatisations IA.
           </p>

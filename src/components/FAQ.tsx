@@ -71,9 +71,9 @@ export function FAQ({ headingOverride, containerClassName = '' }: FAQProps = {})
         emoji="💡"
         faqItems={faqItems}
         themeColor={{
-          primary: '#3b82f6',
-          secondary: '#06b6d4',
-          gradient: 'linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%)'
+          primary: '#1A1A1A',
+          secondary: '#3B82F6',
+          gradient: 'linear-gradient(135deg, #1A1A1A 0%, #4A4A4A 100%)'
         }}
         ctaText="Démarrer mon projet"
         ctaLink="#contact"

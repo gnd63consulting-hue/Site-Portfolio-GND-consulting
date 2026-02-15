@@ -19,12 +19,12 @@ export function ButtonGND({ variant = 'primary', as = 'button', href, children, 
     setIsLoading(true);
     window.setTimeout(() => setIsLoading(false), 1200);
   }, [onClick]);
-  const base = 'inline-flex items-center justify-center font-bold uppercase tracking-wide rounded-xl transition-all duration-200 focus:outline-none focus-visible:ring-4 gap-2 no-underline hover:no-underline visited:no-underline';
+  const base = 'inline-flex items-center justify-center font-medium rounded-full transition-all duration-300 focus:outline-none focus-visible:ring-4 gap-2 no-underline hover:no-underline visited:no-underline';
   const variants: Record<Variant, string> = {
-    primary: 'text-white hover:text-white visited:text-white focus-visible:text-white bg-[#2563eb] hover:bg-[#1d4ed8] hover:shadow-lg focus-visible:ring-[#93c5fd] px-6 py-3',
-    secondary: 'text-[#1d4ed8] hover:text-white visited:text-[#1d4ed8] focus-visible:text-[#1d4ed8] bg-white border-2 border-[#1d4ed8] hover:bg-[#1d4ed8] hover:text-white focus-visible:ring-[#bfdbfe] px-6 py-3',
-    outline: 'text-[#1d4ed8] hover:text-[#1d4ed8] visited:text-[#1d4ed8] border-2 border-[#1d4ed8] bg-transparent hover:bg-[#eff6ff] focus-visible:ring-[#bfdbfe] px-6 py-3',
-    danger: 'text-white hover:text-white visited:text-white bg-red-600 hover:bg-red-700 focus-visible:ring-red-300 px-6 py-3',
+    primary: 'text-white hover:text-white visited:text-white focus-visible:text-white bg-black hover:bg-gray-800 hover:shadow-lg hover:scale-105 focus-visible:ring-gray-300 px-8 py-4',
+    secondary: 'text-black hover:text-white visited:text-black focus-visible:text-black bg-white border border-gray-300 hover:bg-black hover:text-white hover:border-black focus-visible:ring-gray-300 px-8 py-4',
+    outline: 'text-black hover:text-black visited:text-black border border-gray-300 bg-transparent hover:bg-gray-50 focus-visible:ring-gray-300 px-8 py-4',
+    danger: 'text-white hover:text-white visited:text-white bg-red-600 hover:bg-red-700 focus-visible:ring-red-300 px-8 py-4',
   };
 
   const cls = `${base} ${variants[variant]} ${className}`.trim();

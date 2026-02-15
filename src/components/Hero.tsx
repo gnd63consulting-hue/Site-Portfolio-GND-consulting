@@ -23,9 +23,9 @@ export function Hero() {
         });
       }
     };
-    
+
     animate();
-    
+
     return () => {
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
@@ -39,7 +39,7 @@ export function Hero() {
       if (heroRef.current) {
         const rect = heroRef.current.getBoundingClientRect();
         const isVisible = rect.bottom > 0 && rect.top < window.innerHeight;
-        
+
         if (!isVisible && isAnimating) {
           setIsAnimating(false);
           setCurrentFrame(totalFrames - 1);
@@ -57,10 +57,10 @@ export function Hero() {
     renderProgress: Math.min(progress * 100, 100),
     colorGradingProgress: Math.min(progress * 100, 100),
     audioProgress: Math.min(progress * 100, 100),
-    waveform: Array.from({ length: 6 }, (_, i) => 
+    waveform: Array.from({ length: 6 }, (_, i) =>
       Math.sin((currentFrame + i) * 0.3) * 0.5 + 0.5
     ),
-    spectrum: Array.from({ length: 4 }, (_, i) => 
+    spectrum: Array.from({ length: 4 }, (_, i) =>
       Math.sin((currentFrame + i * 3) * 0.2) * 0.6 + 0.4
     )
   };
@@ -70,7 +70,7 @@ export function Hero() {
       <main
         ref={heroRef}
         id="main-content"
-        className="relative overflow-hidden min-h-screen pt-[clamp(4.5rem,18vh,12rem)] pb-[clamp(2rem,10vh,5rem)]"
+        className="relative overflow-hidden min-h-screen pt-32 pb-20"
       >
         {/* Vidéo d'arrière-plan */}
         <div className="hero-video-container">
@@ -87,11 +87,11 @@ export function Hero() {
             <source src="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Creative_Studio_Video_Generation2.mp4" type="video/mp4" />
             Votre navigateur ne supporte pas la lecture vidéo.
           </video>
-          
-          {/* Overlay pour améliorer la lisibilité */}
+
+          {/* Overlay sombre */}
           <div className="absolute inset-0 bg-black/60"></div>
 
-          {/* Fallback image masquée - La vidéo est forcée à s'afficher */}
+          {/* Fallback image masquée */}
           <picture style={{ display: 'none', visibility: 'hidden', opacity: 0 }}>
             <source srcSet="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250919_0006_Vibrant%20Digital%20Collaboration_remix_01k5fdpkfdemjrbt49q10rx0hx.png 1920w" type="image/png" />
             <img
@@ -108,23 +108,56 @@ export function Hero() {
             />
           </picture>
         </div>
-        
-        {/* Texte d'introduction sur la vidéo */}
-        <div className="absolute inset-0 z-20 flex items-center justify-center">
-          <div className="text-left px-4 sm:px-6 max-w-5xl ml-2 sm:ml-4">
-            <h1 className="font-black text-white mb-4 sm:mb-6 leading-tight drop-shadow-2xl text-[clamp(1.75rem,7vw,4.5rem)]">
-              <span className="block font-bold tracking-wide leading-tight uppercase" role="heading" aria-level="1">Donnez vie à vos idées créatives</span>
-            </h1>
-            <p className="text-white font-medium leading-relaxed drop-shadow-xl mb-6 sm:mb-8 text-[clamp(1rem,4vw,1.5rem)]" role="text">
-              Chez GND, chaque projet est une aventure créative pensée pour vous inspirer et marquer les esprits.
-            </p>
-            <ButtonGND as="a" href="#realisations" className="rounded-full text-[clamp(0.9rem,2.5vw,1.125rem)] min-w-[200px]" onClick={() => trackEvent('cta_click', { location: 'hero' })} feedbackLabel="">
-              <span>Voir nos réalisations</span>
-              <Play className="w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" />
-            </ButtonGND>
+
+        {/* Contenu texte hero — Stitch style */}
+        <div className="absolute inset-0 z-20 flex items-center">
+          <div className="max-w-[1400px] mx-auto px-6 lg:px-12 w-full">
+            <div className="max-w-3xl">
+              {/* Titre H1 massif — Stitch font-display */}
+              <h1 className="font-display font-semibold text-white mb-6 leading-[0.9] tracking-tight reveal text-[clamp(2.5rem,8vw,7rem)]" role="heading" aria-level={1}>
+                <span className="block">Donnez vie à vos</span>
+                <span className="block text-gray-400 italic font-light">idées créatives</span>
+              </h1>
+
+              {/* Sous-titre */}
+              <p className="text-lg text-gray-300 leading-relaxed max-w-md mb-8 reveal delay-100">
+                Chez GND, chaque projet est une aventure créative pensée pour vous inspirer et marquer les esprits.
+              </p>
+
+              {/* Séparation metadata — Stitch style */}
+              <div className="flex items-center gap-6 text-xs text-gray-400 uppercase tracking-widest border-t border-white/20 pt-6 mb-8 reveal delay-150">
+                <span>Paris, FR</span>
+                <span className="w-1 h-1 bg-gray-500 rounded-full"></span>
+                <span>Est. 2024</span>
+                <span className="w-1 h-1 bg-gray-500 rounded-full"></span>
+                <span>Scroll</span>
+              </div>
+
+              {/* CTA Button — Stitch rounded-full */}
+              <div className="reveal delay-200">
+                <ButtonGND
+                  as="a"
+                  href="#realisations"
+                  className="rounded-full text-[clamp(0.9rem,2.5vw,1.125rem)] min-w-[200px]"
+                  onClick={() => trackEvent('cta_click', { location: 'hero' })}
+                  feedbackLabel=""
+                >
+                  <span>Voir nos réalisations</span>
+                  <Play className="w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" />
+                </ButtonGND>
+              </div>
+            </div>
           </div>
         </div>
-        
+
+        {/* Badge Showreel — Stitch style */}
+        <div className="absolute bottom-8 left-8 z-20 reveal delay-300">
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md rounded-full px-4 py-2 border border-white/10">
+            <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+            <span className="text-white text-xs font-medium tracking-wide">Showreel 2024</span>
+          </div>
+        </div>
+
         {/* Particules modernes */}
         <div className="particles relative z-10" aria-hidden="true">
           {Array.from({ length: 12 }).map((_, i) => (
@@ -139,9 +172,7 @@ export function Hero() {
             />
           ))}
         </div>
-
       </main>
-
     </>
   );
 }

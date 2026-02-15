@@ -16,7 +16,7 @@ export function TestimonialsSection() {
 
   if (loading) {
     return (
-      <section className="py-24 lg:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
+      <section className="py-32 px-6 lg:px-12 max-w-[1400px] mx-auto relative">
         <div className="text-center">
           <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
           <p className="text-slate-500 mt-4">Chargement des témoignages...</p>
@@ -32,7 +32,7 @@ export function TestimonialsSection() {
   const currentTestimonial = testimonials[currentIndex];
 
   return (
-    <section className="py-24 lg:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
+    <section className="py-32 px-6 lg:px-12 max-w-[1400px] mx-auto relative bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
       {/* Effet de fond */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-blue-50/30"></div>
       

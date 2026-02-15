@@ -1741,7 +1741,7 @@ export function Portfolio() {
   // Section Découvrir nos réalisations – État de chargement
   if (loading) {
     return (
-      <section className="py-24 lg:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
+      <section className="py-32 px-6 lg:px-12 max-w-[1400px] mx-auto relative">
         <div className="text-center">
           <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
           <p className="text-slate-600 mt-4">Chargement du portfolio...</p>
@@ -2033,7 +2033,7 @@ export function Portfolio() {
                                     width={320}
                                     height={180}
                                     className={clsx(
-                                      'h-full w-full object-cover transition-transform duration-500',
+                                      'h-full w-full object-cover transition-transform duration-700',
                                       active ? 'scale-105' : 'scale-100 group-hover:scale-105'
                                     )}
                                   />
@@ -2042,7 +2042,7 @@ export function Portfolio() {
                                     src={media.thumbnail || media.posterUrl || currentMedia?.thumbnail}
                                     alt={media.title}
                                     className={clsx(
-                                      'h-full w-full object-cover transition-transform duration-500',
+                                      'h-full w-full object-cover transition-transform duration-700',
                                       active ? 'scale-105' : 'scale-100 group-hover:scale-105'
                                     )}
                                   />
@@ -2199,7 +2199,7 @@ export function Portfolio() {
                 }
               }
             `}</style>
-            <div className="relative z-10 max-w-7xl mx-auto">
+            <div className="relative z-10 max-w-[1400px] mx-auto">
               <div className="text-center mb-8 sm:mb-10 lg:mb-12 animate-slide-up">
                 <h2 className="font-black text-slate-900 mb-3 sm:mb-4 tracking-tight uppercase text-[clamp(2rem,6vw,3.75rem)] break-words" id="portfolio-photo">
                   Photographie Professionnelle
@@ -2262,7 +2262,7 @@ export function Portfolio() {
                             loading={index < 6 ? "eager" : "lazy"}
                             fetchPriority={index < 3 ? "high" : "auto"}
                             decoding="async"
-                            className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-[1.08] rounded-2xl"
+                            className="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-105 rounded-2xl"
                           />
 
                           <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 ease-in-out z-30 p-4 sm:p-6 md:p-8">

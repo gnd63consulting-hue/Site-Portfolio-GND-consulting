@@ -10,7 +10,7 @@ export function ValuesSection() {
   ];
 
   return (
-    <section id="values-section" className="reveal py-24 px-6 lg:px-12">
+    <section id="values-section" className="reveal py-32 px-6 lg:px-12">
       <div className="mx-auto max-w-[1400px]">
         <div className="text-center mb-16">
           <span className="inline-flex items-center border border-gray-300 rounded-full px-5 py-2 text-xs font-medium uppercase tracking-widest text-[#64748B] mb-6">

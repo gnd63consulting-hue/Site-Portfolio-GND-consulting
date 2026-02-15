@@ -238,38 +238,22 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
     setFormData({ ...formData, files: newFiles });
   };
 
-  const baseFieldClasses = 'w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-200 disabled:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-60';
+  const baseFieldClasses = 'w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-black placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-black/10 focus:border-black transition-all duration-200 disabled:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-60';
   const selectFieldClasses = `${baseFieldClasses} appearance-none pr-12 cursor-pointer`;
   const textAreaClasses = `${baseFieldClasses} min-h-[120px] resize-y`;
 
   return (
-    <section id="contact-form" className="py-24 px-4 sm:px-6 max-w-4xl mx-auto relative contact-section-wrapper bg-gradient-to-br from-slate-50 via-white to-blue-50/30" aria-labelledby="contact-title">
-      {/* Effet de particules */}
-      <div className="absolute inset-0 opacity-25">
-        {Array.from({ length: 20 }).map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-primary rounded-full animate-pulse"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Éléments décoratifs colorés */}
-      <div className="absolute top-6 -left-12 h-40 w-40 sm:top-16 sm:-left-20 sm:h-72 sm:w-72 bg-gradient-to-br from-blue-300/45 to-blue-200/35 rounded-full blur-2xl sm:blur-3xl" />
-      <div className="absolute bottom-8 -right-10 h-48 w-48 sm:bottom-16 sm:-right-20 sm:h-96 sm:w-96 bg-gradient-to-br from-blue-500/25 to-blue-400/20 rounded-full blur-2xl sm:blur-3xl" />
-      <div className="absolute top-1/2 left-1/4 h-44 w-44 sm:left-1/3 sm:h-64 sm:w-64 bg-gradient-to-br from-slate-900/10 to-blue-300/25 rounded-full blur-xl sm:blur-2xl" />
-
-      <div className="text-center mb-8 sm:mb-12 md:mb-16 px-2 contact-header-wrapper">
-        <h2 id="contact-title" className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-4 sm:mb-6 uppercase tracking-tight contact-form-title">
-          Contactez-Nous
+    <section id="contact-form" className="py-32 px-6 lg:px-12 relative bg-gray-100 reveal" aria-labelledby="contact-title">
+      <div className="max-w-[1400px] mx-auto">
+      <div className="text-center mb-12 md:mb-16">
+        <span className="inline-block border border-gray-300 rounded-full px-4 py-1.5 text-xs uppercase tracking-[0.3em] text-gray-500 mb-4">
+          Contact
+        </span>
+        <h2 id="contact-title" className="font-display font-semibold text-3xl sm:text-4xl md:text-5xl leading-[0.9] tracking-tight text-black mb-4">
+          Parlons de votre projet
         </h2>
-        <p className="text-sm sm:text-base md:text-lg text-slate-700 leading-relaxed max-w-2xl mx-auto px-2 contact-form-subtitle">
-          Prêt à donner vie à vos projets créatifs ? Échangeons sur vos besoins et transformons vos idées en réalité
+        <p className="text-lg text-gray-500 leading-relaxed max-w-xl mx-auto">
+          Échangeons sur vos besoins et transformons vos idées en réalité
         </p>
       </div>
       <div className="relative z-10 max-w-[960px] mx-auto flex flex-col gap-12 items-center px-2 sm:px-6">
@@ -578,7 +562,7 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="cta-submit relative mt-2 inline-flex w-full items-center justify-center rounded-xl bg-blue-600 hover:bg-blue-700 px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-blue-600/25 hover:shadow-xl hover:shadow-blue-600/30 transition-all duration-200 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-200 disabled:opacity-60 disabled:shadow-none"
+              className="cta-submit relative mt-2 inline-flex w-full items-center justify-center rounded-full bg-black hover:bg-gray-800 px-8 py-4 text-lg font-medium text-white shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black/20 disabled:opacity-60 disabled:shadow-none"
               onClick={() => { if (!isSubmitting) trackEvent('conversion_cta_click', { form: 'contact' }); }}
             >
               {isSubmitting ? (
@@ -776,6 +760,7 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
           }
         }
       `}</style>
+      </div>
     </section>
   );
 }

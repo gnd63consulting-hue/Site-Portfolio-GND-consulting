@@ -21,12 +21,87 @@ const About: React.FC<AboutProps> = ({ testimonials = [] }) => {
     setIsHistorySectionVisible(!isHistorySectionVisible);
   };
 
+  // Image portrait existante du portfolio Supabase
+  const aboutImage = "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/6F0A4251.jpg";
+
   return (
     <section id="qui-sommes-nous" className="py-32 bg-[#F3F4F6] relative" aria-labelledby="about-title">
-      {/* Header — Stitch style */}
-      <AboutHeaderBento />
 
-      {/* Section principale avec bouton de dévoilement */}
+      {/* Section Hero — Grille 12 colonnes image + texte (Reference Stitch) */}
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12 mb-16 lg:mb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+
+          {/* Image gauche — col-span-5, aspect-[4/5], rounded-t-full */}
+          <div className="lg:col-span-5 reveal">
+            <div className="relative">
+              <div className="aspect-[4/5] rounded-t-full rounded-b-2xl overflow-hidden">
+                <img
+                  src={aboutImage}
+                  alt="GND Consulting — Studio créatif à Paris"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              {/* Badge flottant "15+" — cercle blanc avec ombre */}
+              <div className="absolute -bottom-10 -right-6 sm:-right-10 w-28 h-28 sm:w-32 sm:h-32 bg-white rounded-full shadow-xl flex flex-col items-center justify-center z-10">
+                <span className="font-display text-3xl sm:text-4xl font-semibold text-[#1A1A1A] leading-none">15+</span>
+                <span className="text-xs text-[#64748B] mt-1">Projets réalisés</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Texte droite — col-span-7 */}
+          <div className="lg:col-span-7 reveal delay-100 lg:pt-8">
+            <span className="inline-flex items-center border border-gray-300 rounded-full px-5 py-2 text-xs font-medium uppercase tracking-widest text-[#64748B] mb-8">
+              À propos
+            </span>
+
+            <h2 id="about-title" className="font-display font-semibold text-[clamp(2rem,5vw,3.5rem)] text-[#1A1A1A] leading-[0.95] mb-6">
+              L'intersection de l'humain
+              <br />
+              <span className="italic font-light text-[#4A4A4A]">& de la tech.</span>
+            </h2>
+
+            <p className="text-lg text-[#64748B] leading-relaxed max-w-xl mb-4">
+              Studio créatif alliant créativité humaine et intelligence artificielle
+              pour des projets audiovisuels et digitaux d&apos;exception.
+            </p>
+
+            <p className="text-base text-[#64748B] leading-relaxed max-w-xl mb-8">
+              Chez GND Consulting, nous croyons que chaque projet est une opportunité de créer quelque chose d'unique
+              et de mémorable. Notre équipe de créatifs passionnés travaille main dans la main avec nos techniciens
+              experts pour donner vie à vos idées les plus audacieuses.
+            </p>
+
+            {/* Stats inline */}
+            <div className="flex items-end gap-8 mb-8">
+              <div>
+                <span className="font-display text-5xl lg:text-6xl font-semibold text-[#1A1A1A] leading-none">15+</span>
+                <p className="text-sm text-[#64748B] mt-2">Projets réalisés</p>
+              </div>
+              <div>
+                <span className="font-display text-5xl lg:text-6xl font-semibold text-[#1A1A1A] leading-none">100%</span>
+                <p className="text-sm text-[#64748B] mt-2">Satisfaction client</p>
+              </div>
+            </div>
+
+            {/* 3 tag cards — Stratégie | Création | Tech */}
+            <div className="flex flex-wrap gap-3">
+              {['Stratégie', 'Création', 'Tech', 'IA'].map((tag) => (
+                <span
+                  key={tag}
+                  className="bg-white rounded-xl shadow-sm border border-gray-200 px-5 py-3 text-sm font-medium text-[#1A1A1A]"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Section "Découvrir notre histoire" — Garde le contenu existant */}
       <div id="history-section" className="max-w-[1400px] mx-auto mb-16 sm:mb-20 md:mb-24 px-6 lg:px-12">
         <div className="text-center mb-12 reveal">
           <button
@@ -52,7 +127,7 @@ const About: React.FC<AboutProps> = ({ testimonials = [] }) => {
         </div>
       </div>
 
-      {/* Section Avantages — Stitch cards */}
+      {/* Section Avantages — Stitch cards (contenu existant conservé) */}
       <div className="mt-12 sm:mt-16 px-6 lg:px-12 reveal">
         <div className="mx-auto max-w-[1400px]">
           <div className="text-center mb-12">
@@ -101,7 +176,7 @@ const About: React.FC<AboutProps> = ({ testimonials = [] }) => {
         </div>
       </div>
 
-      {/* Section Valeurs */}
+      {/* Section Valeurs — Contenu existant conservé */}
       <ValuesSection />
     </section>
   );

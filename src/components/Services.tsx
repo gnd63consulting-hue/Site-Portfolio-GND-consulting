@@ -60,6 +60,14 @@ export function Services() {
     ];
   };
 
+  // Images de fond pour les cards au hover (images existantes Supabase)
+  const categoryImages: Record<string, string> = {
+    content: "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250919_0006_Vibrant%20Digital%20Collaboration_remix_01k5fdpkfdemjrbt49q10rx0hx.png",
+    branding: "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20251006_2055_Espace%20Travail%20Futuriste_simple_compose_01k6xdztmrewrv8rq637vqqpnp.png",
+    automation: "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/6F0A4251.jpg",
+    strategy: "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/6F0A4135.jpg",
+  };
+
   const serviceCategories = [
     {
       id: 'content',
@@ -244,21 +252,34 @@ export function Services() {
               key={category.id}
               onClick={() => setSelectedCategory(isActive ? null : category.id)}
               aria-label={`Explorer ${category.title}`}
-              className={`group relative bg-gray-50 rounded-2xl p-8 h-[420px] flex flex-col justify-between text-left transition-all duration-500 focus:outline-none focus-visible:ring-4 focus-visible:ring-accent/30 ${
+              className={`group relative bg-gray-50 rounded-2xl p-8 h-[420px] flex flex-col justify-between text-left transition-all duration-500 focus:outline-none focus-visible:ring-4 focus-visible:ring-accent/30 overflow-hidden ${
                 isActive
                   ? 'bg-black text-white ring-2 ring-accent/30'
                   : 'hover:bg-black hover:text-white'
               }`}
             >
+              {/* Background image — grayscale, visible on hover */}
+              {categoryImages[category.id] && (
+                <div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-700 grayscale"
+                  style={{
+                    backgroundImage: `url(${categoryImages[category.id]})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                  }}
+                  aria-hidden="true"
+                />
+              )}
+
               {/* Icon */}
-              <div>
+              <div className="relative z-10">
                 <span className={`material-symbols-outlined text-3xl ${isActive ? 'text-white' : 'text-text-main group-hover:text-white'} transition-colors duration-500`}>
                   {category.icon}
                 </span>
               </div>
 
               {/* Content */}
-              <div className="flex flex-col gap-3">
+              <div className="relative z-10 flex flex-col gap-3">
                 <span className={`text-xs font-medium uppercase tracking-widest ${isActive ? 'text-gray-400' : 'text-text-muted group-hover:text-gray-400'} transition-colors duration-500`}>
                   {String(index + 1).padStart(2, '0')}
                 </span>
@@ -271,12 +292,12 @@ export function Services() {
               </div>
 
               {/* Footer — link */}
-              <div className={`flex items-center justify-between border-t pt-4 ${isActive ? 'border-white/20' : 'border-gray-200 group-hover:border-white/20'} transition-colors duration-500`}>
+              <div className={`relative z-10 flex items-center justify-between border-t pt-4 ${isActive ? 'border-white/20' : 'border-gray-200 group-hover:border-white/20'} transition-colors duration-500`}>
                 <span className={`text-xs font-medium uppercase tracking-widest ${isActive ? 'text-gray-400' : 'text-text-muted group-hover:text-gray-400'} transition-colors duration-500`}>
-                  Découvrir
+                  En savoir plus
                 </span>
-                <span className={`text-sm font-semibold ${isActive ? 'text-gray-400' : 'text-text-muted group-hover:text-gray-400'} transition-transform duration-300 group-hover:translate-x-1`}>
-                  →
+                <span className={`material-symbols-outlined text-sm ${isActive ? 'text-gray-400' : 'text-text-muted group-hover:text-gray-400'} transition-transform duration-300 group-hover:translate-x-1`}>
+                  arrow_forward
                 </span>
               </div>
             </button>

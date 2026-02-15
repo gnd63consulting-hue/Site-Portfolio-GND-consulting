@@ -1768,6 +1768,101 @@ export function Portfolio() {
         </p>
       </div>
 
+      {/* Grille asymétrique — Stitch reference design */}
+      <div className="max-w-[1400px] mx-auto mb-16 reveal delay-100">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Colonne gauche — aspect-[4/3] */}
+          <div className="flex flex-col gap-6">
+            {portfolioCards
+              .filter(c => c.type === 'video' && !hiddenVideoIds.includes(c.id))
+              .slice(0, 2)
+              .map((project) => {
+                const videoIdx = normalizedVideoItems.findIndex(m => m.id === project.id);
+                return (
+                  <button
+                    type="button"
+                    key={project.id}
+                    onClick={() => {
+                      setActiveTab('video');
+                      if (videoIdx >= 0) setSelectedMediaIndex(videoIdx);
+                      document.getElementById('portfolio-tabs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }}
+                    className="group relative aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-accent/30"
+                    aria-label={`Voir le projet ${project.title}`}
+                  >
+                    <img
+                      src={project.thumbnail}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                      <h3 className="font-display text-lg font-semibold text-white mb-2">{project.title}</h3>
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs text-white/70 uppercase tracking-widest">{project.tag}</span>
+                        <span className="material-symbols-outlined text-white text-sm">arrow_outward</span>
+                      </div>
+                    </div>
+                  </button>
+                );
+              })}
+          </div>
+
+          {/* Colonne droite — aspect-[3/4] avec md:mt-24 offset */}
+          <div className="flex flex-col gap-6 md:mt-24">
+            {portfolioCards
+              .filter(c => c.type === 'video' && !hiddenVideoIds.includes(c.id))
+              .slice(2, 4)
+              .map((project) => {
+                const videoIdx = normalizedVideoItems.findIndex(m => m.id === project.id);
+                return (
+                  <button
+                    type="button"
+                    key={project.id}
+                    onClick={() => {
+                      setActiveTab('video');
+                      if (videoIdx >= 0) setSelectedMediaIndex(videoIdx);
+                      document.getElementById('portfolio-tabs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }}
+                    className="group relative aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-accent/30"
+                    aria-label={`Voir le projet ${project.title}`}
+                  >
+                    <img
+                      src={project.thumbnail}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                      <h3 className="font-display text-lg font-semibold text-white mb-2">{project.title}</h3>
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs text-white/70 uppercase tracking-widest">{project.tag}</span>
+                        <span className="material-symbols-outlined text-white text-sm">arrow_outward</span>
+                      </div>
+                    </div>
+                  </button>
+                );
+              })}
+          </div>
+        </div>
+
+        {/* Bouton "Voir tout le portfolio" */}
+        <div className="text-center mt-12">
+          <button
+            type="button"
+            onClick={() => {
+              document.getElementById('portfolio-tabs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }}
+            className="inline-flex items-center gap-2 bg-black text-white rounded-full px-8 py-4 text-sm font-medium font-display transition-all duration-300 hover:bg-gray-800 hover:scale-105"
+          >
+            Voir tout le portfolio
+            <span className="material-symbols-outlined text-sm">arrow_forward</span>
+          </button>
+        </div>
+      </div>
+
       {/* Menu segmenté (pills) — Stitch style */}
       <div id="portfolio-tabs" className="flex justify-center mb-8 sm:mb-12 relative z-40 max-w-[1400px] mx-auto pointer-events-auto px-2 sm:px-0 reveal delay-100">
         <div className="glass-nav p-1.5 sm:p-2 inline-flex flex-wrap items-center justify-center gap-1 sm:gap-2 max-w-[280px] sm:max-w-none" role="tablist">

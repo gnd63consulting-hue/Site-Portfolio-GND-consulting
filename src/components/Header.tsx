@@ -29,29 +29,17 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Highlight nav item for route-based pages
-  useEffect(() => {
-    if (location.pathname.startsWith('/portfolio')) {
-      setActiveSection('/portfolio');
-    }
-  }, [location.pathname]);
-
   // Track active section via IntersectionObserver
   useEffect(() => {
     if (window.location.pathname !== '/' && window.location.pathname !== '') {
       return;
     }
-    const sectionIds = ['qui-sommes-nous', 'services', 'footer'];
+    const sectionIds = ['qui-sommes-nous', 'services', 'realisations', 'contact-form'];
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
-            const id = entry.target.id;
-            if (id === 'footer') {
-              setActiveSection('#contact');
-            } else {
-              setActiveSection(`#${id}`);
-            }
+            setActiveSection(`#${entry.target.id}`);
           }
         }
       },
@@ -65,10 +53,10 @@ export function Header() {
   }, []);
 
   const navItems = [
-    { href: '#qui-sommes-nous', label: 'Studio' },
-    { href: '#services', label: 'Expertise' },
-    { href: '/portfolio', label: 'Projets' },
-    { href: '#journal', label: 'Journal' },
+    { href: '#qui-sommes-nous', label: 'Agence' },
+    { href: '#services', label: 'Services' },
+    { href: '#realisations', label: 'Réalisations' },
+    { href: '#contact-form', label: 'Contact' },
   ];
 
   const scrollToSection = (href: string) => {

@@ -4,9 +4,8 @@ export function ValuesSection() {
   const values = [
     { id: 'passion', title: 'Passion', description: 'Nous mettons notre cœur dans chaque projet' },
     { id: 'reliability', title: 'Fiabilité', description: 'Engagement total envers la qualité et les délais' },
-    { id: 'innovation', title: 'Innovation', description: 'Toujours à la pointe des dernières technologies' },
+    { id: 'innovation', title: 'Innovation', description: "À la pointe des dernières technologies, nous intégrons l'IA et l'automatisation pour maximiser l'impact de chaque projet." },
     { id: 'collaboration', title: 'Collaboration', description: 'Partenaire de confiance dans votre réussite' },
-    { id: 'ai', title: 'Innovation IA', description: "Intégration de l'IA et de l'automatisation quand c'est un vrai plus" }
   ];
 
   return (
@@ -24,7 +23,7 @@ export function ValuesSection() {
           </p>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {values.map((value, index) => (
             <div
               key={value.id}

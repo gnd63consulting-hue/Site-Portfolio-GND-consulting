@@ -15,7 +15,7 @@ interface AboutProps {
 
 const About: React.FC<AboutProps> = ({ testimonials = [] }) => {
   // Image portrait existante du portfolio Supabase
-  const aboutImage = "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/6F0A4251.jpg";
+  const aboutImage = "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/gnd-cover.png";
 
   const scrollToHistory = (e: React.MouseEvent) => {
     e.preventDefault();

@@ -127,7 +127,7 @@ export function Header() {
               <img
                 src="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/GND%20consulting%20Logo%20Blanc-Photoroom.png"
                 alt="GND Consulting"
-                className="h-8 w-auto"
+                className="h-14 w-auto"
               />
             </a>
 

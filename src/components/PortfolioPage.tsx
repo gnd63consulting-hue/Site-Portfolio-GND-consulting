@@ -3,7 +3,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 /* ────────────────────────────────────────────────────────────────────────── */
 /*  Types                                                                    */
 /* ────────────────────────────────────────────────────────────────────────── */
-type Category = 'tous' | 'audiovisuel' | 'design' | 'motion' | 'photo' | 'ia';
+type Category = 'tous' | 'audiovisuel' | 'photo';
 
 interface PortfolioProject {
   id: string;
@@ -18,8 +18,8 @@ interface PortfolioProject {
 /* ────────────────────────────────────────────────────────────────────────── */
 const filters: { key: Category; label: string }[] = [
   { key: 'tous', label: 'Tous' },
-  { key: 'audiovisuel', label: 'Audiovisuel' },
-  { key: 'photo', label: 'Photo' },
+  { key: 'audiovisuel', label: 'Vidéos' },
+  { key: 'photo', label: 'Photos' },
 ];
 
 const allProjects: PortfolioProject[] = [
@@ -28,21 +28,21 @@ const allProjects: PortfolioProject[] = [
     id: 'esther-seems-bobine',
     title: 'ESTHER SEEMS – BOBINE',
     category: 'audiovisuel',
-    thumbnail: 'https://img.youtube.com/vi/6oaO6YoWjyQ/hqdefault.jpg',
+    thumbnail: 'https://img.youtube.com/vi/6oaO6YoWjyQ/maxresdefault.jpg',
     tags: ['Clip Musical', 'Réalisation'],
   },
   {
     id: 'leyel-miel',
     title: 'LEYEL – MIEL',
     category: 'audiovisuel',
-    thumbnail: 'https://img.youtube.com/vi/UbXQim7iNLI/hqdefault.jpg',
+    thumbnail: 'https://img.youtube.com/vi/UbXQim7iNLI/maxresdefault.jpg',
     tags: ['Clip Musical', 'Variété'],
   },
   {
     id: 'sabay-festival-2023',
     title: 'SABAY FESTIVAL 2023',
     category: 'audiovisuel',
-    thumbnail: 'https://img.youtube.com/vi/Vyhz7_D4fFU/hqdefault.jpg',
+    thumbnail: 'https://img.youtube.com/vi/Vyhz7_D4fFU/maxresdefault.jpg',
     tags: ['Aftermovie', 'Événementiel'],
   },
   {
@@ -63,7 +63,7 @@ const allProjects: PortfolioProject[] = [
     id: 'cook-soul-kaoutar',
     title: 'COOK & SOUL AVEC KAOUTAR',
     category: 'audiovisuel',
-    thumbnail: 'https://img.youtube.com/vi/galhl8_dYyk/hqdefault.jpg',
+    thumbnail: 'https://img.youtube.com/vi/galhl8_dYyk/maxresdefault.jpg',
     tags: ['Émission', 'Production'],
   },
   {
@@ -73,11 +73,10 @@ const allProjects: PortfolioProject[] = [
     thumbnail: 'https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/gnd-cover.png',
     tags: ['Clip Musical', 'Hip-Hop'],
   },
-  /* ── Motion ──────────────────────────────────────────────────────────── */
   {
     id: 'trinity-rebel',
     title: 'TRINITY REBEL FT DAFXCX – L\'UNIVERS OFFICIEL',
-    category: 'motion',
+    category: 'audiovisuel',
     thumbnail: 'https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/gnd-cover.png',
     tags: ['Motion Design', 'Clip Musical'],
   },
@@ -131,27 +130,26 @@ const allProjects: PortfolioProject[] = [
     thumbnail: 'https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/6F0A2054.JPG',
     tags: ['Événementiel', 'Reportage'],
   },
-  /* ── Design ──────────────────────────────────────────────────────────── */
   {
     id: 'branding-1',
     title: 'ÉNERGIE COLLECTIVE',
-    category: 'design',
+    category: 'photo',
     thumbnail: 'https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/6F0A4028.jpg',
-    tags: ['Branding', 'Direction Artistique'],
+    tags: ['Portrait', 'Groupe'],
   },
   {
     id: 'branding-2',
     title: 'ATTITUDE & CONFIANCE',
-    category: 'design',
+    category: 'photo',
     thumbnail: 'https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/6F0A3992.jpg',
-    tags: ['Branding', 'Portrait'],
+    tags: ['Portrait', 'Studio'],
   },
   {
     id: 'branding-3',
     title: 'VISION URBAINE',
-    category: 'design',
+    category: 'photo',
     thumbnail: 'https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/6F0A4002.JPG',
-    tags: ['Branding', 'Urbain'],
+    tags: ['Portrait', 'Urbain'],
   },
 ];
 
@@ -178,6 +176,17 @@ function ProjectCard({
         alt={project.title}
         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
         loading="lazy"
+        onError={(e) => {
+          const target = e.currentTarget;
+          const src = target.src;
+          if (src.includes('maxresdefault')) {
+            target.src = src.replace('maxresdefault', 'hq720');
+          } else if (src.includes('hq720')) {
+            target.src = src.replace('hq720', 'sddefault');
+          } else if (src.includes('sddefault')) {
+            target.src = src.replace('sddefault', 'hqdefault');
+          }
+        }}
       />
 
       {/* Gradient overlay on hover */}

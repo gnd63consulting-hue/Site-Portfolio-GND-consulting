@@ -297,7 +297,7 @@ interface MediaItem {
 }
 
 export function Portfolio() {
-  const { loading } = useProjects();
+  useProjects(); // keep hook for Supabase data used by video player
   const [activeTab, setActiveTab] = useState<'video' | 'photo'>('video');
   const [selectedMediaIndex, setSelectedMediaIndex] = useState(0);
   const [selectedCollection, setSelectedCollection] = useState('corporate');
@@ -1738,18 +1738,6 @@ export function Portfolio() {
     if (currentMedia?.description) return [currentMedia.description];
     return [];
   }, [videoParagraphs, currentMedia?.description]);
-
-  // Section Découvrir nos réalisations – État de chargement
-  if (loading) {
-    return (
-      <section className="py-32 px-6 lg:px-12 max-w-[1400px] mx-auto relative">
-        <div className="text-center">
-          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
-          <p className="text-slate-600 mt-4">Chargement du portfolio...</p>
-        </div>
-      </section>
-    );
-  }
 
   // Section Découvrir nos réalisations – ID utilisé pour scroll via menu Portfolio
   return (

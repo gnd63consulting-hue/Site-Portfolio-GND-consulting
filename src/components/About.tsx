@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { CheckCircle, Star, Clock } from 'lucide-react';
-import { AboutHeaderBento } from './AboutHeaderBento';
 import { AboutServicesBlocks } from './AboutServicesBlocks';
 import { ValuesSection } from './ValuesSection';
 
@@ -42,11 +41,6 @@ const About: React.FC<AboutProps> = ({ testimonials = [] }) => {
                   loading="lazy"
                   decoding="async"
                 />
-              </div>
-              {/* Badge flottant "15+" — cercle blanc avec ombre */}
-              <div className="absolute -bottom-10 -right-6 sm:-right-10 w-28 h-28 sm:w-32 sm:h-32 bg-white rounded-full shadow-xl flex flex-col items-center justify-center z-10">
-                <span className="font-display text-3xl sm:text-4xl font-semibold text-[#1A1A1A] leading-none">15+</span>
-                <span className="text-xs text-[#64748B] mt-1">Projets réalisés</span>
               </div>
             </div>
           </div>

@@ -1,24 +1,12 @@
 import React, { useState } from 'react';
 import {
-  MessageCircle,
-  Upload,
-  X,
   CheckCircle,
   AlertCircle,
-  Mail,
-  Smartphone,
-  Building2,
-  User,
-  CalendarDays,
-  Coins,
-  Briefcase,
   ShieldCheck,
-  Sparkles
 } from 'lucide-react';
 import { AIChat } from './AIChat';
 import { FAQ } from './FAQ';
 import { useContacts } from '../hooks/useSupabase';
-import { supabase } from '../lib/supabase';
 import { trackEvent } from '../utils/analytics';
 
 interface ContactProps {
@@ -30,14 +18,7 @@ interface ContactProps {
   showFAQ?: boolean;
 }
 
-export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
-  const defaultTheme = {
-    primary: '#ec4899',
-    secondary: '#f472b6',
-    gradient: 'linear-gradient(135deg, #ec4899 0%, #f472b6 100%)'
-  };
-
-  const theme = themeColor || defaultTheme;
+export function Contact({ showFAQ = true }: ContactProps = {}) {
   const { addContact } = useContacts();
   const [formData, setFormData] = useState({
     name: '',
@@ -56,11 +37,10 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
-  const [honeypot, setHoneypot] = useState(''); // Anti-spam honeypot
+  const [honeypot, setHoneypot] = useState('');
   const [interactionCount, setInteractionCount] = useState(0);
   const [formOpenedAt] = useState<number>(() => Date.now());
 
-  // Validation des champs
   const validateForm = () => {
     if (!formData.name.trim()) {
       setErrorMessage('Le nom est obligatoire');
@@ -75,42 +55,35 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
       return false;
     }
     if (!formData.projectType) {
-      setErrorMessage('Le type de projet est obligatoire');
+      setErrorMessage('Le service souhaité est obligatoire');
       return false;
     }
     if (!formData.message.trim()) {
       setErrorMessage('Le message est obligatoire');
       return false;
     }
-    // Anti-spam: exige une interaction minimale et un temps passé sur le formulaire
     const elapsedMs = Date.now() - formOpenedAt;
     if (interactionCount < 2 || elapsedMs < 3000) {
       setErrorMessage('Veuillez compléter le formulaire normalement avant envoi.');
       return false;
     }
-    if (formData.phone && !/^[\d\s\-\+\(\)\.]{8,}$/.test(formData.phone)) {
-      setErrorMessage('Format de téléphone invalide');
-      return false;
-    }
     return true;
   };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Protection anti-spam
+
     if (honeypot) {
       if (import.meta.env.MODE === 'development') {
-        // eslint-disable-next-line no-console
         console.log('Tentative de spam détectée');
       }
       return;
     }
-    
+
     setIsSubmitting(true);
     setSubmitStatus('idle');
     setErrorMessage('');
 
-    // Validation
     if (!validateForm()) {
       setIsSubmitting(false);
       setSubmitStatus('error');
@@ -119,33 +92,25 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
 
     try {
       trackEvent('form_submit_attempt', { form: 'contact' });
-      // Préparer les données pour Supabase
-      const fullName = formData.firstName 
-        ? `${formData.firstName} ${formData.name}`.trim()
-        : formData.name;
-        
+
       const contactData = {
-        nom: fullName,
+        nom: formData.name,
         email: formData.email,
-        telephone: formData.phone || null,
-        entreprise: formData.company || null,
+        telephone: null,
+        entreprise: null,
         type_projet: formData.projectType,
-        budget: formData.budget || null,
-        delai_souhaite: formData.timeline || null,
+        budget: null,
+        delai_souhaite: null,
         message: formData.message,
-        fichiers_joints: formData.files.length > 0 ? 
-          formData.files.map(f => ({ name: f.name, size: f.size, type: f.type })) : 
-          null
+        fichiers_joints: null
       };
 
-      // 1. Enregistrer dans Supabase
       const result = await addContact(contactData);
-      
+
       if (!result.success) {
         throw new Error('Erreur lors de l\'enregistrement en base');
       }
 
-      // 2. Envoyer l'email de notification
       try {
         const emailResponse = await fetch(
           `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-contact-email`,
@@ -161,17 +126,14 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
 
         const emailResult = await emailResponse.json();
         if (import.meta.env.MODE === 'development') {
-          // eslint-disable-next-line no-console
           console.log('Résultat envoi email:', emailResult);
         }
         trackEvent('email_dispatch', { form: 'contact', status: 'success' });
       } catch (emailError) {
         console.error('Erreur envoi email (non bloquant):', emailError);
         trackEvent('email_dispatch', { form: 'contact', status: 'error' });
-        // L'erreur d'email n'empêche pas le succès du formulaire
       }
 
-      // 3. Succès
       setSubmitStatus('success');
       trackEvent('form_submit_success', { form: 'contact' });
       setFormData({
@@ -186,7 +148,6 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
         message: '',
         files: []
       });
-      
     } catch (error) {
       console.error('Erreur soumission formulaire:', error);
       trackEvent('form_submit_error', { form: 'contact' });
@@ -198,89 +159,47 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
     setInteractionCount((c) => c + 1);
   };
 
   const handleProjectUpdate = (projectDescription: string) => {
-    setFormData({
-      ...formData,
-      message: projectDescription
-    });
+    setFormData({ ...formData, message: projectDescription });
   };
-
-  // Gestion des fichiers
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = Array.from(e.target.files || []);
-    const maxSize = 10 * 1024 * 1024; // 10MB
-    const allowedTypes = ['image/', 'application/pdf', 'text/', 'application/msword', 'application/vnd.openxmlformats'];
-    
-    const validFiles = files.filter(file => {
-      if (file.size > maxSize) {
-        setErrorMessage(`Le fichier ${file.name} est trop volumineux (max 10MB)`);
-        return false;
-      }
-      if (!allowedTypes.some(type => file.type.startsWith(type))) {
-        setErrorMessage(`Le fichier ${file.name} n'est pas d'un type autorisé`);
-        return false;
-      }
-      return true;
-    });
-    
-    setFormData({ ...formData, files: [...formData.files, ...validFiles] });
-  };
-
-  const removeFile = (index: number) => {
-    const newFiles = formData.files.filter((_, i) => i !== index);
-    setFormData({ ...formData, files: newFiles });
-  };
-
-  const baseFieldClasses = 'w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-[#1A1A1A] placeholder:text-[#64748B] focus:outline-none focus:ring-2 focus:ring-black/10 focus:border-black transition-all duration-200 disabled:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-60';
-  const selectFieldClasses = `${baseFieldClasses} appearance-none pr-12 cursor-pointer`;
-  const textAreaClasses = `${baseFieldClasses} min-h-[120px] resize-y`;
 
   return (
-    <section id="contact-form" className="reveal py-32 px-6 lg:px-12 max-w-[1400px] mx-auto relative contact-section-wrapper bg-white" aria-labelledby="contact-title">
-      {/* Effet de particules */}
-      <div className="absolute inset-0 opacity-25">
-        {Array.from({ length: 20 }).map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-primary rounded-full animate-pulse"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Éléments décoratifs colorés */}
-      <div className="absolute top-6 -left-12 h-40 w-40 sm:top-16 sm:-left-20 sm:h-72 sm:w-72 bg-gray-200/30 rounded-full blur-2xl sm:blur-3xl" />
-      <div className="absolute bottom-8 -right-10 h-48 w-48 sm:bottom-16 sm:-right-20 sm:h-96 sm:w-96 bg-gray-300/20 rounded-full blur-2xl sm:blur-3xl" />
-      <div className="absolute top-1/2 left-1/4 h-44 w-44 sm:left-1/3 sm:h-64 sm:w-64 bg-gray-200/20 rounded-full blur-xl sm:blur-2xl" />
-
-      <div className="text-center mb-8 sm:mb-12 md:mb-16 px-2 contact-header-wrapper">
-        <h2 id="contact-title" className="font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-[#1A1A1A] mb-4 sm:mb-6 uppercase tracking-tight contact-form-title">
-          Contactez-Nous
+    <section
+      id="contact-form"
+      className="reveal py-32 px-6 lg:px-12 max-w-[1400px] mx-auto bg-white"
+      aria-labelledby="contact-title"
+    >
+      {/* ── HERO ─────────────────────────────────────────────────────────── */}
+      <div className="text-center mb-16 reveal">
+        <div className="mb-6">
+          <span className="inline-flex items-center gap-2 rounded-full border border-gray-300 px-5 py-2 text-xs font-medium uppercase tracking-widest text-text-muted">
+            Contact
+          </span>
+        </div>
+        <h2
+          id="contact-title"
+          className="font-display font-semibold text-[clamp(2rem,5vw,3.5rem)] text-text-main leading-[0.95]"
+        >
+          Parlons de votre projet
         </h2>
-        <p className="text-sm sm:text-base md:text-lg text-[#64748B] leading-relaxed max-w-2xl mx-auto px-2 contact-form-subtitle">
-          Prêt à donner vie à vos projets créatifs ? Échangeons sur vos besoins et transformons vos idées en réalité
+        <p className="text-lg text-text-muted leading-relaxed max-w-2xl mx-auto mt-4">
+          Prêt à donner vie à vos idées créatives ? Partagez votre vision,
+          nous revenons vers vous sous 24h.
         </p>
       </div>
-      <div className="relative z-10 max-w-[960px] mx-auto flex flex-col gap-12 items-center px-2 sm:px-6">
+
+      {/* ── GRILLE FORM + INFOS ──────────────────────────────────────────── */}
+      <div className="max-w-[1100px] mx-auto grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-12 lg:gap-16 reveal delay-100">
+        {/* ── FORMULAIRE ─────────────────────────────────────────────────── */}
         <form
           onSubmit={handleSubmit}
-          className="contact-form-main relative w-full max-w-[820px] overflow-hidden rounded-2xl border border-gray-200 bg-gray-50 shadow-xl"
+          className="space-y-6"
         >
-          <div className="pointer-events-none absolute inset-0 bg-white/40" />
-          <div className="pointer-events-none absolute inset-x-6 -top-16 h-32 rounded-full bg-white/20 blur-3xl" />
-
-          {/* Honeypot anti-spam (caché) */}
+          {/* Honeypot */}
           <input
             type="text"
             name="website"
@@ -290,323 +209,236 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
             tabIndex={-1}
           />
 
-          <div className="relative z-10 grid gap-6 p-6 sm:p-8 md:p-10 form-inner w-full">
-            <div className="flex flex-col gap-2 text-center sm:text-left items-center sm:items-start">
-              <span className="badge-title inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-[#64748B]">
-                <Sparkles className="h-4 w-4 text-[#1A1A1A]" />
-                Formulaire
-              </span>
-              <h3 className="font-display text-xl sm:text-2xl font-semibold text-[#1A1A1A] tracking-tight">
-                Discutons de votre projet
-              </h3>
-              <p className="text-sm text-[#64748B] leading-relaxed max-w-[32rem]">
-                Partagez vos besoins en quelques lignes. Nous analysons chaque demande avec un expert dédié avant de vous répondre.
-              </p>
-            </div>
+          {/* Nom */}
+          <div>
+            <label htmlFor="contact-name" className="block text-sm font-medium text-text-main mb-2 font-display">
+              Nom complet <span className="text-text-muted">*</span>
+            </label>
+            <input
+              id="contact-name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              className="w-full px-5 py-3.5 bg-white border border-gray-200 rounded-xl text-text-main placeholder:text-text-muted/60 focus:outline-none focus:border-black transition-colors duration-200"
+              placeholder="Votre nom"
+              required
+              disabled={isSubmitting}
+            />
+          </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-              <div className="relative">
-                <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#64748B]">
-                  <User className="h-4 w-4" />
-                </span>
-                <input
-                  name="firstName"
-                  value={formData.firstName}
-                  onChange={handleChange}
-                  className={`${baseFieldClasses} pl-12`}
-                  placeholder="Prénom (optionnel)"
-                  disabled={isSubmitting}
-                />
-              </div>
-              <div className="relative">
-                <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#64748B]">
-                  <User className="h-4 w-4" />
-                </span>
-                <input
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className={`${baseFieldClasses} pl-12`}
-                  placeholder="Votre nom *"
-                  required
-                  disabled={isSubmitting}
-                />
-              </div>
-            </div>
+          {/* Email */}
+          <div>
+            <label htmlFor="contact-email" className="block text-sm font-medium text-text-main mb-2 font-display">
+              Email <span className="text-text-muted">*</span>
+            </label>
+            <input
+              id="contact-email"
+              name="email"
+              type="email"
+              value={formData.email}
+              onChange={handleChange}
+              className="w-full px-5 py-3.5 bg-white border border-gray-200 rounded-xl text-text-main placeholder:text-text-muted/60 focus:outline-none focus:border-black transition-colors duration-200"
+              placeholder="votre@email.com"
+              required
+              disabled={isSubmitting}
+            />
+          </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-              <div className="relative">
-                <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#64748B]">
-                  <Mail className="h-4 w-4" />
-                </span>
-                <input
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  aria-invalid="false"
-                  className={`${baseFieldClasses} pl-12`}
-                  placeholder="Votre e-mail *"
-                  required
-                  disabled={isSubmitting}
-                />
-              </div>
-              <div className="relative">
-                <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#64748B]">
-                  <Smartphone className="h-4 w-4" />
-                </span>
-                <input
-                  name="phone"
-                  type="tel"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className={`${baseFieldClasses} pl-12`}
-                  placeholder="Téléphone (optionnel)"
-                  disabled={isSubmitting}
-                />
-              </div>
-            </div>
-
+          {/* Service souhaité */}
+          <div>
+            <label htmlFor="contact-service" className="block text-sm font-medium text-text-main mb-2 font-display">
+              Service souhaité <span className="text-text-muted">*</span>
+            </label>
             <div className="relative">
-              <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#64748B]">
-                <Building2 className="h-4 w-4" />
-              </span>
-              <input
-                name="company"
-                value={formData.company}
-                onChange={handleChange}
-                className={`${baseFieldClasses} pl-12`}
-                placeholder="Entreprise (optionnel)"
-                disabled={isSubmitting}
-              />
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-              <div className="relative">
-                <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#64748B]">
-                  <Briefcase className="h-4 w-4" />
-                </span>
-                <select
-                  name="projectType"
-                  value={formData.projectType}
-                  onChange={handleChange}
-                  className={`${selectFieldClasses} pl-12`}
-                  required
-                  disabled={isSubmitting}
-                  aria-label="Type de projet"
-                >
-                  <option value="">Type de projet *</option>
-                  <option value="production_audiovisuelle">Production Audiovisuelle</option>
-                  <option value="design_graphique">Design Graphique</option>
-                  <option value="motion_design">Motion Design</option>
-                  <option value="site_web">Site Web</option>
-                  <option value="strategie_digitale">Stratégie Digitale</option>
-                  <option value="pack_complet">Pack Complet</option>
-                </select>
-                <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[#64748B]">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </div>
-              </div>
-              <div className="relative">
-                <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#64748B]">
-                  <Coins className="h-4 w-4" />
-                </span>
-                <select
-                  name="budget"
-                  value={formData.budget}
-                  onChange={handleChange}
-                  className={`${selectFieldClasses} pl-12`}
-                  disabled={isSubmitting}
-                >
-                  <option value="">Budget estimé</option>
-                  <option value="< 2k€">&lt; 2k€</option>
-                  <option value="2k-5k€">2k-5k€</option>
-                  <option value="5k-10k€">5k-10k€</option>
-                  <option value="10k-20k€">10k-20k€</option>
-                  <option value="20k+€">20k+€</option>
-                  <option value="À discuter">À discuter</option>
-                </select>
-                <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[#64748B]">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </div>
-              </div>
-            </div>
-
-            <div className="relative">
-              <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#64748B]">
-                <CalendarDays className="h-4 w-4" />
-              </span>
               <select
-                name="timeline"
-                value={formData.timeline}
+                id="contact-service"
+                name="projectType"
+                value={formData.projectType}
                 onChange={handleChange}
-                className={`${selectFieldClasses} pl-12`}
+                className="w-full px-5 py-3.5 bg-white border border-gray-200 rounded-xl text-text-main appearance-none pr-12 cursor-pointer focus:outline-none focus:border-black transition-colors duration-200"
+                required
                 disabled={isSubmitting}
               >
-                <option value="">Délai souhaité</option>
-                <option value="Urgent (<1 semaine)">Urgent (&lt;1 semaine)</option>
-                <option value="1-2 semaines">1-2 semaines</option>
-                <option value="1 mois">1 mois</option>
-                <option value="2-3 mois">2-3 mois</option>
-                <option value="Flexible">Flexible</option>
+                <option value="">Sélectionner un service</option>
+                <option value="production_audiovisuelle">Production Audiovisuelle</option>
+                <option value="design_identite_visuelle">Design & Identité Visuelle</option>
+                <option value="motion_design">Motion Design</option>
+                <option value="photographie">Photographie</option>
+                <option value="automatisation_ia">Automatisation & IA</option>
+                <option value="autre">Autre</option>
               </select>
-              <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[#64748B]">
+              <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-text-muted">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </div>
             </div>
-
-            <div>
-              <div className="relative overflow-hidden rounded-xl border border-gray-200 bg-white px-4 py-4 shadow-sm">
-                <input
-                  type="file"
-                  multiple
-                  onChange={handleFileChange}
-                  className="hidden"
-                  id="file-upload"
-                  accept="image/*,.pdf,.doc,.docx,.txt"
-                  disabled={isSubmitting}
-                />
-                <label
-                  htmlFor="file-upload"
-                  className="file-upload-label group flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 cursor-pointer text-left"
-                >
-                  <div className="flex items-center gap-3 w-full sm:w-auto">
-                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-black text-white shadow-md">
-                      <Upload className="w-5 h-5" />
-                    </span>
-                    <div className="space-y-1">
-                      <p className="text-sm font-semibold text-[#1A1A1A]">Joindre des fichiers (optionnel)</p>
-                      <p className="text-xs text-[#64748B]">PDF, images, briefs… max 10 Mo</p>
-                    </div>
-                  </div>
-                  <span className="text-[0.6rem] sm:text-xs font-semibold uppercase tracking-[0.3em] text-[#64748B]">
-                    Glisser-déposer
-                  </span>
-                </label>
-
-                {formData.files.length > 0 && (
-                  <div className="mt-4 space-y-2">
-                    {formData.files.map((file, index) => (
-                      <div key={index} className="flex items-center justify-between rounded-xl border border-gray-200 bg-white px-3 py-2.5">
-                        <div className="flex flex-wrap items-center gap-2 text-sm text-[#64748B]">
-                          <span className="text-[#1A1A1A] text-base leading-none">📎</span>
-                          <span className="font-medium text-[#1A1A1A]">{file.name}</span>
-                          <span className="text-[#64748B] text-xs">({(file.size / 1024 / 1024).toFixed(1)} MB)</span>
-                        </div>
-                        <button
-                          type="button"
-                          onClick={() => removeFile(index)}
-                          className="flex h-7 w-7 items-center justify-center rounded-full bg-gray-100 text-[#64748B] transition-all duration-300 hover:bg-gray-200 disabled:opacity-50"
-                          disabled={isSubmitting}
-                        >
-                          <X className="w-3.5 h-3.5" />
-                        </button>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
-
-            <div className="space-y-3">
-              <div className="relative">
-                <span className="pointer-events-none absolute left-4 top-4 text-[#64748B]">
-                  <MessageCircle className="h-4 w-4" />
-                </span>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows={5}
-                  className={`${textAreaClasses} pl-12 pt-4`}
-                  placeholder="Décrivez votre projet et vos objectifs... *"
-                  required
-                  disabled={isSubmitting}
-                />
-              </div>
-              <button
-                type="button"
-                onClick={() => setIsAIChatOpen(true)}
-                className="ai-trigger inline-flex items-center gap-2 self-stretch sm:self-start justify-center rounded-full border border-gray-200 bg-gray-50 px-4 py-2.5 text-xs sm:text-sm font-semibold text-[#1A1A1A] shadow-sm transition-all duration-300 hover:scale-[1.02] hover:border-gray-300 hover:bg-gray-100 disabled:opacity-50"
-                disabled={isSubmitting}
-              >
-                <MessageCircle className="w-4 h-4" />
-                Besoin d'aide ? Parlez à notre IA
-              </button>
-            </div>
-
-            {submitStatus === 'success' && (
-              <div className="rounded-2xl border border-emerald-300/40 bg-emerald-50/85 px-5 py-4 text-center shadow-lg" role="status" aria-live="polite">
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 mb-2">
-                  <CheckCircle className="w-6 h-6 text-emerald-500" />
-                  <h3 className="text-emerald-700 font-semibold text-[clamp(0.95rem,3vw,1.125rem)] break-words">
-                    Demande envoyée avec succès !
-                  </h3>
-                </div>
-                <p className="text-emerald-600 text-[clamp(0.8rem,2.4vw,1rem)] break-words">
-                  🎉 Merci ! Votre demande a bien été enregistrée et envoyée.
-                </p>
-                <p className="text-emerald-500 text-[clamp(0.7rem,2vw,0.9rem)] break-words">
-                  Nous revenons vers vous sous 2h maximum par email ou téléphone.
-                </p>
-              </div>
-            )}
-
-            {submitStatus === 'error' && (
-              <div className="rounded-2xl border border-rose-300/50 bg-rose-50/85 px-5 py-4 text-center shadow-lg" role="alert" aria-live="assertive">
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 mb-2">
-                  <AlertCircle className="w-6 h-6 text-rose-500" />
-                  <h3 className="text-rose-600 font-semibold text-[clamp(0.95rem,3vw,1.125rem)] break-words">
-                    Erreur lors de l'envoi
-                  </h3>
-                </div>
-                <p className="text-rose-500 text-[clamp(0.8rem,2.4vw,1rem)] break-words">
-                  {errorMessage || "Une erreur est survenue lors de l'envoi de votre demande."}
-                </p>
-                <p className="text-rose-500/90 text-[clamp(0.7rem,2vw,0.9rem)] break-words">
-                  Veuillez réessayer ou nous contacter directement à gnd63consulting@gmail.com
-                </p>
-              </div>
-            )}
-
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="cta-submit relative mt-2 inline-flex w-full items-center justify-center rounded-full bg-black hover:bg-[#1A1A1A] px-8 py-4 text-lg font-semibold text-white shadow-lg hover:shadow-xl transition-all duration-200 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-gray-300 disabled:opacity-60 disabled:shadow-none"
-              onClick={() => { if (!isSubmitting) trackEvent('conversion_cta_click', { form: 'contact' }); }}
-            >
-              {isSubmitting ? (
-                <span className="flex items-center justify-center gap-3 tracking-normal">
-                  <div className="h-5 w-5 animate-spin rounded-full border-2 border-white/40 border-t-white"></div>
-                  Envoi en cours...
-                </span>
-              ) : (
-                'Recevoir mon devis gratuit'
-              )}
-            </button>
-
-            <div className="grid gap-2 rounded-2xl border border-gray-200 bg-white px-4 py-3 text-xs sm:text-sm text-[#64748B] shadow-sm">
-              <p className="flex items-center justify-center gap-2">
-                <ShieldCheck className="h-4 w-4 text-[#1A1A1A]" />
-                <span>Vos données sont sécurisées et ne seront jamais partagées</span>
-              </p>
-              <p className="flex items-center justify-center gap-2">
-                <Sparkles className="h-4 w-4 text-[#1A1A1A]" />
-                <span>Réponse garantie sous 2h en jours ouvrés</span>
-              </p>
-            </div>
           </div>
+
+          {/* Message */}
+          <div>
+            <label htmlFor="contact-message" className="block text-sm font-medium text-text-main mb-2 font-display">
+              Message <span className="text-text-muted">*</span>
+            </label>
+            <textarea
+              id="contact-message"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              rows={5}
+              className="w-full px-5 py-3.5 bg-white border border-gray-200 rounded-xl text-text-main placeholder:text-text-muted/60 focus:outline-none focus:border-black transition-colors duration-200 min-h-[140px] resize-y"
+              placeholder="Décrivez votre projet et vos objectifs..."
+              required
+              disabled={isSubmitting}
+            />
+          </div>
+
+          {/* Success */}
+          {submitStatus === 'success' && (
+            <div className="rounded-2xl border border-emerald-200 bg-emerald-50 px-5 py-4 text-center" role="status" aria-live="polite">
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <CheckCircle className="w-5 h-5 text-emerald-500" />
+                <span className="text-emerald-700 font-semibold">Demande envoyée avec succès !</span>
+              </div>
+              <p className="text-emerald-600 text-sm">
+                Nous revenons vers vous sous 24h maximum.
+              </p>
+            </div>
+          )}
+
+          {/* Error */}
+          {submitStatus === 'error' && (
+            <div className="rounded-2xl border border-rose-200 bg-rose-50 px-5 py-4 text-center" role="alert" aria-live="assertive">
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <AlertCircle className="w-5 h-5 text-rose-500" />
+                <span className="text-rose-600 font-semibold">Erreur lors de l'envoi</span>
+              </div>
+              <p className="text-rose-500 text-sm">
+                {errorMessage || "Une erreur est survenue lors de l'envoi de votre demande."}
+              </p>
+            </div>
+          )}
+
+          {/* Submit */}
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full inline-flex items-center justify-center gap-2 bg-black text-white rounded-full px-8 py-4 text-sm font-medium font-display transition-all duration-300 hover:bg-gray-800 hover:scale-[1.02] shadow-lg disabled:opacity-60 disabled:shadow-none disabled:hover:scale-100"
+            onClick={() => { if (!isSubmitting) trackEvent('conversion_cta_click', { form: 'contact' }); }}
+          >
+            {isSubmitting ? (
+              <span className="flex items-center gap-3">
+                <div className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white" />
+                Envoi en cours...
+              </span>
+            ) : (
+              <>
+                Envoyer ma demande
+                <span className="material-symbols-outlined text-sm">arrow_forward</span>
+              </>
+            )}
+          </button>
+
+          <p className="flex items-center justify-center gap-2 text-xs text-text-muted">
+            <ShieldCheck className="h-3.5 w-3.5" />
+            Vos données sont sécurisées et ne seront jamais partagées
+          </p>
         </form>
 
+        {/* ── SIDEBAR — Infos de contact ─────────────────────────────────── */}
+        <div className="space-y-6">
+          {/* Email */}
+          <div className="group rounded-2xl border border-gray-200 p-6 transition-all duration-300 hover:border-black hover:bg-black hover:text-white">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center transition-colors duration-300 group-hover:bg-white">
+                <span className="material-symbols-outlined text-xl text-black">mail</span>
+              </div>
+              <div>
+                <p className="text-xs font-medium uppercase tracking-widest text-text-muted transition-colors duration-300 group-hover:text-gray-400 mb-1">
+                  Email
+                </p>
+                <a
+                  href="mailto:contact@gndconsulting.fr"
+                  className="text-sm font-semibold font-display no-underline text-text-main transition-colors duration-300 group-hover:text-white"
+                >
+                  contact@gndconsulting.fr
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Téléphone */}
+          <div className="group rounded-2xl border border-gray-200 p-6 transition-all duration-300 hover:border-black hover:bg-black hover:text-white">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center transition-colors duration-300 group-hover:bg-white">
+                <span className="material-symbols-outlined text-xl text-black">phone</span>
+              </div>
+              <div>
+                <p className="text-xs font-medium uppercase tracking-widest text-text-muted transition-colors duration-300 group-hover:text-gray-400 mb-1">
+                  Téléphone
+                </p>
+                <a
+                  href="tel:+33759506322"
+                  className="text-sm font-semibold font-display no-underline text-text-main transition-colors duration-300 group-hover:text-white"
+                >
+                  07 59 50 63 22
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Adresse */}
+          <div className="group rounded-2xl border border-gray-200 p-6 transition-all duration-300 hover:border-black hover:bg-black hover:text-white">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center transition-colors duration-300 group-hover:bg-white">
+                <span className="material-symbols-outlined text-xl text-black">location_on</span>
+              </div>
+              <div>
+                <p className="text-xs font-medium uppercase tracking-widest text-text-muted transition-colors duration-300 group-hover:text-gray-400 mb-1">
+                  Adresse
+                </p>
+                <p className="text-sm font-semibold font-display text-text-main transition-colors duration-300 group-hover:text-white">
+                  Paris, France
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Calendly */}
+          <div className="rounded-2xl border border-gray-200 bg-background-alt p-6">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 rounded-xl bg-black flex items-center justify-center">
+                <span className="material-symbols-outlined text-lg text-white">calendar_month</span>
+              </div>
+              <div>
+                <p className="text-sm font-semibold font-display text-text-main">Planifier un appel</p>
+                <p className="text-xs text-text-muted">30 min, sans engagement</p>
+              </div>
+            </div>
+            <a
+              href="https://calendly.com/gnd63consulting/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 w-full bg-black text-white rounded-full px-6 py-3 text-sm font-medium font-display transition-all duration-300 hover:bg-gray-800 hover:scale-[1.02] no-underline"
+            >
+              Réserver un créneau
+              <span className="material-symbols-outlined text-sm">arrow_outward</span>
+            </a>
+          </div>
+
+          {/* Aide IA */}
+          <button
+            type="button"
+            onClick={() => setIsAIChatOpen(true)}
+            className="w-full rounded-2xl border border-dashed border-gray-300 p-5 text-center transition-all duration-300 hover:border-black hover:bg-gray-50"
+          >
+            <span className="material-symbols-outlined text-2xl text-text-muted mb-2 block">smart_toy</span>
+            <p className="text-sm font-medium font-display text-text-main">Besoin d'aide ?</p>
+            <p className="text-xs text-text-muted mt-1">Parlez à notre assistant IA</p>
+          </button>
+        </div>
       </div>
 
-      
       <AIChat
         isOpen={isAIChatOpen}
         onClose={() => setIsAIChatOpen(false)}
@@ -616,166 +448,9 @@ export function Contact({ themeColor, showFAQ = true }: ContactProps = {}) {
       {showFAQ && (
         <FAQ
           headingOverride="Questions fréquentes"
-          containerClassName="mt-16"
+          containerClassName="mt-24"
         />
       )}
-
-      {/* Mobile-specific responsive styles */}
-      <style>{`
-        @media (max-width: 1024px) {
-          .contact-section-wrapper {
-            padding: 1.5rem 1rem !important;
-            max-width: 100% !important;
-          }
-
-          .contact-header-wrapper {
-            margin-bottom: 1.5rem !important;
-            padding: 0 0.5rem !important;
-          }
-
-          .contact-form-title {
-            font-size: 1.125rem !important;
-            margin-bottom: 0.75rem !important;
-          }
-
-          .contact-form-subtitle {
-            font-size: 0.875rem !important;
-            line-height: 1.4 !important;
-            padding: 0 !important;
-          }
-
-          .contact-form-main {
-            width: 100% !important;
-            max-width: 100% !important;
-            margin-left: 0 !important;
-            margin-right: 0 !important;
-            border-radius: 1.125rem !important;
-          }
-
-          .contact-form-main .form-inner {
-            padding: 1.5rem !important;
-            gap: 1.25rem !important;
-            border-radius: 0.75rem !important;
-          }
-
-          .contact-form-main input,
-          .contact-form-main select,
-          .contact-form-main textarea {
-            width: 100% !important;
-            min-height: 2.75rem !important;
-            padding: 0.875rem 1rem !important;
-            font-size: 0.875rem !important;
-            border-radius: 1rem !important;
-            line-height: 1.4 !important;
-          }
-
-          .contact-form-main textarea {
-            min-height: 8rem !important;
-            padding: 1rem !important;
-          }
-
-          .contact-form-main .grid-cols-1.sm\\:grid-cols-2 {
-            grid-template-columns: 1fr !important;
-            gap: 1rem !important;
-          }
-
-          .contact-form-main label[for=\"file-upload\"] {
-            min-height: 3rem !important;
-            padding: 0.875rem !important;
-            font-size: 0.875rem !important;
-          }
-
-          .contact-form-main button[type=\"submit\"] {
-            width: 100% !important;
-            min-height: 3rem !important;
-            padding: 1rem !important;
-            font-size: 0.875rem !important;
-            border-radius: 9999px !important;
-            margin-top: 0.5rem !important;
-          }
-
-          .contact-form-main .ai-trigger {
-            width: 100% !important;
-            padding: 0.75rem 1rem !important;
-            font-size: 0.75rem !important;
-            justify-content: center !important;
-            margin-top: 0.5rem !important;
-          }
-
-          .contact-form-main [role=\"status\"],
-          .contact-form-main [role=\"alert\"] {
-            padding: 1rem !important;
-            margin-bottom: 1rem !important;
-            border-radius: 0.9rem !important;
-          }
-
-          .contact-form-main .text-center.text-xs,
-          .contact-form-main .text-center.text-xs span {
-            font-size: 0.75rem !important;
-          }
-
-          .contact-form-main .space-y-2 > div {
-            padding: 0.75rem !important;
-            font-size: 0.75rem !important;
-          }
-        }
-
-        @media (max-width: 640px) {
-          .contact-section-wrapper {
-            padding: 1rem 0.5rem !important;
-          }
-
-          .contact-form-main {
-            padding: 1rem !important;
-          }
-
-          .contact-form-main input,
-          .contact-form-main select,
-          .contact-form-main textarea {
-            font-size: 0.8125rem !important;
-          }
-        }
-
-        @media (max-width: 540px) {
-          .contact-form-main .form-inner {
-            padding: 1.25rem !important;
-            gap: 1rem !important;
-          }
-
-          .contact-form-main .form-inner .grid {
-            gap: 0.8rem !important;
-          }
-
-          .badge-title {
-            letter-spacing: 0.22em !important;
-            font-size: 0.65rem !important;
-          }
-
-          .file-upload-label > span:last-child {
-            align-self: flex-start;
-            letter-spacing: 0.22em !important;
-          }
-
-          .file-upload-label .space-y-1 p:first-child {
-            font-size: 0.875rem !important;
-          }
-
-          .cta-submit {
-            font-size: 0.88rem !important;
-            letter-spacing: 0.24em !important;
-            padding: 0.9rem 1rem !important;
-            border-radius: 9999px !important;
-          }
-
-          .contact-form-main .ai-trigger {
-            font-size: 0.7rem !important;
-          }
-
-          .contact-form-main .space-y-2 > div {
-            font-size: 0.72rem !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

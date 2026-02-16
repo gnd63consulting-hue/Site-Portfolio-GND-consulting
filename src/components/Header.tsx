@@ -125,9 +125,9 @@ export function Header() {
                 <span className="text-white font-display text-sm font-semibold leading-none">G</span>
               </div>
               <img
-                src="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/GND%20consulting%20Logo%20Blanc-Photoroom.png"
+                src="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/GND%20consulting%20Logo%20Blanc.png"
                 alt="GND Consulting"
-                className="h-14 w-auto"
+                className="h-24 w-auto -my-6"
               />
             </a>
 

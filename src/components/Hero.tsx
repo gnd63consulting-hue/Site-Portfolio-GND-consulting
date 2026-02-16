@@ -7,6 +7,8 @@ export function Hero() {
 
   // Image hero existante du portfolio Supabase
   const heroImage = "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250919_0006_Vibrant%20Digital%20Collaboration_remix_01k5fdpkfdemjrbt49q10rx0hx.png";
+  // Vidéo preview showreel
+  const showreelPreview = "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Creative_Studio_Video_Generation2.mp4";
   // Showreel existante
   const showreelUrl = "https://www.youtube.com/watch?v=Vyhz7_D4fFU";
 
@@ -77,11 +79,13 @@ export function Hero() {
               />
             ) : (
               <>
-                <img
-                  src={heroImage}
-                  alt="GND Consulting — Studio créatif parisien"
+                <video
+                  src={showreelPreview}
                   className="w-full h-full object-cover"
-                  loading="eager"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
                 />
                 {/* Overlay sombre */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />

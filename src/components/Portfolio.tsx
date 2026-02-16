@@ -297,7 +297,7 @@ interface MediaItem {
 }
 
 export function Portfolio() {
-  const { loading } = useProjects();
+  useProjects(); // keep hook for Supabase data used by video player
   const [activeTab, setActiveTab] = useState<'video' | 'photo'>('video');
   const [selectedMediaIndex, setSelectedMediaIndex] = useState(0);
   const [selectedCollection, setSelectedCollection] = useState('corporate');
@@ -1739,18 +1739,6 @@ export function Portfolio() {
     return [];
   }, [videoParagraphs, currentMedia?.description]);
 
-  // Section Découvrir nos réalisations – État de chargement
-  if (loading) {
-    return (
-      <section className="py-32 px-6 lg:px-12 max-w-[1400px] mx-auto relative">
-        <div className="text-center">
-          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
-          <p className="text-slate-600 mt-4">Chargement du portfolio...</p>
-        </div>
-      </section>
-    );
-  }
-
   // Section Découvrir nos réalisations – ID utilisé pour scroll via menu Portfolio
   return (
     <section id="realisations" className="py-32 px-6 lg:px-12 w-full relative overflow-hidden bg-background-alt" role="region" aria-label="Portfolio vidéos et photos">
@@ -1774,26 +1762,32 @@ export function Portfolio() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Colonne gauche */}
           <div className="flex flex-col gap-6">
-            {[
-              { src: 'https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/6F0A4251.jpg', title: 'MASQUE & IDENTITÉ', tag: 'PHOTO' },
-              { src: 'https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/6F0A4149.jpg', title: 'PUISSANCE CRÉATIVE', tag: 'PHOTO' },
-            ].map((card) => (
-              <div
-                key={card.title}
-                className="group relative aspect-[3/4] rounded-2xl overflow-hidden"
-              >
-                <img
-                  src={card.src}
-                  alt={card.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
-                  <h3 className="font-display text-lg font-semibold text-white mb-2">{card.title}</h3>
-                  <span className="text-xs text-white/70 uppercase tracking-widest">{card.tag}</span>
-                </div>
+            {/* Card 1 — Portrait */}
+            <div className="group relative aspect-[3/4] rounded-2xl overflow-hidden">
+              <img
+                src="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/6F0A4251.jpg"
+                alt="MASQUE & IDENTITÉ"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                <h3 className="font-display text-lg font-semibold text-white mb-2">MASQUE & IDENTITÉ</h3>
+                <span className="text-xs text-white/70 uppercase tracking-widest">PHOTO</span>
               </div>
-            ))}
+            </div>
+            {/* Card 2 — Paysage */}
+            <div className="group relative aspect-[4/3] rounded-2xl overflow-hidden">
+              <img
+                src="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/6F0A4149.jpg"
+                alt="PUISSANCE CRÉATIVE"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                <h3 className="font-display text-lg font-semibold text-white mb-2">PUISSANCE CRÉATIVE</h3>
+                <span className="text-xs text-white/70 uppercase tracking-widest">PHOTO</span>
+              </div>
+            </div>
           </div>
 
           {/* Colonne droite — décalage staggered */}

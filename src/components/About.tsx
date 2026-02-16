@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { CheckCircle, Star, Clock } from 'lucide-react';
-import { AboutHeaderBento } from './AboutHeaderBento';
-import { AboutServicesBlocks } from './AboutServicesBlocks';
 import { ValuesSection } from './ValuesSection';
 
 interface Testimonial {
@@ -15,12 +13,6 @@ interface AboutProps {
 }
 
 const About: React.FC<AboutProps> = ({ testimonials = [] }) => {
-  const [isHistorySectionVisible, setIsHistorySectionVisible] = useState(false);
-
-  const toggleHistorySection = () => {
-    setIsHistorySectionVisible(!isHistorySectionVisible);
-  };
-
   // Image portrait existante du portfolio Supabase
   const aboutImage = "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/6F0A4251.jpg";
 
@@ -42,11 +34,6 @@ const About: React.FC<AboutProps> = ({ testimonials = [] }) => {
                   loading="lazy"
                   decoding="async"
                 />
-              </div>
-              {/* Badge flottant "15+" — cercle blanc avec ombre */}
-              <div className="absolute -bottom-10 -right-6 sm:-right-10 w-28 h-28 sm:w-32 sm:h-32 bg-white rounded-full shadow-xl flex flex-col items-center justify-center z-10">
-                <span className="font-display text-3xl sm:text-4xl font-semibold text-[#1A1A1A] leading-none">15+</span>
-                <span className="text-xs text-[#64748B] mt-1">Projets réalisés</span>
               </div>
             </div>
           </div>
@@ -98,32 +85,6 @@ const About: React.FC<AboutProps> = ({ testimonials = [] }) => {
               ))}
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Section "Découvrir notre histoire" — Garde le contenu existant */}
-      <div id="history-section" className="max-w-[1400px] mx-auto mb-16 sm:mb-20 md:mb-24 px-6 lg:px-12">
-        <div className="text-center mb-12 reveal">
-          <button
-            onClick={toggleHistorySection}
-            className="group inline-flex items-center gap-3 px-8 py-4 bg-black hover:bg-gray-800 text-white text-base font-medium rounded-full transition-all duration-300 hover:scale-105 focus:outline-none focus-visible:ring-4 focus-visible:ring-black/20"
-            style={{ fontFamily: '"Clash Display", Syne, sans-serif' }}
-          >
-            <span>
-              {isHistorySectionVisible ? 'Masquer notre histoire' : 'Découvrir notre histoire'}
-            </span>
-            <div className={`w-5 h-5 transition-transform duration-300 ${isHistorySectionVisible ? 'rotate-180' : ''}`}>
-              <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
-                <path d="M6 9L12 15L18 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </div>
-          </button>
-        </div>
-
-        <div className={`transition-all duration-1500 overflow-hidden ${
-          isHistorySectionVisible ? 'max-h-[5000px] opacity-100' : 'max-h-0 opacity-0'
-        }`}>
-          <AboutServicesBlocks isVisible={isHistorySectionVisible} />
         </div>
       </div>
 

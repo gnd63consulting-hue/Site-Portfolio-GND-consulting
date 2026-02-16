@@ -19,10 +19,7 @@ interface PortfolioProject {
 const filters: { key: Category; label: string }[] = [
   { key: 'tous', label: 'Tous' },
   { key: 'audiovisuel', label: 'Audiovisuel' },
-  { key: 'design', label: 'Design' },
-  { key: 'motion', label: 'Motion' },
   { key: 'photo', label: 'Photo' },
-  { key: 'ia', label: 'IA' },
 ];
 
 const allProjects: PortfolioProject[] = [

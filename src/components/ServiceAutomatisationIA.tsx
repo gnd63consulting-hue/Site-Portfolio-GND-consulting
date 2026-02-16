@@ -34,6 +34,14 @@ export function ServiceAutomatisationIA() {
     }
   };
 
+  const workflowSteps = [
+    { icon: 'bolt', label: 'Déclencheur', desc: 'Événement, webhook, planification' },
+    { icon: 'database', label: 'Collecte', desc: 'APIs, CRM, bases de données' },
+    { icon: 'psychology', label: 'Traitement IA', desc: 'Analyse, classification, génération' },
+    { icon: 'verified', label: 'Validation', desc: 'Contrôle humain, règles métier' },
+    { icon: 'rocket_launch', label: 'Action', desc: 'Envoi, mise à jour, notification' }
+  ];
+
   const keyMetrics = [
     {
       icon: TrendingUp,
@@ -89,7 +97,7 @@ export function ServiceAutomatisationIA() {
       title: 'Intégrations sur-mesure',
       description: 'Connecter votre écosystème pour éviter les silos de données.',
       features: [
-        'CRM, suites bureautiques, Notion, Slack…',
+        'CRM, suites bureautiques, Notion, Slack\u2026',
         'APIs, webhooks, connecteurs iPaaS',
         'Normalisation & monitoring',
         'Sécurité & gouvernance'
@@ -109,11 +117,11 @@ export function ServiceAutomatisationIA() {
     {
       icon: Users,
       title: 'Formation & adoption',
-      description: "Ateliers métiers et conduite du changement pour ancrer l'usage.",
+      description: "Ateliers métiers et conduite du changement pour ancrer l\u2019usage.",
       features: [
         'Workshops marketing, vente, ops, RH',
         'Guides & politiques IA',
-        "Coaching d’équipes, gouvernance",
+        "Coaching d\u2019équipes, gouvernance",
         'Support continu'
       ]
     },
@@ -170,7 +178,7 @@ export function ServiceAutomatisationIA() {
 
   const whyNowStats = [
     { value: '+60%', label: 'de croissance des revenus chez les leaders IA' },
-    { value: '+30%', label: "d’économies potentielles grâce à l’automatisation" },
+    { value: '+30%', label: "d\u2019économies potentielles grâce à l\u2019automatisation" },
     { value: '+66%', label: 'de débit opérationnel sur des processus récurrents' },
     { value: '~26%', label: 'des organisations capturent déjà une valeur IA tangible' }
   ];
@@ -179,12 +187,12 @@ export function ServiceAutomatisationIA() {
     {
       question: 'Est-ce adapté à mon entreprise ?',
       answer:
-        "Oui. Nos solutions sont modulaires et s'adaptent à votre taille, votre secteur et votre maturité numérique. Nous concevons des automatisations proportionnées à vos besoins."
+        "Oui. Nos solutions sont modulaires et s\u2019adaptent à votre taille, votre secteur et votre maturité numérique. Nous concevons des automatisations proportionnées à vos besoins."
     },
     {
-      question: 'Dois-je déjà disposer d’outils spécifiques ?',
+      question: "Dois-je déjà disposer d\u2019outils spécifiques ?",
       answer:
-        "Pas nécessairement. Nous partons de votre stack actuelle et la complétons si besoin. L'objectif : valoriser l'existant avant d'introduire de nouveaux outils."
+        "Pas nécessairement. Nous partons de votre stack actuelle et la complétons si besoin. L\u2019objectif : valoriser l\u2019existant avant d\u2019introduire de nouveaux outils."
     },
     {
       question: 'Combien de temps pour un premier résultat ?',
@@ -194,17 +202,17 @@ export function ServiceAutomatisationIA() {
     {
       question: 'Quel ROI attendre ?',
       answer:
-        "Nous estimons le ROI dès l'audit. Selon les cas, un retour sur investissement est observé entre 3 et 6 mois grâce aux gains de temps, à la réduction des erreurs et à l'amélioration de la conversion."
+        "Nous estimons le ROI dès l\u2019audit. Selon les cas, un retour sur investissement est observé entre 3 et 6 mois grâce aux gains de temps, à la réduction des erreurs et à l\u2019amélioration de la conversion."
     },
     {
       question: 'Comment garantissez-vous la sécurité des données ?',
       answer:
-        "Conformité RGPD, chiffrement, contrôle d'accès, audit trail… et possibilité de travailler en mode on-premise. La sécurité est intégrée à chaque étape."
+        "Conformité RGPD, chiffrement, contrôle d\u2019accès, audit trail\u2026 et possibilité de travailler en mode on-premise. La sécurité est intégrée à chaque étape."
     },
     {
       question: 'Proposez-vous de la formation ?',
       answer:
-        "Absolument. L'adoption humaine est clé : ateliers, guides d'usage, coaching d'équipes et support continu font partie de notre accompagnement."
+        "Absolument. L\u2019adoption humaine est clé : ateliers, guides d\u2019usage, coaching d\u2019équipes et support continu font partie de notre accompagnement."
     }
   ];
 
@@ -216,7 +224,7 @@ export function ServiceAutomatisationIA() {
 
   return (
     <main id="main-content" className="service-page service-ai min-h-screen bg-white text-[#1A1A1A] font-sans">
-      {/* HERO */}
+      {/* HERO — image plein écran + overlay + badge catégorie */}
       <section
         data-service-section="hero"
         className="relative overflow-hidden"
@@ -233,21 +241,24 @@ export function ServiceAutomatisationIA() {
           <div className="absolute inset-0 bg-black/55" />
         </div>
 
-        <div className="relative mx-auto flex min-h-[70vh] w-full max-w-[1400px] flex-col items-center justify-end gap-6 px-6 pb-16 pt-32 text-center lg:px-12 lg:min-h-[90vh] lg:pb-24">
+        <div className="relative mx-auto flex min-h-[60vh] w-full max-w-[1400px] flex-col items-center justify-end gap-6 px-6 pb-16 pt-32 text-center lg:px-12 lg:min-h-[88vh] lg:pb-24">
+          <span className="inline-flex items-center gap-2 rounded-full border border-[#3B82F6]/40 bg-[#3B82F6]/10 px-5 py-2 text-xs font-medium uppercase tracking-widest text-[#3B82F6]">
+            Automatisation & IA
+          </span>
           <h1
             id="service-ai-hero-title"
-            className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] tracking-tight text-white"
+            className="font-display text-balance text-[clamp(2.5rem,6vw,5rem)] font-semibold leading-[0.9] tracking-tight text-white"
           >
             Automatisation & IA sur mesure
           </h1>
-          <p className="text-balance text-[clamp(1.125rem,3vw,1.75rem)] font-light leading-relaxed text-white/90">
-            Des workflows intelligents pour booster la productivité, la qualité et l’engagement.
+          <p className="max-w-2xl text-balance text-[clamp(1.125rem,3vw,1.75rem)] font-light leading-relaxed text-white/90">
+            Des workflows intelligents pour booster la productivité, la qualité et l&apos;engagement.
           </p>
           <div className="flex flex-col items-center gap-3">
             <ButtonGND
               variant="primary"
               onClick={scrollToContact}
-              className="w-full max-w-md sm:max-w-lg lg:max-w-xl text-[clamp(1rem,2.6vw,1.25rem)] bg-black text-white rounded-full px-8 py-4 hover:bg-gray-800 hover:scale-105"
+              className="w-full max-w-md sm:max-w-lg lg:max-w-xl text-[clamp(1rem,2.6vw,1.25rem)] bg-[#3B82F6] text-white rounded-full px-8 py-4 hover:bg-[#2563EB] hover:scale-105"
             >
               <Zap className="h-5 w-5 sm:h-6 sm:w-6" />
               Démarrer un projet pilote
@@ -267,34 +278,43 @@ export function ServiceAutomatisationIA() {
       >
         <div className="mx-auto max-w-[1400px] text-center">
           <p className="text-balance text-[clamp(1rem,2.6vw,1.5rem)] leading-relaxed text-text-muted">
-            De l’automatisation de processus aux agents IA spécialisés, nous concevons des solutions pragmatiques qui
-            s’intègrent à votre stack, délivrent des gains rapides et s’échelonnent en toute sécurité.
+            De l&apos;automatisation de processus aux agents IA spécialisés, nous concevons des solutions pragmatiques qui
+            s&apos;intègrent à votre stack, délivrent des <strong className="text-[#3B82F6]">gains rapides</strong> et s&apos;échelonnent en toute <strong className="text-[#3B82F6]">sécurité</strong>.
           </p>
         </div>
       </section>
 
-      {/* METRICS */}
+      {/* METRICS — 4 KPIs avec accent bleu */}
       <section
         data-service-section="metrics"
-        className="reveal bg-white py-32 px-6 lg:px-12"
+        className="reveal bg-background-alt py-32 px-6 lg:px-12"
       >
         <div className="mx-auto max-w-[1400px]">
+          <div className="text-center mb-12">
+            <span className="inline-flex items-center rounded-full border border-gray-300 px-5 py-2 text-xs font-medium uppercase tracking-widest text-text-muted mb-6">
+              Résultats
+            </span>
+            <h2 className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] text-[#1A1A1A]">
+              Des résultats mesurables
+            </h2>
+          </div>
+
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {keyMetrics.map((metric) => {
               const IconComponent = metric.icon;
               return (
                 <article
                   key={metric.label}
-                  className="flex h-full flex-col gap-3 bg-gray-50 rounded-2xl p-8 transition-all duration-500 hover:bg-black hover:text-white"
+                  className="group flex h-full flex-col gap-3 bg-gray-50 rounded-2xl p-8 transition-all duration-500 hover:bg-black hover:text-white"
                 >
-                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-black text-white">
+                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#3B82F6]/10 text-[#3B82F6] transition-all duration-500 group-hover:bg-[#3B82F6] group-hover:text-white">
                     <IconComponent className="h-6 w-6" />
                   </span>
                   <div>
-                    <p className="text-[clamp(1.5rem,4vw,2.25rem)] font-black text-[#1A1A1A]">{metric.value}</p>
-                    <p className="text-[clamp(0.95rem,2.3vw,1.1rem)] font-semibold text-text-muted">{metric.label}</p>
+                    <p className="text-[clamp(1.5rem,4vw,2.25rem)] font-black text-[#3B82F6]">{metric.value}</p>
+                    <p className="text-[clamp(0.95rem,2.3vw,1.1rem)] font-semibold text-[#1A1A1A] transition-colors duration-500 group-hover:text-white">{metric.label}</p>
                   </div>
-                  <p className="text-[clamp(0.9rem,2.2vw,1rem)] text-text-muted">{metric.description}</p>
+                  <p className="text-[clamp(0.9rem,2.2vw,1rem)] text-text-muted transition-colors duration-500 group-hover:text-gray-300">{metric.description}</p>
                 </article>
               );
             })}
@@ -302,18 +322,73 @@ export function ServiceAutomatisationIA() {
         </div>
       </section>
 
-      {/* SERVICES */}
+      {/* WORKFLOW — schéma visuel pipeline, section dark tech */}
       <section
-        data-service-section="services"
-        className="reveal bg-background-alt py-32 px-6 lg:px-12"
+        data-service-section="workflow"
+        className="reveal bg-[#0a0a0a] py-32 px-6 lg:px-12"
       >
         <div className="mx-auto max-w-[1400px]">
           <div className="text-center">
+            <span className="inline-flex items-center rounded-full border border-[#3B82F6]/30 bg-[#3B82F6]/10 px-5 py-2 text-xs font-medium uppercase tracking-widest text-[#3B82F6] mb-6">
+              Comment ça marche
+            </span>
+            <h2 className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] text-white">
+              Anatomie d&apos;un workflow IA
+            </h2>
+            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.2rem)] text-white/60">
+              Chaque automatisation suit un pipeline structuré, du déclencheur jusqu&apos;à l&apos;action finale.
+            </p>
+          </div>
+
+          {/* Pipeline horizontal desktop / vertical mobile */}
+          <div className="mt-16 flex flex-col lg:flex-row items-center lg:items-start gap-0">
+            {workflowSteps.map((step, index) => (
+              <React.Fragment key={step.label}>
+                {/* Node */}
+                <div className="flex flex-col items-center gap-3 relative z-10 flex-shrink-0">
+                  <div className="h-16 w-16 rounded-2xl bg-[#3B82F6]/10 border border-[#3B82F6]/30 flex items-center justify-center transition-all duration-500 hover:bg-[#3B82F6]/20 hover:border-[#3B82F6]/50 hover:scale-110">
+                    <span className="material-symbols-outlined text-2xl text-[#3B82F6]">{step.icon}</span>
+                  </div>
+                  <span className="text-sm font-semibold text-white">{step.label}</span>
+                  <span className="text-xs text-white/40 max-w-[120px] text-center leading-tight">{step.desc}</span>
+                </div>
+
+                {/* Connector horizontal (desktop) */}
+                {index < workflowSteps.length - 1 && (
+                  <div className="hidden lg:flex items-start pt-8 flex-1 min-w-[24px]">
+                    <div className="h-px flex-1 bg-gradient-to-r from-[#3B82F6]/40 to-[#3B82F6]/20"></div>
+                    <span className="material-symbols-outlined text-[#3B82F6]/40 text-base -mt-2">chevron_right</span>
+                  </div>
+                )}
+
+                {/* Connector vertical (mobile) */}
+                {index < workflowSteps.length - 1 && (
+                  <div className="flex lg:hidden flex-col items-center h-10 my-1">
+                    <div className="w-px h-full bg-gradient-to-b from-[#3B82F6]/40 to-[#3B82F6]/20"></div>
+                    <span className="material-symbols-outlined text-[#3B82F6]/40 text-base">expand_more</span>
+                  </div>
+                )}
+              </React.Fragment>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* OFFRE — 6 cards avec icônes, hover-to-black + icon inversion */}
+      <section
+        data-service-section="services"
+        className="reveal bg-white py-32 px-6 lg:px-12"
+      >
+        <div className="mx-auto max-w-[1400px]">
+          <div className="text-center">
+            <span className="inline-flex items-center rounded-full border border-gray-300 px-5 py-2 text-xs font-medium uppercase tracking-widest text-text-muted mb-6">
+              Notre offre
+            </span>
             <h2 className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] text-[#1A1A1A]">
               Nos briques IA & automatisation
             </h2>
             <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.25rem)] text-text-muted">
-              Des modules combinables pour bâtir votre feuille de route IA, du POC au déploiement à l'échelle.
+              Des modules combinables pour bâtir votre feuille de route IA, du POC au déploiement à l&apos;échelle.
             </p>
           </div>
 
@@ -323,19 +398,21 @@ export function ServiceAutomatisationIA() {
               return (
                 <article
                   key={service.title}
-                  className="flex h-full flex-col bg-gray-50 rounded-2xl p-8 transition-all duration-500 hover:bg-black hover:text-white"
+                  className="group flex h-full flex-col bg-gray-50 rounded-2xl p-8 transition-all duration-500 hover:bg-black hover:text-white"
                 >
-                  <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-black text-white">
+                  <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-[#3B82F6]/10 text-[#3B82F6] transition-all duration-500 group-hover:bg-[#3B82F6] group-hover:text-white">
                     <IconComponent className="h-7 w-7" />
                   </span>
-                  <h3 className="mt-4 text-[clamp(1.125rem,2.6vw,1.35rem)] font-bold text-[#1A1A1A]">{service.title}</h3>
-                  <p className="mt-2 text-[clamp(0.9375rem,2.3vw,1rem)] leading-relaxed text-text-muted">
+                  <h3 className="mt-4 text-[clamp(1.125rem,2.6vw,1.35rem)] font-bold text-[#1A1A1A] transition-colors duration-500 group-hover:text-white">
+                    {service.title}
+                  </h3>
+                  <p className="mt-2 text-[clamp(0.9375rem,2.3vw,1rem)] leading-relaxed text-text-muted transition-colors duration-500 group-hover:text-gray-300">
                     {service.description}
                   </p>
                   <ul className="mt-4 space-y-2 text-[clamp(0.9rem,2.2vw,0.975rem)] text-text-muted">
                     {service.features.map((feature) => (
-                      <li key={feature} className="flex items-start gap-2">
-                        <span className="mt-1 h-2 w-2 rounded-full bg-accent"></span>
+                      <li key={feature} className="flex items-start gap-2 transition-colors duration-500 group-hover:text-gray-300">
+                        <span className="mt-1 h-2 w-2 rounded-full bg-[#3B82F6] flex-shrink-0"></span>
                         <span>{feature}</span>
                       </li>
                     ))}
@@ -347,36 +424,42 @@ export function ServiceAutomatisationIA() {
         </div>
       </section>
 
-      {/* DOMAINES */}
+      {/* DOMAINES D'APPLICATION — 4 cards numérotées */}
       <section
         data-service-section="domains"
-        className="reveal bg-white py-32 px-6 lg:px-12"
+        className="reveal bg-background-alt py-32 px-6 lg:px-12"
       >
         <div className="mx-auto max-w-[1400px]">
           <div className="text-center">
+            <span className="inline-flex items-center rounded-full border border-gray-300 px-5 py-2 text-xs font-medium uppercase tracking-widest text-text-muted mb-6">
+              Domaines d&apos;application
+            </span>
             <h2 className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] text-[#1A1A1A]">
-              Domaines d'application prioritaires
+              Domaines d&apos;application prioritaires
             </h2>
           </div>
 
-          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2">
-            {applicationDomains.map((domain) => {
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {applicationDomains.map((domain, index) => {
               const IconComponent = domain.icon;
               return (
                 <article
                   key={domain.title}
-                  className="flex h-full flex-col gap-4 bg-gray-50 rounded-2xl p-8 transition-all duration-500 hover:bg-black hover:text-white"
+                  className="group flex h-full flex-col gap-4 bg-gray-50 rounded-2xl p-8 transition-all duration-500 hover:bg-black hover:text-white"
                 >
+                  <span className="text-xs font-medium uppercase tracking-widest text-text-muted transition-colors duration-500 group-hover:text-gray-400">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
                   <div className="flex items-center gap-3">
-                    <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-black text-white">
+                    <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#3B82F6]/10 text-[#3B82F6] transition-all duration-500 group-hover:bg-[#3B82F6] group-hover:text-white">
                       <IconComponent className="h-6 w-6" />
                     </span>
-                    <h3 className="text-[clamp(1.0625rem,2.3vw,1.2rem)] font-semibold text-[#1A1A1A]">{domain.title}</h3>
+                    <h3 className="text-[clamp(1.0625rem,2.3vw,1.2rem)] font-semibold text-[#1A1A1A] transition-colors duration-500 group-hover:text-white">{domain.title}</h3>
                   </div>
                   <ul className="space-y-2 text-[clamp(0.9rem,2.2vw,1rem)] text-text-muted">
                     {domain.points.map((point) => (
-                      <li key={point} className="flex items-start gap-2">
-                        <span className="mt-1 h-2 w-2 rounded-full bg-accent"></span>
+                      <li key={point} className="flex items-start gap-2 transition-colors duration-500 group-hover:text-gray-300">
+                        <span className="mt-1 h-2 w-2 rounded-full bg-[#3B82F6] flex-shrink-0"></span>
                         <span>{point}</span>
                       </li>
                     ))}
@@ -388,23 +471,29 @@ export function ServiceAutomatisationIA() {
         </div>
       </section>
 
-      {/* WHY NOW */}
+      {/* WHY NOW — stats accent bleu */}
       <section
         data-service-section="why-now"
-        className="reveal bg-background-alt py-32 px-6 lg:px-12"
+        className="reveal bg-white py-32 px-6 lg:px-12"
       >
         <div className="mx-auto max-w-[1400px]">
-          <h2 className="font-display text-center text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] text-[#1A1A1A]">
-            Pourquoi accélérer maintenant ?
-          </h2>
-          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
+          <div className="text-center mb-12">
+            <span className="inline-flex items-center rounded-full border border-gray-300 px-5 py-2 text-xs font-medium uppercase tracking-widest text-text-muted mb-6">
+              Pourquoi maintenant
+            </span>
+            <h2 className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] text-[#1A1A1A]">
+              Pourquoi accélérer maintenant ?
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {whyNowStats.map((stat) => (
               <article
                 key={stat.label}
-                className="bg-gray-50 rounded-2xl p-8 transition-all duration-500 hover:bg-black hover:text-white"
+                className="group bg-gray-50 rounded-2xl p-8 transition-all duration-500 hover:bg-black hover:text-white"
               >
-                <p className="text-[clamp(1.5rem,4vw,2.25rem)] font-black text-accent">{stat.value}</p>
-                <p className="mt-2 text-[clamp(0.95rem,2.3vw,1.1rem)] text-text-muted">{stat.label}</p>
+                <p className="text-[clamp(1.5rem,4vw,2.5rem)] font-black text-[#3B82F6]">{stat.value}</p>
+                <p className="mt-2 text-[clamp(0.95rem,2.3vw,1.1rem)] text-text-muted transition-colors duration-500 group-hover:text-gray-300">{stat.label}</p>
               </article>
             ))}
           </div>
@@ -413,8 +502,8 @@ export function ServiceAutomatisationIA() {
 
       <UnifiedFAQ
         title="QUESTIONS FRÉQUENTES"
-        subtitle="Clarifiez vos interrogations avant d’automatiser."
-        description="Notre approche met l’humain et la sécurité au cœur de chaque projet."
+        subtitle="Clarifiez vos interrogations avant d'automatiser."
+        description="Notre approche met l'humain et la sécurité au cœur de chaque projet."
         emoji="⚡"
         faqItems={faqItems}
         themeColor={themeColors}
@@ -439,7 +528,7 @@ export function ServiceAutomatisationIA() {
             <ButtonGND
               variant="primary"
               onClick={scrollToContact}
-              className="w-full max-w-sm sm:w-auto"
+              className="w-full max-w-sm sm:w-auto bg-[#3B82F6] hover:bg-[#2563EB]"
             >
               <Heart className="h-5 w-5 sm:h-6 sm:w-6" />
               Planifier un audit gratuit

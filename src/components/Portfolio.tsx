@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback, useLayoutEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { VideoFirstFrame } from './VideoFirstFrame';
 import { Play, Pause, Camera, Video, X, ChevronLeft, ChevronRight, Eye, ChevronUp, ChevronDown, Rewind, FastForward } from 'lucide-react';
 import { useProjects } from '../hooks/useSupabase';
@@ -1850,16 +1851,13 @@ export function Portfolio() {
 
         {/* Bouton "Voir tout le portfolio" */}
         <div className="text-center mt-12">
-          <button
-            type="button"
-            onClick={() => {
-              document.getElementById('portfolio-tabs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }}
-            className="inline-flex items-center gap-2 bg-black text-white rounded-full px-8 py-4 text-sm font-medium font-display transition-all duration-300 hover:bg-gray-800 hover:scale-105"
+          <Link
+            to="/portfolio"
+            className="inline-flex items-center gap-2 bg-black text-white rounded-full px-8 py-4 text-sm font-medium font-display transition-all duration-300 hover:bg-gray-800 hover:scale-105 no-underline"
           >
             Voir tout le portfolio
             <span className="material-symbols-outlined text-sm">arrow_forward</span>
-          </button>
+          </Link>
         </div>
       </div>
 

@@ -1772,80 +1772,52 @@ export function Portfolio() {
       {/* Grille asymétrique — Stitch reference design */}
       <div className="max-w-[1400px] mx-auto mb-16 reveal delay-100">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Colonne gauche — aspect-[4/3] */}
+          {/* Colonne gauche */}
           <div className="flex flex-col gap-6">
-            {portfolioCards
-              .filter(c => c.type === 'video' && !hiddenVideoIds.includes(c.id))
-              .slice(0, 2)
-              .map((project) => {
-                const videoIdx = normalizedVideoItems.findIndex(m => m.id === project.id);
-                return (
-                  <button
-                    type="button"
-                    key={project.id}
-                    onClick={() => {
-                      setActiveTab('video');
-                      if (videoIdx >= 0) setSelectedMediaIndex(videoIdx);
-                      document.getElementById('portfolio-tabs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }}
-                    className="group relative aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-accent/30"
-                    aria-label={`Voir le projet ${project.title}`}
-                  >
-                    <img
-                      src={project.thumbnail}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
-                      <h3 className="font-display text-lg font-semibold text-white mb-2">{project.title}</h3>
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs text-white/70 uppercase tracking-widest">{project.tag}</span>
-                        <span className="material-symbols-outlined text-white text-sm">arrow_outward</span>
-                      </div>
-                    </div>
-                  </button>
-                );
-              })}
+            {[
+              { src: 'https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/6F0A4251.jpg', title: 'MASQUE & IDENTITÉ', tag: 'PHOTO' },
+              { src: 'https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/6F0A4149.jpg', title: 'PUISSANCE CRÉATIVE', tag: 'PHOTO' },
+            ].map((card) => (
+              <div
+                key={card.title}
+                className="group relative aspect-[3/4] rounded-2xl overflow-hidden"
+              >
+                <img
+                  src={card.src}
+                  alt={card.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                  <h3 className="font-display text-lg font-semibold text-white mb-2">{card.title}</h3>
+                  <span className="text-xs text-white/70 uppercase tracking-widest">{card.tag}</span>
+                </div>
+              </div>
+            ))}
           </div>
 
-          {/* Colonne droite — aspect-[3/4] avec md:mt-24 offset */}
+          {/* Colonne droite — décalage staggered */}
           <div className="flex flex-col gap-6 md:mt-24">
-            {portfolioCards
-              .filter(c => c.type === 'video' && !hiddenVideoIds.includes(c.id))
-              .slice(2, 4)
-              .map((project) => {
-                const videoIdx = normalizedVideoItems.findIndex(m => m.id === project.id);
-                return (
-                  <button
-                    type="button"
-                    key={project.id}
-                    onClick={() => {
-                      setActiveTab('video');
-                      if (videoIdx >= 0) setSelectedMediaIndex(videoIdx);
-                      document.getElementById('portfolio-tabs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }}
-                    className="group relative aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-accent/30"
-                    aria-label={`Voir le projet ${project.title}`}
-                  >
-                    <img
-                      src={project.thumbnail}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
-                      <h3 className="font-display text-lg font-semibold text-white mb-2">{project.title}</h3>
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs text-white/70 uppercase tracking-widest">{project.tag}</span>
-                        <span className="material-symbols-outlined text-white text-sm">arrow_outward</span>
-                      </div>
-                    </div>
-                  </button>
-                );
-              })}
+            {[
+              { src: 'https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/6F0A4135.jpg', title: "L'ART EN MOUVEMENT", tag: 'PHOTO' },
+              { src: 'https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/6F0A4267.jpg', title: 'VISION MASQUÉE', tag: 'PHOTO' },
+            ].map((card) => (
+              <div
+                key={card.title}
+                className="group relative aspect-[3/4] rounded-2xl overflow-hidden"
+              >
+                <img
+                  src={card.src}
+                  alt={card.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                  <h3 className="font-display text-lg font-semibold text-white mb-2">{card.title}</h3>
+                  <span className="text-xs text-white/70 uppercase tracking-widest">{card.tag}</span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 

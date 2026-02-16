@@ -1,7 +1,7 @@
 import React from 'react';
 import { Users, Target, Brain } from 'lucide-react';
 
-export function AboutServicesBlocks({ isVisible }: { isVisible: boolean }) {
+export function AboutServicesBlocks() {
   const images = {
     studio: "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250919_0006_Vibrant%20Digital%20Collaboration_remix_01k5fdpkfdemjrbt49q10rx0hx.png",
     expertise: "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20251006_2055_Espace%20Travail%20Futuriste_simple_compose_01k6xdztmrewrv8rq637vqqpnp.png",
@@ -60,10 +60,7 @@ export function AboutServicesBlocks({ isVisible }: { isVisible: boolean }) {
         return (
           <div
             key={block.title}
-            className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center transition-all duration-1000 ${
-              isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-            }`}
-            style={{ transitionDelay: `${200 + index * 150}ms` }}
+            className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center reveal`}
           >
             {/* Image */}
             <div className={`${isReversed ? 'lg:order-2' : ''}`}>

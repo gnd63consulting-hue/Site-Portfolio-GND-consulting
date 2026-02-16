@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { CheckCircle, Star, Clock } from 'lucide-react';
 import { AboutServicesBlocks } from './AboutServicesBlocks';
 import { ValuesSection } from './ValuesSection';
@@ -14,14 +14,16 @@ interface AboutProps {
 }
 
 const About: React.FC<AboutProps> = ({ testimonials = [] }) => {
-  const [isHistorySectionVisible, setIsHistorySectionVisible] = useState(false);
-
-  const toggleHistorySection = () => {
-    setIsHistorySectionVisible(!isHistorySectionVisible);
-  };
-
   // Image portrait existante du portfolio Supabase
   const aboutImage = "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/6F0A4251.jpg";
+
+  const scrollToHistory = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const el = document.getElementById('notre-histoire');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <section id="qui-sommes-nous" className="py-32 bg-[#F3F4F6] relative" aria-labelledby="about-title">
@@ -95,29 +97,27 @@ const About: React.FC<AboutProps> = ({ testimonials = [] }) => {
         </div>
       </div>
 
-      {/* Section "Découvrir notre histoire" — Garde le contenu existant */}
-      <div id="history-section" className="max-w-[1400px] mx-auto mb-16 sm:mb-20 md:mb-24 px-6 lg:px-12">
+      {/* Bouton "Découvrir notre histoire" — scroll anchor */}
+      <div className="max-w-[1400px] mx-auto mb-16 sm:mb-20 md:mb-24 px-6 lg:px-12">
         <div className="text-center mb-12 reveal">
-          <button
-            onClick={toggleHistorySection}
-            className="group inline-flex items-center gap-3 px-8 py-4 bg-black hover:bg-gray-800 text-white text-base font-medium rounded-full transition-all duration-300 hover:scale-105 focus:outline-none focus-visible:ring-4 focus-visible:ring-black/20"
+          <a
+            href="#notre-histoire"
+            onClick={scrollToHistory}
+            className="group inline-flex items-center gap-3 px-8 py-4 bg-black hover:bg-gray-800 text-white text-base font-medium rounded-full transition-all duration-300 hover:scale-105 focus:outline-none focus-visible:ring-4 focus-visible:ring-black/20 no-underline"
             style={{ fontFamily: '"Clash Display", Syne, sans-serif' }}
           >
-            <span>
-              {isHistorySectionVisible ? 'Masquer notre histoire' : 'Découvrir notre histoire'}
-            </span>
-            <div className={`w-5 h-5 transition-transform duration-300 ${isHistorySectionVisible ? 'rotate-180' : ''}`}>
+            <span>Découvrir notre histoire</span>
+            <div className="w-5 h-5">
               <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
                 <path d="M6 9L12 15L18 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </div>
-          </button>
+          </a>
         </div>
 
-        <div className={`transition-all duration-1500 overflow-hidden ${
-          isHistorySectionVisible ? 'max-h-[5000px] opacity-100' : 'max-h-0 opacity-0'
-        }`}>
-          <AboutServicesBlocks isVisible={isHistorySectionVisible} />
+        {/* Contenu toujours visible */}
+        <div id="notre-histoire">
+          <AboutServicesBlocks />
         </div>
       </div>
 

@@ -125,14 +125,20 @@ const About: React.FC<AboutProps> = ({ testimonials = [] }) => {
       <div className="mt-12 sm:mt-16 px-6 lg:px-12 reveal">
         <div className="mx-auto max-w-[1400px]">
           <div className="text-center mb-12">
-            <h3 className="font-display font-semibold text-[clamp(1.5rem,4vw,2.5rem)] text-[#1A1A1A] leading-[0.95]">
+            <span className="inline-flex items-center gap-2 rounded-full border border-gray-300 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-text-muted mb-6">
+              NOS ENGAGEMENTS
+            </span>
+            <h2 className="font-display font-black text-[clamp(2rem,5vw,3.5rem)] text-[#1A1A1A] leading-[0.95]">
               Pourquoi Choisir GND Consulting ?
-            </h3>
+            </h2>
+            <p className="text-gray-500 text-lg max-w-2xl mx-auto mt-4">
+              Ce qui nous distingue et fait la différence pour nos clients.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-            <div className="group bg-white rounded-2xl p-8 transition-all duration-500 hover:bg-black hover:text-white">
-              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-gray-100 text-[#1A1A1A] group-hover:bg-white/10 group-hover:text-white transition-all duration-500">
+            <div className="group bg-white rounded-2xl border border-gray-200 p-10 transition-all duration-500 hover:bg-black hover:text-white">
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gray-100 text-[#1A1A1A] group-hover:bg-white/10 group-hover:text-white transition-all duration-500">
                 <CheckCircle className="h-6 w-6" />
               </div>
               <h4 className="mt-5 text-center font-display font-semibold text-[#1A1A1A] group-hover:text-white transition-colors duration-500">
@@ -143,8 +149,8 @@ const About: React.FC<AboutProps> = ({ testimonials = [] }) => {
               </p>
             </div>
 
-            <div className="group bg-white rounded-2xl p-8 transition-all duration-500 hover:bg-black hover:text-white">
-              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-gray-100 text-[#1A1A1A] group-hover:bg-white/10 group-hover:text-white transition-all duration-500">
+            <div className="group bg-white rounded-2xl border border-gray-200 p-10 transition-all duration-500 hover:bg-black hover:text-white">
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gray-100 text-[#1A1A1A] group-hover:bg-white/10 group-hover:text-white transition-all duration-500">
                 <Star className="h-6 w-6" />
               </div>
               <h4 className="mt-5 text-center font-display font-semibold text-[#1A1A1A] group-hover:text-white transition-colors duration-500">
@@ -155,8 +161,8 @@ const About: React.FC<AboutProps> = ({ testimonials = [] }) => {
               </p>
             </div>
 
-            <div className="group bg-white rounded-2xl p-8 transition-all duration-500 hover:bg-black hover:text-white">
-              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-gray-100 text-[#1A1A1A] group-hover:bg-white/10 group-hover:text-white transition-all duration-500">
+            <div className="group bg-white rounded-2xl border border-gray-200 p-10 transition-all duration-500 hover:bg-black hover:text-white">
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gray-100 text-[#1A1A1A] group-hover:bg-white/10 group-hover:text-white transition-all duration-500">
                 <Clock className="h-6 w-6" />
               </div>
               <h4 className="mt-5 text-center font-display font-semibold text-[#1A1A1A] group-hover:text-white transition-colors duration-500">

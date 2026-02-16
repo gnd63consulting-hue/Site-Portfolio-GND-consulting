@@ -15,6 +15,7 @@ import { ServiceMotionDesign } from './components/ServiceMotionDesign';
 import { ServiceProductionAudiovisuelle } from './components/ServiceProductionAudiovisuelle';
 import { ServicePhotographie } from './components/ServicePhotographie';
 import { ServiceAutomatisationIA } from './components/ServiceAutomatisationIA';
+import { PortfolioPage } from './components/PortfolioPage';
 import { PartnersPage } from './components/PartnersPage';
 import { MentionsLegales } from './components/MentionsLegales';
 import { CookieConsent } from './components/CookieConsent';
@@ -92,6 +93,16 @@ function App() {
             </>
           } />
           
+          {/* Page portfolio */}
+          <Route path="/portfolio" element={
+            <>
+              <Header />
+              <PortfolioPage />
+              <Footer />
+              <BackToTop />
+            </>
+          } />
+
           {/* Page partenaires */}
           <Route path="/partenaires" element={<PartnersPage />} />
           

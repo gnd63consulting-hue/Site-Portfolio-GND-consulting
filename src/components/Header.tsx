@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
 export function Header() {
@@ -26,12 +27,19 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Highlight nav item for route-based pages
+  useEffect(() => {
+    if (location.pathname.startsWith('/portfolio')) {
+      setActiveSection('/portfolio');
+    }
+  }, [location.pathname]);
+
   // Track active section via IntersectionObserver
   useEffect(() => {
     if (window.location.pathname !== '/' && window.location.pathname !== '') {
       return;
     }
-    const sectionIds = ['qui-sommes-nous', 'services', 'realisations', 'footer'];
+    const sectionIds = ['qui-sommes-nous', 'services', 'footer'];
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -57,12 +65,21 @@ export function Header() {
   const navItems = [
     { href: '#qui-sommes-nous', label: 'Studio' },
     { href: '#services', label: 'Expertise' },
-    { href: '#realisations', label: 'Projets' },
+    { href: '/portfolio', label: 'Projets' },
     { href: '#journal', label: 'Journal' },
   ];
 
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const scrollToSection = (href: string) => {
-    const isHomePage = window.location.pathname === '/' || window.location.pathname === '';
+    const isHomePage = location.pathname === '/' || location.pathname === '';
+
+    // Route-based navigation (e.g. /portfolio)
+    if (href.startsWith('/') && !href.startsWith('/#')) {
+      navigate(href);
+      return;
+    }
 
     if (href === '#contact') {
       if (isHomePage) {
@@ -70,21 +87,6 @@ export function Header() {
         if (footer) footer.scrollIntoView({ behavior: 'smooth', block: 'start' });
       } else {
         window.location.href = '/#contact';
-      }
-      return;
-    }
-
-    if (href === '#realisations') {
-      if (isHomePage) {
-        const element = document.getElementById('realisations');
-        if (element) {
-          const offset = 200;
-          const elementPosition = element.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - offset;
-          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-        }
-      } else {
-        window.location.href = '/#realisations';
       }
       return;
     }

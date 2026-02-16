@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 
 /* ────────────────────────────────────────────────────────────────────────── */
 /*  Types                                                                    */
@@ -10,6 +10,7 @@ interface PortfolioProject {
   title: string;
   category: Exclude<Category, 'tous'>;
   thumbnail: string;
+  mediaUrl?: string;
   tags: string[];
 }
 
@@ -42,7 +43,7 @@ const allProjects: PortfolioProject[] = [
     id: 'sabay-festival-2023',
     title: 'SABAY FESTIVAL 2023',
     category: 'audiovisuel',
-    thumbnail: 'https://img.youtube.com/vi/Vyhz7_D4fFU/maxresdefault.jpg',
+    thumbnail: 'https://img.youtube.com/vi/Vyhz7_D4fFU/hqdefault.jpg',
     tags: ['Aftermovie', 'Événementiel'],
   },
   {
@@ -50,6 +51,7 @@ const allProjects: PortfolioProject[] = [
     title: 'CAPTATION LIVE CONCERT ALI 45 SCIENTIFIC',
     category: 'audiovisuel',
     thumbnail: 'https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/gnd-cover.png',
+    mediaUrl: 'https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Concert%20Ali.mp4',
     tags: ['Captation Live', 'Concert'],
   },
   {
@@ -57,6 +59,7 @@ const allProjects: PortfolioProject[] = [
     title: 'SABAY FESTIVAL 2022',
     category: 'audiovisuel',
     thumbnail: 'https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/gnd-cover.png',
+    mediaUrl: 'https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Thiek%20au%20Sabay%20Festival%202022%20Haute%20def%204k%20v2.mp4',
     tags: ['Aftermovie', 'Événementiel'],
   },
   {
@@ -71,6 +74,7 @@ const allProjects: PortfolioProject[] = [
     title: 'YUNGCALLY – CLIP OFFICIEL',
     category: 'audiovisuel',
     thumbnail: 'https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/gnd-cover.png',
+    mediaUrl: 'https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/jyfviku.mp4',
     tags: ['Clip Musical', 'Hip-Hop'],
   },
   {
@@ -78,7 +82,15 @@ const allProjects: PortfolioProject[] = [
     title: 'TRINITY REBEL FT DAFXCX – L\'UNIVERS OFFICIEL',
     category: 'audiovisuel',
     thumbnail: 'https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/gnd-cover.png',
+    mediaUrl: 'https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/trinity_rebel_univers_officiel.mp4',
     tags: ['Motion Design', 'Clip Musical'],
+  },
+  {
+    id: 'lanecdote',
+    title: 'L\'ANECDOTE',
+    category: 'audiovisuel',
+    thumbnail: 'https://img.youtube.com/vi/AGC_2cFHE_0/maxresdefault.jpg',
+    tags: ['Émission', 'Production'],
   },
   /* ── Photo ───────────────────────────────────────────────────────────── */
   {
@@ -171,23 +183,33 @@ function ProjectCard({
     <div
       className={`group relative ${aspect} rounded-2xl overflow-hidden`}
     >
-      <img
-        src={project.thumbnail}
-        alt={project.title}
-        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-        loading="lazy"
-        onError={(e) => {
-          const target = e.currentTarget;
-          const src = target.src;
-          if (src.includes('maxresdefault')) {
-            target.src = src.replace('maxresdefault', 'hq720');
-          } else if (src.includes('hq720')) {
-            target.src = src.replace('hq720', 'sddefault');
-          } else if (src.includes('sddefault')) {
-            target.src = src.replace('sddefault', 'hqdefault');
-          }
-        }}
-      />
+      {project.mediaUrl ? (
+        <video
+          src={`${project.mediaUrl}#t=0.1`}
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          muted
+          playsInline
+          preload="metadata"
+        />
+      ) : (
+        <img
+          src={project.thumbnail}
+          alt={project.title}
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          loading="lazy"
+          onError={(e) => {
+            const target = e.currentTarget;
+            const src = target.src;
+            if (src.includes('maxresdefault')) {
+              target.src = src.replace('maxresdefault', 'hq720');
+            } else if (src.includes('hq720')) {
+              target.src = src.replace('hq720', 'sddefault');
+            } else if (src.includes('sddefault')) {
+              target.src = src.replace('sddefault', 'hqdefault');
+            }
+          }}
+        />
+      )}
 
       {/* Gradient overlay on hover */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -229,8 +251,29 @@ export function PortfolioPage() {
   const [activeFilter, setActiveFilter] = useState<Category>('tous');
   const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE);
 
+  const mainRef = useRef<HTMLElement>(null);
+
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    // Trigger reveal animations on this SPA sub-page
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      },
+      { threshold: 0.05 },
+    );
+    const frame = requestAnimationFrame(() => {
+      mainRef.current
+        ?.querySelectorAll('.reveal')
+        .forEach((el) => observer.observe(el));
+    });
+    return () => {
+      cancelAnimationFrame(frame);
+      observer.disconnect();
+    };
   }, []);
 
   const filtered = useMemo(() => {
@@ -250,7 +293,7 @@ export function PortfolioPage() {
   };
 
   return (
-    <main className="pt-32 pb-0">
+    <main ref={mainRef} className="pt-32 pb-0">
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <section className="px-6 lg:px-12 max-w-[1400px] mx-auto text-center mb-16 reveal">
         <div className="mb-6">

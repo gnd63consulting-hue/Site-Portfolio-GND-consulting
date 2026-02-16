@@ -14,8 +14,7 @@
  * 
  * Note: Les vidéos cachées (hiddenVideoIds) ne sont pas incluses :
  * - live-leyel-papa
- * - live-eleonore-surprising  
- * - lanecdote
+ * - live-eleonore-surprising
  */
 
 export const videosData = [
@@ -99,6 +98,16 @@ export const videosData = [
     thumbnailUrl: 'https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/gnd-cover.png',
     credits: '🎬 Réalisation : Jonathan Ransau',
     tags: ['Supabase', 'Production audiovisuelle', 'GND Consulting']
+  },
+  {
+    id: 'lanecdote',
+    title: 'L\'ANECDOTE',
+    description: '« Émission l\'Anecdote, un format original mêlant interviews et moments de partage.\n\nUn projet qui illustre la capacité de GND Consulting à concevoir des contenus audiovisuels engageants et authentiques. »',
+    videoSource: 'youtube',
+    videoUrl: 'https://www.youtube.com/watch?v=AGC_2cFHE_0',
+    thumbnailUrl: 'https://img.youtube.com/vi/AGC_2cFHE_0/maxresdefault.jpg',
+    credits: '🎬 Réalisation : GND Consulting',
+    tags: ['YouTube', 'Production audiovisuelle', 'GND Consulting']
   }
 ];
 

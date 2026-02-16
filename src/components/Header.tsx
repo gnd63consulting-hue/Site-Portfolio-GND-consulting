@@ -124,9 +124,11 @@ export function Header() {
               <div className="w-9 h-9 bg-black rounded-full flex items-center justify-center flex-shrink-0">
                 <span className="text-white font-display text-sm font-semibold leading-none">G</span>
               </div>
-              <span className="font-display text-base font-semibold text-primary tracking-tight">
-                GND Consulting
-              </span>
+              <img
+                src="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/GND%20consulting%20Logo%20Blanc-Photoroom.png"
+                alt="GND Consulting"
+                className="h-8 w-auto"
+              />
             </a>
 
             {/* Navigation Desktop — glass-nav pills */}

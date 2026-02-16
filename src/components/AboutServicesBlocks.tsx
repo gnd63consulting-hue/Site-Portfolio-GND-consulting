@@ -67,13 +67,11 @@ export function AboutServicesBlocks({ isVisible }: { isVisible: boolean }) {
           >
             {/* Image */}
             <div className={`${isReversed ? 'lg:order-2' : ''}`}>
-              <div className="rounded-2xl overflow-hidden">
+              <div className="rounded-2xl overflow-hidden bg-gray-100">
                 <img
                   src={block.image}
                   alt={block.alt}
-                  className="w-full max-h-[400px] object-cover"
-                  loading="lazy"
-                  decoding="async"
+                  className="w-full aspect-[4/3] object-cover"
                   onError={(e) => handleImageError(e, block.backup)}
                 />
               </div>

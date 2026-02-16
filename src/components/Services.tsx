@@ -2,15 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export function Services() {
-  // Images de fond pour les cards au hover (images existantes Supabase)
-  const categoryImages: Record<string, string> = {
-    design: "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20251006_2055_Espace%20Travail%20Futuriste_simple_compose_01k6xdztmrewrv8rq637vqqpnp.png",
-    motion: "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250919_0006_Vibrant%20Digital%20Collaboration_remix_01k5fdpkfdemjrbt49q10rx0hx.png",
-    production: "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/6F0A4251.jpg",
-    photo: "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/6F0A4135.jpg",
-    ia: "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250919_0006_Vibrant%20Digital%20Collaboration_remix_01k5fdpkfdemjrbt49q10rx0hx.png",
-  };
-
   const servicePages = [
     {
       id: 'design',
@@ -71,30 +62,17 @@ export function Services() {
           <Link
             key={service.id}
             to={service.href}
-            className="group relative bg-gray-50 rounded-2xl p-8 h-[420px] flex flex-col justify-between text-left transition-all duration-500 overflow-hidden hover:bg-black hover:text-white focus:outline-none focus-visible:ring-4 focus-visible:ring-accent/30"
+            className="group bg-white border border-gray-200 rounded-2xl p-8 min-h-[380px] flex flex-col justify-between text-left transition-all duration-500 hover:bg-black hover:text-white hover:border-transparent focus:outline-none focus-visible:ring-4 focus-visible:ring-accent/30"
           >
-            {/* Background image — grayscale, visible on hover */}
-            {categoryImages[service.id] && (
-              <div
-                className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-700 grayscale"
-                style={{
-                  backgroundImage: `url(${categoryImages[service.id]})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                }}
-                aria-hidden="true"
-              />
-            )}
-
             {/* Icon */}
-            <div className="relative z-10">
+            <div>
               <span className="material-symbols-outlined text-3xl text-text-main group-hover:text-white transition-colors duration-500">
                 {service.icon}
               </span>
             </div>
 
             {/* Content */}
-            <div className="relative z-10 flex flex-col gap-3">
+            <div className="flex flex-col gap-3">
               <span className="text-xs font-medium uppercase tracking-widest text-text-muted group-hover:text-gray-400 transition-colors duration-500">
                 {String(index + 1).padStart(2, '0')}
               </span>
@@ -107,7 +85,7 @@ export function Services() {
             </div>
 
             {/* Footer — lien vers page service */}
-            <div className="relative z-10 flex items-center justify-between border-t pt-4 border-gray-200 group-hover:border-white/20 transition-colors duration-500">
+            <div className="flex items-center justify-between border-t pt-4 border-gray-200 group-hover:border-white/20 transition-colors duration-500">
               <span className="text-xs font-medium uppercase tracking-widest text-text-muted group-hover:text-gray-400 transition-colors duration-500">
                 En savoir plus
               </span>

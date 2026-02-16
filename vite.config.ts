@@ -33,18 +33,14 @@ export default defineConfig({
     minify: 'terser',
     terserOptions: {
       compress: {
-        drop_console: true,
         drop_debugger: true,
+        pure_funcs: ['console.log', 'console.debug', 'console.warn'],
       },
     },
   },
   server: {
     headers: {
-      'Cache-Control': 'public, max-age=31536000, immutable',
+      'Cache-Control': 'no-cache',
     },
-  },
-  // Désactiver complètement le Service Worker en développement
-  define: {
-    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
   },
 });

@@ -33,7 +33,34 @@
     <meta name="twitter:image" content="/GND consulting Logo Blanc.png" />
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Contenu visible pendant le chargement du JS -->
+      <div id="initial-loader" style="display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:Inter,sans-serif;background:#fff">
+        <div style="text-align:center">
+          <div style="font-size:1.25rem;font-weight:600;color:#1A1A1A;margin-bottom:0.5rem">GND Consulting</div>
+          <div style="font-size:0.875rem;color:#64748B">Chargement...</div>
+        </div>
+      </div>
+    </div>
+    <noscript>
+      <div style="padding:4rem 2rem;text-align:center;font-family:Inter,sans-serif">
+        <h1 style="font-size:1.5rem;color:#1A1A1A;margin-bottom:1rem">GND Consulting</h1>
+        <p style="color:#64748B">JavaScript est requis pour afficher ce site. Veuillez activer JavaScript dans votre navigateur.</p>
+      </div>
+    </noscript>
+    <script>
+      // Force clear stale Service Workers and caches on page load
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+          registrations.forEach(function(registration) { registration.unregister(); });
+        });
+      }
+      if ('caches' in window) {
+        caches.keys().then(function(names) {
+          names.forEach(function(name) { caches.delete(name); });
+        });
+      }
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

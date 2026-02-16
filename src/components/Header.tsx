@@ -6,6 +6,8 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   // Empêcher le scroll du body quand le menu mobile est ouvert
   useEffect(() => {
@@ -68,9 +70,6 @@ export function Header() {
     { href: '/portfolio', label: 'Projets' },
     { href: '#journal', label: 'Journal' },
   ];
-
-  const navigate = useNavigate();
-  const location = useLocation();
 
   const scrollToSection = (href: string) => {
     const isHomePage = location.pathname === '/' || location.pathname === '';

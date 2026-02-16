@@ -1,5 +1,5 @@
-import React from 'react';
-import { UnifiedFAQ } from './UnifiedFAQ';
+import React, { useState } from 'react';
+import { ChevronDown, MessageCircle } from 'lucide-react';
 
 interface FAQProps {
   headingOverride?: string;
@@ -7,6 +7,8 @@ interface FAQProps {
 }
 
 export function FAQ({ headingOverride, containerClassName = '' }: FAQProps = {}) {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
   const faqItems = [
     {
       question: "Quels types de projets proposez-vous chez GND Consulting ?",
@@ -21,40 +23,8 @@ export function FAQ({ headingOverride, containerClassName = '' }: FAQProps = {})
       answer: "Les délais varient selon le type de prestation : Montage simple \"7 à 10 jours ouvrés\", Montage long (2h) \"jusqu'à 20 jours ouvrés\", Projets complexes (motion, multi-caméras…) : sur devis. Nous nous engageons à respecter un rétroplanning défini ensemble."
     },
     {
-      question: "Dois-je verser un acompte pour lancer un projet ?",
-      answer: "Oui. Un acompte entre 30 % et 50 % est demandé pour valider la réservation. Le solde est dû à la livraison. Le montant exact est précisé dans le devis."
-    },
-    {
       question: "Proposez-vous des services d'automatisation ou d'IA ?",
       answer: "Oui. GND Consulting intègre des solutions sur-mesure pour automatiser certaines tâches de votre workflow : Préparation et publication automatisée de contenus, Déclinaisons multi-formats \"Reels, TikTok, Shorts…\", Génération assistée de visuels, Automatisation CRM, e-mailing ou formulaires. Nous vous accompagnons dans l'intégration de solutions simples, sans complexité technique."
-    },
-    {
-      question: "Peut-on faire appel à vous pour un événement ponctuel ?",
-      answer: "Absolument. Nous proposons des prestations sur-mesure pour des événements : captation, aftermovie, photos, lives, etc."
-    },
-    {
-      question: "Est-ce que je peux demander plusieurs modifications ?",
-      answer: "Oui. Selon le pack choisi : Pack Standard : 2 modifications incluses, Pack Premium : 3 à 5 modifications incluses. Au-delà, les ajustements sont facturés. Ces modalités sont précisées à l'avance dans le devis."
-    },
-    {
-      question: "Travaillez-vous uniquement avec les petites structures ?",
-      answer: "Non. GND Consulting accompagne des structures de toutes tailles. Nous sommes capables de structurer des projets ambitieux, adaptés aux standards des grandes entreprises, tout en gardant notre approche humaine et agile."
-    },
-    {
-      question: "Est-ce que vos services sont adaptables à mon secteur ?",
-      answer: "Oui. Notre approche s'adapte à chaque secteur d'activité : éducation, culture, sport, tech, immobilier, restauration, mode, santé, etc. Chaque projet est pensé sur-mesure."
-    },
-    {
-      question: "Quels formats livrez-vous ?",
-      answer: "Nous livrons dans les formats les plus courants \"MP4, JPEG, PDF, etc.\", optimisés selon les plateformes visées \"YouTube, Instagram, LinkedIn…\". Si vous avez des exigences spécifiques, elles seront intégrées dès le début du projet."
-    },
-    {
-      question: "Puis-je intégrer des services IA à mes contenus sans m'y connaître ?",
-      answer: "Oui, nous avons conçu une offre justement pensée pour les non-techniciens. Vous n'avez rien à coder : nous vous aidons à automatiser simplement des actions utiles à votre activité."
-    },
-    {
-      question: "Est-ce que vous faites du conseil stratégique ?",
-      answer: "Nous proposons des séances de cadrage stratégique, notamment pour clarifier vos objectifs, structurer votre communication ou planifier votre production de contenus. Ce service peut être réservé indépendamment ou intégré à une mission globale."
     },
     {
       question: "Comment savoir si votre offre est adaptée à mon budget ?",
@@ -62,22 +32,97 @@ export function FAQ({ headingOverride, containerClassName = '' }: FAQProps = {})
     }
   ];
 
+  const toggleFAQ = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  const scrollToContact = () => {
+    const contactSection = document.querySelector('#contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className={containerClassName}>
-      <UnifiedFAQ
-        title={headingOverride ?? "QUESTIONS FRÉQUENTES"}
-        subtitle="Retrouvez ici toutes les réponses aux interrogations fréquentes de nos clients, de la PME locale à la grande entreprise."
-        description="Tarifs, délais, méthode de travail : trouvez rapidement les réponses à vos questions sur nos services créatifs"
-        emoji="💡"
-        faqItems={faqItems}
-        themeColor={{
-          primary: '#1A1A1A',
-          secondary: '#3B82F6',
-          gradient: 'linear-gradient(135deg, #1A1A1A 0%, #4A4A4A 100%)'
-        }}
-        ctaText="Démarrer mon projet"
-        ctaLink="#contact"
-      />
+      <section id="faq" className="py-32 px-6 lg:px-12 bg-white relative overflow-hidden">
+        <div className="max-w-4xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-16 reveal">
+            <span className="inline-flex items-center gap-2 border border-gray-300 rounded-full px-5 py-2 text-xs font-medium uppercase tracking-widest text-text-muted mb-6">
+              FAQ
+            </span>
+
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-text-main mb-6 tracking-tight">
+              {headingOverride ?? "Questions fréquentes"}
+            </h2>
+
+            <p className="text-base text-text-muted font-medium max-w-2xl mx-auto">
+              Tarifs, délais, méthode de travail : trouvez rapidement les réponses à vos questions sur nos services créatifs
+            </p>
+          </div>
+
+          {/* Accordion */}
+          <div className="space-y-4 relative z-10">
+            {faqItems.map((item, index) => {
+              const isOpen = openIndex === index;
+
+              return (
+                <div key={index} className="relative">
+                  <div className="bg-white rounded-2xl border border-gray-200 hover:border-gray-300 transition-all duration-300 overflow-hidden shadow-sm hover:shadow-md">
+                    <button
+                      onClick={() => toggleFAQ(index)}
+                      className="w-full p-6 md:p-8 text-left flex items-center justify-between transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-black/10 rounded-2xl"
+                      aria-expanded={isOpen}
+                    >
+                      <h3 className="font-display text-base md:text-lg font-semibold text-text-main pr-4">
+                        {item.question}
+                      </h3>
+
+                      <div className="flex-shrink-0 ml-2">
+                        <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center transition-all duration-300">
+                          <ChevronDown
+                            className={`w-5 h-5 text-gray-600 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+                          />
+                        </div>
+                      </div>
+                    </button>
+
+                    <div
+                      className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                        isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                      }`}
+                    >
+                      <div className="px-6 md:px-8 pb-6 md:pb-8 border-t border-gray-100">
+                        <p className="pt-6 text-sm md:text-base text-text-muted leading-relaxed">
+                          {item.answer}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* CTA */}
+          <div className="text-center mt-16 relative z-10">
+            <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm">
+              <p className="text-base md:text-lg mb-6 text-text-muted font-medium">
+                Une autre question ? N'hésitez pas à nous contacter !
+              </p>
+
+              <button
+                onClick={scrollToContact}
+                className="inline-flex items-center gap-3 px-8 py-4 bg-black hover:bg-gray-800 text-white text-sm font-medium rounded-full transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-gray-300 font-display"
+              >
+                <MessageCircle className="w-5 h-5" />
+                <span>Démarrer mon projet</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Palette, Layers, Sparkles, Users, Zap, Shield, Pen, RefreshCw, Monitor, Printer, Heart } from 'lucide-react';
+import { Palette, Layers, Sparkles, Users, Zap, Shield, Pen, RefreshCw, Monitor, Printer, Heart, Target, CheckCircle, Eye } from 'lucide-react';
 import { UnifiedFAQ } from './UnifiedFAQ';
 import { updateMetaTags, pageSEO } from '../utils/seo';
 import { ButtonGND } from './ButtonGND';
@@ -52,6 +52,34 @@ export function ServiceDesign() {
     }
   ];
 
+  const methodology = [
+    {
+      icon: Target,
+      title: 'Brief créatif',
+      description: "Échange approfondi pour comprendre votre histoire, vos ambitions et votre personnalité unique."
+    },
+    {
+      icon: Eye,
+      title: 'Recherche & inspiration',
+      description: "Exploration des tendances, de votre marché et création d'un moodboard stratégique."
+    },
+    {
+      icon: Pen,
+      title: 'Concepts créatifs',
+      description: "Propositions visuelles uniques co-construites avec vous dans un processus itératif."
+    },
+    {
+      icon: CheckCircle,
+      title: 'Validation & itération',
+      description: "3 rounds de modifications inclus. Chaque étape est validée ensemble avant la suivante."
+    },
+    {
+      icon: Layers,
+      title: 'Livraison finale',
+      description: "Export de tous les formats nécessaires (AI, EPS, SVG, PNG, JPG) avec guide d'utilisation complet."
+    }
+  ];
+
   const advantages = [
     {
       icon: Sparkles,
@@ -89,7 +117,7 @@ export function ServiceDesign() {
     {
       question: 'Quels formats de fichiers livrez-vous ?',
       answer:
-        'Nous livrons tous les formats nécessaires : vectoriels (AI, EPS, SVG), haute résolution (PNG, JPG), et formats web optimisés. Vous recevez également un guide d’utilisation complet.'
+        'Nous livrons tous les formats nécessaires : vectoriels (AI, EPS, SVG), haute résolution (PNG, JPG), et formats web optimisés. Vous recevez également un guide d\'utilisation complet.'
     },
     {
       question: "Et si je n'ai aucune idée du design souhaité ?",
@@ -106,7 +134,7 @@ export function ServiceDesign() {
 
   return (
     <main id="main-content" className="service-page service-design min-h-screen bg-white text-[#1A1A1A] font-sans">
-      {/* HERO */}
+      {/* HERO — image plein écran + overlay + badge catégorie */}
       <section
         data-service-section="hero"
         className="relative overflow-hidden"
@@ -123,14 +151,17 @@ export function ServiceDesign() {
           <div className="absolute inset-0 bg-black/50" />
         </div>
 
-        <div className="relative mx-auto flex min-h-[70vh] w-full max-w-[1400px] flex-col items-center justify-end gap-6 px-6 pb-16 pt-32 text-center lg:px-12 lg:min-h-[88vh] lg:pb-24">
+        <div className="relative mx-auto flex min-h-[60vh] w-full max-w-[1400px] flex-col items-center justify-end gap-6 px-6 pb-16 pt-32 text-center lg:px-12 lg:min-h-[88vh] lg:pb-24">
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/30 px-5 py-2 text-xs font-medium uppercase tracking-widest text-white/80">
+            Design & Identité Visuelle
+          </span>
           <h1
             id="service-design-hero-title"
-            className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] tracking-tight text-white"
+            className="font-display text-balance text-[clamp(2.5rem,6vw,5rem)] font-semibold leading-[0.9] tracking-tight text-white"
           >
             Faites parler votre image
           </h1>
-          <p className="text-balance text-[clamp(1.125rem,3vw,1.75rem)] font-light leading-relaxed text-white/90">
+          <p className="max-w-2xl text-balance text-[clamp(1.125rem,3vw,1.75rem)] font-light leading-relaxed text-white/90">
             Design graphique & identité visuelle sur mesure
           </p>
           <ButtonGND
@@ -161,13 +192,16 @@ export function ServiceDesign() {
         </div>
       </section>
 
-      {/* SERVICES */}
+      {/* OFFRE — 6 cards avec icônes, hover-to-black */}
       <section
         data-service-section="services"
         className="reveal bg-background-alt py-32 px-6 lg:px-12"
       >
         <div className="mx-auto max-w-[1400px]">
           <div className="text-center">
+            <span className="inline-flex items-center rounded-full border border-gray-300 px-5 py-2 text-xs font-medium uppercase tracking-widest text-text-muted mb-6">
+              Notre offre
+            </span>
             <h2 className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] text-[#1A1A1A]">
               Nos services Design &amp; Identité Visuelle
             </h2>
@@ -176,7 +210,7 @@ export function ServiceDesign() {
             </p>
           </div>
 
-          <div className="mt-12 grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
             {services.map((service) => {
               const IconComponent = service.icon;
               return (
@@ -184,13 +218,13 @@ export function ServiceDesign() {
                   key={service.title}
                   className="group flex h-full flex-col bg-gray-50 rounded-2xl p-8 transition-all duration-500 hover:bg-black hover:text-white"
                 >
-                  <span className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-black text-white transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 sm:h-18 sm:w-18">
-                    <IconComponent className="h-8 w-8" />
+                  <span className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-black text-white transition-all duration-500 group-hover:bg-white group-hover:text-black">
+                    <IconComponent className="h-7 w-7" />
                   </span>
-                  <h3 className="text-[clamp(1.125rem,2.6vw,1.35rem)] font-bold text-[#1A1A1A] transition-colors duration-300 group-hover:text-white">
+                  <h3 className="text-[clamp(1.125rem,2.6vw,1.35rem)] font-bold text-[#1A1A1A] transition-colors duration-500 group-hover:text-white">
                     {service.title}
                   </h3>
-                  <p className="mt-3 text-[clamp(0.9375rem,2.3vw,1rem)] leading-relaxed text-text-muted">
+                  <p className="mt-3 text-[clamp(0.9375rem,2.3vw,1rem)] leading-relaxed text-text-muted transition-colors duration-500 group-hover:text-gray-300">
                     {service.description}
                   </p>
                 </article>
@@ -200,7 +234,7 @@ export function ServiceDesign() {
         </div>
       </section>
 
-      {/* APPROCHE */}
+      {/* APPROCHE — 2 colonnes texte + image */}
       <section
         data-service-section="approach"
         className="reveal bg-white py-32 px-6 lg:px-12"
@@ -208,6 +242,9 @@ export function ServiceDesign() {
         <div className="mx-auto max-w-[1400px]">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
             <div className="space-y-6">
+              <span className="inline-flex items-center rounded-full border border-gray-300 px-5 py-2 text-xs font-medium uppercase tracking-widest text-text-muted">
+                Notre approche
+              </span>
               <h2 className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] text-[#1A1A1A]">
                 Une identité qui vous ressemble vraiment
               </h2>
@@ -256,10 +293,58 @@ export function ServiceDesign() {
         </div>
       </section>
 
-      {/* AVANTAGES */}
+      {/* PROCESSUS — 5 étapes numérotées, Brief → Recherche → Concepts → Validation → Livraison */}
+      <section
+        data-service-section="methodology"
+        className="reveal bg-background-alt py-32 px-6 lg:px-12"
+      >
+        <div className="mx-auto max-w-[1400px]">
+          <div className="text-center">
+            <span className="inline-flex items-center rounded-full border border-gray-300 px-5 py-2 text-xs font-medium uppercase tracking-widest text-text-muted mb-6">
+              Processus
+            </span>
+            <h2 className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] text-[#1A1A1A]">
+              Du brief à la livraison
+            </h2>
+            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.2rem)] text-text-muted">
+              Un processus créatif structuré et transparent, où chaque étape est validée ensemble.
+            </p>
+          </div>
+
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-5">
+            {methodology.map((step, index) => {
+              const IconComponent = step.icon;
+              return (
+                <article
+                  key={step.title}
+                  className="group relative flex h-full flex-col gap-4 bg-gray-50 rounded-2xl p-8 transition-all duration-500 hover:bg-black hover:text-white"
+                >
+                  <span className="font-display text-5xl font-semibold text-gray-200 group-hover:text-white/10 transition-colors duration-500 absolute top-6 right-6">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <div className="flex items-center gap-3">
+                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-black text-white transition-all duration-500 group-hover:bg-white group-hover:text-black">
+                      <IconComponent className="h-5 w-5" />
+                    </span>
+                    <h3 className="text-[clamp(1rem,2.3vw,1.1rem)] font-semibold text-[#1A1A1A] transition-colors duration-500 group-hover:text-white">{step.title}</h3>
+                  </div>
+                  <p className="text-[clamp(0.875rem,2vw,0.975rem)] leading-relaxed text-text-muted transition-colors duration-500 group-hover:text-gray-300">
+                    {step.description}
+                  </p>
+                  {index < methodology.length - 1 && (
+                    <div className="hidden lg:block absolute top-1/2 -right-3 w-6 h-px bg-gray-200 z-10" />
+                  )}
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* AVANTAGES — 4 colonnes numérotées, icon inversion */}
       <section
         data-service-section="advantages"
-        className="reveal bg-background-alt py-32 px-6 lg:px-12"
+        className="reveal bg-white py-32 px-6 lg:px-12"
       >
         <div className="mx-auto max-w-[1400px]">
           <div className="text-center">
@@ -271,21 +356,24 @@ export function ServiceDesign() {
             </p>
           </div>
 
-          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-4">
-            {advantages.map((advantage) => {
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
+            {advantages.map((advantage, index) => {
               const IconComponent = advantage.icon;
               return (
                 <article
                   key={advantage.title}
-                  className="group flex h-full flex-col items-center bg-gray-50 rounded-2xl p-8 text-center transition-all duration-500 hover:bg-black hover:text-white"
+                  className="group flex h-full flex-col gap-4 bg-gray-50 rounded-2xl p-8 text-center transition-all duration-500 hover:bg-black hover:text-white"
                 >
-                  <span className="mb-6 inline-flex h-20 w-20 items-center justify-center rounded-2xl bg-black text-white transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
-                    <IconComponent className="h-10 w-10" />
+                  <span className="text-xs font-medium uppercase tracking-widest text-text-muted transition-colors duration-500 group-hover:text-gray-400">
+                    {String(index + 1).padStart(2, '0')}
                   </span>
-                  <h3 className="text-[clamp(1.125rem,2.6vw,1.35rem)] font-bold text-[#1A1A1A] transition-colors duration-300 group-hover:text-white">
+                  <span className="mx-auto inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-black text-white transition-all duration-500 group-hover:bg-white group-hover:text-black">
+                    <IconComponent className="h-7 w-7" />
+                  </span>
+                  <h3 className="text-[clamp(1.05rem,2.4vw,1.2rem)] font-semibold text-[#1A1A1A] transition-colors duration-500 group-hover:text-white">
                     {advantage.title}
                   </h3>
-                  <p className="mt-3 text-[clamp(0.9375rem,2.3vw,1.05rem)] leading-relaxed text-text-muted">
+                  <p className="text-[clamp(0.9375rem,2.2vw,1.05rem)] leading-relaxed text-text-muted transition-colors duration-500 group-hover:text-gray-300">
                     {advantage.description}
                   </p>
                 </article>

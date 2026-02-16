@@ -13,30 +13,41 @@ export function Hero() {
   return (
     <main
       id="main-content"
-      className="relative min-h-screen flex flex-col justify-center bg-white"
+      className="relative min-h-screen flex flex-col justify-center"
     >
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-12 w-full pt-32 pb-20">
+      {/* Background image */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src={heroImage}
+          alt=""
+          className="w-full h-full object-cover"
+          loading="eager"
+        />
+        <div className="absolute inset-0 bg-black/60" />
+      </div>
+
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12 w-full pt-32 pb-20 relative z-10">
         {/* Titre principal — Stitch editorial */}
         <h1
-          className="font-display font-semibold text-[#1A1A1A] leading-[0.9] tracking-tight reveal text-5xl sm:text-6xl md:text-8xl lg:text-[7rem]"
+          className="font-display font-semibold text-white leading-[0.9] tracking-tight reveal text-5xl sm:text-6xl md:text-8xl lg:text-[7rem]"
           role="heading"
           aria-level={1}
         >
           <span className="block">L'Art de la</span>
-          <span className="block italic font-light text-gray-400">Clarté Digitale</span>
+          <span className="block italic font-light text-white/60">Clarté Digitale</span>
         </h1>
 
         {/* Sous-titre */}
-        <p className="mt-8 text-lg text-[#64748B] leading-relaxed max-w-lg reveal delay-100">
+        <p className="mt-8 text-lg text-white/70 leading-relaxed max-w-lg reveal delay-100">
           Studio créatif parisien spécialisé en production audiovisuelle, design et automatisation IA.
         </p>
 
         {/* Metadata — Stitch style */}
-        <div className="mt-12 flex items-center gap-6 text-xs text-[#64748B] uppercase tracking-widest reveal delay-150">
+        <div className="mt-12 flex items-center gap-6 text-xs text-white/50 uppercase tracking-widest reveal delay-150">
           <span>Paris, FR</span>
-          <span className="w-1 h-1 bg-[#64748B] rounded-full"></span>
+          <span className="w-1 h-1 bg-white/50 rounded-full"></span>
           <span>Est. 2024</span>
-          <span className="w-1 h-1 bg-[#64748B] rounded-full"></span>
+          <span className="w-1 h-1 bg-white/50 rounded-full"></span>
           <span>Scroll</span>
         </div>
 

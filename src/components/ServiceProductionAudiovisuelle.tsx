@@ -211,8 +211,8 @@ export function ServiceProductionAudiovisuelle() {
         </div>
 
         <div className="relative mx-auto flex min-h-[60vh] w-full max-w-[1400px] flex-col items-center justify-end gap-6 px-6 pb-16 pt-32 text-center lg:px-12 lg:min-h-[88vh] lg:pb-24">
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/30 px-5 py-2 text-xs font-medium uppercase tracking-widest text-white/80">
-            Production Audiovisuelle
+          <span className="inline-flex items-center rounded-full bg-white/10 px-4 py-1.5 text-xs font-medium tracking-widest text-white uppercase backdrop-blur-sm">
+            PRODUCTION AUDIOVISUELLE
           </span>
           <h1
             id="service-production-hero-title"
@@ -220,17 +220,12 @@ export function ServiceProductionAudiovisuelle() {
           >
             Production audiovisuelle sur-mesure
           </h1>
-          <p className="max-w-2xl text-balance text-[clamp(1.125rem,3vw,1.75rem)] font-light leading-relaxed text-white/90">
+          <p className="max-w-2xl text-balance text-[clamp(1.125rem,3vw,1.75rem)] font-light leading-relaxed text-white/70">
             Captation live, montage, clips, corporate : nous sublimons vos histoires en images.
           </p>
-          <ButtonGND
-            variant="primary"
-            onClick={scrollToContact}
-            className="w-full max-w-md sm:max-w-lg lg:max-w-xl text-[clamp(1rem,2.6vw,1.25rem)] bg-black text-white rounded-full px-8 py-4 hover:bg-gray-800 hover:scale-105"
-          >
-            <Camera className="h-5 w-5 sm:h-6 sm:w-6" />
-            Demander un devis personnalisé
-          </ButtonGND>
+          <a href="/#contact-form" className="inline-flex items-center gap-2 bg-white text-black rounded-full px-8 py-4 text-sm font-medium hover:bg-gray-100 transition-colors">
+            Demander un devis personnalisé →
+          </a>
         </div>
       </section>
 

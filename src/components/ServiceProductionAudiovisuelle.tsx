@@ -14,7 +14,6 @@ import {
   TrendingUp,
   Eye,
   Award,
-  Clock,
   PenSquare
 } from 'lucide-react';
 import { UnifiedFAQ } from './UnifiedFAQ';
@@ -247,17 +246,17 @@ export function ServiceProductionAudiovisuelle() {
       {/* EXPERTISES — 6 cards, grille 3 colonnes */}
       <section
         data-service-section="services"
-        className="reveal bg-background-alt py-32 px-6 lg:px-12"
+        className="reveal bg-white py-32 px-6 lg:px-12"
       >
         <div className="mx-auto max-w-[1400px]">
           <div className="text-center">
-            <span className="inline-flex items-center rounded-full border border-gray-300 px-5 py-2 text-xs font-medium uppercase tracking-widest text-text-muted mb-6">
+            <span className="inline-flex items-center rounded-full bg-gray-100 px-4 py-1.5 text-xs font-medium tracking-widest text-gray-600 uppercase mb-6">
               Notre offre
             </span>
-            <h2 className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] text-[#1A1A1A]">
+            <h2 className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] text-gray-900">
               Nos expertises vidéo
             </h2>
-            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.25rem)] text-text-muted">
+            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.25rem)] text-gray-500">
               Une offre complète, de la captation live au montage final, pour couvrir tous vos besoins audiovisuels.
             </p>
           </div>
@@ -268,25 +267,21 @@ export function ServiceProductionAudiovisuelle() {
               return (
                 <article
                   key={item.title}
-                  className="group flex h-full flex-col bg-gray-50 rounded-2xl p-8 transition-all duration-500 hover:bg-black hover:text-white"
+                  className="group flex h-full flex-col bg-white border border-gray-200 rounded-2xl p-8 hover:bg-black hover:text-white transition-all duration-300"
                 >
-                  <span className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-black text-white transition-all duration-500 group-hover:bg-white group-hover:text-black">
-                    <IconComponent className="h-7 w-7" />
-                  </span>
-                  <h3 className="text-[clamp(1.125rem,2.6vw,1.35rem)] font-bold text-[#1A1A1A] transition-colors duration-500 group-hover:text-white">{item.title}</h3>
-                  <p className="mt-2 text-[clamp(0.9375rem,2.3vw,1rem)] leading-relaxed text-text-muted transition-colors duration-500 group-hover:text-gray-300">
+                  <IconComponent className="mb-5 h-6 w-6 text-gray-900 group-hover:text-white transition-colors duration-300" />
+                  <h3 className="text-[clamp(1.125rem,2.6vw,1.35rem)] font-bold text-gray-900 transition-colors duration-300 group-hover:text-white">{item.title}</h3>
+                  <p className="mt-2 text-[clamp(0.9375rem,2.3vw,1rem)] leading-relaxed text-gray-500 transition-colors duration-300 group-hover:text-gray-300">
                     {item.description}
                   </p>
-                  <ul className="mt-4 space-y-2 text-[clamp(0.9rem,2.2vw,0.975rem)] text-text-muted">
+                  <ul className="mt-4 space-y-2">
                     {item.features.map((feature) => (
-                      <li key={feature} className="flex items-start gap-2 transition-colors duration-500 group-hover:text-gray-300">
-                        <span className="mt-1 h-2 w-2 rounded-full bg-accent flex-shrink-0"></span>
-                        <span>{feature}</span>
+                      <li key={feature} className="text-sm text-gray-500 group-hover:text-gray-300 transition-colors duration-300">
+                        {feature}
                       </li>
                     ))}
                   </ul>
-                  <span className="mt-auto pt-5 inline-flex w-fit items-center gap-2 border border-gray-300 group-hover:border-white/20 rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-accent transition-colors duration-500 group-hover:text-blue-300">
-                    <Clock className="h-4 w-4" />
+                  <span className="mt-auto pt-5 inline-flex w-fit items-center rounded-full border border-gray-200 px-3 py-1 text-xs text-gray-500 group-hover:border-gray-600 group-hover:text-gray-400 transition-colors duration-300">
                     {item.delay}
                   </span>
                 </article>

@@ -335,11 +335,11 @@ export function ServiceProductionAudiovisuelle() {
       {/* PILIERS — 4 colonnes */}
       <section
         data-service-section="advantages"
-        className="reveal bg-background-alt py-32 px-6 lg:px-12"
+        className="reveal bg-white py-32 px-6 lg:px-12"
       >
         <div className="mx-auto max-w-[1400px]">
           <div className="text-center">
-            <h2 className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] text-[#1A1A1A]">
+            <h2 className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] text-gray-900">
               Nos 4 piliers pour une vidéo réussie
             </h2>
           </div>
@@ -350,16 +350,14 @@ export function ServiceProductionAudiovisuelle() {
               return (
                 <article
                   key={pillar.title}
-                  className="group flex h-full flex-col gap-4 bg-gray-50 rounded-2xl p-8 text-center transition-all duration-500 hover:bg-black hover:text-white"
+                  className="group flex h-full flex-col bg-white border border-gray-200 rounded-2xl p-8 text-center hover:bg-black hover:text-white transition-all duration-300"
                 >
-                  <span className="text-xs font-medium uppercase tracking-widest text-text-muted transition-colors duration-500 group-hover:text-gray-400">
+                  <span className="text-xs font-medium tracking-widest text-gray-400 group-hover:text-gray-500 uppercase mb-4">
                     {String(index + 1).padStart(2, '0')}
                   </span>
-                  <span className="mx-auto inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-black text-white transition-all duration-500 group-hover:bg-white group-hover:text-black">
-                    <IconComponent className="h-7 w-7" />
-                  </span>
-                  <h3 className="text-[clamp(1.05rem,2.4vw,1.2rem)] font-semibold text-[#1A1A1A] transition-colors duration-500 group-hover:text-white">{pillar.title}</h3>
-                  <p className="text-[clamp(0.9375rem,2.2vw,1.05rem)] leading-relaxed text-text-muted transition-colors duration-500 group-hover:text-gray-300">
+                  <IconComponent className="mx-auto w-6 h-6 text-gray-900 group-hover:text-white mb-4 transition-colors duration-300" />
+                  <h3 className="font-semibold text-gray-900 group-hover:text-white mb-2 transition-colors duration-300">{pillar.title}</h3>
+                  <p className="text-sm text-gray-500 group-hover:text-gray-300 transition-colors duration-300">
                     {pillar.description}
                   </p>
                 </article>

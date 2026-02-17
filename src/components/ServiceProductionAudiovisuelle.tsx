@@ -235,10 +235,10 @@ export function ServiceProductionAudiovisuelle() {
         className="reveal bg-white py-32 px-6 lg:px-12"
       >
         <div className="mx-auto max-w-[1400px] text-center">
-          <p className="text-balance text-[clamp(1rem,2.6vw,1.5rem)] leading-relaxed text-text-muted">
+          <p className="text-balance text-[clamp(1rem,2.6vw,1.5rem)] leading-relaxed text-gray-700">
             Deux décennies de captation, montage et post-production nous ont appris une chose : une vidéo réussie est un
             savant mélange d&apos;émotion, de rythme et d&apos;exigence technique. Chez GND Consulting, nous concevons des contenus
-            audiovisuels qui <strong className="text-accent">attirent l&apos;attention, racontent votre histoire</strong> et
+            audiovisuels qui <strong className="font-semibold text-gray-900">attirent l&apos;attention, racontent votre histoire</strong> et
             génèrent le bon impact, quel que soit le support de diffusion.
           </p>
         </div>

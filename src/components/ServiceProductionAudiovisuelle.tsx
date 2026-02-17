@@ -298,13 +298,13 @@ export function ServiceProductionAudiovisuelle() {
       >
         <div className="mx-auto max-w-[1400px]">
           <div className="text-center">
-            <span className="inline-flex items-center rounded-full border border-gray-300 px-5 py-2 text-xs font-medium uppercase tracking-widest text-text-muted mb-6">
+            <span className="inline-flex items-center rounded-full bg-gray-100 px-4 py-1.5 text-xs font-medium tracking-widest text-gray-600 uppercase mb-6">
               Processus
             </span>
-            <h2 className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] text-[#1A1A1A]">
+            <h2 className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] text-gray-900">
               Un processus cadré et transparent
             </h2>
-            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.2rem)] text-text-muted">
+            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.2rem)] text-gray-500">
               Nous orchestrons chaque étape pour vous livrer une production fluide, sereine et fidèle à votre vision.
             </p>
           </div>
@@ -315,23 +315,16 @@ export function ServiceProductionAudiovisuelle() {
               return (
                 <article
                   key={step.title}
-                  className="group relative flex h-full flex-col gap-4 bg-gray-50 rounded-2xl p-8 transition-all duration-500 hover:bg-black hover:text-white"
+                  className="group relative flex h-full flex-col gap-4 bg-white border border-gray-200 rounded-2xl p-8 hover:bg-black hover:text-white transition-all duration-300"
                 >
-                  <span className="font-display text-5xl font-semibold text-gray-200 group-hover:text-white/10 transition-colors duration-500 absolute top-6 right-6">
+                  <span className="text-6xl font-bold text-gray-100 group-hover:text-gray-800 select-none absolute top-4 right-6 transition-colors duration-300">
                     {String(index + 1).padStart(2, '0')}
                   </span>
-                  <div className="flex items-center gap-3">
-                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-black text-white transition-all duration-500 group-hover:bg-white group-hover:text-black">
-                      <IconComponent className="h-5 w-5" />
-                    </span>
-                    <h3 className="text-[clamp(1.0625rem,2.3vw,1.2rem)] font-semibold text-[#1A1A1A] transition-colors duration-500 group-hover:text-white">{step.title}</h3>
-                  </div>
-                  <p className="text-[clamp(0.9375rem,2.2vw,1.05rem)] leading-relaxed text-text-muted transition-colors duration-500 group-hover:text-gray-300">
+                  <IconComponent className="w-6 h-6 text-gray-900 group-hover:text-white mb-4 transition-colors duration-300" />
+                  <h3 className="font-semibold text-gray-900 group-hover:text-white transition-colors duration-300">{step.title}</h3>
+                  <p className="text-sm text-gray-500 group-hover:text-gray-300 transition-colors duration-300">
                     {step.description}
                   </p>
-                  {index < methodology.length - 1 && (
-                    <div className="hidden lg:block absolute top-1/2 -right-3 w-6 h-px bg-gray-200 z-10" />
-                  )}
                 </article>
               );
             })}

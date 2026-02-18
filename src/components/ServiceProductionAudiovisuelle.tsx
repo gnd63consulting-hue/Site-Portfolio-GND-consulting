@@ -133,22 +133,26 @@ export function ServiceProductionAudiovisuelle() {
   const videoImpacts = [
     {
       icon: TrendingUp,
-      title: '1200% de partages',
+      stat: '1200%',
+      title: 'de partages',
       description: 'Les vidéos génèrent jusqu\u2019à 12 fois plus de partages que du contenu image ou texte.'
     },
     {
       icon: Eye,
-      title: '95% de mémorisation',
+      stat: '95%',
+      title: 'de mémorisation',
       description: 'Un message en vidéo est retenu beaucoup plus longtemps qu\u2019un message uniquement textuel.'
     },
     {
       icon: Heart,
-      title: '80% des utilisateurs',
+      stat: '80%',
+      title: 'des utilisateurs',
       description: 'Préfèrent découvrir un produit ou un service via une vidéo plutôt que du texte.'
     },
     {
       icon: Award,
-      title: '5x plus d\u2019engagement',
+      stat: '5x',
+      title: 'plus d\u2019engagement',
       description: 'Les campagnes intégrant la vidéo déclenchent plus d\u2019interactions et de conversions.'
     }
   ];
@@ -374,13 +378,13 @@ export function ServiceProductionAudiovisuelle() {
       >
         <div className="mx-auto max-w-[1400px]">
           <div className="text-center">
-            <span className="inline-flex items-center rounded-full border border-gray-300 px-5 py-2 text-xs font-medium uppercase tracking-widest text-text-muted mb-6">
+            <span className="inline-flex items-center rounded-full bg-gray-100 px-4 py-1.5 text-xs font-medium tracking-widest text-gray-600 uppercase mb-6">
               Impact
             </span>
-            <h2 className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] text-[#1A1A1A]">
+            <h2 className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] text-gray-900">
               Pourquoi miser sur la vidéo ?
             </h2>
-            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.2rem)] text-text-muted">
+            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.2rem)] text-gray-500">
               Des chiffres clés qui montrent la puissance de l&apos;audiovisuel pour votre communication.
             </p>
           </div>
@@ -390,14 +394,13 @@ export function ServiceProductionAudiovisuelle() {
               const IconComponent = impact.icon;
               return (
                 <article
-                  key={impact.title}
-                  className="group flex h-full flex-col gap-3 bg-gray-50 rounded-2xl p-8 transition-all duration-500 hover:bg-black hover:text-white"
+                  key={impact.stat}
+                  className="group flex h-full flex-col bg-white border border-gray-200 rounded-2xl p-8 hover:bg-black hover:text-white transition-all duration-300"
                 >
-                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-black text-white transition-all duration-500 group-hover:bg-white group-hover:text-black">
-                    <IconComponent className="h-6 w-6" />
-                  </span>
-                  <h3 className="text-[clamp(1.0625rem,2.3vw,1.2rem)] font-semibold text-[#1A1A1A] transition-colors duration-500 group-hover:text-white">{impact.title}</h3>
-                  <p className="text-[clamp(0.9375rem,2.2vw,1.05rem)] leading-relaxed text-text-muted transition-colors duration-500 group-hover:text-gray-300">
+                  <IconComponent className="w-6 h-6 text-gray-900 group-hover:text-white mb-4 transition-colors duration-300" />
+                  <span className="text-4xl font-display font-bold text-gray-900 group-hover:text-white mb-2 transition-colors duration-300">{impact.stat}</span>
+                  <h3 className="font-semibold text-gray-900 group-hover:text-white mb-2 transition-colors duration-300">{impact.title}</h3>
+                  <p className="text-sm text-gray-500 group-hover:text-gray-300 transition-colors duration-300">
                     {impact.description}
                   </p>
                 </article>

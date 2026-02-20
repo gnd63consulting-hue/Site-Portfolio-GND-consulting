@@ -464,79 +464,88 @@ export function ServiceProductionAudiovisuelle() {
 
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* EXPERTISES PRINCIPALES — layout éditorial alternant */}
+          <div className="space-y-0">
+
+            {/* Expertise 1 — image gauche, texte droite */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 border-b border-gray-100">
+              <div className="aspect-[4/3] lg:aspect-auto bg-gray-100 overflow-hidden">
+                <img
+                  src={IMAGE_HERO}
+                  alt="Captation live"
+                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                />
+              </div>
+              <div className="flex flex-col justify-center p-12 lg:p-16">
+                <span className="text-xs font-mono uppercase tracking-widest text-gray-400 mb-4">01</span>
+                <h3 className="text-3xl font-black text-black mb-4">Captation live &amp; technique</h3>
+                <p className="text-gray-500 leading-relaxed mb-8">
+                  Multi-caméras 4K/8K, régie vidéo, projection &amp; retours écrans, streaming multiplateforme. Nous couvrons vos événements avec la rigueur d&apos;un studio de broadcast.
+                </p>
+                <span className="text-xs font-mono uppercase tracking-widest border-b border-black pb-1 self-start cursor-default">
+                  Captation · Streaming · Régie
+                </span>
+              </div>
+            </div>
+
+            {/* Expertise 2 — texte gauche, image droite */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 border-b border-gray-100">
+              <div className="flex flex-col justify-center p-12 lg:p-16 order-2 lg:order-1">
+                <span className="text-xs font-mono uppercase tracking-widest text-gray-400 mb-4">02</span>
+                <h3 className="text-3xl font-black text-black mb-4">Montage &amp; post-production</h3>
+                <p className="text-gray-500 leading-relaxed mb-8">
+                  Montage narratif, étalonnage couleur cinématographique, sound design et effets visuels. Du rushes au master final livrable sur tous supports.
+                </p>
+                <span className="text-xs font-mono uppercase tracking-widest border-b border-black pb-1 self-start cursor-default">
+                  Montage · Étalonnage · Sound design
+                </span>
+              </div>
+              <div className="aspect-[4/3] lg:aspect-auto bg-gray-100 overflow-hidden order-1 lg:order-2">
+                <img
+                  src={IMAGE_HERO}
+                  alt="Montage"
+                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                />
+              </div>
+            </div>
+
+            {/* Expertise 3 — image gauche, texte droite */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 border-b border-gray-100">
+              <div className="aspect-[4/3] lg:aspect-auto bg-gray-100 overflow-hidden">
+                <img
+                  src={IMAGE_HERO}
+                  alt="Clips artistiques"
+                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                />
+              </div>
+              <div className="flex flex-col justify-center p-12 lg:p-16">
+                <span className="text-xs font-mono uppercase tracking-widest text-gray-400 mb-4">03</span>
+                <h3 className="text-3xl font-black text-black mb-4">Clips &amp; contenus artistiques</h3>
+                <p className="text-gray-500 leading-relaxed mb-8">
+                  Clips musicaux, vidéos créatives, univers stylisés et narration immersive. On co-construit l&apos;esthétique avec l&apos;artiste pour servir sa vision.
+                </p>
+                <span className="text-xs font-mono uppercase tracking-widest border-b border-black pb-1 self-start cursor-default">
+                  Clips · Direction artistique · Narration
+                </span>
+              </div>
+            </div>
+
+          </div>
+
+          {/* EXPERTISES SECONDAIRES — 3 items en ligne simple */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-gray-100 mt-0 border-b border-gray-100">
 
             {[
-              {
-                icon: '🎥',
-                titre: 'Captation live & technique',
-                description: 'Multi-caméras 4K/8K, régie vidéo, projection & retours écrans, streaming multiplateforme.',
-                image: IMAGE_HERO,
-              },
-              {
-                icon: '✂️',
-                titre: 'Montage & post-production',
-                description: 'Montage professionnel, étalonnage couleur, sound design et effets visuels.',
-                image: IMAGE_HERO,
-              },
-              {
-                icon: '🎵',
-                titre: 'Clips & contenus artistiques',
-                description: 'Clips musicaux, vidéos créatives, univers stylisés et narration immersive.',
-                image: IMAGE_HERO,
-              },
-              {
-                icon: '📷',
-                titre: 'Captation événementielle',
-                description: 'Tournage terrain, reportages, captation discrète et interviews professionnelles.',
-                image: IMAGE_HERO,
-              },
-              {
-                icon: '📱',
-                titre: 'Vidéos social media',
-                description: 'Reels, Stories, formats verticaux et contenus viraux pour TikTok, Instagram, YouTube.',
-                image: IMAGE_HERO,
-              },
-              {
-                icon: '💼',
-                titre: 'Corporate & e-learning',
-                description: "Vidéos d'entreprise, formations, présentation produit et contenus pédagogiques.",
-                image: IMAGE_HERO,
-              },
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="group relative bg-gray-50 rounded-2xl p-8 h-[420px] flex flex-col justify-between overflow-hidden hover:bg-black hover:text-white transition-colors duration-500"
-              >
-                {/* Contenu principal */}
-                <div className="relative z-10">
-                  {/* Icône dans cercle blanc */}
-                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mb-6 text-black group-hover:scale-110 transition-transform duration-300 text-lg shadow-sm">
-                    {item.icon}
-                  </div>
-                  <h3 className="text-xl font-bold mb-3 group-hover:text-white transition-colors">
-                    {item.titre}
-                  </h3>
-                  <p className="text-sm text-gray-500 group-hover:text-gray-300 leading-relaxed transition-colors">
-                    {item.description}
-                  </p>
-                </div>
-
-                {/* "En savoir plus" — apparaît au hover */}
-                <div className="relative z-10 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
-                  <span className="text-xs font-mono uppercase tracking-widest border-b border-white/30 pb-1 text-white">
-                    En savoir plus
-                  </span>
-                </div>
-
-                {/* Image de fond révélée au hover en grayscale */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500">
-                  <img
-                    src={item.image}
-                    alt=""
-                    className="w-full h-full object-cover grayscale"
-                  />
-                </div>
+              { num: '04', titre: 'Captation événementielle', tags: 'Reportage · Interview · Terrain' },
+              { num: '05', titre: 'Vidéos social media', tags: 'Reels · Stories · Formats verticaux' },
+              { num: '06', titre: 'Corporate & e-learning', tags: 'Entreprise · Formation · Produit' },
+            ].map((item) => (
+              <div key={item.num} className="bg-white p-10 flex flex-col gap-4 hover:bg-gray-50 transition-colors">
+                <span className="text-xs font-mono uppercase tracking-widest text-gray-400">{item.num}</span>
+                <h3 className="text-xl font-black text-black">{item.titre}</h3>
+                <span className="text-xs font-mono uppercase tracking-widest text-gray-400 border-b border-gray-200 pb-2 self-start">
+                  {item.tags}
+                </span>
               </div>
             ))}
 

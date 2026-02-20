@@ -360,7 +360,7 @@ export function ServiceProductionAudiovisuelle() {
         <div className="max-w-[1400px] mx-auto">
 
           {/* En-tête */}
-          <div className="mb-12">
+          <div className="text-center mb-12">
             <div className="inline-flex items-center px-4 py-2 rounded-full border border-gray-200 bg-white mb-6">
               <span className="text-xs font-medium tracking-widest uppercase text-gray-500">
                 Nos créations
@@ -371,6 +371,17 @@ export function ServiceProductionAudiovisuelle() {
               <br />
               <span className="italic font-normal text-gray-400">parlent d&apos;elles-mêmes.</span>
             </h2>
+          </div>
+
+          {/* Player principal showreel */}
+          <div className="relative aspect-video rounded-2xl overflow-hidden bg-gray-900 mb-8 mt-10">
+            <video
+              src={VIDEO_SHOWREEL}
+              className="w-full h-full object-cover"
+              controls
+              playsInline
+              preload="metadata"
+            />
           </div>
 
           {/* Grille 3 vidéos */}
@@ -465,7 +476,7 @@ export function ServiceProductionAudiovisuelle() {
           {/* CTA bas */}
           <div className="mt-10 text-center">
             <a
-              href="/realisations"
+              href="/services/production-audiovisuelle"
               className="inline-flex items-center gap-2 px-8 py-4 bg-black text-white rounded-full text-sm font-medium hover:bg-gray-800 transition-all duration-300"
             >
               Voir toutes nos réalisations

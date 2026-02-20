@@ -464,26 +464,82 @@ export function ServiceProductionAudiovisuelle() {
 
           </div>
 
-          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
-            {services.map((service) => {
-              const IconComponent = service.icon;
-              return (
-                <article
-                  key={service.title}
-                  className="group flex h-full flex-col bg-gray-50 rounded-2xl p-8 transition-all duration-500 hover:bg-black hover:text-white"
-                >
-                  <span className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-black text-white transition-all duration-500 group-hover:bg-white group-hover:text-black">
-                    <IconComponent className="h-7 w-7" />
-                  </span>
-                  <h3 className="text-[clamp(1.125rem,2.6vw,1.35rem)] font-bold text-[#1A1A1A] transition-colors duration-500 group-hover:text-white">
-                    {service.title}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+            {[
+              {
+                icon: '🎥',
+                titre: 'Captation live & technique',
+                description: 'Multi-caméras 4K/8K, régie vidéo, projection & retours écrans, streaming multiplateforme.',
+                image: IMAGE_HERO,
+              },
+              {
+                icon: '✂️',
+                titre: 'Montage & post-production',
+                description: 'Montage professionnel, étalonnage couleur, sound design et effets visuels.',
+                image: IMAGE_HERO,
+              },
+              {
+                icon: '🎵',
+                titre: 'Clips & contenus artistiques',
+                description: 'Clips musicaux, vidéos créatives, univers stylisés et narration immersive.',
+                image: IMAGE_HERO,
+              },
+              {
+                icon: '📷',
+                titre: 'Captation événementielle',
+                description: 'Tournage terrain, reportages, captation discrète et interviews professionnelles.',
+                image: IMAGE_HERO,
+              },
+              {
+                icon: '📱',
+                titre: 'Vidéos social media',
+                description: 'Reels, Stories, formats verticaux et contenus viraux pour TikTok, Instagram, YouTube.',
+                image: IMAGE_HERO,
+              },
+              {
+                icon: '💼',
+                titre: 'Corporate & e-learning',
+                description: "Vidéos d'entreprise, formations, présentation produit et contenus pédagogiques.",
+                image: IMAGE_HERO,
+              },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="group relative bg-gray-50 rounded-2xl p-8 h-[420px] flex flex-col justify-between overflow-hidden hover:bg-black hover:text-white transition-colors duration-500"
+              >
+                {/* Contenu principal */}
+                <div className="relative z-10">
+                  {/* Icône dans cercle blanc */}
+                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mb-6 text-black group-hover:scale-110 transition-transform duration-300 text-lg shadow-sm">
+                    {item.icon}
+                  </div>
+                  <h3 className="text-xl font-bold mb-3 group-hover:text-white transition-colors">
+                    {item.titre}
                   </h3>
-                  <p className="mt-3 text-[clamp(0.9375rem,2.3vw,1rem)] leading-relaxed text-text-muted transition-colors duration-500 group-hover:text-gray-300">
-                    {service.description}
+                  <p className="text-sm text-gray-500 group-hover:text-gray-300 leading-relaxed transition-colors">
+                    {item.description}
                   </p>
-                </article>
-              );
-            })}
+                </div>
+
+                {/* "En savoir plus" — apparaît au hover */}
+                <div className="relative z-10 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                  <span className="text-xs font-mono uppercase tracking-widest border-b border-white/30 pb-1 text-white">
+                    En savoir plus
+                  </span>
+                </div>
+
+                {/* Image de fond révélée au hover en grayscale */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500">
+                  <img
+                    src={item.image}
+                    alt=""
+                    className="w-full h-full object-cover grayscale"
+                  />
+                </div>
+              </div>
+            ))}
+
           </div>
         </div>
       </section>

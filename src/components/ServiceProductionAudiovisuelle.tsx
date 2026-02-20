@@ -184,7 +184,7 @@ export function ServiceProductionAudiovisuelle() {
           <div className="mb-12">
             <h1 className="font-display font-semibold text-6xl md:text-8xl lg:text-[7rem] leading-[0.9] tracking-tight text-[#1A1A1A] mb-8">
               Production<br />
-              <span className="text-gray-400 italic font-light">audiovisuelle.</span>
+              <span className="text-gray-400 italic font-normal">audiovisuelle.</span>
             </h1>
 
             {/* Ligne séparatrice + sous-titre + métadonnées */}
@@ -192,12 +192,25 @@ export function ServiceProductionAudiovisuelle() {
               <p className="text-lg md:text-xl text-[#64748B] max-w-md leading-relaxed">
                 Studio parisien spécialisé en captation live, montage et post-production — nous sublimons vos histoires en images.
               </p>
-              <div className="flex gap-12 text-sm font-medium tracking-wide uppercase text-gray-400">
+              <div className="flex items-center gap-3 text-sm font-medium tracking-wide uppercase text-gray-400">
                 <span>Paris, FR</span>
+                <span className="text-gray-300">•</span>
                 <span>4K / 8K</span>
+                <span className="text-gray-300">•</span>
                 <span>Scroll</span>
               </div>
             </div>
+          </div>
+
+          {/* CTA avant le bloc média */}
+          <div className="flex items-center gap-4 mb-8">
+            <a
+              href="/#contact-form"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-black text-white rounded-full text-sm font-medium hover:bg-gray-800 transition-all hover:scale-105"
+            >
+              Voir nos réalisations
+              <span className="material-symbols-outlined text-sm">arrow_outward</span>
+            </a>
           </div>
 
           {/* Bloc média — Showreel vidéo */}

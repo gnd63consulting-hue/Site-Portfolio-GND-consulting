@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Camera,
   Sparkles,
@@ -14,9 +14,9 @@ import {
   TrendingUp,
   Eye,
   Award,
+  ChevronDown,
   PenSquare
 } from 'lucide-react';
-import { UnifiedFAQ } from './UnifiedFAQ';
 import { updateMetaTags, pageSEO } from '../utils/seo';
 import { ButtonGND } from './ButtonGND';
 
@@ -27,6 +27,8 @@ export function ServiceProductionAudiovisuelle() {
       url: `${window.location.origin}/services/production-audiovisuelle`
     });
   }, []);
+
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const scrollToContact = () => {
     const contactSection = document.querySelector('footer');
@@ -184,12 +186,6 @@ export function ServiceProductionAudiovisuelle() {
         'Un échange (visio ou téléphone) nous permet de cerner vos objectifs, votre audience et vos contraintes. Nous vous envoyons ensuite un devis détaillé avec planning et livrables.'
     }
   ];
-
-  const themeColors = {
-    primary: '#3b82f6',
-    secondary: '#8b5cf6',
-    gradient: 'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)'
-  };
 
   return (
     <main id="main-content" className="service-page service-production min-h-screen bg-white text-[#1A1A1A] font-sans">
@@ -410,16 +406,52 @@ export function ServiceProductionAudiovisuelle() {
         </div>
       </section>
 
-      <UnifiedFAQ
-        title="QUESTIONS FRÉQUENTES"
-        subtitle="Toutes les réponses à vos interrogations sur nos productions vidéo."
-        description="Processus, formats, budget : nous clarifions les points clés pour lancer votre projet sereinement."
-        emoji="🎬"
-        faqItems={faqItems}
-        themeColor={themeColors}
-        ctaText="Démarrer mon projet"
-        ctaLink="#contact"
-      />
+      {/* FAQ */}
+      <section className="bg-white py-32 px-6 lg:px-12">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center">
+            <span className="inline-flex items-center rounded-full bg-gray-100 px-4 py-1.5 text-xs font-medium tracking-widest text-gray-600 uppercase">
+              FAQ
+            </span>
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 text-center mt-4 mb-4">
+              Questions fréquentes
+            </h2>
+            <p className="text-lg text-gray-500 text-center max-w-xl mx-auto mb-16">
+              Toutes les réponses à vos interrogations sur nos productions vidéo.
+            </p>
+          </div>
+
+          <div>
+            {faqItems.map((item, index) => {
+              const isOpen = openFaq === index;
+              return (
+                <div key={index} className="border border-gray-200 rounded-2xl mb-4 overflow-hidden">
+                  <button
+                    onClick={() => setOpenFaq(isOpen ? null : index)}
+                    className="w-full flex items-center justify-between px-8 py-6 text-left font-medium text-gray-900 hover:bg-gray-50 transition-colors"
+                    aria-expanded={isOpen}
+                  >
+                    <span>{item.question}</span>
+                    <ChevronDown className={`w-5 h-5 text-gray-400 flex-shrink-0 ml-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  <div className={`overflow-hidden transition-all duration-200 ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+                    <div className="px-8 pb-6 text-gray-500 text-sm leading-relaxed">
+                      {item.answer}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <p className="text-center text-gray-500 mt-12">
+            Une autre question ?{' '}
+            <a href="/#contact-form" className="text-gray-900 font-medium underline underline-offset-4 hover:no-underline">
+              Contactez-nous
+            </a>
+          </p>
+        </div>
+      </section>
 
       {/* CTA FINAL */}
       <section

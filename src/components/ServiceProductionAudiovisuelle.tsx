@@ -177,7 +177,19 @@ export function ServiceProductionAudiovisuelle() {
       className="service-page service-production min-h-screen bg-white text-[#1A1A1A] font-sans"
     >
       {/* HERO — Design system Stitch */}
-      <section className="min-h-screen flex flex-col justify-center pt-32 pb-20 px-6 lg:px-12 bg-white relative overflow-hidden">
+      <section className="min-h-screen flex flex-col justify-center pt-32 pb-20 px-6 lg:px-12 relative overflow-hidden bg-white">
+        {/* Image de fond — visible uniquement dans la zone basse (autour du showreel) */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src={IMAGE_HERO}
+            alt=""
+            className="w-full h-full object-cover object-center"
+            loading="eager"
+          />
+          {/* Overlay blanc fort sur le haut → transparent sur le bas */}
+          <div className="absolute inset-0 bg-gradient-to-b from-white via-white/90 to-white/30" />
+        </div>
+
         <div className="max-w-[1400px] mx-auto w-full z-10">
 
           {/* Bloc titre */}

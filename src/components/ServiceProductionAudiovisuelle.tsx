@@ -12,8 +12,7 @@ import {
   Shield,
   Plus,
   Minus,
-  PenSquare,
-  ArrowRight
+  PenSquare
 } from 'lucide-react';
 import { updateMetaTags, pageSEO } from '../utils/seo';
 
@@ -181,16 +180,22 @@ export function ServiceProductionAudiovisuelle() {
   ];
 
   return (
-    <main id="main-content" className="min-h-screen bg-white text-gray-900 font-sans">
-      {/* SECTION 1 — HERO */}
+    <main id="main-content" className="min-h-screen bg-white text-[#1A1A1A] font-sans">
+
+      {/* ================================================================
+          SECTION 1 — HERO
+          Structure copiée de Hero.tsx homepage :
+          min-h-screen, image background, overlay, titre LEFT, metadata dots
+          ================================================================ */}
       <section
         data-service-section="hero"
         className="relative min-h-screen flex flex-col justify-end overflow-hidden"
         aria-labelledby="service-production-hero-title"
       >
-        <div className="absolute inset-0">
+        {/* Background vidéo + overlay (même pattern que homepage) */}
+        <div className="absolute inset-0 z-0">
           <video
-            className="h-full w-full object-cover object-center"
+            className="w-full h-full object-cover"
             autoPlay
             muted
             loop
@@ -199,97 +204,115 @@ export function ServiceProductionAudiovisuelle() {
           >
             <source src="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Creative_Studio_Video_Generation2.mp4.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-black/60" />
         </div>
 
-        <div className="relative max-w-[1400px] mx-auto w-full px-6 lg:px-12 pb-20">
-          <span className="inline-flex items-center rounded-full bg-white/10 px-4 py-1.5 text-xs font-medium tracking-widest text-white uppercase backdrop-blur-sm mb-8">
-            PRODUCTION AUDIOVISUELLE
-          </span>
-          <p className="text-white/70 max-w-xl text-lg mb-12">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12 w-full pb-20 relative z-10">
+          {/* H1 — mêmes classes que Hero.tsx homepage */}
+          <h1
+            id="service-production-hero-title"
+            className="font-display font-semibold text-white leading-[0.9] tracking-tight text-5xl sm:text-6xl md:text-8xl lg:text-[7rem] reveal"
+          >
+            <span className="block">Production audiovisuelle</span>
+            <span className="block italic font-light text-white/60">sur-mesure</span>
+          </h1>
+
+          {/* Sous-titre — même pattern que homepage */}
+          <p className="mt-8 text-lg text-white/70 leading-relaxed max-w-lg reveal delay-100">
             Captation live, montage, clips, corporate : nous sublimons vos histoires en images.
           </p>
-          <a
-            href="/#contact-form"
-            className="inline-flex items-center gap-2 bg-white text-black rounded-full px-8 py-4 text-sm font-medium hover:bg-gray-100 transition-colors mb-12"
-          >
-            Demander un devis personnalisé
-            <ArrowRight className="w-4 h-4" />
-          </a>
-          <div className="border-t border-white/20 pt-8 mt-8 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
-            <h1
-              id="service-production-hero-title"
-              className="font-display text-6xl md:text-8xl text-white leading-[0.95]"
+
+          {/* CTA — bouton noir rounded-full, même que homepage */}
+          <div className="mt-12 reveal delay-200">
+            <a
+              href="/#contact-form"
+              className="inline-flex items-center gap-2 bg-black text-white rounded-full px-8 py-4 text-sm font-medium transition-all duration-300 hover:bg-gray-800 hover:scale-105 no-underline hover:no-underline visited:text-white hover:text-white"
             >
-              Production audiovisuelle<br />
-              <span className="italic text-white/70 font-light">sur-mesure</span>
-            </h1>
-            <div className="flex gap-8 text-xs uppercase tracking-widest text-white/50">
+              Demander un devis
+              <span className="material-symbols-outlined text-sm">arrow_outward</span>
+            </a>
+          </div>
+
+          {/* Barre bas — border-t + metadata dots (même style que homepage) */}
+          <div className="border-t border-white/20 mt-16 pt-8 flex justify-between items-end reveal delay-300">
+            <span className="inline-flex items-center gap-2 border border-white/20 rounded-full px-5 py-2 text-xs font-medium uppercase tracking-widest text-white/60">
+              Production audiovisuelle
+            </span>
+            <div className="flex items-center gap-6 text-xs text-white/50 uppercase tracking-widest">
               <span>Paris, FR</span>
+              <span className="w-1 h-1 bg-white/50 rounded-full"></span>
               <span>4K / 8K</span>
+              <span className="w-1 h-1 bg-white/50 rounded-full"></span>
               <span>On & Off site</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* SECTION 2 — INTRO TEXTE */}
+      {/* ================================================================
+          SECTION 2 — INTRO TEXTE
+          ================================================================ */}
       <section
         data-service-section="intro"
-        className="bg-white py-32 px-6 lg:px-12"
+        className="reveal py-32 px-6 lg:px-12 bg-white"
       >
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-2xl md:text-3xl text-gray-700 leading-relaxed">
+          <p className="text-2xl md:text-3xl text-[#64748B] leading-relaxed">
             Deux décennies de captation, montage et post-production nous ont appris une chose : une vidéo réussie est un
             savant mélange d&apos;émotion, de rythme et d&apos;exigence technique. Chez GND Consulting, nous concevons des contenus
             audiovisuels qui{' '}
-            <strong className="font-semibold text-gray-900">attirent l&apos;attention, racontent votre histoire</strong>{' '}
+            <strong className="font-semibold text-[#1A1A1A]">attirent l&apos;attention, racontent votre histoire</strong>{' '}
             et génèrent le bon impact, quel que soit le support de diffusion.
           </p>
         </div>
       </section>
 
-      {/* SECTION 3 — NOS EXPERTISES VIDÉO */}
+      {/* ================================================================
+          SECTION 3 — NOS EXPERTISES VIDÉO (6 cartes)
+          Badge + H2 + grid copiés de la structure homepage Services
+          ================================================================ */}
       <section
         data-service-section="services"
-        className="bg-white py-32 px-6 lg:px-12"
+        className="reveal py-32 px-6 lg:px-12 bg-white"
       >
         <div className="mx-auto max-w-[1400px]">
-          <div className="text-center mb-16">
-            <span className="inline-flex items-center rounded-full bg-gray-100 px-4 py-1.5 text-xs font-medium tracking-widest text-gray-600 uppercase mb-8">
-              NOTRE OFFRE
+          {/* Header — badge border-gray-300 + H2 clamp (homepage) */}
+          <div className="mb-16">
+            <span className="inline-flex items-center gap-2 border border-gray-300 rounded-full px-5 py-2 text-xs font-medium uppercase tracking-widest text-[#64748B] mb-8">
+              Notre offre
             </span>
-            <h2 className="font-display text-5xl font-semibold text-gray-900">
+            <h2 className="font-display font-semibold text-[clamp(2rem,5vw,3.5rem)] text-[#1A1A1A] leading-[0.95] mb-6">
               Nos expertises vidéo
             </h2>
-            <p className="mx-auto mt-6 max-w-3xl text-lg text-gray-500">
+            <p className="max-w-3xl text-lg text-[#64748B]">
               Une offre complète, de la captation live au montage final, pour couvrir tous vos besoins audiovisuels.
             </p>
           </div>
 
+          {/* Grid 3 colonnes — cards Stitch (même hover que homepage Services) */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {expertises.map((item) => {
               const IconComponent = item.icon;
               return (
                 <article
                   key={item.title}
-                  className="bg-white border border-gray-200 rounded-2xl p-8 hover:bg-black hover:text-white transition-all duration-300 group flex flex-col gap-4"
+                  className="group bg-white border border-gray-200 rounded-2xl p-8 flex flex-col transition-all duration-500 hover:bg-black hover:text-white hover:border-transparent"
                 >
-                  <IconComponent className="w-6 h-6 text-gray-900 group-hover:text-white transition-colors duration-300" />
-                  <h3 className="font-semibold text-lg text-gray-900 group-hover:text-white transition-colors duration-300">
+                  <IconComponent className="w-6 h-6 text-[#1A1A1A] group-hover:text-white transition-colors duration-500 mb-5" />
+                  <h3 className="font-display text-lg font-semibold text-[#1A1A1A] group-hover:text-white transition-colors duration-500">
                     {item.title}
                   </h3>
-                  <p className="text-sm text-gray-500 group-hover:text-gray-300 leading-relaxed transition-colors duration-300">
+                  <p className="mt-3 text-sm text-[#64748B] leading-relaxed group-hover:text-gray-300 transition-colors duration-500">
                     {item.description}
                   </p>
-                  <ul className="space-y-2">
+                  <ul className="mt-4 space-y-2">
                     {item.features.map((feature) => (
-                      <li key={feature} className="text-sm text-gray-400 group-hover:text-gray-400 transition-colors duration-300">
+                      <li key={feature} className="text-sm text-[#64748B]/70 group-hover:text-gray-400 transition-colors duration-500">
                         {feature}
                       </li>
                     ))}
                   </ul>
-                  <span className="rounded-full border border-gray-200 px-3 py-1 text-xs text-gray-500 group-hover:border-gray-600 group-hover:text-gray-400 mt-auto self-start transition-colors duration-300">
+                  <span className="mt-auto pt-6 inline-flex w-fit items-center rounded-full border border-gray-200 px-3 py-1 text-xs text-[#64748B] group-hover:border-gray-600 group-hover:text-gray-400 transition-colors duration-500">
                     {item.delay}
                   </span>
                 </article>
@@ -299,17 +322,19 @@ export function ServiceProductionAudiovisuelle() {
         </div>
       </section>
 
-      {/* SECTION 4 — PROCESSUS */}
+      {/* ================================================================
+          SECTION 4 — PROCESSUS (4 étapes)
+          ================================================================ */}
       <section
         data-service-section="methodology"
-        className="bg-gray-50 py-32 px-6 lg:px-12"
+        className="reveal py-32 px-6 lg:px-12 bg-[#F3F4F6]"
       >
         <div className="mx-auto max-w-[1400px]">
-          <div className="text-center mb-16">
-            <span className="inline-flex items-center rounded-full bg-gray-100 px-4 py-1.5 text-xs font-medium tracking-widest text-gray-600 uppercase mb-8">
-              PROCESSUS
+          <div className="mb-16">
+            <span className="inline-flex items-center gap-2 border border-gray-300 rounded-full px-5 py-2 text-xs font-medium uppercase tracking-widest text-[#64748B] mb-8">
+              Processus
             </span>
-            <h2 className="font-display text-5xl font-semibold text-gray-900">
+            <h2 className="font-display font-semibold text-[clamp(2rem,5vw,3.5rem)] text-[#1A1A1A] leading-[0.95]">
               Un processus cadré, de bout en bout
             </h2>
           </div>
@@ -320,16 +345,16 @@ export function ServiceProductionAudiovisuelle() {
               return (
                 <article
                   key={step.title}
-                  className="relative bg-white border border-gray-200 rounded-2xl p-8 hover:bg-black hover:text-white transition-all duration-300 group overflow-hidden"
+                  className="group relative bg-white border border-gray-200 rounded-2xl p-8 overflow-hidden transition-all duration-500 hover:bg-black hover:text-white hover:border-transparent"
                 >
-                  <span className="absolute top-4 right-6 text-7xl font-bold text-gray-100 group-hover:text-gray-800 select-none leading-none transition-colors duration-300">
+                  <span className="absolute top-4 right-6 text-7xl font-bold text-gray-100 group-hover:text-gray-800 select-none leading-none transition-colors duration-500">
                     {String(index + 1).padStart(2, '0')}
                   </span>
-                  <IconComponent className="w-6 h-6 mb-4 text-gray-900 group-hover:text-white transition-colors duration-300" />
-                  <h3 className="font-semibold text-gray-900 group-hover:text-white mb-2 transition-colors duration-300">
+                  <IconComponent className="w-6 h-6 mb-4 text-[#1A1A1A] group-hover:text-white transition-colors duration-500" />
+                  <h3 className="font-display font-semibold text-[#1A1A1A] group-hover:text-white mb-2 transition-colors duration-500">
                     {step.title}
                   </h3>
-                  <p className="text-sm text-gray-500 group-hover:text-gray-300 transition-colors duration-300">
+                  <p className="text-sm text-[#64748B] group-hover:text-gray-300 leading-relaxed transition-colors duration-500">
                     {step.description}
                   </p>
                 </article>
@@ -339,14 +364,16 @@ export function ServiceProductionAudiovisuelle() {
         </div>
       </section>
 
-      {/* SECTION 5 — NOS 4 PILIERS */}
+      {/* ================================================================
+          SECTION 5 — NOS 4 PILIERS
+          ================================================================ */}
       <section
         data-service-section="advantages"
-        className="bg-white py-32 px-6 lg:px-12"
+        className="reveal py-32 px-6 lg:px-12 bg-white"
       >
         <div className="mx-auto max-w-[1400px]">
-          <div className="text-center mb-16">
-            <h2 className="font-display text-5xl font-semibold text-gray-900">
+          <div className="mb-16">
+            <h2 className="font-display font-semibold text-[clamp(2rem,5vw,3.5rem)] text-[#1A1A1A] leading-[0.95]">
               Nos 4 piliers pour une vidéo réussie
             </h2>
           </div>
@@ -357,16 +384,16 @@ export function ServiceProductionAudiovisuelle() {
               return (
                 <article
                   key={pillar.title}
-                  className="bg-white border border-gray-200 rounded-2xl p-8 hover:bg-black hover:text-white transition-all duration-300 group flex flex-col gap-4"
+                  className="group bg-white border border-gray-200 rounded-2xl p-8 flex flex-col transition-all duration-500 hover:bg-black hover:text-white hover:border-transparent"
                 >
-                  <span className="text-xs font-medium tracking-widest text-gray-400 group-hover:text-gray-500 uppercase mb-4 transition-colors duration-300">
+                  <span className="text-xs font-medium tracking-widest text-[#64748B]/60 group-hover:text-gray-500 uppercase mb-4 transition-colors duration-500">
                     {String(index + 1).padStart(2, '0')}
                   </span>
-                  <IconComponent className="w-6 h-6 text-gray-900 group-hover:text-white transition-colors duration-300" />
-                  <h3 className="font-semibold text-gray-900 group-hover:text-white transition-colors duration-300">
+                  <IconComponent className="w-6 h-6 text-[#1A1A1A] group-hover:text-white mb-4 transition-colors duration-500" />
+                  <h3 className="font-display font-semibold text-[#1A1A1A] group-hover:text-white mb-2 transition-colors duration-500">
                     {pillar.title}
                   </h3>
-                  <p className="text-sm text-gray-500 group-hover:text-gray-300 transition-colors duration-300">
+                  <p className="text-sm text-[#64748B] group-hover:text-gray-300 leading-relaxed transition-colors duration-500">
                     {pillar.description}
                   </p>
                 </article>
@@ -376,20 +403,22 @@ export function ServiceProductionAudiovisuelle() {
         </div>
       </section>
 
-      {/* SECTION 6 — STATS / IMPACT */}
+      {/* ================================================================
+          SECTION 6 — STATS / IMPACT (fond noir)
+          ================================================================ */}
       <section
         data-service-section="impact"
-        className="bg-black py-32 px-6 lg:px-12"
+        className="reveal py-32 px-6 lg:px-12 bg-black"
       >
         <div className="mx-auto max-w-[1400px]">
-          <div className="text-center mb-16">
-            <span className="inline-flex items-center rounded-full bg-white/10 px-4 py-1.5 text-xs font-medium tracking-widest text-white uppercase border border-white/20 mb-8">
-              IMPACT
+          <div className="mb-16">
+            <span className="inline-flex items-center gap-2 border border-white/20 rounded-full px-5 py-2 text-xs font-medium uppercase tracking-widest text-white/60 mb-8">
+              Impact
             </span>
-            <h2 className="font-display text-5xl font-semibold text-white">
+            <h2 className="font-display font-semibold text-[clamp(2rem,5vw,3.5rem)] text-white leading-[0.95] mb-6">
               Pourquoi miser sur la vidéo ?
             </h2>
-            <p className="mx-auto mt-6 max-w-3xl text-lg text-gray-400">
+            <p className="max-w-3xl text-lg text-gray-400">
               Des chiffres clés qui montrent la puissance de l&apos;audiovisuel pour votre communication.
             </p>
           </div>
@@ -400,10 +429,10 @@ export function ServiceProductionAudiovisuelle() {
                 key={impact.stat}
                 className={index > 0 ? 'border-l border-white/10 pl-8' : ''}
               >
-                <span className="text-5xl font-display font-bold text-white mb-2 block">
+                <span className="block font-display text-5xl font-bold text-white mb-2">
                   {impact.stat}
                 </span>
-                <span className="text-sm font-semibold text-gray-300 mb-3 block">
+                <span className="block text-sm font-semibold text-gray-300 mb-3">
                   {impact.title}
                 </span>
                 <p className="text-sm text-gray-500 leading-relaxed">
@@ -415,17 +444,22 @@ export function ServiceProductionAudiovisuelle() {
         </div>
       </section>
 
-      {/* SECTION 7 — FAQ */}
-      <section className="bg-white py-32 px-6 lg:px-12">
+      {/* ================================================================
+          SECTION 7 — FAQ
+          ================================================================ */}
+      <section
+        data-service-section="faq"
+        className="reveal py-32 px-6 lg:px-12 bg-white"
+      >
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="inline-flex items-center rounded-full bg-gray-100 px-4 py-1.5 text-xs font-medium tracking-widest text-gray-600 uppercase mb-8">
+          <div className="mb-16">
+            <span className="inline-flex items-center gap-2 border border-gray-300 rounded-full px-5 py-2 text-xs font-medium uppercase tracking-widest text-[#64748B] mb-8">
               FAQ
             </span>
-            <h2 className="font-display text-5xl font-semibold text-gray-900">
+            <h2 className="font-display font-semibold text-[clamp(2rem,5vw,3.5rem)] text-[#1A1A1A] leading-[0.95] mb-6">
               Questions fréquentes
             </h2>
-            <p className="mt-6 text-lg text-gray-500 max-w-xl mx-auto">
+            <p className="text-lg text-[#64748B] max-w-xl">
               Toutes les réponses à vos interrogations sur nos productions vidéo.
             </p>
           </div>
@@ -437,14 +471,14 @@ export function ServiceProductionAudiovisuelle() {
                 <div key={index} className="border-b border-gray-200 py-6">
                   <button
                     onClick={() => setOpenFaq(isOpen ? null : index)}
-                    className="w-full flex items-center justify-between text-left font-semibold text-gray-900 cursor-pointer"
+                    className="w-full flex items-center justify-between text-left font-semibold text-[#1A1A1A] cursor-pointer"
                     aria-expanded={isOpen}
                   >
                     <span>{item.question}</span>
                     {isOpen ? (
-                      <Minus className="w-5 h-5 text-gray-400 flex-shrink-0 ml-4" />
+                      <Minus className="w-5 h-5 text-[#64748B] flex-shrink-0 ml-4" />
                     ) : (
-                      <Plus className="w-5 h-5 text-gray-400 flex-shrink-0 ml-4" />
+                      <Plus className="w-5 h-5 text-[#64748B] flex-shrink-0 ml-4" />
                     )}
                   </button>
                   <div
@@ -452,7 +486,7 @@ export function ServiceProductionAudiovisuelle() {
                       isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                     }`}
                   >
-                    <p className="text-gray-500 text-sm leading-relaxed mt-4">
+                    <p className="text-[#64748B] text-sm leading-relaxed mt-4">
                       {item.answer}
                     </p>
                   </div>
@@ -461,11 +495,11 @@ export function ServiceProductionAudiovisuelle() {
             })}
           </div>
 
-          <p className="text-center text-gray-500 mt-12">
+          <p className="text-center text-[#64748B] mt-12">
             Une autre question ?{' '}
             <a
               href="/#contact-form"
-              className="text-gray-900 font-medium underline underline-offset-4 hover:no-underline"
+              className="text-[#1A1A1A] font-medium underline underline-offset-4 hover:no-underline"
             >
               Contactez-nous
             </a>
@@ -473,29 +507,31 @@ export function ServiceProductionAudiovisuelle() {
         </div>
       </section>
 
-      {/* SECTION 8 — CTA FINAL */}
+      {/* ================================================================
+          SECTION 8 — CTA FINAL (fond noir)
+          ================================================================ */}
       <section
         data-service-section="cta-final"
-        className="bg-black py-32 px-6 lg:px-12"
+        className="reveal py-32 px-6 lg:px-12 bg-black"
       >
         <div className="mx-auto max-w-[1400px] text-center flex flex-col items-center">
-          <h2 className="font-display text-5xl font-semibold text-white">
+          <h2 className="font-display font-semibold text-[clamp(2rem,5vw,3.5rem)] text-white leading-[0.95]">
             Prêt à tourner votre prochaine vidéo ?
           </h2>
           <p className="mt-6 text-gray-400 max-w-xl mx-auto text-lg leading-relaxed">
             Nous mettons notre énergie créative et notre expertise technique au service de vos ambitions. Briefons-nous et
             imaginons ensemble la production qui marquera votre audience.
           </p>
-          <div className="mt-8 flex flex-col sm:flex-row gap-4">
+          <div className="mt-10 flex flex-col sm:flex-row gap-4">
             <a
               href="/#contact-form"
-              className="inline-flex items-center gap-2 bg-white text-black rounded-full px-8 py-4 text-sm font-medium hover:bg-gray-100 transition-colors"
+              className="inline-flex items-center gap-2 bg-white text-black rounded-full px-8 py-4 text-sm font-medium transition-all duration-300 hover:bg-gray-100 hover:scale-105"
             >
               Demander un devis personnalisé
             </a>
             <a
               href="/#realisations"
-              className="inline-flex items-center gap-2 border border-gray-600 text-white rounded-full px-8 py-4 text-sm font-medium hover:border-white transition-colors"
+              className="inline-flex items-center gap-2 border border-gray-600 text-white rounded-full px-8 py-4 text-sm font-medium transition-all duration-300 hover:border-white hover:scale-105"
             >
               Voir nos réalisations
             </a>

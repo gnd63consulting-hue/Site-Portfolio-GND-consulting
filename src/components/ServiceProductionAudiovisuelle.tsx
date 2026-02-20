@@ -24,6 +24,12 @@ const IMAGE_HERO =
   'https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250919_0006_Vibrant%20Digital%20Collaboration_remix_01k5fdpkfdemjrbt49q10rx0hx.png';
 const VIDEO_SHOWREEL =
   'https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Creative_Studio_Video_Generation2.mp4';
+const VIDEO_TRINITY =
+  'https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/trinity_rebel_univers_officiel.mp4';
+const VIDEO_CONCERT_ALI =
+  'https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Concert%20Ali.mp4';
+const VIDEO_THIEK =
+  'https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Thiek%20au%20Sabay%20Festival%202022%20Haute%20def%204k%20v2.mp4';
 
 export function ServiceProductionAudiovisuelle() {
   useEffect(() => {
@@ -349,34 +355,124 @@ export function ServiceProductionAudiovisuelle() {
         </div>
       </section>
 
-      {/* SHOWREEL — player vidéo démo */}
-      <section
-        data-service-section="showreel"
-        className="reveal bg-background-alt py-32 px-6 lg:px-12"
-      >
-        <div className="mx-auto max-w-[1400px]">
-          <div className="text-center">
-            <span className="inline-flex items-center rounded-full border border-gray-300 px-5 py-2 text-xs font-medium uppercase tracking-widest text-text-muted mb-6">
-              Showreel
-            </span>
-            <h2 className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] text-[#1A1A1A]">
-              Nos créations en images
+      {/* SECTION CRÉATIONS — Galerie 3 vidéos */}
+      <section className="py-24 px-6 lg:px-12 bg-black">
+        <div className="max-w-[1400px] mx-auto">
+
+          {/* En-tête */}
+          <div className="mb-12">
+            <div className="inline-flex items-center px-4 py-2 rounded-full border border-white/20 mb-6">
+              <span className="text-xs font-medium tracking-widest uppercase text-white/50">
+                Nos créations
+              </span>
+            </div>
+            <h2 className="text-5xl lg:text-6xl font-black text-white leading-tight">
+              Des productions qui
+              <br />
+              <span className="italic font-normal text-white/40">parlent d&apos;elles-mêmes.</span>
             </h2>
-            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.2rem)] text-text-muted">
-              Découvrez un aperçu de nos productions vidéo les plus récentes.
-            </p>
           </div>
 
-          <div className="mt-12 relative overflow-hidden rounded-3xl shadow-2xl mx-auto max-w-4xl aspect-video bg-black">
-            <video
-              className="h-full w-full object-cover"
-              controls
-              preload="metadata"
-              poster={IMAGE_HERO}
+          {/* Grille 3 vidéos */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+
+            {/* Vidéo 1 — Trinity Rebel */}
+            <div className="group relative aspect-video bg-gray-900 rounded-2xl overflow-hidden cursor-pointer"
+              onClick={(e) => {
+                const v = e.currentTarget.querySelector('video') as HTMLVideoElement;
+                v?.paused ? v.play() : v?.pause();
+              }}
             >
-              <source src={VIDEO_SHOWREEL} type="video/mp4" />
-            </video>
+              <video
+                src={VIDEO_TRINITY}
+                className="w-full h-full object-cover"
+                loop
+                muted
+                playsInline
+                preload="metadata"
+              />
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-300" />
+              {/* Bouton play */}
+              <div className="absolute inset-0 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30">
+                  <span className="text-white text-xl ml-1">▶</span>
+                </div>
+              </div>
+              {/* Label bas */}
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <p className="text-white/50 text-xs uppercase tracking-widest mb-1">Clip Musical</p>
+                <p className="text-white font-bold text-sm">Trinity Rebel — Univers Officiel</p>
+              </div>
+            </div>
+
+            {/* Vidéo 2 — Concert Ali */}
+            <div className="group relative aspect-video bg-gray-900 rounded-2xl overflow-hidden cursor-pointer"
+              onClick={(e) => {
+                const v = e.currentTarget.querySelector('video') as HTMLVideoElement;
+                v?.paused ? v.play() : v?.pause();
+              }}
+            >
+              <video
+                src={VIDEO_CONCERT_ALI}
+                className="w-full h-full object-cover"
+                loop
+                muted
+                playsInline
+                preload="metadata"
+              />
+              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-300" />
+              <div className="absolute inset-0 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30">
+                  <span className="text-white text-xl ml-1">▶</span>
+                </div>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <p className="text-white/50 text-xs uppercase tracking-widest mb-1">Captation Live</p>
+                <p className="text-white font-bold text-sm">Concert Ali</p>
+              </div>
+            </div>
+
+            {/* Vidéo 3 — Thiek Sabay Festival */}
+            <div className="group relative aspect-video bg-gray-900 rounded-2xl overflow-hidden cursor-pointer"
+              onClick={(e) => {
+                const v = e.currentTarget.querySelector('video') as HTMLVideoElement;
+                v?.paused ? v.play() : v?.pause();
+              }}
+            >
+              <video
+                src={VIDEO_THIEK}
+                className="w-full h-full object-cover"
+                loop
+                muted
+                playsInline
+                preload="metadata"
+              />
+              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-300" />
+              <div className="absolute inset-0 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30">
+                  <span className="text-white text-xl ml-1">▶</span>
+                </div>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <p className="text-white/50 text-xs uppercase tracking-widest mb-1">Événementiel 4K</p>
+                <p className="text-white font-bold text-sm">Thiek — Sabay Festival 2022</p>
+              </div>
+            </div>
+
           </div>
+
+          {/* CTA bas */}
+          <div className="mt-10 text-center">
+            <a
+              href="/realisations"
+              className="inline-flex items-center gap-2 px-8 py-4 border border-white/20 text-white rounded-full text-sm font-medium hover:bg-white hover:text-black transition-all duration-300"
+            >
+              Voir toutes nos réalisations
+              <span>↗</span>
+            </a>
+          </div>
+
         </div>
       </section>
 

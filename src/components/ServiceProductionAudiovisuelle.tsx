@@ -18,7 +18,6 @@ import {
   PenSquare
 } from 'lucide-react';
 import { updateMetaTags, pageSEO } from '../utils/seo';
-import { ButtonGND } from './ButtonGND';
 
 export function ServiceProductionAudiovisuelle() {
   useEffect(() => {
@@ -456,34 +455,23 @@ export function ServiceProductionAudiovisuelle() {
       {/* CTA FINAL */}
       <section
         data-service-section="cta-final"
-        className="reveal bg-background-alt py-32 px-6 lg:px-12"
+        className="reveal bg-black py-32 px-6 lg:px-12"
       >
         <div className="mx-auto flex max-w-[1400px] flex-col items-center text-center">
-          <h2 className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] text-[#1A1A1A]">
+          <h2 className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] text-white">
             Prêt à tourner votre prochaine vidéo ?
           </h2>
-          <p className="mt-4 max-w-3xl text-balance text-[clamp(1rem,2.5vw,1.5rem)] leading-relaxed text-text-muted">
+          <p className="mt-4 max-w-3xl text-balance text-[clamp(1rem,2.5vw,1.5rem)] leading-relaxed text-gray-400">
             Nous mettons notre énergie créative et notre expertise technique au service de vos ambitions. Briefons-nous et
             imaginons ensemble la production qui marquera votre audience.
           </p>
           <div className="mt-8 flex w-full flex-col gap-4 sm:flex-row sm:justify-center">
-            <ButtonGND
-              variant="primary"
-              onClick={scrollToContact}
-              className="w-full max-w-sm sm:w-auto"
-            >
-              <Heart className="h-5 w-5 sm:h-6 sm:w-6" />
-              Demander un devis personnalisé
-            </ButtonGND>
-            <ButtonGND
-              variant="secondary"
-              as="a"
-              href="/#realisations"
-              className="w-full max-w-sm sm:w-auto"
-            >
-              <Sparkles className="h-5 w-5 sm:h-6 sm:w-6" />
+            <a href="/#contact-form" className="inline-flex items-center gap-2 bg-white text-black rounded-full px-8 py-4 text-sm font-medium hover:bg-gray-100 transition-colors">
+              Demander un devis personnalisé →
+            </a>
+            <a href="/#realisations" className="inline-flex items-center gap-2 border border-gray-600 text-white rounded-full px-8 py-4 text-sm font-medium hover:border-white transition-colors">
               Voir nos réalisations
-            </ButtonGND>
+            </a>
           </div>
         </div>
       </section>

@@ -178,16 +178,21 @@ export function ServiceProductionAudiovisuelle() {
     >
       {/* HERO — Design system Stitch */}
       <section className="min-h-screen flex flex-col justify-center pt-32 pb-20 px-6 lg:px-12 relative overflow-hidden bg-white">
-        {/* Image de fond — visible uniquement dans la zone basse (autour du showreel) */}
+        {/* Image de fond hero — même logique que la homepage */}
         <div className="absolute inset-0 z-0">
           <img
             src={IMAGE_HERO}
             alt=""
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full object-cover object-center scale-105"
             loading="eager"
           />
-          {/* Overlay blanc fort sur le haut → transparent sur le bas */}
-          <div className="absolute inset-0 bg-gradient-to-b from-white via-white/90 to-white/30" />
+          {/*
+            Gradient en 3 étapes :
+            - Tout en haut : blanc opaque → le titre noir reste lisible
+            - Milieu : transition rapide vers transparent
+            - Bas : presque transparent → l'image enveloppe le showreel
+          */}
+          <div className="absolute inset-0 bg-gradient-to-b from-white from-30% via-white/40 via-50% to-transparent" />
         </div>
 
         <div className="max-w-[1400px] mx-auto w-full z-10">

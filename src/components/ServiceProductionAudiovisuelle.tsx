@@ -176,44 +176,39 @@ export function ServiceProductionAudiovisuelle() {
       id="main-content"
       className="service-page service-production min-h-screen bg-white text-[#1A1A1A] font-sans"
     >
-      {/* HERO — Design system Stitch */}
-      <section className="min-h-screen flex flex-col justify-center pt-32 pb-20 px-6 lg:px-12 relative overflow-hidden bg-white">
-        {/* Image de fond hero — même logique que la homepage */}
+      {/* HERO — Design system Stitch (dark immersif) */}
+      <section className="min-h-screen flex flex-col justify-center pt-32 pb-20 px-6 lg:px-12 relative overflow-hidden bg-black">
+        {/* Fond plein écran — style homepage */}
         <div className="absolute inset-0 z-0">
           <img
             src={IMAGE_HERO}
             alt=""
-            className="w-full h-full object-cover object-center scale-105"
+            className="w-full h-full object-cover object-center"
             loading="eager"
           />
-          {/*
-            Gradient en 3 étapes :
-            - Tout en haut : blanc opaque → le titre noir reste lisible
-            - Milieu : transition rapide vers transparent
-            - Bas : presque transparent → l'image enveloppe le showreel
-          */}
-          <div className="absolute inset-0 bg-gradient-to-b from-white from-30% via-white/40 via-50% to-transparent" />
+          {/* Overlay sombre identique à la homepage */}
+          <div className="absolute inset-0 bg-black/60" />
         </div>
 
         <div className="max-w-[1400px] mx-auto w-full z-10">
 
           {/* Bloc titre */}
           <div className="mb-12">
-            <h1 className="font-display font-semibold text-6xl md:text-8xl lg:text-[7rem] leading-[0.9] tracking-tight text-[#1A1A1A] mb-8">
+            <h1 className="font-display font-semibold text-6xl md:text-8xl lg:text-[7rem] leading-[0.9] tracking-tight text-white mb-8">
               Production<br />
-              <span className="text-gray-400 italic font-normal">audiovisuelle.</span>
+              <span className="text-white/60 italic font-normal">audiovisuelle.</span>
             </h1>
 
             {/* Ligne séparatrice + sous-titre + métadonnées */}
-            <div className="flex flex-col md:flex-row justify-between items-end gap-8 border-t border-gray-200 pt-8 mt-12">
-              <p className="text-lg md:text-xl text-[#64748B] max-w-md leading-relaxed">
+            <div className="flex flex-col md:flex-row justify-between items-end gap-8 border-t border-white/20 pt-8 mt-12">
+              <p className="text-lg md:text-xl text-white/80 max-w-md leading-relaxed">
                 Studio parisien spécialisé en captation live, montage et post-production — nous sublimons vos histoires en images.
               </p>
-              <div className="flex items-center gap-3 text-sm font-medium tracking-wide uppercase text-gray-400">
+              <div className="flex items-center gap-3 text-sm font-medium tracking-wide uppercase text-white/50">
                 <span>Paris, FR</span>
-                <span className="text-gray-300">•</span>
+                <span className="text-white/30">•</span>
                 <span>4K / 8K</span>
-                <span className="text-gray-300">•</span>
+                <span className="text-white/30">•</span>
                 <span>Scroll</span>
               </div>
             </div>
@@ -223,7 +218,7 @@ export function ServiceProductionAudiovisuelle() {
           <div className="flex items-center gap-4 mb-8">
             <a
               href="/#contact-form"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-black text-white rounded-full text-sm font-medium hover:bg-gray-800 transition-all hover:scale-105"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-black rounded-full text-sm font-medium hover:bg-gray-100 transition-all hover:scale-105"
             >
               Voir nos réalisations
               <span className="material-symbols-outlined text-sm">arrow_outward</span>

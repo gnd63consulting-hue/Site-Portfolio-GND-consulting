@@ -362,7 +362,7 @@ export function ServiceProductionAudiovisuelle() {
         <div className="max-w-[1400px] mx-auto">
 
           {/* En-tête */}
-          <div className="text-center mb-12">
+          <div className="mb-12">
             <div className="inline-flex items-center px-4 py-2 rounded-full border border-gray-200 bg-white mb-6">
               <span className="text-xs font-medium tracking-widest uppercase text-gray-500">
                 Nos créations

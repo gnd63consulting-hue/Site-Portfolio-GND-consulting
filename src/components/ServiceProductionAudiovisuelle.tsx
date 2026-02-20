@@ -268,21 +268,84 @@ export function ServiceProductionAudiovisuelle() {
         </div>
       </section>
 
-      {/* INTRO */}
-      <section
-        data-service-section="intro"
-        className="reveal bg-white py-32 px-6 lg:px-12"
-      >
-        <div className="mx-auto max-w-[1400px] text-center">
-          <p className="text-balance text-[clamp(1rem,2.6vw,1.5rem)] leading-relaxed text-text-muted">
-            Chez GND Consulting, nous concevons des contenus audiovisuels qui{' '}
-            <strong className="text-accent">attirent l&apos;attention</strong>,
-            racontent votre histoire et génèrent le bon impact. Deux décennies de
-            captation, montage et post-production nous ont appris une chose : une vidéo
-            réussie est un savant mélange d&apos;émotion, de rythme et d&apos;
-            <strong className="text-accent">exigence technique</strong>, quel que soit
-            le support de diffusion.
-          </p>
+      {/* SECTION INTRO — Pattern homepage "À propos" */}
+      <section className="py-24 px-6 lg:px-12 bg-gray-50">
+        <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+          {/* Colonne gauche — Image */}
+          <div className="relative">
+            <img
+              src={IMAGE_HERO}
+              alt="Production audiovisuelle GND Consulting"
+              className="w-full aspect-square object-cover rounded-2xl"
+            />
+          </div>
+
+          {/* Colonne droite — Texte */}
+          <div className="flex flex-col gap-6">
+
+            {/* Badge pill */}
+            <div className="inline-flex items-center self-start px-4 py-2 rounded-full border border-gray-200 bg-white">
+              <span className="text-xs font-medium tracking-widest uppercase text-gray-500">
+                Notre approche
+              </span>
+            </div>
+
+            {/* Titre Stitch */}
+            <h2 className="text-5xl lg:text-6xl font-black leading-tight text-black">
+              L&apos;image au service
+              <br />
+              <span className="italic font-normal text-gray-400">de votre histoire.</span>
+            </h2>
+
+            {/* Sous-titre */}
+            <p className="text-lg text-gray-500 leading-relaxed">
+              Studio parisien spécialisé en captation live, montage et post-production.
+            </p>
+
+            {/* Paragraphe */}
+            <p className="text-base text-gray-600 leading-relaxed">
+              Chez GND Consulting, nous concevons des contenus audiovisuels qui racontent votre histoire
+              et génèrent le bon impact. Une vidéo réussie est un savant mélange d&apos;émotion, de rythme
+              et d&apos;exigence technique, quel que soit le support de diffusion.
+            </p>
+
+            {/* Stats */}
+            <div className="flex gap-12 py-4">
+              <div>
+                <p className="text-5xl font-black text-black">50+</p>
+                <p className="text-sm text-gray-400 mt-1">Projets vidéo réalisés</p>
+              </div>
+              <div>
+                <p className="text-5xl font-black text-black">4K/8K</p>
+                <p className="text-sm text-gray-400 mt-1">Qualité de production</p>
+              </div>
+            </div>
+
+            {/* Tags pills */}
+            <div className="flex flex-wrap gap-3">
+              {['Captation', 'Montage', 'Post-prod', 'Live'].map((tag) => (
+                <span
+                  key={tag}
+                  className="px-4 py-2 rounded-full border border-gray-200 bg-white text-sm font-medium text-gray-700"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            {/* CTA */}
+            <div className="pt-2">
+              <a
+                href="/realisations"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-black text-white rounded-full text-sm font-medium hover:bg-gray-800 transition-all hover:scale-105"
+              >
+                Voir nos réalisations
+                <span>↗</span>
+              </a>
+            </div>
+
+          </div>
         </div>
       </section>
 

@@ -176,44 +176,70 @@ export function ServiceProductionAudiovisuelle() {
       id="main-content"
       className="service-page service-production min-h-screen bg-white text-[#1A1A1A] font-sans"
     >
-      {/* HERO — image plein écran + overlay + badge catégorie */}
-      <section
-        data-service-section="hero"
-        className="relative overflow-hidden"
-        aria-labelledby="service-production-hero-title"
-      >
-        <div className="absolute inset-0">
-          <img
-            src={IMAGE_HERO}
-            alt="Production audiovisuelle professionnelle - Studio GND Consulting"
-            className="h-full w-full object-cover"
-            loading="eager"
-            fetchPriority="high"
-          />
-          <div className="absolute inset-0 bg-black/55" />
-        </div>
+      {/* HERO — Design system Stitch */}
+      <section className="min-h-screen flex flex-col justify-center pt-32 pb-20 px-6 lg:px-12 bg-white relative overflow-hidden">
+        <div className="max-w-[1400px] mx-auto w-full z-10">
 
-        <div className="relative mx-auto flex min-h-[60vh] w-full max-w-[1400px] flex-col items-center justify-end gap-6 px-6 pb-16 pt-32 text-center lg:px-12 lg:min-h-[88vh] lg:pb-24">
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/30 px-5 py-2 text-xs font-medium uppercase tracking-widest text-white/80">
-            Production Audiovisuelle
-          </span>
-          <h1
-            id="service-production-hero-title"
-            className="font-display text-balance text-[clamp(2.5rem,6vw,5rem)] font-semibold leading-[0.9] tracking-tight text-white"
-          >
-            Production audiovisuelle
-          </h1>
-          <p className="max-w-2xl text-balance text-[clamp(1.125rem,3vw,1.75rem)] font-light leading-relaxed text-white/90">
-            Captation live, montage, clips, corporate : nous sublimons vos histoires en images.
-          </p>
-          <ButtonGND
-            variant="primary"
-            onClick={scrollToContact}
-            className="w-full max-w-md sm:max-w-lg lg:max-w-xl text-[clamp(1rem,2.6vw,1.25rem)] bg-black text-white rounded-full px-8 py-4 hover:bg-gray-800 hover:scale-105"
-          >
-            <Play className="h-5 w-5 sm:h-6 sm:w-6" />
-            Demander un devis personnalisé
-          </ButtonGND>
+          {/* Bloc titre */}
+          <div className="mb-12">
+            <h1 className="font-display font-semibold text-6xl md:text-8xl lg:text-[7rem] leading-[0.9] tracking-tight text-[#1A1A1A] mb-8">
+              Production<br />
+              <span className="text-gray-400 italic font-light">audiovisuelle.</span>
+            </h1>
+
+            {/* Ligne séparatrice + sous-titre + métadonnées */}
+            <div className="flex flex-col md:flex-row justify-between items-end gap-8 border-t border-gray-200 pt-8 mt-12">
+              <p className="text-lg md:text-xl text-[#64748B] max-w-md leading-relaxed">
+                Studio parisien spécialisé en captation live, montage et post-production — nous sublimons vos histoires en images.
+              </p>
+              <div className="flex gap-12 text-sm font-medium tracking-wide uppercase text-gray-400">
+                <span>Paris, FR</span>
+                <span>4K / 8K</span>
+                <span>Scroll</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Bloc média — Showreel vidéo */}
+          <div className="relative w-full h-[60vh] rounded-2xl overflow-hidden shadow-2xl group cursor-pointer">
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105"
+            >
+              <source src={VIDEO_SHOWREEL} type="video/mp4" />
+            </video>
+
+            {/* Overlay léger */}
+            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/5 transition-colors duration-500" />
+
+            {/* Bouton play — apparaît au hover */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30 text-white transform scale-90 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-500">
+                <span className="material-symbols-outlined text-3xl">play_arrow</span>
+              </div>
+            </div>
+
+            {/* Label bas gauche */}
+            <div className="absolute bottom-8 left-8 text-white">
+              <p className="text-xs font-mono uppercase tracking-widest mb-2 opacity-70">Showreel 2024</p>
+              <p className="text-2xl font-display font-medium">Captation & Mouvement</p>
+            </div>
+
+            {/* CTA bas droite */}
+            <div className="absolute bottom-8 right-8">
+              <a
+                href="/#contact-form"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black rounded-full text-sm font-medium hover:bg-gray-100 transition-all hover:scale-105"
+              >
+                Demander un devis
+                <span className="material-symbols-outlined text-sm">arrow_outward</span>
+              </a>
+            </div>
+          </div>
+
         </div>
       </section>
 

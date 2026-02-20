@@ -446,16 +446,22 @@ export function ServiceProductionAudiovisuelle() {
         className="reveal bg-white py-32 px-6 lg:px-12"
       >
         <div className="mx-auto max-w-[1400px]">
-          <div className="text-center">
-            <span className="inline-flex items-center rounded-full border border-gray-300 px-5 py-2 text-xs font-medium uppercase tracking-widest text-text-muted mb-6">
-              Notre offre
-            </span>
-            <h2 className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] text-[#1A1A1A]">
+          <div className="mb-12">
+
+            {/* Badge pill */}
+            <div className="inline-flex items-center px-4 py-2 rounded-full border border-gray-200 bg-white mb-6">
+              <span className="text-xs font-medium tracking-widest uppercase text-gray-500">
+                Notre offre
+              </span>
+            </div>
+
+            {/* Titre Stitch — aligné gauche */}
+            <h2 className="text-5xl lg:text-6xl font-black leading-tight text-black">
               Nos expertises vidéo
+              <br />
+              <span className="italic font-normal text-gray-400">à votre service.</span>
             </h2>
-            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.25rem)] text-text-muted">
-              Une offre complète, de la captation live au montage final.
-            </p>
+
           </div>
 
           <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">

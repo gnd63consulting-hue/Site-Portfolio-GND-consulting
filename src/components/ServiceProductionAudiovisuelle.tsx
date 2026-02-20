@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Video,
   Scissors,
@@ -45,6 +45,8 @@ export function ServiceProductionAudiovisuelle() {
       contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
+
+  const [activeVideo, setActiveVideo] = useState(VIDEO_TRINITY);
 
   const services = [
     {
@@ -373,104 +375,55 @@ export function ServiceProductionAudiovisuelle() {
             </h2>
           </div>
 
-          {/* Player principal showreel */}
-          <div className="relative aspect-video rounded-2xl overflow-hidden bg-gray-900 mb-8 mt-10">
+          {/* Visionneuse principale */}
+          <div className="relative max-w-3xl mx-auto mt-10 mb-8 aspect-video rounded-2xl overflow-hidden bg-gray-900">
             <video
-              src={VIDEO_SHOWREEL}
+              key={activeVideo}
+              src={activeVideo}
               className="w-full h-full object-cover"
               controls
+              autoPlay
               playsInline
-              preload="metadata"
             />
           </div>
 
-          {/* Grille 3 vidéos */}
+          {/* Grille 3 vidéos — clic charge dans la visionneuse */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-
-            {/* Vidéo 1 — Trinity Rebel */}
-            <div className="group relative aspect-video bg-gray-900 rounded-2xl overflow-hidden cursor-pointer"
-              onClick={(e) => {
-                const v = e.currentTarget.querySelector('video') as HTMLVideoElement;
-                v?.paused ? v.play() : v?.pause();
-              }}
-            >
-              <video
-                src={VIDEO_TRINITY}
-                className="w-full h-full object-cover"
-                loop
-                muted
-                playsInline
-                preload="metadata"
-              />
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-300" />
-              {/* Bouton play */}
-              <div className="absolute inset-0 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30">
-                  <span className="text-white text-xl ml-1">▶</span>
+            {[
+              { src: VIDEO_TRINITY, categorie: 'Clip Musical', titre: 'Trinity Rebel — Univers Officiel' },
+              { src: VIDEO_CONCERT_ALI, categorie: 'Captation Live', titre: 'Concert Ali' },
+              { src: VIDEO_THIEK, categorie: 'Événementiel 4K', titre: 'Thiek — Sabay Festival 2022' },
+            ].map((item) => (
+              <div
+                key={item.src}
+                className={`group relative aspect-video bg-gray-900 rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 ${
+                  activeVideo === item.src ? 'ring-2 ring-black' : 'opacity-70 hover:opacity-100'
+                }`}
+                onClick={() => setActiveVideo(item.src)}
+              >
+                <video
+                  src={item.src}
+                  className="w-full h-full object-cover"
+                  loop
+                  muted
+                  playsInline
+                  preload="metadata"
+                />
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-300" />
+                {/* Bouton play */}
+                <div className="absolute inset-0 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30">
+                    <span className="text-white text-xl ml-1">▶</span>
+                  </div>
+                </div>
+                {/* Label bas */}
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <p className="text-white/50 text-xs uppercase tracking-widest mb-1">{item.categorie}</p>
+                  <p className="text-white font-bold text-sm">{item.titre}</p>
                 </div>
               </div>
-              {/* Label bas */}
-              <div className="absolute bottom-0 left-0 right-0 p-4">
-                <p className="text-white/50 text-xs uppercase tracking-widest mb-1">Clip Musical</p>
-                <p className="text-white font-bold text-sm">Trinity Rebel — Univers Officiel</p>
-              </div>
-            </div>
-
-            {/* Vidéo 2 — Concert Ali */}
-            <div className="group relative aspect-video bg-gray-900 rounded-2xl overflow-hidden cursor-pointer"
-              onClick={(e) => {
-                const v = e.currentTarget.querySelector('video') as HTMLVideoElement;
-                v?.paused ? v.play() : v?.pause();
-              }}
-            >
-              <video
-                src={VIDEO_CONCERT_ALI}
-                className="w-full h-full object-cover"
-                loop
-                muted
-                playsInline
-                preload="metadata"
-              />
-              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-300" />
-              <div className="absolute inset-0 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30">
-                  <span className="text-white text-xl ml-1">▶</span>
-                </div>
-              </div>
-              <div className="absolute bottom-0 left-0 right-0 p-4">
-                <p className="text-white/50 text-xs uppercase tracking-widest mb-1">Captation Live</p>
-                <p className="text-white font-bold text-sm">Concert Ali</p>
-              </div>
-            </div>
-
-            {/* Vidéo 3 — Thiek Sabay Festival */}
-            <div className="group relative aspect-video bg-gray-900 rounded-2xl overflow-hidden cursor-pointer"
-              onClick={(e) => {
-                const v = e.currentTarget.querySelector('video') as HTMLVideoElement;
-                v?.paused ? v.play() : v?.pause();
-              }}
-            >
-              <video
-                src={VIDEO_THIEK}
-                className="w-full h-full object-cover"
-                loop
-                muted
-                playsInline
-                preload="metadata"
-              />
-              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-300" />
-              <div className="absolute inset-0 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30">
-                  <span className="text-white text-xl ml-1">▶</span>
-                </div>
-              </div>
-              <div className="absolute bottom-0 left-0 right-0 p-4">
-                <p className="text-white/50 text-xs uppercase tracking-widest mb-1">Événementiel 4K</p>
-                <p className="text-white font-bold text-sm">Thiek — Sabay Festival 2022</p>
-              </div>
-            </div>
-
+            ))}
           </div>
 
           {/* CTA bas */}

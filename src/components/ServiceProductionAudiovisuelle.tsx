@@ -356,20 +356,20 @@ export function ServiceProductionAudiovisuelle() {
       </section>
 
       {/* SECTION CRÉATIONS — Galerie 3 vidéos */}
-      <section className="py-24 px-6 lg:px-12 bg-black">
+      <section className="py-24 px-6 lg:px-12 bg-gray-50">
         <div className="max-w-[1400px] mx-auto">
 
           {/* En-tête */}
           <div className="mb-12">
-            <div className="inline-flex items-center px-4 py-2 rounded-full border border-white/20 mb-6">
-              <span className="text-xs font-medium tracking-widest uppercase text-white/50">
+            <div className="inline-flex items-center px-4 py-2 rounded-full border border-gray-200 bg-white mb-6">
+              <span className="text-xs font-medium tracking-widest uppercase text-gray-500">
                 Nos créations
               </span>
             </div>
-            <h2 className="text-5xl lg:text-6xl font-black text-white leading-tight">
+            <h2 className="text-5xl lg:text-6xl font-black text-black leading-tight">
               Des productions qui
               <br />
-              <span className="italic font-normal text-white/40">parlent d&apos;elles-mêmes.</span>
+              <span className="italic font-normal text-gray-400">parlent d&apos;elles-mêmes.</span>
             </h2>
           </div>
 
@@ -466,7 +466,7 @@ export function ServiceProductionAudiovisuelle() {
           <div className="mt-10 text-center">
             <a
               href="/realisations"
-              className="inline-flex items-center gap-2 px-8 py-4 border border-white/20 text-white rounded-full text-sm font-medium hover:bg-white hover:text-black transition-all duration-300"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-black text-white rounded-full text-sm font-medium hover:bg-gray-800 transition-all duration-300"
             >
               Voir toutes nos réalisations
               <span>↗</span>

@@ -737,7 +737,7 @@ export function ServiceProductionAudiovisuelle() {
           </div>
 
           {/* Accordéons */}
-          <div className="divide-y divide-gray-100 max-w-3xl">
+          <div className="divide-y divide-gray-100">
             {[
               {
                 question: 'Combien de temps dure une production vidéo ?',

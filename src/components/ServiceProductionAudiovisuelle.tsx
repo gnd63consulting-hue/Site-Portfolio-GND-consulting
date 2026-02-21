@@ -718,16 +718,62 @@ export function ServiceProductionAudiovisuelle() {
         </div>
       </section>
 
-      <UnifiedFAQ
-        title="QUESTIONS FRÉQUENTES"
-        subtitle="Tout ce que vous devez savoir sur nos productions audiovisuelles."
-        description="Délais, budgets, formats livrés… nous répondons aux questions les plus courantes."
-        emoji="🎥"
-        faqItems={faqItems}
-        themeColor={themeColors}
-        ctaText="Démarrer mon projet"
-        ctaLink="#contact"
-      />
+      {/* SECTION FAQ — Design Stitch */}
+      <section className="py-24 px-6 lg:px-12 bg-white">
+        <div className="max-w-[1400px] mx-auto">
+
+          {/* En-tête Stitch */}
+          <div className="mb-16">
+            <div className="inline-flex items-center px-4 py-2 rounded-full border border-gray-200 bg-white mb-6">
+              <span className="text-xs font-medium tracking-widest uppercase text-gray-500">
+                FAQ
+              </span>
+            </div>
+            <h2 className="text-5xl lg:text-6xl font-black text-black leading-tight">
+              Questions fréquentes
+              <br />
+              <span className="italic font-normal text-gray-400">sur nos productions.</span>
+            </h2>
+          </div>
+
+          {/* Accordéons */}
+          <div className="divide-y divide-gray-100 max-w-3xl">
+            {[
+              {
+                question: 'Combien de temps dure une production vidéo ?',
+                reponse: "Selon la complexité, comptez 1 à 3 semaines de la captation à la livraison finale. Un clip événementiel simple peut être livré en 5 jours ouvrés."
+              },
+              {
+                question: 'Peut-on filmer dans plusieurs lieux ?',
+                reponse: "Oui, nous nous déplaçons partout en France et à l'international. Les frais de déplacement sont inclus dans le devis selon la localisation."
+              },
+              {
+                question: 'Pouvez-vous gérer uniquement le montage ?',
+                reponse: "Tout à fait. Nous pouvons intervenir uniquement en post-production si vous avez déjà vos rushes. Envoyez-nous vos fichiers et nous nous occupons du reste."
+              },
+              {
+                question: 'Quel budget prévoir ?',
+                reponse: "Les projets démarrent à partir de 800\u20AC pour un contenu social media court. Pour un clip musical ou une captation événementielle complète, comptez entre 2\u202F000\u20AC et 8\u202F000\u20AC selon le dispositif."
+              },
+              {
+                question: 'Comment se déroule le premier brief ?',
+                reponse: "On commence par un appel de 30 minutes pour comprendre votre projet, vos objectifs et vos contraintes. On vous envoie ensuite une proposition détaillée sous 48h."
+              },
+            ].map((item, i) => (
+              <details key={i} className="group py-6 cursor-pointer list-none">
+                <summary className="flex items-center justify-between gap-4 text-base font-bold text-black hover:opacity-60 transition-opacity list-none">
+                  {item.question}
+                  <span className="text-xl font-light text-gray-400 group-open:rotate-45 transition-transform duration-300 shrink-0">+</span>
+                </summary>
+                <p className="mt-4 text-gray-500 leading-relaxed text-sm max-w-2xl">
+                  {item.reponse}
+                </p>
+              </details>
+            ))}
+          </div>
+
+        </div>
+      </section>
 
       {/* CTA FINAL */}
       <section

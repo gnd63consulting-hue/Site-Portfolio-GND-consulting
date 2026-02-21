@@ -577,63 +577,53 @@ export function ServiceProductionAudiovisuelle() {
         </div>
       </section>
 
-      {/* APPROCHE — 2 colonnes texte + image */}
-      <section
-        data-service-section="approach"
-        className="reveal bg-background-alt py-32 px-6 lg:px-12"
-      >
-        <div className="mx-auto max-w-[1400px]">
+      {/* APPROCHE — style Stitch */}
+      <section className="py-24 px-6 lg:px-12 bg-gray-50">
+        <div className="max-w-[1400px] mx-auto">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
             <div className="space-y-6">
-              <span className="inline-flex items-center rounded-full border border-gray-300 px-5 py-2 text-xs font-medium uppercase tracking-widest text-text-muted">
+              <span className="inline-flex items-center gap-2 border border-gray-300 rounded-full px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-gray-500">
                 Notre approche
               </span>
-              <h2 className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] text-[#1A1A1A]">
-                L&apos;image qui raconte votre histoire
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-black leading-tight">
+                L&apos;image qui raconte
+                <br />
+                <span className="italic font-normal text-gray-400">votre histoire.</span>
               </h2>
-              <div className="space-y-5 text-[clamp(0.95rem,2.3vw,1.1rem)] leading-relaxed text-text-muted">
+              <div className="space-y-5 text-base leading-relaxed text-gray-500">
                 <p>
-                  Notre approche commence toujours par{' '}
-                  <strong className="text-accent">l&apos;écoute</strong>. Nous prenons le
+                  Notre approche commence toujours par <strong className="text-black">l&apos;écoute</strong>. Nous prenons le
                   temps de comprendre vos enjeux, votre audience et l&apos;histoire que
                   vous voulez raconter.
                 </p>
                 <p>
-                  Ensuite vient la{' '}
-                  <strong className="text-accent">production sur-mesure</strong>. Chaque
+                  Ensuite vient la <strong className="text-black">production sur-mesure</strong>. Chaque
                   captation, chaque montage est pensé pour transmettre l&apos;émotion
                   juste et générer l&apos;impact attendu.
                 </p>
                 <p>
-                  Le résultat ? Des contenus vidéo{' '}
-                  <strong className="text-accent">authentiques et percutants</strong>,
+                  Le résultat ? Des contenus vidéo <strong className="text-black">authentiques et percutants</strong>,
                   prêts à performer sur tous vos canaux de diffusion.
                 </p>
               </div>
               <div>
-                <ButtonGND
-                  variant="primary"
-                  onClick={scrollToContact}
-                  className="w-full max-w-sm sm:w-auto"
+                <a
+                  href="/#contact-form"
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-black text-white rounded-full text-sm font-medium hover:bg-gray-800 transition-all hover:scale-105"
                 >
-                  <Sparkles className="h-5 w-5" />
                   Découvrir notre approche
-                </ButtonGND>
+                  <span>↗</span>
+                </a>
               </div>
             </div>
 
             <div className="relative mx-auto max-w-xl lg:max-w-none">
-              <div className="relative overflow-hidden rounded-3xl shadow-2xl">
-                <img
-                  src={IMAGE_HERO}
-                  alt="Équipe de production audiovisuelle GND Consulting"
-                  className="h-[260px] w-full object-cover sm:h-[320px] lg:h-[460px]"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-              </div>
-              <div className="absolute -right-4 -top-4 h-16 w-16 rounded-full bg-black/20 blur-md lg:h-24 lg:w-24" />
-              <div className="absolute -bottom-4 -left-4 h-20 w-20 rounded-full bg-black/15 blur-md lg:h-28 lg:w-28" />
+              <img
+                src={IMAGE_HERO}
+                alt="Équipe de production audiovisuelle GND Consulting"
+                className="w-full aspect-[4/3] object-cover rounded-2xl"
+                loading="lazy"
+              />
             </div>
           </div>
         </div>
@@ -783,38 +773,41 @@ export function ServiceProductionAudiovisuelle() {
         </div>
       </section>
 
-      {/* CTA FINAL */}
-      <section
-        data-service-section="cta-final"
-        className="reveal bg-background-alt py-32 px-6 lg:px-12"
-      >
-        <div className="mx-auto flex max-w-[1400px] flex-col items-center text-center">
-          <h2 className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] text-[#1A1A1A]">
-            Prêt à tourner votre prochaine vidéo ?
+      {/* CTA FINAL — style Stitch */}
+      <section className="py-32 px-6 lg:px-12 bg-black relative overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img
+            src={IMAGE_HERO}
+            alt=""
+            className="w-full h-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-black/70" />
+        </div>
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight mb-6">
+            Prêt à tourner
+            <br />
+            <span className="italic font-normal text-white/60">votre prochaine vidéo ?</span>
           </h2>
-          <p className="mt-4 max-w-3xl text-balance text-[clamp(1rem,2.5vw,1.5rem)] leading-relaxed text-text-muted">
+          <p className="text-base text-white/70 leading-relaxed max-w-2xl mx-auto mb-10">
             Nous mettons notre énergie créative et notre expertise technique au service de
             vos ambitions. Captation, montage, post-production : chaque étape est pensée
             pour sublimer votre image.
           </p>
-          <div className="mt-8 flex w-full flex-col gap-4 sm:flex-row sm:justify-center">
-            <ButtonGND
-              variant="primary"
-              onClick={scrollToContact}
-              className="w-full max-w-sm sm:w-auto"
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="/#contact-form"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-black rounded-full text-sm font-medium hover:bg-gray-100 transition-all hover:scale-105"
             >
-              <Heart className="h-5 w-5 sm:h-6 sm:w-6" />
               Demander un devis personnalisé
-            </ButtonGND>
-            <ButtonGND
-              variant="secondary"
-              as="a"
-              href="/#realisations"
-              className="w-full max-w-sm sm:w-auto"
+              <span>↗</span>
+            </a>
+            <a
+              href="/services/production-audiovisuelle"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-white/20 text-white rounded-full text-sm font-medium hover:bg-white/10 transition-all"
             >
-              <Video className="h-5 w-5 sm:h-6 sm:w-6" />
               Voir nos réalisations
-            </ButtonGND>
+            </a>
           </div>
         </div>
       </section>

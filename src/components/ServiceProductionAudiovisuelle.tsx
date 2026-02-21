@@ -31,6 +31,30 @@ const VIDEO_CONCERT_ALI =
 const VIDEO_THIEK =
   'https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Thiek%20au%20Sabay%20Festival%202022%20Haute%20def%204k%20v2.mp4';
 
+function FaqItem({ question, reponse }: { question: string; reponse: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="relative">
+      <div className="bg-white rounded-2xl border border-gray-200 hover:border-gray-300 transition-all duration-300 overflow-hidden shadow-sm hover:shadow-md">
+        <button
+          className="w-full p-6 md:p-8 text-left flex items-center justify-between focus:outline-none"
+          onClick={() => setOpen(!open)}
+        >
+          <span className="text-base md:text-lg font-bold text-black pr-4">{question}</span>
+          <span className={`w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 flex-shrink-0 transition-transform duration-300 ${open ? 'rotate-180' : ''}`}>
+            ∨
+          </span>
+        </button>
+        {open && (
+          <div className="px-6 md:px-8 pb-6 md:pb-8">
+            <p className="text-gray-500 leading-relaxed">{reponse}</p>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 export function ServiceProductionAudiovisuelle() {
   useEffect(() => {
     updateMetaTags({
@@ -718,57 +742,33 @@ export function ServiceProductionAudiovisuelle() {
         </div>
       </section>
 
-      {/* SECTION FAQ — Design Stitch */}
-      <section className="py-24 px-6 lg:px-12 bg-white">
-        <div className="max-w-[1400px] mx-auto">
+      {/* SECTION FAQ — Copie conforme homepage */}
+      <section id="faq" className="py-32 px-6 lg:px-12 bg-white relative overflow-hidden">
+        <div className="max-w-4xl mx-auto">
 
-          {/* En-tête Stitch */}
-          <div className="mb-16">
-            <div className="inline-flex items-center px-4 py-2 rounded-full border border-gray-200 bg-white mb-6">
-              <span className="text-xs font-medium tracking-widest uppercase text-gray-500">
-                FAQ
-              </span>
-            </div>
-            <h2 className="text-5xl lg:text-6xl font-black text-black leading-tight">
+          {/* En-tête centré — identique homepage */}
+          <div className="text-center mb-16">
+            <span className="inline-flex items-center gap-2 border border-gray-300 rounded-full px-5 py-2 text-xs font-medium uppercase tracking-widest text-gray-500 mb-6">
+              FAQ
+            </span>
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-black mb-6 tracking-tight">
               Questions fréquentes
-              <br />
-              <span className="italic font-normal text-gray-400">sur nos productions.</span>
             </h2>
+            <p className="text-base text-gray-500 font-medium max-w-2xl mx-auto">
+              Délais, budgets, formats livrés : trouvez rapidement les réponses à vos questions sur nos productions audiovisuelles.
+            </p>
           </div>
 
-          {/* Accordéons */}
-          <div className="divide-y divide-gray-100">
+          {/* Accordéons — identique homepage */}
+          <div className="space-y-4 relative z-10">
             {[
-              {
-                question: 'Combien de temps dure une production vidéo ?',
-                reponse: "Selon la complexité, comptez 1 à 3 semaines de la captation à la livraison finale. Un clip événementiel simple peut être livré en 5 jours ouvrés."
-              },
-              {
-                question: 'Peut-on filmer dans plusieurs lieux ?',
-                reponse: "Oui, nous nous déplaçons partout en France et à l'international. Les frais de déplacement sont inclus dans le devis selon la localisation."
-              },
-              {
-                question: 'Pouvez-vous gérer uniquement le montage ?',
-                reponse: "Tout à fait. Nous pouvons intervenir uniquement en post-production si vous avez déjà vos rushes. Envoyez-nous vos fichiers et nous nous occupons du reste."
-              },
-              {
-                question: 'Quel budget prévoir ?',
-                reponse: "Les projets démarrent à partir de 800\u20AC pour un contenu social media court. Pour un clip musical ou une captation événementielle complète, comptez entre 2\u202F000\u20AC et 8\u202F000\u20AC selon le dispositif."
-              },
-              {
-                question: 'Comment se déroule le premier brief ?',
-                reponse: "On commence par un appel de 30 minutes pour comprendre votre projet, vos objectifs et vos contraintes. On vous envoie ensuite une proposition détaillée sous 48h."
-              },
+              { question: 'Combien de temps dure une production vidéo ?', reponse: "Selon la complexité, comptez 1 à 3 semaines de la captation à la livraison finale. Un clip événementiel simple peut être livré en 5 jours ouvrés." },
+              { question: 'Peut-on filmer dans plusieurs lieux ?', reponse: "Oui, nous nous déplaçons partout en France et à l'international. Les frais de déplacement sont inclus dans le devis selon la localisation." },
+              { question: 'Pouvez-vous gérer uniquement le montage ?', reponse: "Tout à fait. Nous pouvons intervenir uniquement en post-production si vous avez déjà vos rushes. Envoyez-nous vos fichiers et nous nous occupons du reste." },
+              { question: 'Quel budget prévoir ?', reponse: "Les projets démarrent à partir de 800\u20AC pour un contenu social media court. Pour un clip musical ou une captation événementielle complète, comptez entre 2\u202F000\u20AC et 8\u202F000\u20AC selon le dispositif." },
+              { question: 'Comment se déroule le premier brief ?', reponse: "On commence par un appel de 30 minutes pour comprendre votre projet, vos objectifs et vos contraintes. On vous envoie ensuite une proposition détaillée sous 48h." },
             ].map((item, i) => (
-              <details key={i} className="group py-6 cursor-pointer list-none">
-                <summary className="flex items-center justify-between gap-4 text-base font-bold text-black hover:opacity-60 transition-opacity list-none">
-                  {item.question}
-                  <span className="text-xl font-light text-gray-400 group-open:rotate-45 transition-transform duration-300 shrink-0">+</span>
-                </summary>
-                <p className="mt-4 text-gray-500 leading-relaxed text-sm max-w-2xl">
-                  {item.reponse}
-                </p>
-              </details>
+              <FaqItem key={i} {...item} />
             ))}
           </div>
 

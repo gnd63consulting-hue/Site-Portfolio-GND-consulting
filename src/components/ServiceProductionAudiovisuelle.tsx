@@ -773,36 +773,46 @@ export function ServiceProductionAudiovisuelle() {
         </div>
       </section>
 
-      {/* CTA FINAL — Stitch 2 colonnes */}
-      <section className="py-24 px-6 lg:px-12 bg-black">
+      {/* CTA FINAL — style éditorial image + texte */}
+      <section className="py-24 px-6 lg:px-12 bg-white border-t border-gray-100">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 items-stretch min-h-[500px]">
 
-            {/* Gauche — titre */}
-            <div>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-6">
+            {/* Colonne gauche — image pleine hauteur */}
+            <div className="relative overflow-hidden rounded-2xl lg:rounded-r-none">
+              <img
+                src={IMAGE_HERO}
+                alt="Production audiovisuelle GND Consulting"
+                className="w-full h-full object-cover grayscale min-h-[400px] lg:min-h-full"
+              />
+            </div>
+
+            {/* Colonne droite — texte + CTA */}
+            <div className="flex flex-col justify-center p-10 lg:p-16 bg-gray-50 rounded-2xl lg:rounded-l-none">
+              <span className="inline-flex items-center gap-2 border border-gray-300 rounded-full px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-gray-500 mb-8 self-start">
+                On tourne quand vous voulez
+              </span>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-black leading-tight mb-6">
                 Prêt à tourner<br />
                 <span className="italic font-normal text-gray-400">votre prochaine vidéo ?</span>
               </h2>
-              <p className="text-gray-400 text-base leading-relaxed max-w-md">
+              <p className="text-gray-500 text-base leading-relaxed mb-10 max-w-sm">
                 Captation, montage, post-production — chaque étape pensée pour sublimer votre image.
               </p>
-            </div>
-
-            {/* Droite — CTA */}
-            <div className="flex flex-col sm:flex-row gap-4 lg:justify-end">
-              <a
-                href="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-white text-black font-bold text-sm rounded-full hover:bg-gray-100 transition-colors duration-200"
-              >
-                Demander un devis
-              </a>
-              <a
-                href="/realisations"
-                className="inline-flex items-center justify-center px-8 py-4 border border-white/20 text-white font-medium text-sm rounded-full hover:border-white/50 transition-colors duration-200"
-              >
-                Voir nos réalisations
-              </a>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a
+                  href="/contact"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-black text-white font-bold text-sm rounded-full hover:bg-gray-900 transition-colors duration-200"
+                >
+                  Demander un devis
+                </a>
+                <a
+                  href="/realisations"
+                  className="inline-flex items-center justify-center px-8 py-4 border border-gray-300 text-black font-medium text-sm rounded-full hover:border-gray-500 transition-colors duration-200"
+                >
+                  Voir nos réalisations
+                </a>
+              </div>
             </div>
 
           </div>

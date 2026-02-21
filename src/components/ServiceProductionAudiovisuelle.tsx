@@ -773,41 +773,38 @@ export function ServiceProductionAudiovisuelle() {
         </div>
       </section>
 
-      {/* CTA FINAL — style Stitch */}
-      <section className="py-32 px-6 lg:px-12 bg-black relative overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img
-            src={IMAGE_HERO}
-            alt=""
-            className="w-full h-full object-cover object-center"
-          />
-          <div className="absolute inset-0 bg-black/70" />
-        </div>
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight mb-6">
-            Prêt à tourner
-            <br />
-            <span className="italic font-normal text-white/60">votre prochaine vidéo ?</span>
-          </h2>
-          <p className="text-base text-white/70 leading-relaxed max-w-2xl mx-auto mb-10">
-            Nous mettons notre énergie créative et notre expertise technique au service de
-            vos ambitions. Captation, montage, post-production : chaque étape est pensée
-            pour sublimer votre image.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/#contact-form"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-black rounded-full text-sm font-medium hover:bg-gray-100 transition-all hover:scale-105"
-            >
-              Demander un devis personnalisé
-              <span>↗</span>
-            </a>
-            <a
-              href="/services/production-audiovisuelle"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-white/20 text-white rounded-full text-sm font-medium hover:bg-white/10 transition-all"
-            >
-              Voir nos réalisations
-            </a>
+      {/* CTA FINAL — Stitch 2 colonnes */}
+      <section className="py-24 px-6 lg:px-12 bg-black">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+            {/* Gauche — titre */}
+            <div>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-6">
+                Prêt à tourner<br />
+                <span className="italic font-normal text-gray-400">votre prochaine vidéo ?</span>
+              </h2>
+              <p className="text-gray-400 text-base leading-relaxed max-w-md">
+                Captation, montage, post-production — chaque étape pensée pour sublimer votre image.
+              </p>
+            </div>
+
+            {/* Droite — CTA */}
+            <div className="flex flex-col sm:flex-row gap-4 lg:justify-end">
+              <a
+                href="/contact"
+                className="inline-flex items-center justify-center px-8 py-4 bg-white text-black font-bold text-sm rounded-full hover:bg-gray-100 transition-colors duration-200"
+              >
+                Demander un devis
+              </a>
+              <a
+                href="/realisations"
+                className="inline-flex items-center justify-center px-8 py-4 border border-white/20 text-white font-medium text-sm rounded-full hover:border-white/50 transition-colors duration-200"
+              >
+                Voir nos réalisations
+              </a>
+            </div>
+
           </div>
         </div>
       </section>

@@ -639,50 +639,55 @@ export function ServiceProductionAudiovisuelle() {
         </div>
       </section>
 
-      {/* PROCESSUS — 4 étapes numérotées */}
-      <section
-        data-service-section="methodology"
-        className="reveal bg-white py-32 px-6 lg:px-12"
-      >
-        <div className="mx-auto max-w-[1400px]">
-          <div className="text-center">
-            <span className="inline-flex items-center rounded-full border border-gray-300 px-5 py-2 text-xs font-medium uppercase tracking-widest text-text-muted mb-6">
-              Processus
+      {/* PROCESSUS — 4 étapes minimalistes Stitch */}
+      <section className="py-24 px-6 lg:px-12 bg-white border-t border-gray-100">
+        <div className="max-w-6xl mx-auto">
+
+          {/* Header — aligné gauche, pattern Stitch */}
+          <div className="mb-16">
+            <span className="inline-flex items-center gap-2 border border-gray-300 rounded-full px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-gray-500 mb-6">
+              Notre processus
             </span>
-            <h2 className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] text-[#1A1A1A]">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-black mb-4 leading-tight">
               Du brief à la livraison
             </h2>
-            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.2rem)] text-text-muted">
-              Un processus structuré et transparent, où chaque étape est validée ensemble.
+            <p className="text-gray-500 text-base max-w-xl">
+              Un processus structuré pour transformer votre idée en vidéo percutante.
             </p>
           </div>
 
-          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {methodology.map((step) => {
-              const IconComponent = step.icon;
-              return (
-                <article
-                  key={step.step}
-                  className="group relative flex h-full flex-col gap-4 bg-gray-50 rounded-2xl p-8 transition-all duration-500 hover:bg-black hover:text-white"
-                >
-                  <span className="font-display text-5xl font-semibold text-gray-200 group-hover:text-white/10 transition-colors duration-500 absolute top-6 right-6">
-                    {String(step.step).padStart(2, '0')}
-                  </span>
-                  <div className="flex items-center gap-3">
-                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-black text-white transition-all duration-500 group-hover:bg-white group-hover:text-black">
-                      <IconComponent className="h-5 w-5" />
-                    </span>
-                    <h3 className="text-[clamp(1rem,2.3vw,1.1rem)] font-semibold text-[#1A1A1A] transition-colors duration-500 group-hover:text-white">
-                      {step.title}
-                    </h3>
-                  </div>
-                  <p className="text-[clamp(0.875rem,2vw,0.975rem)] leading-relaxed text-text-muted transition-colors duration-500 group-hover:text-gray-300">
-                    {step.description}
-                  </p>
-                </article>
-              );
-            })}
+          {/* Étapes — 4 colonnes, minimalistes */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 border border-gray-100 rounded-2xl overflow-hidden">
+            {[
+              {
+                num: '01',
+                title: 'Préparation & brief',
+                desc: 'Brief créatif, repérages, scénario, moodboard et rétroplanning détaillé.'
+              },
+              {
+                num: '02',
+                title: 'Captation',
+                desc: 'Tournage professionnel avec équipe dédiée et matériel adapté à votre projet.'
+              },
+              {
+                num: '03',
+                title: 'Montage & post-production',
+                desc: 'Montage, étalonnage, sound design, motion graphics, sous-titres et versions sociales.'
+              },
+              {
+                num: '04',
+                title: 'Finalisation & livraison',
+                desc: 'Validation finale et export de tous les formats nécessaires + archivage des sources.'
+              },
+            ].map((step, i) => (
+              <div key={i} className={`p-8 ${i < 3 ? 'border-r border-gray-100' : ''} hover:bg-gray-50 transition-colors duration-200`}>
+                <span className="text-4xl font-black text-gray-100 block mb-6">{step.num}</span>
+                <h3 className="text-base font-bold text-black mb-3">{step.title}</h3>
+                <p className="text-sm text-gray-500 leading-relaxed">{step.desc}</p>
+              </div>
+            ))}
           </div>
+
         </div>
       </section>
 

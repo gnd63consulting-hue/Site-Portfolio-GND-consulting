@@ -691,58 +691,61 @@ export function ServiceProductionAudiovisuelle() {
         </div>
       </section>
 
-      {/* AVANTAGES — 4 colonnes numérotées, icon inversion */}
-      <section
-        data-service-section="advantages"
-        className="reveal bg-background-alt py-32 px-6 lg:px-12"
-      >
-        <div className="mx-auto max-w-[1400px]">
-          <div className="text-center">
-            <h2 className="font-display text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[0.95] text-[#1A1A1A]">
-              Pourquoi choisir GND Consulting ?
-            </h2>
-            <p className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(1rem,2.4vw,1.25rem)] text-text-muted">
-              4 raisons qui font la différence dans votre projet vidéo
-            </p>
-          </div>
+      {/* AVANTAGES — layout 2 colonnes Stitch */}
+      <section className="py-24 px-6 lg:px-12 bg-white border-t border-gray-100">
+        <div className="max-w-6xl mx-auto">
 
-          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
-            {advantages.map((item, index) => {
-              const IconComponent = item.icon;
-              return (
-                <article
-                  key={item.title}
-                  className="group flex h-full flex-col gap-4 bg-gray-50 rounded-2xl p-8 text-center transition-all duration-500 hover:bg-black hover:text-white"
-                >
-                  <span className="text-xs font-medium uppercase tracking-widest text-text-muted transition-colors duration-500 group-hover:text-gray-400">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                  <span className="mx-auto inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-black text-white transition-all duration-500 group-hover:bg-white group-hover:text-black">
-                    <IconComponent className="h-7 w-7" />
-                  </span>
-                  <h3 className="text-[clamp(1.05rem,2.4vw,1.2rem)] font-semibold text-[#1A1A1A] transition-colors duration-500 group-hover:text-white">
-                    {item.title}
-                  </h3>
-                  <p className="text-[clamp(0.9375rem,2.2vw,1.05rem)] leading-relaxed text-text-muted transition-colors duration-500 group-hover:text-gray-300">
-                    {item.description}
-                  </p>
-                </article>
-              );
-            })}
-          </div>
+          {/* Layout 2 colonnes : titre gauche + grille droite */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
-          <div className="mt-10 flex flex-col items-center gap-4 text-center sm:flex-row sm:justify-center">
-            <p className="max-w-2xl text-[clamp(1rem,2.4vw,1.2rem)] font-medium text-text-muted">
-              Prêt à tourner votre prochaine vidéo ?
-            </p>
-            <ButtonGND
-              variant="primary"
-              onClick={scrollToContact}
-              className="w-full max-w-xs sm:w-auto"
-            >
-              <Heart className="h-5 w-5" />
-              Demander un devis
-            </ButtonGND>
+            {/* Colonne gauche — titre */}
+            <div className="lg:sticky lg:top-24">
+              <span className="inline-flex items-center gap-2 border border-gray-300 rounded-full px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-gray-500 mb-6">
+                Pourquoi GND
+              </span>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-black leading-tight mb-6">
+                Pourquoi choisir<br />
+                <span className="italic font-normal text-gray-400">GND Consulting ?</span>
+              </h2>
+              <p className="text-gray-500 text-base leading-relaxed">
+                4 raisons qui font la différence dans votre projet vidéo.
+              </p>
+            </div>
+
+            {/* Colonne droite — 4 arguments */}
+            <div className="grid grid-cols-1 gap-px bg-gray-100 border border-gray-100 rounded-2xl overflow-hidden">
+              {[
+                {
+                  num: '01',
+                  title: 'Créativité sur-mesure',
+                  desc: "Chaque projet est pensé pour être unique, impactant et aligné sur votre stratégie de marque."
+                },
+                {
+                  num: '02',
+                  title: 'Agilité & réactivité',
+                  desc: "Micro-structure flexible, épaulée par un réseau d'experts activable selon les besoins."
+                },
+                {
+                  num: '03',
+                  title: 'Accompagnement personnalisé',
+                  desc: "Nous co-construisons avec vos équipes pour créer des contenus qui vous ressemblent."
+                },
+                {
+                  num: '04',
+                  title: 'Outils modernes intégrés',
+                  desc: "Workflow optimisé avec IA, automatisations et process fluides pour livrer plus vite."
+                },
+              ].map((item, i) => (
+                <div key={i} className="bg-white p-8 flex gap-6 hover:bg-gray-50 transition-colors duration-200">
+                  <span className="text-2xl font-black text-gray-200 flex-shrink-0 w-10">{item.num}</span>
+                  <div>
+                    <h3 className="text-base font-bold text-black mb-2">{item.title}</h3>
+                    <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
           </div>
         </div>
       </section>

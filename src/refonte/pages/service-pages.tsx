@@ -683,12 +683,12 @@ function IAPage() {
           </Container>
         </Section>
 
-        <ReasonsGrid kicker="Marché 2026" title={<>Pourquoi <span className="text-accent italic">maintenant</span>.</>}
+        <ReasonsGrid kicker="Pourquoi maintenant" title={<>Le bon <span className="text-accent italic">moment</span>.</>}
           reasons={[
-            { n:"01", t:"77%", d:"des entreprises utilisent ou testent l'IA en 2026." },
-            { n:"02", t:"x3", d:"de productivité observée sur tâches répétitives." },
-            { n:"03", t:"AI Act", d:"Réglementation UE entrée en vigueur 2024/1689." },
-            { n:"04", t:"-31%", d:"de coût d'acquisition client en moyenne." },
+            { n:"01", t:"Maturité", d:"L'IA est passée du prototype à l'outil de production. Le coût d'attendre dépasse le coût d'adopter." },
+            { n:"02", t:"AI Act", d:"Cadre européen (Règlement UE 2024/1689) entré en vigueur — un usage encadré devient un avantage." },
+            { n:"03", t:"Sur-mesure", d:"Les gains viennent de workflows adaptés à votre métier, pas d'outils génériques." },
+            { n:"04", t:"Humain", d:"Validation humaine sur les décisions critiques. L'IA exécute, vous gardez la main." },
           ]}/>
 
         <Section bg="alt" className="py-24 md:py-32">

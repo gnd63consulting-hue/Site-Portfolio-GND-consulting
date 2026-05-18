@@ -6,14 +6,22 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Section, Container, Kicker, Btn, PortraitHero, Tag, Faq, CtaBand } from '../ui';
 import { Icons } from '../icons';
 
+/* Real portfolio — source: live src/data/videosData.js (9 real video projects).
+   Media is lazy / poster-first / click-to-play (jamais bloquant — cf. bug Supabase 24 s du live). */
+const SB = "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/";
+const COVER = SB + "portfolio-photos/gnd-cover.png";
+const yt = (id: string) => `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
+
 const PROJECTS = [
-  { id: "esther-seems", title: "Esther Seems", subtitle: "BOBINE", tag: "Clip musical", year: "2024", ratio: "4/5", img: "" },
-  { id: "trinity-rebel", title: "Trinity Rebel ft Dafxcx", subtitle: "L'Univers Officiel", tag: "Clip musical", year: "2025", ratio: "4/5", img: "" },
-  { id: "sabay-festival", title: "Sabay Festival", subtitle: "Thiek · 2022 / 2023", tag: "Événementiel 4K", year: "2023", ratio: "16/9", img: "" },
-  { id: "ali-scientific", title: "Ali 45 Scientific", subtitle: "Captation live concert", tag: "Live", year: "2024", ratio: "3/4", img: "" },
-  { id: "leyel-miel", title: "Leyel — Miel", subtitle: "Identité & visuels", tag: "Identité", year: "2025", ratio: "4/5", img: "" },
-  { id: "yungcally", title: "Yungcally", subtitle: "Clip officiel", tag: "Clip musical", year: "2024", ratio: "1/1", img: "" },
-  { id: "cook-soul", title: "Cook & Soul", subtitle: "Kaoutar · Pékin Express", tag: "Photographie", year: "2024", ratio: "16/9", img: "" },
+  { id: "esther-seems", title: "Esther Seems", subtitle: "BOBINE", tag: "Clip musical", year: "2024", ratio: "4/5", credit: "Réalisation · Jonathan Ransau", img: yt("6oaO6YoWjyQ"), youtube: "6oaO6YoWjyQ", desc: "Clip musical de l'artiste Esther Seems — esthétique hip-hop/R&B sobre et émotive, en hommage à un proche disparu. En collaboration avec AMS Visions." },
+  { id: "trinity-rebel", title: "Trinity Rebel ft Dafxcx", subtitle: "L'Univers Officiel", tag: "Clip musical", year: "2025", ratio: "4/5", credit: "Réalisation · Julien Ancieaux", img: COVER, video: SB + "portfolio-videos/trinity_rebel_univers_officiel.mp4", desc: "Clip musical officiel — sonorités chaleureuses et festives, inspirées des rythmes urbains et caribéens." },
+  { id: "sabay-2023", title: "Sabay Festival 2023", subtitle: "Grande Pagode de Vincennes", tag: "Événementiel", year: "2023", ratio: "16/9", credit: "Production · GND Consulting", img: "https://img.youtube.com/vi/Vyhz7_D4fFU/hqdefault.jpg", youtube: "Vyhz7_D4fFU", desc: "Captation et aftermovie officiel du Sabay Festival — traditions cambodgiennes, Grande Pagode de Vincennes." },
+  { id: "concert-ali", title: "Concert Ali 45 Scientific", subtitle: "Café LaPêche · Montreuil", tag: "Captation live", year: "2024", ratio: "3/4", credit: "Captation · IAMTV / O2M / GND", img: COVER, video: SB + "portfolio-videos/Concert%20Ali.mp4", desc: "Captation live du concert d'Ali, cofondateur du collectif 45 Scientific aux côtés de Booba." },
+  { id: "leyel-miel", title: "Leyel — Miel", subtitle: "Clip officiel", tag: "Clip musical", year: "2025", ratio: "4/5", credit: "Réalisation · Jonathan Ransau", img: yt("UbXQim7iNLI"), youtube: "UbXQim7iNLI", desc: "Clip officiel de l'artiste Leyel — variété française, mise en scène délicate. Collaboration O2M." },
+  { id: "cook-soul", title: "Cook & Soul", subtitle: "Kaoutar · Pékin Express", tag: "Production", year: "2024", ratio: "16/9", credit: "Réalisation · Gwen Templier", img: yt("galhl8_dYyk"), youtube: "galhl8_dYyk", desc: "Émission musicale produite pour IAMTV, avec Kaoutar (Pékin Express). Collaboration O2M." },
+  { id: "yungcally", title: "Yungcally", subtitle: "Clip officiel", tag: "Clip musical", year: "2024", ratio: "1/1", credit: "Réalisation · Jonathan Ransau", img: COVER, video: SB + "portfolio-videos/jyfviku.mp4", desc: "Clip officiel de Yungcally, jeune artiste franco-américain — vibe Wiz Khalifa / Post Malone." },
+  { id: "sabay-2022", title: "Sabay Festival 2022", subtitle: "Grande Pagode de Vincennes", tag: "Événementiel", year: "2022", ratio: "4/3", credit: "Production · GND Consulting", img: COVER, video: SB + "portfolio-videos/Thiek%20au%20Sabay%20Festival%202022%20Haute%20def%204k%20v2.mp4", desc: "Aftermovie officiel du Sabay Festival 2022 — captation 4K." },
+  { id: "lanecdote", title: "L'Anecdote", subtitle: "Émission · interviews", tag: "Production", year: "2024", ratio: "16/9", credit: "Réalisation · GND Consulting", img: yt("AGC_2cFHE_0"), youtube: "AGC_2cFHE_0", desc: "Émission L'Anecdote — format original mêlant interviews et moments de partage." },
 ];
 
 const SERVICES_CARDS = [
@@ -311,7 +319,7 @@ function ServicesGrid() {
 
 /* ===================== Reels mosaic — Cinematic + ported viewer (comp 7 spirit) ===================== */
 function MediaSlot({ p, rounded = "rounded-2xl" }: any) {
-  if (p && p.img) return <img src={p.img} alt={p.title} draggable={false} className={`absolute inset-0 w-full h-full object-cover ${rounded}`} />;
+  if (p && p.img) return <img src={p.img} alt={p.title} draggable={false} loading="lazy" decoding="async" className={`absolute inset-0 w-full h-full object-cover ${rounded}`} />;
   return (
     <div className={`img-placeholder absolute inset-0 ${rounded}`}>
       <span className="px-6 text-center">{p ? p.title : ""}</span>
@@ -320,6 +328,8 @@ function MediaSlot({ p, rounded = "rounded-2xl" }: any) {
 }
 
 function MediaLightbox({ items, index, onClose, onIndex }: any) {
+  const [playing, setPlaying] = React.useState(false);
+  React.useEffect(() => { setPlaying(false); }, [index]);
   React.useEffect(() => {
     if (index == null) return;
     const onKey = (e: KeyboardEvent) => {
@@ -334,6 +344,7 @@ function MediaLightbox({ items, index, onClose, onIndex }: any) {
   }, [index, items, onClose, onIndex]);
   if (index == null) return null;
   const p = items[index];
+  const hasMedia = !!(p.youtube || p.video);
   const ctrl = { background: "rgba(253,246,238,.12)", color: "#FDF6EE", border: "1px solid rgba(253,246,238,.25)", cursor: "pointer" };
   const overlay = (
     <div role="dialog" aria-modal="true" aria-label={`${p.title} — ${p.subtitle}`} onClick={onClose}
@@ -346,13 +357,29 @@ function MediaLightbox({ items, index, onClose, onIndex }: any) {
         className="focus-ring hidden md:flex" style={{ position: "absolute", right: 22, top: "50%", transform: "translateY(-50%)", width: 52, height: 52, borderRadius: 999, alignItems: "center", justifyContent: "center", fontSize: 24, ...ctrl }}>›</button>
       <div onClick={(e) => e.stopPropagation()} className="w-full" style={{ maxWidth: "1080px" }}>
         <div className="relative w-full overflow-hidden rounded-2xl" style={{ aspectRatio: "16/9", background: "#E8D8C5" }}>
-          <MediaSlot p={p} />
-          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(42,24,16,.7), transparent 55%)" }} />
-          <div className="absolute left-0 right-0 bottom-0 p-6 md:p-9">
-            <div className="label-mono" style={{ color: "rgba(253,246,238,.7)" }}>{p.tag} · {p.year}</div>
-            <div className="display text-3xl md:text-5xl mt-2" style={{ color: "#FDF6EE" }}>{p.title}</div>
-            <div className="display italic text-lg md:text-2xl mt-1" style={{ color: "#FF954F" }}>{p.subtitle}</div>
-          </div>
+          {playing && p.youtube ? (
+            <iframe className="absolute inset-0 w-full h-full" src={`https://www.youtube.com/embed/${p.youtube}?autoplay=1&rel=0`}
+              title={p.title} allow="accelerated-charset; autoplay; encrypted-media; picture-in-picture" allowFullScreen frameBorder="0" />
+          ) : playing && p.video ? (
+            <video className="absolute inset-0 w-full h-full object-cover" src={p.video} poster={p.img} controls autoPlay playsInline />
+          ) : (
+            <>
+              <MediaSlot p={p} />
+              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(42,24,16,.7), transparent 55%)" }} />
+              {hasMedia && (
+                <button aria-label="Lire la vidéo" onClick={() => setPlaying(true)}
+                  className="absolute inset-0 m-auto w-20 h-20 rounded-full bg-accent text-text-strong inline-flex items-center justify-center shadow-2xl hover:scale-105 transition focus-ring">
+                  <Icons.Play size={28}/>
+                </button>
+              )}
+              <div className="absolute left-0 right-0 bottom-0 p-6 md:p-9">
+                <div className="label-mono" style={{ color: "rgba(253,246,238,.7)" }}>{p.tag} · {p.year}</div>
+                <div className="display text-3xl md:text-5xl mt-2" style={{ color: "#FDF6EE" }}>{p.title}</div>
+                <div className="display italic text-lg md:text-2xl mt-1" style={{ color: "#FF954F" }}>{p.subtitle}</div>
+                {p.credit && <div className="label-mono mt-3" style={{ color: "rgba(253,246,238,.55)" }}>{p.credit}</div>}
+              </div>
+            </>
+          )}
         </div>
         <div className="mt-5 flex items-center justify-between">
           <span className="label-mono" style={{ color: "rgba(253,246,238,.5)" }}>{String(index + 1).padStart(2, "0")} / {String(items.length).padStart(2, "0")}</span>
@@ -519,7 +546,7 @@ function ReelsMosaic() {
 
         {/* Footer strip */}
         <div className="mt-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-t border-bg/10 pt-6 text-bg/55 label-mono">
-          <span>— 06 / 23 projets · 2022–2025</span>
+          <span>— 09 vidéos / 19 projets · 2022–2025</span>
           <span>paris · france · & international</span>
           <a href="#/realisations" className="!text-bg hover:!text-accent">— catalogue complet →</a>
         </div>
@@ -610,17 +637,19 @@ function ValuesBlock() {
 }
 
 function TestimonialsBlock() {
+  // Pas de témoignages clients fabriqués : on affiche la signature réelle du studio
+  // (engagements vérifiables) tant que de vrais verbatims clients ne sont pas collectés.
   const items = [
-    { q:"Une équipe qui pense le projet, pas seulement la livraison. La méthode Humain × IA nous a fait gagner 3 semaines de production.", a:"Kaoutar M.", role:"Pékin Express — Cook & Soul" },
-    { q:"Réactivité bluffante. Captation 4K, montage et livraison en moins de 10 jours.", a:"Ali 45 Scientific", role:"Concert live" },
-    { q:"Le seul studio à m'avoir proposé un workflow IA propre et documenté. Adoption en interne en 2 semaines.", a:"Direction marketing", role:"PME industrielle · 80 collab." },
+    { q:"L'humain décide, l'IA accélère. Chaque livrable est signé à la main — la direction créative ne se délègue pas.", a:"Méthode GND", role:"Humain × IA" },
+    { q:"Un studio, six métiers internalisés, un seul interlocuteur. La preuve avant la promesse.", a:"Promesse GND", role:"Studio créatif · Paris" },
+    { q:"Délais tenus, droits clairs, livrables documentés. Des engagements vérifiables, pas des slogans.", a:"Engagement GND", role:"Production interne" },
   ];
   const [i, setI] = React.useState(0);
   return (
     <Section bg="alt" className="py-28 md:py-40">
       <Container>
         <div className="max-w-4xl">
-          <Kicker>Ils nous font confiance</Kicker>
+          <Kicker>Notre signature — Humain × IA</Kicker>
           <Icons.Quote size={56} className="text-accent mt-8"/>
           <p className="display text-3xl md:text-5xl text-text-strong mt-6 leading-[1.15]">
             {items[i].q}
@@ -672,7 +701,7 @@ function FaqHome() {
 function TeamSlider() {
   const members = [
     { initials: "RP", quote: "L'humain décide, l'IA accélère. Chaque projet est signé à la main — la direction créative ne se délègue pas.", name: "Roodny Pierre", role: "Fondateur & CEO" },
-    { initials: "JU", quote: "Un studio, six métiers, des engagements tenus. On livre la preuve avant la promesse.", name: "Jean Ulysse", role: "Associé · Opérations" },
+    { initials: "J", quote: "Un studio, six métiers, des engagements tenus. On livre la preuve avant la promesse.", name: "Jean", role: "Associé · Opérations" },
     { initials: "GND", quote: "Un réseau d'experts activable à la demande, orchestré par une seule équipe responsable de bout en bout.", name: "Le réseau GND", role: "Collectif créatif & tech" },
   ];
   const [active, setActive] = React.useState(0);

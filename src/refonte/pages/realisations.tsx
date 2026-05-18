@@ -1,20 +1,45 @@
-/* /realisations + project detail — ported to ES modules */
+/* /realisations + project detail — REAL portfolio (live src/data/videosData.js + PortfolioPage).
+   Media lazy / poster-first / click-to-play (jamais bloquant). */
 import * as React from 'react';
 import { Section, Container, Kicker, Btn, Tag, ImgPlaceholder, CtaBand, CinematicHero } from '../ui';
 import { Icons } from '../icons';
 
-const FILTERS = ["Tout", "Vidéo", "Photo", "Identité", "Live"];
+const SB = "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/";
+const COVER = SB + "portfolio-photos/gnd-cover.png";
+const yt = (id: string) => `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
+const ph = (f: string) => SB + "portfolio-photos/" + f;
 
-const ALL_PROJECTS = [
-  { id:"trinity-rebel", title:"Trinity Rebel ft Dafxcx", sub:"L'Univers Officiel", cat:"Vidéo", year:"2025", ratio:"4/5", featured:true },
-  { id:"esther-seems", title:"Esther Seems", sub:"BOBINE", cat:"Vidéo", year:"2024", ratio:"1/1" },
-  { id:"sabay-2023", title:"Sabay Festival 2023", sub:"Thiek", cat:"Live", year:"2023", ratio:"16/9", featured:true },
-  { id:"sabay-2022", title:"Sabay Festival 2022", sub:"Thiek", cat:"Live", year:"2022", ratio:"4/3" },
-  { id:"ali-scientific", title:"Concert Ali 45 Scientific", sub:"Captation live", cat:"Live", year:"2024", ratio:"3/4" },
-  { id:"leyel-miel", title:"Leyel — Miel", sub:"Identité visuelle", cat:"Identité", year:"2025", ratio:"4/5" },
-  { id:"yungcally", title:"Yungcally", sub:"Clip officiel", cat:"Vidéo", year:"2024", ratio:"1/1" },
-  { id:"cook-soul", title:"Cook & Soul", sub:"Kaoutar · Pékin Express", cat:"Photo", year:"2024", ratio:"16/9", featured:true },
+const FILTERS = ["Tout", "Clip", "Live", "Production", "Photo"];
+
+const ALL_PROJECTS: any[] = [
+  // ——— 9 real video projects ———
+  { id:"esther-seems", title:"Esther Seems", sub:"BOBINE", cat:"Clip", year:"2024", ratio:"4/5", credit:"Réalisation · Jonathan Ransau", img: yt("6oaO6YoWjyQ"), youtube:"6oaO6YoWjyQ", desc:"Clip musical de l'artiste Esther Seems — esthétique hip-hop/R&B sobre et émotive, en hommage à un proche disparu. Réalisé en collaboration avec AMS Visions." },
+  { id:"trinity-rebel", title:"Trinity Rebel ft Dafxcx", sub:"L'Univers Officiel", cat:"Clip", year:"2025", ratio:"4/5", credit:"Réalisation · Julien Ancieaux", img: COVER, video: SB+"portfolio-videos/trinity_rebel_univers_officiel.mp4", desc:"Clip musical officiel — sonorités chaleureuses et festives, inspirées des rythmes urbains et caribéens." },
+  { id:"sabay-2023", title:"Sabay Festival 2023", sub:"Grande Pagode de Vincennes", cat:"Live", year:"2023", ratio:"16/9", featured:true, credit:"Production · GND Consulting", img:"https://img.youtube.com/vi/Vyhz7_D4fFU/hqdefault.jpg", youtube:"Vyhz7_D4fFU", desc:"Captation et aftermovie officiel du Sabay Festival — célébration des traditions cambodgiennes à la Grande Pagode de Vincennes." },
+  { id:"concert-ali", title:"Concert Ali 45 Scientific", sub:"Café LaPêche · Montreuil", cat:"Live", year:"2024", ratio:"3/4", credit:"Captation · IAMTV / O2M / GND", img: COVER, video: SB+"portfolio-videos/Concert%20Ali.mp4", desc:"Captation live du concert d'Ali, figure du rap français et cofondateur du collectif 45 Scientific aux côtés de Booba." },
+  { id:"leyel-miel", title:"Leyel — Miel", sub:"Clip officiel", cat:"Clip", year:"2025", ratio:"4/5", credit:"Réalisation · Jonathan Ransau", img: yt("UbXQim7iNLI"), youtube:"UbXQim7iNLI", desc:"Clip officiel de l'artiste Leyel — variété française, mise en scène délicate. En collaboration avec O2M." },
+  { id:"cook-soul", title:"Cook & Soul", sub:"Kaoutar · Pékin Express", cat:"Production", year:"2024", ratio:"16/9", featured:true, credit:"Réalisation · Gwen Templier", img: yt("galhl8_dYyk"), youtube:"galhl8_dYyk", desc:"Émission musicale produite pour IAMTV, avec Kaoutar (Pékin Express). En collaboration avec O2M." },
+  { id:"yungcally", title:"Yungcally", sub:"Clip officiel", cat:"Clip", year:"2024", ratio:"1/1", credit:"Réalisation · Jonathan Ransau", img: COVER, video: SB+"portfolio-videos/jyfviku.mp4", desc:"Clip officiel de Yungcally, jeune artiste franco-américain — vibe Wiz Khalifa / Post Malone." },
+  { id:"sabay-2022", title:"Sabay Festival 2022", sub:"Grande Pagode de Vincennes", cat:"Live", year:"2022", ratio:"4/3", credit:"Production · GND Consulting", img: COVER, video: SB+"portfolio-videos/Thiek%20au%20Sabay%20Festival%202022%20Haute%20def%204k%20v2.mp4", desc:"Aftermovie officiel du Sabay Festival 2022 — captation 4K." },
+  { id:"lanecdote", title:"L'Anecdote", sub:"Émission · interviews", cat:"Production", year:"2024", ratio:"16/9", credit:"Réalisation · GND Consulting", img: yt("AGC_2cFHE_0"), youtube:"AGC_2cFHE_0", desc:"Émission L'Anecdote — format original mêlant interviews et moments de partage." },
+  // ——— 10 real photo projects ———
+  { id:"masque-identite", title:"Masque & Identité", sub:"Portrait · Corporate", cat:"Photo", year:"", ratio:"4/5", img: ph("6F0A4251.jpg"), desc:"Direction artistique portrait — corporate." },
+  { id:"art-en-mouvement", title:"L'Art en Mouvement", sub:"Portrait · Créatif", cat:"Photo", year:"", ratio:"4/5", featured:true, img: ph("6F0A4135.jpg"), desc:"Série créative — portrait artistique." },
+  { id:"puissance-creative", title:"Puissance Créative", sub:"Portrait · Studio", cat:"Photo", year:"", ratio:"4/5", img: ph("6F0A4149.jpg"), desc:"Portrait studio — direction artistique." },
+  { id:"vision-masquee", title:"Vision Masquée", sub:"Portrait · Artistique", cat:"Photo", year:"", ratio:"4/5", img: ph("6F0A4267.jpg"), desc:"Portrait artistique." },
+  { id:"saveurs", title:"Saveurs", sub:"Événementiel · Culinaire", cat:"Photo", year:"", ratio:"16/9", img: ph("6F0A1817.JPG"), desc:"Reportage événementiel culinaire." },
+  { id:"instants", title:"Instants", sub:"Événementiel · Ambiance", cat:"Photo", year:"", ratio:"4/5", img: ph("6F0A1873%20-%20copie%202_1.jpg"), desc:"Captation d'ambiance événementielle." },
+  { id:"partages", title:"Partages", sub:"Événementiel · Reportage", cat:"Photo", year:"", ratio:"16/9", img: ph("6F0A2054.JPG"), desc:"Reportage événementiel." },
+  { id:"energie-collective", title:"Énergie Collective", sub:"Portrait · Groupe", cat:"Photo", year:"", ratio:"4/5", featured:true, img: ph("6F0A4028.jpg"), desc:"Portrait de groupe." },
+  { id:"attitude-confiance", title:"Attitude & Confiance", sub:"Portrait · Studio", cat:"Photo", year:"", ratio:"4/5", img: ph("6F0A3992.jpg"), desc:"Portrait studio." },
+  { id:"vision-urbaine", title:"Vision Urbaine", sub:"Portrait · Urbain", cat:"Photo", year:"", ratio:"4/5", img: ph("6F0A4002.JPG"), desc:"Portrait en extérieur urbain." },
 ];
+
+/* lazy, poster-first picture */
+function Pic({ p, rounded = "rounded-2xl", className = "" }: any) {
+  if (p && p.img) return <img src={p.img} alt={p.title} loading="lazy" decoding="async" draggable={false} className={`absolute inset-0 w-full h-full object-cover ${rounded} ${className}`} />;
+  return <div className={`img-placeholder absolute inset-0 ${rounded}`}><span className="px-6 text-center">{p ? p.title : ""}</span></div>;
+}
 
 function RealisationsPage() {
   const [filter, setFilter] = React.useState("Tout");
@@ -23,29 +48,32 @@ function RealisationsPage() {
   return (
     <main id="main">
       <CinematicHero
-        kicker="Réalisations"
+        kicker="Portfolio"
         eyebrow="réalisations"
-        title={<>La preuve,<br/>en <span className="italic">images</span>.</>}
-        subtitle="Une sélection de projets — clips, captations live, identités, photographie. Tous menés en interne, du brief à la livraison."
-        badges={["Clips", "Live", "Identité", "Photo"]}
+        title={<>Nos <span className="italic">réalisations</span>.</>}
+        subtitle="Clips musicaux, captations live, motion design, photographie et identité visuelle : les projets qui illustrent notre savoir-faire créatif et technique. Tous menés en interne, du brief à la livraison."
+        badges={["Clips", "Live", "Production", "Photo"]}
         ctas={<>
           <Btn href="#/contact" variant="primary">Démarrer un projet</Btn>
           <a href="#all" className="btn !bg-bg/10 !text-bg !border !border-bg/20 hover:!bg-bg/15">Tout voir <Icons.ArrowDown size={14}/></a>
         </>}
         media={
           <div className="grid grid-cols-2 gap-3 max-w-[480px] mx-auto">
-            <ImgPlaceholder label="[ trinity rebel ]" ratio="4/5" rounded="rounded-2xl"/>
-            <ImgPlaceholder label="[ sabay 2023 ]" ratio="4/5" rounded="rounded-2xl"/>
-            <ImgPlaceholder label="[ esther seems ]" ratio="4/5" rounded="rounded-2xl"/>
-            <ImgPlaceholder label="[ cook & soul ]" ratio="4/5" rounded="rounded-2xl"/>
+            {["esther-seems","sabay-2023","cook-soul","art-en-mouvement"].map(id => {
+              const p = ALL_PROJECTS.find(x => x.id === id);
+              return (
+                <div key={id} className="relative rounded-2xl overflow-hidden" style={{ aspectRatio:"4/5", background:"#E8D8C5" }}>
+                  <Pic p={p} />
+                </div>
+              );
+            })}
           </div>
         }
-        footerLabel="réalisations"
+        footerLabel="réalisations · 19 projets"
       />
 
       <section id="all" className="pt-20 pb-12">
         <Container>
-          {/* filters */}
           <div className="flex flex-wrap gap-2">
             {FILTERS.map(f => (
               <button key={f} onClick={() => setFilter(f)}
@@ -65,12 +93,18 @@ function RealisationsPage() {
               const span = p.featured ? "col-span-12 md:col-span-8" : i % 5 === 1 ? "col-span-12 md:col-span-4" : "col-span-6 md:col-span-4";
               return (
                 <a key={p.id} href={`#/realisations/${p.id}`}
-                  className={`group relative overflow-hidden rounded-2xl card-hover ${span}`}>
-                  <ImgPlaceholder label={`[ ${p.title.toLowerCase()} ]`} ratio={p.ratio} rounded="rounded-2xl"/>
-                  <div className="absolute inset-0 p-5 md:p-7 flex flex-col justify-between bg-gradient-to-b from-transparent via-transparent to-text-strong/65">
+                  className={`group relative overflow-hidden rounded-2xl card-hover ${span}`}
+                  style={{ background:"#E8D8C5" }}>
+                  <div className="relative w-full" style={{ aspectRatio: p.ratio }}>
+                    <Pic p={p} />
+                  </div>
+                  <div className="absolute inset-0 p-5 md:p-7 flex flex-col justify-between bg-gradient-to-b from-transparent via-transparent to-text-strong/70">
                     <div className="flex items-center gap-2">
                       <Tag>{p.cat}</Tag>
-                      <Tag>{p.year}</Tag>
+                      {p.year && <Tag>{p.year}</Tag>}
+                      {(p.youtube || p.video) && (
+                        <span className="w-8 h-8 rounded-full bg-accent text-text-strong inline-flex items-center justify-center ml-auto opacity-80 group-hover:opacity-100 transition"><Icons.Play size={13}/></span>
+                      )}
                     </div>
                     <div>
                       <div className="text-bg display text-2xl md:text-3xl">{p.title}</div>
@@ -84,22 +118,26 @@ function RealisationsPage() {
         </Container>
       </Section>
 
-      <CtaBand title="Votre projet, en haut de la pile." cta="Démarrer un projet"/>
+      <CtaBand title="Un projet en tête ?" sub="Discutons de votre vision et donnons vie à vos idées créatives." cta="Démarrer un projet"/>
     </main>
   );
 }
 
-/* Project detail (case study template) */
+/* Project detail — real synopsis + real credit, real media (click-to-play). No invented metrics. */
 function ProjectDetail({ id }: any) {
   const p = ALL_PROJECTS.find(x => x.id === id) || ALL_PROJECTS[0];
+  const [playing, setPlaying] = React.useState(false);
+  React.useEffect(() => { setPlaying(false); }, [id]);
+  const hasMedia = !!(p.youtube || p.video);
+
   return (
     <main id="main">
       <CinematicHero
-        kicker={`${p.cat} · ${p.year}`}
+        kicker={`${p.cat}${p.year ? " · " + p.year : ""}`}
         eyebrow={<><a href="#/realisations" className="hover:text-accent">réalisations</a> / {p.id}</>}
         title={<>{p.title}<span className="text-accent">.</span></>}
         subtitle={p.sub}
-        badges={[p.cat, p.year, "Production interne"]}
+        badges={[p.cat, p.year, hasMedia ? "Vidéo" : "Photo"].filter(Boolean)}
         ctas={<>
           <a href="#/realisations" className="btn btn-primary"><Icons.ArrowRight size={14} className="-scale-x-100"/> Tous les projets</a>
           <a href="#/contact" className="btn !bg-bg/10 !text-bg !border !border-bg/20 hover:!bg-bg/15">Un projet similaire ? <Icons.ArrowUpRight size={14}/></a>
@@ -108,71 +146,59 @@ function ProjectDetail({ id }: any) {
           <div className="relative aspect-[4/5] max-w-[480px] mx-auto">
             <div className="absolute -inset-4 rounded-3xl"
               style={{ background:'radial-gradient(circle at 50% 50%, rgba(255,149,79,.4), transparent 70%)', filter:'blur(20px)' }}></div>
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-black/40">
-              <ImgPlaceholder label={`[ ${p.title.toLowerCase()} ]`} ratio="4/5" rounded="rounded-3xl"/>
-              <button className="absolute inset-0 m-auto w-16 h-16 rounded-full bg-accent text-text-strong inline-flex items-center justify-center"><Icons.Play size={22}/></button>
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-black/40" style={{ background:"#E8D8C5", aspectRatio:"4/5" }}>
+              <Pic p={p} rounded="rounded-3xl"/>
+              {hasMedia && (
+                <button aria-label="Lire la vidéo" onClick={() => setPlaying(true)}
+                  className="absolute inset-0 m-auto w-16 h-16 rounded-full bg-accent text-text-strong inline-flex items-center justify-center shadow-2xl hover:scale-105 transition focus-ring"><Icons.Play size={22}/></button>
+              )}
             </div>
           </div>
         }
         footerLabel={`projet · ${p.id}`}
       />
 
-      <Section className="py-12">
+      {playing && hasMedia && (
+        <div className="fixed inset-0 z-[200] bg-text-strong/95 flex items-center justify-center p-4" onClick={() => setPlaying(false)}>
+          <button onClick={() => setPlaying(false)} aria-label="Fermer" className="absolute top-6 right-6 w-11 h-11 rounded-full bg-bg text-text-strong inline-flex items-center justify-center"><Icons.X size={20}/></button>
+          <div className="w-full max-w-5xl" onClick={(e) => e.stopPropagation()}>
+            <div className="relative w-full rounded-2xl overflow-hidden" style={{ aspectRatio:"16/9", background:"#000" }}>
+              {p.youtube
+                ? <iframe className="absolute inset-0 w-full h-full" src={`https://www.youtube.com/embed/${p.youtube}?autoplay=1&rel=0`} title={p.title} allow="autoplay; encrypted-media; picture-in-picture" allowFullScreen frameBorder="0"/>
+                : <video className="absolute inset-0 w-full h-full object-contain" src={p.video} poster={p.img} controls autoPlay playsInline/>}
+            </div>
+          </div>
+        </div>
+      )}
+
+      <Section className="py-16 md:py-24">
         <Container>
-          <div className="grid lg:grid-cols-[1fr_280px] gap-8 items-end">
-            <div></div>
-            <div className="space-y-3 text-sm">
+          <div className="grid lg:grid-cols-[1fr_300px] gap-12">
+            <div className="max-w-2xl">
+              <Kicker>Le projet</Kicker>
+              <p className="display text-2xl md:text-4xl text-text-strong mt-6 leading-[1.2]">{p.desc}</p>
+              <p className="mt-8 text-text leading-relaxed">
+                Production menée en interne par GND Consulting — direction créative humaine, exécution accélérée par l'IA quand pertinent. Brief, réalisation, post-production et livraison documentés, droits clairs.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                {hasMedia && <button onClick={() => setPlaying(true)} className="btn btn-primary">Voir la vidéo <Icons.Play size={14}/></button>}
+                <a href="#/contact" className="btn btn-secondary">Un projet similaire ? <Icons.ArrowUpRight size={14}/></a>
+              </div>
+            </div>
+            <div className="space-y-3 text-sm h-fit">
               {[
-                { k:"Client", v:p.title },
-                { k:"Métiers", v:p.cat + " · post-prod" },
-                { k:"Année", v:p.year },
-                { k:"Équipe", v:"Roodny Pierre + 2 collab." },
-              ].map(r => (
-                <div key={r.k} className="flex justify-between border-b hairline border-b pb-2.5">
-                  <span className="label-mono">{r.k}</span>
-                  <span className="text-text-strong font-medium">{r.v}</span>
+                { k:"Projet", v:p.title },
+                { k:"Catégorie", v:p.cat },
+                p.year ? { k:"Année", v:p.year } : null,
+                p.credit ? { k:"Crédit", v:p.credit } : null,
+                { k:"Production", v:"GND Consulting · Paris" },
+              ].filter(Boolean).map((r: any) => (
+                <div key={r.k} className="flex justify-between gap-4 border-b hairline border-b pb-2.5">
+                  <span className="label-mono shrink-0">{r.k}</span>
+                  <span className="text-text-strong font-medium text-right">{r.v}</span>
                 </div>
               ))}
             </div>
-          </div>
-        </Container>
-      </Section>
-
-      <Section className="pb-12">
-        <Container>
-          <ImgPlaceholder label={`[ hero · ${p.title.toLowerCase()} ]`} ratio="21/9" rounded="rounded-3xl"/>
-        </Container>
-      </Section>
-
-      <Section className="py-20">
-        <Container>
-          <div className="grid lg:grid-cols-12 gap-12">
-            <div className="lg:col-span-4">
-              <Kicker>Contexte</Kicker>
-              <h2 className="display text-3xl text-text-strong mt-4">L'enjeu</h2>
-              <p className="mt-3 text-text leading-relaxed">Capturer une signature visuelle forte, en peu de jours, avec une équipe restreinte et un budget maîtrisé.</p>
-            </div>
-            <div className="lg:col-span-4">
-              <Kicker>Approche</Kicker>
-              <h2 className="display text-3xl text-text-strong mt-4">Humain × IA</h2>
-              <p className="mt-3 text-text leading-relaxed">Pré-prod accélérée par génération de moodboards, sélection humaine. Tournage 100% humain. Post-prod assistée pour le tri rushes.</p>
-            </div>
-            <div className="lg:col-span-4">
-              <Kicker>Résultat</Kicker>
-              <h2 className="display text-3xl text-text-strong mt-4">Mesurable</h2>
-              <p className="mt-3 text-text leading-relaxed">Livrable validé en un round. Audience cible touchée. Plus de 8× ROI sur média payant déclenché par le contenu.</p>
-            </div>
-          </div>
-        </Container>
-      </Section>
-
-      <Section className="py-12">
-        <Container>
-          <div className="grid grid-cols-12 gap-4 md:gap-6">
-            <ImgPlaceholder label="[ still 01 ]" ratio="4/5" className="col-span-6 md:col-span-4 rounded-2xl"/>
-            <ImgPlaceholder label="[ still 02 ]" ratio="4/5" className="col-span-6 md:col-span-4 rounded-2xl"/>
-            <ImgPlaceholder label="[ still 03 ]" ratio="4/5" className="col-span-6 md:col-span-4 rounded-2xl"/>
-            <ImgPlaceholder label="[ behind the scenes ]" ratio="21/9" className="col-span-12 rounded-2xl"/>
           </div>
         </Container>
       </Section>

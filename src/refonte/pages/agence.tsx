@@ -76,7 +76,7 @@ function FounderBlock() {
               Un studio <span className="italic">incarné</span>.
             </h2>
             <div className="mt-7 space-y-5 text-lg text-text leading-relaxed max-w-xl">
-              <p>Roodny Pierre fonde GND Consulting à Paris en 2024 après dix ans de production audiovisuelle, motion design et direction artistique pour des artistes, marques et institutions.</p>
+              <p>Roodny Pierre fonde GND Consulting à Paris en 2024, après plusieurs années en production audiovisuelle, motion design et direction artistique pour des artistes, des marques et des institutions.</p>
               <p>La conviction : <strong className="text-text-strong">une création modulable, exigeante, augmentée par l'IA</strong> — sans renoncer à la signature humaine. Un seul interlocuteur, six métiers internalisés, des engagements tenus.</p>
               <p className="text-text-muted italic">« Nous ne vendons pas l'IA. Nous l'utilisons. La nuance fait toute la différence. »</p>
             </div>

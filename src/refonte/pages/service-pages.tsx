@@ -106,31 +106,41 @@ function DesignPage() {
     <ServiceLayout
       kicker="Design & identité visuelle"
       title={<>Faites parler<br/>votre <span className="italic">image</span>.</>}
-      subtitle="Design graphique & identité visuelle sur mesure — pour une marque qui vous ressemble vraiment."
+      subtitle="Design graphique & identité visuelle sur mesure."
       ctaLabel="Demander un devis personnalisé"
-      badges={["3 rounds inclus", "AI / EPS / SVG / PNG", "Imprimeurs partenaires"]}
+      badges={["3 rounds inclus", "AI / EPS / SVG / PNG", "Studio créatif · Paris"]}
       hero={
         <div className="relative max-w-[460px] mx-auto rounded-3xl overflow-hidden shadow-2xl shadow-black/40 bg-surface" style={{ aspectRatio:"4/5" }}>
           <img src="/assets/svc-design.png" alt="Design & identité visuelle — GND" loading="lazy" className="absolute inset-0 w-full h-full object-cover"/>
         </div>
       }
       sections={<>
-        <OfferGrid kicker="Notre offre" title={<>Tout ce qu'il faut pour <span className="italic">incarner</span> votre marque.</>}
+        <Section className="py-20 md:py-28">
+          <Container>
+            <p className="text-lg md:text-xl text-text leading-relaxed max-w-3xl">Chez GND Consulting, nous croyons que le design graphique n'est pas qu'une question d'esthétique. C'est un pilier stratégique qui raconte votre histoire, transmet vos valeurs et crée une connexion émotionnelle durable avec votre audience. Chaque trait, chaque couleur, chaque forme est pensée pour faire vibrer votre marque et la rendre inoubliable. Studio créatif à Paris, identité visuelle et branding sur mesure pour marques ambitieuses.</p>
+          </Container>
+        </Section>
+        <OfferGrid kicker="Notre offre" title={<>Nos services <span className="italic">Design & Identité Visuelle</span>.</>}
+          intro="Des solutions créatives complètes pour donner vie à votre univers visuel."
           items={[
-            { n:"01", t:"Création de logo", d:"Conception originale, modulable, déclinable sur tous supports." },
-            { n:"02", t:"Déclinaisons", d:"Versions monochromes, négatives, formats sociaux et impression." },
-            { n:"03", t:"Charte graphique", d:"Logo, couleurs, typographies, iconographie, règles d'usage." },
-            { n:"04", t:"Refonte de marque", d:"Audit existant, repositionnement visuel, migration progressive." },
-            { n:"05", t:"Bannières & miniatures", d:"YouTube, LinkedIn, Instagram, sites — formats optimisés." },
-            { n:"06", t:"Supports imprimés", d:"Cartes, flyers, plaquettes, signalétique. Réseau d'imprimeurs." },
+            { n:"01", t:"Création de logo", d:"Conception d'un logo unique qui incarne parfaitement votre identité et vos valeurs." },
+            { n:"02", t:"Déclinaisons visuelles", d:"Adaptation de votre identité sur tous vos supports digitaux et réseaux sociaux." },
+            { n:"03", t:"Charte graphique complète", d:"Guide complet définissant couleurs, typographies et règles d'usage de votre marque." },
+            { n:"04", t:"Refonte d'identité existante", d:"Modernisation et optimisation de votre identité visuelle actuelle." },
+            { n:"05", t:"Bannières & miniatures", d:"Création de visuels optimisés pour vos contenus web et vidéos." },
+            { n:"06", t:"Supports imprimés", d:"Conception de cartes de visite, flyers et tous supports print professionnels." },
           ]}/>
         <Section className="py-24 md:py-32">
           <Container>
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
-                <Kicker>Approche</Kicker>
+                <Kicker>Notre approche</Kicker>
                 <h2 className="display text-5xl md:text-6xl mt-5 text-text-strong">Une identité qui vous <span className="italic">ressemble vraiment</span>.</h2>
-                <p className="mt-6 text-lg text-text leading-relaxed max-w-md">Pas de tendances copiées-collées. On part de votre histoire, votre métier, vos clients — et on construit une marque qui tient dix ans.</p>
+                <div className="mt-6 space-y-4 text-lg text-text leading-relaxed max-w-md">
+                  <p>Notre approche commence toujours par l'écoute. Nous prenons le temps de comprendre votre histoire, vos ambitions, votre personnalité unique. Car avant de créer, il faut ressentir.</p>
+                  <p>Ensuite vient la co-création. Vous n'êtes pas spectateur, vous êtes acteur de votre identité visuelle. Nous travaillons main dans la main, dans un processus itératif où chaque étape est validée ensemble.</p>
+                  <p>Le résultat ? Une identité visuelle authentique et impactante, qui vous ressemble vraiment et qui saura toucher votre audience au cœur.</p>
+                </div>
               </div>
               <ul className="space-y-4">
                 {["Écoute","Co-création","Résultat"].map((t, i) => (
@@ -143,39 +153,42 @@ function DesignPage() {
             </div>
           </Container>
         </Section>
-        <ProcessRow kicker="Process" title={<>Du brief à la <span className="italic">livraison</span>.</>}
+        <ProcessRow kicker="Processus" title={<>Du brief à la <span className="italic">livraison</span>.</>}
+          intro="Un processus créatif structuré et transparent, où chaque étape est validée ensemble."
           steps={[
-            { n:"01", t:"Brief créatif", d:"Atelier, références, contraintes, public." },
-            { n:"02", t:"Recherche", d:"Exploration visuelle, inspirations, moodboard." },
-            { n:"03", t:"Concepts", d:"Pistes créatives chiffrées, recommandation argumentée." },
-            { n:"04", t:"Itération", d:"3 rounds de modifications inclus." },
-            { n:"05", t:"Livraison", d:"Fichiers AI/EPS/SVG/PNG/JPG, charte usage." },
+            { n:"01", t:"Brief créatif", d:"Échange approfondi pour comprendre votre histoire, vos ambitions et votre personnalité unique." },
+            { n:"02", t:"Recherche & inspiration", d:"Exploration des tendances, de votre marché et création d'un moodboard stratégique." },
+            { n:"03", t:"Concepts créatifs", d:"Propositions visuelles uniques co-construites avec vous dans un processus itératif." },
+            { n:"04", t:"Validation & itération", d:"3 rounds de modifications inclus. Chaque étape est validée ensemble avant la suivante." },
+            { n:"05", t:"Livraison finale", d:"Export de tous les formats nécessaires (AI, EPS, SVG, PNG, JPG) avec guide d'utilisation complet." },
           ]}/>
-        <ReasonsGrid kicker="Pourquoi GND" title={<>Quatre <span className="text-accent italic">raisons</span>.</>}
+        <ReasonsGrid kicker="Pourquoi choisir GND Consulting ?" title={<>Quatre <span className="text-accent italic">raisons</span>.</>}
+          intro="4 raisons qui font la différence dans votre projet créatif."
           reasons={[
-            { n:"01", t:"Créativité & personnalisation", d:"Chaque marque est unique. Notre travail aussi." },
-            { n:"02", t:"Humain + IA", d:"IA pour explorer, humain pour signer." },
-            { n:"03", t:"Flexibilité", d:"Adapté aux TPE comme aux groupes." },
-            { n:"04", t:"Réseau d'experts", d:"Imprimeurs, typographes, illustrateurs." },
+            { n:"01", t:"Créativité & personnalisation", d:"Chaque création est unique et pensée spécifiquement pour votre univers." },
+            { n:"02", t:"Accompagnement humain + IA", d:"Alliance parfaite entre expertise humaine et outils d'intelligence artificielle." },
+            { n:"03", t:"Flexibilité & accessibilité", d:"Solutions adaptées à tous les budgets avec une approche modulaire." },
+            { n:"04", t:"Réseau d'experts à la demande", d:"Accès à un écosystème de spécialistes selon vos besoins spécifiques." },
           ]}/>
         <Section bg="alt" className="py-24 md:py-32">
           <Container>
             <div className="grid lg:grid-cols-12 gap-12">
               <div className="lg:col-span-4">
-                <Kicker>FAQ</Kicker>
+                <Kicker>Questions fréquentes</Kicker>
                 <h2 className="display text-5xl md:text-6xl mt-5 text-text-strong">À <span className="italic">savoir</span>.</h2>
+                <p className="mt-5 text-text">Tout ce que vous devez savoir sur nos services design et identité visuelle.</p>
               </div>
               <div className="lg:col-span-8">
-                <Faq q="Quels sont les délais ?" a="2 à 4 semaines selon l'ampleur. Devis détaillé sous 48h."/>
-                <Faq q="Combien de modifications sont incluses ?" a="3 rounds de modifications sur les concepts retenus. Au-delà, sur devis."/>
-                <Faq q="Quels formats sont livrés ?" a="AI, EPS, SVG, PNG, JPG. Charte d'usage PDF incluse."/>
-                <Faq q="Je n'ai aucune idée du design — vous m'aidez ?" a="Oui. Notre rôle est de transformer votre métier et vos contraintes en système visuel cohérent."/>
+                <Faq q="Quels sont les délais de réalisation ?" a="Les délais varient selon la complexité : logo simple (5-7 jours), identité complète (2-3 semaines), refonte globale (3-4 semaines). Nous établissons un planning précis dès le brief validé."/>
+                <Faq q="Combien de modifications sont incluses ?" a="Nous incluons 3 rounds de modifications dans nos prestations standard. Chaque étape fait l'objet d'une validation avant passage à la suivante pour optimiser le processus créatif."/>
+                <Faq q="Quels formats de fichiers livrez-vous ?" a="Nous livrons tous les formats nécessaires : vectoriels (AI, EPS, SVG), haute résolution (PNG, JPG), et formats web optimisés. Vous recevez également un guide d'utilisation complet."/>
+                <Faq q="Et si je n'ai aucune idée du design souhaité ?" a="C'est notre spécialité ! Nous commençons par un brief approfondi pour comprendre votre univers, vos valeurs et vos objectifs. Notre processus créatif vous guide étape par étape vers votre identité idéale."/>
               </div>
             </div>
           </Container>
         </Section>
       </>}
-      bottomCta={<CtaBand title="Prêt à donner vie à votre univers visuel ?" cta="Demander un devis personnalisé"/>}
+      bottomCta={<CtaBand title="Prêt à donner vie à votre univers visuel ?" sub="Créons ensemble une identité visuelle qui vous ressemble et qui marquera les esprits. Votre projet mérite une approche sur-mesure et créative." cta="Demander un devis personnalisé"/>}
     />
   );
 }
@@ -185,9 +198,9 @@ function MotionPage() {
   return (
     <ServiceLayout
       kicker="Motion design"
-      title={<>Motion design,<br/><span className="italic">sur mesure</span>.</>}
+      title={<>Motion design<br/><span className="italic">sur mesure</span>.</>}
       subtitle="Animez vos idées. Dynamisez votre image. Attirez votre public."
-      ctaLabel="Démarrer un projet motion"
+      ctaLabel="Demander un devis personnalisé"
       badges={["2D · 3D", "Habillages animés", "Formats sociaux"]}
       hero={
         <div className="relative surface-card p-3 rounded-3xl max-w-[520px] mx-auto">
@@ -200,10 +213,16 @@ function MotionPage() {
         </div>
       }
       sections={<>
+        <Section className="py-20 md:py-28">
+          <Container>
+            <p className="text-lg md:text-xl text-text leading-relaxed max-w-3xl">Chez GND Consulting, nous créons des vidéos en motion design qui informent, séduisent et déclenchent l'action. Simplifier un concept complexe, dynamiser vos réseaux sociaux ou présenter votre marque : chaque animation est pensée pour vous démarquer et engager votre audience. Nos créations sont optimisées pour le digital, prêtes à booster votre branding et vos conversions.</p>
+          </Container>
+        </Section>
         <Section className="py-24 md:py-32">
           <Container>
             <Kicker>Showreel</Kicker>
             <h2 className="display text-5xl md:text-7xl mt-5 text-text-strong">Nos créations en <span className="italic">mouvement</span>.</h2>
+            <p className="mt-5 text-text max-w-xl">Découvrez quelques exemples de nos productions motion design.</p>
             <div className="mt-14 grid md:grid-cols-3 gap-5">
               {[
                 { src:"https://img.youtube.com/vi/6oaO6YoWjyQ/maxresdefault.jpg", t:"Esther Seems — Bobine" },
@@ -226,33 +245,52 @@ function MotionPage() {
             </div>
           </Container>
         </Section>
-        <OfferGrid kicker="Notre offre" title={<>Cinq <span className="italic">formats</span> phares.</>}
+        <OfferGrid kicker="Notre offre" title={<>Nos expertises <span className="italic">motion design</span>.</>}
+          intro="Des contenus animés qui captent l'attention et transmettent vos messages en un clin d'œil."
           items={[
-            { n:"01", t:"Vidéos explicatives", d:"Storytelling 30s–3min, scripts, voix-off, sous-titrage." },
-            { n:"02", t:"Animations 2D / 3D", d:"Logo animé, mascotte, transitions, motion brand." },
-            { n:"03", t:"Habillages animés", d:"Bumpers, jingles, identités sonores synchronisées." },
-            { n:"04", t:"Formats sociaux", d:"Reels, TikTok, LinkedIn — formats verticaux + carrés." },
-            { n:"05", t:"Motion publicitaire", d:"Spots courts, A/B testing créatif." },
-            { n:"06", t:"Templates motion", d:"Kits motion pour vos équipes internes." },
+            { n:"01", t:"Vidéos explicatives / pédagogiques", d:"Simplifiez vos concepts complexes avec des animations claires et engageantes." },
+            { n:"02", t:"Animations 2D / 3D sur mesure", d:"Créations originales adaptées à votre univers visuel et à vos objectifs marketing." },
+            { n:"03", t:"Habillages graphiques animés", d:"Transitions, génériques, lower thirds pour professionnaliser vos contenus." },
+            { n:"04", t:"Formats sociaux optimisés", d:"Stories, reels et formats verticaux taillés pour capter votre audience sur mobile." },
+            { n:"05", t:"Motion pour campagnes publicitaires", d:"Créez des publicités animées impactantes pour Instagram, TikTok, LinkedIn ou YouTube." },
           ]}/>
-        <ProcessRow kicker="Process" title={<>Six étapes, un <span className="italic">tempo</span>.</>}
+        <ProcessRow kicker="Processus" title={<>Un processus fluide et <span className="italic">collaboratif</span>.</>}
+          intro="De la première idée à la livraison finale, nous orchestrons chaque étape pour garantir un résultat à la hauteur de vos attentes."
           steps={[
-            { n:"01", t:"Brief", d:"Objectif, cible, ton, format." },
-            { n:"02", t:"Script", d:"Scénario, voix-off, rythme." },
-            { n:"03", t:"Storyboard", d:"Vignettes-clés validées." },
-            { n:"04", t:"Design", d:"Style frames, palette." },
-            { n:"05", t:"Animation", d:"Réalisation et son." },
-            { n:"06", t:"Livraison", d:"Tous formats, déclinaisons." },
+            { n:"01", t:"Découverte & brief initial", d:"Analyse de vos enjeux, cibles et objectifs pour définir la bonne direction créative." },
+            { n:"02", t:"Scénario & storyboard", d:"Écriture du script et storyboard séquence par séquence pour valider le fil narratif." },
+            { n:"03", t:"Création graphique", d:"Développement du style visuel, illustrations, typographies et éléments graphiques." },
+            { n:"04", t:"Animation & sound design", d:"Mise en mouvement 2D/3D, transitions fluides, habillages sonores et voix-off optionnelle." },
+            { n:"05", t:"Feedbacks & ajustements", d:"Allers-retours encadrés (3 cycles inclus) pour affiner chaque détail ensemble." },
+            { n:"06", t:"Livraison & déclinaisons", d:"Export HD, formats réseaux, sous-titres et fichiers sources disponibles sur demande." },
           ]}/>
-        <ReasonsGrid kicker="Différenciateurs" title={<>Pourquoi <span className="text-accent italic">GND</span>.</>}
+        <ReasonsGrid kicker="Ce qui fait la différence GND" title={<>Pourquoi <span className="text-accent italic">GND</span>.</>}
           reasons={[
-            { n:"01", t:"Style adaptatif", d:"On s'aligne sur votre identité, pas l'inverse." },
-            { n:"02", t:"Délais maîtrisés", d:"Plannings réalistes, jamais glissants." },
-            { n:"03", t:"Impact mesurable", d:"KPIs définis avant production." },
-            { n:"04", t:"IA en accélérateur", d:"Tests rapides, itération éclair." },
+            { n:"01", t:"Style adaptatif", d:"Un rendu visuel aligné avec votre identité de marque pour rester cohérent sur tous vos canaux." },
+            { n:"02", t:"Délais maîtrisés", d:"Planning clair, jalons réguliers et respect strict des échéances annoncées." },
+            { n:"03", t:"Impact mesurable", d:"Optimisation pour la conversion, avec des messages pensés pour déclencher l'action." },
           ]}/>
+        <Section bg="alt" className="py-24 md:py-32">
+          <Container>
+            <div className="grid lg:grid-cols-12 gap-12">
+              <div className="lg:col-span-4">
+                <Kicker>Questions fréquentes</Kicker>
+                <h2 className="display text-5xl md:text-6xl mt-5 text-text-strong">À <span className="italic">savoir</span>.</h2>
+                <p className="mt-5 text-text">Processus, formats livrés, délais… nous répondons aux questions les plus courantes.</p>
+              </div>
+              <div className="lg:col-span-8">
+                <Faq q="Quel est le délai moyen pour produire une animation ?" a="En moyenne 2 à 4 semaines selon la durée et la complexité du projet. Nous établissons un planning précis dès la validation du brief pour respecter vos échéances."/>
+                <Faq q="Proposez-vous de la 3D ou uniquement de la 2D ?" a="Les deux ! Nous maîtrisons aussi bien l'animation 2D que 3D. Nous choisissons la technique la plus adaptée à votre projet, à vos objectifs et à votre budget."/>
+                <Faq q="Dois-je fournir un script ou des éléments visuels ?" a="Pas forcément. Nous pouvons tout prendre en charge : script, storyboard, design. Si vous avez déjà des éléments, nous les intégrons volontiers à la production."/>
+                <Faq q="Comment se déroule la collaboration ?" a="Un chef de projet unique vous accompagne à chaque étape. Vous disposez d'un espace de suivi pour valider les étapes clés et suivre l'avancement en temps réel."/>
+                <Faq q="Puis-je fournir mes références graphiques ?" a="Absolument ! Vos inspirations, chartes existantes et moodboards sont les bienvenus pour garantir un rendu parfaitement aligné avec votre univers."/>
+                <Faq q="Combien de modifications sont incluses ?" a="Nous prévoyons 3 cycles de retours complets (storyboard, première version animée, version finale). Au-delà, nous ajustons ensemble selon vos besoins."/>
+              </div>
+            </div>
+          </Container>
+        </Section>
       </>}
-      bottomCta={<CtaBand title="Donnez du mouvement à vos messages." cta="Démarrer un projet motion"/>}
+      bottomCta={<CtaBand title="Donnez du mouvement à vos messages." sub="Animation produit, storytelling, lancement de marque ou formation interne : nous composons le motion design qui fera vibrer votre audience." cta="Demander un devis personnalisé"/>}
     />
   );
 }
@@ -392,8 +430,8 @@ function ProductionPage() {
   const COVER = SB + "portfolio-photos/gnd-cover.png";
   const reels = [
     { id: "trinity", t:"Trinity Rebel — Univers Officiel", k:"Clip musical", y:"2025", img: COVER, video: SB+"portfolio-videos/trinity_rebel_univers_officiel.mp4" },
-    { id: "ali", t:"Concert Ali 45 Scientific", k:"Captation live", y:"2024", img: COVER, video: SB+"portfolio-videos/Concert%20Ali.mp4" },
-    { id: "sabay", t:"Thiek — Sabay Festival", k:"Événementiel 4K", y:"2023", img:"https://img.youtube.com/vi/Vyhz7_D4fFU/hqdefault.jpg", youtube:"Vyhz7_D4fFU" },
+    { id: "ali", t:"Concert Ali", k:"Captation live", y:"2024", img: COVER, video: SB+"portfolio-videos/Concert%20Ali.mp4" },
+    { id: "sabay", t:"Thiek — Sabay Festival 2022", k:"Événementiel 4K", y:"2022", img:"https://img.youtube.com/vi/Vyhz7_D4fFU/hqdefault.jpg", youtube:"Vyhz7_D4fFU" },
     { id: "esther", t:"Esther Seems — BOBINE", k:"Production", y:"2024", img:"https://img.youtube.com/vi/6oaO6YoWjyQ/maxresdefault.jpg", youtube:"6oaO6YoWjyQ" },
     { id: "yungcally", t:"Yungcally — Clip officiel", k:"Clip musical", y:"2024", img: COVER, video: SB+"portfolio-videos/jyfviku.mp4" },
   ];
@@ -410,12 +448,28 @@ function ProductionPage() {
     >
       <Section className="pt-0 pb-16">
         <Container>
-          <Kicker>Production audiovisuelle · 4K</Kicker>
-          <p className="text-text max-w-2xl text-lg md:text-xl mt-5">Studio parisien spécialisé en captation live, montage et post-production — nous sublimons vos histoires en images.</p>
-          <div className="mt-6 flex gap-3 flex-wrap">
-            {["Paris · FR", "4K / 8K", "Captation multi-cam"].map((b) => <span key={b} className="chip">{b}</span>)}
+          <div className="grid lg:grid-cols-12 gap-12 items-start">
+            <div className="lg:col-span-7">
+              <Kicker>Notre approche</Kicker>
+              <h2 className="display text-5xl md:text-6xl mt-5 text-text-strong">L'image au service<br/>de votre <span className="italic">histoire</span>.</h2>
+              <p className="mt-6 text-text max-w-xl">Studio parisien spécialisé en captation live, montage et post-production.</p>
+              <p className="mt-4 text-lg text-text leading-relaxed max-w-xl">Chez GND Consulting, nous concevons des contenus audiovisuels qui racontent votre histoire et génèrent le bon impact. Une vidéo réussie est un savant mélange d'émotion, de rythme et d'exigence technique, quel que soit le support de diffusion.</p>
+              <div className="mt-7 flex gap-3 flex-wrap">
+                {["Captation", "Montage", "Post-prod", "Live"].map((b) => <span key={b} className="chip">{b}</span>)}
+              </div>
+              <a href="#/contact" className="btn btn-primary mt-8 inline-flex">Démarrer un tournage <Icons.ArrowUpRight size={14}/></a>
+            </div>
+            <div className="lg:col-span-5 grid grid-cols-2 gap-4">
+              <div className="surface-card p-7">
+                <div className="num-display text-5xl md:text-6xl text-text-strong">50+</div>
+                <div className="mt-2 text-sm text-text-muted">Projets vidéo réalisés</div>
+              </div>
+              <div className="surface-card p-7">
+                <div className="num-display text-5xl md:text-6xl text-text-strong">4K/8K</div>
+                <div className="mt-2 text-sm text-text-muted">Qualité de production</div>
+              </div>
+            </div>
           </div>
-          <a href="#/contact" className="btn btn-primary mt-8 inline-flex">Démarrer un tournage <Icons.ArrowUpRight size={14}/></a>
         </Container>
       </Section>
 
@@ -423,8 +477,8 @@ function ProductionPage() {
         <Container>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
             <div>
-              <Kicker>Showreel</Kicker>
-              <h2 className="display text-5xl md:text-7xl mt-5 text-text-strong">Le <span className="italic">mur</span> des productions.</h2>
+              <Kicker>Nos créations</Kicker>
+              <h2 className="display text-5xl md:text-7xl mt-5 text-text-strong">Des productions qui<br/><span className="italic">parlent d'elles-mêmes</span>.</h2>
             </div>
             <p className="text-text max-w-sm">Cliquez sur une vignette pour ouvrir la visionneuse plein écran.</p>
           </div>
@@ -490,30 +544,63 @@ function ProductionPage() {
         </div>
       )}
 
-      <OfferGrid kicker="Notre offre" title={<>Six <span className="italic">terrains</span> d'expression.</>}
+      <OfferGrid kicker="Notre offre" title={<>Nos expertises vidéo<br/>à votre <span className="italic">service</span>.</>}
         items={[
-          { n:"01", t:"Captation live & technique", d:"Multi-caméras, son live, régie temps réel." },
-          { n:"02", t:"Montage & post-production", d:"Cut, étalonnage, mix son, motion intégré." },
-          { n:"03", t:"Clips & artistiques", d:"Direction artistique, casting, repérages." },
-          { n:"04", t:"Événementiel", d:"Festivals, conférences, lancements." },
-          { n:"05", t:"Social media", d:"Verticaux, formats courts, déclinaisons." },
-          { n:"06", t:"Corporate & e-learning", d:"Tutoriels, formations, communication interne." },
+          { n:"01", t:"Captation live & technique", d:"Multi-caméras 4K/8K, régie vidéo, projection & retours écrans, streaming multiplateforme. Nous couvrons vos événements avec la rigueur d'un studio de broadcast." },
+          { n:"02", t:"Montage & post-production", d:"Montage narratif, étalonnage couleur cinématographique, sound design et effets visuels. Du rushes au master final livrable sur tous supports." },
+          { n:"03", t:"Clips & contenus artistiques", d:"Clips musicaux, vidéos créatives, univers stylisés et narration immersive. On co-construit l'esthétique avec l'artiste pour servir sa vision." },
+          { n:"04", t:"Captation événementielle", d:"Reportage · Interview · Terrain." },
+          { n:"05", t:"Vidéos social media", d:"Reels · Stories · Formats verticaux." },
+          { n:"06", t:"Corporate & e-learning", d:"Entreprise · Formation · Produit." },
         ]}/>
-      <ProcessRow kicker="Process" title={<>Quatre <span className="italic">étapes</span> claires.</>}
+      <Section className="py-24 md:py-32">
+        <Container>
+          <div className="max-w-3xl">
+            <Kicker>Notre approche</Kicker>
+            <h2 className="display text-5xl md:text-6xl mt-5 text-text-strong">L'image qui raconte<br/>votre <span className="italic">histoire</span>.</h2>
+            <div className="mt-6 space-y-4 text-lg text-text leading-relaxed">
+              <p>Notre approche commence toujours par l'écoute. Nous prenons le temps de comprendre vos enjeux, votre audience et l'histoire que vous voulez raconter.</p>
+              <p>Ensuite vient la production sur-mesure. Chaque captation, chaque montage est pensé pour transmettre l'émotion juste et générer l'impact attendu.</p>
+              <p>Le résultat ? Des contenus vidéo authentiques et percutants, prêts à performer sur tous vos canaux de diffusion.</p>
+            </div>
+          </div>
+        </Container>
+      </Section>
+      <ProcessRow kicker="Notre processus" title={<>Du brief à la <span className="italic">livraison</span>.</>}
+        intro="Un processus structuré pour transformer votre idée en vidéo percutante."
         steps={[
-          { n:"01", t:"Pré-production", d:"Brief, repérages, casting, planning." },
-          { n:"02", t:"Tournage", d:"Captation, son, direction." },
-          { n:"03", t:"Post-production", d:"Montage, étalonnage, mix." },
-          { n:"04", t:"Livraison", d:"Tous formats, droits clairs." },
+          { n:"01", t:"Préparation & brief", d:"Brief créatif, repérages, scénario, moodboard et rétroplanning détaillé." },
+          { n:"02", t:"Captation", d:"Tournage professionnel avec équipe dédiée et matériel adapté à votre projet." },
+          { n:"03", t:"Montage & post-production", d:"Montage, étalonnage, sound design, motion graphics, sous-titres et versions sociales." },
+          { n:"04", t:"Finalisation & livraison", d:"Validation finale et export de tous les formats nécessaires + archivage des sources." },
         ]}/>
-      <ReasonsGrid kicker="Pourquoi GND" title={<>Quatre <span className="text-accent italic">atouts</span>.</>}
+      <ReasonsGrid kicker="Pourquoi GND" title={<>Pourquoi choisir<br/><span className="text-accent italic">GND Consulting</span> ?</>}
+        intro="4 raisons qui font la différence dans votre projet vidéo."
         reasons={[
-          { n:"01", t:"Studio internalisé", d:"Pas de courtage, pas de sous-traitance opaque." },
-          { n:"02", t:"4K natif", d:"Matériel pro, archivage longue durée." },
-          { n:"03", t:"Réactivité", d:"Devis 48h, planning en 5 jours." },
-          { n:"04", t:"Droits transparents", d:"Cession écrite, scope clair." },
+          { n:"01", t:"Créativité sur-mesure", d:"Chaque projet est pensé pour être unique, impactant et aligné sur votre stratégie de marque." },
+          { n:"02", t:"Agilité & réactivité", d:"Micro-structure flexible, épaulée par un réseau d'experts activable selon les besoins." },
+          { n:"03", t:"Accompagnement personnalisé", d:"Nous co-construisons avec vos équipes pour créer des contenus qui vous ressemblent." },
+          { n:"04", t:"Outils modernes intégrés", d:"Workflow optimisé avec IA, automatisations et process fluides pour livrer plus vite." },
         ]}/>
-      <CtaBand title="Prêt à tourner votre prochaine vidéo ?" cta="Démarrer un tournage"/>
+      <Section bg="alt" className="py-24 md:py-32">
+        <Container>
+          <div className="grid lg:grid-cols-12 gap-12">
+            <div className="lg:col-span-4">
+              <Kicker>FAQ</Kicker>
+              <h2 className="display text-5xl md:text-6xl mt-5 text-text-strong">Questions <span className="italic">fréquentes</span>.</h2>
+              <p className="mt-5 text-text">Délais, budgets, formats livrés : trouvez rapidement les réponses à vos questions sur nos productions audiovisuelles.</p>
+            </div>
+            <div className="lg:col-span-8">
+              <Faq q="Combien de temps dure une production vidéo ?" a="Cela dépend du format : quelques jours pour une capsule sociale, deux à six semaines pour un film abouti (préparation, tournage, post-production). Un rétroplanning précis est établi dès le brief validé."/>
+              <Faq q="Peut-on filmer dans plusieurs lieux ?" a="Oui. Multi-sites, intérieur, extérieur, repérages inclus : nous organisons la logistique de tournage en fonction de votre projet et de vos contraintes."/>
+              <Faq q="Pouvez-vous gérer uniquement le montage ?" a="Absolument. Nous prenons en charge vos rushes existants : montage, étalonnage, sound design, motion et versions sociales, sans obligation de captation."/>
+              <Faq q="Quel budget prévoir ?" a="Chaque production est chiffrée sur devis selon le format, la durée de tournage et le niveau de post-production. Nous proposons une estimation transparente dès le premier échange."/>
+              <Faq q="Comment se déroule le premier brief ?" a="Un échange dédié pour cerner vos objectifs, votre audience et vos références. Nous en ressortons avec une direction créative et un cadrage clair du projet."/>
+            </div>
+          </div>
+        </Container>
+      </Section>
+      <CtaBand title="Prêt à tourner votre prochaine vidéo ?" sub="Captation, montage, post-production — chaque étape pensée pour sublimer votre image." cta="Demander un devis"/>
     </ScrollExpandMedia>
   );
 }
@@ -522,12 +609,12 @@ function ProductionPage() {
 function PhotoPage() {
   // circular 3D gallery — vraies photos du shoot GND (public/assets/photo-0X.jpg)
   const photos = [
-    { src: "/assets/photo-01.jpg", label: "Portrait" },
-    { src: "/assets/photo-03.jpg", label: "Corporate" },
-    { src: "/assets/photo-02.jpg", label: "Lumière naturelle" },
+    { src: "/assets/photo-01.jpg", label: "Portrait professionnel" },
+    { src: "/assets/photo-03.jpg", label: "Shooting corporate en entreprise" },
+    { src: "/assets/photo-02.jpg", label: "Portrait en lumière naturelle" },
     { src: "/assets/photo-05.jpg", label: "Direction artistique" },
-    { src: "/assets/photo-04.jpg", label: "Studio" },
-    { src: "/assets/photo-06.jpg", label: "Création" },
+    { src: "/assets/photo-04.jpg", label: "Séance photo corporate" },
+    { src: "/assets/photo-06.jpg", label: "Photographie événementielle" },
   ];
   const [rot, setRot] = React.useState(0);
   React.useEffect(() => {
@@ -538,11 +625,11 @@ function PhotoPage() {
 
   return (
     <ServiceLayout
-      kicker="Photographie professionnelle"
-      title={<>Photographie<br/>& <span className="italic">direction artistique</span>.</>}
-      subtitle="Studio, extérieur, événementiel. Une image qui raconte vraiment quelque chose."
+      kicker="Photographie"
+      title={<>Photographie pro<br/>& <span className="italic">direction artistique</span>.</>}
+      subtitle="Portraits, reportages, packshots, campagnes : composez des images qui laissent une empreinte."
       ctaLabel="Réserver une séance sur mesure"
-      badges={["Studio & extérieur", "Retouche pro", "Droits clairs"]}
+      badges={["Studio & extérieur", "Retouche pro incluse", "Galerie sécurisée"]}
       hero={
         <div className="grid grid-cols-2 gap-3 max-w-[480px] mx-auto">
           <div className="relative rounded-2xl overflow-hidden bg-surface" style={{ aspectRatio:"3/4" }}>
@@ -559,11 +646,17 @@ function PhotoPage() {
         </div>
       }
       sections={<>
+        <Section className="py-20 md:py-28">
+          <Container>
+            <p className="text-lg md:text-xl text-text leading-relaxed max-w-3xl">Plus qu'un simple shooting, nous créons une expérience. Chaque séance est pensée pour refléter votre identité, votre équipe ou vos produits sous leur meilleur angle, avec une direction artistique sur-mesure et un workflow parfaitement orchestré.</p>
+          </Container>
+        </Section>
         <Section className="py-24 md:py-32 overflow-hidden">
           <Container>
             <div className="text-center max-w-2xl mx-auto">
               <Kicker className="justify-center">Portfolio</Kicker>
-              <h2 className="display text-5xl md:text-7xl mt-5 text-text-strong">Galerie <span className="italic">circulaire</span>.</h2>
+              <h2 className="display text-5xl md:text-7xl mt-5 text-text-strong">Nos dernières <span className="italic">réalisations</span>.</h2>
+              <p className="mt-5 text-text">Une sélection de nos shootings récents, du portrait corporate à la captation événementielle.</p>
             </div>
             <div className="relative mt-20 h-[420px] flex items-center justify-center" style={{ perspective:"1200px" }}>
               <div className="relative w-72 h-96" style={{ transformStyle:"preserve-3d", transform:`rotateY(${rot}deg)` }}>
@@ -586,40 +679,64 @@ function PhotoPage() {
 
         <Section bg="alt" className="py-24 md:py-32">
           <Container>
+            <Kicker>Notre approche</Kicker>
+            <h2 className="display text-5xl md:text-6xl mt-5 mb-12 text-text-strong">Une approche créative <span className="italic">& humaine</span>.</h2>
             <div className="grid lg:grid-cols-3 gap-8">
               {[
-                { t:"Créativité & storytelling", d:"Chaque image porte une intention narrative." },
-                { t:"Qualité pro", d:"Boîtiers full-frame, optiques fixes, post-prod studio." },
-                { t:"Expérience humaine", d:"Direction de modèles, ambiance détendue, résultat naturel." },
+                { n:"01", t:"Créativité & storytelling", d:"Chaque image raconte une histoire. Nous mettons en scène votre univers pour créer des visuels qui marquent durablement." },
+                { n:"02", t:"Qualité professionnelle", d:"Matériel haut de gamme, lumière maîtrisée, retouches soignées. Vos photos sont prêtes pour tous vos supports." },
+                { n:"03", t:"Expérience humaine", d:"Un accompagnement attentif pour des séances fluides, bienveillantes et alignées avec votre vision." },
               ].map(a => (
                 <div key={a.t} className="surface-card p-7">
-                  <div className="display text-3xl text-text-strong">{a.t}</div>
-                  <p className="mt-3 text-text">{a.d}</p>
+                  <span className="num-display text-4xl text-accent">{a.n}</span>
+                  <div className="display text-2xl md:text-3xl text-text-strong mt-4">{a.t}</div>
+                  <p className="mt-3 text-text leading-relaxed">{a.d}</p>
                 </div>
               ))}
             </div>
           </Container>
         </Section>
 
-        <OfferGrid kicker="Notre offre" title={<>Six <span className="italic">univers</span>.</>}
+        <OfferGrid kicker="Notre offre" title={<>Nos prestations <span className="italic">photo</span>.</>}
+          intro="Une palette complète pour nourrir vos campagnes, votre communication interne ou vos réseaux sociaux."
           items={[
-            { n:"01", t:"Business", d:"Portrait corporate, équipe, locaux." },
-            { n:"02", t:"Événement", d:"Conférences, soirées, lancements." },
-            { n:"03", t:"E-commerce", d:"Produit packshot, lifestyle, déclinaisons." },
-            { n:"04", t:"Social", d:"Contenus formatés réseaux." },
-            { n:"05", t:"Branding", d:"Identité visuelle, ambiance de marque." },
-            { n:"06", t:"Créatif", d:"Direction artistique sur projet libre." },
+            { n:"01", t:"Portraits & reportages corporate", d:"Valorisez vos équipes, vos locaux ou votre savoir-faire avec des portraits professionnels et reportages en entreprise." },
+            { n:"02", t:"Photographie événementielle", d:"Capturez les moments forts de vos séminaires, conférences, lancements de produit ou soirées professionnelles." },
+            { n:"03", t:"Packshots & produits e-commerce", d:"Des visuels nets et stylisés pour mettre vos produits en valeur sur les marketplaces ou vos catalogues." },
+            { n:"04", t:"Visuels réseaux sociaux & influence", d:"Des photos impactantes et immersives pour booster votre image sur Instagram, TikTok ou LinkedIn." },
+            { n:"05", t:"Publicité & branding", d:"Des visuels premium pour vos campagnes publicitaires, affiches, brochures ou sites web." },
+            { n:"06", t:"Créations artistiques & book", d:"Projets artistiques, book modèle, contenu personnel haut de gamme : nous sublimons votre univers." },
           ]}/>
 
-        <ProcessRow kicker="Process" title={<>Quatre <span className="italic">temps</span>.</>}
+        <ProcessRow kicker="Processus" title={<>Un workflow fluide <span className="italic">et cadré</span>.</>}
+          intro="De la préparation à la livraison, chaque étape est maîtrisée pour garantir un résultat impeccable."
           steps={[
-            { n:"01", t:"Brief", d:"Cadrage besoin, refs visuelles." },
-            { n:"02", t:"Production", d:"Repérage, casting, planning." },
-            { n:"03", t:"Shooting", d:"Direction artistique sur place." },
-            { n:"04", t:"Retouche", d:"Selects, post-prod, livraison." },
+            { n:"01", t:"Brief & moodboard", d:"Définition du style, repérage des lieux, préparation des tenues et des accessoires." },
+            { n:"02", t:"Séance photo", d:"Session guidée, direction artistique, lumière maîtrisée et ambiance posée." },
+            { n:"03", t:"Sélection & retouche", d:"Tri des meilleures images, retouches professionnelles, harmonisation colorimétrique." },
+            { n:"04", t:"Livraison rapide", d:"Galerie sécurisée, formats optimisés pour vos canaux web & print, sauvegarde longue durée." },
           ]}/>
+
+        <Section bg="alt" className="py-24 md:py-32">
+          <Container>
+            <div className="grid lg:grid-cols-12 gap-12">
+              <div className="lg:col-span-4">
+                <Kicker>Questions fréquentes</Kicker>
+                <h2 className="display text-5xl md:text-6xl mt-5 text-text-strong">Avant votre <span className="italic">séance</span>.</h2>
+                <p className="mt-5 text-text">Planning, retouches, formats livrés… retrouvez les réponses aux questions les plus posées.</p>
+              </div>
+              <div className="lg:col-span-8">
+                <Faq q="Quels types de séances proposez-vous ?" a="Portraits corporate, reportages, événements, packshots, visuels réseaux sociaux, campagnes publicitaires et shootings artistiques. Chaque prestation est adaptée à vos objectifs."/>
+                <Faq q="Quand faut-il réserver ?" a="Idéalement 2 à 3 semaines en amont. Pour les demandes urgentes ou événements, nous trouvons toujours la meilleure option selon nos disponibilités."/>
+                <Faq q="Les retouches sont-elles incluses ?" a="Oui. Toutes nos prestations incluent la retouche professionnelle (colorimétrie, exposition, retouche beauté légère). Les retouches avancées sont possibles sur devis."/>
+                <Faq q="Quels formats livrez-vous ?" a="Photos haute définition (JPEG et RAW sur demande), optimisées pour le web, les réseaux sociaux et l'impression. Galerie en ligne sécurisée incluse."/>
+                <Faq q="Peut-on shooter dans plusieurs lieux ?" a="Absolument. Studio, locaux, extérieurs, multi-sites : nous organisons la séance en fonction de votre planning et de la lumière."/>
+              </div>
+            </div>
+          </Container>
+        </Section>
       </>}
-      bottomCta={<CtaBand title="Prêt à créer des visuels inoubliables ?" cta="Réserver une séance"/>}
+      bottomCta={<CtaBand title="Prêt à créer des visuels inoubliables ?" sub="Transformons vos idées en images qui inspirent confiance, désir et engagement. Parlez-nous de votre projet et imaginons ensemble la séance idéale." cta="Réserver une séance"/>}
     />
   );
 }
@@ -629,19 +746,19 @@ function IAPage() {
   return (
     <ServiceLayout
       kicker="Automatisation & IA"
-      title={<>Automatisation & IA,<br/><span className="italic">sur mesure</span>.</>}
+      title={<>Automatisation & IA<br/><span className="italic">sur mesure</span>.</>}
       subtitle="Des workflows intelligents pour booster la productivité, la qualité et l'engagement."
-      ctaLabel="Planifier un audit gratuit"
-      badges={["RGPD & sécurité", "AI Act conforme", "Audit gratuit"]}
+      ctaLabel="Démarrer un projet pilote"
+      badges={["RGPD & sécurité intégrées", "AI Act conforme", "Audit gratuit"]}
       hero={
         <div className="surface-card p-7">
-          <Kicker>Résultats observés</Kicker>
+          <Kicker>Des résultats mesurables</Kicker>
           <div className="mt-6 grid grid-cols-2 gap-5">
             {[
-              { v:"+40%", l:"Productivité" },
-              { v:"20 min", l:"Économisées / jour" },
-              { v:"+66%", l:"Débit traitement" },
-              { v:"25%", l:"Économies réalisées" },
+              { v:"+40%", l:"Gains de productivité" },
+              { v:"20 min/jour", l:"Temps économisé / collaborateur" },
+              { v:"+66%", l:"Débit opérationnel" },
+              { v:"25%", l:"Économies constatées" },
             ].map(s => (
               <div key={s.l} className="border-t hairline border-t pt-4">
                 <div className="num-display text-4xl md:text-5xl text-text-strong">{s.v}</div>
@@ -652,20 +769,26 @@ function IAPage() {
         </div>
       }
       sections={<>
+        <Section className="py-20 md:py-28">
+          <Container>
+            <p className="text-lg md:text-xl text-text leading-relaxed max-w-3xl">De l'automatisation de processus aux agents IA spécialisés, nous concevons des solutions pragmatiques qui s'intègrent à votre stack, délivrent des gains rapides et s'échelonnent en toute sécurité.</p>
+          </Container>
+        </Section>
         {/* Pipeline anatomy */}
         <Section bg="alt" className="py-24 md:py-32">
           <Container>
             <div className="max-w-3xl">
-              <Kicker>Anatomie d'un workflow</Kicker>
-              <h2 className="display text-5xl md:text-7xl mt-5 text-text-strong">Cinq <span className="italic">briques</span>, un flux.</h2>
+              <Kicker>Comment ça marche</Kicker>
+              <h2 className="display text-5xl md:text-7xl mt-5 text-text-strong">Anatomie d'un <span className="italic">workflow IA</span>.</h2>
+              <p className="mt-5 text-text">Chaque automatisation suit un pipeline structuré, du déclencheur jusqu'à l'action finale.</p>
             </div>
             <div className="mt-14 grid md:grid-cols-5 gap-3">
               {[
-                { t:"Déclencheur", d:"Email, formulaire, capteur, calendrier." },
-                { t:"Collecte", d:"Données structurées et non-structurées." },
-                { t:"Traitement IA", d:"Analyse, extraction, génération." },
-                { t:"Validation", d:"Humain dans la boucle si critique." },
-                { t:"Action", d:"CRM, email, doc, notification, paiement." },
+                { t:"Déclencheur", d:"Événement, webhook, planification." },
+                { t:"Collecte", d:"APIs, CRM, bases de données." },
+                { t:"Traitement IA", d:"Analyse, classification, génération." },
+                { t:"Validation", d:"Contrôle humain, règles métier." },
+                { t:"Action", d:"Envoi, mise à jour, notification." },
               ].map((b, i) => (
                 <div key={b.t} className="relative surface-card p-5">
                   <span className="num-display text-3xl text-accent">0{i+1}</span>
@@ -678,32 +801,34 @@ function IAPage() {
           </Container>
         </Section>
 
-        <OfferGrid kicker="Nos briques" title={<>Six <span className="italic">capacités</span>.</>}
+        <OfferGrid kicker="Notre offre" title={<>Nos briques <span className="italic">IA & automatisation</span>.</>}
+          intro="Des modules combinables pour bâtir votre feuille de route IA, du POC au déploiement à l'échelle."
           items={[
-            { n:"01", t:"Agents IA", d:"Assistants spécialisés, accès outils, garde-fous." },
-            { n:"02", t:"Automatisation de processus", d:"RPA, scripts, intégrations métier." },
-            { n:"03", t:"Intégrations", d:"CRM, ERP, Notion, Slack, Stripe, etc." },
-            { n:"04", t:"Création assistée", d:"Rédaction, image, vidéo, son — encadrée." },
-            { n:"05", t:"Formation & adoption", d:"Onboarding équipes, documentation vivante." },
-            { n:"06", t:"Audit & stratégie", d:"Cartographie usages, priorisation ROI." },
+            { n:"01", t:"Agents IA personnalisés", d:"Assistants digitaux entraînés sur vos données pour répondre, qualifier, exécuter. Support 24/7, qualification de leads, assistance interne, audit trail." },
+            { n:"02", t:"Automatisation de processus", d:"Orchestration des tâches répétitives et validations multi-applications. Onboarding, routage de documents, synchronisation CRM/ERP, relances." },
+            { n:"03", t:"Intégrations sur-mesure", d:"Connecter votre écosystème pour éviter les silos de données. CRM, suites bureautiques, Notion, Slack, APIs, webhooks, iPaaS." },
+            { n:"04", t:"Création assistée par IA", d:"Accélérer sans renoncer à la qualité et à la cohérence éditoriale. Rédaction guidée, conception visuelle, contrôles ton & marque." },
+            { n:"05", t:"Formation & adoption", d:"Ateliers métiers et conduite du changement pour ancrer l'usage. Workshops, guides & politiques IA, coaching d'équipes." },
+            { n:"06", t:"Audit & stratégie IA", d:"Cartographier vos opportunités, prioriser et chiffrer le ROI. Diagnostic des flux, feuille de route 90 jours, POC rapide." },
           ]}/>
 
         <Section className="py-24 md:py-32">
           <Container>
             <div className="grid lg:grid-cols-12 gap-12">
               <div className="lg:col-span-5">
-                <Kicker>Domaines</Kicker>
-                <h2 className="display text-5xl md:text-6xl mt-5 text-text-strong">Quatre <span className="italic">terrains</span> prioritaires.</h2>
+                <Kicker>Domaines d'application</Kicker>
+                <h2 className="display text-5xl md:text-6xl mt-5 text-text-strong">Domaines d'application <span className="italic">prioritaires</span>.</h2>
               </div>
               <ul className="lg:col-span-7 grid md:grid-cols-2 gap-4">
                 {[
-                  { t:"Marketing", d:"Génération créative, ciblage, copywriting." },
-                  { t:"Ventes", d:"Qualification leads, suivi pipe, scripts." },
-                  { t:"Ops & finance", d:"Factures, rapprochement, reporting." },
-                  { t:"RH", d:"Tri CV, onboarding, knowledge base." },
+                  { n:"01", t:"Marketing & communication", d:"Génération & déclinaison de contenus multicanaux, social listening, personnalisation temps réel, orchestration des campagnes." },
+                  { n:"02", t:"Ventes & relation client", d:"Agents conversationnels & self-service, qualification intelligente des prospects, follow-up automatisés, coaching commercial assisté." },
+                  { n:"03", t:"Opérations & finance", d:"Automatisation back-office, pilotage dashboards & alertes, prévisions & reporting assistés, gestion des risques et conformité." },
+                  { n:"04", t:"RH & expérience collaborateur", d:"Onboarding & demandes internes, FAQ RH intelligentes, formation personnalisée, suivi bien-être & feedback." },
                 ].map(d => (
                   <li key={d.t} className="surface-card p-6">
-                    <div className="display text-2xl text-text-strong">{d.t}</div>
+                    <span className="num-display text-3xl text-accent">{d.n}</span>
+                    <div className="display text-xl md:text-2xl text-text-strong mt-3">{d.t}</div>
                     <p className="mt-2 text-sm text-text leading-relaxed">{d.d}</p>
                   </li>
                 ))}
@@ -712,32 +837,49 @@ function IAPage() {
           </Container>
         </Section>
 
-        <ReasonsGrid kicker="Pourquoi maintenant" title={<>Le bon <span className="text-accent italic">moment</span>.</>}
-          reasons={[
-            { n:"01", t:"Maturité", d:"L'IA est passée du prototype à l'outil de production. Le coût d'attendre dépasse le coût d'adopter." },
-            { n:"02", t:"AI Act", d:"Cadre européen (Règlement UE 2024/1689) entré en vigueur — un usage encadré devient un avantage." },
-            { n:"03", t:"Sur-mesure", d:"Les gains viennent de workflows adaptés à votre métier, pas d'outils génériques." },
-            { n:"04", t:"Humain", d:"Validation humaine sur les décisions critiques. L'IA exécute, vous gardez la main." },
-          ]}/>
+        <Section bg="dark" className="py-24 md:py-32">
+          <Container>
+            <div className="max-w-3xl">
+              <Kicker className="!text-bg/55">Pourquoi maintenant</Kicker>
+              <h2 className="display text-5xl md:text-7xl mt-5 text-bg">Pourquoi accélérer <span className="text-accent italic">maintenant</span> ?</h2>
+            </div>
+            <div className="mt-14 grid md:grid-cols-4 gap-6">
+              {[
+                { v:"+60%", l:"de croissance des revenus chez les leaders IA" },
+                { v:"+30%", l:"d'économies potentielles grâce à l'automatisation" },
+                { v:"+66%", l:"de débit opérationnel sur des processus récurrents" },
+                { v:"~26%", l:"des organisations capturent déjà une valeur IA tangible" },
+              ].map(s => (
+                <div key={s.l} className="border-t border-bg/15 pt-5">
+                  <div className="num-display text-5xl md:text-6xl text-accent">{s.v}</div>
+                  <div className="mt-3 text-sm text-bg/70 leading-relaxed">{s.l}</div>
+                </div>
+              ))}
+            </div>
+          </Container>
+        </Section>
 
         <Section bg="alt" className="py-24 md:py-32">
           <Container>
             <div className="grid lg:grid-cols-12 gap-12">
               <div className="lg:col-span-4">
-                <Kicker>FAQ</Kicker>
+                <Kicker>Questions fréquentes</Kicker>
                 <h2 className="display text-5xl md:text-6xl mt-5 text-text-strong">L'humain et la sécurité au <span className="italic">cœur</span>.</h2>
+                <p className="mt-5 text-text">Notre approche met l'humain et la sécurité au cœur de chaque projet.</p>
               </div>
               <div className="lg:col-span-8">
-                <Faq q="Mes données sont-elles partagées avec un modèle public ?" a="Non. Nous privilégions les déploiements privés, le RAG local et les modèles auto-hébergés quand pertinent. Chaque cas est documenté."/>
-                <Faq q="Comment commence un projet ?" a="Par un audit gratuit de 60 min : cartographie de vos workflows, identification des cas à fort ROI, recommandation chiffrée."/>
-                <Faq q="Êtes-vous conformes à l'AI Act ?" a="Oui. Catégorisation des usages, documentation, traçabilité — selon le règlement UE 2024/1689."/>
-                <Faq q="Et si l'IA se trompe ?" a="Validation humaine en boucle sur les décisions critiques. Garde-fous, logs, escalade définis dès le brief."/>
+                <Faq q="Est-ce adapté à mon entreprise ?" a="Oui. Nos solutions sont modulaires et s'adaptent à votre taille, votre secteur et votre maturité numérique. Nous concevons des automatisations proportionnées à vos besoins."/>
+                <Faq q="Dois-je déjà disposer d'outils spécifiques ?" a="Pas nécessairement. Nous partons de votre stack actuelle et la complétons si besoin. L'objectif : valoriser l'existant avant d'introduire de nouveaux outils."/>
+                <Faq q="Combien de temps pour un premier résultat ?" a="Quelques semaines pour un POC, 1 à 3 mois pour un déploiement progressif selon le périmètre. Nous privilégions des cycles courts avec des gains mesurables à chaque étape."/>
+                <Faq q="Quel ROI attendre ?" a="Nous estimons le ROI dès l'audit. Selon les cas, un retour sur investissement est observé entre 3 et 6 mois grâce aux gains de temps, à la réduction des erreurs et à l'amélioration de la conversion."/>
+                <Faq q="Comment garantissez-vous la sécurité des données ?" a="Conformité RGPD, chiffrement, contrôle d'accès, audit trail… et possibilité de travailler en mode on-premise. La sécurité est intégrée à chaque étape."/>
+                <Faq q="Proposez-vous de la formation ?" a="Absolument. L'adoption humaine est clé : ateliers, guides d'usage, coaching d'équipes et support continu font partie de notre accompagnement."/>
               </div>
             </div>
           </Container>
         </Section>
       </>}
-      bottomCta={<CtaBand title="Prêt à industrialiser vos workflows ?" cta="Planifier un audit gratuit"/>}
+      bottomCta={<CtaBand title="Prêt à industrialiser vos workflows ?" sub="Audit offert, feuille de route priorisée, accompagnement humain et sécurisation totale. Lançons ensemble vos premières automatisations IA." cta="Planifier un audit gratuit"/>}
     />
   );
 }

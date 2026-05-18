@@ -1,0 +1,128 @@
+/* === GND Refonte — Charte CRÈME ===
+   Custom CSS ported verbatim from the validated prototype.
+   Loaded AFTER Tailwind (index.css) so :root cream vars override the old blue Stitch vars. */
+
+:root {
+  --bg:#FDF6EE; --bg-alt:#FFF3E8; --surface:#E8D8C5;
+  --text:#532418; --text-strong:#2A1810; --text-muted:#7D3E2C;
+  --accent:#FF954F;
+}
+html, body {
+  background:var(--bg);
+  color:var(--text-strong);
+  font-family:Inter, sans-serif;
+}
+body {
+  background-image:
+    radial-gradient(rgba(83,36,24,.025) 1px, transparent 1px);
+  background-size: 3px 3px;
+}
+::selection { background:#FF954F; color:#2A1810; }
+
+.kicker { font-family:Inter; font-weight:500; letter-spacing:.22em; text-transform:uppercase; font-size:11px; color:var(--text-muted); }
+.label-mono { font-family:"JetBrains Mono", monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--text-muted); }
+.display { font-family:"Playfair Display", serif; font-weight:700; letter-spacing:-0.035em; line-height:.92; }
+.display-italic { font-family:"Playfair Display", serif; font-style:italic; font-weight:500; }
+.btn { display:inline-flex; align-items:center; gap:.6rem; padding:14px 22px; border-radius:999px; font-weight:500; font-size:14px; letter-spacing:.01em; transition:all .25s ease; line-height:1; }
+.btn-primary { background:var(--accent); color:var(--text-strong); }
+.btn-primary:hover { background:#FFA76A; transform:translateY(-1px); box-shadow:0 12px 32px -12px rgba(232,119,44,.55); }
+.btn-secondary { background:transparent; color:var(--text-strong); border:1px solid rgba(83,36,24,.35); }
+.btn-secondary:hover { background:rgba(83,36,24,.06); border-color:var(--text-strong); }
+.btn-dark { background:var(--text-strong); color:var(--bg); }
+.btn-dark:hover { background:var(--text); }
+.hairline { border-color: rgba(83,36,24,.15); }
+.surface-card { background:#FFFBF4; border:1px solid rgba(83,36,24,.10); border-radius:18px; }
+.grain-overlay { position:absolute; inset:0; pointer-events:none; opacity:.5; mix-blend-mode:multiply;
+  background-image: radial-gradient(rgba(83,36,24,.06) 1px, transparent 1px);
+  background-size: 2px 2px;
+}
+/* placeholder portrait */
+.portrait-placeholder {
+  background:
+    radial-gradient(ellipse at 50% 35%, #FFB682 0%, #FF954F 28%, #E8772C 50%, #8C3D1E 75%, #2A1810 100%);
+  position:relative; overflow:hidden;
+}
+.portrait-placeholder::after {
+  content:""; position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse at 50% 25%, rgba(255,255,255,.18), transparent 40%),
+    radial-gradient(ellipse at 30% 70%, rgba(255,255,255,.08), transparent 50%);
+}
+.focus-ring:focus-visible { outline:2px solid var(--accent); outline-offset:3px; border-radius:6px; }
+
+/* tag chip */
+.chip { display:inline-flex; align-items:center; gap:.4rem; padding:6px 12px; border-radius:999px; background:rgba(83,36,24,.06); color:var(--text); font-size:12px; font-weight:500; white-space:nowrap; }
+
+/* hero wordmark sizing — fluid */
+.hero-wordmark { font-size: clamp(180px, 33vw, 600px); }
+.hero-wordmark-sm { font-size: clamp(120px, 22vw, 380px); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+/* subtle entrance */
+@keyframes fadeUp { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:none; } }
+.anim-up { animation: fadeUp .7s ease-out both; }
+.anim-up.d1 { animation-delay:.08s; } .anim-up.d2 { animation-delay:.16s; }
+.anim-up.d3 { animation-delay:.24s; } .anim-up.d4 { animation-delay:.32s; }
+
+/* number ticker style */
+.num-display { font-family:"Playfair Display", serif; font-weight:600; letter-spacing:-0.04em; line-height:1; }
+
+/* scroll indicator pulse */
+@keyframes scrollPulse { 0%,100% { transform:translateY(0); opacity:.5; } 50% { transform:translateY(4px); opacity:1; } }
+.scroll-pulse { animation: scrollPulse 2.2s ease-in-out infinite; }
+
+/* marquee */
+@keyframes marquee { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+.marquee-track { animation: marquee 40s linear infinite; }
+
+/* image-placeholder striped */
+.img-placeholder {
+  background:
+    repeating-linear-gradient(135deg, rgba(83,36,24,.06) 0 1px, transparent 1px 14px),
+    linear-gradient(180deg, #F2E2CE, #E8D8C5);
+  position:relative; display:flex; align-items:center; justify-content:center;
+  color:var(--text-muted); font-family:"JetBrains Mono", monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+}
+.img-placeholder::before {
+  content:""; position:absolute; inset:0; border:1px dashed rgba(83,36,24,.18); border-radius:inherit; pointer-events:none;
+}
+
+/* card hover */
+.card-hover { transition: transform .35s ease, box-shadow .35s ease; }
+.card-hover:hover { transform:translateY(-4px); box-shadow: 0 24px 48px -28px rgba(83,36,24,.35); }
+
+/* big arrow link */
+.arrow-link { display:inline-flex; align-items:center; gap:.6rem; color:var(--text-strong); font-weight:500; }
+.arrow-link svg { transition: transform .3s ease; }
+.arrow-link:hover svg { transform: translateX(6px); }
+
+/* nav active dot */
+.nav-link { position:relative; }
+.nav-link[data-active="true"]::after { content:""; position:absolute; left:50%; bottom:-6px; width:5px; height:5px; border-radius:50%; background:var(--accent); transform:translateX(-50%); }
+
+details > summary { list-style:none; cursor:pointer; }
+details > summary::-webkit-details-marker { display:none; }
+details[open] .faq-icon { transform: rotate(45deg); }
+.faq-icon { transition: transform .25s ease; }
+
+/* contact form inputs (ported from contact page inline style) */
+.form-input {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid rgba(83,36,24,.15);
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-family: Inter, sans-serif;
+  font-size: 15px;
+  color: var(--text-strong);
+  transition: border-color .2s, box-shadow .2s;
+}
+.form-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(255,149,79,.18);
+}
+.form-input::placeholder { color: var(--text-muted); opacity: .6; }

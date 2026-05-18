@@ -110,11 +110,8 @@ function DesignPage() {
       ctaLabel="Demander un devis personnalisé"
       badges={["3 rounds inclus", "AI / EPS / SVG / PNG", "Imprimeurs partenaires"]}
       hero={
-        <div className="grid grid-cols-2 gap-3">
-          <ImgPlaceholder label="[ logo · monogramme ]" ratio="1/1"/>
-          <ImgPlaceholder label="[ charte · couleurs ]" ratio="1/1"/>
-          <ImgPlaceholder label="[ application · carte ]" ratio="1/1"/>
-          <ImgPlaceholder label="[ supports · imprimés ]" ratio="1/1"/>
+        <div className="relative max-w-[460px] mx-auto rounded-3xl overflow-hidden shadow-2xl shadow-black/40 bg-surface" style={{ aspectRatio:"4/5" }}>
+          <img src="/assets/svc-design.png" alt="Design & identité visuelle — GND" loading="lazy" className="absolute inset-0 w-full h-full object-cover"/>
         </div>
       }
       sections={<>
@@ -193,9 +190,9 @@ function MotionPage() {
       ctaLabel="Démarrer un projet motion"
       badges={["2D · 3D", "Habillages animés", "Formats sociaux"]}
       hero={
-        <div className="relative surface-card p-3 rounded-3xl">
-          <div className="rounded-2xl overflow-hidden">
-            <ImgPlaceholder label="[ showreel · motion 2d/3d ]" ratio="16/9" rounded="rounded-none"/>
+        <div className="relative surface-card p-3 rounded-3xl max-w-[520px] mx-auto">
+          <div className="rounded-2xl overflow-hidden relative bg-surface" style={{ aspectRatio:"16/9" }}>
+            <img src="/assets/svc-motion.png" alt="Motion design — GND" loading="lazy" className="absolute inset-0 w-full h-full object-cover"/>
           </div>
           <button className="absolute inset-0 m-auto w-16 h-16 rounded-full bg-bg text-text-strong inline-flex items-center justify-center shadow-2xl shadow-text/30 hover:bg-accent transition">
             <Icons.Play size={22}/>
@@ -208,9 +205,19 @@ function MotionPage() {
             <Kicker>Showreel</Kicker>
             <h2 className="display text-5xl md:text-7xl mt-5 text-text-strong">Nos créations en <span className="italic">mouvement</span>.</h2>
             <div className="mt-14 grid md:grid-cols-3 gap-5">
-              {[1,2,3,4,5,6].map(i => (
-                <div key={i} className="relative group overflow-hidden rounded-2xl card-hover">
-                  <ImgPlaceholder label={`[ motion · ${i.toString().padStart(2,'0')} ]`} ratio="4/5" rounded="rounded-2xl"/>
+              {[
+                { src:"https://img.youtube.com/vi/6oaO6YoWjyQ/maxresdefault.jpg", t:"Esther Seems — Bobine" },
+                { src:"https://img.youtube.com/vi/UbXQim7iNLI/maxresdefault.jpg", t:"Leyel — Miel" },
+                { src:"https://img.youtube.com/vi/galhl8_dYyk/maxresdefault.jpg", t:"Cook & Soul" },
+                { src:"/assets/svc-motion.png", t:"Motion brand" },
+                { src:"https://img.youtube.com/vi/Vyhz7_D4fFU/hqdefault.jpg", t:"Sabay Festival" },
+                { src:"https://img.youtube.com/vi/AGC_2cFHE_0/maxresdefault.jpg", t:"L'Anecdote" },
+              ].map((m) => (
+                <div key={m.t} className="relative group overflow-hidden rounded-2xl card-hover bg-surface" style={{ aspectRatio:"4/5" }}>
+                  <img src={m.src} alt={m.t} loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover"/>
+                  <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-text-strong/85 to-transparent">
+                    <div className="text-bg display text-lg">{m.t}</div>
+                  </div>
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition bg-text-strong/30">
                     <span className="w-14 h-14 rounded-full bg-bg text-text-strong inline-flex items-center justify-center"><Icons.Play size={18}/></span>
                   </div>
@@ -381,12 +388,14 @@ function ScrollExpandMedia({ mediaType = "image", mediaSrc, posterSrc, bgImageSr
 
 function ProductionPage() {
   const [active, setActive] = React.useState<any>(null);
+  const SB = "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/";
+  const COVER = SB + "portfolio-photos/gnd-cover.png";
   const reels = [
-    { id: "trinity", t:"Trinity Rebel — Univers Officiel", k:"Clip musical", y:"2025" },
-    { id: "ali", t:"Concert Ali 45 Scientific", k:"Captation live", y:"2024" },
-    { id: "sabay", t:"Thiek — Sabay Festival", k:"Événementiel 4K", y:"2023" },
-    { id: "esther", t:"Esther Seems — BOBINE", k:"Production", y:"2024" },
-    { id: "yungcally", t:"Yungcally — Clip officiel", k:"Clip musical", y:"2024" },
+    { id: "trinity", t:"Trinity Rebel — Univers Officiel", k:"Clip musical", y:"2025", img: COVER, video: SB+"portfolio-videos/trinity_rebel_univers_officiel.mp4" },
+    { id: "ali", t:"Concert Ali 45 Scientific", k:"Captation live", y:"2024", img: COVER, video: SB+"portfolio-videos/Concert%20Ali.mp4" },
+    { id: "sabay", t:"Thiek — Sabay Festival", k:"Événementiel 4K", y:"2023", img:"https://img.youtube.com/vi/Vyhz7_D4fFU/hqdefault.jpg", youtube:"Vyhz7_D4fFU" },
+    { id: "esther", t:"Esther Seems — BOBINE", k:"Production", y:"2024", img:"https://img.youtube.com/vi/6oaO6YoWjyQ/maxresdefault.jpg", youtube:"6oaO6YoWjyQ" },
+    { id: "yungcally", t:"Yungcally — Clip officiel", k:"Clip musical", y:"2024", img: COVER, video: SB+"portfolio-videos/jyfviku.mp4" },
   ];
 
   return (
@@ -435,7 +444,9 @@ function ProductionPage() {
                 <button key={r.id} onClick={() => setActive(r)}
                   className="absolute group overflow-hidden rounded-2xl shadow-xl shadow-text/15 card-hover bg-bg"
                   style={{ left:p.l, top:p.t, width:p.w, transform:`rotate(${p.rot})` }}>
-                  <ImgPlaceholder label={`[ ${r.t.toLowerCase()} ]`} ratio="4/5" rounded="rounded-2xl"/>
+                  <div className="relative w-full bg-surface" style={{ aspectRatio:"4/5" }}>
+                    <img src={r.img} alt={r.t} loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover rounded-2xl"/>
+                  </div>
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent to-text-strong/55 flex flex-col justify-between p-4">
                     <Tag>{r.k}</Tag>
                     <div>
@@ -459,7 +470,11 @@ function ProductionPage() {
           </button>
           <div className="max-w-5xl w-full" onClick={(e) => e.stopPropagation()}>
             <div className="rounded-3xl overflow-hidden bg-bg">
-              <ImgPlaceholder label={`[ ▶ ${active.t} ]`} ratio="16/9" rounded="rounded-none"/>
+              <div className="relative w-full" style={{ aspectRatio:"16/9", background:"#000" }}>
+                {active.youtube
+                  ? <iframe className="absolute inset-0 w-full h-full" src={`https://www.youtube.com/embed/${active.youtube}?autoplay=1&rel=0`} title={active.t} allow="autoplay; encrypted-media; picture-in-picture" allowFullScreen frameBorder="0"/>
+                  : <video className="absolute inset-0 w-full h-full object-contain" src={active.video} poster={active.img} controls autoPlay playsInline/>}
+              </div>
               <div className="p-5 flex items-center justify-between">
                 <div>
                   <Tag>{active.k}</Tag>
@@ -505,8 +520,15 @@ function ProductionPage() {
 
 /* ============= Photographie ============= */
 function PhotoPage() {
-  // circular 3D gallery
-  const photos = ["business","événement","e-commerce","social","branding","créatif"];
+  // circular 3D gallery — vraies photos du shoot GND (public/assets/photo-0X.jpg)
+  const photos = [
+    { src: "/assets/photo-01.jpg", label: "Portrait" },
+    { src: "/assets/photo-03.jpg", label: "Corporate" },
+    { src: "/assets/photo-02.jpg", label: "Lumière naturelle" },
+    { src: "/assets/photo-05.jpg", label: "Direction artistique" },
+    { src: "/assets/photo-04.jpg", label: "Studio" },
+    { src: "/assets/photo-06.jpg", label: "Création" },
+  ];
   const [rot, setRot] = React.useState(0);
   React.useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -522,11 +544,17 @@ function PhotoPage() {
       ctaLabel="Réserver une séance sur mesure"
       badges={["Studio & extérieur", "Retouche pro", "Droits clairs"]}
       hero={
-        <div className="grid grid-cols-2 gap-3">
-          <ImgPlaceholder label="[ portrait business ]" ratio="3/4"/>
+        <div className="grid grid-cols-2 gap-3 max-w-[480px] mx-auto">
+          <div className="relative rounded-2xl overflow-hidden bg-surface" style={{ aspectRatio:"3/4" }}>
+            <img src="/assets/photo-01.jpg" alt="Portrait — direction artistique GND" loading="lazy" className="absolute inset-0 w-full h-full object-cover"/>
+          </div>
           <div className="grid grid-rows-2 gap-3">
-            <ImgPlaceholder label="[ produit · e-com ]" ratio="3/2"/>
-            <ImgPlaceholder label="[ event · live ]" ratio="3/2"/>
+            <div className="relative rounded-2xl overflow-hidden bg-surface" style={{ aspectRatio:"3/2" }}>
+              <img src="/assets/photo-03.jpg" alt="Séance corporate GND" loading="lazy" className="absolute inset-0 w-full h-full object-cover"/>
+            </div>
+            <div className="relative rounded-2xl overflow-hidden bg-surface" style={{ aspectRatio:"3/2" }}>
+              <img src="/assets/photo-05.jpg" alt="Direction artistique GND" loading="lazy" className="absolute inset-0 w-full h-full object-cover"/>
+            </div>
           </div>
         </div>
       }
@@ -539,14 +567,15 @@ function PhotoPage() {
             </div>
             <div className="relative mt-20 h-[420px] flex items-center justify-center" style={{ perspective:"1200px" }}>
               <div className="relative w-72 h-96" style={{ transformStyle:"preserve-3d", transform:`rotateY(${rot}deg)` }}>
-                {photos.map((label, i) => {
+                {photos.map((photo, i) => {
                   const angle = (360 / photos.length) * i;
                   return (
-                    <div key={label}
-                      className="absolute inset-0 rounded-2xl overflow-hidden shadow-2xl shadow-text/20"
+                    <div key={photo.src}
+                      className="absolute inset-0 rounded-2xl overflow-hidden shadow-2xl shadow-text/20 bg-surface"
                       style={{ transform:`rotateY(${angle}deg) translateZ(280px)` }}>
-                      <ImgPlaceholder label={`[ ${label} ]`} ratio="3/4" rounded="rounded-2xl"/>
-                      <div className="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-text-strong/80 to-transparent text-bg label-mono">{label}</div>
+                      <img src={photo.src} alt={photo.label} loading="lazy" decoding="async" draggable={false}
+                        className="absolute inset-0 w-full h-full object-cover"/>
+                      <div className="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-text-strong/80 to-transparent text-bg label-mono">{photo.label}</div>
                     </div>
                   );
                 })}

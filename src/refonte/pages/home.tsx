@@ -1,8 +1,7 @@
 /* Home / Accueil — Cinematic edition — ported to ES modules + REAL gsap/ScrollTrigger */
 import * as React from 'react';
 import { createPortal } from 'react-dom';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import ExecutiveImpactCarousel from '../../components/ui/executive-impact-carousel';
 import { Section, Container, Kicker, Btn, PortraitHero, Tag, Faq, CtaBand } from '../ui';
 import { Icons } from '../icons';
 
@@ -391,191 +390,60 @@ function MediaLightbox({ items, index, onClose, onIndex }: any) {
   return createPortal(overlay, document.body);
 }
 
-/* executive-impact-carousel — REAL component. GSAP/ScrollTrigger animation code kept VERBATIM
-   (matchMedia, gsap.context, pin/scrub/yPercent). Only changes: window.gsap → real `import { gsap }`,
-   TS removed, colors → charte. Layout & animation numbers untouched. */
-const _gsap = gsap;
-const _ST = ScrollTrigger;
-if (_gsap && _ST) _gsap.registerPlugin(_ST);
+/* OUR WORK = executive-impact-carousel installé VERBATIM dans src/components/ui/.
+   GSAP/ScrollTrigger, CSS structurel et structure = 1:1. Seules adaptations : données
+   (vrais projets GND) + couleurs charte crème. Importé en haut de ce fichier. */
 
-/* OUR WORK = composant exact (double image survol product→model), tes vraies photos.
-   SEULES adaptations : couleurs → charte crème, et fond TRANSPARENT pour que les
-   photos respirent directement sur le fond de la section (pas de boîte blanche).
-   Structure, layout & animation = 100% identiques à l'original 21st.dev. */
-/* Vraies photos artistiques du Portfolio live (Supabase portfolio-photos) — les
-   tirages au masque sur fonds orange/violet. URLs exactes depuis Portfolio.tsx, vérifiées 200. */
-const PHB = "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/";
-const EXEC_PHOTOS = [
-  { title: "Masque & Identité",    tag: "Portrait · Corporate",    prodImg: PHB+"6F0A4251.jpg",                  modelImg: PHB+"6F0A4267.jpg" },
-  { title: "Vision Masquée",       tag: "Portrait · Artistique",   prodImg: PHB+"6F0A4267.jpg",                  modelImg: PHB+"6F0A4251.jpg" },
-  { title: "L'Art en Mouvement",   tag: "Portrait · Créatif",      prodImg: PHB+"6F0A4135.jpg",                  modelImg: PHB+"6F0A4149.jpg" },
-  { title: "Puissance Créative",   tag: "Portrait · Studio",       prodImg: PHB+"6F0A4149.jpg",                  modelImg: PHB+"6F0A4135.jpg" },
-  { title: "Énergie Collective",   tag: "Portrait · Groupe",       prodImg: PHB+"6F0A4028.jpg",                  modelImg: PHB+"6F0A3992.jpg" },
-  { title: "Attitude & Confiance", tag: "Portrait · Studio",       prodImg: PHB+"6F0A3992.jpg",                  modelImg: PHB+"6F0A4028.jpg" },
-  { title: "Vision Urbaine",       tag: "Portrait · Urbain",       prodImg: PHB+"6F0A4002.JPG",                  modelImg: PHB+"6F0A4251.jpg" },
-  { title: "Saveurs",              tag: "Événementiel · Culinaire",prodImg: PHB+"6F0A1817.JPG",                  modelImg: PHB+"6F0A2054.JPG" },
-  { title: "Instants",             tag: "Événementiel · Ambiance", prodImg: PHB+"6F0A1873%20-%20copie%202_1.jpg",modelImg: PHB+"6F0A1817.JPG" },
-  { title: "Partages",             tag: "Événementiel · Reportage",prodImg: PHB+"6F0A2054.JPG",                  modelImg: PHB+"6F0A1873%20-%20copie%202_1.jpg" },
-];
-const EXEC_ITEMS = Array.from({ length: 15 }, (_, i) => {
-  const p = EXEC_PHOTOS[i % EXEC_PHOTOS.length];
-  return { id: String(i + 1), title: p.title, tag: p.tag, prodImg: p.prodImg, modelImg: p.modelImg };
-});
-const EXEC_C1 = EXEC_ITEMS.slice(0, 5);
-const EXEC_C2 = EXEC_ITEMS.slice(5, 10);
-const EXEC_C3 = EXEC_ITEMS.slice(10, 15);
-
-const EXEC_STYLES = `
-  .products-carousel { background-color:transparent; color:#FDF6EE; font-family:Inter,sans-serif; margin:0; overflow-x:hidden; }
-  .col-scroll { display:grid; grid-template-columns:repeat(3,1fr); justify-items:center; min-height:100vh; width:90vw; box-sizing:border-box; padding:0; margin:0 auto; }
-  @media (max-width:768px){ .col-scroll{ display:flex; flex-direction:column; width:100%; padding:0; gap:5vh; align-items:center; } }
-  .col-scroll__box { display:flex; flex-direction:column; padding:10vh 0 15vh; }
-  .col-scroll__box--odd { flex-direction:column-reverse; height:100vh; }
-  @media (max-width:768px){ .col-scroll__box--odd{ flex-direction:column; height:auto; padding:0; } .col-scroll__box{ width:100%; align-items:center; padding:2rem 0; } }
-  .col-scroll__list { display:flex; flex-direction:column; will-change:transform; gap:10vw; }
-  .col-scroll__box--odd .col-scroll__list { flex-direction:column-reverse; }
-  @media (max-width:768px){ .col-scroll__box--odd .col-scroll__list{ flex-direction:column; } .col-scroll__list{ gap:5vh; } }
-  .product-card { display:flex; flex-direction:column; align-items:center; justify-content:center; margin:0; padding:0; width:20vw; background:transparent; cursor:pointer; -webkit-tap-highlight-color:transparent; }
-  @media (max-width:768px){ .product-card{ width:90vw; margin:0 0 10vh 0; } .product-card:last-child{ margin-bottom:0; } }
-  .col-scroll__img-wrapper { position:relative; aspect-ratio:0.8; width:100%; margin-bottom:0; overflow:hidden; border:none; padding:0; background:transparent; box-shadow:none; display:flex; justify-content:center; align-items:center; border-radius:14px; }
-  .col-scroll__img-wrapper img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:opacity 0.5s ease-in-out; }
-  .product-img { z-index:1; opacity:1; }
-  .model-img { z-index:2; opacity:0; }
-  .product-card:hover .product-img, .product-card:active .product-img { opacity:0; }
-  .product-card:hover .model-img, .product-card:active .model-img { opacity:1; }
-  .product-card__info { position:absolute; bottom:2rem; left:0; width:100%; text-align:center; z-index:3; padding:0 1.5rem; box-sizing:border-box; transition:opacity 0.4s ease, transform 0.4s ease; }
-  .product-card:hover .product-card__info, .product-card:active .product-card__info { opacity:0; transform:translateY(10px); }
-  .product-card__title { margin:0 0 0.5rem; font-family:"Playfair Display",serif; font-weight:400; font-size:1.25rem; line-height:1.3; color:#FDF6EE; text-shadow:0 2px 12px rgba(0,0,0,.6); }
-  .product-card__price-wrapper { font-family:"Playfair Display",serif; font-size:1.05rem; letter-spacing:0.5px; color:#FF954F; }
-  .product-card__btn { position:absolute; bottom:2rem; left:50%; transform:translateX(-50%) translateY(20px); z-index:4; opacity:0; background:rgba(253,246,238,.95); border:1px solid #FDF6EE; padding:1rem 2rem; font-family:"Playfair Display",serif; text-transform:uppercase; letter-spacing:2px; font-size:0.8rem; font-weight:600; cursor:pointer; transition:all 0.4s ease; white-space:nowrap; color:#2A1810; }
-  .product-card:hover .product-card__btn, .product-card:active .product-card__btn { opacity:1; transform:translateX(-50%) translateY(0); }
-  .product-card__btn:hover { background:#FF954F; color:#2A1810; }
-  @media (max-width:768px){ .product-card__title{ font-size:1.1rem; } .product-card__price-wrapper{ font-size:1rem; } .product-card__btn{ padding:0.75rem 1.5rem; font-size:0.7rem; } }
-`;
-
-function ExecProductCard({ product }: any) {
-  return (
-    <figure className="product-card">
-      <div className="col-scroll__img-wrapper">
-        <img className="product-img" src={product.prodImg} alt={product.title} loading="lazy" decoding="async" />
-        <img className="model-img" src={product.modelImg} alt={product.title} loading="lazy" decoding="async" />
-        <div className="product-card__info">
-          <h3 className="product-card__title">{product.title}</h3>
-          <div className="product-card__price-wrapper">{product.tag}</div>
-        </div>
-        <button className="product-card__btn">Voir le projet +</button>
-      </div>
-    </figure>
-  );
-}
-
-function ExecCarousel() {
-  const containerRef = React.useRef<HTMLDivElement>(null);
-
-  React.useLayoutEffect(() => {
-    if (!containerRef.current || !_gsap) return;
-
-    const mm = _gsap.matchMedia();
-
-    mm.add("(min-width: 769px)", () => {
-      const ctx = _gsap.context(() => {
-        const reverseTrigger = _gsap.utils.toArray(".col-scroll__box--odd .col-scroll__list");
-
-        reverseTrigger.forEach((element: any) => {
-          const elementHeight = element.offsetHeight;
-          const viewportHeight = window.innerHeight;
-          const extraSpace = viewportHeight * 0.2;
-          const scrollDistance = elementHeight + viewportHeight + extraSpace;
-
-          _gsap.to(element, {
-            yPercent: 100,
-            scrollTrigger: {
-              trigger: element,
-              start: 0,
-              end: `+=${scrollDistance}`,
-              scrub: true,
-              pin: true,
-            }
-          });
-        });
-      }, containerRef);
-
-      return () => ctx.revert();
-    });
-
-    return () => mm.revert();
-  }, []);
-
-  return (
-    <>
-      <style dangerouslySetInnerHTML={{ __html: EXEC_STYLES }} />
-      <main className="products-carousel">
-        <div ref={containerRef} className="col-scroll">
-          <div className="col-scroll__box col-scroll__box--odd">
-            <div className="col-scroll__list">
-              {EXEC_C1.map((prod) => <ExecProductCard key={prod.id} product={prod} />)}
-            </div>
-          </div>
-          <div className="col-scroll__box">
-            <div className="col-scroll__list">
-              {EXEC_C2.map((prod) => <ExecProductCard key={prod.id} product={prod} />)}
-            </div>
-          </div>
-          <div className="col-scroll__box col-scroll__box--odd">
-            <div className="col-scroll__list">
-              {EXEC_C3.map((prod) => <ExecProductCard key={prod.id} product={prod} />)}
-            </div>
-          </div>
-        </div>
-      </main>
-    </>
-  );
-}
-
+/* IMPORTANT — le carrousel pin/scrub GSAP NE DOIT PAS être enfermé dans un parent
+   `overflow-hidden`, `Container` (max-width) ni `transform/filter` : ça casse le ScrollTrigger
+   `pin`. Donc : <section> nu (aucun overflow-hidden), header/footer dans des bandes séparées,
+   et <ExecutiveImpactCarousel/> monté en pleine largeur, sibling direct, sans Container. */
 function ReelsMosaic() {
-  const [lb, setLb] = React.useState<number | null>(null);
   return (
-    <Section className="relative py-28 md:py-40 overflow-hidden bg-text-strong text-bg">
-      {/* ambient stage lights */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div className="absolute top-1/3 left-0 w-[50%] h-[60%]"
-          style={{ background:'radial-gradient(ellipse at 30% 50%, rgba(255,149,79,.2), transparent 60%)', filter:'blur(40px)' }}></div>
-        <div className="absolute bottom-0 right-0 w-[40%] h-[60%]"
-          style={{ background:'radial-gradient(ellipse at 70% 50%, rgba(255,149,79,.15), transparent 65%)', filter:'blur(40px)' }}></div>
-        <div className="absolute inset-0 opacity-30 mix-blend-overlay"
-          style={{ backgroundImage:'radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px)', backgroundSize:'3px 3px' }}></div>
+    <section className="relative bg-text-strong text-bg">
+      {/* Header band — overflow-hidden ICI seulement (ne contient PAS le carrousel) */}
+      <div className="relative overflow-hidden pt-28 md:pt-40 pb-12">
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <div className="absolute top-1/3 left-0 w-[50%] h-[60%]"
+            style={{ background:'radial-gradient(ellipse at 30% 50%, rgba(255,149,79,.2), transparent 60%)', filter:'blur(40px)' }}></div>
+          <div className="absolute bottom-0 right-0 w-[40%] h-[60%]"
+            style={{ background:'radial-gradient(ellipse at 70% 50%, rgba(255,149,79,.15), transparent 65%)', filter:'blur(40px)' }}></div>
+          <div className="absolute inset-0 opacity-30 mix-blend-overlay"
+            style={{ backgroundImage:'radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px)', backgroundSize:'3px 3px' }}></div>
+        </div>
+        <Container className="relative">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+            <div className="max-w-2xl">
+              <Kicker className="!text-bg/55">— réalisations · 2022–2025</Kicker>
+              <h2 className="display text-6xl md:text-8xl lg:text-9xl mt-5 text-bg leading-[.88]">
+                our <span className="italic text-accent">work</span>.
+              </h2>
+            </div>
+            <div className="md:text-right">
+              <p className="text-bg/70 max-w-md leading-relaxed mb-4">
+                Une sélection de clips, captations live, identités et photographie. Tous menés en interne.
+              </p>
+              <a href="#/realisations" className="arrow-link !text-bg">Voir tout le portfolio <Icons.ArrowRight size={18}/></a>
+            </div>
+          </div>
+        </Container>
       </div>
 
-      <Container className="relative">
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-14">
-          <div className="max-w-2xl">
-            <Kicker className="!text-bg/55">— réalisations · 2022–2025</Kicker>
-            <h2 className="display text-6xl md:text-8xl lg:text-9xl mt-5 text-bg leading-[.88]">
-              our <span className="italic text-accent">work</span>.
-            </h2>
+      {/* Work wall — executive-impact-carousel VERBATIM. Plein écran, AUCUN parent
+          overflow-hidden / Container, pour que le pin/scrub GSAP fonctionne réellement. */}
+      <ExecutiveImpactCarousel />
+
+      {/* Footer band */}
+      <div className="relative pt-12 pb-28 md:pb-40">
+        <Container className="relative">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-t border-bg/10 pt-6 text-bg/55 label-mono">
+            <span>— 09 vidéos / 19 projets · 2022–2025</span>
+            <span>paris · france · &amp; international</span>
+            <a href="#/realisations" className="!text-bg hover:!text-accent">— catalogue complet →</a>
           </div>
-          <div className="md:text-right">
-            <p className="text-bg/70 max-w-md leading-relaxed mb-4">
-              Une sélection de clips, captations live, identités et photographie. Tous menés en interne.
-            </p>
-            <a href="#/realisations" className="arrow-link !text-bg">Voir tout le portfolio <Icons.ArrowRight size={18}/></a>
-          </div>
-        </div>
-
-        {/* Work wall — executive-impact-carousel (REAL GSAP pin/scrub, 3 opposite columns) */}
-        <ExecCarousel />
-
-        {/* Footer strip */}
-        <div className="mt-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-t border-bg/10 pt-6 text-bg/55 label-mono">
-          <span>— 09 vidéos / 19 projets · 2022–2025</span>
-          <span>paris · france · & international</span>
-          <a href="#/realisations" className="!text-bg hover:!text-accent">— catalogue complet →</a>
-        </div>
-      </Container>
-
-      <MediaLightbox items={PROJECTS} index={lb} onClose={() => setLb(null)} onIndex={setLb} />
-    </Section>
+        </Container>
+      </div>
+    </section>
   );
 }
 

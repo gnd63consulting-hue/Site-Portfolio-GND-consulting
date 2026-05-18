@@ -402,13 +402,20 @@ if (_gsap && _ST) _gsap.registerPlugin(_ST);
    SEULES adaptations : couleurs → charte crème, et fond TRANSPARENT pour que les
    photos respirent directement sur le fond de la section (pas de boîte blanche).
    Structure, layout & animation = 100% identiques à l'original 21st.dev. */
+/* Vraies photos artistiques du Portfolio live (Supabase portfolio-photos) — les
+   tirages au masque sur fonds orange/violet. URLs exactes depuis Portfolio.tsx, vérifiées 200. */
+const PHB = "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/";
 const EXEC_PHOTOS = [
-  { title: "Portrait",             tag: "Direction artistique", prodImg: "/assets/photo-01.jpg", modelImg: "/assets/photo-02.jpg" },
-  { title: "Corporate",            tag: "Business",             prodImg: "/assets/photo-03.jpg", modelImg: "/assets/photo-04.jpg" },
-  { title: "Direction artistique", tag: "Création",             prodImg: "/assets/photo-05.jpg", modelImg: "/assets/photo-06.jpg" },
-  { title: "Lumière naturelle",    tag: "Portrait",             prodImg: "/assets/photo-02.jpg", modelImg: "/assets/photo-03.jpg" },
-  { title: "Studio",               tag: "Branding",             prodImg: "/assets/photo-04.jpg", modelImg: "/assets/photo-05.jpg" },
-  { title: "Création",             tag: "Éditorial",            prodImg: "/assets/photo-06.jpg", modelImg: "/assets/photo-01.jpg" },
+  { title: "Masque & Identité",    tag: "Portrait · Corporate",    prodImg: PHB+"6F0A4251.jpg",                  modelImg: PHB+"6F0A4267.jpg" },
+  { title: "Vision Masquée",       tag: "Portrait · Artistique",   prodImg: PHB+"6F0A4267.jpg",                  modelImg: PHB+"6F0A4251.jpg" },
+  { title: "L'Art en Mouvement",   tag: "Portrait · Créatif",      prodImg: PHB+"6F0A4135.jpg",                  modelImg: PHB+"6F0A4149.jpg" },
+  { title: "Puissance Créative",   tag: "Portrait · Studio",       prodImg: PHB+"6F0A4149.jpg",                  modelImg: PHB+"6F0A4135.jpg" },
+  { title: "Énergie Collective",   tag: "Portrait · Groupe",       prodImg: PHB+"6F0A4028.jpg",                  modelImg: PHB+"6F0A3992.jpg" },
+  { title: "Attitude & Confiance", tag: "Portrait · Studio",       prodImg: PHB+"6F0A3992.jpg",                  modelImg: PHB+"6F0A4028.jpg" },
+  { title: "Vision Urbaine",       tag: "Portrait · Urbain",       prodImg: PHB+"6F0A4002.JPG",                  modelImg: PHB+"6F0A4251.jpg" },
+  { title: "Saveurs",              tag: "Événementiel · Culinaire",prodImg: PHB+"6F0A1817.JPG",                  modelImg: PHB+"6F0A2054.JPG" },
+  { title: "Instants",             tag: "Événementiel · Ambiance", prodImg: PHB+"6F0A1873%20-%20copie%202_1.jpg",modelImg: PHB+"6F0A1817.JPG" },
+  { title: "Partages",             tag: "Événementiel · Reportage",prodImg: PHB+"6F0A2054.JPG",                  modelImg: PHB+"6F0A1873%20-%20copie%202_1.jpg" },
 ];
 const EXEC_ITEMS = Array.from({ length: 15 }, (_, i) => {
   const p = EXEC_PHOTOS[i % EXEC_PHOTOS.length];
@@ -450,8 +457,8 @@ function ExecProductCard({ product }: any) {
   return (
     <figure className="product-card">
       <div className="col-scroll__img-wrapper">
-        <img className="product-img" src={product.prodImg} alt={product.title} />
-        <img className="model-img" src={product.modelImg} alt={product.title} />
+        <img className="product-img" src={product.prodImg} alt={product.title} loading="lazy" decoding="async" />
+        <img className="model-img" src={product.modelImg} alt={product.title} loading="lazy" decoding="async" />
         <div className="product-card__info">
           <h3 className="product-card__title">{product.title}</h3>
           <div className="product-card__price-wrapper">{product.tag}</div>

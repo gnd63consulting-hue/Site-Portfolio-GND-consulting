@@ -398,42 +398,49 @@ const _gsap = gsap;
 const _ST = ScrollTrigger;
 if (_gsap && _ST) _gsap.registerPlugin(_ST);
 
-/* OUR WORK = la PHOTOGRAPHIE GND (vraies photos du shoot, local & fiable — pas de vidéo ici). */
+/* OUR WORK = composant exact (double image survol product→model), tes vraies photos.
+   SEULES adaptations : couleurs → charte crème, et fond TRANSPARENT pour que les
+   photos respirent directement sur le fond de la section (pas de boîte blanche).
+   Structure, layout & animation = 100% identiques à l'original 21st.dev. */
 const EXEC_PHOTOS = [
-  { src: "/assets/photo-01.jpg", title: "Portrait", tag: "Direction artistique" },
-  { src: "/assets/photo-03.jpg", title: "Corporate", tag: "Business" },
-  { src: "/assets/photo-05.jpg", title: "Direction artistique", tag: "Création" },
-  { src: "/assets/photo-02.jpg", title: "Lumière naturelle", tag: "Portrait" },
-  { src: "/assets/photo-04.jpg", title: "Studio", tag: "Branding" },
-  { src: "/assets/photo-06.jpg", title: "Création", tag: "Éditorial" },
+  { title: "Portrait",             tag: "Direction artistique", prodImg: "/assets/photo-01.jpg", modelImg: "/assets/photo-02.jpg" },
+  { title: "Corporate",            tag: "Business",             prodImg: "/assets/photo-03.jpg", modelImg: "/assets/photo-04.jpg" },
+  { title: "Direction artistique", tag: "Création",             prodImg: "/assets/photo-05.jpg", modelImg: "/assets/photo-06.jpg" },
+  { title: "Lumière naturelle",    tag: "Portrait",             prodImg: "/assets/photo-02.jpg", modelImg: "/assets/photo-03.jpg" },
+  { title: "Studio",               tag: "Branding",             prodImg: "/assets/photo-04.jpg", modelImg: "/assets/photo-05.jpg" },
+  { title: "Création",             tag: "Éditorial",            prodImg: "/assets/photo-06.jpg", modelImg: "/assets/photo-01.jpg" },
 ];
 const EXEC_ITEMS = Array.from({ length: 15 }, (_, i) => {
   const p = EXEC_PHOTOS[i % EXEC_PHOTOS.length];
-  return { id: String(i + 1), title: p.title, tag: p.tag, img: p.src };
+  return { id: String(i + 1), title: p.title, tag: p.tag, prodImg: p.prodImg, modelImg: p.modelImg };
 });
 const EXEC_C1 = EXEC_ITEMS.slice(0, 5);
 const EXEC_C2 = EXEC_ITEMS.slice(5, 10);
 const EXEC_C3 = EXEC_ITEMS.slice(10, 15);
 
 const EXEC_STYLES = `
-  .products-carousel { background-color:#FDF6EE; color:#532418; font-family:Inter,sans-serif; margin:0; overflow-x:hidden; }
+  .products-carousel { background-color:transparent; color:#FDF6EE; font-family:Inter,sans-serif; margin:0; overflow-x:hidden; }
   .col-scroll { display:grid; grid-template-columns:repeat(3,1fr); justify-items:center; min-height:100vh; width:90vw; box-sizing:border-box; padding:0; margin:0 auto; }
   @media (max-width:768px){ .col-scroll{ display:flex; flex-direction:column; width:100%; padding:0; gap:5vh; align-items:center; } }
-  .col-scroll__box { display:flex; flex-direction:column; padding:5vh 0 7vh; }
+  .col-scroll__box { display:flex; flex-direction:column; padding:10vh 0 15vh; }
   .col-scroll__box--odd { flex-direction:column-reverse; height:100vh; }
   @media (max-width:768px){ .col-scroll__box--odd{ flex-direction:column; height:auto; padding:0; } .col-scroll__box{ width:100%; align-items:center; padding:2rem 0; } }
-  .col-scroll__list { display:flex; flex-direction:column; will-change:transform; gap:5vw; }
+  .col-scroll__list { display:flex; flex-direction:column; will-change:transform; gap:10vw; }
   .col-scroll__box--odd .col-scroll__list { flex-direction:column-reverse; }
   @media (max-width:768px){ .col-scroll__box--odd .col-scroll__list{ flex-direction:column; } .col-scroll__list{ gap:5vh; } }
-  .product-card { display:flex; flex-direction:column; align-items:center; justify-content:center; margin:0; padding:0; width:26vw; background:transparent; cursor:pointer; -webkit-tap-highlight-color:transparent; }
+  .product-card { display:flex; flex-direction:column; align-items:center; justify-content:center; margin:0; padding:0; width:20vw; background:transparent; cursor:pointer; -webkit-tap-highlight-color:transparent; }
   @media (max-width:768px){ .product-card{ width:90vw; margin:0 0 10vh 0; } .product-card:last-child{ margin-bottom:0; } }
-  .col-scroll__img-wrapper { position:relative; aspect-ratio:0.8; width:100%; margin-bottom:0; overflow:hidden; border:1px solid rgba(83,36,24,.12); padding:1rem; background:#FFFBF4; box-shadow:0 10px 30px rgba(83,36,24,.10); display:flex; justify-content:center; align-items:center; border-radius:18px; }
-  .col-scroll__img-wrapper .slot { position:absolute; top:1rem; left:1rem; right:1rem; bottom:1rem; width:calc(100% - 2rem); height:calc(100% - 2rem); object-fit:cover; transition:opacity 0.5s ease-in-out; }
+  .col-scroll__img-wrapper { position:relative; aspect-ratio:0.8; width:100%; margin-bottom:0; overflow:hidden; border:none; padding:0; background:transparent; box-shadow:none; display:flex; justify-content:center; align-items:center; border-radius:14px; }
+  .col-scroll__img-wrapper img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:opacity 0.5s ease-in-out; }
+  .product-img { z-index:1; opacity:1; }
+  .model-img { z-index:2; opacity:0; }
+  .product-card:hover .product-img, .product-card:active .product-img { opacity:0; }
+  .product-card:hover .model-img, .product-card:active .model-img { opacity:1; }
   .product-card__info { position:absolute; bottom:2rem; left:0; width:100%; text-align:center; z-index:3; padding:0 1.5rem; box-sizing:border-box; transition:opacity 0.4s ease, transform 0.4s ease; }
   .product-card:hover .product-card__info, .product-card:active .product-card__info { opacity:0; transform:translateY(10px); }
-  .product-card__title { margin:0 0 0.5rem; font-family:"Playfair Display",serif; font-weight:400; font-size:1.25rem; line-height:1.3; color:#532418; text-shadow:0 2px 10px rgba(255,243,232,.85); }
-  .product-card__price-wrapper { font-family:"Playfair Display",serif; font-size:1.05rem; letter-spacing:0.5px; color:#7D3E2C; }
-  .product-card__btn { position:absolute; bottom:2rem; left:50%; transform:translateX(-50%) translateY(20px); z-index:4; opacity:0; background:rgba(253,246,238,.95); border:1px solid #532418; padding:1rem 2rem; font-family:"Playfair Display",serif; text-transform:uppercase; letter-spacing:2px; font-size:0.8rem; font-weight:600; cursor:pointer; transition:all 0.4s ease; white-space:nowrap; color:#2A1810; }
+  .product-card__title { margin:0 0 0.5rem; font-family:"Playfair Display",serif; font-weight:400; font-size:1.25rem; line-height:1.3; color:#FDF6EE; text-shadow:0 2px 12px rgba(0,0,0,.6); }
+  .product-card__price-wrapper { font-family:"Playfair Display",serif; font-size:1.05rem; letter-spacing:0.5px; color:#FF954F; }
+  .product-card__btn { position:absolute; bottom:2rem; left:50%; transform:translateX(-50%) translateY(20px); z-index:4; opacity:0; background:rgba(253,246,238,.95); border:1px solid #FDF6EE; padding:1rem 2rem; font-family:"Playfair Display",serif; text-transform:uppercase; letter-spacing:2px; font-size:0.8rem; font-weight:600; cursor:pointer; transition:all 0.4s ease; white-space:nowrap; color:#2A1810; }
   .product-card:hover .product-card__btn, .product-card:active .product-card__btn { opacity:1; transform:translateX(-50%) translateY(0); }
   .product-card__btn:hover { background:#FF954F; color:#2A1810; }
   @media (max-width:768px){ .product-card__title{ font-size:1.1rem; } .product-card__price-wrapper{ font-size:1rem; } .product-card__btn{ padding:0.75rem 1.5rem; font-size:0.7rem; } }
@@ -443,9 +450,8 @@ function ExecProductCard({ product }: any) {
   return (
     <figure className="product-card">
       <div className="col-scroll__img-wrapper">
-        {product.img
-          ? <img className="slot" src={product.img} alt={product.title} style={{ zIndex: 1 }} />
-          : <div className="slot img-placeholder" style={{ zIndex: 1 }}><span>{product.title}</span></div>}
+        <img className="product-img" src={product.prodImg} alt={product.title} />
+        <img className="model-img" src={product.modelImg} alt={product.title} />
         <div className="product-card__info">
           <h3 className="product-card__title">{product.title}</h3>
           <div className="product-card__price-wrapper">{product.tag}</div>

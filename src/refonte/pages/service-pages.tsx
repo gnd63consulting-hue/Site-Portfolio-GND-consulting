@@ -211,7 +211,7 @@ function MotionPage() {
                 { src:"https://img.youtube.com/vi/galhl8_dYyk/maxresdefault.jpg", t:"Cook & Soul" },
                 { src:"/assets/svc-motion.png", t:"Motion brand" },
                 { src:"https://img.youtube.com/vi/Vyhz7_D4fFU/hqdefault.jpg", t:"Sabay Festival" },
-                { src:"https://img.youtube.com/vi/AGC_2cFHE_0/maxresdefault.jpg", t:"L'Anecdote" },
+                { src:"https://img.youtube.com/vi/AGC_2cFHE_0/hqdefault.jpg", t:"L'Anecdote" },
               ].map((m) => (
                 <div key={m.t} className="relative group overflow-hidden rounded-2xl card-hover bg-surface" style={{ aspectRatio:"4/5" }}>
                   <img src={m.src} alt={m.t} loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover"/>

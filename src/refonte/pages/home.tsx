@@ -21,7 +21,7 @@ const PROJECTS = [
   { id: "cook-soul", title: "Cook & Soul", subtitle: "Kaoutar · Pékin Express", tag: "Production", year: "2024", ratio: "16/9", credit: "Réalisation · Gwen Templier", img: yt("galhl8_dYyk"), youtube: "galhl8_dYyk", desc: "Émission musicale produite pour IAMTV, avec Kaoutar (Pékin Express). Collaboration O2M." },
   { id: "yungcally", title: "Yungcally", subtitle: "Clip officiel", tag: "Clip musical", year: "2024", ratio: "1/1", credit: "Réalisation · Jonathan Ransau", img: COVER, video: SB + "portfolio-videos/jyfviku.mp4", desc: "Clip officiel de Yungcally, jeune artiste franco-américain — vibe Wiz Khalifa / Post Malone." },
   { id: "sabay-2022", title: "Sabay Festival 2022", subtitle: "Grande Pagode de Vincennes", tag: "Événementiel", year: "2022", ratio: "4/3", credit: "Production · GND Consulting", img: COVER, video: SB + "portfolio-videos/Thiek%20au%20Sabay%20Festival%202022%20Haute%20def%204k%20v2.mp4", desc: "Aftermovie officiel du Sabay Festival 2022 — captation 4K." },
-  { id: "lanecdote", title: "L'Anecdote", subtitle: "Émission · interviews", tag: "Production", year: "2024", ratio: "16/9", credit: "Réalisation · GND Consulting", img: yt("AGC_2cFHE_0"), youtube: "AGC_2cFHE_0", desc: "Émission L'Anecdote — format original mêlant interviews et moments de partage." },
+  { id: "lanecdote", title: "L'Anecdote", subtitle: "Émission · interviews", tag: "Production", year: "2024", ratio: "16/9", credit: "Réalisation · GND Consulting", img: "https://img.youtube.com/vi/AGC_2cFHE_0/hqdefault.jpg", youtube: "AGC_2cFHE_0", desc: "Émission L'Anecdote — format original mêlant interviews et moments de partage." },
 ];
 
 const SERVICES_CARDS = [

@@ -89,7 +89,6 @@ const styles = `
 
   .col-scroll__box--odd {
     flex-direction: column-reverse;
-    height: 100vh;
   }
 
   @media (max-width: 768px) {
@@ -311,25 +310,32 @@ export default function ProductsCarousel() {
 
     mm.add("(min-width: 769px)", () => {
       const ctx = gsap.context(() => {
-        const reverseTrigger = gsap.utils.toArray<HTMLElement>(".col-scroll__box--odd .col-scroll__list");
+        const section = containerRef.current;
+        if (!section) return;
+        const odds = gsap.utils.toArray<HTMLElement>(".col-scroll__box--odd .col-scroll__list");
 
-        reverseTrigger.forEach((element) => {
-          const elementHeight = element.offsetHeight;
-          const viewportHeight = window.innerHeight;
-          const extraSpace = viewportHeight * 0.2;
-          const scrollDistance = elementHeight + viewportHeight + extraSpace;
-
-          gsap.to(element, {
-            yPercent: 100,
-            scrollTrigger: {
-              trigger: element,
-              start: 0,
-              end: `+=${scrollDistance}`,
-              scrub: true,
-              pin: true,
+        /* Mouvement IDENTIQUE : colonnes impaires (1 & 3) qui défilent à CONTRE-SENS,
+           lié au scroll (scrub). MAIS sans `pin` : on translate uniquement (transform),
+           donc la grille 3 colonnes ne sort jamais du flux et ne s'effondre pas — les
+           3 colonnes restent visibles côte à côte pendant tout le défilement. */
+        odds.forEach((element) => {
+          gsap.fromTo(
+            element,
+            { yPercent: 0 },
+            {
+              yPercent: 100,
+              ease: "none",
+              scrollTrigger: {
+                trigger: section,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true,
+              },
             }
-          });
+          );
         });
+
+        ScrollTrigger.refresh();
       }, containerRef);
 
       return () => ctx.revert();

@@ -415,40 +415,32 @@ const MASKED_GALLERY: GalleryItem[] = [
 
 function ReelsMosaic() {
   return (
-    <section className="relative bg-text-strong text-bg">
-      {/* Header band — ambient lights + heading + intro */}
-      <div className="relative overflow-hidden pt-28 md:pt-40 pb-12">
-        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          <div className="absolute top-1/3 left-0 w-[50%] h-[60%]"
-            style={{ background:'radial-gradient(ellipse at 30% 50%, rgba(255,149,79,.2), transparent 60%)', filter:'blur(40px)' }}></div>
-          <div className="absolute bottom-0 right-0 w-[40%] h-[60%]"
-            style={{ background:'radial-gradient(ellipse at 70% 50%, rgba(255,149,79,.15), transparent 65%)', filter:'blur(40px)' }}></div>
-          <div className="absolute inset-0 opacity-30 mix-blend-overlay"
-            style={{ backgroundImage:'radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px)', backgroundSize:'3px 3px' }}></div>
-        </div>
+    <section className="relative bg-bg-alt">
+      {/* Header band — crème chaude, petites touches chocolat (kicker, titre, accent orange) */}
+      <div className="relative pt-28 md:pt-40 pb-12">
         <Container className="relative">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
             <div className="max-w-2xl">
-              <Kicker className="!text-bg/55">— réalisations · sélection</Kicker>
-              <h2 className="display text-6xl md:text-8xl lg:text-9xl mt-5 text-bg leading-[.88]">
+              <Kicker className="!text-text-muted">— réalisations · sélection</Kicker>
+              <h2 className="display text-6xl md:text-8xl lg:text-9xl mt-5 text-text-strong leading-[.88]">
                 our <span className="italic text-accent">work</span>.
               </h2>
             </div>
             <div className="md:text-right">
-              <p className="text-bg/70 max-w-md leading-relaxed mb-4">
+              <p className="text-text max-w-md leading-relaxed mb-4">
                 Trois portraits, une série. Faites défiler — le reste du portfolio se découvre côté Réalisations.
               </p>
-              <a href="#/realisations" className="arrow-link !text-bg">Voir tout le portfolio <Icons.ArrowRight size={18}/></a>
+              <a href="#/realisations" className="arrow-link !text-text-strong">Voir tout le portfolio <Icons.ArrowRight size={18}/></a>
             </div>
           </div>
         </Container>
       </div>
 
-      {/* CircularGallery (OGL) — pleine largeur, conteneur dimensionné, couleur de texte
-          forcée en crème pour que le label rendu sur canvas respecte la charte. */}
+      {/* CircularGallery (OGL) — pleine largeur. Couleur de texte forcée en chocolat
+          pour que le label rendu sur canvas reste lisible sur la crème chaude. */}
       <div
         className="relative w-full h-[720px] md:h-[880px]"
-        style={{ color: '#FDF6EE' }}
+        style={{ color: '#2A1810' }}
       >
         <CircularGallery
           items={MASKED_GALLERY}
@@ -458,12 +450,12 @@ function ReelsMosaic() {
         />
       </div>
 
-      {/* Footer band — CTA assumé vers le portfolio complet */}
+      {/* Footer band */}
       <div className="relative pt-10 pb-28 md:pb-40">
         <Container className="relative">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-t border-bg/10 pt-6">
-            <span className="text-bg/55 label-mono">— 3 portraits ici · série « Criminal Designer » · portfolio complet sur Réalisations</span>
-            <a href="#/realisations" className="inline-flex items-center gap-2 text-bg hover:text-accent transition">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-t border-text-strong/10 pt-6">
+            <span className="text-text-muted label-mono">— 3 portraits ici · série « Criminal Designer » · portfolio complet sur Réalisations</span>
+            <a href="#/realisations" className="inline-flex items-center gap-2 text-text-strong hover:text-accent transition">
               Découvrir tout le portfolio <Icons.ArrowRight size={18}/>
             </a>
           </div>

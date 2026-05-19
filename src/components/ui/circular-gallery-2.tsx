@@ -314,20 +314,6 @@ class Media {
         img.naturalWidth,
         img.naturalHeight,
       ];
-      // Aspect-aware sizing : la carte adopte l'aspect natif de SON image
-      // (largeur constante, hauteur = largeur / aspect). Plus aucun crop ;
-      // chaque photo (portrait OU landscape) se montre en pleine carte.
-      const imgAR = img.naturalWidth / img.naturalHeight;
-      this.plane.scale.y = this.plane.scale.x / imgAR;
-      this.program.uniforms.uPlaneSizes.value = [
-        this.plane.scale.x,
-        this.plane.scale.y,
-      ];
-      if (this.title && this.title.mesh) {
-        const textHeight = this.title.mesh.scale.y;
-        this.title.mesh.position.y =
-          -this.plane.scale.y * 0.5 - textHeight * 0.5 - 0.05;
-      }
     };
   }
 
@@ -416,12 +402,13 @@ class Media {
       }
     }
     this.scale = this.screen.height / 1500;
-    // Plane rectangulaire paysage (1200×800, ratio 3:2) → photos pleines bien mises
-    // en valeur, plus aucun crop sévère.
+    // Plane portrait 2:3 (800×1200) — uniforme pour les 4 photos de la série
+    // Criminal Designer, toutes pré-cadrées en portrait côté Supabase. Aspect plane
+    // = aspect image → shader cover n'effectue aucun crop → photo pleine carte.
     this.plane.scale.y =
-      (this.viewport.height * (800 * this.scale)) / this.screen.height;
+      (this.viewport.height * (1200 * this.scale)) / this.screen.height;
     this.plane.scale.x =
-      (this.viewport.width * (1200 * this.scale)) / this.screen.width;
+      (this.viewport.width * (800 * this.scale)) / this.screen.width;
     this.program.uniforms.uPlaneSizes.value = [
       this.plane.scale.x,
       this.plane.scale.y,

@@ -399,11 +399,11 @@ function MediaLightbox({ items, index, onClose, onIndex }: any) {
    portfolio vit sur /réalisations (cohérence visuelle stricte = série masquée uniquement).
    Photos servies via le endpoint Supabase render/image (redimensionnées, légères). */
 const MASKED_RENDER = "https://gublhtivvydkuooooffg.supabase.co/storage/v1/render/image/public/portfolio-photos/";
-// resize=contain dans une boîte 1200×2000 → la photo conserve son aspect NATIF (Supabase
-// scale proportionnellement et n'ajoute aucun crop). La carte OGL s'adapte ensuite à
-// l'aspect de chaque photo (cf. img.onload du composant) : portraits dans des cartes
-// hautes, paysages dans des cartes larges, plein cadre toujours.
-const m = (f: string) => `${MASKED_RENDER}${f}?width=1200&height=2000&resize=contain&quality=82`;
+// Uniformisation PORTRAIT 2:3 (800×1200) — TOUTES les photos arrivent dans le même
+// format, recadrées au centre côté serveur. Les 2 portraits natifs (4251, 4135) sont
+// préservés ; les 2 landscapes (4267, 4149) sont recadrés au centre → le MASQUE,
+// centré dans chaque shot, reste intact. Carrousel à rythme régulier garanti.
+const m = (f: string) => `${MASKED_RENDER}${f}?width=800&height=1200&resize=cover&quality=82`;
 const MASKED_GALLERY: GalleryItem[] = [
   { image: m("6F0A4251.jpg"), text: "Masque & Identité" },
   { image: m("6F0A4267.jpg"), text: "Vision Masquée" },
@@ -445,7 +445,7 @@ function ReelsMosaic() {
       {/* CircularGallery (OGL) — pleine largeur, conteneur dimensionné, couleur de texte
           forcée en crème pour que le label rendu sur canvas respecte la charte. */}
       <div
-        className="relative w-full h-[640px] md:h-[760px]"
+        className="relative w-full h-[720px] md:h-[880px]"
         style={{ color: '#FDF6EE' }}
       >
         <CircularGallery

@@ -399,7 +399,11 @@ function MediaLightbox({ items, index, onClose, onIndex }: any) {
    portfolio vit sur /réalisations (cohérence visuelle stricte = série masquée uniquement).
    Photos servies via le endpoint Supabase render/image (redimensionnées, légères). */
 const MASKED_RENDER = "https://gublhtivvydkuooooffg.supabase.co/storage/v1/render/image/public/portfolio-photos/";
-const m = (f: string) => `${MASKED_RENDER}${f}?width=1000&quality=78&resize=cover`;
+// resize=contain dans une boîte 1200×2000 → la photo conserve son aspect NATIF (Supabase
+// scale proportionnellement et n'ajoute aucun crop). La carte OGL s'adapte ensuite à
+// l'aspect de chaque photo (cf. img.onload du composant) : portraits dans des cartes
+// hautes, paysages dans des cartes larges, plein cadre toujours.
+const m = (f: string) => `${MASKED_RENDER}${f}?width=1200&height=2000&resize=contain&quality=82`;
 const MASKED_GALLERY: GalleryItem[] = [
   { image: m("6F0A4251.jpg"), text: "Masque & Identité" },
   { image: m("6F0A4267.jpg"), text: "Vision Masquée" },
@@ -446,8 +450,8 @@ function ReelsMosaic() {
       >
         <CircularGallery
           items={MASKED_GALLERY}
-          bend={3}
-          borderRadius={0.05}
+          bend={2}
+          borderRadius={0.04}
           scrollEase={0.05}
         />
       </div>

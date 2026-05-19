@@ -395,16 +395,16 @@ function MediaLightbox({ items, index, onClose, onIndex }: any) {
    (vrais projets GND) + couleurs charte crème. Importé en haut de ce fichier. */
 
 /* OUR WORK — CircularGallery (OGL/WebGL) en bandeau plein écran sur scène chocolat.
-   5 portraits masqués choisis pour intriguer, le reste vit sur /réalisations.
+   Série « Criminal Designer » : 4 portraits masqués validés par Roodny. Le reste du
+   portfolio vit sur /réalisations (cohérence visuelle stricte = série masquée uniquement).
    Photos servies via le endpoint Supabase render/image (redimensionnées, légères). */
 const MASKED_RENDER = "https://gublhtivvydkuooooffg.supabase.co/storage/v1/render/image/public/portfolio-photos/";
 const m = (f: string) => `${MASKED_RENDER}${f}?width=1000&quality=78&resize=cover`;
 const MASKED_GALLERY: GalleryItem[] = [
-  { image: m("6F0A4251.jpg"),                   text: "Masque & Identité" },
-  { image: m("6F0A4267.jpg"),                   text: "Vision Masquée" },
-  { image: m("6F0A4135.jpg"),                   text: "L'Art en Mouvement" },
-  { image: m("6F0A4149.jpg"),                   text: "Puissance Créative" },
-  { image: m("6F0A4002.JPG"),                   text: "Vision Urbaine" },
+  { image: m("6F0A4251.jpg"), text: "Masque & Identité" },
+  { image: m("6F0A4267.jpg"), text: "Vision Masquée" },
+  { image: m("6F0A4135.jpg"), text: "L'Art en Mouvement" },
+  { image: m("6F0A4149.jpg"), text: "Puissance Créative" },
 ];
 
 function ReelsMosaic() {
@@ -430,7 +430,7 @@ function ReelsMosaic() {
             </div>
             <div className="md:text-right">
               <p className="text-bg/70 max-w-md leading-relaxed mb-4">
-                Cinq portraits choisis. Faites défiler — le reste du portfolio se découvre côté Réalisations.
+                Quatre portraits, une série. Faites défiler — le reste du portfolio se découvre côté Réalisations.
               </p>
               <a href="#/realisations" className="arrow-link !text-bg">Voir tout le portfolio <Icons.ArrowRight size={18}/></a>
             </div>
@@ -456,7 +456,7 @@ function ReelsMosaic() {
       <div className="relative pt-10 pb-28 md:pb-40">
         <Container className="relative">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-t border-bg/10 pt-6">
-            <span className="text-bg/55 label-mono">— 5 portraits ici · 19 projets au total · 2022–2025</span>
+            <span className="text-bg/55 label-mono">— 4 portraits ici · série « Criminal Designer » · portfolio complet sur Réalisations</span>
             <a href="#/realisations" className="inline-flex items-center gap-2 text-bg hover:text-accent transition">
               Découvrir tout le portfolio <Icons.ArrowRight size={18}/>
             </a>

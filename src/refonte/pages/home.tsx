@@ -408,7 +408,9 @@ const MASKED_GALLERY: GalleryItem[] = [
   { image: m("6F0A4251.jpg"), text: "Masque & Identité" },
   { image: m("6F0A4267.jpg"), text: "Vision Masquée" },
   { image: m("6F0A4135.jpg"), text: "L'Art en Mouvement" },
-  { image: m("6F0A4149.jpg"), text: "Puissance Créative" },
+  // Puissance Créative (6F0A4149.jpg) retirée : le shot d'origine est en landscape
+  // avec sujet décalé → le crop centré 2:3 portrait coupait au-dessus du genou.
+  // Visible dans Réalisations, pas ici. Cohérence visuelle prioritaire.
 ];
 
 function ReelsMosaic() {
@@ -434,7 +436,7 @@ function ReelsMosaic() {
             </div>
             <div className="md:text-right">
               <p className="text-bg/70 max-w-md leading-relaxed mb-4">
-                Quatre portraits, une série. Faites défiler — le reste du portfolio se découvre côté Réalisations.
+                Trois portraits, une série. Faites défiler — le reste du portfolio se découvre côté Réalisations.
               </p>
               <a href="#/realisations" className="arrow-link !text-bg">Voir tout le portfolio <Icons.ArrowRight size={18}/></a>
             </div>
@@ -460,7 +462,7 @@ function ReelsMosaic() {
       <div className="relative pt-10 pb-28 md:pb-40">
         <Container className="relative">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-t border-bg/10 pt-6">
-            <span className="text-bg/55 label-mono">— 4 portraits ici · série « Criminal Designer » · portfolio complet sur Réalisations</span>
+            <span className="text-bg/55 label-mono">— 3 portraits ici · série « Criminal Designer » · portfolio complet sur Réalisations</span>
             <a href="#/realisations" className="inline-flex items-center gap-2 text-bg hover:text-accent transition">
               Découvrir tout le portfolio <Icons.ArrowRight size={18}/>
             </a>

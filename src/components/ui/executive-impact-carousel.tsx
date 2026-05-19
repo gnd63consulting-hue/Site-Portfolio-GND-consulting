@@ -15,23 +15,24 @@ interface Product {
   modelImg: string;
 }
 
-/* GND Consulting — vrais projets du portfolio (miniatures YouTube, légères & vérifiées 200,
-   ~12–116 Ko vs photos Supabase 6,7 Mo qui plombaient le scroll). Le champ `price` du
-   composant est réutilisé pour la discipline (contexte studio créatif, pas e-commerce).
-   prodImg/modelImg = 2 visuels réels distincts → l'effet de survol reste exact. */
-const YT = (id: string, q = "maxresdefault") => `https://img.youtube.com/vi/${id}/${q}.jpg`;
-const A = YT("6oaO6YoWjyQ");          // Esther Seems — BOBINE
-const B = YT("UbXQim7iNLI");          // Leyel — Miel
-const C = YT("galhl8_dYyk");          // Cook & Soul
-const D = YT("Vyhz7_D4fFU", "hqdefault"); // Sabay Festival
-/* 4 projets dont chacun a sa propre miniature légère vérifiée → le titre correspond
-   toujours à son visuel. modelImg (survol) = un AUTRE vrai projet GND. Répété sur 15
-   cartes, exactement comme le composant d'origine répète ses items. */
+/* GND Consulting — vraies photos artistiques du Portfolio (Supabase portfolio-photos),
+   les mêmes que la page Réalisations. Servies via le endpoint `render/image` de Supabase
+   qui redimensionne à la volée : ~330 Ko au lieu des 6,7 Mo de l'original → fluide pour
+   un carrousel scrub. Le champ `price` est réutilisé pour la discipline (studio créatif,
+   pas e-commerce). prodImg/modelImg = 2 photos jumelles → l'effet de survol reste exact. */
+const SB_RENDER = "https://gublhtivvydkuooooffg.supabase.co/storage/v1/render/image/public/portfolio-photos/";
+const ph = (f: string, w = 720) => `${SB_RENDER}${f}?width=${w}&quality=72&resize=cover`;
 const SOURCE = [
-  { title: "Esther Seems — BOBINE", price: "Clip musical · 2024", prodImg: A, modelImg: C },
-  { title: "Leyel — Miel", price: "Clip musical · 2025", prodImg: B, modelImg: A },
-  { title: "Cook & Soul", price: "Production · 2024", prodImg: C, modelImg: B },
-  { title: "Sabay Festival", price: "Événementiel · 4K", prodImg: D, modelImg: A },
+  { title: "Masque & Identité",   price: "Portrait · Corporate",    prodImg: ph("6F0A4251.jpg"),                    modelImg: ph("6F0A4267.jpg") },
+  { title: "Vision Masquée",      price: "Portrait · Artistique",   prodImg: ph("6F0A4267.jpg"),                    modelImg: ph("6F0A4251.jpg") },
+  { title: "L'Art en Mouvement",  price: "Portrait · Créatif",      prodImg: ph("6F0A4135.jpg"),                    modelImg: ph("6F0A4149.jpg") },
+  { title: "Puissance Créative",  price: "Portrait · Studio",       prodImg: ph("6F0A4149.jpg"),                    modelImg: ph("6F0A4135.jpg") },
+  { title: "Énergie Collective",  price: "Portrait · Groupe",       prodImg: ph("6F0A4028.jpg"),                    modelImg: ph("6F0A3992.jpg") },
+  { title: "Attitude & Confiance",price: "Portrait · Studio",       prodImg: ph("6F0A3992.jpg"),                    modelImg: ph("6F0A4028.jpg") },
+  { title: "Vision Urbaine",      price: "Portrait · Urbain",       prodImg: ph("6F0A4002.JPG"),                    modelImg: ph("6F0A4251.jpg") },
+  { title: "Saveurs",             price: "Événementiel · Culinaire",prodImg: ph("6F0A1817.JPG"),                    modelImg: ph("6F0A2054.JPG") },
+  { title: "Instants",            price: "Événementiel · Ambiance", prodImg: ph("6F0A1873%20-%20copie%202_1.jpg"),  modelImg: ph("6F0A1817.JPG") },
+  { title: "Partages",            price: "Événementiel · Reportage",prodImg: ph("6F0A2054.JPG"),                    modelImg: ph("6F0A1873%20-%20copie%202_1.jpg") },
 ];
 
 const PRODUCTS: Product[] = Array.from({ length: 15 }, (_, i) => {

@@ -1,7 +1,7 @@
 /* Home / Accueil — Cinematic edition — ported to ES modules + REAL gsap/ScrollTrigger */
 import * as React from 'react';
 import { createPortal } from 'react-dom';
-import ExecutiveImpactCarousel from '../../components/ui/executive-impact-carousel';
+import { CircularGallery, type GalleryItem } from '../../components/ui/circular-gallery-2';
 import { Section, Container, Kicker, Btn, PortraitHero, Tag, Faq, CtaBand } from '../ui';
 import { Icons } from '../icons';
 
@@ -394,14 +394,23 @@ function MediaLightbox({ items, index, onClose, onIndex }: any) {
    GSAP/ScrollTrigger, CSS structurel et structure = 1:1. Seules adaptations : données
    (vrais projets GND) + couleurs charte crème. Importé en haut de ce fichier. */
 
-/* IMPORTANT — le carrousel pin/scrub GSAP NE DOIT PAS être enfermé dans un parent
-   `overflow-hidden`, `Container` (max-width) ni `transform/filter` : ça casse le ScrollTrigger
-   `pin`. Donc : <section> nu (aucun overflow-hidden), header/footer dans des bandes séparées,
-   et <ExecutiveImpactCarousel/> monté en pleine largeur, sibling direct, sans Container. */
+/* OUR WORK — CircularGallery (OGL/WebGL) en bandeau plein écran sur scène chocolat.
+   5 portraits masqués choisis pour intriguer, le reste vit sur /réalisations.
+   Photos servies via le endpoint Supabase render/image (redimensionnées, légères). */
+const MASKED_RENDER = "https://gublhtivvydkuooooffg.supabase.co/storage/v1/render/image/public/portfolio-photos/";
+const m = (f: string) => `${MASKED_RENDER}${f}?width=1000&quality=78&resize=cover`;
+const MASKED_GALLERY: GalleryItem[] = [
+  { image: m("6F0A4251.jpg"),                   text: "Masque & Identité" },
+  { image: m("6F0A4267.jpg"),                   text: "Vision Masquée" },
+  { image: m("6F0A4135.jpg"),                   text: "L'Art en Mouvement" },
+  { image: m("6F0A4149.jpg"),                   text: "Puissance Créative" },
+  { image: m("6F0A4002.JPG"),                   text: "Vision Urbaine" },
+];
+
 function ReelsMosaic() {
   return (
     <section className="relative bg-text-strong text-bg">
-      {/* Header band — overflow-hidden ICI seulement (ne contient PAS le carrousel) */}
+      {/* Header band — ambient lights + heading + intro */}
       <div className="relative overflow-hidden pt-28 md:pt-40 pb-12">
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
           <div className="absolute top-1/3 left-0 w-[50%] h-[60%]"
@@ -414,14 +423,14 @@ function ReelsMosaic() {
         <Container className="relative">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
             <div className="max-w-2xl">
-              <Kicker className="!text-bg/55">— réalisations · 2022–2025</Kicker>
+              <Kicker className="!text-bg/55">— réalisations · sélection</Kicker>
               <h2 className="display text-6xl md:text-8xl lg:text-9xl mt-5 text-bg leading-[.88]">
                 our <span className="italic text-accent">work</span>.
               </h2>
             </div>
             <div className="md:text-right">
               <p className="text-bg/70 max-w-md leading-relaxed mb-4">
-                Une sélection de clips, captations live, identités et photographie. Tous menés en interne.
+                Cinq portraits choisis. Faites défiler — le reste du portfolio se découvre côté Réalisations.
               </p>
               <a href="#/realisations" className="arrow-link !text-bg">Voir tout le portfolio <Icons.ArrowRight size={18}/></a>
             </div>
@@ -429,17 +438,28 @@ function ReelsMosaic() {
         </Container>
       </div>
 
-      {/* Work wall — executive-impact-carousel VERBATIM. Plein écran, AUCUN parent
-          overflow-hidden / Container, pour que le pin/scrub GSAP fonctionne réellement. */}
-      <ExecutiveImpactCarousel />
+      {/* CircularGallery (OGL) — pleine largeur, conteneur dimensionné, couleur de texte
+          forcée en crème pour que le label rendu sur canvas respecte la charte. */}
+      <div
+        className="relative w-full h-[640px] md:h-[760px]"
+        style={{ color: '#FDF6EE' }}
+      >
+        <CircularGallery
+          items={MASKED_GALLERY}
+          bend={3}
+          borderRadius={0.05}
+          scrollEase={0.05}
+        />
+      </div>
 
-      {/* Footer band */}
-      <div className="relative pt-12 pb-28 md:pb-40">
+      {/* Footer band — CTA assumé vers le portfolio complet */}
+      <div className="relative pt-10 pb-28 md:pb-40">
         <Container className="relative">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-t border-bg/10 pt-6 text-bg/55 label-mono">
-            <span>— 09 vidéos / 19 projets · 2022–2025</span>
-            <span>paris · france · &amp; international</span>
-            <a href="#/realisations" className="!text-bg hover:!text-accent">— catalogue complet →</a>
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-t border-bg/10 pt-6">
+            <span className="text-bg/55 label-mono">— 5 portraits ici · 19 projets au total · 2022–2025</span>
+            <a href="#/realisations" className="inline-flex items-center gap-2 text-bg hover:text-accent transition">
+              Découvrir tout le portfolio <Icons.ArrowRight size={18}/>
+            </a>
           </div>
         </Container>
       </div>

@@ -54,32 +54,31 @@ function HeroHome() {
   }, []);
 
   return (
-    <section className="relative min-h-[760px] h-screen overflow-hidden bg-text-strong text-bg flex flex-col">
-      {/* Cinematic background — chocolate stage with intense orange radial glow */}
+    <section className="relative min-h-[760px] h-screen overflow-hidden bg-bg-alt text-text-strong flex flex-col">
+      {/* Cinematic background — soft cream stage with warm orange halo kept as a touche
+          (chocolat dominant removed → fond crème respire ; halo subtil au centre) */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div className="absolute inset-0"
-          style={{ background:'radial-gradient(ellipse 60% 70% at 50% 50%, rgba(255,149,79,.95) 0%, rgba(232,119,44,.6) 18%, rgba(120,40,14,.6) 45%, #1a0d08 78%)' }}></div>
+          style={{ background:'radial-gradient(ellipse 60% 70% at 50% 50%, rgba(255,149,79,.55) 0%, rgba(232,119,44,.22) 28%, transparent 65%)' }}></div>
         <div className="absolute inset-0"
-          style={{ background:'radial-gradient(ellipse 90% 50% at 50% 110%, rgba(83,36,24,.7) 0%, transparent 60%)' }}></div>
-        <div className="absolute inset-0 opacity-40 mix-blend-overlay"
-          style={{ backgroundImage:'radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px)', backgroundSize:'3px 3px' }}></div>
+          style={{ background:'radial-gradient(ellipse 90% 50% at 50% 110%, rgba(255,149,79,.14) 0%, transparent 60%)' }}></div>
         <div className="absolute inset-0"
-          style={{ boxShadow:'inset 0 0 200px 60px rgba(0,0,0,.55)' }}></div>
+          style={{ boxShadow:'inset 0 0 220px 80px rgba(83,36,24,.05)' }}></div>
       </div>
 
       {/* Top bar */}
       <div className="relative z-20 pt-16 md:pt-20 shrink-0">
         <Container>
-          <div className="flex items-center justify-between py-3 text-bg/65">
+          <div className="flex items-center justify-between py-3 text-text-muted">
             <div className="flex items-center gap-3 text-xs label-mono">
-              <span className="text-bg/85">studio créatif</span>
+              <span className="text-text-strong">studio créatif</span>
               <span className="opacity-30">/</span>
               <span>paris · fr</span>
               <span className="opacity-30">/</span>
               <span className="hidden sm:inline">est. 2024</span>
             </div>
             <div className="flex items-center gap-3">
-              <span className="chip !bg-bg/10 !text-bg/85 backdrop-blur"><span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span> En production</span>
+              <span className="chip !bg-text-strong/8 !text-text-strong backdrop-blur"><span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span> En production</span>
             </div>
           </div>
         </Container>
@@ -90,11 +89,11 @@ function HeroHome() {
         {/* Wordmark — sized to viewport height, fills the screen horizontally */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
           <h1
-            className="display whitespace-nowrap text-bg leading-[.78] tracking-huge"
+            className="display whitespace-nowrap text-text-strong leading-[.78] tracking-huge"
             style={{
               fontSize:'min(58vh, 30vw)',
               transform:`translate(${mx * -10}px, ${my * -8}px)`,
-              textShadow:'0 8px 60px rgba(0,0,0,.45)'
+              textShadow:'0 6px 40px rgba(83,36,24,.12)'
             }}
             aria-label="GND Consulting">
             <span>G</span>
@@ -138,7 +137,7 @@ function HeroHome() {
 
         {/* Floating contact card — right */}
         <div className="hidden lg:block absolute right-6 xl:right-12 top-1/2 -translate-y-1/2 z-20 anim-up d3">
-          <div className="rounded-3xl bg-bg/95 backdrop-blur-md p-5 w-[260px] shadow-2xl shadow-black/40">
+          <div className="rounded-3xl bg-bg backdrop-blur-md border border-text-strong/8 p-5 w-[260px] shadow-2xl shadow-text-strong/15">
             <div className="flex items-center justify-between">
               <span className="kicker">— contact</span>
               <span className="w-7 h-7 rounded-full bg-accent text-text-strong inline-flex items-center justify-center">
@@ -156,16 +155,16 @@ function HeroHome() {
         </div>
 
         {/* Mobile compact text block — sits over the hero */}
-        <div className="lg:hidden absolute inset-x-0 bottom-0 z-30 px-6 pb-8 bg-gradient-to-t from-text-strong via-text-strong/85 to-transparent pt-20">
-          <h2 className="display text-4xl md:text-5xl text-bg leading-[.95]">
+        <div className="lg:hidden absolute inset-x-0 bottom-0 z-30 px-6 pb-8 bg-gradient-to-t from-bg-alt via-bg-alt/85 to-transparent pt-20">
+          <h2 className="display text-4xl md:text-5xl text-text-strong leading-[.95]">
             L'Art de la <span className="italic text-accent">Clarté</span> Digitale.
           </h2>
-          <p className="mt-4 text-bg/75 text-sm leading-relaxed max-w-md">
-            Studio créatif parisien. Production audiovisuelle, design, automatisation IA. <strong className="text-bg">Humain × IA.</strong>
+          <p className="mt-4 text-text text-sm leading-relaxed max-w-md">
+            Studio créatif parisien. Production audiovisuelle, design, automatisation IA. <strong className="text-text-strong">Humain × IA.</strong>
           </p>
           <div className="mt-5 flex flex-wrap gap-2">
             <a href="#/realisations" className="btn btn-primary !py-3 !px-5 text-sm">Voir nos réalisations <Icons.ArrowUpRight size={14}/></a>
-            <a href="#/contact" className="btn !bg-bg/10 !text-bg !border !border-bg/20 !py-3 !px-5 text-sm">Démarrer <Icons.ArrowUpRight size={14}/></a>
+            <a href="#/contact" className="btn !bg-text-strong/8 !text-text-strong !border !border-text-strong/15 !py-3 !px-5 text-sm">Démarrer <Icons.ArrowUpRight size={14}/></a>
           </div>
         </div>
       </div>
@@ -173,11 +172,11 @@ function HeroHome() {
       {/* Bottom bar */}
       <div className="hidden lg:block relative z-20 shrink-0">
         <Container>
-          <div className="border-t border-bg/10 py-4 grid grid-cols-3 items-center text-bg/65 text-xs">
+          <div className="border-t border-text-strong/10 py-4 grid grid-cols-3 items-center text-text-muted text-xs">
             <div className="flex items-center gap-2 label-mono">
               <Icons.ArrowDown size={14} className="scroll-pulse"/> scroll · découvrir
             </div>
-            <div className="display text-center text-bg text-base">
+            <div className="display text-center text-text-strong text-base">
               L'Art de la <span className="italic text-accent">Clarté</span> Digitale
             </div>
             <div className="flex items-center justify-end gap-2 label-mono">

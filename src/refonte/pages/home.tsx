@@ -89,7 +89,7 @@ function HeroHome() {
             className="display whitespace-nowrap leading-[.78] tracking-huge"
             style={{
               color: '#FFFFFF',
-              fontSize:'min(66vh, 34vw)',
+              fontSize:'min(78vh, 38vw)',
               transform:`translate(${mx * -10}px, ${my * -8}px)`,
               textShadow:'0 8px 50px rgba(83,36,24,.18), 0 2px 12px rgba(83,36,24,.10)'
             }}

@@ -194,16 +194,17 @@ function HeroHome() {
 
 /* ===================== Marquee — projects ribbon ===================== */
 function MarqueeProjects() {
-  // Call-to-actions plutôt que noms de projets — c'est un bandeau commercial.
+  // Bandeau commercial — PUR call-to-action (chaque item pousse à l'action,
+  // jamais descriptif). Verbe d'action ou bénéfice client clair.
   const items = [
     "Démarrer un projet",
-    "Voir nos réalisations",
     "Devis sous 48h",
-    "Audit IA offert",
-    "Échangeons sur votre brief",
-    "Studio créatif · Paris",
-    "Production audiovisuelle 4K",
-    "Design & identité visuelle",
+    "Audit offert",
+    "Échangeons sur votre projet",
+    "Boostez votre présence digitale",
+    "Faisons décoller votre marque",
+    "Activez votre transformation IA",
+    "Concrétisons vos ambitions",
   ];
   const row = [...items, ...items];
   return (

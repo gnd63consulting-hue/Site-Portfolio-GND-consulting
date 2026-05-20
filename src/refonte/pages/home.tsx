@@ -527,10 +527,12 @@ function ValuesBlock() {
       <Container>
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
           <div>
-            <Kicker>Notre ADN</Kicker>
-            <h2 className="display text-6xl md:text-8xl mt-5 text-text-strong leading-[.9]">why <span className="italic">GND</span>.</h2>
+            <Kicker>ADN GND</Kicker>
+            <h2 className="display text-5xl md:text-7xl mt-5 text-text-strong leading-[.95]">
+              Nos Valeurs <span className="italic text-accent">Fondatrices</span>.
+            </h2>
             <p className="mt-6 text-text text-lg leading-relaxed max-w-md">
-              Quatre valeurs qui guident chaque décision créative, technique et commerciale. Pas de promesses chiffrées en l'air — des engagements tenus.
+              Les principes qui guident notre approche et nous engagent à offrir des expériences mémorables.
             </p>
             <div className="mt-10">
               <Btn href="#/agence" variant="primary">Lire le manifeste</Btn>

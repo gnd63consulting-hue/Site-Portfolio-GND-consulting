@@ -56,15 +56,11 @@ function HeroHome() {
 
   return (
     <section className="hero-scroll-root relative min-h-[760px] h-screen overflow-hidden bg-bg-alt text-text-strong flex flex-col">
-      {/* Cinematic background — soft cream stage with warm orange halo kept as a touche
-          (chocolat dominant removed → fond crème respire ; halo subtil au centre) */}
+      {/* Fond homogène — cream uniforme + très très léger glow central pour respiration,
+          assez doux pour ne JAMAIS créer un cercle / rectangle visible. */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div className="absolute inset-0"
-          style={{ background:'radial-gradient(ellipse 60% 70% at 50% 50%, rgba(255,149,79,.55) 0%, rgba(232,119,44,.22) 28%, transparent 65%)' }}></div>
-        <div className="absolute inset-0"
-          style={{ background:'radial-gradient(ellipse 90% 50% at 50% 110%, rgba(255,149,79,.14) 0%, transparent 60%)' }}></div>
-        <div className="absolute inset-0"
-          style={{ boxShadow:'inset 0 0 220px 80px rgba(83,36,24,.05)' }}></div>
+          style={{ background:'radial-gradient(ellipse 80% 90% at 50% 50%, rgba(255,149,79,.18) 0%, transparent 75%)' }}></div>
       </div>
 
       {/* Top bar */}
@@ -90,11 +86,12 @@ function HeroHome() {
         {/* Wordmark — sized to viewport height, fills the screen horizontally */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
           <h1
-            className="display whitespace-nowrap text-text-strong leading-[.78] tracking-huge"
+            className="display whitespace-nowrap leading-[.78] tracking-huge"
             style={{
-              fontSize:'min(58vh, 30vw)',
+              color: '#FFFFFF',
+              fontSize:'min(66vh, 34vw)',
               transform:`translate(${mx * -10}px, ${my * -8}px)`,
-              textShadow:'0 6px 40px rgba(83,36,24,.12)'
+              textShadow:'0 8px 50px rgba(83,36,24,.18), 0 2px 12px rgba(83,36,24,.10)'
             }}
             aria-label="GND Consulting">
             <span>G</span>

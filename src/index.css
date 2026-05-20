@@ -863,21 +863,18 @@ h1, h2, h3, h4, h5, h6 {
               var(--gradient-primary) border-box;
 }
 
-/* === ÉTATS HOVER ET LIENS === */
-/* Liens avec contraste renforcé */
+/* === LIENS ===
+   Refonte : les <a> héritent de la couleur du parent (charte crème/chocolat/accent).
+   Les anciennes règles globales en bleu/violet venaient de l'ancien site live et
+   écrasaient nos classes Tailwind. */
 a {
-  color: #2563eb; /* Bleu foncé pour contraste */
+  color: inherit;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
-a:hover {
-  color: #1e40af; /* Encore plus foncé au hover */
-  text-decoration: underline;
-}
-
 a:visited {
-  color: #7c3aed; /* Violet pour liens visités */
+  color: inherit;
 }
 
 .hover-lift {

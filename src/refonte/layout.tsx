@@ -31,11 +31,11 @@ function Header({ route }: any) {
   }, []);
   React.useEffect(() => { setOpen(false); setServices(false); }, [route]);
 
-  // Every page now opens with a dark cinematic hero, so the header sits over dark
-  // until the user scrolls past it.
-  const onDark = !scrolled;
-  const txt = onDark ? "text-bg" : "text-text-strong";
-  const txtMuted = onDark ? "text-bg/65" : "text-text-muted";
+  // Hero passé à cream — header doit être lisible (texte chocolat) en tout temps,
+  // y compris au top de page. Plus de mode "onDark".
+  const onDark = false;
+  const txt = "text-text-strong";
+  const txtMuted = "text-text-muted";
 
   const isActive = (to: string) => {
     if (to === "#/services") return route.startsWith("/services");

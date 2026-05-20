@@ -120,7 +120,7 @@ function HeroHome() {
         </div>
 
         {/* Floating method card — left */}
-        <div className="hidden lg:block absolute left-6 xl:left-12 top-1/2 -translate-y-1/2 z-20 anim-up d2">
+        <div className="hidden lg:block absolute left-6 xl:left-12 bottom-12 z-20 anim-up d2">
           <div className="rounded-3xl bg-text-strong/85 backdrop-blur-md border border-bg/10 p-5 w-[240px] shadow-2xl shadow-black/40">
             <div className="flex items-center justify-between">
               <span className="kicker !text-bg/55">— méthode</span>
@@ -137,7 +137,7 @@ function HeroHome() {
         </div>
 
         {/* Floating contact card — right */}
-        <div className="hidden lg:block absolute right-6 xl:right-12 top-1/2 -translate-y-1/2 z-20 anim-up d3">
+        <div className="hidden lg:block absolute right-6 xl:right-12 bottom-12 z-20 anim-up d3">
           <div className="rounded-3xl bg-bg backdrop-blur-md border border-text-strong/8 p-5 w-[260px] shadow-2xl shadow-text-strong/15">
             <div className="flex items-center justify-between">
               <span className="kicker">— contact</span>
@@ -173,11 +173,11 @@ function HeroHome() {
       {/* Bottom bar */}
       <div className="hidden lg:block relative z-20 shrink-0">
         <Container>
-          <div className="border-t border-text-strong/10 py-4 grid grid-cols-3 items-center text-text-muted text-xs">
+          <div className="border-t border-text-strong/15 py-5 grid grid-cols-3 items-center text-text text-xs">
             <div className="flex items-center gap-2 label-mono">
               <Icons.ArrowDown size={14} className="scroll-pulse"/> scroll · découvrir
             </div>
-            <div className="display text-center text-text-strong text-base">
+            <div className="display text-center text-text-strong text-2xl md:text-3xl font-medium tracking-tight">
               L'Art de la <span className="italic text-accent">Clarté</span> Digitale
             </div>
             <div className="flex items-center justify-end gap-2 label-mono">
@@ -194,14 +194,24 @@ function HeroHome() {
 
 /* ===================== Marquee — projects ribbon ===================== */
 function MarqueeProjects() {
-  const items = ["Trinity Rebel", "Esther Seems", "Sabay Festival 2023", "Ali 45 Scientific", "Leyel · Miel", "Yungcally", "Cook & Soul", "Pékin Express"];
+  // Call-to-actions plutôt que noms de projets — c'est un bandeau commercial.
+  const items = [
+    "Démarrer un projet",
+    "Voir nos réalisations",
+    "Devis sous 48h",
+    "Audit IA offert",
+    "Échangeons sur votre brief",
+    "Studio créatif · Paris",
+    "Production audiovisuelle 4K",
+    "Design & identité visuelle",
+  ];
   const row = [...items, ...items];
   return (
-    <div className="bg-text-strong text-bg overflow-hidden py-7 border-y border-bg/10">
+    <div className="bg-bg-alt text-text-strong overflow-hidden py-7 border-y border-text-strong/10">
       <div className="flex gap-12 marquee-track whitespace-nowrap">
         {row.map((t, i) => (
           <div key={i} className="flex items-center gap-12 shrink-0">
-            <span className="display text-3xl md:text-5xl text-bg/95">{t}</span>
+            <span className="display text-3xl md:text-5xl text-text-strong/95">{t}</span>
             <span className="text-accent text-3xl">✦</span>
           </div>
         ))}

@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { createPortal } from 'react-dom';
 import { CircularGallery, type GalleryItem } from '../../components/ui/circular-gallery-2';
+import { HeroScroll } from '../components/HeroScroll';
 import { Section, Container, Kicker, Btn, PortraitHero, Tag, Faq, CtaBand } from '../ui';
 import { Icons } from '../icons';
 
@@ -54,7 +55,7 @@ function HeroHome() {
   }, []);
 
   return (
-    <section className="relative min-h-[760px] h-screen overflow-hidden bg-bg-alt text-text-strong flex flex-col">
+    <section className="hero-scroll-root relative min-h-[760px] h-screen overflow-hidden bg-bg-alt text-text-strong flex flex-col">
       {/* Cinematic background — soft cream stage with warm orange halo kept as a touche
           (chocolat dominant removed → fond crème respire ; halo subtil au centre) */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
@@ -97,7 +98,7 @@ function HeroHome() {
             }}
             aria-label="GND Consulting">
             <span>G</span>
-            <span className="opacity-0 inline-block" style={{ width:'0.7em' }}></span>
+            <span>N</span>
             <span>D</span>
           </h1>
         </div>
@@ -110,18 +111,10 @@ function HeroHome() {
             <div className="absolute -inset-8 rounded-full"
               style={{ background:'radial-gradient(circle, rgba(255,149,79,.35) 0%, transparent 65%)', filter:'blur(12px)' }}></div>
             <div className="relative w-full h-full overflow-hidden">
-              {/* Avatar Hero — l'image 2D temporaire avant le pipeline 3D HeroScroll.
-                  L'image est en ratio landscape avec figure centrée droite ; on crop à
-                  droite (object-position 65%) pour cadrer le perso, le côté gauche
-                  crème de l'image se fond avec le stage crème du hero. */}
-              <img
-                src="/assets/hero-portrait.jpg"
-                alt="Personnage masqué GND — humain × IA"
-                className="absolute inset-0 w-full h-full object-cover"
-                style={{ objectPosition: '65% center' }}
-                loading="eager"
-                decoding="async"
-              />
+              {/* HeroScroll — Chicken Drive-style pipeline complet : 150 frames Three.js
+                  pré-rendues + scroll-scrub pinné + idle visor pulse + mouse parallax.
+                  Fallback automatique sur /assets/hero-portrait.jpg si frames absentes. */}
+              <HeroScroll />
             </div>
             {/* glow rim */}
             <div className="absolute inset-0 rounded-full pointer-events-none"

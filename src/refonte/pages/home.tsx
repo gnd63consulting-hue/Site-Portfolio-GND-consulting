@@ -109,8 +109,19 @@ function HeroHome() {
             {/* halo behind */}
             <div className="absolute -inset-8 rounded-full"
               style={{ background:'radial-gradient(circle, rgba(255,149,79,.35) 0%, transparent 65%)', filter:'blur(12px)' }}></div>
-            <div className="relative w-full h-full">
-              <PortraitHero showTag={false} />
+            <div className="relative w-full h-full overflow-hidden">
+              {/* Avatar Hero — l'image 2D temporaire avant le pipeline 3D HeroScroll.
+                  L'image est en ratio landscape avec figure centrée droite ; on crop à
+                  droite (object-position 65%) pour cadrer le perso, le côté gauche
+                  crème de l'image se fond avec le stage crème du hero. */}
+              <img
+                src="/assets/hero-portrait.jpg"
+                alt="Personnage masqué GND — humain × IA"
+                className="absolute inset-0 w-full h-full object-cover"
+                style={{ objectPosition: '65% center' }}
+                loading="eager"
+                decoding="async"
+              />
             </div>
             {/* glow rim */}
             <div className="absolute inset-0 rounded-full pointer-events-none"

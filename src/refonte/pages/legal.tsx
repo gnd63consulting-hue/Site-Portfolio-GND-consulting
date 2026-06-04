@@ -1,4 +1,4 @@
-/* /mentions-legales + 404 — ported to ES modules.
+/* /mentions-legales + 404, ported to ES modules.
    Faits juridiques AUTORITATIFS reproduits depuis le live src/components/MentionsLegales.tsx. */
 import { Section, Container, Kicker, Btn, CinematicHero } from '../ui';
 import { Icons } from '../icons';
@@ -24,10 +24,10 @@ function LegalPage() {
   return (
     <main id="main">
       <CinematicHero
-        kicker="Cadre LCEN — informations légales"
+        kicker="Cadre LCEN, informations légales"
         eyebrow="mentions légales"
-        title={<>Mentions<br/><span className="italic">légales</span>.</>}
-        subtitle={<>Informations légales, RGPD, cookies et engagement éthique IA — clairement présentées. Dernière mise à jour : {LEGAL_UPDATED}.</>}
+        title={<>Mentions<br/><span className="italic text-accent">légales</span>.</>}
+        subtitle={<>Informations légales, RGPD, cookies et engagement éthique IA, clairement présentées. Dernière mise à jour : {LEGAL_UPDATED}.</>}
         badges={["AI Act 2024/1689", "RGPD complet", "LCEN"]}
         ctas={<>
           <a href="#sommaire" className="btn btn-primary">Aller au sommaire <Icons.ArrowDown size={14}/></a>
@@ -56,13 +56,13 @@ function LegalPage() {
               <Article id="editeur" t="1. Éditeur du site">
                 <p>Le présent site est édité par <strong>GND Consulting</strong>.</p>
                 <ul className="space-y-1 mt-3">
-                  <li>Forme juridique : <strong>Entrepreneur Individuel (EI) — Auto-entrepreneur</strong></li>
+                  <li>Forme juridique : <strong>Entrepreneur Individuel (EI), Auto-entrepreneur</strong></li>
                   <li>SIREN : <strong>939 676 136</strong></li>
                   <li>SIRET : <strong>939 676 136 00012</strong></li>
-                  <li>Code APE / NAF : <strong>5911A</strong> — Production de films et de programmes pour la télévision</li>
-                  <li>Immatriculation : Répertoire des Métiers (RM) — date d'immatriculation : <strong>15 janvier 2025</strong></li>
+                  <li>Code APE / NAF : <strong>5911A</strong>, Production de films et de programmes pour la télévision</li>
+                  <li>Immatriculation : Répertoire des Métiers (RM), date d'immatriculation : <strong>15 janvier 2025</strong></li>
                   <li>Capital social : non applicable (entreprise individuelle)</li>
-                  <li>TVA : franchise en base de TVA — <strong>article 293 B du CGI</strong> (TVA non applicable)</li>
+                  <li>TVA : franchise en base de TVA, <strong>article 293 B du CGI</strong> (TVA non applicable)</li>
                   <li>Siège social : <strong>Paris, France</strong></li>
                 </ul>
               </Article>
@@ -78,7 +78,7 @@ function LegalPage() {
               </Article>
 
               <Article id="pi" t="4. Propriété intellectuelle">
-                <p>L'ensemble des contenus du site (textes, images, vidéos, identité visuelle, code, structure) est la propriété exclusive de GND Consulting, sauf mention contraire, et protégé par le droit d'auteur — <strong>articles L.335-2 et suivants du Code de la propriété intellectuelle</strong>.</p>
+                <p>L'ensemble des contenus du site (textes, images, vidéos, identité visuelle, code, structure) est la propriété exclusive de GND Consulting, sauf mention contraire, et protégé par le droit d'auteur, <strong>articles L.335-2 et suivants du Code de la propriété intellectuelle</strong>.</p>
                 <p>Toute reproduction, représentation, modification ou exploitation, totale ou partielle, sans autorisation écrite préalable, est interdite et constitue une contrefaçon.</p>
                 <p>Les œuvres présentées dans la section Réalisations restent la propriété de leurs ayants-droits respectifs (artistes, clients, partenaires) et sont diffusées avec leur accord.</p>
               </Article>
@@ -86,7 +86,7 @@ function LegalPage() {
               <Article id="rgpd" t="5. Données personnelles (RGPD)">
                 <p>Conformément au <strong>Règlement Général sur la Protection des Données (UE 2016/679)</strong> et à la loi Informatique et Libertés du 6 janvier 1978 modifiée :</p>
                 <ul className="space-y-1 mt-3">
-                  <li><strong>Responsable du traitement :</strong> GND Consulting — Pierre Roodny (DPO), <a href="mailto:contact@gndconsulting.fr" className="underline decoration-accent underline-offset-4">contact@gndconsulting.fr</a>.</li>
+                  <li><strong>Responsable du traitement :</strong> GND Consulting, Pierre Roodny (DPO), <a href="mailto:contact@gndconsulting.fr" className="underline decoration-accent underline-offset-4">contact@gndconsulting.fr</a>.</li>
                   <li><strong>Données collectées :</strong> nom, prénom, email, téléphone, entreprise, contenu du message, données de navigation.</li>
                   <li><strong>Finalités :</strong> réponse aux demandes, gestion de la relation client, obligations légales et comptables, amélioration du site.</li>
                   <li><strong>Bases légales :</strong> consentement, exécution contractuelle, obligation légale et intérêt légitime (art. 6.1 a, b, c et f du RGPD).</li>
@@ -94,7 +94,7 @@ function LegalPage() {
                   <li><strong>Durées de conservation :</strong> prospects 3 ans après le dernier contact ; clients durée contractuelle + 5 ans ; données comptables 10 ans ; données de navigation 13 mois.</li>
                   <li><strong>Vos droits :</strong> accès, rectification, effacement, limitation, portabilité, opposition et retrait du consentement, en écrivant au DPO.</li>
                 </ul>
-                <p className="mt-3">En cas de désaccord, vous pouvez saisir la <strong>CNIL</strong> — 3 Place de Fontenoy, TSA 80715, 75334 Paris Cedex 07 — tél. 01 53 73 22 22 — <a href="https://www.cnil.fr" className="underline decoration-accent underline-offset-4">www.cnil.fr</a>.</p>
+                <p className="mt-3">En cas de désaccord, vous pouvez saisir la <strong>CNIL</strong>, 3 Place de Fontenoy, TSA 80715, 75334 Paris Cedex 07, tél. 01 53 73 22 22, <a href="https://www.cnil.fr" className="underline decoration-accent underline-offset-4">www.cnil.fr</a>.</p>
               </Article>
 
               <Article id="cookies" t="6. Cookies">
@@ -103,12 +103,12 @@ function LegalPage() {
               </Article>
 
               <Article id="ia" t="7. Intelligence artificielle · AI Act">
-                <p>GND Consulting intègre des outils d'intelligence artificielle dans sa chaîne créative, dans le respect du <strong>RGPD et du règlement européen sur l'IA (Règlement UE 2024/1689 — AI Act, entré en vigueur en août 2024)</strong>.</p>
+                <p>GND Consulting intègre des outils d'intelligence artificielle dans sa chaîne créative, dans le respect du <strong>RGPD et du règlement européen sur l'IA (Règlement UE 2024/1689, AI Act, entré en vigueur en août 2024)</strong>.</p>
                 <ul className="space-y-1 mt-3">
                   <li>Usage éthique, transparent et sécurisé ; usages classifiés acceptables uniquement, jamais à haut risque.</li>
                   <li>Aucune donnée client n'est utilisée pour entraîner des modèles tiers sans consentement explicite.</li>
                   <li>Mention transparente lorsqu'un contenu est généré ou assisté par IA, le cas échéant.</li>
-                  <li>Décision créative finale toujours humaine — aucun arbitrage final laissé à un système automatisé seul.</li>
+                  <li>Décision créative finale toujours humaine, aucun arbitrage final laissé à un système automatisé seul.</li>
                 </ul>
               </Article>
 
@@ -159,7 +159,7 @@ function NotFoundPage() {
           </div>
           <div>
             <Kicker>Page introuvable</Kicker>
-            <h1 className="display text-5xl md:text-6xl mt-5 text-text-strong">Le contenu que vous cherchez s'est <span className="italic">échappé</span>.</h1>
+            <h1 className="display text-5xl md:text-6xl mt-5 text-text-strong">Le contenu que vous cherchez s'est <span className="italic text-accent">échappé</span>.</h1>
             <p className="mt-6 text-text text-lg leading-relaxed max-w-md">Soit l'URL est erronée, soit nous avons réorganisé le site. Retournez à l'accueil ou explorez par section.</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Btn href="#/" variant="primary">Retour à l'accueil</Btn>

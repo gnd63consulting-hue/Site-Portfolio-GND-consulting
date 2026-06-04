@@ -1,4 +1,4 @@
-/* HeroScroll — Chicken Drive-style frame-sequence scroll-scrub hero.
+/* HeroScroll, Chicken Drive-style frame-sequence scroll-scrub hero.
    3 couches d'animation :
    - Couche 1 (idle) : visor pulse via CSS overlay, particules déjà rendues dans les frames
    - Couche 2 (scroll-scrub) : GSAP ScrollTrigger pinné sur la section parente, mappe le
@@ -87,7 +87,7 @@ export function HeroScroll({ pinTargetSelector = 'section.hero-scroll-root', cla
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  /* Canvas sizing — fixed internal resolution to match captured frames (1920×1080).
+  /* Canvas sizing, fixed internal resolution to match captured frames (1920×1080).
      CSS scales to fill container. The browser's hardware-accelerated GPU scaling is
      way more efficient than redrawing at every viewport size. */
   React.useEffect(() => {
@@ -141,7 +141,7 @@ export function HeroScroll({ pinTargetSelector = 'section.hero-scroll-root', cla
     };
   }, [framesUsable, pinTargetSelector]);
 
-  /* Mouse parallax — listens window-wide, but only applies subtle transform to
+  /* Mouse parallax, listens window-wide, but only applies subtle transform to
      this wrapper. Throttled via requestAnimationFrame for smoothness. */
   React.useEffect(() => {
     let raf = 0;
@@ -173,14 +173,14 @@ export function HeroScroll({ pinTargetSelector = 'section.hero-scroll-root', cla
         transition: 'transform 200ms ease-out',
       }}
     >
-      {/* Frame canvas — base layer */}
+      {/* Frame canvas, base layer */}
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full"
         style={{ objectFit: 'cover' }}
       />
 
-      {/* Couche 1 — visor pulse overlay (idle motion). Radial gradient orange placed
+      {/* Couche 1, visor pulse overlay (idle motion). Radial gradient orange placed
           where the visor sits in the frame composition (~55% x, 38% y). */}
       <div
         className="absolute inset-0 pointer-events-none mix-blend-screen"

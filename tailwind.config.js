@@ -1,6 +1,14 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  // Safelist : classes générées dynamiquement (template literals dans data) que
+  // le JIT scanner ne peut pas détecter statiquement. Utilisé par
+  // InteractiveBentoGallery (`item.span` strings) qui définit col-span/row-span
+  // par data au runtime.
+  safelist: [
+    { pattern: /^(sm|md):col-span-[1-4]$/ },
+    { pattern: /^(sm|md):row-span-[1-4]$/ },
+  ],
   theme: {
     extend: {
       screens: {

@@ -1,4 +1,4 @@
-/* /contact — form + scheduler — ported to ES modules (.form-input now lives in refonte.css) */
+/* /contact, form + scheduler, ported to ES modules (.form-input now lives in refonte.css) */
 import * as React from 'react';
 import { Container, Kicker, CinematicHero } from '../ui';
 import { Icons } from '../icons';
@@ -31,7 +31,7 @@ function ContactPage() {
       <CinematicHero
         kicker="Contact"
         eyebrow="contact"
-        title={<>Parlons de votre<br/><span className="italic">projet</span>.</>}
+        title={<>Parlons de votre<br/><span className="italic text-accent">projet</span>.</>}
         subtitle={<>Prêt à donner vie à vos idées créatives ? Partagez votre vision, nous revenons vers vous <strong className="text-bg">sous 24h</strong>.</>}
         badges={["Réponse sous 24h", "Devis 48h", "Sans engagement"]}
         ctas={<>
@@ -41,15 +41,15 @@ function ContactPage() {
         media={
           <div className="space-y-3 max-w-[420px] mx-auto">
             <div className="rounded-2xl bg-bg/95 p-5 shadow-2xl shadow-black/40">
-              <div className="kicker">— email</div>
+              <div className="kicker">email</div>
               <div className="mt-2 text-text-strong font-medium">contact@gndconsulting.fr</div>
             </div>
             <div className="rounded-2xl bg-text-strong/80 border border-bg/15 backdrop-blur p-5">
-              <div className="kicker !text-bg/55">— téléphone</div>
+              <div className="kicker !text-bg/55">téléphone</div>
               <div className="mt-2 text-bg font-medium">07 59 50 63 22</div>
             </div>
             <div className="rounded-2xl bg-accent/95 p-5">
-              <div className="kicker !text-text-strong/70">— studio</div>
+              <div className="kicker !text-text-strong/70">studio</div>
               <div className="mt-2 text-text-strong font-medium">Paris, France · sur RDV</div>
             </div>
           </div>
@@ -76,7 +76,7 @@ function ContactPage() {
                 ) : (
                   <>
                     <Kicker>Brief rapide</Kicker>
-                    <h2 className="display text-3xl text-text-strong mt-3">Votre projet en quelques lignes</h2>
+                    <h2 className="display text-3xl text-text-strong mt-3">Votre projet en quelques lignes.</h2>
                     <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-5">
                       <Field label="Nom complet*" id="name" error={errors.name}>
                         <input id="name" value={form.name} onChange={e => set("name", e.target.value)}
@@ -90,7 +90,7 @@ function ContactPage() {
                         <div className="relative">
                           <select id="service" value={form.service} onChange={e => set("service", e.target.value)}
                             className="form-input appearance-none pr-10">
-                            <option value="">— Sélectionnez —</option>
+                            <option value="">Sélectionnez…</option>
                             <option>Sites Vitrines</option>
                             <option>Design & Identité Visuelle</option>
                             <option>Motion Design</option>
@@ -176,7 +176,7 @@ function Scheduler() {
         <div className="flex items-start justify-between">
           <div>
             <div className="kicker text-bg/55">Réserver un échange</div>
-            <div className="display text-2xl mt-2">30 min — sans engagement</div>
+            <div className="display text-2xl mt-2">30 min, sans engagement</div>
           </div>
           <Icons.Calendar size={22} className="text-accent"/>
         </div>

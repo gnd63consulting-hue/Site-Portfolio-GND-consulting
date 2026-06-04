@@ -1,6 +1,20 @@
-/* /services/sites-vitrines — pricing-driven service page — ported to ES modules */
-import { Section, Container, Kicker, Btn, Faq, ImgPlaceholder, CtaBand, CinematicHero } from '../ui';
+/* /services/sites-vitrines, pricing-driven service page, ported to ES modules */
+import { Section, Container, Kicker, Faq } from '../ui';
+import { FloatingCtaBand } from '../components/FloatingCtaBand';
 import { Icons } from '../icons';
+import { HeroBuildUpSV } from '../components/HeroBuildUpSV';
+import { BenefitsBlock } from '../components/BenefitsBlock';
+import { IntegrationsStrip } from '../components/IntegrationsStrip';
+import { WithoutWithSite } from '../components/WithoutWithSite';
+import { VerticalsPromises } from '../components/VerticalsPromises';
+import { MarketComparison } from '../components/MarketComparison';
+import { HumanAiBlock } from '../components/HumanAiBlock';
+import { GuaranteesBlock } from '../components/GuaranteesBlock';
+import { OwnershipBlock } from '../components/OwnershipBlock';
+import { WhyGndBlock } from '../components/WhyGndBlock';
+import { ProcessCarousel } from '../components/ProcessCarousel';
+import { MarqueeCTA } from '../components/MarqueeCTA';
+import { PricingCards } from '@/components/ui/pricing-component';
 
 const PLANS = [
   {
@@ -60,7 +74,7 @@ function PricingGrid() {
           <div className="lg:col-span-7">
             <Kicker>Formules</Kicker>
             <h2 className="display text-5xl md:text-7xl mt-5 text-text-strong">
-              Trois formules <span className="italic">claires</span>.
+              Trois formules <span className="italic text-accent">claires</span>.
             </h2>
           </div>
           <p className="lg:col-span-5 text-text leading-relaxed">
@@ -68,46 +82,7 @@ function PricingGrid() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-5 md:gap-6">
-          {PLANS.map(p => (
-            <article key={p.id}
-              className={`relative rounded-[28px] p-7 md:p-9 flex flex-col card-hover
-                ${p.featured ? "bg-text-strong text-bg ring-1 ring-accent shadow-2xl shadow-text/30" : "surface-card"}`}>
-              {p.featured && (
-                <span className="absolute -top-3 left-7 inline-flex items-center gap-1.5 bg-accent text-text-strong text-xs font-medium px-3 py-1 rounded-full">
-                  <Icons.Sparkles size={12}/> {p.badge}
-                </span>
-              )}
-              <div className="flex items-start justify-between">
-                <div>
-                  <div className={`label-mono ${p.featured ? "text-bg/60" : ""}`}>{p.ideal}</div>
-                  <h3 className={`display text-3xl md:text-4xl mt-3 ${p.featured ? "text-bg" : "text-text-strong"}`}>{p.name}</h3>
-                </div>
-              </div>
-
-              <div className="mt-8 flex items-end gap-2">
-                <span className={`label-mono ${p.featured ? "text-bg/60" : ""}`}>à partir de</span>
-              </div>
-              <div className="flex items-baseline gap-1 mt-1">
-                <span className={`num-display text-6xl md:text-7xl ${p.featured ? "text-bg" : "text-text-strong"}`}>{p.from}</span>
-                <span className={`display text-3xl ${p.featured ? "text-accent" : "text-accent-deep"}`}>€</span>
-              </div>
-
-              <ul className={`mt-7 space-y-3 ${p.featured ? "text-bg/85" : "text-text"} text-sm`}>
-                {p.features.map(f => (
-                  <li key={f} className="flex items-start gap-2.5">
-                    <Icons.Check size={16} className={`mt-0.5 shrink-0 ${p.featured ? "text-accent" : "text-accent-deep"}`}/>
-                    <span>{f}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <a href="#/contact" className={`btn mt-8 justify-center ${p.featured ? "btn-primary" : "btn-secondary"}`}>
-                Demander un devis <Icons.ArrowUpRight size={14}/>
-              </a>
-            </article>
-          ))}
-        </div>
+        <PricingCards plans={PLANS} ctaLabel="Demander un devis" ctaHref="#/contact" />
 
         {/* option + mention */}
         <div className="mt-8 surface-card p-5 md:p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -122,7 +97,7 @@ function PricingGrid() {
         </div>
 
         <p className="mt-6 text-sm text-text-muted max-w-3xl">
-          Tarifs indicatifs, non contractuels. Devis personnalisé sur demande. TVA non applicable — Art. 293 B du CGI.
+          Tarifs indicatifs, non contractuels. Devis personnalisé sur demande. TVA non applicable, Art. 293 B du CGI.
         </p>
       </Container>
     </Section>
@@ -136,107 +111,80 @@ function SitesVitrinesPage() {
     { t:"Paiement en 2 fois", d:"50 % commande / 50 % livraison.", i: Icons.Sparkles },
     { t:"Modifications sur devis", d:"Une évolution ? Devis transparent.", i: Icons.Layers },
   ];
-  const process = [
-    { n:"01", t:"Brief", d:"Vos besoins, votre métier, vos références. 30 min en visio." },
-    { n:"02", t:"Maquette", d:"Mockup desktop + mobile sous 5 jours, 2 rounds inclus." },
-    { n:"03", t:"Intégration", d:"Développement, SEO, optimisations, hébergement." },
-    { n:"04", t:"Livraison", d:"Mise en ligne, formation, transfert des accès." },
-  ];
-
   return (
     <main id="main">
-      <CinematicHero
-        kicker="Sites vitrines"
-        eyebrow="services / sites vitrines"
-        title={<>Votre site,<br/><span className="italic">clé en main</span>.</>}
-        subtitle="Un site professionnel, rapide, optimisé Google — livré en 1 à 2 semaines. Pas d'abonnement, vous êtes propriétaire."
-        badges={["À partir de 800 €", "Livraison 1–2 sem.", "SEO inclus"]}
-        ctas={<>
-          <Btn href="#tarifs" variant="primary">Voir les formules</Btn>
-          <a href="#/contact" className="btn !bg-bg/10 !text-bg !border !border-bg/20 hover:!bg-bg/15">Demander un devis <Icons.ArrowUpRight size={14}/></a>
-        </>}
-        media={
-          <div className="relative max-w-[480px] mx-auto">
-            <div className="absolute -inset-4 rounded-3xl"
-              style={{ background:'radial-gradient(circle at 50% 50%, rgba(255,149,79,.35), transparent 70%)', filter:'blur(16px)' }}></div>
-            <div className="relative rounded-3xl bg-bg/95 p-3 shadow-2xl shadow-black/40">
-              <div className="rounded-2xl overflow-hidden bg-text-strong">
-                <div className="flex items-center gap-1.5 px-4 py-3 border-b border-bg/10 bg-text-strong">
-                  <span className="w-2.5 h-2.5 rounded-full bg-accent"></span>
-                  <span className="w-2.5 h-2.5 rounded-full bg-bg/30"></span>
-                  <span className="w-2.5 h-2.5 rounded-full bg-bg/30"></span>
-                  <span className="ml-3 label-mono !text-bg/60">votresite.fr</span>
-                </div>
-                <ImgPlaceholder label="[ maquette site vitrine ]" ratio="4/3" rounded="rounded-none"/>
-              </div>
-            </div>
-            <div className="absolute -bottom-5 -left-5 bg-accent text-text-strong px-5 py-3 rounded-full text-sm font-medium shadow-2xl">
-              Livré en 1–2 semaines
-            </div>
-          </div>
-        }
-        footerLabel="services · sites vitrines"
-      />
+      <HeroBuildUpSV />
 
-      {/* benefits */}
-      <Section className="py-20">
-        <Container>
-          <div className="grid md:grid-cols-4 gap-5">
-            {benefits.map(b => {
-              const Ico = b.i;
-              return (
-                <div key={b.t} className="surface-card p-6 md:p-7">
-                  <span className="w-10 h-10 rounded-full bg-accent/15 text-accent-deep inline-flex items-center justify-center"><Ico size={18}/></span>
-                  <div className="display text-2xl text-text-strong mt-5">{b.t}</div>
-                  <p className="mt-2 text-sm text-text leading-relaxed">{b.d}</p>
-                </div>
-              );
-            })}
-          </div>
-        </Container>
-      </Section>
+      {/* 0.0 Marquee CTA, bandeau partagé entre Hero et boutique hero */}
+      <MarqueeCTA />
 
+      {/* 0. Pourquoi GND, état d'esprit / bio Roodny (remonté post-hero) */}
+      <WhyGndBlock />
+
+      {/* 1. Benefits, capsules néomorphiques anim */}
+      <BenefitsBlock />
+
+      {/* 3. Sans site / Avec site, PAS framework punch */}
+      <WithoutWithSite />
+
+      {/* 4. Promesses par verticale (5 lignes resto/coiffeur/auto-éc/artisan/commerces) */}
+      <VerticalsPromises />
+
+      {/* 5. Pricing, 3 formules */}
       <PricingGrid/>
 
-      {/* process */}
-      <Section className="py-24 md:py-32">
-        <Container>
-          <div className="max-w-3xl">
-            <Kicker>Process</Kicker>
-            <h2 className="display text-5xl md:text-7xl mt-5 text-text-strong">Du brief à la <span className="italic">mise en ligne</span>.</h2>
-          </div>
-          <div className="mt-14 grid md:grid-cols-4 gap-px bg-surface/70 border hairline border rounded-3xl overflow-hidden">
-            {process.map(p => (
-              <div key={p.n} className="bg-bg p-7 md:p-8 hover:bg-bg-alt transition">
-                <span className="num-display text-6xl text-accent">{p.n}</span>
-                <h3 className="display text-2xl text-text-strong mt-5">{p.t}</h3>
-                <p className="mt-2 text-sm text-text leading-relaxed">{p.d}</p>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </Section>
+      {/* 6. Process, carousel animé 21st.dev adapté charte GND */}
+      <ProcessCarousel />
 
-      {/* faq */}
+      {/* 7. Comparatif marché honnête */}
+      <MarketComparison />
+
+      {/* 8. Humain × IA en pratique */}
+      <HumanAiBlock />
+
+      {/* 9. Garanties GND */}
+      <GuaranteesBlock />
+
+      {/* 10. Ownership, "Le site reste à vous" */}
+      <OwnershipBlock />
+
+      {/* 12. Vos outils connectés, slider cinematic sparkles */}
+      <IntegrationsStrip />
+
+      {/* 13. FAQ étendue 11 questions */}
       <Section bg="alt" className="py-24 md:py-32">
         <Container>
           <div className="grid lg:grid-cols-12 gap-12">
             <div className="lg:col-span-4">
               <Kicker>Questions sites vitrines</Kicker>
-              <h2 className="display text-5xl md:text-6xl mt-5 text-text-strong">À <span className="italic">savoir</span>.</h2>
+              <h2 className="display text-5xl md:text-6xl mt-5 text-text-strong leading-tight">À <span className="italic text-accent">savoir</span>.</h2>
+              <p className="mt-5 text-text leading-relaxed">
+                Si une question manque, posez-la directement. Réponse écrite sous 24 h.
+              </p>
             </div>
             <div className="lg:col-span-8">
-              <Faq q="Suis-je vraiment propriétaire du site ?" a="Oui. Le nom de domaine est enregistré à votre nom, vous recevez tous les accès (hébergement, back-office, code source). Aucune dépendance à GND."/>
-              <Faq q="Comment se passe le paiement ?" a="50 % à la commande, 50 % à la livraison. Facture standard, virement bancaire. TVA non applicable (Art. 293 B du CGI)."/>
-              <Faq q="Et si je veux des modifications plus tard ?" a="Toutes les évolutions font l'objet d'un devis transparent. Vous restez libre de confier la maintenance à qui vous voulez."/>
-              <Faq q="Le SEO est-il vraiment inclus ?" a="Oui : optimisations techniques (vitesse, balises, structure), soumission Google Search Console, déclaration Google Business si pertinent."/>
-              <Faq q="Et si je n'ai pas de contenu ?" a="Nous vous accompagnons sur la rédaction des textes et la photographie (en option). Pour les visuels, voir notre service Photographie."/>
+              <Faq q="Suis-je vraiment propriétaire du site ?" a="Oui. Le nom de domaine est enregistré à votre nom (WHOIS vérifiable), vous recevez tous les accès, hébergement, back-office, code source. Aucune dépendance à GND. Vous pouvez quitter, transférer, revendre."/>
+              <Faq q="Quel est le délai de livraison réel ?" a="14 jours ouvrés en moyenne (Brief → Maquette → Dev → Mise en ligne). Si on dépasse, on vous le dit dès le départ avec la raison."/>
+              <Faq q="Comment se passe le paiement ?" a="50 % à la commande (déclenche la production), 50 % à la livraison. Facture standard, virement bancaire. TVA non applicable (Art. 293 B du CGI)."/>
+              <Faq q="Et si je veux des modifications plus tard ?" a="Toutes les évolutions font l'objet d'un devis transparent (à partir de 50 €/intervention). Pas de forfait annuel imposé. Vous restez libre de confier la maintenance à qui vous voulez."/>
+              <Faq q="Pourquoi pas Wix, Squarespace ou Shopify ?" a={<>Les builders DIY sont bridés sur le SEO local, verrouillent vos données et imposent un abonnement à vie. Notre site est <strong>en propriété</strong>, optimisé Google, sans abonnement. Wix est OK pour tester, GND est fait pour exister sur Google.</>}/>
+              <Faq q="Le SEO local est-il vraiment inclus ?" a="Oui. Optimisations techniques (vitesse, balises, structure), Schema.org Restaurant complet (Menu + FAQ + AggregateRating), soumission Google Search Console, configuration Google Business Profile. Garantie : si vous n'apparaissez pas page 1 sur « votre métier + votre ville » sous 90 jours, on retravaille la SEO sans surcoût."/>
+              <Faq q="Vous gérez les réservations / commandes en ligne ?" a="Sur la formule Vitrine + Réservation (1 500 €), on intègre le widget Zenchef, TheFork ou un équivalent (sans commission). Sur le Pack Complet (2 500 €), on intègre Stripe + Collectly pour le click & collect."/>
+              <Faq q="Et la conformité légale (NF525, RGPD, mentions) ?" a={<>Mentions légales + CGV + bandeau RGPD inclus. <strong>Important pour les restaurants</strong> : la norme caisse NF525 est obligatoire depuis le 1er mars 2026 (amende jusqu'à 7 500 €). Notre rôle est de connecter votre caisse NF525 existante, pas de la remplacer. On vous oriente si vous n'en avez pas.</>}/>
+              <Faq q="Vous êtes seul ou une équipe ?" a="GND est une agence boutique. Roodny pilote tous les projets (briefing, design, relation client). L'IA accélère certaines productions (génération de maquettes, copy, photo si besoin). Vous avez un seul interlocuteur de bout en bout."/>
+              <Faq q="Et si je n'ai pas de contenu (textes, photos) ?" a="On vous accompagne sur la rédaction (vocabulaire de votre métier, ton de la maison). Pour les photos, on peut faire le shooting en option (voir notre service Photographie) ou utiliser des visuels existants."/>
+              <Faq q="Vous travaillez avec quels secteurs ?" a="Restaurants, cafés, coiffeurs, instituts de beauté, auto-écoles, artisans BTP, commerces de proximité, indépendants. Si votre métier n'apparaît pas, demandez, on s'adapte."/>
             </div>
           </div>
         </Container>
       </Section>
 
-      <CtaBand title="Prêt à lancer votre site ?" cta="Demander un devis personnalisé" sub="Réponse sous 24h, devis détaillé sous 48h."/>
+      <FloatingCtaBand
+        prefix="Prêt à lancer votre"
+        rotatingWords={['site ?', 'vitrine ?', 'projet ?', 'présence ?', 'histoire ?']}
+        sub="Réponse sous 24 h. Devis détaillé sous 48 h. Sans engagement."
+        primaryCta={{ label: 'Demander un devis', href: '#/contact' }}
+      />
     </main>
   );
 }

@@ -1,4 +1,4 @@
-/* === GND Refonte — Charte CRÈME ===
+/* === GND Refonte, Charte CRÈME ===
    Custom CSS ported verbatim from the validated prototype.
    Loaded AFTER Tailwind (index.css) so :root cream vars override the old blue Stitch vars. */
 
@@ -53,7 +53,7 @@ body {
 /* tag chip */
 .chip { display:inline-flex; align-items:center; gap:.4rem; padding:6px 12px; border-radius:999px; background:rgba(83,36,24,.06); color:var(--text); font-size:12px; font-weight:500; white-space:nowrap; }
 
-/* hero wordmark sizing — fluid */
+/* hero wordmark sizing, fluid */
 .hero-wordmark { font-size: clamp(180px, 33vw, 600px); }
 .hero-wordmark-sm { font-size: clamp(120px, 22vw, 380px); }
 

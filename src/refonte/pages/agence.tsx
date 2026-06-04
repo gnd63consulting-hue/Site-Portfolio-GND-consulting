@@ -1,14 +1,15 @@
-/* /agence — Manifeste Humain × IA + fondateur — ported to ES modules */
-import { Section, Container, Kicker, Btn, ImgPlaceholder, CtaBand, CinematicHero } from '../ui';
+/* /agence, Manifeste Humain × IA + fondateur, ported to ES modules */
+import { Section, Container, Kicker, Btn, ImgPlaceholder, CinematicHero } from '../ui';
+import { FloatingCtaBand } from '../components/FloatingCtaBand';
 import { Icons } from '../icons';
 import { TestimonialsBlock } from './home';
 
 function HeroAgence() {
   return (
     <CinematicHero
-      kicker="L'agence — manifeste"
+      kicker="L'agence, manifeste"
       eyebrow="l'agence"
-      title={<>Humain<span className="text-accent"> × </span><span className="italic">IA</span>.</>}
+      title={<>Humain<span className="text-accent"> × </span><span className="italic text-accent">IA</span>.</>}
       subtitle={<>GND Consulting est un studio créatif parisien fondé en 2024. Notre signature : <strong className="text-bg">l'humain décide, l'IA accélère</strong>. Une méthode revendiquée, jamais cachée.</>}
       badges={["Paris · FR", "Est. 2024", "AI Act conforme"]}
       ctas={<>
@@ -32,7 +33,7 @@ function ManifestoBlock() {
         <div className="max-w-3xl">
           <Kicker>Méthode signée</Kicker>
           <h2 className="display text-5xl md:text-7xl mt-5 text-text-strong">
-            Trois temps, une <span className="italic">conviction</span>.
+            Trois temps, une <span className="italic text-accent">conviction</span>.
           </h2>
           <p className="mt-6 text-lg text-text leading-relaxed">
             Ce que nous appelons <strong>Humain × IA</strong> n'est pas un argument marketing. C'est l'organisation concrète de notre studio.
@@ -73,11 +74,11 @@ function FounderBlock() {
           <div className="lg:col-span-7">
             <Kicker>Le fondateur</Kicker>
             <h2 className="display text-5xl md:text-6xl lg:text-7xl mt-5 text-text-strong">
-              Un studio <span className="italic">incarné</span>.
+              Un studio <span className="italic text-accent">incarné</span>.
             </h2>
             <div className="mt-7 space-y-5 text-lg text-text leading-relaxed max-w-xl">
               <p>Roodny Pierre fonde GND Consulting à Paris en 2024, après plusieurs années en production audiovisuelle, motion design et direction artistique pour des artistes, des marques et des institutions.</p>
-              <p>La conviction : <strong className="text-text-strong">une création modulable, exigeante, augmentée par l'IA</strong> — sans renoncer à la signature humaine. Un seul interlocuteur, six métiers internalisés, des engagements tenus.</p>
+              <p>La conviction : <strong className="text-text-strong">une création modulable, exigeante, augmentée par l'IA</strong>, sans renoncer à la signature humaine. Un seul interlocuteur, six métiers internalisés, des engagements tenus.</p>
               <p className="text-text-muted italic">« Nous ne vendons pas l'IA. Nous l'utilisons. La nuance fait toute la différence. »</p>
             </div>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -104,7 +105,7 @@ function EthicsBlock() {
         <div className="grid lg:grid-cols-12 gap-12">
           <div className="lg:col-span-5">
             <Kicker className="text-bg/60">Engagement éthique</Kicker>
-            <h2 className="display text-5xl md:text-6xl mt-5 text-bg">L'IA, <span className="text-accent italic">avec</span> garde-fous.</h2>
+            <h2 className="display text-5xl md:text-6xl mt-5 text-bg">L'IA, avec <span className="text-accent italic">garde-fous</span>.</h2>
             <p className="mt-6 text-bg/70 text-lg leading-relaxed max-w-md">
               Ce que la concurrence noie dans des pages légales, nous l'affichons. Quatre engagements concrets, vérifiables.
             </p>
@@ -136,7 +137,12 @@ function AgencePage() {
       <FounderBlock/>
       <EthicsBlock/>
       <TestimonialsBlock/>
-      <CtaBand title="On vous écoute." sub="Présentez-nous votre métier, votre contrainte, votre cible. Le reste, on le construit ensemble." cta="Démarrer un projet"/>
+      <FloatingCtaBand
+        prefix="On vous"
+        rotatingWords={['écoute.', 'rencontre.', 'comprend.', 'accompagne.', 'imagine avec vous.']}
+        sub="Présentez-nous votre métier, votre contrainte, votre cible. Le reste, on le construit ensemble."
+        primaryCta={{ label: 'Démarrer un projet', href: '#/contact' }}
+      />
     </main>
   );
 }

@@ -1,7 +1,8 @@
-/* /realisations + project detail — REAL portfolio (live src/data/videosData.js + PortfolioPage).
+/* /realisations + project detail, REAL portfolio (live src/data/videosData.js + PortfolioPage).
    Media lazy / poster-first / click-to-play (jamais bloquant). */
 import * as React from 'react';
-import { Section, Container, Kicker, Btn, Tag, ImgPlaceholder, CtaBand, CinematicHero } from '../ui';
+import { Section, Container, Kicker, Btn, Tag, ImgPlaceholder, CinematicHero } from '../ui';
+import { FloatingCtaBand } from '../components/FloatingCtaBand';
 import { Icons } from '../icons';
 
 const SB = "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/";
@@ -13,19 +14,19 @@ const FILTERS = ["Tout", "Clip", "Live", "Production", "Photo"];
 
 const ALL_PROJECTS: any[] = [
   // ——— 9 real video projects ———
-  { id:"esther-seems", title:"Esther Seems", sub:"BOBINE", cat:"Clip", year:"2024", ratio:"4/5", credit:"Réalisation · Jonathan Ransau", img: yt("6oaO6YoWjyQ"), youtube:"6oaO6YoWjyQ", desc:"Clip musical de l'artiste Esther Seems — esthétique hip-hop/R&B sobre et émotive, en hommage à un proche disparu. Réalisé en collaboration avec AMS Visions." },
-  { id:"trinity-rebel", title:"Trinity Rebel ft Dafxcx", sub:"L'Univers Officiel", cat:"Clip", year:"2025", ratio:"4/5", credit:"Réalisation · Julien Ancieaux", img: COVER, video: SB+"portfolio-videos/trinity_rebel_univers_officiel.mp4", desc:"Clip musical officiel — sonorités chaleureuses et festives, inspirées des rythmes urbains et caribéens." },
-  { id:"sabay-2023", title:"Sabay Festival 2023", sub:"Grande Pagode de Vincennes", cat:"Live", year:"2023", ratio:"16/9", featured:true, credit:"Production · GND Consulting", img:"https://img.youtube.com/vi/Vyhz7_D4fFU/hqdefault.jpg", youtube:"Vyhz7_D4fFU", desc:"Captation et aftermovie officiel du Sabay Festival — célébration des traditions cambodgiennes à la Grande Pagode de Vincennes." },
+  { id:"esther-seems", title:"Esther Seems", sub:"BOBINE", cat:"Clip", year:"2024", ratio:"4/5", credit:"Réalisation · Jonathan Ransau", img: yt("6oaO6YoWjyQ"), youtube:"6oaO6YoWjyQ", desc:"Clip musical de l'artiste Esther Seems, esthétique hip-hop/R&B sobre et émotive, en hommage à un proche disparu. Réalisé en collaboration avec AMS Visions." },
+  { id:"trinity-rebel", title:"Trinity Rebel ft Dafxcx", sub:"L'Univers Officiel", cat:"Clip", year:"2025", ratio:"4/5", credit:"Réalisation · Julien Ancieaux", img: COVER, video: SB+"portfolio-videos/trinity_rebel_univers_officiel.mp4", desc:"Clip musical officiel, sonorités chaleureuses et festives, inspirées des rythmes urbains et caribéens." },
+  { id:"sabay-2023", title:"Sabay Festival 2023", sub:"Grande Pagode de Vincennes", cat:"Live", year:"2023", ratio:"16/9", featured:true, credit:"Production · GND Consulting", img:"https://img.youtube.com/vi/Vyhz7_D4fFU/hqdefault.jpg", youtube:"Vyhz7_D4fFU", desc:"Captation et aftermovie officiel du Sabay Festival, célébration des traditions cambodgiennes à la Grande Pagode de Vincennes." },
   { id:"concert-ali", title:"Concert Ali 45 Scientific", sub:"Café LaPêche · Montreuil", cat:"Live", year:"2024", ratio:"3/4", credit:"Captation · IAMTV / O2M / GND", img: COVER, video: SB+"portfolio-videos/Concert%20Ali.mp4", desc:"Captation live du concert d'Ali, figure du rap français et cofondateur du collectif 45 Scientific aux côtés de Booba." },
-  { id:"leyel-miel", title:"Leyel — Miel", sub:"Clip officiel", cat:"Clip", year:"2025", ratio:"4/5", credit:"Réalisation · Jonathan Ransau", img: yt("UbXQim7iNLI"), youtube:"UbXQim7iNLI", desc:"Clip officiel de l'artiste Leyel — variété française, mise en scène délicate. En collaboration avec O2M." },
+  { id:"leyel-miel", title:"Leyel, Miel", sub:"Clip officiel", cat:"Clip", year:"2025", ratio:"4/5", credit:"Réalisation · Jonathan Ransau", img: yt("UbXQim7iNLI"), youtube:"UbXQim7iNLI", desc:"Clip officiel de l'artiste Leyel, variété française, mise en scène délicate. En collaboration avec O2M." },
   { id:"cook-soul", title:"Cook & Soul", sub:"Kaoutar · Pékin Express", cat:"Production", year:"2024", ratio:"16/9", featured:true, credit:"Réalisation · Gwen Templier", img: yt("galhl8_dYyk"), youtube:"galhl8_dYyk", desc:"Émission musicale produite pour IAMTV, avec Kaoutar (Pékin Express). En collaboration avec O2M." },
-  { id:"yungcally", title:"Yungcally", sub:"Clip officiel", cat:"Clip", year:"2024", ratio:"1/1", credit:"Réalisation · Jonathan Ransau", img: COVER, video: SB+"portfolio-videos/jyfviku.mp4", desc:"Clip officiel de Yungcally, jeune artiste franco-américain — vibe Wiz Khalifa / Post Malone." },
-  { id:"sabay-2022", title:"Sabay Festival 2022", sub:"Grande Pagode de Vincennes", cat:"Live", year:"2022", ratio:"4/3", credit:"Production · GND Consulting", img: COVER, video: SB+"portfolio-videos/Thiek%20au%20Sabay%20Festival%202022%20Haute%20def%204k%20v2.mp4", desc:"Aftermovie officiel du Sabay Festival 2022 — captation 4K." },
-  { id:"lanecdote", title:"L'Anecdote", sub:"Émission · interviews", cat:"Production", year:"2024", ratio:"16/9", credit:"Réalisation · GND Consulting", img: "https://img.youtube.com/vi/AGC_2cFHE_0/hqdefault.jpg", youtube:"AGC_2cFHE_0", desc:"Émission L'Anecdote — format original mêlant interviews et moments de partage." },
+  { id:"yungcally", title:"Yungcally", sub:"Clip officiel", cat:"Clip", year:"2024", ratio:"1/1", credit:"Réalisation · Jonathan Ransau", img: COVER, video: SB+"portfolio-videos/jyfviku.mp4", desc:"Clip officiel de Yungcally, jeune artiste franco-américain, vibe Wiz Khalifa / Post Malone." },
+  { id:"sabay-2022", title:"Sabay Festival 2022", sub:"Grande Pagode de Vincennes", cat:"Live", year:"2022", ratio:"4/3", credit:"Production · GND Consulting", img: COVER, video: SB+"portfolio-videos/Thiek%20au%20Sabay%20Festival%202022%20Haute%20def%204k%20v2.mp4", desc:"Aftermovie officiel du Sabay Festival 2022, captation 4K." },
+  { id:"lanecdote", title:"L'Anecdote", sub:"Émission · interviews", cat:"Production", year:"2024", ratio:"16/9", credit:"Réalisation · GND Consulting", img: "https://img.youtube.com/vi/AGC_2cFHE_0/hqdefault.jpg", youtube:"AGC_2cFHE_0", desc:"Émission L'Anecdote, format original mêlant interviews et moments de partage." },
   // ——— 10 real photo projects ———
-  { id:"masque-identite", title:"Masque & Identité", sub:"Portrait · Corporate", cat:"Photo", year:"", ratio:"4/5", img: ph("6F0A4251.jpg"), desc:"Direction artistique portrait — corporate." },
-  { id:"art-en-mouvement", title:"L'Art en Mouvement", sub:"Portrait · Créatif", cat:"Photo", year:"", ratio:"4/5", featured:true, img: ph("6F0A4135.jpg"), desc:"Série créative — portrait artistique." },
-  { id:"puissance-creative", title:"Puissance Créative", sub:"Portrait · Studio", cat:"Photo", year:"", ratio:"4/5", img: ph("6F0A4149.jpg"), desc:"Portrait studio — direction artistique." },
+  { id:"masque-identite", title:"Masque & Identité", sub:"Portrait · Corporate", cat:"Photo", year:"", ratio:"4/5", img: ph("6F0A4251.jpg"), desc:"Direction artistique portrait, corporate." },
+  { id:"art-en-mouvement", title:"L'Art en Mouvement", sub:"Portrait · Créatif", cat:"Photo", year:"", ratio:"4/5", featured:true, img: ph("6F0A4135.jpg"), desc:"Série créative, portrait artistique." },
+  { id:"puissance-creative", title:"Puissance Créative", sub:"Portrait · Studio", cat:"Photo", year:"", ratio:"4/5", img: ph("6F0A4149.jpg"), desc:"Portrait studio, direction artistique." },
   { id:"vision-masquee", title:"Vision Masquée", sub:"Portrait · Artistique", cat:"Photo", year:"", ratio:"4/5", img: ph("6F0A4267.jpg"), desc:"Portrait artistique." },
   { id:"saveurs", title:"Saveurs", sub:"Événementiel · Culinaire", cat:"Photo", year:"", ratio:"16/9", img: ph("6F0A1817.JPG"), desc:"Reportage événementiel culinaire." },
   { id:"instants", title:"Instants", sub:"Événementiel · Ambiance", cat:"Photo", year:"", ratio:"4/5", img: ph("6F0A1873%20-%20copie%202_1.jpg"), desc:"Captation d'ambiance événementielle." },
@@ -50,7 +51,7 @@ function RealisationsPage() {
       <CinematicHero
         kicker="Portfolio"
         eyebrow="réalisations"
-        title={<>Nos <span className="italic">réalisations</span>.</>}
+        title={<>Nos <span className="italic text-accent">réalisations</span>.</>}
         subtitle="Clips musicaux, captations live, motion design, photographie et identité visuelle : les projets qui illustrent notre savoir-faire créatif et technique. Tous menés en interne, du brief à la livraison."
         badges={["Clips", "Live", "Production", "Photo"]}
         ctas={<>
@@ -118,12 +119,17 @@ function RealisationsPage() {
         </Container>
       </Section>
 
-      <CtaBand title="Un projet en tête ?" sub="Discutons de votre vision et donnons vie à vos idées créatives." cta="Démarrer un projet"/>
+      <FloatingCtaBand
+        prefix="Un projet"
+        rotatingWords={['en tête ?', 'à concrétiser ?', 'à lancer ?', 'à imaginer ?', 'dans les cartons ?']}
+        sub="Discutons de votre vision et donnons vie à vos idées créatives."
+        primaryCta={{ label: 'Démarrer un projet', href: '#/contact' }}
+      />
     </main>
   );
 }
 
-/* Project detail — real synopsis + real credit, real media (click-to-play). No invented metrics. */
+/* Project detail, real synopsis + real credit, real media (click-to-play). No invented metrics. */
 function ProjectDetail({ id }: any) {
   const p = ALL_PROJECTS.find(x => x.id === id) || ALL_PROJECTS[0];
   const [playing, setPlaying] = React.useState(false);
@@ -178,7 +184,7 @@ function ProjectDetail({ id }: any) {
               <Kicker>Le projet</Kicker>
               <p className="display text-2xl md:text-4xl text-text-strong mt-6 leading-[1.2]">{p.desc}</p>
               <p className="mt-8 text-text leading-relaxed">
-                Production menée en interne par GND Consulting — direction créative humaine, exécution accélérée par l'IA quand pertinent. Brief, réalisation, post-production et livraison documentés, droits clairs.
+                Production menée en interne par GND Consulting, direction créative humaine, exécution accélérée par l'IA quand pertinent. Brief, réalisation, post-production et livraison documentés, droits clairs.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 {hasMedia && <button onClick={() => setPlaying(true)} className="btn btn-primary">Voir la vidéo <Icons.Play size={14}/></button>}
@@ -203,7 +209,12 @@ function ProjectDetail({ id }: any) {
         </Container>
       </Section>
 
-      <CtaBand title="Un projet dans le même esprit ?" cta="Démarrer un projet"/>
+      <FloatingCtaBand
+        prefix="Un projet dans le même"
+        rotatingWords={['esprit ?', 'ton ?', 'univers ?', 'registre ?', 'élan ?']}
+        sub="Discutons de votre vision."
+        primaryCta={{ label: 'Démarrer un projet', href: '#/contact' }}
+      />
     </main>
   );
 }

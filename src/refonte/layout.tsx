@@ -1,7 +1,8 @@
-/* Header + Footer — ported to ES modules (was window-global in prototype) */
+/* Header + Footer, ported to ES modules (was window-global in prototype) */
 import * as React from 'react';
 import { Container } from './ui';
 import { Icons } from './icons';
+import { SocialCard } from '@/components/ui/social-card';
 
 const NAV = [
   { to: "#/agence", label: "L'Agence" },
@@ -11,12 +12,10 @@ const NAV = [
 ];
 
 const SERVICES_MENU = [
-  { to: "#/services/sites-vitrines", label: "Sites Vitrines", num: "01", desc: "Clé en main · 1–2 sem." },
-  { to: "#/services/design-identite-visuelle", label: "Design & Identité", num: "02", desc: "Logos · chartes · supports" },
-  { to: "#/services/motion-design", label: "Motion Design", num: "03", desc: "Animation 2D · 3D · habillages" },
-  { to: "#/services/production-audiovisuelle", label: "Production Audiovisuelle", num: "04", desc: "Captation · clips · 4K/8K" },
-  { to: "#/services/photographie", label: "Photographie", num: "05", desc: "Direction artistique · studio" },
-  { to: "#/services/automatisation-ia", label: "Automatisation & IA", num: "06", desc: "Workflows · agents · audit" },
+  { to: "#/services/sites-vitrines", label: "Sites & SEO", num: "01", desc: "Sites vitrines · landing · SEO local" },
+  { to: "#/services/branding-identite", label: "Branding & Identité", num: "02", desc: "Marque · logo · charte · direction créative" },
+  { to: "#/services/audiovisuel", label: "Audiovisuel", num: "03", desc: "Vidéo · motion · photo · contenus sociaux" },
+  { to: "#/services/automatisation-ia", label: "Automatisation & IA", num: "04", desc: "Workflows · agents · audit & adoption" },
 ];
 
 function Header({ route }: any) {
@@ -31,7 +30,7 @@ function Header({ route }: any) {
   }, []);
   React.useEffect(() => { setOpen(false); setServices(false); }, [route]);
 
-  // Hero passé à cream — header doit être lisible (texte chocolat) en tout temps,
+  // Hero passé à cream, header doit être lisible (texte chocolat) en tout temps,
   // y compris au top de page. Plus de mode "onDark".
   const onDark = false;
   const txt = "text-text-strong";
@@ -46,10 +45,14 @@ function Header({ route }: any) {
   return (
     <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-300
       ${scrolled ? "bg-bg/85 backdrop-blur-md border-b hairline border-b" : "bg-transparent"}`}>
-      <div className="mx-auto max-w-[1500px] px-6 md:px-10 h-16 md:h-20 flex items-center justify-between">
-        <a href="#/" className="flex items-center gap-2.5 group focus-ring">
-          <span className={`display text-2xl md:text-[28px] tracking-mega ${txt}`}>GND</span>
-          <span className={`hidden sm:block label-mono text-[10px] pt-1 ${txtMuted}`}>— consulting</span>
+      <div className="mx-auto max-w-[1500px] px-6 md:px-10 h-20 md:h-24 flex items-center justify-between">
+        <a href="#/" className="flex items-center gap-2.5 group focus-ring" aria-label="GND Consulting, accueil">
+          <img
+            src="/assets/logos/gnd-logo-chocolat.png"
+            alt="GND Consulting"
+            className="h-24 md:h-28 w-auto select-none scale-[2.35] origin-left"
+            draggable={false}
+          />
         </a>
 
         <nav className="hidden lg:flex items-center gap-9">
@@ -98,7 +101,14 @@ function Header({ route }: any) {
       {open && (
         <div className="lg:hidden fixed inset-0 bg-bg z-50 anim-up overflow-y-auto">
           <div className="px-6 h-16 flex items-center justify-between border-b hairline border-b">
-            <a href="#/" onClick={() => setOpen(false)} className="display text-2xl">GND</a>
+            <a href="#/" onClick={() => setOpen(false)} className="inline-flex" aria-label="GND Consulting, accueil">
+              <img
+                src="/assets/logos/gnd-logo-chocolat.png"
+                alt="GND Consulting"
+                className="h-20 w-auto select-none scale-[2.0] origin-left"
+                draggable={false}
+              />
+            </a>
             <button aria-label="Fermer" onClick={() => setOpen(false)} className="w-10 h-10 rounded-full border hairline border inline-flex items-center justify-center">
               <Icons.X size={20}/>
             </button>
@@ -140,62 +150,220 @@ function Header({ route }: any) {
 
 function Footer() {
   const year = new Date().getFullYear();
+
+  // Local time Paris
+  const [parisTime, setParisTime] = React.useState('');
+  React.useEffect(() => {
+    const tick = () => {
+      const fmt = new Intl.DateTimeFormat('fr-FR', {
+        timeZone: 'Europe/Paris',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false,
+      });
+      setParisTime(fmt.format(new Date()));
+    };
+    tick();
+    const id = setInterval(tick, 30000);
+    return () => clearInterval(id);
+  }, []);
+
   return (
-    <footer className="bg-text-strong text-bg pt-24 pb-10">
-      <Container>
-        <div className="grid lg:grid-cols-[1.4fr_1fr_1fr_1fr] gap-12 lg:gap-8 pb-16 border-b border-bg/15">
-          <div className="space-y-6">
-            <div className="display text-5xl md:text-6xl tracking-mega">GND</div>
-            <p className="text-bg/70 max-w-md leading-relaxed">
-              Studio créatif parisien — production audiovisuelle, design, automatisation IA.
-              <span className="text-accent"> Humain × IA.</span>
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <a href="https://instagram.com/gndconsulting/" className="w-10 h-10 rounded-full border border-bg/20 inline-flex items-center justify-center hover:bg-bg/10 transition" aria-label="Instagram"><Icons.Instagram size={16}/></a>
-              <a href="https://linkedin.com/in/roodny-pierre" className="w-10 h-10 rounded-full border border-bg/20 inline-flex items-center justify-center hover:bg-bg/10 transition" aria-label="LinkedIn"><Icons.Linkedin size={16}/></a>
-              <a href="https://behance.net/gndconsulting" className="w-10 h-10 rounded-full border border-bg/20 inline-flex items-center justify-center hover:bg-bg/10 transition" aria-label="Behance"><Icons.Behance size={16}/></a>
-            </div>
+    <footer className="relative w-full overflow-hidden bg-text-strong text-bg rounded-t-[36px] md:rounded-t-[56px]">
+      <style>{`
+        @keyframes gnd-pulse-dot {
+          0%, 100% { opacity: 1; transform: scale(1); }
+          50% { opacity: 0.4; transform: scale(1.4); }
+        }
+        .gnd-pulse { animation: gnd-pulse-dot 1.8s ease-in-out infinite; }
+
+        /* Email mega - cursor-aware: clip-path reveals accent on hover */
+        .gnd-email-mega {
+          position: relative;
+          display: inline-block;
+          color: rgba(253,246,238,0.92);
+          background: linear-gradient(180deg, rgba(253,246,238,0.92) 0%, rgba(253,246,238,0.55) 100%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+          transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .gnd-email-mega::after {
+          content: attr(data-text);
+          position: absolute;
+          inset: 0;
+          color: #FF954F;
+          -webkit-text-fill-color: #FF954F;
+          clip-path: inset(100% 0 0 0);
+          transition: clip-path 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .gnd-email-mega:hover::after { clip-path: inset(0 0 0 0); }
+        .gnd-email-mega:hover { transform: translateY(-4px); }
+
+        /* GND mega watermark, infinite horizontal marquee scroll behind content */
+        @keyframes gnd-marquee-slide {
+          from { transform: translateX(0); }
+          to { transform: translateX(-50%); }
+        }
+        .gnd-watermark {
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 2vw;
+          width: 100%;
+          overflow: hidden;
+          pointer-events: none;
+          user-select: none;
+          z-index: 0;
+        }
+        .gnd-watermark-track {
+          display: inline-flex;
+          white-space: nowrap;
+          animation: gnd-marquee-slide 28s linear infinite;
+          will-change: transform;
+        }
+        .gnd-watermark-track span {
+          font-size: clamp(10rem, 26vw, 26rem);
+          line-height: 0.78;
+          letter-spacing: -0.05em;
+          font-weight: 700;
+          font-family: ui-serif, Georgia, 'Times New Roman', serif;
+          color: rgba(253,246,238,0.06);
+          padding-right: 0.3em;
+          display: inline-block;
+        }
+        .gnd-watermark-track .dot { color: rgba(255,149,79,0.35); }
+        @media (prefers-reduced-motion: reduce) {
+          .gnd-watermark-track { animation: none !important; }
+        }
+
+        /* Nav link underline draw */
+        .gnd-link {
+          position: relative;
+          padding-bottom: 2px;
+        }
+        .gnd-link::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          height: 1px;
+          background: currentColor;
+          opacity: 0.15;
+          transform-origin: right;
+          transform: scaleX(1);
+          transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s;
+        }
+        .gnd-link:hover::after {
+          opacity: 1;
+          color: #FF954F;
+          background: #FF954F;
+          transform-origin: left;
+          transform: scaleX(1);
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .gnd-pulse { animation: none !important; }
+        }
+      `}</style>
+
+      {/* GND mega watermark, infinite horizontal marquee scroll (Royal Palace pattern) */}
+      <div className="gnd-watermark" aria-hidden="true">
+        <div className="gnd-watermark-track">
+          {/* duplicated for seamless loop : transform -50% lands second copy at first copy position */}
+          <span>GND<span className="dot">.</span>&nbsp;&nbsp;GND<span className="dot">.</span>&nbsp;&nbsp;GND<span className="dot">.</span>&nbsp;&nbsp;GND<span className="dot">.</span>&nbsp;&nbsp;</span>
+          <span>GND<span className="dot">.</span>&nbsp;&nbsp;GND<span className="dot">.</span>&nbsp;&nbsp;GND<span className="dot">.</span>&nbsp;&nbsp;GND<span className="dot">.</span>&nbsp;&nbsp;</span>
+        </div>
+      </div>
+
+      {/* Subtle warm radial atmosphere */}
+      <div
+        className="absolute inset-0 pointer-events-none z-0"
+        style={{
+          background: 'radial-gradient(ellipse 60% 70% at 50% 0%, rgba(255,149,79,0.10) 0%, transparent 70%)',
+        }}
+      />
+
+      {/* CONTENT */}
+      <div className="relative z-10 max-w-[1500px] mx-auto px-6 md:px-10 py-16 md:py-20">
+
+        {/* Top status row */}
+        <div className="flex flex-wrap items-center justify-between gap-3 text-[10px] label-mono mb-12 md:mb-16">
+          <div className="inline-flex items-center gap-3 text-bg/90">
+            <span className="gnd-pulse inline-block h-2 w-2 rounded-full bg-accent" />
+            <span className="tracking-[0.24em] uppercase">Studio actif · Paris {parisTime && `· ${parisTime}`}</span>
           </div>
-          <div>
-            <div className="kicker text-bg/60 mb-5">Navigation</div>
-            <ul className="space-y-3 text-bg/85">
-              <li><a href="#/agence" className="hover:text-accent">L'Agence</a></li>
-              <li><a href="#/services" className="hover:text-accent">Services</a></li>
-              <li><a href="#/realisations" className="hover:text-accent">Réalisations</a></li>
-              <li><a href="#/contact" className="hover:text-accent">Contact</a></li>
-              <li><a href="#/mentions-legales" className="hover:text-accent">Mentions légales</a></li>
-            </ul>
-          </div>
-          <div>
-            <div className="kicker text-bg/60 mb-5">Services</div>
-            <ul className="space-y-3 text-bg/85">
-              {SERVICES_MENU.map(s => (
-                <li key={s.to}><a href={s.to} className="hover:text-accent">{s.label}</a></li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <div className="kicker text-bg/60 mb-5">Contact</div>
-            <ul className="space-y-3 text-bg/85">
-              <li className="flex items-start gap-2"><Icons.Mail size={16} className="mt-1 text-accent"/><a href="mailto:contact@gndconsulting.fr">contact@gndconsulting.fr</a></li>
-              <li className="flex items-start gap-2"><Icons.Phone size={16} className="mt-1 text-accent"/><a href="tel:+33759506322">07 59 50 63 22</a></li>
-              <li className="flex items-start gap-2"><Icons.MapPin size={16} className="mt-1 text-accent"/>Paris, France</li>
-            </ul>
-            <a href="#/contact" className="btn btn-primary mt-6">
-              Lancer un projet <Icons.ArrowUpRight size={14}/>
-            </a>
+          <div className="text-bg/70 tracking-[0.24em] uppercase">
+            Humain × IA · {year}
           </div>
         </div>
 
-        {/* signature mega type */}
-        <div className="pt-14 overflow-hidden">
-          <div className="display text-[18vw] leading-[.85] tracking-huge text-bg/95 select-none">GND<span className="text-accent">.</span></div>
-          <div className="mt-6 flex flex-col md:flex-row gap-4 md:items-center md:justify-between text-bg/60 text-sm">
-            <div>© {year} GND CONSULTING — STUDIO CRÉATIF PARISIEN <span className="text-accent">HUMAIN × IA</span></div>
-            <div className="label-mono">SIREN 939 676 136 · TVA NON APPLICABLE · ART. 293 B CGI</div>
+        {/* MEGA EMAIL, center stage, cursor-aware clip-path reveal */}
+        <div className="text-center mb-16 md:mb-20">
+          <p className="text-xs tracking-[0.28em] uppercase text-bg/75 mb-6">Un brief, un échange</p>
+          <a
+            href="mailto:contact@gndconsulting.fr"
+            className="gnd-email-mega display block leading-[1.3] tracking-tight pb-4 md:pb-6 px-4 md:px-8"
+            data-text="contact@gndconsulting.fr"
+            style={{
+              fontSize: 'clamp(1.5rem, 4.6vw, 4.6rem)',
+            }}
+          >
+            contact@gndconsulting.fr
+          </a>
+          <p className="mt-6 text-sm text-bg/75">
+            Réponse écrite sous 24h. <a href="tel:+33759506322" className="text-bg hover:text-accent transition">07 59 50 63 22</a>
+          </p>
+        </div>
+
+        {/* Bottom row : nav links inline + socials */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pt-10 border-t border-bg/12">
+
+          {/* Navigation */}
+          <div className="md:col-span-3">
+            <div className="text-[10px] label-mono tracking-[0.24em] uppercase text-bg/70 mb-4">Navigation</div>
+            <ul className="space-y-2 text-sm">
+              <li><a href="#/agence" className="gnd-link text-bg/85 hover:text-bg transition-colors">L'Agence</a></li>
+              <li><a href="#/services" className="gnd-link text-bg/85 hover:text-bg transition-colors">Services</a></li>
+              <li><a href="#/realisations" className="gnd-link text-bg/85 hover:text-bg transition-colors">Réalisations</a></li>
+              <li><a href="#/contact" className="gnd-link text-bg/85 hover:text-bg transition-colors">Contact</a></li>
+            </ul>
+          </div>
+
+          {/* Branches */}
+          <div className="md:col-span-3">
+            <div className="text-[10px] label-mono tracking-[0.24em] uppercase text-bg/70 mb-4">Branches</div>
+            <ul className="space-y-2 text-sm">
+              {SERVICES_MENU.map(s => (
+                <li key={s.to}>
+                  <a href={s.to} className="gnd-link text-bg/85 hover:text-bg transition-colors">{s.label}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Address */}
+          <div className="md:col-span-3">
+            <div className="text-[10px] label-mono tracking-[0.24em] uppercase text-bg/70 mb-4">Studio</div>
+            <p className="text-sm text-bg/85 leading-relaxed">
+              Paris, France<br />
+              <a href="mailto:contact@gndconsulting.fr" className="gnd-link text-bg/85 hover:text-bg transition-colors">contact@gndconsulting.fr</a><br />
+              <a href="#/mentions-legales" className="gnd-link text-bg/55 hover:text-bg transition-colors text-xs">Mentions légales</a>
+            </p>
+          </div>
+
+          {/* Social, SocialCard hover-reveal staggered */}
+          <div className="md:col-span-3 flex md:justify-end">
+            <SocialCard title="Socials" />
           </div>
         </div>
-      </Container>
+
+        {/* Bottom legal strip, minimal */}
+        <div className="mt-12 pt-6 border-t border-bg/15 flex flex-col gap-2 text-[10px] label-mono text-bg/65 md:flex-row md:justify-between md:items-center">
+          <span className="tracking-[0.20em] uppercase">© {year} GND CONSULTING · STUDIO PARISIEN</span>
+          <span className="tracking-[0.20em] uppercase">SIREN 939 676 136 · TVA NON APPLICABLE · ART. 293 B CGI</span>
+        </div>
+      </div>
     </footer>
   );
 }

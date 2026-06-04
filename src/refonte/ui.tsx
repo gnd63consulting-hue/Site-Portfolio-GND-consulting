@@ -1,15 +1,16 @@
-/* Shared UI primitives — ported to ES modules (was window-global in prototype) */
+/* Shared UI primitives, ported to ES modules (was window-global in prototype) */
 import { Icons } from './icons';
 
 const Kicker = ({ children, className = "" }: any) => (
-  <div className={"kicker flex items-center gap-2 " + className}>
-    <span className="inline-block w-6 h-px bg-current opacity-40"></span>
+  <div className={"kicker " + className}>
     <span>{children}</span>
   </div>
 );
 
-const Section = ({ id, className = "", bg = "bg", children }: any) => (
-  <section id={id} className={`relative ${bg === "alt" ? "bg-bg-alt" : bg === "dark" ? "bg-text-strong text-bg" : "bg-bg"} ${className}`}>
+const Section = ({ id, className = "", bg = "alt", children, style }: any) => (
+  // Défaut "alt" → bg-bg-alt (#FFF3E8 cream chaud) = bg uniforme partout sur la home.
+  // Override possible avec bg="dark" (chocolat) ou bg="white" (#FDF6EE).
+  <section id={id} style={style} className={`relative ${bg === "alt" ? "bg-bg-alt" : bg === "dark" ? "bg-text-strong text-bg" : "bg-bg"} ${className}`}>
     {children}
   </section>
 );
@@ -43,7 +44,7 @@ const ImgPlaceholder = ({ label, ratio = "16/9", className = "", rounded = "roun
   </div>
 );
 
-/* Sculptural cream portrait placeholder — elegant marble-bust feel.
+/* Sculptural cream portrait placeholder, elegant marble-bust feel.
    SWAP this slot for a real generated asset at implementation. */
 const PortraitHero = ({ className = "", showTag = true }: any) => (
   <div className={`relative w-full h-full ${className}`} aria-hidden="true">
@@ -64,14 +65,14 @@ const PortraitHero = ({ className = "", showTag = true }: any) => (
       {/* collar shadow */}
       <ellipse cx="200" cy="388" rx="46" ry="6" fill="#2A1810" opacity="0.45"/>
 
-      {/* HEAD — base cream */}
+      {/* HEAD, base cream */}
       <ellipse cx="200" cy="200" rx="118" ry="148" fill="#FDF6EE"/>
       {/* head right-side shadow */}
       <path d="M200,52 C262,52 318,110 318,200 C318,275 268,344 200,348 Z" fill="#E8D8C5"/>
       {/* deeper shadow on right side */}
       <path d="M252,82 C290,118 318,165 318,210 C318,275 280,335 234,346 L234,82 Z" fill="#7D3E2C" opacity="0.32"/>
 
-      {/* HAIR — smooth cap */}
+      {/* HAIR, smooth cap */}
       <path d="M88,178 C88,98 134,42 200,42 C266,42 312,98 312,178 C300,138 264,108 200,108 C136,108 100,138 88,178 Z" fill="#2A1810"/>
       {/* hair highlights left */}
       <path d="M96,170 C100,118 130,76 180,52 C168,72 158,98 148,128 C124,140 108,156 96,170 Z" fill="#532418" opacity="0.7"/>
@@ -97,7 +98,7 @@ const PortraitHero = ({ className = "", showTag = true }: any) => (
       {/* chin shadow */}
       <ellipse cx="200" cy="334" rx="32" ry="5" fill="#7D3E2C" opacity="0.28"/>
 
-      {/* rim light — left edge, subtle */}
+      {/* rim light, left edge, subtle */}
       <path d="M88,205 C90,135 130,72 200,52 L200,68 C140,86 100,142 92,205 Z" fill="#FFB682" opacity="0.32"/>
     </svg>
     {showTag && (
@@ -142,7 +143,7 @@ const Faq = ({ q, a }: any) => (
 const CtaBand = ({ title = "Créons l'impact ensemble.", sub, cta = "Lancer un projet", href = "#/contact" }: any) => (
   <Section bg="alt" className="py-28 md:py-40">
     <Container className="text-center">
-      <div className="kicker mx-auto inline-flex">— contactez-nous</div>
+      <div className="kicker mx-auto inline-flex">contactez-nous</div>
       <h2 className="display text-6xl md:text-8xl lg:text-9xl mt-6 text-text-strong">{title}</h2>
       {sub && <p className="mt-6 text-lg text-text max-w-2xl mx-auto">{sub}</p>}
       <div className="mt-10 flex flex-wrap justify-center gap-3">
@@ -153,32 +154,47 @@ const CtaBand = ({ title = "Créons l'impact ensemble.", sub, cta = "Lancer un p
   </Section>
 );
 
-/* CINEMATIC HERO — shared shell across all service / sub pages.
-   Dark stage, intense orange halo, sculptural feature, floating chips.
+/* CINEMATIC HERO, shared shell across all service / sub pages.
+   Dark stage (default), intense orange halo, sculptural feature, floating chips.
+   `theme="light"` → cream stage matching HeroBuildUpBranding / HeroBuildUpSV / Home
+   (used by AudiovisuelPage to align with cream-hero cluster).
    Pass `media` for a custom right-column visual (defaults to PortraitHero). */
-const CinematicHero = ({ kicker, eyebrow, title, subtitle, ctas, badges, media, footerLabel }: any) => (
-  <section className="relative min-h-[88vh] overflow-hidden bg-text-strong text-bg pt-24 md:pt-32 pb-12">
+const CinematicHero = ({ kicker, eyebrow, title, subtitle, ctas, badges, media, footerLabel, theme = 'dark' }: any) => {
+  const light = theme === 'light';
+  return (
+  <section className={`relative min-h-[88vh] overflow-hidden pt-24 md:pt-32 pb-12 ${light ? 'bg-bg-alt text-text-strong' : 'bg-text-strong text-bg'}`}>
     {/* Cinematic background */}
     <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-      <div className="absolute inset-0"
-        style={{ background:'radial-gradient(ellipse 70% 70% at 75% 50%, rgba(255,149,79,.75) 0%, rgba(232,119,44,.4) 22%, rgba(120,40,14,.45) 55%, #1a0d08 85%)' }}></div>
-      <div className="absolute inset-0 opacity-35 mix-blend-overlay"
-        style={{ backgroundImage:'radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px)', backgroundSize:'3px 3px' }}></div>
-      <div className="absolute inset-0"
-        style={{ boxShadow:'inset 0 0 240px 80px rgba(0,0,0,.55)' }}></div>
+      {light ? (
+        <>
+          <div className="absolute inset-0"
+            style={{ background:'radial-gradient(ellipse 80% 90% at 50% 50%, rgba(255,149,79,0.18) 0%, transparent 75%)' }}></div>
+          <div className="absolute inset-0 opacity-30 mix-blend-multiply"
+            style={{ backgroundImage:'radial-gradient(rgba(42,24,16,.05) 1px, transparent 1px)', backgroundSize:'3px 3px' }}></div>
+        </>
+      ) : (
+        <>
+          <div className="absolute inset-0"
+            style={{ background:'radial-gradient(ellipse 70% 70% at 75% 50%, rgba(255,149,79,.75) 0%, rgba(232,119,44,.4) 22%, rgba(120,40,14,.45) 55%, #1a0d08 85%)' }}></div>
+          <div className="absolute inset-0 opacity-35 mix-blend-overlay"
+            style={{ backgroundImage:'radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px)', backgroundSize:'3px 3px' }}></div>
+          <div className="absolute inset-0"
+            style={{ boxShadow:'inset 0 0 240px 80px rgba(0,0,0,.55)' }}></div>
+        </>
+      )}
     </div>
 
     {/* top breadcrumb */}
     {eyebrow && (
       <div className="relative z-10 mb-12">
         <Container>
-          <div className="flex items-center justify-between text-bg/65">
+          <div className={`flex items-center justify-between ${light ? 'text-text-muted' : 'text-bg/65'}`}>
             <div className="flex items-center gap-3 text-xs label-mono">
               <a href="#/" className="hover:text-accent">accueil</a>
               <span className="opacity-40">/</span>
-              <span className="text-bg/85">{eyebrow}</span>
+              <span className={light ? 'text-text-strong/85' : 'text-bg/85'}>{eyebrow}</span>
             </div>
-            <span className="chip !bg-bg/10 !text-bg/85 backdrop-blur"><span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span> Studio actif</span>
+            <span className={`chip backdrop-blur ${light ? '!bg-text-strong/8 !text-text-strong/85' : '!bg-bg/10 !text-bg/85'}`}><span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span> Studio actif</span>
           </div>
         </Container>
       </div>
@@ -187,12 +203,12 @@ const CinematicHero = ({ kicker, eyebrow, title, subtitle, ctas, badges, media, 
     <Container className="relative z-10">
       <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
         <div className="lg:col-span-7">
-          {kicker && <Kicker className="!text-bg/55">{kicker}</Kicker>}
-          <h1 className="display text-6xl md:text-8xl lg:text-[7.5rem] mt-6 text-bg leading-[.88] tracking-huge">{title}</h1>
-          {subtitle && <p className="mt-8 text-lg md:text-xl text-bg/80 leading-relaxed max-w-xl">{subtitle}</p>}
+          {kicker && <Kicker className={light ? '!text-text-muted' : '!text-bg/55'}>{kicker}</Kicker>}
+          <h1 className={`display text-6xl md:text-8xl lg:text-[7.5rem] mt-6 leading-[.88] tracking-huge ${light ? 'text-text-strong' : 'text-bg'}`}>{title}</h1>
+          {subtitle && <p className={`mt-8 text-lg md:text-xl leading-relaxed max-w-xl ${light ? 'text-text' : 'text-bg/80'}`}>{subtitle}</p>}
           {badges && (
             <div className="mt-7 flex flex-wrap gap-2">
-              {badges.map((b: any) => <span key={b} className="chip !bg-bg/10 !text-bg/85 backdrop-blur"><span className="w-1.5 h-1.5 rounded-full bg-accent"></span>{b}</span>)}
+              {badges.map((b: any) => <span key={b} className={`chip backdrop-blur ${light ? '!bg-text-strong/8 !text-text-strong/85' : '!bg-bg/10 !text-bg/85'}`}><span className="w-1.5 h-1.5 rounded-full bg-accent"></span>{b}</span>)}
             </div>
           )}
           {ctas && <div className="mt-9 flex flex-wrap gap-3">{ctas}</div>}
@@ -212,7 +228,7 @@ const CinematicHero = ({ kicker, eyebrow, title, subtitle, ctas, badges, media, 
       </div>
 
       {footerLabel && (
-        <div className="mt-16 border-t border-bg/10 pt-5 flex items-center justify-between text-bg/55 text-xs label-mono">
+        <div className={`mt-16 border-t pt-5 flex items-center justify-between text-xs label-mono ${light ? 'border-text-strong/10 text-text-muted' : 'border-bg/10 text-bg/55'}`}>
           <span><Icons.ArrowDown size={12} className="inline scroll-pulse"/> scroll · découvrir</span>
           <span>{footerLabel}</span>
           <span>est. 2024 · paris · fr</span>
@@ -220,9 +236,10 @@ const CinematicHero = ({ kicker, eyebrow, title, subtitle, ctas, badges, media, 
       )}
     </Container>
   </section>
-);
+  );
+};
 
-/* BigHeading — kicker + huge title with italic accent. Used across pages. */
+/* BigHeading, kicker + huge title with italic accent. Used across pages. */
 const BigHeading = ({ kicker, eyebrowEnd, title, intro, dark = false, align = "left" }: any) => (
   <div className={`flex flex-col ${align === "right" ? "md:flex-row md:items-end md:justify-between" : "md:flex-row md:items-end md:justify-between"} gap-8 mb-14`}>
     <div className="max-w-3xl">

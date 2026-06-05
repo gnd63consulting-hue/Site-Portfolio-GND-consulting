@@ -41,7 +41,7 @@ export function FloatingCtaBand({
 }: FloatingCtaBandProps) {
   return (
     <Section bg="alt" className="relative pt-20 md:pt-28 pb-20 md:pb-28 overflow-hidden">
-      <Floating sensitivity={-0.5} className="!absolute left-0 right-0 top-0 bottom-0 z-0 pointer-events-none">
+      <Floating sensitivity={-0.5} className="!absolute left-0 right-0 top-0 bottom-0 z-0 pointer-events-none hidden sm:block">
         <FloatingElement
           depth={0.5}
           className="top-[15%] left-[2%] md:top-[25%] md:left-[5%]"
@@ -120,7 +120,7 @@ export function FloatingCtaBand({
 
       <Container className="text-center relative z-10">
         {kicker && <div className="kicker mx-auto inline-flex">{kicker}</div>}
-        <h2 className="display text-5xl md:text-7xl lg:text-8xl mt-6 text-text-strong leading-[0.95]">
+        <h2 className="display text-5xl md:text-7xl lg:text-8xl mt-6 text-text-strong leading-[0.95] max-w-full overflow-hidden">
           <span className="block">{prefix}</span>
           <LayoutGroup>
             <motion.span

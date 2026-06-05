@@ -729,12 +729,11 @@ function ServicesGrid() {
             const isDark = i === 3;
             return (
               <a key={s.num} href={s.to}
-                className={`group relative overflow-hidden rounded-t-[180px] rounded-b-2xl card-hover
-                  ${isAccent ? "bg-accent" : isDark ? "bg-text-strong text-bg" : "bg-bg"}`}
-                style={{ aspectRatio:'1/1.8' }}>
+                className={`group relative overflow-hidden rounded-t-[140px] md:rounded-t-[180px] rounded-b-2xl card-hover aspect-[1/1.5] md:aspect-[1/1.8]
+                  ${isAccent ? "bg-accent" : isDark ? "bg-text-strong text-bg" : "bg-bg"}`}>
                 {/* background portrait silhouette */}
                 <div className="absolute inset-0 overflow-hidden rounded-inherit">
-                  <div className="absolute inset-x-0 top-0 h-3/5">
+                  <div className="absolute inset-x-0 top-0 h-1/2 md:h-3/5">
                     <img
                       src={`/assets/${image}.png`}
                       alt=""
@@ -743,10 +742,10 @@ function ServicesGrid() {
                       style={{ filter:'drop-shadow(0 22px 44px rgba(42,24,16,.26))' }}
                     />
                   </div>
-                  <div className="absolute inset-x-0 top-[55%] h-[45%]"
+                  <div className="absolute inset-x-0 top-[46%] h-[54%] md:top-[55%] md:h-[45%]"
                     style={{ background: isAccent ? '#FF954F' : isDark ? '#2A1810' : '#FDF6EE' }}></div>
                 </div>
-                <div className={`relative h-full flex flex-col justify-end p-6 ${isDark ? 'pb-safe' : ''}`}>
+                <div className={`relative h-full flex flex-col justify-center md:justify-end px-6 pt-[50%] pb-6 md:pt-6 md:pb-6 ${isDark ? 'md:pb-safe' : ''}`}>
                   <div className={`label-mono ${isAccent ? "text-text-strong" : isDark ? "text-accent" : "text-text-muted"}`}>{s.num}</div>
                   <div className={`display text-2xl md:text-3xl mt-3 leading-tight ${isAccent ? "text-text-strong" : isDark ? "text-bg" : "text-text-strong"}`}>{s.title}</div>
                   <div className={`mt-3 text-xs leading-relaxed ${isAccent ? "text-text-strong/80" : isDark ? "text-bg/70" : "text-text-muted"}`}>{s.desc}</div>

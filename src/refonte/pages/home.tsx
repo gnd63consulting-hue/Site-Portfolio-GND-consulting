@@ -62,7 +62,7 @@ function HeroHome() {
   }, []);
 
   return (
-    <section className="hero-scroll-root relative min-h-[760px] h-screen overflow-hidden bg-bg-alt text-text-strong flex flex-col">
+    <section className="hero-scroll-root relative min-h-[760px] min-h-dscreen overflow-hidden bg-bg-alt text-text-strong flex flex-col">
       {/* Image d'arrière-plan du hero wordmark (Hero #2) — derrière le wordmark
           GND, le personnage et le halo (z-0). Scrim léger pour lisibilité. */}
       <img
@@ -112,7 +112,7 @@ function HeroHome() {
             className="display whitespace-nowrap leading-[.78] tracking-huge"
             style={{
               color: '#FFFFFF',
-              fontSize:'min(78vh, 38vw)',
+              fontSize:'clamp(120px, min(55vh, 32vw), 600px)',
               transform:`translate(${mx * -10}px, ${my * -8}px)`,
               textShadow:'0 8px 50px rgba(83,36,24,.18), 0 2px 12px rgba(83,36,24,.10)'
             }}
@@ -179,7 +179,7 @@ function HeroHome() {
         </div>
 
         {/* Mobile compact text block, sits over the hero */}
-        <div className="lg:hidden absolute inset-x-0 bottom-0 z-30 px-6 pb-8 bg-gradient-to-t from-bg-alt via-bg-alt/85 to-transparent pt-20">
+        <div className="lg:hidden absolute inset-x-0 bottom-0 z-30 px-6 pb-safe bg-gradient-to-t from-bg-alt via-bg-alt/85 to-transparent pt-20" style={{ paddingBottom: 'max(2rem, env(safe-area-inset-bottom))' }}>
           <h2 className="display text-4xl md:text-5xl text-text-strong leading-[.95]">
             L'Art de la <span className="italic text-accent">Clarté Digitale</span>.
           </h2>
@@ -272,9 +272,9 @@ function WhoWeAreBlock() {
           <div className="grid grid-cols-2 gap-5 md:gap-7">
             {pillars.map((p, i) => (
               <div key={p.t} className={`${p.style} aspect-square p-6 md:p-10 flex flex-col ${p.align} ${p.vpos} shadow-xl shadow-text/10`}>
-                <div className={`max-w-[68%] md:max-w-[58%] ${p.textPad}`}>
+                <div className={`max-w-full md:max-w-[58%] ${p.textPad}`} lang="fr">
                   <span className={`label-mono block ${i === 1 ? "!text-bg/55" : i === 2 ? "!text-text-strong/65" : ""}`}>0{i+1}</span>
-                  <div className="display text-2xl md:text-[2.1rem] leading-[1.05] mt-2 break-words">{p.t}</div>
+                  <div className="display text-xl md:text-2xl lg:text-[2.1rem] leading-[1.05] mt-2 hyphens-fr">{p.t}</div>
                   <p className={`mt-3 text-xs md:text-sm leading-snug ${i === 1 ? "text-bg/70" : i === 2 ? "text-text-strong/80" : "text-text-muted"}`}>{p.d}</p>
                 </div>
               </div>

@@ -221,7 +221,7 @@ const ScrollExpandMedia = ({
             <img
               src={bgImageSrc}
               alt='Background'
-              className='w-screen h-screen'
+              className='w-full h-full'
               style={{
                 objectFit: 'cover',
                 objectPosition: 'center',

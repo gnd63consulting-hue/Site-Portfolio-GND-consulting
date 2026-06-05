@@ -298,7 +298,7 @@ function Footer() {
       />
 
       {/* CONTENT */}
-      <div className="relative z-10 max-w-[1500px] mx-auto px-6 md:px-10 py-16 md:py-20">
+      <div className="relative z-10 max-w-[1500px] mx-auto px-6 md:px-10 pt-16 md:pt-20 pb-[max(4rem,env(safe-area-inset-bottom))]">
 
         {/* Top status row */}
         <div className="flex flex-wrap items-center justify-between gap-3 text-[10px] label-mono mb-12 md:mb-16">

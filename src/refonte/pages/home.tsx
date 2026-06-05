@@ -1450,8 +1450,8 @@ function ValuesBlock() {
   const ROWS = [
     { ...VALUES[0], desc: "Un métier, pas une prestation.\nChaque projet porte une intention.", top: '16%', left: '37%', width: '32%' }, // 01 nudge bas + droite pour centrer panneau
     { ...VALUES[1], desc: "Délais tenus, points d'étape clairs,\nlivrables documentés.", top: '37%', left: '46%', width: '42%' }, // 02 "livrables documentés" gardés ensemble sur ligne 2
-    { ...VALUES[2], desc: "IA & automatisation intégrée à la chaîne créative, jamais subies.", top: '60%', left: '37%', width: '33%' }, // 03 micro-décalage droite (left 37%) pour dégager le chiffre 03, wrap naturel
-    { ...VALUES[3], desc: "Co-création réelle : votre métier guide\nla création.", top: '80%', left: '44%', width: '42%' }, // 04 micro-décalage gauche (46→44%) + "la création" sur ligne 2
+    { ...VALUES[2], desc: "IA & automatisation intégrée à la chaîne créative, jamais subies.", top: '60%', left: '35%', width: '33%' }, // 03 recentré (left 35%) entre chiffre et ampoule, wrap naturel
+    { ...VALUES[3], desc: "Co-création réelle : votre métier guide\nla création.", top: '80%', left: '46%', width: '42%' }, // 04 micro-décalage droite (44→46%) + "la création" sur ligne 2
   ];
 
   // Anim, GSAP ScrollTrigger : reveal séquentiel header → image → rows (alternés L/R) → CTA.

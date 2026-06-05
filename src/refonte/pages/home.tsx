@@ -249,10 +249,10 @@ function WhoWeAreBlock() {
   // Forme pétale : 1 grand coin arrondi (coin EXTÉRIEUR de la carte) + 3 petits.
   // Rayon responsive : ~92px mobile (proportionné aux cartes ~161px) → 180px desktop.
   const pillars = [
-    { t:"innovation first", d:"Veille brute → outils intégrés.", style:"bg-bg-alt text-text-strong rounded-tl-[92px] md:rounded-tl-[180px] rounded-tr-[20px] md:rounded-tr-[24px] rounded-br-[20px] md:rounded-br-[24px] rounded-bl-[20px] md:rounded-bl-[24px]", align:"items-start text-left", vpos:"justify-end", textPad:"pr-1 md:pr-2", num:"text-text-muted", sub:"text-text-muted" },
-    { t:"global vision", d:"Six métiers internalisés.", style:"bg-text-strong text-bg rounded-tr-[92px] md:rounded-tr-[180px] rounded-tl-[20px] md:rounded-tl-[24px] rounded-bl-[20px] md:rounded-bl-[24px] rounded-br-[20px] md:rounded-br-[24px]", align:"items-end text-right", vpos:"justify-end", textPad:"pl-1 md:pl-2", num:"!text-bg/55", sub:"text-bg/70" },
-    { t:"impact mesurable", d:"Chaque livrable a un KPI.", style:"bg-accent text-text-strong rounded-bl-[92px] md:rounded-bl-[180px] rounded-tl-[20px] md:rounded-tl-[24px] rounded-tr-[20px] md:rounded-tr-[24px] rounded-br-[20px] md:rounded-br-[24px]", align:"items-start text-left", vpos:"justify-start", textPad:"pr-1 md:pr-2", num:"!text-text-strong/65", sub:"text-text-strong/80" },
-    { t:"true partnership", d:"Collaborations qui durent.", style:"bg-surface text-text-strong rounded-br-[92px] md:rounded-br-[180px] rounded-tl-[20px] md:rounded-tl-[24px] rounded-tr-[20px] md:rounded-tr-[24px] rounded-bl-[20px] md:rounded-bl-[24px]", align:"items-end text-right", vpos:"justify-start", textPad:"pl-1 md:pl-2", num:"text-text-muted", sub:"text-text-muted" },
+    { t:"innovation first", d:"Veille brute → outils intégrés.", style:"bg-bg-alt text-text-strong rounded-tl-[92px] md:rounded-tl-[180px] rounded-tr-[20px] md:rounded-tr-[24px] rounded-br-[20px] md:rounded-br-[24px] rounded-bl-[20px] md:rounded-bl-[24px]", align:"items-start text-left", vpos:"justify-end", textPad:"pr-1 md:pr-2", num:"text-text-muted", sub:"text-text-muted", descCls:"mr-auto" },
+    { t:"global vision", d:"Six métiers internalisés.", style:"bg-text-strong text-bg rounded-tr-[92px] md:rounded-tr-[180px] rounded-tl-[20px] md:rounded-tl-[24px] rounded-bl-[20px] md:rounded-bl-[24px] rounded-br-[20px] md:rounded-br-[24px]", align:"items-end text-right", vpos:"justify-end", textPad:"pl-1 md:pl-2", num:"!text-bg/55", sub:"text-bg/70", descCls:"ml-auto" },
+    { t:"impact mesurable", d:"Chaque livrable a un KPI.", style:"bg-accent text-text-strong rounded-bl-[92px] md:rounded-bl-[180px] rounded-tl-[20px] md:rounded-tl-[24px] rounded-tr-[20px] md:rounded-tr-[24px] rounded-br-[20px] md:rounded-br-[24px]", align:"items-start text-left", vpos:"justify-start", textPad:"pr-1 md:pr-2", num:"!text-text-strong/65", sub:"text-text-strong/80", descCls:"mr-auto" },
+    { t:"true partnership", d:"Collaborations qui durent.", style:"bg-surface text-text-strong rounded-br-[92px] md:rounded-br-[180px] rounded-tl-[20px] md:rounded-tl-[24px] rounded-tr-[20px] md:rounded-tr-[24px] rounded-bl-[20px] md:rounded-bl-[24px]", align:"items-end text-right", vpos:"justify-start", textPad:"pl-1 md:pl-2", num:"text-text-muted", sub:"text-text-muted", descCls:"ml-auto" },
   ];
   return (
     <Section className="py-28 md:py-40 overflow-hidden">
@@ -279,7 +279,7 @@ function WhoWeAreBlock() {
                 <div className={`max-w-full md:max-w-[58%] ${p.textPad}`}>
                   <span className={`label-mono block ${p.num}`}>0{i+1}</span>
                   <div className="display text-[15px] sm:text-lg md:text-2xl lg:text-[2.1rem] leading-[1.08] mt-1.5 md:mt-2 [hyphens:none] [text-wrap:balance]">{p.t}</div>
-                  <p className={`mt-2 md:mt-3 text-[11px] sm:text-xs md:text-sm leading-snug ${p.sub}`}>{p.d}</p>
+                  <p className={`mt-2 md:mt-3 text-[11px] sm:text-xs md:text-sm leading-snug max-w-[82%] md:max-w-none min-h-[2.4em] md:min-h-0 ${p.descCls} ${p.sub}`}>{p.d}</p>
                 </div>
               </div>
             ))}

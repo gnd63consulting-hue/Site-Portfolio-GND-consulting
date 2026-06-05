@@ -860,6 +860,16 @@ const MASKED_GALLERY: GalleryItem[] = [
 ];
 
 function ReelsMosaic() {
+  // bend responsive : courbe d'arc seulement en desktop. Sur mobile bend=0
+  // → galerie plate, images droites "carrées" (pas de sliver triangulaire du
+  // voisin courbé). L'animation/scroll reste identique (composant gère bend=0).
+  const [galleryBend, setGalleryBend] = React.useState(2);
+  React.useEffect(() => {
+    const apply = () => setGalleryBend(window.innerWidth < 768 ? 0 : 2);
+    apply();
+    window.addEventListener('resize', apply);
+    return () => window.removeEventListener('resize', apply);
+  }, []);
   return (
     <section className="relative bg-bg-alt">
       {/* Header partagé, éditorial : titre gauche giant / description + arrow link droite décalée
@@ -893,7 +903,7 @@ function ReelsMosaic() {
       >
         <CircularGallery
           items={MASKED_GALLERY}
-          bend={2}
+          bend={galleryBend}
           borderRadius={0.04}
           scrollEase={0.05}
         />

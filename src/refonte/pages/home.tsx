@@ -1449,9 +1449,9 @@ function ValuesBlock() {
   // top = centre Y du badge = centre vertical du panneau. Texte complet (VALUES.desc).
   const ROWS = [
     { ...VALUES[0], desc: "Un métier, pas une prestation.\nChaque projet porte une intention.", top: '16%', left: '37%', width: '32%' }, // 01 nudge bas + droite pour centrer panneau
-    { ...VALUES[1], desc: "Délais tenus, points d'étape clairs, livrables\ndocumentés.", top: '37%', left: '46%', width: '42%' }, // 02 nudge bas + droite ; left 45 + width 42 = 87% (panel droit 88%)
-    { ...VALUES[2], desc: "IA & automatisation intégrée à la chaîne créative,\njamais subies.", top: '60%', left: '36%', width: '33%' }, // 03 micro-nudge droite
-    { ...VALUES[3], top: '80%', left: '46%', width: '42%' }, // 04 badge gauche, aligné mécanique row 02 (badge gauche, num centre, texte droite)
+    { ...VALUES[1], desc: "Délais tenus, points d'étape clairs,\nlivrables documentés.", top: '37%', left: '46%', width: '42%' }, // 02 "livrables documentés" gardés ensemble sur ligne 2
+    { ...VALUES[2], desc: "IA & automatisation intégrée à la chaîne créative, jamais subies.", top: '60%', left: '34%', width: '33%' }, // 03 micro-décalage gauche (36→34%), wrap naturel (pas de \n forcé)
+    { ...VALUES[3], desc: "Co-création réelle : votre métier guide\nla création.", top: '80%', left: '44%', width: '42%' }, // 04 micro-décalage gauche (46→44%) + "la création" sur ligne 2
   ];
 
   // Anim, GSAP ScrollTrigger : reveal séquentiel header → image → rows (alternés L/R) → CTA.
@@ -1527,7 +1527,7 @@ function ValuesBlock() {
                 style={{ top: r.top, left: r.left, width: r.width }}
               >
                 <h3 className="display text-bg leading-none" style={{ fontSize: 'clamp(11px, 2.55cqw, 24px)' }}>{r.title}</h3>
-                <p className="text-bg/65 leading-snug" style={{ fontSize: 'clamp(7px, 1.25cqw, 11px)', marginTop: 'clamp(2px, 0.4cqw, 6px)' }}>{r.desc}</p>
+                <p className="text-bg/65 leading-snug whitespace-pre-line" style={{ fontSize: 'clamp(7px, 1.25cqw, 11px)', marginTop: 'clamp(2px, 0.4cqw, 6px)' }}>{r.desc}</p>
               </div>
             ))}
           </div>

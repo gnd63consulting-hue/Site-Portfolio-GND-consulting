@@ -246,11 +246,13 @@ function MarqueeProjects() {
 
 /* ===================== Who we are, Echelon segmented (refined) ===================== */
 function WhoWeAreBlock() {
+  // Forme pétale : 1 grand coin arrondi (coin EXTÉRIEUR de la carte) + 3 petits.
+  // Rayon responsive : ~92px mobile (proportionné aux cartes ~161px) → 180px desktop.
   const pillars = [
-    { t:"innovation first", d:"Veille brute → outils intégrés.", style:"bg-bg-alt text-text-strong rounded-tl-[180px] rounded-tr-[24px] rounded-br-[24px] rounded-bl-[24px]", align:"items-start text-left", vpos:"justify-end", textPad:"pr-2", flat:"bg-bg-alt text-text-strong", num:"text-text-muted", sub:"text-text-muted" },
-    { t:"global vision", d:"Six métiers internalisés.", style:"bg-text-strong text-bg rounded-tr-[180px] rounded-tl-[24px] rounded-bl-[24px] rounded-br-[24px]", align:"items-end text-right", vpos:"justify-end", textPad:"pl-2", flat:"bg-text-strong text-bg", num:"!text-bg/55", sub:"text-bg/70" },
-    { t:"impact mesurable", d:"Chaque livrable a un KPI.", style:"bg-accent text-text-strong rounded-bl-[180px] rounded-tl-[24px] rounded-tr-[24px] rounded-br-[24px]", align:"items-start text-left", vpos:"justify-start", textPad:"pr-2", flat:"bg-accent text-text-strong", num:"!text-text-strong/65", sub:"text-text-strong/80" },
-    { t:"true partnership", d:"Collaborations qui durent.", style:"bg-surface text-text-strong rounded-br-[180px] rounded-tl-[24px] rounded-tr-[24px] rounded-bl-[24px]", align:"items-end text-right", vpos:"justify-start", textPad:"pl-2", flat:"bg-surface text-text-strong", num:"text-text-muted", sub:"text-text-muted" },
+    { t:"innovation first", d:"Veille brute → outils intégrés.", style:"bg-bg-alt text-text-strong rounded-tl-[92px] md:rounded-tl-[180px] rounded-tr-[20px] md:rounded-tr-[24px] rounded-br-[20px] md:rounded-br-[24px] rounded-bl-[20px] md:rounded-bl-[24px]", align:"items-start text-left", vpos:"justify-end", textPad:"pr-1 md:pr-2", num:"text-text-muted", sub:"text-text-muted" },
+    { t:"global vision", d:"Six métiers internalisés.", style:"bg-text-strong text-bg rounded-tr-[92px] md:rounded-tr-[180px] rounded-tl-[20px] md:rounded-tl-[24px] rounded-bl-[20px] md:rounded-bl-[24px] rounded-br-[20px] md:rounded-br-[24px]", align:"items-end text-right", vpos:"justify-end", textPad:"pl-1 md:pl-2", num:"!text-bg/55", sub:"text-bg/70" },
+    { t:"impact mesurable", d:"Chaque livrable a un KPI.", style:"bg-accent text-text-strong rounded-bl-[92px] md:rounded-bl-[180px] rounded-tl-[20px] md:rounded-tl-[24px] rounded-tr-[20px] md:rounded-tr-[24px] rounded-br-[20px] md:rounded-br-[24px]", align:"items-start text-left", vpos:"justify-start", textPad:"pr-1 md:pr-2", num:"!text-text-strong/65", sub:"text-text-strong/80" },
+    { t:"true partnership", d:"Collaborations qui durent.", style:"bg-surface text-text-strong rounded-br-[92px] md:rounded-br-[180px] rounded-tl-[20px] md:rounded-tl-[24px] rounded-tr-[20px] md:rounded-tr-[24px] rounded-bl-[20px] md:rounded-bl-[24px]", align:"items-end text-right", vpos:"justify-start", textPad:"pl-1 md:pl-2", num:"text-text-muted", sub:"text-text-muted" },
   ];
   return (
     <Section className="py-28 md:py-40 overflow-hidden">
@@ -267,48 +269,30 @@ function WhoWeAreBlock() {
           </p>
         </div>
 
-        {/* DESKTOP/TABLET — 2x2 segmented grid with floating center, text pinned to OUTER corners */}
-        <div className="relative mx-auto max-w-4xl hidden md:block">
-          <div className="grid grid-cols-2 gap-7">
+        {/* 2x2 segmented grid with floating center, text pinned to OUTER corners.
+            Forme pétale conservée mobile + desktop ; seules les valeurs (rayon,
+            gap, padding, taille médaillon, texte) s'adaptent au breakpoint. */}
+        <div className="relative mx-auto max-w-4xl">
+          <div className="grid grid-cols-2 gap-4 sm:gap-5 md:gap-7">
             {pillars.map((p, i) => (
-              <div key={p.t} className={`${p.style} aspect-square p-10 flex flex-col ${p.align} ${p.vpos} shadow-xl shadow-text/10`}>
-                <div className={`max-w-[58%] ${p.textPad}`} lang="fr">
+              <div key={p.t} className={`${p.style} aspect-square p-5 sm:p-6 md:p-10 flex flex-col ${p.align} ${p.vpos} shadow-xl shadow-text/10`}>
+                <div className={`max-w-[72%] md:max-w-[58%] ${p.textPad}`} lang="fr">
                   <span className={`label-mono block ${p.num}`}>0{i+1}</span>
-                  <div className="display text-2xl lg:text-[2.1rem] leading-[1.05] mt-2 hyphens-fr">{p.t}</div>
-                  <p className={`mt-3 text-sm leading-snug ${p.sub}`}>{p.d}</p>
+                  <div className="display text-lg sm:text-xl md:text-2xl lg:text-[2.1rem] leading-[1.05] mt-1.5 md:mt-2 hyphens-fr">{p.t}</div>
+                  <p className={`mt-2 md:mt-3 text-[11px] sm:text-xs md:text-sm leading-snug ${p.sub}`}>{p.d}</p>
                 </div>
               </div>
             ))}
           </div>
-          {/* Floating center, smaller, no overlap with pillar text */}
+          {/* Floating center medallion — taille responsive, ne chevauche pas le
+              texte (épinglé aux coins extérieurs). */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <div className="w-[20%] aspect-square rounded-full bg-bg shadow-2xl shadow-text/30 flex flex-col items-center justify-center text-center p-3 border-4 border-bg">
-              <div className="kicker text-[9px]">méthode</div>
-              <div className="display text-2xl mt-1 text-text-strong leading-[.9]">
+            <div className="w-[26%] sm:w-[24%] md:w-[20%] aspect-square rounded-full bg-bg shadow-2xl shadow-text/30 flex flex-col items-center justify-center text-center p-2 md:p-3 border-4 border-bg">
+              <div className="kicker text-[7px] sm:text-[8px] md:text-[9px]">méthode</div>
+              <div className="display text-sm sm:text-base md:text-2xl mt-0.5 md:mt-1 text-text-strong leading-[.9]">
                 Humain<br/><span className="text-accent italic">× IA</span>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* MOBILE — clean stack : méthode pill + 4 cartes lisibles (rounded normal, texte haut-gauche) */}
-        <div className="md:hidden">
-          <div className="flex justify-center mb-6">
-            <div className="inline-flex items-center gap-2.5 rounded-full bg-bg border border-text-strong/10 shadow-lg shadow-text/10 pl-4 pr-5 py-2.5">
-              <span className="kicker text-[9px] !text-text-muted">méthode</span>
-              <span className="display text-lg text-text-strong leading-none">
-                Humain <span className="text-accent italic">× IA</span>
-              </span>
-            </div>
-          </div>
-          <div className="grid grid-cols-1 xs:grid-cols-2 gap-3">
-            {pillars.map((p, i) => (
-              <div key={p.t} className={`${p.flat} rounded-2xl p-5 shadow-lg shadow-text/10`} lang="fr">
-                <span className={`label-mono block ${p.num}`}>0{i+1}</span>
-                <div className="display text-2xl leading-[1.05] mt-2">{p.t}</div>
-                <p className={`mt-2 text-sm leading-snug ${p.sub}`}>{p.d}</p>
-              </div>
-            ))}
           </div>
         </div>
 

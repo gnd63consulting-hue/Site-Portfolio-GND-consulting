@@ -940,27 +940,29 @@ function WhyBlock() {
           ImageMask 21st.dev, forme bandeau wide avec encoches asymétriques).
           Le clipPath s'applique UNIQUEMENT au <img>, pas au container parent,
           donc l'overlay texte reste intact. */}
-      <div className="relative w-full" style={{ aspectRatio: '1672 / 941' }}>
-        <img
-          src="/assets/why-block-composite.png"
-          alt=""
-          draggable={false}
-          loading="lazy"
-          decoding="async"
-          className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none"
-          style={{ clipPath: 'url(#clip-inverted)' }}
-        />
+      <div className="relative w-full md:[aspect-ratio:1672/941]">
+        {/* Image : bannière en haut sur mobile (cocon visible via object-position
+            droite), overlay plein écran sur desktop. */}
+        <div className="relative h-[210px] sm:h-[280px] md:absolute md:inset-0 md:h-full">
+          <img
+            src="/assets/why-block-composite.png"
+            alt=""
+            draggable={false}
+            loading="lazy"
+            decoding="async"
+            className="w-full h-full object-cover object-[72%_center] md:object-cover md:[clip-path:url(#clip-inverted)] select-none pointer-events-none"
+          />
+        </div>
 
         {/* OVERLAY TEXTE HTML, positionné en absolute relativement au viewport,
             poussé bien à gauche (left:4vw) et limité à 42vw de large pour rester loin
             de l'image et son halo. */}
-        <div className="absolute inset-0 pointer-events-none">
+        <div className="md:absolute md:inset-0 md:pointer-events-none">
           <div
-            className="absolute top-1/2 -translate-y-1/2 pointer-events-auto"
-            style={{ left: '4vw', width: 'min(42vw, 620px)' }}
+            className="relative px-6 py-9 w-full pointer-events-auto md:px-0 md:py-0 md:w-[min(42vw,620px)] md:absolute md:top-1/2 md:left-[4vw] md:-translate-y-1/2"
           >
             {/* ★ VERTICAL ACCENT LINE, éditorial magazine premium, dégradé orange */}
-            <div className="absolute -left-6 top-2 bottom-2 w-px pointer-events-none"
+            <div className="hidden md:block absolute -left-6 top-2 bottom-2 w-px pointer-events-none"
               style={{ background: 'linear-gradient(to bottom, transparent, rgba(255,149,79,0.5) 30%, rgba(255,149,79,0.5) 70%, transparent)' }}
             />
 

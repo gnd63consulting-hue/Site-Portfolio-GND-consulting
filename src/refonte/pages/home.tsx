@@ -1503,10 +1503,11 @@ function ValuesBlock() {
           </div>
 
           {/* INFOGRAPHIE, image asset + texte HTML overlay dans les zones vides.
-              DESKTOP/TABLET uniquement : sur mobile l'image landscape rend les
-              panneaux trop petits (texte illisible/rogné) → version HTML dédiée
-              ci-dessous (même design, responsive). */}
-          <div className="relative mx-auto hidden md:block" style={{ maxWidth: '920px', aspectRatio: '1448 / 1086' }}>
+              Le texte overlay est dimensionné en cqw (container-query width) → il
+              scale proportionnellement avec l'image à TOUTES les tailles, donc rentre
+              toujours dans les panneaux cuits (desktop ET mobile), sans débordement.
+              containerType: inline-size active le contexte cqw. */}
+          <div className="relative -mx-6 sm:-mx-8 md:mx-auto" style={{ maxWidth: '920px', aspectRatio: '1448 / 1086', containerType: 'inline-size' }}>
             <img
               data-anim="values-image"
               src="/assets/values-infographic.png?v=2"
@@ -1525,42 +1526,10 @@ function ValuesBlock() {
                 className="absolute"
                 style={{ top: r.top, left: r.left, width: r.width }}
               >
-                <h3 className="display text-base md:text-xl lg:text-2xl text-bg leading-none">{r.title}</h3>
-                <p className="mt-1 md:mt-1.5 text-[8px] md:text-[10px] lg:text-[11px] text-bg/65 leading-snug whitespace-pre-line">{r.desc}</p>
+                <h3 className="display text-bg leading-none" style={{ fontSize: 'clamp(11px, 2.55cqw, 24px)' }}>{r.title}</h3>
+                <p className="text-bg/65 leading-snug" style={{ fontSize: 'clamp(7px, 1.25cqw, 11px)', marginTop: 'clamp(2px, 0.4cqw, 6px)' }}>{r.desc}</p>
               </div>
             ))}
-          </div>
-
-          {/* MOBILE — reproduction HTML fidèle (même design : carte orange,
-              4 panneaux chocolat, chiffres en filigrane, badge icône orange,
-              titre + description) mais texte vrai responsive, lisible, sans clip. */}
-          <div className="md:hidden">
-            <div className="relative rounded-[28px] bg-accent p-3.5 overflow-hidden shadow-xl shadow-text/15">
-              {/* accent diagonale décorative (rappel de l'image) */}
-              <div className="absolute -bottom-10 -left-10 w-40 h-40 rotate-12 bg-text-strong/15 rounded-3xl pointer-events-none" aria-hidden="true" />
-              <div className="relative space-y-3">
-                {VALUES.map((v, i) => {
-                  const Icon = [Icons.Sparkles, Icons.Shield, Icons.Cpu, Icons.Users][i];
-                  const iconRight = i % 2 === 0; // Passion/Innovation : badge à droite (comme l'image)
-                  return (
-                    <div key={v.num}
-                      className={`relative bg-text-strong rounded-2xl px-4 py-3.5 overflow-hidden flex items-center gap-3.5 ${iconRight ? 'flex-row-reverse' : ''}`}>
-                      {/* chiffre filigrane */}
-                      <span className={`absolute top-1/2 -translate-y-1/2 display text-[64px] leading-none text-bg/[0.07] select-none pointer-events-none ${iconRight ? 'left-5' : 'right-5'}`}>{v.num}</span>
-                      {/* badge icône */}
-                      <div className="shrink-0 w-12 h-12 rounded-full bg-accent flex items-center justify-center shadow-lg shadow-text/30 ring-4 ring-bg/90">
-                        <Icon size={22} className="text-text-strong" />
-                      </div>
-                      {/* texte */}
-                      <div className={`relative min-w-0 flex-1 ${iconRight ? 'text-right' : ''}`}>
-                        <h3 className="display text-xl text-bg leading-tight">{v.title}</h3>
-                        <p className="mt-1 text-[12px] text-bg/65 leading-snug">{v.desc}</p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
           </div>
 
           {/* CTA centré sous l'infographie */}

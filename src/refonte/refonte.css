@@ -126,3 +126,18 @@ details[open] .faq-icon { transform: rotate(45deg); }
   box-shadow: 0 0 0 4px rgba(255,149,79,.18);
 }
 .form-input::placeholder { color: var(--text-muted); opacity: .6; }
+
+/* === iOS Safari safe areas === */
+.pb-safe { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
+.pt-safe { padding-top: max(0px, env(safe-area-inset-top)); }
+.mb-safe { margin-bottom: env(safe-area-inset-bottom); }
+
+/* === Dynamic viewport height fallback (Safari iOS) === */
+.h-dscreen { height: 100vh; height: 100dvh; }
+.min-h-dscreen { min-height: 100vh; min-height: 100dvh; }
+
+/* === Prevent horizontal overflow globally === */
+html, body { overflow-x: hidden; }
+
+/* === Better French hyphenation === */
+.hyphens-fr { hyphens: auto; -webkit-hyphens: auto; }

@@ -1739,10 +1739,10 @@ function ContactBlock() {
         {/* SPLIT CARD, panneau chocolat (visuel + texte) à gauche | formulaire cream à droite.
             Inspiré des refs Pinterest sign-up : panneau coloré qui porte le texte + image
             arrondie inset, formulaire dans la moitié claire. Le tout dans une carte unique. */}
-        <div className="relative grid lg:grid-cols-12 rounded-[36px] overflow-hidden shadow-2xl shadow-text/25 border border-text-strong/8 max-w-6xl mx-auto">
+        <div className="relative grid md:grid-cols-12 rounded-[36px] overflow-hidden shadow-2xl shadow-text/25 border border-text-strong/8 max-w-6xl mx-auto">
 
           {/* ===== GAUCHE, panneau chocolat visuel ===== */}
-          <div className="lg:col-span-5 relative bg-text-strong text-bg p-8 md:p-10 lg:p-11 flex flex-col">
+          <div className="md:col-span-5 relative bg-text-strong text-bg p-8 md:p-8 lg:p-11 flex flex-col">
             {/* Image de fond + overlay chocolat pour la profondeur */}
             <img
               src="/assets/intersection-hero.jpg"
@@ -1765,7 +1765,7 @@ function ContactBlock() {
               </div>
 
               {/* Headline */}
-              <h2 className="display text-4xl md:text-5xl text-bg leading-[.95]">
+              <h2 className="display text-4xl lg:text-5xl text-bg leading-[.95]">
                 Parlons de votre <span className="italic text-accent">projet</span>.
               </h2>
               <p className="mt-4 text-bg/70 text-sm leading-relaxed max-w-xs">
@@ -1799,7 +1799,7 @@ function ContactBlock() {
           </div>
 
           {/* ===== DROITE, panneau formulaire cream ===== */}
-          <div className="lg:col-span-7 bg-bg p-8 md:p-10 lg:p-11">
+          <div className="md:col-span-7 bg-bg p-8 md:p-8 lg:p-11">
             <div className="label-mono text-[10px] !text-text-muted tracking-[0.2em] mb-1.5">DÉMARRER ICI</div>
             <h3 className="display text-2xl md:text-3xl text-text-strong leading-tight mb-7">
               Décrivez votre projet.

@@ -275,10 +275,10 @@ function WhoWeAreBlock() {
         <div className="relative mx-auto max-w-4xl">
           <div className="grid grid-cols-2 gap-4 sm:gap-5 md:gap-7">
             {pillars.map((p, i) => (
-              <div key={p.t} className={`${p.style} aspect-square p-5 sm:p-6 md:p-10 flex flex-col ${p.align} ${p.vpos} shadow-xl shadow-text/10`}>
-                <div className={`max-w-[72%] md:max-w-[58%] ${p.textPad}`} lang="fr">
+              <div key={p.t} className={`${p.style} aspect-square p-4 sm:p-6 md:p-10 flex flex-col ${p.align} ${p.vpos} shadow-xl shadow-text/10`}>
+                <div className={`max-w-full md:max-w-[58%] ${p.textPad}`}>
                   <span className={`label-mono block ${p.num}`}>0{i+1}</span>
-                  <div className="display text-lg sm:text-xl md:text-2xl lg:text-[2.1rem] leading-[1.05] mt-1.5 md:mt-2 hyphens-fr">{p.t}</div>
+                  <div className="display text-[15px] sm:text-lg md:text-2xl lg:text-[2.1rem] leading-[1.08] mt-1.5 md:mt-2 [hyphens:none] [text-wrap:balance]">{p.t}</div>
                   <p className={`mt-2 md:mt-3 text-[11px] sm:text-xs md:text-sm leading-snug ${p.sub}`}>{p.d}</p>
                 </div>
               </div>

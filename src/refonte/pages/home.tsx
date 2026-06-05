@@ -464,7 +464,7 @@ function IntersectionBlock() {
               de texte droit. La zone des labels baked est masquée par un patch chocolat opaque
               derrière le toggle (même teinte que la forme, donc invisible). */}
           <div
-            className="relative group"
+            className="relative group hidden md:block"
             style={{ aspectRatio: '1703 / 926' }}
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
@@ -608,19 +608,92 @@ function IntersectionBlock() {
             </div>
           </div>
 
-          {/* Toggle mobile, sous la carte (l'archi papillon ne se lit pas bien en mobile) */}
-          <div className="md:hidden mt-8 flex justify-center gap-3">
-            {PANELS.map((p, i) => (
-              <button
-                key={p.num}
-                onClick={() => setActivePanel(i)}
-                className={`label-mono px-4 py-2 rounded-full transition-colors focus-ring ${
-                  i === activePanel ? "bg-text-strong text-bg" : "bg-bg-alt text-text-strong hover:bg-surface"
-                }`}
+          {/* Fallback mobile, stack vertical : image papillon réduite + médaillon + panel actif (kicker + titre + desc + tags) + toggle 01-05 sous */}
+          <div className="md:hidden">
+            {/* Image papillon réduite (aspect-ratio 4:3 pour rester lisible) avec médaillon GND centré */}
+            <div
+              className="relative w-full mx-auto"
+              style={{ aspectRatio: '4 / 3', maxHeight: '380px' }}
+              onTouchStart={() => setIsPaused(true)}
+              onTouchEnd={() => setIsPaused(false)}
+            >
+              <img
+                src="/assets/papillon-shape-v2.png?v=2"
+                alt=""
+                draggable={false}
+                className="absolute inset-0 w-full h-full object-contain select-none pointer-events-none"
+                style={{ filter: 'drop-shadow(0 14px 22px rgba(20,12,8,.22))' }}
+              />
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div
+                  className="relative rounded-full bg-bg flex items-center justify-center shadow-2xl shadow-text/40 border-2 border-accent/30"
+                  style={{ width: 'clamp(110px, 28vw, 160px)', aspectRatio: '1 / 1' }}
+                >
+                  <div className="text-center">
+                    <div className="display text-2xl text-text-strong leading-none tracking-wide">
+                      G<span className="text-accent">·</span>N<span className="text-accent">·</span>D
+                    </div>
+                    <div className="label-mono text-[8px] mt-1.5 text-text-muted tracking-widest">EST. 2023</div>
+                  </div>
+                  <div className="absolute -inset-2 rounded-full border border-accent/30 pointer-events-none"/>
+                </div>
+              </div>
+            </div>
+
+            {/* Panel actif mobile, contenu du panel sélectionné */}
+            <div className="mt-8 px-1">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="block w-8 h-px bg-accent"/>
+                <span className="label-mono text-[11px] !text-accent tracking-[0.18em] font-semibold">
+                  {panel.kicker}
+                </span>
+              </div>
+              <h3
+                key={`mobile-${panel.num}`}
+                className="display text-2xl leading-[1.15] text-text-strong anim-up tracking-tight"
               >
-                {p.num}
-              </button>
-            ))}
+                {panel.title}
+              </h3>
+              <p className="mt-4 text-text leading-[1.55] text-sm">
+                {panel.desc}
+              </p>
+              {panel.tags && panel.tags.length > 0 && (
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {panel.tags.map(tag => (
+                    <span
+                      key={tag}
+                      className="inline-flex items-center text-[11px] label-mono px-3 py-1.5 rounded-full bg-accent !text-text-strong tracking-wide font-semibold shadow-md shadow-accent/30"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+              <div className="mt-5 flex items-center gap-3">
+                <span className="block w-6 h-px bg-accent/50"/>
+                <span className="label-mono text-[11px] !text-text-muted tabular-nums tracking-widest">
+                  <span className="text-accent">{panel.num}</span>
+                  <span className="mx-1.5 text-text-muted/40">/</span>
+                  {String(PANELS.length).padStart(2, '0')}
+                </span>
+              </div>
+            </div>
+
+            {/* Toggle 01-05 sous le panel, switch par tap */}
+            <div className="mt-6 flex justify-center gap-2 flex-wrap">
+              {PANELS.map((p, i) => (
+                <button
+                  key={p.num}
+                  onClick={() => setActivePanel(i)}
+                  className={`label-mono px-4 py-2 rounded-full transition-colors focus-ring ${
+                    i === activePanel ? "bg-text-strong text-bg" : "bg-bg-alt text-text-strong hover:bg-surface"
+                  }`}
+                  aria-pressed={i === activePanel}
+                >
+                  {p.num}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </Container>

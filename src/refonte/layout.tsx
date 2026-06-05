@@ -53,14 +53,14 @@ function Header({ route }: any) {
   };
 
   return (
-    <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-300
+    <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 pt-safe
       ${scrolled ? "bg-bg/85 backdrop-blur-md border-b hairline border-b" : "bg-transparent"}`}>
       <div className="mx-auto max-w-[1500px] px-6 md:px-10 h-20 md:h-24 flex items-center justify-between">
         <a href="#/" className="flex items-center gap-2.5 group focus-ring" aria-label="GND Consulting, accueil">
           <img
             src="/assets/logos/gnd-logo-chocolat.png"
             alt="GND Consulting"
-            className="h-24 md:h-28 w-auto select-none scale-[2.35] origin-left"
+            className="h-12 md:h-16 w-auto select-none"
             draggable={false}
           />
         </a>
@@ -101,7 +101,7 @@ function Header({ route }: any) {
         </nav>
 
         <div className="flex items-center gap-3">
-          <a href="#/contact" className="hidden md:inline-flex btn btn-primary">
+          <a href="#/contact" className="hidden lg:inline-flex btn btn-primary">
             Démarrer un projet <Icons.ArrowUpRight size={14} stroke={1.8}/>
           </a>
           <button aria-label="Menu" onClick={() => setOpen(true)} className={`lg:hidden w-10 h-10 inline-flex items-center justify-center rounded-full border focus-ring ${onDark ? "border-bg/30 text-bg" : "hairline border"}`}>
@@ -118,7 +118,7 @@ function Header({ route }: any) {
               <img
                 src="/assets/logos/gnd-logo-chocolat.png"
                 alt="GND Consulting"
-                className="h-20 w-auto select-none scale-[2.0] origin-left"
+                className="h-14 w-auto select-none"
                 draggable={false}
               />
             </a>

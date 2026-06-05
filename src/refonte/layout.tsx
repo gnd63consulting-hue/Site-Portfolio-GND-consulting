@@ -22,6 +22,16 @@ function Header({ route }: any) {
   const [scrolled, setScrolled] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const [services, setServices] = React.useState(false);
+  const closeTimer = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+  const openServices = () => {
+    if (closeTimer.current) { clearTimeout(closeTimer.current); closeTimer.current = null; }
+    setServices(true);
+  };
+  const scheduleCloseServices = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setServices(false), 180);
+  };
+  React.useEffect(() => () => { if (closeTimer.current) clearTimeout(closeTimer.current); }, []);
   React.useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16);
     onScroll();
@@ -58,14 +68,16 @@ function Header({ route }: any) {
         <nav className="hidden lg:flex items-center gap-9">
           {NAV.map(n => (
             <div key={n.to} className="relative"
-              onMouseEnter={() => n.label === "Services" && setServices(true)}
-              onMouseLeave={() => n.label === "Services" && setServices(false)}>
+              onMouseEnter={() => n.label === "Services" && openServices()}
+              onMouseLeave={() => n.label === "Services" && scheduleCloseServices()}>
               <a href={n.to} data-active={isActive(n.to)}
                 className={`nav-link text-sm font-medium ${txt} hover:text-accent transition-colors`}>
                 {n.label}
               </a>
               {n.label === "Services" && services && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[640px] surface-card p-3 shadow-2xl shadow-text/10">
+                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-[640px]"
+                  onMouseEnter={openServices} onMouseLeave={scheduleCloseServices}>
+                <div className="surface-card p-3 shadow-2xl shadow-text/10">
                   <div className="grid grid-cols-2 gap-1">
                     {SERVICES_MENU.map(s => (
                       <a key={s.to} href={s.to} className="flex items-start gap-3 p-3 rounded-xl hover:bg-bg-alt transition">
@@ -81,6 +93,7 @@ function Header({ route }: any) {
                     <span className="label-mono">Vue d'ensemble</span>
                     <a href="#/services" className="arrow-link text-sm">Tous les services <Icons.ArrowRight size={14}/></a>
                   </div>
+                </div>
                 </div>
               )}
             </div>

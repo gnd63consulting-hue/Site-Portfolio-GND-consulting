@@ -63,6 +63,22 @@ function HeroHome() {
 
   return (
     <section className="hero-scroll-root relative min-h-[760px] h-screen overflow-hidden bg-bg-alt text-text-strong flex flex-col">
+      {/* Image d'arrière-plan du hero wordmark (Hero #2) — derrière le wordmark
+          GND, le personnage et le halo (z-0). Scrim léger pour lisibilité. */}
+      <img
+        src="/assets/hero-home-bg.png?v=2"
+        alt=""
+        aria-hidden="true"
+        draggable={false}
+        loading="eager"
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-0"
+      />
+      <div className="absolute inset-0 z-0 pointer-events-none bg-bg-alt/45" aria-hidden="true"></div>
+      {/* Dégradé cream en bas (comme les autres heros) : l'image fond vers le
+          crème → délimitation + ancre le personnage (plus flottant) + lisibilité
+          des éléments du bas. */}
+      <div className="absolute inset-x-0 bottom-0 z-0 pointer-events-none h-2/5 bg-gradient-to-t from-bg-alt via-bg-alt/85 to-transparent" aria-hidden="true"></div>
+
       {/* Fond homogène, cream uniforme + très très léger glow central pour respiration,
           assez doux pour ne JAMAIS créer un cercle / rectangle visible. */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
@@ -1834,7 +1850,7 @@ function HomePage() {
           mediaType="video"
           mediaSrc="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Creative_Studio_Video_Generation2.mp4"
           posterSrc="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250919_0006_Vibrant%20Digital%20Collaboration_remix_01k5fdpkfdemjrbt49q10rx0hx.png"
-          bgImageSrc="/assets/hero-home-bg.png"
+          bgImageSrc="/assets/hero1-bg.png"
           title="Un studio, une vision."
           date="GND · Studio créatif Paris"
           scrollToExpand="Scrollez pour révéler"

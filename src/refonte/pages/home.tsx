@@ -1509,7 +1509,7 @@ function ValuesBlock() {
               scale proportionnellement avec l'image à TOUTES les tailles, donc rentre
               toujours dans les panneaux cuits (desktop ET mobile), sans débordement.
               containerType: inline-size active le contexte cqw. */}
-          <div className="relative -mx-6 sm:-mx-8 md:mx-auto" style={{ maxWidth: '920px', aspectRatio: '1448 / 1086', containerType: 'inline-size' }}>
+          <div className="hidden sm:block relative sm:-mx-8 md:mx-auto" style={{ maxWidth: '920px', aspectRatio: '1448 / 1086', containerType: 'inline-size' }}>
             <img
               data-anim="values-image"
               src="/assets/values-infographic.png?v=2"
@@ -1530,6 +1530,21 @@ function ValuesBlock() {
               >
                 <h3 className="display text-bg leading-none" style={{ fontSize: 'clamp(11px, 2.55cqw, 24px)' }}>{r.title}</h3>
                 <p className="text-bg/65 leading-snug whitespace-pre-line" style={{ fontSize: 'clamp(7px, 1.25cqw, 11px)', marginTop: 'clamp(2px, 0.4cqw, 6px)' }}>{r.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* MOBILE (<sm) : liste lisible des valeurs (l'infographie baked est
+              illisible à 390px sans clipper les panneaux → liste à la place,
+              même contenu, esprit conservé). Desktop garde l'infographie. */}
+          <div className="sm:hidden divide-y divide-text-strong/10 border-y border-text-strong/10">
+            {VALUES.map((v) => (
+              <div key={v.num} className="flex items-start gap-4 py-5">
+                <span className="display text-3xl text-accent leading-none shrink-0 tabular-nums">{v.num}</span>
+                <div>
+                  <h3 className="display text-xl text-text-strong leading-tight">{v.title}</h3>
+                  <p className="mt-1.5 text-sm text-text leading-relaxed">{v.desc}</p>
+                </div>
               </div>
             ))}
           </div>

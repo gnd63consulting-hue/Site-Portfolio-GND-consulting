@@ -2,6 +2,8 @@
 import { Section, Container, Btn, Tag, CinematicHero } from '../ui';
 import { FloatingCtaBand } from '../components/FloatingCtaBand';
 import { Icons } from '../icons';
+import ScrollExpandHero from '@/components/blocks/scroll-expansion-hero';
+import { MarqueeCTA } from '../components/MarqueeCTA';
 
 function ServicesHub() {
   const services = [
@@ -17,6 +19,24 @@ function ServicesHub() {
 
   return (
     <main id="main">
+      {/* HERO #1, ScrollExpandHero (même hero 1 que toutes les pages). */}
+      <div className="pt-20 md:pt-24 bg-bg-alt">
+        <ScrollExpandHero
+          mediaType="video"
+          mediaSrc="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Creative_Studio_Video_Generation2.mp4"
+          posterSrc="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250919_0006_Vibrant%20Digital%20Collaboration_remix_01k5fdpkfdemjrbt49q10rx0hx.png"
+          bgImageSrc="/assets/hero1-bg.png"
+          title="Quatre branches, une équipe."
+          date="GND · Services"
+          scrollToExpand="Scrollez pour révéler"
+          textColorClass="text-bg"
+        />
+      </div>
+
+      {/* Marquee CTA entre Hero #1 et Hero #2 (mirror autres pages). */}
+      <MarqueeCTA />
+
+      {/* HERO #2, hub services (CinematicHero). */}
       <CinematicHero
         kicker="Nos services"
         eyebrow="services"

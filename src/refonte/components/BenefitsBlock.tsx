@@ -75,7 +75,7 @@ export function BenefitsBlock() {
       // 3. Big disc explosive entrance
       tl.to(
         '[data-layer="disc"]',
-        { scale: 1, rotation: 0, opacity: 1, duration: 1.0, ease: 'back.out(2.2)' },
+        { scale: 1, rotation: 0, opacity: 1, duration: 1.0, ease: 'back.out(1.2)' },
         '-=0.9',
       );
 
@@ -86,26 +86,26 @@ export function BenefitsBlock() {
       // 5. Capsules petal-bloom from disc center (translate + scale)
       tl.fromTo(
         '[data-layer="capsule-1"]',
-        { x: 280, y: -280, rotation: 22, scale: 0.15, opacity: 0 },
-        { x: 0, y: 0, rotation: 0, scale: 1, opacity: 1, duration: 0.9, ease: 'back.out(1.5)' },
+        { x: 110, y: -120, rotation: 6, scale: 0.62, opacity: 0 },
+        { x: 0, y: 0, rotation: 0, scale: 1, opacity: 1, duration: 1.15, ease: 'power3.out' },
         '-=0.4',
       );
       tl.fromTo(
         '[data-layer="capsule-4"]',
-        { x: -280, y: -280, rotation: -22, scale: 0.15, opacity: 0 },
-        { x: 0, y: 0, rotation: 0, scale: 1, opacity: 1, duration: 0.9, ease: 'back.out(1.5)' },
+        { x: -110, y: -120, rotation: -6, scale: 0.62, opacity: 0 },
+        { x: 0, y: 0, rotation: 0, scale: 1, opacity: 1, duration: 1.15, ease: 'power3.out' },
         '<+0.07',
       );
       tl.fromTo(
         '[data-layer="capsule-2"]',
-        { x: 130, y: -310, rotation: 14, scale: 0.15, opacity: 0 },
-        { x: 0, y: 0, rotation: 0, scale: 1, opacity: 1, duration: 0.9, ease: 'back.out(1.5)' },
+        { x: 55, y: -150, rotation: 4, scale: 0.62, opacity: 0 },
+        { x: 0, y: 0, rotation: 0, scale: 1, opacity: 1, duration: 1.15, ease: 'power3.out' },
         '<+0.08',
       );
       tl.fromTo(
         '[data-layer="capsule-3"]',
-        { x: -130, y: -310, rotation: -14, scale: 0.15, opacity: 0 },
-        { x: 0, y: 0, rotation: 0, scale: 1, opacity: 1, duration: 0.9, ease: 'back.out(1.5)' },
+        { x: -55, y: -150, rotation: -4, scale: 0.62, opacity: 0 },
+        { x: 0, y: 0, rotation: 0, scale: 1, opacity: 1, duration: 1.15, ease: 'power3.out' },
         '<+0.08',
       );
 
@@ -175,7 +175,7 @@ export function BenefitsBlock() {
       <Container>
         <div
           ref={rootRef}
-          className="relative w-[152%] -translate-x-[17.1%] sm:w-[124%] sm:-translate-x-[9.7%] md:w-auto md:translate-x-0 md:mx-auto"
+          className="relative w-[160%] -translate-x-[18.75%] sm:w-[128%] sm:-translate-x-[10.9%] md:w-auto md:translate-x-0 md:mx-auto"
           style={{ maxWidth: '1400px', perspective: '1400px' }}
         >
           <div
@@ -236,7 +236,7 @@ export function BenefitsBlock() {
             {/* Capsule 1 */}
             <div
               data-anim="bn-cap-text"
-              className="absolute flex flex-col items-center justify-start text-center px-2 pointer-events-none"
+              className="absolute flex flex-col items-center justify-center text-center px-2 pointer-events-none"
               style={{ left: '24.3%', top: '52%', width: '12.5%', height: '32%' }}
             >
               <div className="display text-text-strong leading-[1.05] font-semibold" style={{ fontSize: 'clamp(5px, 1.42cqw, 14px)' }}>
@@ -249,7 +249,7 @@ export function BenefitsBlock() {
             {/* Capsule 2 */}
             <div
               data-anim="bn-cap-text"
-              className="absolute flex flex-col items-center justify-start text-center px-2 pointer-events-none"
+              className="absolute flex flex-col items-center justify-center text-center px-2 pointer-events-none"
               style={{ left: '37.35%', top: '63%', width: '12.5%', height: '32%' }}
             >
               <div className="display text-text-strong leading-[1.05] font-semibold" style={{ fontSize: 'clamp(5px, 1.42cqw, 14px)' }}>
@@ -262,7 +262,7 @@ export function BenefitsBlock() {
             {/* Capsule 3 */}
             <div
               data-anim="bn-cap-text"
-              className="absolute flex flex-col items-center justify-start text-center px-2 pointer-events-none"
+              className="absolute flex flex-col items-center justify-center text-center px-2 pointer-events-none"
               style={{ left: '50.6%', top: '63%', width: '12.5%', height: '32%' }}
             >
               <div className="display text-text-strong leading-[1.05] font-semibold" style={{ fontSize: 'clamp(5px, 1.42cqw, 14px)' }}>
@@ -275,7 +275,7 @@ export function BenefitsBlock() {
             {/* Capsule 4 */}
             <div
               data-anim="bn-cap-text"
-              className="absolute flex flex-col items-center justify-start text-center px-2 pointer-events-none"
+              className="absolute flex flex-col items-center justify-center text-center px-2 pointer-events-none"
               style={{ left: '63.95%', top: '52%', width: '12.5%', height: '32%' }}
             >
               <div className="display text-text-strong leading-[1.05] font-semibold" style={{ fontSize: 'clamp(5px, 1.42cqw, 14px)' }}>

@@ -192,7 +192,7 @@ export function HeroBuildUpSV() {
       />
 
       {/* TEXT LEFT, grid container */}
-      <div className="container mx-auto px-6 md:px-10 lg:px-16 pt-28 md:pt-32 lg:pt-36 pb-20 md:pb-24 lg:pb-28 relative z-10">
+      <div className="container mx-auto px-6 md:px-10 lg:px-16 pt-28 md:pt-32 lg:pt-36 pb-[200px] sm:pb-[260px] lg:pb-28 relative z-10">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           <div className="lg:col-span-5">
             <div
@@ -254,10 +254,11 @@ export function HeroBuildUpSV() {
         </div>
       </div>
 
-      {/* TABLETTE : flux normal sous le texte en mobile (image entière, main non
-          coupée, pas de chevauchement), absolute bas-droite en desktop (lg+). */}
+      {/* TABLETTE : ancrée bas-droite (base avant-bras = base du hero) à TOUTES
+          les tailles, comme desktop. Mobile = plus large + le texte réserve de
+          l'espace en bas (pb) pour éviter tout chevauchement. */}
       <div
-        className="relative mx-auto w-[88%] sm:w-[66%] -mt-2 lg:mt-0 lg:absolute lg:right-8 lg:bottom-0 lg:mx-0 lg:w-[58%] xl:w-[54%] z-10 pointer-events-none"
+        className="absolute right-0 bottom-0 w-[80%] sm:w-[60%] lg:right-8 lg:w-[58%] xl:w-[54%] z-10 pointer-events-none"
       >
         {/* Wide warm ambient glow, réchauffe zone main + tablette */}
         <div

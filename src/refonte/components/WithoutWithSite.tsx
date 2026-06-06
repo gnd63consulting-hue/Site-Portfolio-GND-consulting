@@ -261,20 +261,20 @@ export function WithoutWithSite() {
           </div>
 
           <div className="mt-14 grid md:grid-cols-2 gap-6 md:gap-8 justify-items-center">
-            <div data-anim="ww-card" className="w-full flex justify-center md:justify-end">
+            <div data-anim="ww-card" className="w-full min-w-0 flex justify-center md:justify-end">
               <FlippingCard
                 width={520}
                 height={560}
-                className="max-w-full"
+                className="!w-full md:!w-[520px] !h-[1240px] md:!h-[560px]"
                 frontContent={<WithoutFront />}
                 backContent={<WithoutBack />}
               />
             </div>
-            <div data-anim="ww-card" className="w-full flex justify-center md:justify-start">
+            <div data-anim="ww-card" className="w-full min-w-0 flex justify-center md:justify-start">
               <FlippingCard
                 width={520}
                 height={560}
-                className="max-w-full"
+                className="!w-full md:!w-[520px] !h-[1240px] md:!h-[560px]"
                 frontContent={<WithFront />}
                 backContent={<WithBack />}
               />

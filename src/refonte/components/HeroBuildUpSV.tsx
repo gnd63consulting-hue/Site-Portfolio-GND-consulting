@@ -258,7 +258,7 @@ export function HeroBuildUpSV() {
           les tailles, comme desktop. Mobile = plus large + le texte réserve de
           l'espace en bas (pb) pour éviter tout chevauchement. */}
       <div
-        className="absolute right-[-10%] bottom-0 w-[108%] sm:w-[72%] lg:right-8 lg:w-[58%] xl:w-[54%] z-10 pointer-events-none"
+        className="absolute right-[-26%] bottom-0 w-[108%] sm:w-[72%] lg:right-8 lg:w-[58%] xl:w-[54%] z-10 pointer-events-none"
       >
         {/* Wide warm ambient glow, réchauffe zone main + tablette */}
         <div

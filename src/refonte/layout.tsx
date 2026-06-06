@@ -60,7 +60,7 @@ function Header({ route }: any) {
           <img
             src="/assets/logos/gnd-logo-chocolat-cropped.png"
             alt="GND Consulting"
-            className="h-9 md:h-11 w-auto select-none"
+            className="h-11 md:h-12 w-auto select-none"
             draggable={false}
           />
         </a>
@@ -118,7 +118,7 @@ function Header({ route }: any) {
               <img
                 src="/assets/logos/gnd-logo-chocolat-cropped.png"
                 alt="GND Consulting"
-                className="h-9 w-auto select-none"
+                className="h-11 w-auto select-none"
                 draggable={false}
               />
             </a>

@@ -41,10 +41,10 @@ export function FloatingCtaBand({
 }: FloatingCtaBandProps) {
   return (
     <Section bg="alt" className="relative pt-20 md:pt-28 pb-20 md:pb-28 overflow-hidden">
-      <Floating sensitivity={-0.5} className="!absolute left-0 right-0 top-0 bottom-0 z-0 pointer-events-none hidden sm:block">
+      <Floating sensitivity={-0.5} className="!absolute left-0 right-0 top-0 bottom-0 z-0 pointer-events-none block">
         <FloatingElement
           depth={0.5}
-          className="top-[15%] left-[2%] md:top-[25%] md:left-[5%]"
+          className="top-[9%] left-[2%] md:top-[25%] md:left-[5%]"
         >
           <motion.img
             src="https://images.unsplash.com/photo-1727341554370-80e0fe9ad082?q=80&w=2276&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -59,12 +59,12 @@ export function FloatingCtaBand({
 
         <FloatingElement
           depth={1}
-          className="top-[0%] left-[8%] md:top-[6%] md:left-[11%]"
+          className="top-[2%] left-[60%] md:top-[6%] md:left-[11%]"
         >
           <motion.img
             src="https://images.unsplash.com/photo-1640680608781-2e4199dd1579?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt=""
-            className="w-40 h-28 sm:w-48 sm:h-36 md:w-56 md:h-44 lg:w-60 lg:h-48 object-cover -rotate-12 shadow-2xl rounded-xl"
+            className="w-24 h-16 sm:w-48 sm:h-36 md:w-56 md:h-44 lg:w-60 lg:h-48 object-cover -rotate-12 shadow-2xl rounded-xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7 }}
@@ -74,12 +74,12 @@ export function FloatingCtaBand({
 
         <FloatingElement
           depth={4}
-          className="top-[70%] left-[6%] md:top-[58%] md:left-[8%]"
+          className="top-[83%] left-[2%] md:top-[58%] md:left-[8%]"
         >
           <motion.img
             src="https://images.unsplash.com/photo-1726083085160-feeb4e1e5b00?q=80&w=3024&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt=""
-            className="w-40 h-40 sm:w-48 sm:h-48 md:w-60 md:h-60 lg:w-64 lg:h-64 object-cover -rotate-[4deg] shadow-2xl rounded-xl"
+            className="w-24 h-24 sm:w-48 sm:h-48 md:w-60 md:h-60 lg:w-64 lg:h-64 object-cover -rotate-[4deg] shadow-2xl rounded-xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.9 }}
@@ -89,12 +89,12 @@ export function FloatingCtaBand({
 
         <FloatingElement
           depth={2}
-          className="top-[0%] left-[87%] md:top-[2%] md:left-[83%]"
+          className="top-[80%] left-[62%] md:top-[2%] md:left-[83%]"
         >
           <motion.img
             src="https://images.unsplash.com/photo-1562016600-ece13e8ba570?q=80&w=2838&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt=""
-            className="w-40 h-36 sm:w-48 sm:h-44 md:w-60 md:h-52 lg:w-64 lg:h-56 object-cover rotate-[6deg] shadow-2xl rounded-xl"
+            className="w-24 h-20 sm:w-48 sm:h-44 md:w-60 md:h-52 lg:w-64 lg:h-56 object-cover rotate-[6deg] shadow-2xl rounded-xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.1 }}
@@ -104,12 +104,12 @@ export function FloatingCtaBand({
 
         <FloatingElement
           depth={1}
-          className="top-[62%] left-[83%] md:top-[52%] md:left-[83%]"
+          className="top-[45%] left-[77%] md:top-[52%] md:left-[83%]"
         >
           <motion.img
             src="https://images.unsplash.com/photo-1624344965199-ed40391d20f2?q=80&w=2960&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt=""
-            className="w-44 h-44 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 object-cover rotate-[19deg] shadow-2xl rounded-xl"
+            className="w-20 h-20 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 object-cover rotate-[19deg] shadow-2xl rounded-xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.3 }}

@@ -192,7 +192,7 @@ export function HeroBuildUpSV() {
       />
 
       {/* TEXT LEFT, grid container */}
-      <div className="container mx-auto px-6 md:px-10 lg:px-16 pt-28 md:pt-32 lg:pt-36 pb-[215px] sm:pb-[250px] lg:pb-28 relative z-10">
+      <div className="container mx-auto px-6 md:px-10 lg:px-16 pt-28 md:pt-32 lg:pt-36 pb-[235px] sm:pb-[270px] lg:pb-28 relative z-10">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           <div className="lg:col-span-5">
             <div
@@ -258,7 +258,7 @@ export function HeroBuildUpSV() {
           les tailles, comme desktop. Mobile = plus large + le texte réserve de
           l'espace en bas (pb) pour éviter tout chevauchement. */}
       <div
-        className="absolute right-0 bottom-0 w-[92%] sm:w-[64%] lg:right-8 lg:w-[58%] xl:w-[54%] z-10 pointer-events-none"
+        className="absolute right-[-2%] bottom-0 w-[100%] sm:w-[68%] lg:right-8 lg:w-[58%] xl:w-[54%] z-10 pointer-events-none"
       >
         {/* Wide warm ambient glow, réchauffe zone main + tablette */}
         <div

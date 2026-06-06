@@ -181,7 +181,7 @@ export function HeroBuildUpSV() {
         />
         SITES VITRINES, LIVE
       </div>
-      <div className="absolute top-6 right-6 md:top-8 md:right-10 text-text-muted/70 label-mono text-[10px] tracking-[0.22em] z-20 pointer-events-none">
+      <div className="hidden md:block absolute top-6 right-6 md:top-8 md:right-10 text-text-muted/70 label-mono text-[10px] tracking-[0.22em] z-20 pointer-events-none">
         GND CONSULTING · PARIS · FR
       </div>
 
@@ -254,10 +254,10 @@ export function HeroBuildUpSV() {
         </div>
       </div>
 
-      {/* TABLETTE ABSOLUTE, bord poignet colle base du hero */}
+      {/* TABLETTE : flux normal sous le texte en mobile (image entière, main non
+          coupée, pas de chevauchement), absolute bas-droite en desktop (lg+). */}
       <div
-        className="absolute right-0 md:right-4 lg:right-8 w-[72%] md:w-[64%] lg:w-[58%] xl:w-[54%] z-10 pointer-events-none"
-        style={{ bottom: '0' }}
+        className="relative mx-auto w-[88%] sm:w-[66%] -mt-2 lg:mt-0 lg:absolute lg:right-8 lg:bottom-0 lg:mx-0 lg:w-[58%] xl:w-[54%] z-10 pointer-events-none"
       >
         {/* Wide warm ambient glow, réchauffe zone main + tablette */}
         <div
@@ -300,7 +300,7 @@ export function HeroBuildUpSV() {
       </div>
 
       {/* Bottom strip */}
-      <div className="absolute bottom-6 md:bottom-10 left-6 md:left-10 right-6 md:right-10 flex items-center justify-between text-text-muted/60 label-mono text-[10px] tracking-[0.22em] pointer-events-none z-10">
+      <div className="hidden md:flex absolute bottom-6 md:bottom-10 left-6 md:left-10 right-6 md:right-10 items-center justify-between text-text-muted/60 label-mono text-[10px] tracking-[0.22em] pointer-events-none z-10">
         <div className="flex items-center gap-3">
           <Icons.ArrowDown size={14} />
           <span>SCROLLEZ, TARIFS · PROCESS · FAQ</span>

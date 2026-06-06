@@ -5,6 +5,7 @@ import { Icons } from '../icons';
 import { TestimonialsBlock } from './home';
 import ScrollExpandHero from '@/components/blocks/scroll-expansion-hero';
 import { MarqueeCTA } from '../components/MarqueeCTA';
+import { WhyGndHomeBlock } from '../components/WhyGndHomeBlock';
 
 function HeroAgence() {
   return (
@@ -152,9 +153,16 @@ function AgencePage() {
       {/* Marquee CTA, bandeau entre Hero #1 et Hero #2 (mirror autres pages). */}
       <MarqueeCTA />
 
-      {/* HERO #2, manifeste agence (CinematicHero). */}
+      {/* HERO #2, manifeste agence (CinematicHero, texte). */}
       <HeroAgence/>
+
+      {/* Section texte qui sépare Hero #2 et Hero #3 (mirror pages service). */}
       <ManifestoBlock/>
+
+      {/* HERO #3, "Pourquoi GND / Notre vision" (même bloc boutique que la home
+          et les pages service → cohérence des 3 héros). */}
+      <WhyGndHomeBlock/>
+
       <FounderBlock/>
       <EthicsBlock/>
       <TestimonialsBlock/>

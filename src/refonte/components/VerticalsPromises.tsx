@@ -236,8 +236,69 @@ export function VerticalsPromises() {
             </div>
           </div>
 
-          {/* ─── MOBILE (< md) : liste verticale fallback ────────────────────────── */}
-          <div className="md:hidden mt-4 divide-y divide-text-strong/10 border-y border-text-strong/10">
+          {/* ─── MOBILE (< md) : armature visuelle (animation conservée) + liste lisible ── */}
+          <div className="md:hidden">
+            {/* Armature radiale scalée : disc cuivre + 5 satellites + icônes, sans
+                le texte latéral (illisible en portrait) → le texte est dans la liste
+                dessous. Mêmes data-anim → même animation GSAP que desktop. */}
+            <div
+              className="relative w-full mx-auto max-w-[440px]"
+              style={{ aspectRatio: '1365 / 768', containerType: 'inline-size' }}
+            >
+              <img
+                data-anim="vp-armature"
+                src="/assets/verticals-armature.png"
+                alt=""
+                aria-hidden="true"
+                className="absolute inset-0 w-full h-full object-contain select-none pointer-events-none"
+                draggable={false}
+              />
+              {/* Disc centre */}
+              <div
+                data-anim="vp-brand"
+                className="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center text-center"
+                style={{ left: `${CENTER_DISC.x}%`, top: `${CENTER_DISC.y}%`, width: '26%' }}
+              >
+                <div
+                  className="label-mono text-text-muted"
+                  style={{ fontSize: 'clamp(5px, 1.7cqw, 14px)', letterSpacing: '0.3em', marginBottom: 'clamp(2px, 0.7cqw, 12px)' }}
+                >
+                  GND
+                </div>
+                <div
+                  className="display text-text-strong leading-[1.05]"
+                  style={{ fontSize: 'clamp(12px, 4.4cqw, 48px)' }}
+                >
+                  Votre site,<br />
+                  <span className="italic text-accent">votre métier</span>
+                </div>
+              </div>
+              {/* Satellites : icône + numéro (sans texte latéral) */}
+              {VERTICALS.map((v, idx) => {
+                const Ico = v.icon;
+                return (
+                  <React.Fragment key={v.metier}>
+                    <span
+                      data-anim="vp-ring"
+                      className="absolute -translate-x-1/2 -translate-y-1/2 inline-flex items-center justify-center text-text-strong pointer-events-none"
+                      style={{ left: `${v.ringX}%`, top: `${v.ringY}%`, width: '4.6%', height: '4.6%' }}
+                    >
+                      <Ico stroke={1.6} className="w-full h-full text-text-strong" />
+                    </span>
+                    <span
+                      data-anim="vp-ring"
+                      className="absolute -translate-x-1/2 label-mono text-accent-deep pointer-events-none"
+                      style={{ left: `${v.ringX}%`, top: `${v.ringY - 5}%`, fontSize: 'clamp(4px, 1.1cqw, 11px)', letterSpacing: '0.2em' }}
+                    >
+                      0{idx + 1}
+                    </span>
+                  </React.Fragment>
+                );
+              })}
+            </div>
+
+            {/* Liste lisible (métier + promesse), sous l'armature */}
+            <div className="mt-10 divide-y divide-text-strong/10 border-y border-text-strong/10">
             {VERTICALS.map((v, idx) => {
               const Ico = v.icon;
               return (
@@ -265,6 +326,7 @@ export function VerticalsPromises() {
                 </div>
               );
             })}
+            </div>
           </div>
         </div>
       </Container>

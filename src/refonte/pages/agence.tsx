@@ -12,8 +12,8 @@ function HeroAgence() {
       kicker="L'agence, manifeste"
       eyebrow="l'agence"
       title={<>Humain<span className="text-accent"> × </span><span className="italic text-accent">IA</span>.</>}
-      subtitle={<>GND Consulting est un studio créatif parisien fondé en 2024. Notre signature : <strong className="text-bg">l'humain décide, l'IA accélère</strong>. Une méthode revendiquée, jamais cachée.</>}
-      badges={["Paris · FR", "Est. 2024", "AI Act conforme"]}
+      subtitle={<>GND Consulting est un studio créatif parisien fondé en 2025. Notre signature : <strong className="text-bg">l'humain décide, l'IA accélère</strong>. Une méthode revendiquée, jamais cachée.</>}
+      badges={["Paris · FR", "Est. 2025", "AI Act conforme"]}
       ctas={<>
         <Btn href="#/contact" variant="primary">Échanger avec Roodny</Btn>
         <a href="#/realisations" className="btn !bg-bg/10 !text-bg !border !border-bg/20 hover:!bg-bg/15">Voir nos réalisations <Icons.ArrowUpRight size={14}/></a>
@@ -79,7 +79,7 @@ function FounderBlock() {
               Un studio <span className="italic text-accent">incarné</span>.
             </h2>
             <div className="mt-7 space-y-5 text-lg text-text leading-relaxed max-w-xl">
-              <p>Roodny Pierre fonde GND Consulting à Paris en 2024, après plusieurs années en production audiovisuelle, motion design et direction artistique pour des artistes, des marques et des institutions.</p>
+              <p>Roodny Pierre fonde GND Consulting à Paris en 2025, après plusieurs années en production audiovisuelle, motion design et direction artistique pour des artistes, des marques et des institutions.</p>
               <p>La conviction : <strong className="text-text-strong">une création modulable, exigeante, augmentée par l'IA</strong>, sans renoncer à la signature humaine. Un seul interlocuteur, six métiers internalisés, des engagements tenus.</p>
               <p className="text-text-muted italic">« Nous ne vendons pas l'IA. Nous l'utilisons. La nuance fait toute la différence. »</p>
             </div>

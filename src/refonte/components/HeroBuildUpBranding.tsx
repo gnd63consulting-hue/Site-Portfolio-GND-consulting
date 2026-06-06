@@ -312,7 +312,7 @@ export function HeroBuildUpBranding() {
           <Icons.ArrowDown size={14} />
           <span>SCROLLEZ, PHILOSOPHIE · OFFRE · PROCESS</span>
         </div>
-        <div>EST. 2024 · PARIS · FR</div>
+        <div>EST. 2025 · PARIS · FR</div>
       </div>
     </section>
   );

@@ -356,7 +356,7 @@ export function HeroBuildUpAudiovisuel() {
           <Icons.ArrowDown size={14} />
           <span>SCROLLEZ, VIDÉO · MOTION · PHOTO</span>
         </div>
-        <div>EST. 2024 · PARIS · FR</div>
+        <div>EST. 2025 · PARIS · FR</div>
       </div>
     </section>
   );

@@ -231,7 +231,7 @@ const CinematicHero = ({ kicker, eyebrow, title, subtitle, ctas, badges, media, 
         <div className={`mt-16 border-t pt-5 flex items-center justify-between text-xs label-mono ${light ? 'border-text-strong/10 text-text-muted' : 'border-bg/10 text-bg/55'}`}>
           <span><Icons.ArrowDown size={12} className="inline scroll-pulse"/> scroll · découvrir</span>
           <span>{footerLabel}</span>
-          <span>est. 2024 · paris · fr</span>
+          <span>est. 2025 · paris · fr</span>
         </div>
       )}
     </Container>

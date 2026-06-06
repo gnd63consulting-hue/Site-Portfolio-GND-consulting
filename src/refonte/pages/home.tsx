@@ -95,7 +95,7 @@ function HeroHome() {
               <span className="opacity-30">/</span>
               <span>paris · fr</span>
               <span className="opacity-30">/</span>
-              <span className="hidden sm:inline">est. 2024</span>
+              <span className="hidden sm:inline">est. 2025</span>
             </div>
             <div className="flex items-center gap-3">
               <span className="chip !bg-text-strong/8 !text-text-strong backdrop-blur"><span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span> En production</span>
@@ -204,7 +204,7 @@ function HeroHome() {
               L'Art de la <span className="italic text-accent">Clarté Digitale</span>
             </div>
             <div className="flex items-center justify-end gap-2 label-mono">
-              <span>est. 2024</span>
+              <span>est. 2025</span>
               <span className="opacity-40">·</span>
               <span>paris · fr</span>
             </div>

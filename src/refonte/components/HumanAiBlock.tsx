@@ -15,9 +15,9 @@ const CARDS: ShuffleCardData[] = [
   {
     id: 1,
     kicker: "01 · L'humain pilote",
-    title: 'Roodny vous écoute',
+    title: 'On vous écoute',
     body:
-      'Un seul interlocuteur. Briefing en visio, choix esthétiques, relation client de bout en bout. Pas de service après-vente délégué à un freelance distant.',
+      "Échange direct avec l'équipe qui conçoit votre site. Briefing en visio, choix esthétiques, relation client de bout en bout. Pas de service après-vente délégué à un freelance distant.",
     Icon: Icons.Users,
   },
   {

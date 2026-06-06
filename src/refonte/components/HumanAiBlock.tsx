@@ -17,7 +17,7 @@ const CARDS: ShuffleCardData[] = [
     kicker: "01 · L'humain pilote",
     title: 'On vous écoute',
     body:
-      "Échange direct avec l'équipe qui conçoit votre site. Briefing en visio, choix esthétiques, relation client de bout en bout. Pas de service après-vente délégué à un freelance distant.",
+      "Échange direct avec l'équipe qui conçoit votre site. Briefing en visio, choix esthétiques, suivi de bout en bout. Vos retours vont à ceux qui réalisent, jamais à un intermédiaire.",
     Icon: Icons.Users,
   },
   {
@@ -25,7 +25,7 @@ const CARDS: ShuffleCardData[] = [
     kicker: "02 · L'IA accélère",
     title: 'Production en jours, pas en mois',
     body:
-      "Génération maquettes, copywriting, photo et code accélérés par les bons outils, pour livrer en 7-14 jours ce qu'une agence classique livre en 8 semaines.",
+      "On garde la main sur la création ; l'IA nous fait gagner du temps sur les tâches répétitives. Résultat : livré en 7-14 jours ce qu'une agence classique met 8 semaines à produire.",
     Icon: Icons.Cpu,
   },
   {

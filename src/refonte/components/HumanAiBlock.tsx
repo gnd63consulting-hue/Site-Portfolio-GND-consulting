@@ -15,25 +15,25 @@ const CARDS: ShuffleCardData[] = [
   {
     id: 1,
     kicker: "01 · L'humain pilote",
-    title: 'On vous écoute',
+    title: 'Un interlocuteur qui connaît votre projet',
     body:
-      "Échange direct avec l'équipe qui conçoit votre site. Briefing en visio, choix esthétiques, suivi de bout en bout. Vos retours vont à ceux qui réalisent, jamais à un intermédiaire.",
+      "Vous échangez directement avec les personnes qui conçoivent votre site. Pas de chaîne d'intermédiaires, pas de perte d'information entre la vente et la production. Vos retours sont entendus, compris et appliqués par ceux qui réalisent réellement le projet.",
     Icon: Icons.Users,
   },
   {
     id: 2,
     kicker: "02 · L'IA accélère",
-    title: 'Production en jours, pas en mois',
+    title: 'Plus de temps pour créer. Moins de temps perdu.',
     body:
-      "On garde la main sur la création ; l'IA nous fait gagner du temps sur les tâches répétitives. Résultat : livré en 7-14 jours ce qu'une agence classique met 8 semaines à produire.",
+      "Nous utilisons l'IA sur les tâches répétitives, techniques ou chronophages. La réflexion, la stratégie et les choix créatifs restent pilotés par l'humain. Résultat : des délais plus courts, une exécution plus fluide et davantage de temps consacré à ce qui fait la différence.",
     Icon: Icons.Cpu,
   },
   {
     id: 3,
-    kicker: '03 · Vous validez',
-    title: '3 itérations design incluses',
+    kicker: '03 · Vous gardez le contrôle',
+    title: 'Votre projet avance par étapes validées',
     body:
-      'Vous voyez votre site avant la mise en ligne, vous demandez les ajustements qui comptent. Garantie maquette : 3 rounds de retours inclus, sans surcoût.',
+      'Vous visualisez les propositions avant la mise en ligne et intervenez aux moments qui comptent. Trois rounds de retours sont inclus afin d\'affiner le projet sans complexifier le processus.',
     Icon: Icons.Check,
   },
 ];
@@ -80,19 +80,23 @@ export function HumanAiBlock() {
             <div className="min-w-0 lg:col-span-6 xl:col-span-7" data-anim="hai-header">
               <Kicker>Humain × IA, en pratique</Kicker>
               <h2 className="display text-5xl md:text-6xl lg:text-7xl mt-5 text-text-strong leading-[1.05]">
-                On ne remplace personne.{' '}
+                Une méthode simple.{' '}
                 <span className="italic text-accent">
-                  On accélère le bon travail
+                  Des résultats plus rapides
                 </span>
                 .
               </h2>
               <p className="mt-6 text-text leading-relaxed max-w-2xl">
-                Notre méthode tient en trois temps. C'est ce qui nous permet de
-                vous livrer en 7-14 jours, à un prix d'agence boutique, sans
-                rogner sur la qualité.
+                Nous combinons expertise humaine et outils d'automatisation pour
+                réduire les délais, limiter les frictions et concentrer le travail
+                là où il apporte le plus de valeur.
+              </p>
+              <p className="mt-4 text-text leading-relaxed max-w-2xl">
+                C'est ce qui nous permet de livrer des projets en quelques semaines,
+                sans sacrifier la qualité ni la personnalisation.
               </p>
               <p className="mt-8 text-xs tracking-[0.22em] uppercase text-text-muted">
-                Glissez la carte vers la gauche pour révéler la suivante →
+                Faites glisser pour découvrir notre méthode →
               </p>
             </div>
 

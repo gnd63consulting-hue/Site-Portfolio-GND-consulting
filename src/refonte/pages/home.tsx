@@ -1742,7 +1742,7 @@ function ContactBlock() {
         <div className="relative grid md:grid-cols-12 rounded-[36px] overflow-hidden shadow-2xl shadow-text/25 border border-text-strong/8 max-w-6xl mx-auto">
 
           {/* ===== GAUCHE, panneau chocolat visuel ===== */}
-          <div className="md:col-span-5 relative bg-text-strong text-bg p-8 md:p-8 lg:p-11 flex flex-col">
+          <div className="md:col-span-5 relative bg-text-strong text-bg p-6 md:p-8 lg:p-11 flex flex-col">
             {/* Image de fond + overlay chocolat pour la profondeur */}
             <img
               src="/assets/intersection-hero.jpg"
@@ -1773,7 +1773,7 @@ function ContactBlock() {
               </p>
 
               {/* Image arrondie inset, COVER GND (anciennement vignette vidéos hologramme, réutilisé ici) */}
-              <div className="mt-7 rounded-3xl overflow-hidden border border-bg/10 shadow-xl shadow-text/50">
+              <div className="mt-5 md:mt-7 rounded-3xl overflow-hidden border border-bg/10 shadow-xl shadow-text/50">
                 <img
                   src="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/gnd-cover.png"
                   alt="Studio créatif GND"
@@ -1785,7 +1785,7 @@ function ContactBlock() {
               </div>
 
               {/* Citation engagement éditorial, pousse à l'action en restant sobre */}
-              <div className="mt-7 pt-7 border-t border-bg/10">
+              <div className="mt-5 pt-5 md:mt-7 md:pt-7 border-t border-bg/10">
                 <p className="text-bg/80 text-sm italic leading-relaxed">
                   « Chaque projet commence par une écoute. La suite, on la construit ensemble, sur-mesure, jamais sur étagère. »
                 </p>
@@ -1799,7 +1799,7 @@ function ContactBlock() {
           </div>
 
           {/* ===== DROITE, panneau formulaire cream ===== */}
-          <div className="md:col-span-7 bg-bg p-8 md:p-8 lg:p-11">
+          <div className="md:col-span-7 bg-bg p-6 md:p-8 lg:p-11">
             <div className="label-mono text-[10px] !text-text-muted tracking-[0.2em] mb-1.5">DÉMARRER ICI</div>
             <h3 className="display text-2xl md:text-3xl text-text-strong leading-tight mb-7">
               Décrivez votre projet.
@@ -1880,12 +1880,12 @@ function ContactBlock() {
             </form>
 
             {/* Cards Contact 2x2 (déplacées depuis panneau chocolat), palette cream/chocolat pour matcher panneau droite */}
-            <div className="mt-8 pt-7 border-t border-text-strong/10">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="mt-7 pt-6 md:mt-8 md:pt-7 border-t border-text-strong/10">
+              <div className="grid grid-cols-2 gap-2.5">
                 {[
-                  { icon: <Icons.Mail size={15}/>,  label: "EMAIL",     value: "contact@gndconsulting.fr", href: "mailto:contact@gndconsulting.fr" },
-                  { icon: <Icons.Phone size={15}/>, label: "TÉLÉPHONE", value: "07 59 50 63 22",            href: "tel:+33759506322" },
-                  { icon: <Icons.MapPin size={15}/>,label: "ADRESSE",   value: "Paris, France",             href: null as string | null },
+                  { icon: <Icons.Mail size={15}/>,  label: "EMAIL",     value: "contact@gndconsulting.fr", href: "mailto:contact@gndconsulting.fr", full: true },
+                  { icon: <Icons.Phone size={15}/>, label: "TÉLÉPHONE", value: "07 59 50 63 22",            href: "tel:+33759506322", full: false },
+                  { icon: <Icons.MapPin size={15}/>,label: "ADRESSE",   value: "Paris, France",             href: null as string | null, full: false },
                 ].map(c => {
                   const inner = (
                     <div className="flex items-center gap-2.5 p-3 rounded-xl bg-bg-alt border border-text-strong/10 hover:border-accent/50 hover:bg-accent/[0.04] transition-all group h-full">
@@ -1894,21 +1894,22 @@ function ContactBlock() {
                       </div>
                       <div className="min-w-0 flex-1">
                         <div className="label-mono text-[8px] !text-text-muted tracking-[0.2em]">{c.label}</div>
-                        <div className="text-text-strong text-xs font-medium break-all">{c.value}</div>
+                        <div className={`text-text-strong text-xs font-medium ${c.full ? 'break-all' : 'break-words'}`}>{c.value}</div>
                       </div>
                     </div>
                   );
+                  const cls = c.full ? 'col-span-2 block' : 'block';
                   return c.href
-                    ? <a key={c.label} href={c.href} className="block">{inner}</a>
-                    : <div key={c.label}>{inner}</div>;
+                    ? <a key={c.label} href={c.href} className={cls}>{inner}</a>
+                    : <div key={c.label} className={c.full ? 'col-span-2' : ''}>{inner}</div>;
                 })}
 
-                {/* Card Calendly, 4e cellule grid, accent */}
+                {/* Card Calendly, pleine largeur, accent */}
                 <a
                   href="https://calendly.com/gnd63consulting/30min"
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-2.5 p-3 rounded-xl bg-accent/12 border border-accent/40 hover:bg-accent/22 hover:border-accent transition-all group"
+                  className="col-span-2 flex items-center gap-2.5 p-3 rounded-xl bg-accent/12 border border-accent/40 hover:bg-accent/22 hover:border-accent transition-all group"
                 >
                   <div className="w-8 h-8 rounded-lg bg-accent text-text-strong flex items-center justify-center flex-shrink-0">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>

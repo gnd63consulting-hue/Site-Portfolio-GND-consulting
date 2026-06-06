@@ -95,7 +95,7 @@ function ProcessTile({ step, index }: { step: ProcessStep; index: number }) {
   const Icon = step.icon;
   return (
     <motion.div
-      className="proc-tile group relative rounded-2xl bg-bg-alt p-5 min-h-[260px] overflow-visible cursor-pointer"
+      className="proc-tile group relative rounded-2xl bg-bg-alt p-5 min-h-0 lg:min-h-[260px] overflow-visible cursor-pointer"
       initial={{ opacity: 0, y: 120, scale: 0.4, rotate: -8 }}
       whileInView={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
       viewport={{ once: true, margin: '-60px' }}
@@ -180,7 +180,7 @@ function ProcessTile({ step, index }: { step: ProcessStep; index: number }) {
       />
 
       {/* Tile content */}
-      <div className="relative z-10 flex flex-col gap-4 h-full w-full">
+      <div className="relative z-10 flex flex-col gap-3 lg:gap-4 h-full w-full">
         <div className="flex items-center justify-between w-full">
           <motion.span
             className="num-display text-3xl text-accent leading-none tabular-nums"
@@ -221,7 +221,7 @@ function ProcessTile({ step, index }: { step: ProcessStep; index: number }) {
           {step.t}
         </motion.div>
         <motion.p
-          className="text-xs leading-relaxed text-text-muted mt-auto"
+          className="text-sm lg:text-xs leading-relaxed text-text-muted lg:mt-auto"
           initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
@@ -328,7 +328,7 @@ export function ProcessGraph({
   const xs = [100, 300, 500, 700, 900];
 
   return (
-    <section className="relative bg-bg-alt text-text-strong px-5 py-24 sm:px-8 md:py-32 overflow-hidden">
+    <section className="relative bg-bg-alt text-text-strong px-5 py-16 sm:px-8 sm:py-24 md:py-32 overflow-hidden">
       <Container>
         {/* Kicker + titre + intro */}
         <div className="mx-auto max-w-3xl text-center">
@@ -346,13 +346,16 @@ export function ProcessGraph({
         </div>
 
         {/* Diagramme node-graph, carte chocolat sur fond crème */}
-        <div className="relative mx-auto mt-14 max-w-[1180px] overflow-hidden rounded-[28px] border border-text-strong/10 bg-text-strong text-bg p-6 sm:p-10 md:p-14 shadow-2xl shadow-text-strong/15">
+        <div className="relative mx-auto mt-10 sm:mt-14 max-w-[1180px] overflow-hidden rounded-[28px] border border-text-strong/10 bg-text-strong text-bg p-5 sm:p-10 md:p-14 shadow-2xl shadow-text-strong/15">
           {/* Tiles, fond crème + group-spotlight Linear-style + BorderBeam Magic UI + count-up */}
           <ProcessTileGrid steps={steps} />
 
           {/* SVG connectors fan to central hub, viewBox spans full grid width */}
+          {/* Connecteur vertical simple en mobile/tablette (l'éventail SVG est pensé
+              pour 5 colonnes horizontales → masqué <lg) */}
+          <div className="lg:hidden mx-auto mt-6 mb-2 h-10 w-px bg-bg/25" aria-hidden />
           <svg
-            className="relative z-0 my-2 h-24 w-full"
+            className="relative z-0 my-2 h-24 w-full hidden lg:block"
             viewBox="0 0 1000 100"
             preserveAspectRatio="none"
             fill="none"

@@ -77,7 +77,7 @@ export function HumanAiBlock() {
         <div ref={ref} className="relative">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
             {/* Colonne texte */}
-            <div className="lg:col-span-6 xl:col-span-7" data-anim="hai-header">
+            <div className="min-w-0 lg:col-span-6 xl:col-span-7" data-anim="hai-header">
               <Kicker>Humain × IA, en pratique</Kicker>
               <h2 className="display text-5xl md:text-6xl lg:text-7xl mt-5 text-text-strong leading-[1.05]">
                 On ne remplace personne.{' '}
@@ -98,7 +98,7 @@ export function HumanAiBlock() {
 
             {/* Colonne pile shuffle */}
             <div
-              className="lg:col-span-6 xl:col-span-5 flex justify-center lg:justify-end"
+              className="min-w-0 lg:col-span-6 xl:col-span-5 flex justify-center lg:justify-end"
               data-anim="hai-stack"
             >
               <ShuffleCards cards={CARDS} />

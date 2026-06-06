@@ -74,7 +74,7 @@ export function ShuffleCard({
       }}
       transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
       className={[
-        'absolute left-0 top-0 flex h-[470px] w-[360px] flex-col select-none gap-5 rounded-[28px] p-8 shadow-2xl shadow-[#2A1810]/15',
+        'absolute left-0 top-0 flex h-[470px] w-[min(80vw,360px)] flex-col select-none gap-5 rounded-[28px] p-6 sm:p-8 shadow-2xl shadow-[#2A1810]/15',
         'bg-[#FDF6EE] text-[#2A1810] border border-[#E8D8C5]',
         'ring-1 ring-[#FF954F]/35',
         isFront ? 'cursor-grab active:cursor-grabbing' : 'pointer-events-none',
@@ -128,7 +128,7 @@ export function ShuffleCards({ cards, className = '' }: ShuffleCardsProps) {
   };
 
   return (
-    <div className={`relative h-[490px] w-[420px] max-w-full mx-auto ${className}`}>
+    <div className={`relative h-[490px] w-[min(92vw,420px)] max-w-full mx-auto ${className}`}>
       {cards.map((card, index) => (
         <ShuffleCard
           key={card.id}

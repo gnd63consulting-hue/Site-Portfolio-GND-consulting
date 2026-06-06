@@ -2,6 +2,7 @@
 import { Section, Container, Kicker, Faq } from '../ui';
 import { FloatingCtaBand } from '../components/FloatingCtaBand';
 import { Icons } from '../icons';
+import ScrollExpandHero from '@/components/blocks/scroll-expansion-hero';
 import { HeroBuildUpSV } from '../components/HeroBuildUpSV';
 import { BenefitsBlock } from '../components/BenefitsBlock';
 import { IntegrationsStrip } from '../components/IntegrationsStrip';
@@ -113,12 +114,29 @@ function SitesVitrinesPage() {
   ];
   return (
     <main id="main">
-      <HeroBuildUpSV />
+      {/* HERO #1, ScrollExpandHero (alignement pattern 3-héros : home, audiovisuel,
+          branding). Hero #2 = HeroBuildUpSV (descendu), Hero #3 = WhyGndBlock.
+          Wrapper pt-20 cream pour que le header flotte sur crème. */}
+      <div className="pt-20 md:pt-24 bg-bg-alt">
+        <ScrollExpandHero
+          mediaType="video"
+          mediaSrc="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Creative_Studio_Video_Generation2.mp4"
+          posterSrc="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250919_0006_Vibrant%20Digital%20Collaboration_remix_01k5fdpkfdemjrbt49q10rx0hx.png"
+          bgImageSrc="/assets/svc-sites.png"
+          title="Un site, une intention."
+          date="GND · Sites & SEO"
+          scrollToExpand="Scrollez pour révéler"
+          textColorClass="text-bg"
+        />
+      </div>
 
-      {/* 0.0 Marquee CTA, bandeau partagé entre Hero et boutique hero */}
+      {/* Marquee CTA, bandeau entre Hero #1 et Hero #2 (mirror audio/branding). */}
       <MarqueeCTA />
 
-      {/* 0. Pourquoi GND, état d'esprit / bio Roodny (remonté post-hero) */}
+      {/* HERO #2, HeroBuildUpSV (build-up cinematic, descendu pos 2). */}
+      <HeroBuildUpSV />
+
+      {/* HERO #3, Pourquoi GND / WhyGndBlock. */}
       <WhyGndBlock />
 
       {/* 1. Benefits, capsules néomorphiques anim */}

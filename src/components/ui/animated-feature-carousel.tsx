@@ -255,7 +255,7 @@ function FeatureCard({
             </motion.div>
           )}
         </AnimatePresence>
-        <div className="relative m-8 md:m-10 min-h-[450px] w-full">
+        <div className="relative m-6 md:m-10 min-h-[300px] md:min-h-[450px]">
           <AnimatePresence mode="wait">
             <motion.div
               key={step}
@@ -451,7 +451,7 @@ export function FeatureCarousel({
           <motion.div
             key={step}
             {...ANIMATION_PRESETS.fadeInScale}
-            className="w-full h-full absolute inset-0 pointer-events-none"
+            className="hidden md:block w-full h-full absolute inset-0 pointer-events-none"
           >
             {renderStepContent()}
           </motion.div>

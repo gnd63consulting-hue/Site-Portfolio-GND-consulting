@@ -202,7 +202,7 @@ const CinematicHero = ({ kicker, eyebrow, title, subtitle, ctas, badges, media, 
 
     <Container className="relative z-10">
       <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-        <div className="lg:col-span-7">
+        <div className={media ? "lg:col-span-7" : "lg:col-span-12 max-w-4xl"}>
           {kicker && <Kicker className={light ? '!text-text-muted' : '!text-bg/55'}>{kicker}</Kicker>}
           <h1 className={`display text-6xl md:text-8xl lg:text-[7.5rem] mt-6 leading-[.88] tracking-huge ${light ? 'text-text-strong' : 'text-bg'}`}>{title}</h1>
           {subtitle && <p className={`mt-8 text-lg md:text-xl leading-relaxed max-w-xl ${light ? 'text-text' : 'text-bg/80'}`}>{subtitle}</p>}
@@ -213,18 +213,13 @@ const CinematicHero = ({ kicker, eyebrow, title, subtitle, ctas, badges, media, 
           )}
           {ctas && <div className="mt-9 flex flex-wrap gap-3">{ctas}</div>}
         </div>
-        <div className="lg:col-span-5 relative">
-          {/* media slot */}
-          <div className="relative">
-            {media || (
-              <div className="relative aspect-[4/5] max-w-[460px] mx-auto">
-                <div className="absolute -inset-8 rounded-full pointer-events-none"
-                  style={{ background:'radial-gradient(circle, rgba(255,149,79,.45) 0%, transparent 65%)', filter:'blur(14px)' }}></div>
-                <PortraitHero showTag={false}/>
-              </div>
-            )}
+        {/* media slot — rendu uniquement si un visuel est fourni (plus de
+            PortraitHero "brouillon" par défaut, qui venait de la maquette). */}
+        {media && (
+          <div className="lg:col-span-5 relative">
+            <div className="relative">{media}</div>
           </div>
-        </div>
+        )}
       </div>
 
       {footerLabel && (

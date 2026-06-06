@@ -171,11 +171,11 @@ export function BenefitsBlock() {
   }, []);
 
   return (
-    <Section className="py-20 md:py-24">
+    <Section className="py-20 md:py-24 overflow-x-clip">
       <Container>
         <div
           ref={rootRef}
-          className="relative -mx-6 sm:-mx-8 md:mx-auto"
+          className="relative w-[152%] -translate-x-[17.1%] sm:w-[124%] sm:-translate-x-[9.7%] md:w-auto md:translate-x-0 md:mx-auto"
           style={{ maxWidth: '1400px', perspective: '1400px' }}
         >
           <div
@@ -237,12 +237,12 @@ export function BenefitsBlock() {
             <div
               data-anim="bn-cap-text"
               className="absolute flex flex-col items-center justify-start text-center px-2 pointer-events-none"
-              style={{ left: '24.3%', top: '52%', width: '12.5%', height: '34%' }}
+              style={{ left: '24.3%', top: '52%', width: '12.5%', height: '32%' }}
             >
-              <div className="display text-text-strong leading-[1.05] font-semibold" style={{ fontSize: 'clamp(5px, 1.5cqw, 14px)' }}>
+              <div className="display text-text-strong leading-[1.05] font-semibold" style={{ fontSize: 'clamp(5px, 1.42cqw, 14px)' }}>
                 Pas d'abonnement
               </div>
-              <p className="text-text-muted leading-snug" style={{ fontSize: 'clamp(3.5px, 0.98cqw, 11px)', marginTop: 'clamp(1px, 0.25cqw, 5px)' }}>
+              <p className="text-text-muted leading-snug" style={{ fontSize: 'clamp(3.5px, 0.8cqw, 11px)', marginTop: 'clamp(1px, 0.2cqw, 4px)' }}>
                 Vous payez une fois, le site est à vous.
               </p>
             </div>
@@ -250,12 +250,12 @@ export function BenefitsBlock() {
             <div
               data-anim="bn-cap-text"
               className="absolute flex flex-col items-center justify-start text-center px-2 pointer-events-none"
-              style={{ left: '37.35%', top: '63%', width: '12.5%', height: '34%' }}
+              style={{ left: '37.35%', top: '63%', width: '12.5%', height: '32%' }}
             >
-              <div className="display text-text-strong leading-[1.05] font-semibold" style={{ fontSize: 'clamp(5px, 1.5cqw, 14px)' }}>
+              <div className="display text-text-strong leading-[1.05] font-semibold" style={{ fontSize: 'clamp(5px, 1.42cqw, 14px)' }}>
                 Vous êtes propriétaire
               </div>
-              <p className="text-text-muted leading-snug" style={{ fontSize: 'clamp(3.5px, 0.98cqw, 11px)', marginTop: 'clamp(1px, 0.25cqw, 5px)' }}>
+              <p className="text-text-muted leading-snug" style={{ fontSize: 'clamp(3.5px, 0.8cqw, 11px)', marginTop: 'clamp(1px, 0.2cqw, 4px)' }}>
                 Nom de domaine et accès transmis.
               </p>
             </div>
@@ -263,12 +263,12 @@ export function BenefitsBlock() {
             <div
               data-anim="bn-cap-text"
               className="absolute flex flex-col items-center justify-start text-center px-2 pointer-events-none"
-              style={{ left: '50.6%', top: '63%', width: '12.5%', height: '34%' }}
+              style={{ left: '50.6%', top: '63%', width: '12.5%', height: '32%' }}
             >
-              <div className="display text-text-strong leading-[1.05] font-semibold" style={{ fontSize: 'clamp(5px, 1.5cqw, 14px)' }}>
+              <div className="display text-text-strong leading-[1.05] font-semibold" style={{ fontSize: 'clamp(5px, 1.42cqw, 14px)' }}>
                 Paiement en 2 fois
               </div>
-              <p className="text-text-muted leading-snug" style={{ fontSize: 'clamp(3.5px, 0.98cqw, 11px)', marginTop: 'clamp(1px, 0.25cqw, 5px)' }}>
+              <p className="text-text-muted leading-snug" style={{ fontSize: 'clamp(3.5px, 0.8cqw, 11px)', marginTop: 'clamp(1px, 0.2cqw, 4px)' }}>
                 50 % commande / 50 % livraison.
               </p>
             </div>
@@ -276,12 +276,12 @@ export function BenefitsBlock() {
             <div
               data-anim="bn-cap-text"
               className="absolute flex flex-col items-center justify-start text-center px-2 pointer-events-none"
-              style={{ left: '63.95%', top: '52%', width: '12.5%', height: '34%' }}
+              style={{ left: '63.95%', top: '52%', width: '12.5%', height: '32%' }}
             >
-              <div className="display text-text-strong leading-[1.05] font-semibold" style={{ fontSize: 'clamp(5px, 1.5cqw, 14px)' }}>
+              <div className="display text-text-strong leading-[1.05] font-semibold" style={{ fontSize: 'clamp(5px, 1.42cqw, 14px)' }}>
                 Modifications sur devis
               </div>
-              <p className="text-text-muted leading-snug" style={{ fontSize: 'clamp(3.5px, 0.98cqw, 11px)', marginTop: 'clamp(1px, 0.25cqw, 5px)' }}>
+              <p className="text-text-muted leading-snug" style={{ fontSize: 'clamp(3.5px, 0.8cqw, 11px)', marginTop: 'clamp(1px, 0.2cqw, 4px)' }}>
                 Une évolution ? Devis transparent.
               </p>
             </div>

@@ -16,6 +16,7 @@ import * as React from 'react';
 import { gsap } from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { Section, Container } from '../ui';
+import { Icons } from '../icons';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -175,13 +176,13 @@ export function BenefitsBlock() {
       <Container>
         <div
           ref={rootRef}
-          className="relative mx-auto"
+          className="relative mx-auto hidden md:block"
           style={{ maxWidth: '1400px', perspective: '1400px' }}
         >
           <div
             ref={stageRef}
             className="relative will-change-transform"
-            style={{ aspectRatio: '2400 / 1340', transformStyle: 'preserve-3d' }}
+            style={{ aspectRatio: '2400 / 1340', transformStyle: 'preserve-3d', containerType: 'inline-size' }}
           >
             {/* Background ambient glow */}
             <div
@@ -220,13 +221,15 @@ export function BenefitsBlock() {
             >
               <div
                 data-anim="bn-circle-kicker"
-                className="label-mono text-[10px] md:text-[11px] lg:text-xs tracking-[0.22em] text-text-muted mb-1.5"
+                className="label-mono tracking-[0.22em] text-text-muted"
+                style={{ fontSize: 'clamp(3px, 1.16cqw, 12px)', marginBottom: 'clamp(1px, 0.5cqw, 6px)' }}
               >
                AVANTAGES
               </div>
               <div
                 data-anim="bn-circle-title"
-                className="display text-text-strong text-lg md:text-xl lg:text-2xl leading-tight"
+                className="display text-text-strong leading-tight"
+                style={{ fontSize: 'clamp(7px, 2.33cqw, 24px)' }}
               >
                 Le pack <span className="italic text-accent">GND</span>
               </div>
@@ -237,10 +240,10 @@ export function BenefitsBlock() {
               className="absolute flex flex-col items-center justify-start text-center px-2 pointer-events-none"
               style={{ left: '26.6%', top: '58%', width: '7.4%', height: '18%' }}
             >
-              <div className="display text-text-strong text-[11px] md:text-xs lg:text-sm leading-[1.05] font-semibold">
+              <div className="display text-text-strong leading-[1.05] font-semibold" style={{ fontSize: 'clamp(4px, 1.36cqw, 14px)' }}>
                 Pas d'abonnement
               </div>
-              <p className="mt-1.5 text-text-muted text-[9px] md:text-[10px] lg:text-[11px] leading-snug">
+              <p className="text-text-muted leading-snug" style={{ fontSize: 'clamp(3px, 1.07cqw, 11px)', marginTop: 'clamp(1px, 0.5cqw, 6px)' }}>
                 Vous payez une fois, le site est à vous.
               </p>
             </div>
@@ -250,10 +253,10 @@ export function BenefitsBlock() {
               className="absolute flex flex-col items-center justify-start text-center px-2 pointer-events-none"
               style={{ left: '39.9%', top: '69%', width: '7.4%', height: '18%' }}
             >
-              <div className="display text-text-strong text-[11px] md:text-xs lg:text-sm leading-[1.05] font-semibold">
+              <div className="display text-text-strong leading-[1.05] font-semibold" style={{ fontSize: 'clamp(4px, 1.36cqw, 14px)' }}>
                 Vous êtes propriétaire
               </div>
-              <p className="mt-1.5 text-text-muted text-[9px] md:text-[10px] lg:text-[11px] leading-snug">
+              <p className="text-text-muted leading-snug" style={{ fontSize: 'clamp(3px, 1.07cqw, 11px)', marginTop: 'clamp(1px, 0.5cqw, 6px)' }}>
                 Nom de domaine et accès transmis.
               </p>
             </div>
@@ -263,10 +266,10 @@ export function BenefitsBlock() {
               className="absolute flex flex-col items-center justify-start text-center px-2 pointer-events-none"
               style={{ left: '53.2%', top: '69%', width: '7.3%', height: '18%' }}
             >
-              <div className="display text-text-strong text-[11px] md:text-xs lg:text-sm leading-[1.05] font-semibold">
+              <div className="display text-text-strong leading-[1.05] font-semibold" style={{ fontSize: 'clamp(4px, 1.36cqw, 14px)' }}>
                 Paiement en 2 fois
               </div>
-              <p className="mt-1.5 text-text-muted text-[9px] md:text-[10px] lg:text-[11px] leading-snug">
+              <p className="text-text-muted leading-snug" style={{ fontSize: 'clamp(3px, 1.07cqw, 11px)', marginTop: 'clamp(1px, 0.5cqw, 6px)' }}>
                 50 % commande / 50 % livraison.
               </p>
             </div>
@@ -276,13 +279,41 @@ export function BenefitsBlock() {
               className="absolute flex flex-col items-center justify-start text-center px-2 pointer-events-none"
               style={{ left: '66.6%', top: '58%', width: '7.3%', height: '18%' }}
             >
-              <div className="display text-text-strong text-[11px] md:text-xs lg:text-sm leading-[1.05] font-semibold">
+              <div className="display text-text-strong leading-[1.05] font-semibold" style={{ fontSize: 'clamp(4px, 1.36cqw, 14px)' }}>
                 Modifications sur devis
               </div>
-              <p className="mt-1.5 text-text-muted text-[9px] md:text-[10px] lg:text-[11px] leading-snug">
+              <p className="text-text-muted leading-snug" style={{ fontSize: 'clamp(3px, 1.07cqw, 11px)', marginTop: 'clamp(1px, 0.5cqw, 6px)' }}>
                 Une évolution ? Devis transparent.
               </p>
             </div>
+          </div>
+        </div>
+
+        {/* MOBILE — reproduction HTML lisible (l'infographie landscape image-baked
+            a des capsules ~25px en mobile, trop étroites pour le texte). Même
+            contenu : "Le pack GND" + 4 avantages en cartes. Desktop = image cuite. */}
+        <div className="md:hidden">
+          <div className="text-center mb-7">
+            <div className="label-mono text-[10px] tracking-[0.22em] text-text-muted mb-2">AVANTAGES</div>
+            <div className="display text-3xl text-text-strong leading-tight">
+              Le pack <span className="italic text-accent">GND</span>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 xs:grid-cols-2 gap-3">
+            {[
+              { Icon: Icons.Check,    t: "Pas d'abonnement",       d: "Vous payez une fois, le site est à vous." },
+              { Icon: Icons.Shield,   t: "Vous êtes propriétaire", d: "Nom de domaine et accès transmis." },
+              { Icon: Icons.Sparkles, t: "Paiement en 2 fois",     d: "50 % commande / 50 % livraison." },
+              { Icon: Icons.Layers,   t: "Modifications sur devis", d: "Une évolution ? Devis transparent." },
+            ].map((c) => (
+              <div key={c.t} className="rounded-2xl bg-bg-alt border border-text-strong/10 p-4 shadow-lg shadow-text/5">
+                <div className="w-9 h-9 rounded-full bg-accent/15 text-accent flex items-center justify-center mb-3">
+                  <c.Icon size={17} />
+                </div>
+                <div className="display text-base text-text-strong leading-tight">{c.t}</div>
+                <p className="mt-1.5 text-xs text-text-muted leading-snug">{c.d}</p>
+              </div>
+            ))}
           </div>
         </div>
       </Container>

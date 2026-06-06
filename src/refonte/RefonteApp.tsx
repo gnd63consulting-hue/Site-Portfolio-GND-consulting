@@ -4,13 +4,12 @@ import * as React from 'react';
 import './refonte.css';
 import { Header, Footer, CookieBanner } from './layout';
 import { ImageMaskDefs } from '../components/ui/image-mask';
-import { HomePage } from './pages/home';
+import { HomePage, ContactBlock } from './pages/home';
 import { AgencePage } from './pages/agence';
 import { ServicesHub } from './pages/services';
 import { SitesVitrinesPage } from './pages/sites-vitrines';
 import { BrandingPage, AudiovisuelPage, IAPage } from './pages/service-pages';
 import { RealisationsPage, ProjectDetail } from './pages/realisations';
-import { ContactPage } from './pages/contact';
 import { LegalPage, NotFoundPage } from './pages/legal';
 
 function useRoute() {
@@ -80,7 +79,7 @@ function RefonteApp() {
         || route === "/services/photographie") page = <AudiovisuelPage/>;
   else if (route === "/realisations") page = <RealisationsPage/>;
   else if (route.startsWith("/realisations/")) page = <ProjectDetail id={route.replace("/realisations/", "")}/>;
-  else if (route === "/contact") page = <ContactPage/>;
+  else if (route === "/contact") page = <main id="main" className="pt-24 md:pt-28"><ContactBlock/></main>;
   else if (route === "/mentions-legales") page = <LegalPage/>;
   else page = <NotFoundPage/>;
 

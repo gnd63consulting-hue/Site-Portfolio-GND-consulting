@@ -1749,7 +1749,7 @@ function ContactBlock() {
   );
 
   return (
-    <Section className="py-24 md:py-32 relative overflow-hidden">
+    <Section id="contact" className="py-24 md:py-32 relative overflow-hidden">
       <Container>
         {/* SPLIT CARD, panneau chocolat (visuel + texte) à gauche | formulaire cream à droite.
             Inspiré des refs Pinterest sign-up : panneau coloré qui porte le texte + image
@@ -2022,4 +2022,4 @@ function HomePage() {
   );
 }
 
-export { HomePage, PROJECTS, SERVICES_CARDS, TestimonialsBlock };
+export { HomePage, PROJECTS, SERVICES_CARDS, TestimonialsBlock, ContactBlock };

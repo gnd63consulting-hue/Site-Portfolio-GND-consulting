@@ -22,6 +22,7 @@ function Header({ route }: any) {
   const [scrolled, setScrolled] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const [services, setServices] = React.useState(false);
+  const [mobileServices, setMobileServices] = React.useState(false);
   const closeTimer = React.useRef<ReturnType<typeof setTimeout> | null>(null);
   const openServices = () => {
     if (closeTimer.current) { clearTimeout(closeTimer.current); closeTimer.current = null; }
@@ -38,7 +39,7 @@ function Header({ route }: any) {
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-  React.useEffect(() => { setOpen(false); setServices(false); }, [route]);
+  React.useEffect(() => { setOpen(false); setServices(false); setMobileServices(false); }, [route]);
 
   // Hero passé à cream, header doit être lisible (texte chocolat) en tout temps,
   // y compris au top de page. Plus de mode "onDark".
@@ -134,28 +135,47 @@ function Header({ route }: any) {
           <div className="px-6 py-8">
             <ul className="space-y-2">
               {NAV.map(n => (
-                <li key={n.to}>
-                  <a href={n.to} onClick={() => setOpen(false)}
-                    className="block py-3 display text-4xl text-text-strong border-b hairline border-b">
-                    {n.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-6">
-              <div className="kicker mb-4">Services</div>
-              <ul className="space-y-1.5">
-                {SERVICES_MENU.map(s => (
-                  <li key={s.to}>
-                    <a href={s.to} onClick={() => setOpen(false)}
-                      className="flex items-center gap-3 py-2 text-text-strong">
-                      <span className="label-mono">{s.num}</span>
-                      <span className="text-base">{s.label}</span>
+                n.label === "Services" ? (
+                  <li key={n.to}>
+                    <button
+                      type="button"
+                      aria-expanded={mobileServices}
+                      onClick={() => setMobileServices(v => !v)}
+                      className="w-full flex items-center justify-between py-3 display text-4xl text-text-strong border-b hairline border-b"
+                    >
+                      <span>Services</span>
+                      <Icons.ArrowDown size={26} className={`transition-transform duration-300 ${mobileServices ? "rotate-180" : ""}`} />
+                    </button>
+                    {mobileServices && (
+                      <ul className="mt-3 mb-1 space-y-1 border-l-2 border-accent/30 pl-4 anim-up">
+                        {SERVICES_MENU.map(s => (
+                          <li key={s.to}>
+                            <a href={s.to} onClick={() => setOpen(false)}
+                              className="flex items-center gap-3 py-2.5 text-text-strong">
+                              <span className="label-mono text-accent-deep">{s.num}</span>
+                              <span className="text-lg">{s.label}</span>
+                            </a>
+                          </li>
+                        ))}
+                        <li>
+                          <a href="#/services" onClick={() => setOpen(false)}
+                            className="inline-flex items-center gap-2 py-2 text-sm text-accent">
+                            Tous les services <Icons.ArrowRight size={14}/>
+                          </a>
+                        </li>
+                      </ul>
+                    )}
+                  </li>
+                ) : (
+                  <li key={n.to}>
+                    <a href={n.to} onClick={() => setOpen(false)}
+                      className="block py-3 display text-4xl text-text-strong border-b hairline border-b">
+                      {n.label}
                     </a>
                   </li>
-                ))}
-              </ul>
-            </div>
+                )
+              ))}
+            </ul>
             <a href="#/contact" onClick={() => setOpen(false)} className="btn btn-primary w-full justify-center mt-8">
               Démarrer un projet <Icons.ArrowUpRight size={14}/>
             </a>

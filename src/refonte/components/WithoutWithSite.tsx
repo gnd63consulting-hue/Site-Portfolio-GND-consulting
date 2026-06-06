@@ -241,7 +241,7 @@ export function WithoutWithSite() {
   }, []);
 
   return (
-    <Section className="py-20 md:py-28">
+    <Section className="py-20 md:py-28 overflow-x-clip">
       <Container>
         <div ref={ref}>
           <div className="max-w-3xl">
@@ -262,22 +262,31 @@ export function WithoutWithSite() {
 
           <div className="mt-14 grid md:grid-cols-2 gap-6 md:gap-8 justify-items-center">
             <div data-anim="ww-card" className="w-full flex justify-center md:justify-end">
-              <FlippingCard
-                width={520}
-                height={560}
-                className="max-w-full"
-                frontContent={<WithoutFront />}
-                backContent={<WithoutBack />}
-              />
+              {/* Carte mise à l'échelle pour rentrer en mobile : design, placement
+                  du texte et flip STRICTEMENT identiques au desktop, juste réduits.
+                  Wrapper à la taille scalée → flex la centre, pas de coupe. */}
+              <div className="w-[332px] h-[358px] sm:w-[520px] sm:h-[560px] max-w-full">
+                <div className="origin-top-left scale-[0.638] sm:scale-100">
+                  <FlippingCard
+                    width={520}
+                    height={560}
+                    frontContent={<WithoutFront />}
+                    backContent={<WithoutBack />}
+                  />
+                </div>
+              </div>
             </div>
             <div data-anim="ww-card" className="w-full flex justify-center md:justify-start">
-              <FlippingCard
-                width={520}
-                height={560}
-                className="max-w-full"
-                frontContent={<WithFront />}
-                backContent={<WithBack />}
-              />
+              <div className="w-[332px] h-[358px] sm:w-[520px] sm:h-[560px] max-w-full">
+                <div className="origin-top-left scale-[0.638] sm:scale-100">
+                  <FlippingCard
+                    width={520}
+                    height={560}
+                    frontContent={<WithFront />}
+                    backContent={<WithBack />}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>

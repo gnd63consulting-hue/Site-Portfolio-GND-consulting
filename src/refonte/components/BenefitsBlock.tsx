@@ -175,7 +175,7 @@ export function BenefitsBlock() {
       <Container>
         <div
           ref={rootRef}
-          className="relative w-[172%] -translate-x-[20.9%] sm:w-[136%] sm:-translate-x-[13.2%] md:w-auto md:translate-x-0 md:mx-auto"
+          className="relative w-[184%] -translate-x-[22.8%] sm:w-[144%] sm:-translate-x-[15.3%] md:w-auto md:translate-x-0 md:mx-auto"
           style={{ maxWidth: '1400px', perspective: '1400px' }}
         >
           <div

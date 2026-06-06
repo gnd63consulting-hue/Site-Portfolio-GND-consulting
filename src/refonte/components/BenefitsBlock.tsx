@@ -175,7 +175,7 @@ export function BenefitsBlock() {
       <Container>
         <div
           ref={rootRef}
-          className="relative w-[160%] -translate-x-[18.75%] sm:w-[128%] sm:-translate-x-[10.9%] md:w-auto md:translate-x-0 md:mx-auto"
+          className="relative w-[172%] -translate-x-[20.9%] sm:w-[136%] sm:-translate-x-[13.2%] md:w-auto md:translate-x-0 md:mx-auto"
           style={{ maxWidth: '1400px', perspective: '1400px' }}
         >
           <div
@@ -237,7 +237,7 @@ export function BenefitsBlock() {
             <div
               data-anim="bn-cap-text"
               className="absolute flex flex-col items-center justify-center text-center px-2 pointer-events-none"
-              style={{ left: '24.3%', top: '52%', width: '12.5%', height: '32%' }}
+              style={{ left: '24.3%', top: '48%', width: '12.5%', height: '32%' }}
             >
               <div className="display text-text-strong leading-[1.05] font-semibold" style={{ fontSize: 'clamp(5px, 1.42cqw, 14px)' }}>
                 Pas d'abonnement
@@ -250,7 +250,7 @@ export function BenefitsBlock() {
             <div
               data-anim="bn-cap-text"
               className="absolute flex flex-col items-center justify-center text-center px-2 pointer-events-none"
-              style={{ left: '37.35%', top: '63%', width: '12.5%', height: '32%' }}
+              style={{ left: '37.35%', top: '59%', width: '12.5%', height: '32%' }}
             >
               <div className="display text-text-strong leading-[1.05] font-semibold" style={{ fontSize: 'clamp(5px, 1.42cqw, 14px)' }}>
                 Vous êtes propriétaire
@@ -263,7 +263,7 @@ export function BenefitsBlock() {
             <div
               data-anim="bn-cap-text"
               className="absolute flex flex-col items-center justify-center text-center px-2 pointer-events-none"
-              style={{ left: '50.6%', top: '63%', width: '12.5%', height: '32%' }}
+              style={{ left: '50.6%', top: '59%', width: '12.5%', height: '32%' }}
             >
               <div className="display text-text-strong leading-[1.05] font-semibold" style={{ fontSize: 'clamp(5px, 1.42cqw, 14px)' }}>
                 Paiement en 2 fois
@@ -276,7 +276,7 @@ export function BenefitsBlock() {
             <div
               data-anim="bn-cap-text"
               className="absolute flex flex-col items-center justify-center text-center px-2 pointer-events-none"
-              style={{ left: '63.95%', top: '52%', width: '12.5%', height: '32%' }}
+              style={{ left: '63.95%', top: '48%', width: '12.5%', height: '32%' }}
             >
               <div className="display text-text-strong leading-[1.05] font-semibold" style={{ fontSize: 'clamp(5px, 1.42cqw, 14px)' }}>
                 Modifications sur devis

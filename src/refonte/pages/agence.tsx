@@ -143,7 +143,7 @@ function AgencePage() {
           mediaType="video"
           mediaSrc="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Creative_Studio_Video_Generation2.mp4"
           posterSrc="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250919_0006_Vibrant%20Digital%20Collaboration_remix_01k5fdpkfdemjrbt49q10rx0hx.png"
-          bgImageSrc="/assets/hero1-bg.png"
+          bgImageSrc="/assets/hero1-bg-v2.png"
           title="Humain × IA."
           date="GND · L'agence"
           scrollToExpand="Scrollez pour révéler"

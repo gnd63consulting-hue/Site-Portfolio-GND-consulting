@@ -42,7 +42,8 @@ const HOME_CATEGORIES: CategoryData[] = [
     ],
     palette: {
       bg: '#2A1810',
-      bgImage: '/assets/svc-production.png',
+      bgImage: '/assets/agence-hero3-bg01.png',
+      bubbleImage: '/assets/agence-hero2-full.png',
       glow:
         'radial-gradient(ellipse 70% 60% at 80% 30%, rgba(255,149,79,0.18) 0%, transparent 70%), radial-gradient(ellipse 45% 65% at 10% 80%, rgba(255,149,79,0.10) 0%, transparent 65%)',
       ring: '#3A2418',
@@ -81,7 +82,8 @@ const HOME_CATEGORIES: CategoryData[] = [
     ],
     palette: {
       bg: '#3F2418',
-      bgImage: '/assets/svc-sites.png',
+      bgImage: '/assets/agence-hero3-bg02.png',
+      bubbleImage: '/assets/agence-hero3-bubble02.png',
       glow:
         'radial-gradient(ellipse 70% 60% at 25% 30%, rgba(253,246,238,0.14) 0%, transparent 65%), radial-gradient(ellipse 50% 55% at 90% 80%, rgba(255,149,79,0.18) 0%, transparent 60%)',
       ring: '#553420',
@@ -128,7 +130,11 @@ const HOME_CATEGORIES: CategoryData[] = [
     ],
     palette: {
       bg: '#4A1E0A',
-      bgImage: '/assets/svc-design.png',
+      bgImage: '/assets/agence-hero3-bg03-bright.png',
+      bubbleImage: '/assets/agence-hero3-bubble03.png',
+      bgImageOpacity: 0.9,
+      scrimBackground:
+        'linear-gradient(90deg, rgba(42,24,16,0.5) 0%, rgba(42,24,16,0.3) 35%, rgba(42,24,16,0.1) 65%, rgba(42,24,16,0) 100%)',
       glow:
         'radial-gradient(ellipse 75% 65% at 70% 30%, rgba(255,149,79,0.50) 0%, transparent 65%), radial-gradient(ellipse 55% 70% at 15% 85%, rgba(255,149,79,0.22) 0%, transparent 60%)',
       ring: '#5C2A14',
@@ -175,7 +181,8 @@ const HOME_CATEGORIES: CategoryData[] = [
     ],
     palette: {
       bg: '#160A04',
-      bgImage: '/assets/svc-production.png',
+      bgImage: '/assets/agence-hero3-bg04.png',
+      bubbleImage: '/assets/agence-hero3-bubble04.png',
       glow:
         'radial-gradient(ellipse 65% 55% at 75% 25%, rgba(255,149,79,0.28) 0%, transparent 60%), radial-gradient(ellipse 55% 65% at 20% 80%, rgba(212,165,42,0.20) 0%, transparent 60%)',
       ring: '#241408',
@@ -222,7 +229,8 @@ const HOME_CATEGORIES: CategoryData[] = [
     ],
     palette: {
       bg: '#352014',
-      bgImage: '/assets/svc-ia.png',
+      bgImage: '/assets/agence-hero3-bg05.png',
+      bubbleImage: '/assets/agence-hero3-bubble05.png',
       glow:
         'radial-gradient(ellipse 65% 55% at 35% 30%, rgba(212,165,42,0.24) 0%, transparent 60%), radial-gradient(ellipse 55% 60% at 85% 75%, rgba(255,149,79,0.18) 0%, transparent 60%)',
       ring: '#4A2E1E',

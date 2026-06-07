@@ -162,31 +162,9 @@ function AgencePage() {
 
       {/* HERO #3, "Pourquoi GND / Notre vision" (même bloc boutique que la home
           et les pages service → cohérence des 3 héros). */}
-      <WhyGndHomeBlock
-        bubbleImages={{
-          '01': '/assets/agence-hero2-full.png',
-          '02': '/assets/agence-hero3-bubble02.png',
-          '03': '/assets/agence-hero3-bubble03.png',
-          '04': '/assets/agence-hero3-bubble04.png',
-          '05': '/assets/agence-hero3-bubble05.png',
-        }}
-        bgImages={{
-          '01': '/assets/agence-hero3-bg01.png',
-          '02': '/assets/agence-hero3-bg02.png',
-          '03': '/assets/agence-hero3-bg03-bright.png',
-          '04': '/assets/agence-hero3-bg04.png',
-          '05': '/assets/agence-hero3-bg05.png',
-        }}
-        paletteOverrides={{
-          // Slide 03 : moins de chocolat, plus lumineux/crème (image éclaircie +
-          // opacité plus haute + scrim plus léger qui garde la lisibilité à gauche).
-          '03': {
-            bgImageOpacity: 0.9,
-            scrimBackground:
-              'linear-gradient(90deg, rgba(42,24,16,0.5) 0%, rgba(42,24,16,0.3) 35%, rgba(42,24,16,0.1) 65%, rgba(42,24,16,0) 100%)',
-          },
-        }}
-      />
+      {/* Images de fond + bulles désormais par défaut dans WhyGndHomeBlock →
+          home et agence uniformisées (mêmes visuels par slide). */}
+      <WhyGndHomeBlock/>
 
       <FounderBlock/>
       <EthicsBlock/>

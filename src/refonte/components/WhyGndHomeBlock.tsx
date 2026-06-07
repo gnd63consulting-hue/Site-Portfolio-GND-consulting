@@ -244,10 +244,19 @@ const HOME_CATEGORIES: CategoryData[] = [
   },
 ];
 
-export function WhyGndHomeBlock() {
+export function WhyGndHomeBlock({ bubble01 }: { bubble01?: string } = {}) {
+  // bubble01 (optionnel) : override l'image de la bulle de la slide 01 — utilisé
+  // par la page Agence sans impacter la home (catégories partagées).
+  const categories = bubble01
+    ? HOME_CATEGORIES.map((c) =>
+        c.id === '01'
+          ? { ...c, palette: { ...c.palette, bubbleImage: bubble01 } }
+          : c
+      )
+    : HOME_CATEGORIES;
   return (
     <WhyGndBlock
-      categories={HOME_CATEGORIES}
+      categories={categories}
       kickerLabel="Notre vision"
       kickerSubLabel="Studio créatif"
       defaultActiveCat="01"

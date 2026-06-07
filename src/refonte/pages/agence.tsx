@@ -19,7 +19,6 @@ function HeroAgence() {
         <Btn href="#/contact" variant="primary">Échanger avec Roodny</Btn>
         <a href="#/realisations" className="btn !bg-bg/10 !text-bg !border !border-bg/20 hover:!bg-bg/15">Voir nos réalisations <Icons.ArrowUpRight size={14}/></a>
       </>}
-      bgImage="/assets/agence-hero2-scene.png"
       footerLabel="l'agence · manifeste"
     />
   );
@@ -162,7 +161,7 @@ function AgencePage() {
 
       {/* HERO #3, "Pourquoi GND / Notre vision" (même bloc boutique que la home
           et les pages service → cohérence des 3 héros). */}
-      <WhyGndHomeBlock/>
+      <WhyGndHomeBlock bubble01="/assets/agence-hero2-full.png"/>
 
       <FounderBlock/>
       <EthicsBlock/>

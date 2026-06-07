@@ -19,6 +19,7 @@ function HeroAgence() {
         <Btn href="#/contact" variant="primary">Échanger avec Roodny</Btn>
         <a href="#/realisations" className="btn !bg-bg/10 !text-bg !border !border-bg/20 hover:!bg-bg/15">Voir nos réalisations <Icons.ArrowUpRight size={14}/></a>
       </>}
+      bgImage="/assets/agence-hero2-scene.png"
       footerLabel="l'agence · manifeste"
     />
   );

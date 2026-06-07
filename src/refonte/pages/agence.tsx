@@ -170,6 +170,7 @@ function AgencePage() {
         bgImages={{
           '01': '/assets/agence-hero3-bg01.png',
           '02': '/assets/agence-hero3-bg02.png',
+          '03': '/assets/agence-hero3-bg03.png',
         }}
       />
 

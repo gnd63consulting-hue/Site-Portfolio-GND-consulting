@@ -162,7 +162,7 @@ function AgencePage() {
 
       {/* HERO #3, "Pourquoi GND / Notre vision" (même bloc boutique que la home
           et les pages service → cohérence des 3 héros). */}
-      <WhyGndHomeBlock bubble01="/assets/agence-hero2-full.png"/>
+      <WhyGndHomeBlock bubble01="/assets/agence-hero2-full.png" bg01="/assets/agence-hero3-bg01.png"/>
 
       <FounderBlock/>
       <EthicsBlock/>

@@ -244,13 +244,14 @@ const HOME_CATEGORIES: CategoryData[] = [
   },
 ];
 
-export function WhyGndHomeBlock({ bubble01 }: { bubble01?: string } = {}) {
-  // bubble01 (optionnel) : override l'image de la bulle de la slide 01 — utilisé
-  // par la page Agence sans impacter la home (catégories partagées).
-  const categories = bubble01
+export function WhyGndHomeBlock({ bubble01, bg01 }: { bubble01?: string; bg01?: string } = {}) {
+  // bubble01 / bg01 (optionnels) : override l'image de la bulle et/ou le fond de
+  // la slide 01 — utilisé par la page Agence sans impacter la home (catégories
+  // partagées).
+  const categories = (bubble01 || bg01)
     ? HOME_CATEGORIES.map((c) =>
         c.id === '01'
-          ? { ...c, palette: { ...c.palette, bubbleImage: bubble01 } }
+          ? { ...c, palette: { ...c.palette, ...(bubble01 ? { bubbleImage: bubble01 } : {}), ...(bg01 ? { bgImage: bg01 } : {}) } }
           : c
       )
     : HOME_CATEGORIES;

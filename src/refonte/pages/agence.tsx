@@ -19,6 +19,22 @@ function HeroAgence() {
         <Btn href="#/contact" variant="primary">Échanger avec Roodny</Btn>
         <a href="#/realisations" className="btn !bg-bg/10 !text-bg !border !border-bg/20 hover:!bg-bg/15">Voir nos réalisations <Icons.ArrowUpRight size={14}/></a>
       </>}
+      media={
+        <div className="relative aspect-square w-full max-w-[460px] mx-auto">
+          {/* lueur chaude derrière le sujet (l'image a un fond transparent) */}
+          <div
+            className="absolute inset-0 rounded-full pointer-events-none"
+            style={{ background: 'radial-gradient(circle at 50% 55%, rgba(255,149,79,0.40) 0%, transparent 65%)', filter: 'blur(12px)' }}
+            aria-hidden
+          />
+          <img
+            src="/assets/agence-hero2.png"
+            alt="Studio créatif GND : l'humain au centre, l'IA en appui"
+            className="relative w-full h-full object-contain select-none drop-shadow-2xl"
+            draggable={false}
+          />
+        </div>
+      }
       footerLabel="l'agence · manifeste"
     />
   );

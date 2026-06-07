@@ -244,16 +244,20 @@ const HOME_CATEGORIES: CategoryData[] = [
   },
 ];
 
-export function WhyGndHomeBlock({ bubble01, bg01 }: { bubble01?: string; bg01?: string } = {}) {
-  // bubble01 / bg01 (optionnels) : override l'image de la bulle et/ou le fond de
-  // la slide 01 — utilisé par la page Agence sans impacter la home (catégories
-  // partagées).
-  const categories = (bubble01 || bg01)
-    ? HOME_CATEGORIES.map((c) =>
-        c.id === '01'
-          ? { ...c, palette: { ...c.palette, ...(bubble01 ? { bubbleImage: bubble01 } : {}), ...(bg01 ? { bgImage: bg01 } : {}) } }
-          : c
-      )
+export function WhyGndHomeBlock(
+  { bubbleImages, bgImages }: { bubbleImages?: Record<string, string>; bgImages?: Record<string, string> } = {}
+) {
+  // bubbleImages / bgImages (optionnels) : override par slide (clé = id de la
+  // catégorie, ex "01", "02"…) de l'image de bulle et/ou du fond. Utilisé par la
+  // page Agence sans impacter la home (catégories partagées).
+  const hasOverride = bubbleImages || bgImages;
+  const categories = hasOverride
+    ? HOME_CATEGORIES.map((c) => {
+        const bub = bubbleImages?.[c.id];
+        const bg = bgImages?.[c.id];
+        if (!bub && !bg) return c;
+        return { ...c, palette: { ...c.palette, ...(bub ? { bubbleImage: bub } : {}), ...(bg ? { bgImage: bg } : {}) } };
+      })
     : HOME_CATEGORIES;
   return (
     <WhyGndBlock

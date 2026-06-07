@@ -168,12 +168,14 @@ function AgencePage() {
           '02': '/assets/agence-hero3-bubble02.png',
           '03': '/assets/agence-hero3-bubble03.png',
           '04': '/assets/agence-hero3-bubble04.png',
+          '05': '/assets/agence-hero3-bubble05.png',
         }}
         bgImages={{
           '01': '/assets/agence-hero3-bg01.png',
           '02': '/assets/agence-hero3-bg02.png',
           '03': '/assets/agence-hero3-bg03-bright.png',
           '04': '/assets/agence-hero3-bg04.png',
+          '05': '/assets/agence-hero3-bg05.png',
         }}
         paletteOverrides={{
           // Slide 03 : moins de chocolat, plus lumineux/crème (image éclaircie +

@@ -166,6 +166,7 @@ function AgencePage() {
         bubbleImages={{
           '01': '/assets/agence-hero2-full.png',
           '02': '/assets/agence-hero3-bubble02.png',
+          '03': '/assets/agence-hero3-bubble03.png',
         }}
         bgImages={{
           '01': '/assets/agence-hero3-bg01.png',

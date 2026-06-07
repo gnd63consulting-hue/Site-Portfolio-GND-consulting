@@ -363,8 +363,22 @@ export function WhyGndBlock({
 }: WhyGndBlockProps = {}) {
   const ref = React.useRef<HTMLDivElement>(null);
   const [activeCat, setActiveCat] = React.useState<string>(defaultActiveCat);
+  const [paused, setPaused] = React.useState(false);
   const active =
     categories.find((c) => c.id === activeCat) ?? categories[0];
+
+  // Auto-play : fait défiler les slides pour que les visiteurs passifs les voient
+  // toutes (sinon seule la slide 01 est vue). Reset à chaque changement (clic
+  // manuel inclus), en pause au survol pour ne pas gêner la lecture.
+  React.useEffect(() => {
+    if (paused || categories.length < 2) return;
+    const ids = categories.map((c) => c.id);
+    const t = setTimeout(() => {
+      setActiveCat((prev) => ids[(ids.indexOf(prev) + 1) % ids.length]);
+    }, 5500);
+    return () => clearTimeout(t);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeCat, paused, categories.length]);
   /* Theme switch :
    * - dark (défaut) : texte cream sur palette chocolat (Branding/Sites-Vitrines).
    * - light : texte chocolat sur palette cream (Audiovisuel pour cohérence
@@ -425,6 +439,8 @@ export function WhyGndBlock({
   return (
     <section
       ref={ref}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
       className="relative overflow-hidden text-bg"
       style={{
         background: active.palette.bg,

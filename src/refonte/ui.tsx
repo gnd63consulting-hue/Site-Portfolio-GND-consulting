@@ -159,7 +159,7 @@ const CtaBand = ({ title = "Créons l'impact ensemble.", sub, cta = "Lancer un p
    `theme="light"` → cream stage matching HeroBuildUpBranding / HeroBuildUpSV / Home
    (used by AudiovisuelPage to align with cream-hero cluster).
    Pass `media` for a custom right-column visual (defaults to PortraitHero). */
-const CinematicHero = ({ kicker, eyebrow, title, subtitle, ctas, badges, media, footerLabel, theme = 'dark' }: any) => {
+const CinematicHero = ({ kicker, eyebrow, title, subtitle, ctas, badges, media, footerLabel, theme = 'dark', bgImage }: any) => {
   const light = theme === 'light';
   return (
   <section className={`relative min-h-[88vh] overflow-hidden pt-24 md:pt-32 pb-12 ${light ? 'bg-bg-alt text-text-strong' : 'bg-text-strong text-bg'}`}>
@@ -171,6 +171,18 @@ const CinematicHero = ({ kicker, eyebrow, title, subtitle, ctas, badges, media, 
             style={{ background:'radial-gradient(ellipse 80% 90% at 50% 50%, rgba(255,149,79,0.18) 0%, transparent 75%)' }}></div>
           <div className="absolute inset-0 opacity-30 mix-blend-multiply"
             style={{ backgroundImage:'radial-gradient(rgba(42,24,16,.05) 1px, transparent 1px)', backgroundSize:'3px 3px' }}></div>
+        </>
+      ) : bgImage ? (
+        <>
+          {/* Image de fond (ex : même fond que le Hero #2 de la home) + dégradé
+              gauche→droite sombre pour la lisibilité du texte à gauche, le fond
+              reste visible à droite derrière le sujet. */}
+          <img src={bgImage} alt="" aria-hidden draggable={false}
+            className="absolute inset-0 w-full h-full object-cover select-none" />
+          <div className="absolute inset-0"
+            style={{ background:'linear-gradient(90deg, rgba(26,13,8,.93) 0%, rgba(26,13,8,.74) 38%, rgba(26,13,8,.42) 70%, rgba(26,13,8,.32) 100%)' }}></div>
+          <div className="absolute inset-0"
+            style={{ boxShadow:'inset 0 0 200px 70px rgba(0,0,0,.45)' }}></div>
         </>
       ) : (
         <>

@@ -35,6 +35,7 @@ function HeroAgence() {
           />
         </div>
       }
+      bgImage="/assets/hero-home-bg.png"
       footerLabel="l'agence · manifeste"
     />
   );

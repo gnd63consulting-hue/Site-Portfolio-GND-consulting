@@ -28,7 +28,7 @@ function HeroAgence() {
             aria-hidden
           />
           <img
-            src="/assets/agence-hero2-cut.png"
+            src="/assets/agence-hero2-cut3.png"
             alt=""
             className="relative w-full h-auto object-contain select-none drop-shadow-2xl"
             draggable={false}

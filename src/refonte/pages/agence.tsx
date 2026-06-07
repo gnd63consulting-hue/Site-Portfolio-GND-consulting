@@ -28,7 +28,7 @@ function HeroAgence() {
             aria-hidden
           />
           <img
-            src="/assets/agence-hero2.png"
+            src="/assets/agence-hero2-cut.png"
             alt="Studio créatif GND : l'humain au centre, l'IA en appui"
             className="relative w-full h-full object-contain select-none drop-shadow-2xl"
             draggable={false}

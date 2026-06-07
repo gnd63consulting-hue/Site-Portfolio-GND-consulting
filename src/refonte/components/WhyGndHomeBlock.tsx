@@ -245,18 +245,24 @@ const HOME_CATEGORIES: CategoryData[] = [
 ];
 
 export function WhyGndHomeBlock(
-  { bubbleImages, bgImages }: { bubbleImages?: Record<string, string>; bgImages?: Record<string, string> } = {}
+  { bubbleImages, bgImages, paletteOverrides }: {
+    bubbleImages?: Record<string, string>;
+    bgImages?: Record<string, string>;
+    paletteOverrides?: Record<string, Record<string, any>>;
+  } = {}
 ) {
-  // bubbleImages / bgImages (optionnels) : override par slide (clé = id de la
-  // catégorie, ex "01", "02"…) de l'image de bulle et/ou du fond. Utilisé par la
-  // page Agence sans impacter la home (catégories partagées).
-  const hasOverride = bubbleImages || bgImages;
+  // bubbleImages / bgImages / paletteOverrides (optionnels) : override par slide
+  // (clé = id "01","02"…) de l'image de bulle, du fond, et/ou d'autres champs de
+  // palette (bgImageOpacity, scrimBackground…). Utilisé par Agence sans impacter
+  // la home (catégories partagées).
+  const hasOverride = bubbleImages || bgImages || paletteOverrides;
   const categories = hasOverride
     ? HOME_CATEGORIES.map((c) => {
         const bub = bubbleImages?.[c.id];
         const bg = bgImages?.[c.id];
-        if (!bub && !bg) return c;
-        return { ...c, palette: { ...c.palette, ...(bub ? { bubbleImage: bub } : {}), ...(bg ? { bgImage: bg } : {}) } };
+        const pal = paletteOverrides?.[c.id];
+        if (!bub && !bg && !pal) return c;
+        return { ...c, palette: { ...c.palette, ...(bub ? { bubbleImage: bub } : {}), ...(bg ? { bgImage: bg } : {}), ...(pal || {}) } };
       })
     : HOME_CATEGORIES;
   return (

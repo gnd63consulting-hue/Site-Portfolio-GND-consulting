@@ -159,7 +159,7 @@ const CtaBand = ({ title = "Créons l'impact ensemble.", sub, cta = "Lancer un p
    `theme="light"` → cream stage matching HeroBuildUpBranding / HeroBuildUpSV / Home
    (used by AudiovisuelPage to align with cream-hero cluster).
    Pass `media` for a custom right-column visual (defaults to PortraitHero). */
-const CinematicHero = ({ kicker, eyebrow, title, subtitle, ctas, badges, media, footerLabel, theme = 'dark', bgImage }: any) => {
+const CinematicHero = ({ kicker, eyebrow, title, subtitle, ctas, badges, media, footerLabel, theme = 'dark', bgImage, mediaAnchor }: any) => {
   const light = theme === 'light';
   return (
   <section className={`relative min-h-[88vh] overflow-hidden pt-24 md:pt-32 pb-12 ${light ? 'bg-bg-alt text-text-strong' : 'bg-text-strong text-bg'}`}>
@@ -196,6 +196,15 @@ const CinematicHero = ({ kicker, eyebrow, title, subtitle, ctas, badges, media, 
       )}
     </div>
 
+    {/* Sujet ancré en bas (mediaAnchor="bottom") : grand, incrusté au bas du hero
+        comme le personnage du Hero #2 de la home. Absolu / section, clippé par
+        overflow-hidden → le bas du visuel s'arrête au bas du hero. */}
+    {media && mediaAnchor === 'bottom' && (
+      <div aria-hidden className="pointer-events-none absolute bottom-0 right-0 z-[6] flex items-end justify-end w-[80%] sm:w-[60%] lg:w-[52%] max-w-[700px]">
+        {media}
+      </div>
+    )}
+
     {/* top breadcrumb */}
     {eyebrow && (
       <div className="relative z-10 mb-12">
@@ -227,7 +236,7 @@ const CinematicHero = ({ kicker, eyebrow, title, subtitle, ctas, badges, media, 
         </div>
         {/* media slot — rendu uniquement si un visuel est fourni (plus de
             PortraitHero "brouillon" par défaut, qui venait de la maquette). */}
-        {media && (
+        {media && mediaAnchor !== 'bottom' && (
           <div className="lg:col-span-5 relative">
             <div className="relative">{media}</div>
           </div>

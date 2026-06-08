@@ -301,7 +301,7 @@ export function HeroBuildUpBranding() {
         >
           {/* Image détourée, fond alpha, intégration directe sur hero cream */}
           <img
-            src="/assets/branding-hero-cutout-v2.png"
+            src="/assets/branding-hero-cutout-v3.png"
             alt="GND Consulting, branding & identité"
             className="w-full h-auto block select-none pointer-events-none"
             draggable={false}

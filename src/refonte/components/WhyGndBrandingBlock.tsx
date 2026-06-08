@@ -121,6 +121,11 @@ const BRANDING_CATEGORIES: CategoryData[] = [
     palette: {
       bg: '#4A1E0A',
       bgImage: '/assets/branding-hero3-bg03.png',
+      // Slide 03 : moins de teinte chocolat → opacité image quasi pleine + scrim
+      // beaucoup plus léger (juste assez à gauche pour la lisibilité du texte).
+      bgImageOpacity: 0.96,
+      scrimBackground:
+        'linear-gradient(90deg, rgba(42,24,16,0.48) 0%, rgba(42,24,16,0.26) 38%, rgba(42,24,16,0.08) 70%, rgba(42,24,16,0) 100%)',
       glow:
         'radial-gradient(ellipse 75% 65% at 70% 30%, rgba(255,149,79,0.50) 0%, transparent 65%), radial-gradient(ellipse 55% 70% at 15% 85%, rgba(255,149,79,0.22) 0%, transparent 60%)',
       ring: '#5C2A14',

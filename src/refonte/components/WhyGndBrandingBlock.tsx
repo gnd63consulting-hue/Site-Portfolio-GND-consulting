@@ -177,7 +177,7 @@ const BRANDING_CATEGORIES: CategoryData[] = [
       bgImage: '/assets/branding-hero3-bg04.png',
       // Fond clair (brand book blanc) → on baisse l'opacité + scrim plus marqué à
       // gauche pour que le texte blanc reste lisible.
-      bgImageOpacity: 0.78,
+      bgImageOpacity: 0.66,
       scrimBackground:
         'linear-gradient(90deg, rgba(42,24,16,0.74) 0%, rgba(42,24,16,0.52) 35%, rgba(42,24,16,0.22) 65%, rgba(42,24,16,0.02) 100%)',
       glow:

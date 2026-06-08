@@ -224,9 +224,14 @@ const BRANDING_CATEGORIES: CategoryData[] = [
     ],
     palette: {
       bg: '#352014',
+      bgImage: '/assets/branding-hero3-bg05.png',
+      bgImageOpacity: 0.8,
+      scrimBackground:
+        'linear-gradient(90deg, rgba(42,24,16,0.68) 0%, rgba(42,24,16,0.46) 35%, rgba(42,24,16,0.2) 65%, rgba(42,24,16,0.02) 100%)',
       glow:
         'radial-gradient(ellipse 65% 55% at 35% 30%, rgba(212,165,42,0.24) 0%, transparent 60%), radial-gradient(ellipse 55% 60% at 85% 75%, rgba(255,149,79,0.18) 0%, transparent 60%)',
       ring: '#4A2E1E',
+      bubbleImage: '/assets/branding-hero3-bubble05.png',
       bubbleAlt: 'Activation marketing, déclinaisons digital + print',
     },
     callout: {

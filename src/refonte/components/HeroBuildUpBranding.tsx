@@ -160,27 +160,44 @@ export function HeroBuildUpBranding() {
   return (
     <section
       ref={rootRef}
-      className="relative overflow-hidden bg-bg-alt text-text-strong min-h-[680px] md:min-h-[760px] lg:min-h-[860px]"
+      className="relative overflow-hidden bg-text-strong text-bg min-h-[680px] md:min-h-[760px] lg:min-h-[860px]"
       style={{ perspective: '1400px' }}
     >
+      {/* Image de fond (coffret GND) mirrorée (sujet à droite, zone sombre à
+          gauche) + scrim gauche pour la lisibilité du texte clair. */}
+      <img
+        src="/assets/branding-hero2-bg.png"
+        alt=""
+        aria-hidden
+        draggable={false}
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
+        style={{ transform: 'scaleX(-1)' }}
+      />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            'linear-gradient(90deg, rgba(26,13,8,0.88) 0%, rgba(26,13,8,0.64) 34%, rgba(26,13,8,0.32) 62%, rgba(26,13,8,0.08) 100%)',
+        }}
+      />
       {/* Radial glow orange centre, pattern home */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse 80% 90% at 50% 50%, rgba(255,149,79,0.18) 0%, transparent 75%)',
+            'radial-gradient(ellipse 80% 90% at 50% 50%, rgba(255,149,79,0.12) 0%, transparent 75%)',
         }}
       />
 
       {/* Telemetry top corners */}
-      <div className="absolute top-6 left-6 md:top-8 md:left-10 text-text-muted label-mono text-[10px] tracking-[0.22em] flex items-center gap-2 z-20 pointer-events-none">
+      <div className="absolute top-6 left-6 md:top-8 md:left-10 text-bg/55 label-mono text-[10px] tracking-[0.22em] flex items-center gap-2 z-20 pointer-events-none">
         <span
           className="inline-block w-1.5 h-1.5 rounded-full bg-accent"
           style={{ boxShadow: '0 0 8px #FF954F' }}
         />
         BRANDING & IDENTITÉ, STUDIO ACTIF
       </div>
-      <div className="absolute top-6 right-6 md:top-8 md:right-10 text-text-muted/70 label-mono text-[10px] tracking-[0.22em] z-20 pointer-events-none">
+      <div className="absolute top-6 right-6 md:top-8 md:right-10 text-bg/45 label-mono text-[10px] tracking-[0.22em] z-20 pointer-events-none">
         GND CONSULTING · PARIS · FR
       </div>
 
@@ -196,12 +213,12 @@ export function HeroBuildUpBranding() {
           <div className="lg:col-span-5">
             <div
               data-anim="hb-kicker"
-              className="label-mono text-[11px] tracking-[0.22em] text-text-muted flex items-center gap-2 mb-5"
+              className="label-mono text-[11px] tracking-[0.22em] text-bg/55 flex items-center gap-2 mb-5"
             >
               <span className="inline-block w-1.5 h-1.5 rounded-full bg-accent" />
              BRANDING & IDENTITÉ
             </div>
-            <h1 className="display leading-[0.95] text-6xl md:text-7xl lg:text-[88px] xl:text-[100px] text-text-strong">
+            <h1 className="display leading-[0.95] text-6xl md:text-7xl lg:text-[88px] xl:text-[100px] text-bg">
               <span data-anim="hb-h1-l1" className="block">
                 Une marque
               </span>
@@ -211,7 +228,7 @@ export function HeroBuildUpBranding() {
             </h1>
             <div
               data-anim="hb-lead"
-              className="mt-7 max-w-lg space-y-4 text-text text-base md:text-lg leading-relaxed"
+              className="mt-7 max-w-lg space-y-4 text-bg/85 text-base md:text-lg leading-relaxed"
             >
               <p>
                 Nous concevons des identités visuelles complètes : logo, charte graphique, direction artistique et guidelines IA. Un système pensé pour rendre votre marque reconnaissable aujourd'hui et cohérente demain.
@@ -225,7 +242,7 @@ export function HeroBuildUpBranding() {
                 <span
                   key={b}
                   data-anim="hb-badge"
-                  className="inline-flex items-center gap-2 text-xs px-3.5 py-1.5 rounded-full bg-text-strong/5 text-text-strong border border-text-strong/10 backdrop-blur"
+                  className="inline-flex items-center gap-2 text-xs px-3.5 py-1.5 rounded-full bg-bg/10 text-bg border border-bg/20 backdrop-blur"
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-accent" />
                   {b}
@@ -245,7 +262,7 @@ export function HeroBuildUpBranding() {
               <a
                 data-anim="hb-cta"
                 href="#/realisations"
-                className="btn !bg-text-strong/5 !text-text-strong !border !border-text-strong/15 hover:!bg-text-strong/10 transition-colors"
+                className="btn !bg-bg/10 !text-bg !border !border-bg/25 hover:!bg-bg/15 transition-colors"
               >
                 Voir nos réalisations
                 <Icons.ArrowUpRight size={14} />
@@ -257,9 +274,10 @@ export function HeroBuildUpBranding() {
         </div>
       </div>
 
-      {/* VISUAL ABSOLUTE, design portrait, grand, ancré base hero, décalé un peu plus droite */}
+      {/* VISUAL ABSOLUTE (ancien cutout 3D) — masqué : le coffret GND en image de
+          fond est désormais le visuel de la section. */}
       <div
-        className="absolute z-10 pointer-events-none
+        className="hidden absolute z-10 pointer-events-none
           right-[0%] md:right-[3%] lg:right-[7%] xl:right-[9%]
           w-[78%] md:w-[58%] lg:w-[52%] xl:w-[48%]
           max-w-[460px] md:max-w-[560px] lg:max-w-[680px] xl:max-w-[780px]"

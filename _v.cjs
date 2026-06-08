@@ -1,0 +1,11 @@
+const puppeteer=require('puppeteer');
+(async()=>{const b=await puppeteer.launch({headless:'new',args:['--no-sandbox']});const p=await b.newPage();
+await p.setViewport({width:1280,height:860,deviceScaleFactor:1});
+await p.goto('http://localhost:4212/#/services/branding-identite',{waitUntil:'networkidle0',timeout:45000});
+await new Promise(x=>setTimeout(x,1800));
+await p.evaluate(()=>{const h=[...document.querySelectorAll('h1')].find(x=>/Une marque/.test(x.textContent||''));if(h)h.scrollIntoView({block:'start'});});
+await new Promise(x=>setTimeout(x,1000));
+const r=await p.evaluate(()=>({bg:!!document.querySelector('img[src*="branding-hero2-bg"]'),over:document.documentElement.scrollWidth-window.innerWidth}));
+console.log(JSON.stringify(r));
+await p.screenshot({path:'/tmp/resp/bh2.png'});
+await b.close();})().catch(e=>console.log('ERR',e.message));

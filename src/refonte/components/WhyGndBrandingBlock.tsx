@@ -34,7 +34,7 @@ const BRANDING_CATEGORIES: CategoryData[] = [
       glow:
         'radial-gradient(ellipse 70% 60% at 80% 30%, rgba(255,149,79,0.18) 0%, transparent 70%), radial-gradient(ellipse 45% 65% at 10% 80%, rgba(255,149,79,0.10) 0%, transparent 65%)',
       ring: '#3A2418',
-      bubbleImage: '/assets/svc-design.png',
+      bubbleImage: '/assets/branding-hero3-bubble01.png',
       bubbleAlt: 'Studio GND, vision de marque',
     },
     callout: {

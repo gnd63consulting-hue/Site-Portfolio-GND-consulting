@@ -74,6 +74,26 @@ function RealisationsPage() {
         footerLabel="réalisations · 19 projets"
       />
 
+      {/* Galerie Photo — visionneuse "device" dédiée, toujours visible */}
+      <Section className="pt-20 md:pt-24 pb-6">
+        <Container>
+          <div className="max-w-3xl mb-10 md:mb-12">
+            <Kicker>Galerie Photo</Kicker>
+            <h2 className="display text-5xl md:text-7xl mt-5 text-text-strong leading-tight">
+              L'œil <span className="italic text-accent">GND</span>.
+            </h2>
+            <p className="mt-5 text-text leading-relaxed max-w-xl">
+              Portraits, studio, événementiel, direction artistique. Naviguez la sélection : cliquez les vignettes, filtrez par style.
+            </p>
+          </div>
+          <PhotoViewer
+            photos={ALL_PROJECTS.filter(p => p.cat === "Photo").map(p => ({
+              id: p.id, title: p.title, sub: p.sub, img: p.img, ratio: p.ratio,
+            }))}
+          />
+        </Container>
+      </Section>
+
       <section id="all" className="pt-20 pb-12">
         <Container>
           <div className="flex flex-wrap gap-2">
@@ -90,13 +110,6 @@ function RealisationsPage() {
 
       <Section className="pb-24 md:pb-32">
         <Container>
-          {filter === "Photo" ? (
-            <PhotoViewer
-              photos={ALL_PROJECTS.filter(p => p.cat === "Photo").map(p => ({
-                id: p.id, title: p.title, sub: p.sub, img: p.img, ratio: p.ratio,
-              }))}
-            />
-          ) : (
           <div className="grid grid-cols-12 gap-4 md:gap-6">
             {items.map((p, i) => {
               const span = p.featured ? "col-span-12 md:col-span-8" : i % 5 === 1 ? "col-span-12 md:col-span-4" : "col-span-6 md:col-span-4";
@@ -124,7 +137,6 @@ function RealisationsPage() {
               );
             })}
           </div>
-          )}
         </Container>
       </Section>
 

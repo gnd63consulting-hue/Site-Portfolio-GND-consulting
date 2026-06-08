@@ -174,9 +174,14 @@ const BRANDING_CATEGORIES: CategoryData[] = [
     ],
     palette: {
       bg: '#160A04',
+      bgImage: '/assets/branding-hero3-bg04.png',
+      bgImageOpacity: 0.92,
+      scrimBackground:
+        'linear-gradient(90deg, rgba(42,24,16,0.5) 0%, rgba(42,24,16,0.3) 38%, rgba(42,24,16,0.1) 70%, rgba(42,24,16,0) 100%)',
       glow:
         'radial-gradient(ellipse 65% 55% at 75% 25%, rgba(255,149,79,0.28) 0%, transparent 60%), radial-gradient(ellipse 55% 65% at 20% 80%, rgba(212,165,42,0.20) 0%, transparent 60%)',
       ring: '#241408',
+      bubbleImage: '/assets/branding-hero3-bubble04.png',
       bubbleAlt: 'Charte & brand book, système 360°',
     },
     callout: {

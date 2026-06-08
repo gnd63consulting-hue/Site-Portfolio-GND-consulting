@@ -163,15 +163,14 @@ export function HeroBuildUpBranding() {
       className="relative overflow-hidden bg-text-strong text-bg min-h-[680px] md:min-h-[760px] lg:min-h-[860px]"
       style={{ perspective: '1400px' }}
     >
-      {/* Image de fond (coffret GND) mirrorée (sujet à droite, zone sombre à
-          gauche) + scrim gauche pour la lisibilité du texte clair. */}
+      {/* Image de fond (coffret GND) dans le bon sens (logos lisibles) + scrim
+          gauche pour la lisibilité du texte clair. */}
       <img
         src="/assets/branding-hero2-bg.png"
         alt=""
         aria-hidden
         draggable={false}
         className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
-        style={{ transform: 'scaleX(-1)' }}
       />
       <div
         className="absolute inset-0 pointer-events-none"

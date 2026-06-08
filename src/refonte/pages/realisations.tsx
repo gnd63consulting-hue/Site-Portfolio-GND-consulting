@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { Section, Container, Kicker, Btn, Tag, ImgPlaceholder, CinematicHero } from '../ui';
 import { FloatingCtaBand } from '../components/FloatingCtaBand';
+import { PhotoViewer } from '../components/PhotoViewer';
 import { Icons } from '../icons';
 
 const SB = "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/";
@@ -89,6 +90,13 @@ function RealisationsPage() {
 
       <Section className="pb-24 md:pb-32">
         <Container>
+          {filter === "Photo" ? (
+            <PhotoViewer
+              photos={ALL_PROJECTS.filter(p => p.cat === "Photo").map(p => ({
+                id: p.id, title: p.title, sub: p.sub, img: p.img, ratio: p.ratio,
+              }))}
+            />
+          ) : (
           <div className="grid grid-cols-12 gap-4 md:gap-6">
             {items.map((p, i) => {
               const span = p.featured ? "col-span-12 md:col-span-8" : i % 5 === 1 ? "col-span-12 md:col-span-4" : "col-span-6 md:col-span-4";
@@ -116,6 +124,7 @@ function RealisationsPage() {
               );
             })}
           </div>
+          )}
         </Container>
       </Section>
 

@@ -274,10 +274,9 @@ export function HeroBuildUpBranding() {
         </div>
       </div>
 
-      {/* VISUAL ABSOLUTE (ancien cutout 3D) — masqué : le coffret GND en image de
-          fond est désormais le visuel de la section. */}
+      {/* VISUAL ABSOLUTE, main 3D / outils — conservée, par-dessus le coffret. */}
       <div
-        className="hidden absolute z-10 pointer-events-none
+        className="absolute z-10 pointer-events-none
           right-[0%] md:right-[3%] lg:right-[7%] xl:right-[9%]
           w-[78%] md:w-[58%] lg:w-[52%] xl:w-[48%]
           max-w-[460px] md:max-w-[560px] lg:max-w-[680px] xl:max-w-[780px]"

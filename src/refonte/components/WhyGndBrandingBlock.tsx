@@ -272,9 +272,16 @@ const BRANDING_CATEGORIES: CategoryData[] = [
     ],
     palette: {
       bg: '#0F0604',
+      bgImage: '/assets/branding-hero3-bg06.png',
+      // Image claire (extérieur jour) → opacité réduite + scrim gauche pour la
+      // lisibilité du texte blanc.
+      bgImageOpacity: 0.66,
+      scrimBackground:
+        'linear-gradient(90deg, rgba(42,24,16,0.72) 0%, rgba(42,24,16,0.5) 35%, rgba(42,24,16,0.22) 65%, rgba(42,24,16,0.02) 100%)',
       glow:
         'radial-gradient(ellipse 50% 45% at 50% 25%, rgba(255,149,79,0.18) 0%, transparent 55%), radial-gradient(ellipse 65% 55% at 15% 75%, rgba(212,165,42,0.14) 0%, transparent 60%)',
       ring: '#1F1208',
+      bubbleImage: '/assets/branding-hero3-bubble06.png',
       bubbleAlt: 'Propriété & garanties GND',
     },
     callout: {

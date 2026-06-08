@@ -30,6 +30,7 @@ const BRANDING_CATEGORIES: CategoryData[] = [
     ],
     palette: {
       bg: '#2A1810',
+      bgImage: '/assets/branding-hero3-bg01.png',
       glow:
         'radial-gradient(ellipse 70% 60% at 80% 30%, rgba(255,149,79,0.18) 0%, transparent 70%), radial-gradient(ellipse 45% 65% at 10% 80%, rgba(255,149,79,0.10) 0%, transparent 65%)',
       ring: '#3A2418',

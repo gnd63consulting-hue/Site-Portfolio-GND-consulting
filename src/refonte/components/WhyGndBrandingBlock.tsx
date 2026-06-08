@@ -75,9 +75,11 @@ const BRANDING_CATEGORIES: CategoryData[] = [
     ],
     palette: {
       bg: '#3F2418',
+      bgImage: '/assets/branding-hero3-bg02.png',
       glow:
         'radial-gradient(ellipse 70% 60% at 25% 30%, rgba(253,246,238,0.14) 0%, transparent 65%), radial-gradient(ellipse 50% 55% at 90% 80%, rgba(255,149,79,0.18) 0%, transparent 60%)',
       ring: '#553420',
+      bubbleImage: '/assets/branding-hero3-bubble02.png',
       bubbleAlt: 'Stratégie de marque, positionnement & ton',
     },
     callout: {

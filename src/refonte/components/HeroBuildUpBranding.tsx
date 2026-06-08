@@ -160,13 +160,14 @@ export function HeroBuildUpBranding() {
   return (
     <section
       ref={rootRef}
-      className="relative overflow-hidden bg-text-strong text-bg min-h-[680px] md:min-h-[760px] lg:min-h-[860px]"
+      className="relative overflow-hidden bg-bg-alt text-text-strong min-h-[680px] md:min-h-[760px] lg:min-h-[860px]"
       style={{ perspective: '1400px' }}
     >
-      {/* Image de fond (coffret GND) dans le bon sens (logos lisibles) + scrim
-          gauche pour la lisibilité du texte clair. */}
+      {/* Image de fond (coffret GND clair) + voile crème à gauche pour la
+          lisibilité du texte sombre. Thème clair conservé → le cutout (main)
+          s'intègre comme à l'origine, sans retoucher l'icône T. */}
       <img
-        src="/assets/branding-hero2-bg.png"
+        src="/assets/branding-hero2-bg-v2.png"
         alt=""
         aria-hidden
         draggable={false}
@@ -176,7 +177,7 @@ export function HeroBuildUpBranding() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'linear-gradient(90deg, rgba(26,13,8,0.88) 0%, rgba(26,13,8,0.64) 34%, rgba(26,13,8,0.32) 62%, rgba(26,13,8,0.08) 100%)',
+            'linear-gradient(90deg, rgba(253,246,238,0.92) 0%, rgba(253,246,238,0.74) 32%, rgba(253,246,238,0.4) 60%, rgba(253,246,238,0.12) 100%)',
         }}
       />
       {/* Radial glow orange centre, pattern home */}
@@ -184,19 +185,19 @@ export function HeroBuildUpBranding() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse 80% 90% at 50% 50%, rgba(255,149,79,0.12) 0%, transparent 75%)',
+            'radial-gradient(ellipse 80% 90% at 50% 50%, rgba(255,149,79,0.18) 0%, transparent 75%)',
         }}
       />
 
       {/* Telemetry top corners */}
-      <div className="absolute top-6 left-6 md:top-8 md:left-10 text-bg/55 label-mono text-[10px] tracking-[0.22em] flex items-center gap-2 z-20 pointer-events-none">
+      <div className="absolute top-6 left-6 md:top-8 md:left-10 text-text-muted label-mono text-[10px] tracking-[0.22em] flex items-center gap-2 z-20 pointer-events-none">
         <span
           className="inline-block w-1.5 h-1.5 rounded-full bg-accent"
           style={{ boxShadow: '0 0 8px #FF954F' }}
         />
         BRANDING & IDENTITÉ, STUDIO ACTIF
       </div>
-      <div className="absolute top-6 right-6 md:top-8 md:right-10 text-bg/45 label-mono text-[10px] tracking-[0.22em] z-20 pointer-events-none">
+      <div className="absolute top-6 right-6 md:top-8 md:right-10 text-text-muted/70 label-mono text-[10px] tracking-[0.22em] z-20 pointer-events-none">
         GND CONSULTING · PARIS · FR
       </div>
 
@@ -212,12 +213,12 @@ export function HeroBuildUpBranding() {
           <div className="lg:col-span-5">
             <div
               data-anim="hb-kicker"
-              className="label-mono text-[11px] tracking-[0.22em] text-bg/55 flex items-center gap-2 mb-5"
+              className="label-mono text-[11px] tracking-[0.22em] text-text-muted flex items-center gap-2 mb-5"
             >
               <span className="inline-block w-1.5 h-1.5 rounded-full bg-accent" />
              BRANDING & IDENTITÉ
             </div>
-            <h1 className="display leading-[0.95] text-6xl md:text-7xl lg:text-[88px] xl:text-[100px] text-bg">
+            <h1 className="display leading-[0.95] text-6xl md:text-7xl lg:text-[88px] xl:text-[100px] text-text-strong">
               <span data-anim="hb-h1-l1" className="block">
                 Une marque
               </span>
@@ -227,7 +228,7 @@ export function HeroBuildUpBranding() {
             </h1>
             <div
               data-anim="hb-lead"
-              className="mt-7 max-w-lg space-y-4 text-bg/85 text-base md:text-lg leading-relaxed"
+              className="mt-7 max-w-lg space-y-4 text-text text-base md:text-lg leading-relaxed"
             >
               <p>
                 Nous concevons des identités visuelles complètes : logo, charte graphique, direction artistique et guidelines IA. Un système pensé pour rendre votre marque reconnaissable aujourd'hui et cohérente demain.
@@ -241,7 +242,7 @@ export function HeroBuildUpBranding() {
                 <span
                   key={b}
                   data-anim="hb-badge"
-                  className="inline-flex items-center gap-2 text-xs px-3.5 py-1.5 rounded-full bg-bg/10 text-bg border border-bg/20 backdrop-blur"
+                  className="inline-flex items-center gap-2 text-xs px-3.5 py-1.5 rounded-full bg-text-strong/5 text-text-strong border border-text-strong/10 backdrop-blur"
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-accent" />
                   {b}
@@ -261,7 +262,7 @@ export function HeroBuildUpBranding() {
               <a
                 data-anim="hb-cta"
                 href="#/realisations"
-                className="btn !bg-bg/10 !text-bg !border !border-bg/25 hover:!bg-bg/15 transition-colors"
+                className="btn !bg-text-strong/5 !text-text-strong !border !border-text-strong/15 hover:!bg-text-strong/10 transition-colors"
               >
                 Voir nos réalisations
                 <Icons.ArrowUpRight size={14} />
@@ -273,7 +274,7 @@ export function HeroBuildUpBranding() {
         </div>
       </div>
 
-      {/* VISUAL ABSOLUTE, main 3D / outils — conservée, par-dessus le coffret. */}
+      {/* VISUAL ABSOLUTE, design portrait, grand, ancré base hero, décalé un peu plus droite */}
       <div
         className="absolute z-10 pointer-events-none
           right-[0%] md:right-[3%] lg:right-[7%] xl:right-[9%]
@@ -301,7 +302,7 @@ export function HeroBuildUpBranding() {
         >
           {/* Image détourée, fond alpha, intégration directe sur hero cream */}
           <img
-            src="/assets/branding-hero-cutout-v3.png"
+            src="/assets/branding-hero-cutout.png"
             alt="GND Consulting, branding & identité"
             className="w-full h-auto block select-none pointer-events-none"
             draggable={false}

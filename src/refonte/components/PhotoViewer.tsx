@@ -113,6 +113,22 @@ export function PhotoViewer({ photos }: { photos: ViewerPhoto[] }) {
         className="relative rounded-[40px] md:rounded-[48px] bg-text-strong p-2.5 md:p-4 ring-1 ring-bg/10"
         style={{ boxShadow: '0 30px 90px rgba(42,24,16,0.32)' }}
       >
+        {/* Fond image de la coque (scène GND brune) dans sa propre couche
+            arrondie + overflow-hidden — PAS sur la coque elle-même, sinon
+            l'encoche/bouton caméra qui dépassent du bord seraient rognés.
+            Scrim chocolat léger pour garder le contenu lisible. */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 overflow-hidden rounded-[40px] md:rounded-[48px]"
+        >
+          <img
+            src="/assets/viewer-shell-bg.png"
+            alt=""
+            draggable={false}
+            className="h-full w-full object-cover"
+          />
+          <span className="absolute inset-0 bg-text-strong/55" />
+        </div>
         {/* Encoche réelle : cercle EXACTEMENT couleur de la section (bg-alt) à
             cheval sur le bord gauche — un mismatch crée un halo blanc visible. */}
         <span
@@ -134,7 +150,7 @@ export function PhotoViewer({ photos }: { photos: ViewerPhoto[] }) {
         {/* ÉCRAN */}
         {/* Écran : MÊME chocolat charte que la coque (un seul ton, pas de
             double fond marron/noir) — les cartes crème font le contraste. */}
-        <div className="grid gap-2.5 md:gap-4 rounded-[30px] md:rounded-[34px] p-1 md:p-2 md:min-h-[620px] md:grid-cols-[88px_minmax(0,1fr)_260px] md:grid-rows-[minmax(0,1fr)_180px]">
+        <div className="relative grid gap-2.5 md:gap-4 rounded-[30px] md:rounded-[34px] p-1 md:p-2 md:min-h-[620px] md:grid-cols-[88px_minmax(0,1fr)_260px] md:grid-rows-[minmax(0,1fr)_180px]">
           {/* RAIL UTILITAIRE GAUCHE */}
           <aside
             data-anim="pv-rail"

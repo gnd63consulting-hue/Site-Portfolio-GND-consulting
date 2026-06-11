@@ -110,7 +110,7 @@ export function PhotoViewer({ photos }: { photos: ViewerPhoto[] }) {
       {/* COQUE */}
       <div
         data-anim="pv-shell"
-        className="relative rounded-[40px] md:rounded-[48px] bg-[#1C120D] p-2.5 md:p-4 ring-1 ring-bg/10"
+        className="relative rounded-[40px] md:rounded-[48px] bg-text-strong p-2.5 md:p-4 ring-1 ring-bg/10"
         style={{ boxShadow: '0 30px 90px rgba(42,24,16,0.32)' }}
       >
         {/* Encoche réelle : cercle EXACTEMENT couleur de la section (bg-alt) à
@@ -132,7 +132,9 @@ export function PhotoViewer({ photos }: { photos: ViewerPhoto[] }) {
         </motion.button>
 
         {/* ÉCRAN */}
-        <div className="grid gap-2.5 md:gap-4 rounded-[30px] md:rounded-[34px] bg-[#2A1810] p-2.5 md:p-4 md:min-h-[620px] md:grid-cols-[88px_minmax(0,1fr)_260px] md:grid-rows-[minmax(0,1fr)_180px]">
+        {/* Écran : MÊME chocolat charte que la coque (un seul ton, pas de
+            double fond marron/noir) — les cartes crème font le contraste. */}
+        <div className="grid gap-2.5 md:gap-4 rounded-[30px] md:rounded-[34px] p-1 md:p-2 md:min-h-[620px] md:grid-cols-[88px_minmax(0,1fr)_260px] md:grid-rows-[minmax(0,1fr)_180px]">
           {/* RAIL UTILITAIRE GAUCHE */}
           <aside
             data-anim="pv-rail"
@@ -174,7 +176,7 @@ export function PhotoViewer({ photos }: { photos: ViewerPhoto[] }) {
           {/* VIEWER CENTRAL */}
           <article
             data-anim="pv-hero"
-            className="relative overflow-hidden rounded-[24px] md:rounded-[26px] bg-surface aspect-[4/3] md:aspect-auto"
+            className="relative overflow-hidden rounded-[24px] md:rounded-[26px] aspect-[4/3] md:aspect-auto"
           >
             <AnimatePresence mode="wait">
               <motion.div
@@ -186,17 +188,14 @@ export function PhotoViewer({ photos }: { photos: ViewerPhoto[] }) {
                 className="absolute inset-0"
               >
                 {playing && cur.video ? (
-                  <>
-                    <div aria-hidden className="absolute inset-0 bg-[#150a05]" />
-                    <video
-                      src={cur.video}
-                      poster={cur.img}
-                      autoPlay
-                      controls
-                      playsInline
-                      className="relative h-full w-full object-contain"
-                    />
-                  </>
+                  <video
+                    src={cur.video}
+                    poster={cur.img}
+                    autoPlay
+                    controls
+                    playsInline
+                    className="relative h-full w-full object-contain"
+                  />
                 ) : playing && cur.youtube ? (
                   <iframe
                     src={`https://www.youtube.com/embed/${cur.youtube}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
@@ -206,38 +205,23 @@ export function PhotoViewer({ photos }: { photos: ViewerPhoto[] }) {
                     className="absolute inset-0 h-full w-full"
                   />
                 ) : cur.video ? (
-                  <>
-                    {/* poster = PREMIÈRE FRAME réelle de la vidéo (pas de cover générique) */}
-                    <div aria-hidden className="absolute inset-0 bg-[#150a05]" />
-                    <video
-                      src={`${cur.video}#t=0.1`}
-                      preload="metadata"
-                      muted
-                      playsInline
-                      className="relative h-full w-full object-contain"
-                    />
-                  </>
+                  /* poster = PREMIÈRE FRAME réelle, seule, sans fond ajouté */
+                  <video
+                    src={`${cur.video}#t=0.1`}
+                    preload="metadata"
+                    muted
+                    playsInline
+                    className="relative h-full w-full object-contain"
+                  />
                 ) : (
-                  <>
-                    {/* fond = même image floutée (remplit le cadre) */}
-                    <img
-                      src={cur.img}
-                      alt=""
-                      aria-hidden
-                      className="absolute inset-0 h-full w-full scale-110 object-cover blur-2xl opacity-60"
-                      loading="lazy"
-                      draggable={false}
-                    />
-                    <div aria-hidden className="absolute inset-0 bg-[#1C120D]/45" />
-                    {/* média ENTIER, jamais recadré */}
-                    <img
-                      src={cur.img}
-                      alt={cur.title}
-                      className="relative h-full w-full object-contain"
-                      loading="lazy"
-                      draggable={false}
-                    />
-                  </>
+                  /* média ENTIER, jamais recadré, sans fond ajouté */
+                  <img
+                    src={cur.img}
+                    alt={cur.title}
+                    className="relative h-full w-full object-contain"
+                    loading="lazy"
+                    draggable={false}
+                  />
                 )}
               </motion.div>
             </AnimatePresence>
@@ -256,8 +240,6 @@ export function PhotoViewer({ photos }: { photos: ViewerPhoto[] }) {
                 <Icons.Play size={22} />
               </motion.button>
             )}
-            {/* voiles haut/bas légers */}
-            <div aria-hidden className="absolute inset-0 bg-[linear-gradient(180deg,rgba(28,18,13,0.20)_0%,transparent_26%,transparent_64%,rgba(28,18,13,0.34)_100%)]" />
             {/* chip + compteur */}
             <div className="absolute top-3 left-3 inline-flex items-center gap-2 rounded-full bg-text-strong/70 backdrop-blur px-3 py-1.5 text-[10px] tracking-[0.18em] uppercase text-bg/90">
               <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
@@ -281,9 +263,9 @@ export function PhotoViewer({ photos }: { photos: ViewerPhoto[] }) {
           </article>
 
           {/* COLONNE DROITE : recherche + vignettes numérotées */}
-          <aside data-anim="pv-side" className="flex flex-col gap-2.5 md:gap-3 rounded-[24px] md:rounded-[26px] bg-bg-alt p-2.5 md:p-3">
-            <p className="label-mono shrink-0 px-1 pt-1 text-text-muted">Sélection · {String(filtered.length).padStart(2, '0')}</p>
-            <div className="grid grid-cols-3 md:grid-cols-1 gap-2 md:gap-2.5 md:overflow-y-auto md:max-h-[400px] no-scrollbar">
+          <aside data-anim="pv-side" className="flex flex-col gap-3 md:gap-4 rounded-[24px] md:rounded-[26px] bg-bg-alt p-3 md:p-4">
+            <p className="label-mono shrink-0 px-1 pt-0.5 text-text-muted">Sélection · {String(filtered.length).padStart(2, '0')}</p>
+            <div className="grid grid-cols-3 md:grid-cols-1 gap-2.5 md:gap-3.5 md:overflow-y-auto md:max-h-[420px] md:pr-1 no-scrollbar">
               {filtered.map((p, i) => {
                 const on = i === Math.min(active, filtered.length - 1);
                 return (

@@ -14,7 +14,6 @@ const COVER = SB + "portfolio-photos/gnd-cover.png";
 const yt = (id: string) => `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
 const ph = (f: string) => SB + "portfolio-photos/" + f;
 
-const FILTERS = ["Tout", "Clip", "Live", "Production", "Photo"];
 
 const ALL_PROJECTS: any[] = [
   // ——— 9 real video projects ———
@@ -47,9 +46,6 @@ function Pic({ p, rounded = "rounded-2xl", className = "" }: any) {
 }
 
 function RealisationsPage() {
-  const [filter, setFilter] = React.useState("Tout");
-  const items = filter === "Tout" ? ALL_PROJECTS : ALL_PROJECTS.filter(p => p.cat === filter);
-
   return (
     <main id="main">
       {/* HERO #1, ScrollExpandHero (même hero 1 que toutes les pages). */}
@@ -79,14 +75,14 @@ function RealisationsPage() {
         badges={["Clips", "Live", "Production", "Photo"]}
         ctas={<>
           <Btn href="#/contact" variant="primary">Démarrer un projet</Btn>
-          <a href="#all" className="btn !bg-bg/10 !text-bg !border !border-bg/20 hover:!bg-bg/15">Tout voir <Icons.ArrowDown size={14}/></a>
+          <a href="#galerie" className="btn !bg-bg/10 !text-bg !border !border-bg/20 hover:!bg-bg/15">Tout voir <Icons.ArrowDown size={14}/></a>
         </>}
         bgImage="/assets/agence-hero2-scene.png"
         footerLabel="réalisations · 19 projets"
       />
 
       {/* Galerie Photo — visionneuse "device" dédiée, toujours visible */}
-      <Section className="pt-20 md:pt-24 pb-6">
+      <Section id="galerie" className="pt-20 md:pt-24 pb-6">
         <Container>
           <div className="max-w-3xl mb-10 md:mb-12">
             <Kicker>Galerie</Kicker>
@@ -135,52 +131,6 @@ function RealisationsPage() {
             return { id, title: p.title, desc: p.sub, url: p.img, span };
           })}
         />
-      </Section>
-
-      <section id="all" className="pt-20 pb-12">
-        <Container>
-          <div className="flex flex-wrap gap-2">
-            {FILTERS.map(f => (
-              <button key={f} onClick={() => setFilter(f)}
-                className={`btn ${filter === f ? "btn-primary" : "btn-secondary"} !py-2.5 !px-4 text-xs`}>
-                <span>{f}</span>
-                <span className="opacity-50">{f === "Tout" ? ALL_PROJECTS.length : ALL_PROJECTS.filter(p => p.cat === f).length}</span>
-              </button>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      <Section className="pb-24 md:pb-32">
-        <Container>
-          <div className="grid grid-cols-12 gap-4 md:gap-6">
-            {items.map((p, i) => {
-              const span = p.featured ? "col-span-12 md:col-span-8" : i % 5 === 1 ? "col-span-12 md:col-span-4" : "col-span-6 md:col-span-4";
-              return (
-                <a key={p.id} href={`#/realisations/${p.id}`}
-                  className={`group relative overflow-hidden rounded-2xl card-hover ${span}`}
-                  style={{ background:"#E8D8C5" }}>
-                  <div className="relative w-full" style={{ aspectRatio: p.ratio }}>
-                    <Pic p={p} />
-                  </div>
-                  <div className="absolute inset-0 p-5 md:p-7 flex flex-col justify-between bg-gradient-to-b from-transparent via-transparent to-text-strong/70">
-                    <div className="flex items-center gap-2">
-                      <Tag>{p.cat}</Tag>
-                      {p.year && <Tag>{p.year}</Tag>}
-                      {(p.youtube || p.video) && (
-                        <span className="w-8 h-8 rounded-full bg-accent text-text-strong inline-flex items-center justify-center ml-auto opacity-80 group-hover:opacity-100 transition"><Icons.Play size={13}/></span>
-                      )}
-                    </div>
-                    <div>
-                      <div className="text-bg display text-2xl md:text-3xl">{p.title}</div>
-                      <div className="text-bg/80 text-sm">{p.sub}</div>
-                    </div>
-                  </div>
-                </a>
-              );
-            })}
-          </div>
-        </Container>
       </Section>
 
       <FloatingCtaBand

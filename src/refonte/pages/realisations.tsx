@@ -88,17 +88,18 @@ function RealisationsPage() {
       <Section className="pt-20 md:pt-24 pb-6">
         <Container>
           <div className="max-w-3xl mb-10 md:mb-12">
-            <Kicker>Galerie Photo</Kicker>
+            <Kicker>Galerie</Kicker>
             <h2 className="display text-5xl md:text-7xl mt-5 text-text-strong leading-tight">
               L'œil <span className="italic text-accent">GND</span>.
             </h2>
             <p className="mt-5 text-text leading-relaxed max-w-xl">
-              Portraits, studio, événementiel, direction artistique. Naviguez la sélection : cliquez les vignettes, filtrez par style.
+              Clips, captations live, productions. Naviguez la sélection : cliquez une vignette, lancez la lecture, filtrez par univers.
             </p>
           </div>
           <PhotoViewer
-            photos={ALL_PROJECTS.filter(p => p.cat === "Photo").map(p => ({
+            photos={ALL_PROJECTS.filter(p => p.cat !== "Photo").map(p => ({
               id: p.id, title: p.title, sub: p.sub, img: p.img, ratio: p.ratio,
+              video: (p as any).video, youtube: (p as any).youtube, cat: p.cat,
             }))}
           />
         </Container>

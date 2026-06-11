@@ -22,6 +22,12 @@ export type ViewerPhoto = {
   sub: string;
   img: string;
   ratio?: string;
+  /** mp4 direct (Supabase) — lu dans le viewer au clic Play */
+  video?: string;
+  /** id YouTube — embed dans le viewer au clic Play */
+  youtube?: string;
+  /** catégorie (Clip/Live/Production…) : si présente, pilote les filtres */
+  cat?: string;
 };
 
 const STYLES = ['Tout', 'Portrait', 'Studio', 'Événementiel', 'Urbain'];
@@ -31,14 +37,24 @@ export function PhotoViewer({ photos }: { photos: ViewerPhoto[] }) {
   const reduce = useReducedMotion();
   const [style, setStyle] = React.useState('Tout');
   const [active, setActive] = React.useState(0);
+  const [playing, setPlaying] = React.useState(false);
+
+  // Filtres : catégories réelles des items si fournies, sinon styles photo.
+  const styles = React.useMemo(() => {
+    const cats = Array.from(new Set(photos.map((p) => p.cat).filter(Boolean))) as string[];
+    return cats.length ? ['Tout', ...cats] : STYLES;
+  }, [photos]);
 
   const filtered = React.useMemo(() => {
     if (style === 'Tout') return photos;
-    const byStyle = photos.filter((p) => p.sub.toLowerCase().includes(style.toLowerCase()));
-    return byStyle.length ? byStyle : photos;
+    const r = photos.filter((p) =>
+      p.cat ? p.cat === style : p.sub.toLowerCase().includes(style.toLowerCase())
+    );
+    return r.length ? r : photos;
   }, [photos, style]);
 
   React.useEffect(() => setActive(0), [style]);
+  React.useEffect(() => setPlaying(false), [active, style]);
 
   // Entrée GSAP : coque puis zones en stagger. prefers-reduced-motion → rien
   // n'est masqué (gsap.matchMedia), composant visible par défaut.
@@ -65,14 +81,22 @@ export function PhotoViewer({ photos }: { photos: ViewerPhoto[] }) {
   const inspired = filtered.find((p) => p.id !== cur?.id) || photos[1] || cur;
   if (!cur) return null;
 
-  // Rail = raccourcis réels vers les styles, avec état actif visible.
-  const railIcons: { label: string; style: string; Ico: any }[] = [
-    { label: 'Toutes les photos', style: 'Tout', Ico: Icons.Layers },
-    { label: 'Portraits', style: 'Portrait', Ico: Icons.Users },
-    { label: 'Studio', style: 'Studio', Ico: Icons.Camera },
-    { label: 'Événementiel', style: 'Événementiel', Ico: Icons.Film },
-    { label: 'Urbain', style: 'Urbain', Ico: Icons.Palette },
-  ];
+  // Rail = raccourcis réels vers les filtres, avec état actif visible.
+  const ICON_MAP: Record<string, any> = {
+    Tout: Icons.Layers,
+    Portrait: Icons.Users,
+    Studio: Icons.Camera,
+    'Événementiel': Icons.Film,
+    Urbain: Icons.Palette,
+    Clip: Icons.Play,
+    Live: Icons.Zap,
+    Production: Icons.Film,
+  };
+  const railIcons = styles.map((s) => ({
+    label: s === 'Tout' ? 'Toute la sélection' : s,
+    style: s,
+    Ico: ICON_MAP[s] ?? Icons.Sparkles,
+  }));
 
   return (
     <div ref={rootRef} className="relative mx-auto w-full max-w-[1180px]">
@@ -154,33 +178,72 @@ export function PhotoViewer({ photos }: { photos: ViewerPhoto[] }) {
           >
             <AnimatePresence mode="wait">
               <motion.div
-                key={cur.id}
+                key={cur.id + (playing ? '-play' : '')}
                 initial={reduce ? false : { opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={reduce ? undefined : { opacity: 0 }}
                 transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                 className="absolute inset-0"
               >
-                {/* fond = même image floutée (remplit le cadre) */}
-                <img
-                  src={cur.img}
-                  alt=""
-                  aria-hidden
-                  className="absolute inset-0 h-full w-full scale-110 object-cover blur-2xl opacity-60"
-                  loading="lazy"
-                  draggable={false}
-                />
-                <div aria-hidden className="absolute inset-0 bg-[#1C120D]/45" />
-                {/* photo ENTIÈRE, jamais recadrée */}
-                <img
-                  src={cur.img}
-                  alt={cur.title}
-                  className="relative h-full w-full object-contain"
-                  loading="lazy"
-                  draggable={false}
-                />
+                {playing && cur.video ? (
+                  <>
+                    <div aria-hidden className="absolute inset-0 bg-[#150a05]" />
+                    <video
+                      src={cur.video}
+                      poster={cur.img}
+                      autoPlay
+                      controls
+                      playsInline
+                      className="relative h-full w-full object-contain"
+                    />
+                  </>
+                ) : playing && cur.youtube ? (
+                  <iframe
+                    src={`https://www.youtube.com/embed/${cur.youtube}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
+                    title={cur.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="absolute inset-0 h-full w-full"
+                  />
+                ) : (
+                  <>
+                    {/* fond = même image floutée (remplit le cadre) */}
+                    <img
+                      src={cur.img}
+                      alt=""
+                      aria-hidden
+                      className="absolute inset-0 h-full w-full scale-110 object-cover blur-2xl opacity-60"
+                      loading="lazy"
+                      draggable={false}
+                    />
+                    <div aria-hidden className="absolute inset-0 bg-[#1C120D]/45" />
+                    {/* média ENTIER, jamais recadré */}
+                    <img
+                      src={cur.img}
+                      alt={cur.title}
+                      className="relative h-full w-full object-contain"
+                      loading="lazy"
+                      draggable={false}
+                    />
+                  </>
+                )}
               </motion.div>
             </AnimatePresence>
+            {/* bouton lecture si l'item est une vidéo */}
+            {!playing && (cur.video || cur.youtube) && (
+              <motion.button
+                type="button"
+                aria-label={`Lire ${cur.title}`}
+                onClick={() => setPlaying(true)}
+                whileHover={reduce ? undefined : { scale: 1.06 }}
+                whileTap={reduce ? undefined : { scale: 0.95 }}
+                transition={{ duration: 0.18 }}
+                className="absolute left-1/2 top-1/2 z-10 flex size-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-accent text-text-strong"
+                style={{ boxShadow: '0 14px 40px rgba(232,119,44,0.45)' }}
+              >
+                <Icons.Play size={22} />
+              </motion.button>
+            )}
             {/* voiles haut/bas légers */}
             <div aria-hidden className="absolute inset-0 bg-[linear-gradient(180deg,rgba(28,18,13,0.20)_0%,transparent_26%,transparent_64%,rgba(28,18,13,0.34)_100%)]" />
             {/* chip + compteur */}
@@ -228,6 +291,11 @@ export function PhotoViewer({ photos }: { photos: ViewerPhoto[] }) {
                     <span className={`absolute left-2 top-2 flex size-7 items-center justify-center rounded-full text-[10px] label-mono ${on ? 'bg-accent text-text-strong' : 'bg-bg-alt/90 text-text'}`}>
                       {String(i + 1).padStart(2, '0')}
                     </span>
+                    {(p.video || p.youtube) && (
+                      <span aria-hidden className="absolute bottom-2 right-2 flex size-6 items-center justify-center rounded-full bg-text-strong/70 text-bg backdrop-blur">
+                        <Icons.Play size={10} />
+                      </span>
+                    )}
                   </motion.button>
                 );
               })}
@@ -247,7 +315,7 @@ export function PhotoViewer({ photos }: { photos: ViewerPhoto[] }) {
                 <span className="hidden md:inline text-xs text-text-muted">Filtrez la galerie par univers</span>
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
-                {STYLES.map((s) => {
+                {styles.map((s) => {
                   const on = s === style;
                   return (
                     <button
@@ -267,7 +335,7 @@ export function PhotoViewer({ photos }: { photos: ViewerPhoto[] }) {
                 })}
               </div>
               <div aria-hidden className="mt-3.5 flex items-center gap-1.5">
-                {STYLES.map((s) => (
+                {styles.map((s) => (
                   <span
                     key={s}
                     className={`h-1.5 rounded-full transition-all ${s === style ? 'w-5 bg-accent' : 'w-1.5 bg-text-strong/15'}`}

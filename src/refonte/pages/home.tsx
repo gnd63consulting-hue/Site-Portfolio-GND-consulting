@@ -919,10 +919,37 @@ function WhyBlock() {
           ImageMask 21st.dev, forme bandeau wide avec encoches asymétriques).
           Le clipPath s'applique UNIQUEMENT au <img>, pas au container parent,
           donc l'overlay texte reste intact. */}
+      {/* Fond travaillé : dégradé chaud très subtil + grain film (cinématique
+          discret) — couche pointer-events-none au-dessus de tout, opacité
+          minuscule, aucun impact lisibilité. */}
+      <div
+        aria-hidden
+        className="absolute inset-0 pointer-events-none z-0"
+        style={{ background: 'radial-gradient(90% 70% at 18% 38%, rgba(255,149,79,0.05) 0%, transparent 60%)' }}
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0 pointer-events-none z-30 opacity-[0.05] mix-blend-multiply"
+        style={{
+          backgroundImage:
+            "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E\")",
+        }}
+      />
+
       <div className="relative w-full md:[aspect-ratio:1672/941]">
         {/* Image : bannière en haut sur mobile (cocon visible via object-position
             droite), overlay plein écran sur desktop. */}
         <div className="relative h-[210px] sm:h-[280px] md:absolute md:inset-0 md:h-full">
+          {/* Glow orange très doux derrière la courbe gauche de la découpe */}
+          <div
+            aria-hidden
+            className="hidden md:block absolute pointer-events-none"
+            style={{
+              left: '38%', top: '18%', width: '20%', height: '64%',
+              background: 'radial-gradient(50% 50% at 50% 50%, rgba(255,149,79,0.16) 0%, transparent 70%)',
+              filter: 'blur(30px)',
+            }}
+          />
           <img
             src="/assets/why-block-composite.png"
             alt=""
@@ -930,7 +957,22 @@ function WhyBlock() {
             loading="lazy"
             decoding="async"
             className="w-full h-full object-cover object-[72%_center] md:object-cover md:[clip-path:url(#clip-inverted)] select-none pointer-events-none"
+            style={{ filter: 'drop-shadow(0 24px 48px rgba(83,36,24,0.22))' }}
           />
+          {/* Voile cinématique chaud, même clip que l'image (reste DANS la forme) */}
+          <div
+            aria-hidden
+            className="hidden md:block absolute inset-0 pointer-events-none md:[clip-path:url(#clip-inverted)]"
+            style={{
+              background:
+                'linear-gradient(105deg, rgba(42,24,16,0.10) 0%, transparent 30%, transparent 72%, rgba(42,24,16,0.16) 100%)',
+            }}
+          />
+          {/* Badge éditorial discret sur l'image */}
+          <div className="hidden md:inline-flex absolute bottom-7 right-8 z-10 items-center gap-2.5 rounded-full bg-text-strong/55 backdrop-blur px-4 py-2 ring-1 ring-bg/15">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+            <span className="label-mono text-[9px] tracking-[0.22em] !text-bg/90">Humain × IA · Direction créative augmentée</span>
+          </div>
         </div>
 
         {/* OVERLAY TEXTE HTML, positionné en absolute relativement au viewport,
@@ -952,19 +994,22 @@ function WhyBlock() {
                 <span className="absolute inset-0 rounded-full bg-accent animate-ping opacity-60"/>
               </div>
               <div className="label-mono text-[10px] !text-accent tracking-[0.22em]">NOTRE CONVICTION</div>
-              <div className="w-6 h-px bg-text-strong/20"/>
-              <div className="label-mono text-[10px] !text-text-muted tracking-[0.18em]">STUDIO HYBRIDE</div>
+              <div className="w-8 h-px bg-text-strong/15"/>
+              <div className="label-mono text-[10px] !text-text-muted tracking-[0.22em]">STUDIO HYBRIDE</div>
             </div>
 
             {/* TITRE éditorial avec reveal séquentiel sur 2 lignes */}
-            <h2 className="display text-4xl md:text-5xl lg:text-[60px] text-text-strong leading-[.95]">
+            <h2 className="display text-4xl md:text-5xl lg:text-[58px] text-text-strong leading-[1.02] max-w-[14ch]">
               <span className="block anim-up d1">Pourquoi le studio hybride</span>
-              <span className="block anim-up d2">bat le <span className="italic text-accent">studio classique</span>.</span>
+              <span className="block anim-up d2 mt-1">bat le <span className="italic text-accent">studio classique</span>.</span>
             </h2>
 
-            {/* DESCRIPTION avec rail vertical chocolat à gauche (style citation magazine) */}
-            <div className="mt-7 md:mt-8 relative pl-5 anim-up d3">
-              <span className="absolute left-0 top-1 bottom-1 w-[2px] bg-text-strong/15"/>
+            {/* DESCRIPTION avec rail vertical orange dégradé (citation magazine) */}
+            <div className="mt-7 md:mt-9 relative pl-5 anim-up d3">
+              <span
+                className="absolute left-0 top-1 bottom-1 w-px"
+                style={{ background: 'linear-gradient(to bottom, rgba(255,149,79,0.65), rgba(125,62,44,0.25))' }}
+              />
               <p className="text-sm md:text-base text-text leading-relaxed max-w-md">
                 Un studio classique vend du temps humain : cher, lent, rare. Une IA brute vend du volume : vide, sans direction. <strong className="text-text-strong">GND fait les deux : direction humaine, exécution augmentée.</strong>
               </p>
@@ -974,10 +1019,10 @@ function WhyBlock() {
                 Trois étapes connectées par une ligne orange dégradée, chaque étape a un node
                 circulaire avec icône, un titre serif et une description.
                 Hover : node grandit + glow orange. */}
-            <div className="mt-9 md:mt-10 relative anim-up d4">
-              {/* Ligne verticale connecteur */}
+            <div className="mt-9 md:mt-11 relative anim-up d4">
+              {/* Ligne verticale connecteur, fine et fondue aux extrémités */}
               <div className="absolute left-[19px] top-3 bottom-3 w-px"
-                style={{ background: 'linear-gradient(to bottom, #FF954F, rgba(83,36,24,0.2) 50%, #FF954F)' }}
+                style={{ background: 'linear-gradient(to bottom, transparent, rgba(255,149,79,0.55) 18%, rgba(83,36,24,0.15) 50%, rgba(255,149,79,0.55) 82%, transparent)' }}
               />
 
               {[
@@ -1002,13 +1047,13 @@ function WhyBlock() {
               ].map((step) => (
                 <div
                   key={step.num}
-                  className="group relative flex items-start gap-4 mb-5 last:mb-0 cursor-default"
+                  className="group relative flex items-start gap-4 mb-7 md:mb-8 last:mb-0 cursor-default"
                 >
-                  {/* Node */}
+                  {/* Node : cercle fin, actif = orange plein avec glow doux */}
                   <div className={`relative z-10 w-[38px] h-[38px] rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110 ${
                     step.active
-                      ? 'bg-accent text-text-strong shadow-lg shadow-accent/40'
-                      : 'bg-bg border border-text-strong/15 text-text-strong group-hover:border-accent group-hover:shadow-md group-hover:shadow-accent/20'
+                      ? 'bg-accent text-text-strong shadow-lg shadow-accent/40 ring-4 ring-accent/15'
+                      : 'bg-bg/90 border border-text-strong/12 text-text-strong group-hover:border-accent/70 group-hover:shadow-md group-hover:shadow-accent/20'
                   }`}>
                     {step.icon}
                   </div>

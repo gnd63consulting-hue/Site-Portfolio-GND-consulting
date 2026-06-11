@@ -137,7 +137,7 @@ details[open] .faq-icon { transform: rotate(45deg); }
 .min-h-dscreen { min-height: 100vh; min-height: 100dvh; }
 
 /* === Prevent horizontal overflow globally === */
-html, body { overflow-x: hidden; }
+html, body { overflow-x: hidden; overflow-x: clip; } /* clip : ne casse pas position:sticky */
 
 /* === Better French hyphenation === */
 .hyphens-fr { hyphens: auto; -webkit-hyphens: auto; }

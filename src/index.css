@@ -40,7 +40,11 @@ body,
 #root {
   width: 100%;
   max-width: 100%;
+  /* `clip` au lieu de `hidden` : même protection anti-débordement horizontal,
+     mais ne transforme pas l'élément en conteneur de scroll — sinon tout
+     `position: sticky` descendant (ZoomParallax, etc.) est cassé. */
   overflow-x: hidden;
+  overflow-x: clip;
 }
 
 *,
@@ -63,6 +67,7 @@ body {
   background: #FFFFFF;
   color: #1A1A1A;
   overflow-x: hidden;
+  overflow-x: clip; /* hidden rendrait <body> conteneur de scroll → sticky cassé */
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

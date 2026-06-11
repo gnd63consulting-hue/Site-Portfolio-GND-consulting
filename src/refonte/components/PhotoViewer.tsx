@@ -1,10 +1,10 @@
-/* PhotoViewer V2 — tablette immersive (recette "ImmersiveTabletShowcase" du
- * dossier technique, réf. bee_ui.ux) adaptée charte GND :
- *   coque chocolat profond très arrondie + encoche réelle (cercle couleur de
- *   page à cheval sur le bord) + bouton circulaire monté sur l'encoche,
- *   rail utilitaire vertical gauche, viewer central avec pill légende,
- *   colonne droite (recherche + vignettes numérotées), rangée basse
- *   « Choisir un style » + « Coup de cœur ».
+/* PhotoViewer V3 — console média « verre fumé » (réf. maquette validée 12/06) :
+ *   scène = coque très arrondie avec image GND floutée en fond,
+ *   panneaux chocolat translucides (glassmorphism léger, backdrop-blur),
+ *   rail gauche labellisé (icônes univers vidéo), viewer central dominant,
+ *   colonne droite « Sélection » en bandeaux numérotés aérés + bouton
+ *   showreel, rangée basse « Choisir un style » + « Coup de cœur ».
+ * Charte GND : crème sur chocolat profond, accent orange. Texte crème = text-bg.
  * Motion : GSAP entrée au scroll (once) · Motion pour les hovers
  * (useReducedMotion respecté). Visible par défaut sans JS.
  */
@@ -12,6 +12,7 @@ import * as React from 'react';
 import { gsap } from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { Clapperboard, LayoutGrid, SlidersHorizontal } from 'lucide-react';
 import { Icons } from '../icons';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -31,6 +32,17 @@ export type ViewerPhoto = {
 };
 
 const STYLES = ['Tout', 'Portrait', 'Studio', 'Événementiel', 'Urbain'];
+
+/* Libellés du rail façon maquette (catégorie réelle → label vidéo) */
+const RAIL_LABELS: Record<string, string> = {
+  Tout: 'Vidéos',
+  Clip: 'Clips',
+  Live: 'Tournages',
+  Production: 'Productions',
+};
+
+/* Recette panneau « verre fumé » commune (chocolat translucide + blur) */
+const GLASS = 'bg-text-strong/45 backdrop-blur-xl ring-1 ring-bg/10';
 
 export function PhotoViewer({ photos }: { photos: ViewerPhoto[] }) {
   const rootRef = React.useRef<HTMLDivElement>(null);
@@ -81,22 +93,25 @@ export function PhotoViewer({ photos }: { photos: ViewerPhoto[] }) {
   const inspired = filtered.find((p) => p.id !== cur?.id) || photos[1] || cur;
   if (!cur) return null;
 
-  // Rail = raccourcis réels vers les filtres, avec état actif visible.
-  const ICON_MAP: Record<string, any> = {
-    Tout: Icons.Layers,
+  // Rail = raccourcis réels vers les filtres + 2 liens (galerie, univers),
+  // icônes 100% univers vidéo (play, bobine, caméra, clap).
+  const RAIL_ICON: Record<string, any> = {
+    Tout: Icons.Play,
+    Clip: Icons.Film,
+    Live: Icons.Camera,
+    Production: Clapperboard,
     Portrait: Icons.Users,
     Studio: Icons.Camera,
     'Événementiel': Icons.Film,
     Urbain: Icons.Palette,
-    Clip: Icons.Play,
-    Live: Icons.Zap,
-    Production: Icons.Film,
   };
-  const railIcons = styles.map((s) => ({
-    label: s === 'Tout' ? 'Toute la sélection' : s,
+  const railItems = styles.map((s) => ({
+    label: RAIL_LABELS[s] ?? s,
     style: s,
-    Ico: ICON_MAP[s] ?? Icons.Sparkles,
+    Ico: RAIL_ICON[s] ?? Icons.Sparkles,
   }));
+
+  const counterIdx = Math.min(active, filtered.length - 1);
 
   return (
     <div ref={rootRef} className="relative mx-auto w-full max-w-[1180px]">
@@ -107,193 +122,215 @@ export function PhotoViewer({ photos }: { photos: ViewerPhoto[] }) {
         style={{ background: 'radial-gradient(60% 60% at 50% 45%, rgba(255,149,79,0.16) 0%, transparent 70%)', filter: 'blur(32px)' }}
       />
 
-      {/* COQUE */}
+      {/* COQUE — scène avec image GND floutée en fond + vignettage chaud */}
       <div
         data-anim="pv-shell"
-        className="relative rounded-[40px] md:rounded-[48px] bg-text-strong p-2.5 md:p-4 ring-1 ring-bg/10"
+        className="relative overflow-hidden rounded-[40px] md:rounded-[48px] bg-text-strong p-3 md:p-5 ring-1 ring-bg/10"
         style={{ boxShadow: '0 30px 90px rgba(42,24,16,0.32)' }}
       >
-        {/* Fond image de la coque (scène GND brune) dans sa propre couche
-            arrondie + overflow-hidden — PAS sur la coque elle-même, sinon
-            l'encoche/bouton caméra qui dépassent du bord seraient rognés.
-            Scrim chocolat léger pour garder le contenu lisible. */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 overflow-hidden rounded-[40px] md:rounded-[48px]"
-        >
+        <div aria-hidden className="pointer-events-none absolute inset-0">
           <img
             src="/assets/viewer-shell-bg.png"
             alt=""
             draggable={false}
-            className="h-full w-full object-cover"
+            className="h-full w-full scale-105 object-cover blur-[7px]"
           />
-          <span className="absolute inset-0 bg-text-strong/55" />
+          {/* scrim léger + vignettage : le fond reste perceptible */}
+          <span className="absolute inset-0 bg-text-strong/35" />
+          <span
+            className="absolute inset-0"
+            style={{ background: 'radial-gradient(120% 90% at 50% 40%, transparent 45%, rgba(42,24,16,0.55) 100%)' }}
+          />
         </div>
-        {/* Encoche réelle : cercle EXACTEMENT couleur de la section (bg-alt) à
-            cheval sur le bord gauche — un mismatch crée un halo blanc visible. */}
-        <span
-          aria-hidden
-          className="hidden md:block pointer-events-none absolute left-0 top-1/2 z-10 size-[76px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-bg-alt"
-        />
-        <motion.button
-          type="button"
-          aria-label="Galerie photo GND"
-          whileHover={reduce ? undefined : { scale: 1.05 }}
-          whileTap={reduce ? undefined : { scale: 0.96 }}
-          transition={{ duration: 0.18 }}
-          className="hidden md:flex absolute left-0 top-1/2 z-20 size-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-bg-alt text-text-strong border border-surface/80"
-          style={{ boxShadow: '0 10px 30px rgba(83,36,24,0.18)' }}
-        >
-          <Icons.Camera size={18} />
-        </motion.button>
 
-        {/* ÉCRAN */}
-        {/* Écran : MÊME chocolat charte que la coque (un seul ton, pas de
-            double fond marron/noir) — les cartes crème font le contraste. */}
-        <div className="relative grid gap-2.5 md:gap-4 rounded-[30px] md:rounded-[34px] p-1 md:p-2 md:min-h-[620px] md:grid-cols-[88px_minmax(0,1fr)_260px] md:grid-rows-[minmax(0,1fr)_180px]">
-          {/* RAIL UTILITAIRE GAUCHE */}
+        {/* SCÈNE */}
+        <div className="relative grid gap-3 md:gap-4 md:min-h-[620px] md:grid-cols-[196px_minmax(0,1fr)_300px] md:grid-rows-[minmax(0,1fr)_auto]">
+          {/* RAIL GAUCHE — panneau verre, items labellisés univers vidéo */}
           <aside
             data-anim="pv-rail"
-            className="row-span-2 hidden md:flex flex-col items-center justify-between rounded-[26px] bg-bg-alt p-3"
+            className={`row-span-2 hidden md:flex flex-col justify-between rounded-[26px] p-4 ${GLASS}`}
           >
-            <span className="flex size-11 items-center justify-center rounded-full bg-text-strong text-bg">
-              <Icons.Sparkles size={16} />
-            </span>
-            <div className="flex flex-col items-center gap-1.5">
-              {railIcons.map(({ label, style: s, Ico }) => {
+            <div className="px-2 pt-1">
+              <span className="display text-2xl leading-none text-bg">GND</span>
+              <span className="mt-1 block text-[9px] uppercase tracking-[0.3em] text-bg/50">Consulting</span>
+            </div>
+
+            <nav className="flex flex-col gap-1.5" aria-label="Filtres galerie">
+              {railItems.map(({ label, style: s, Ico }) => {
                 const on = s === style;
                 return (
                   <button
                     key={label}
                     type="button"
-                    aria-label={label}
                     aria-pressed={on}
-                    title={label}
                     onClick={() => setStyle(s)}
-                    className={`flex size-11 items-center justify-center rounded-full transition-all ${
-                      on
-                        ? 'bg-text-strong text-bg shadow-[0_6px_18px_rgba(42,24,16,0.28)]'
-                        : 'text-text-muted hover:bg-surface hover:text-text-strong'
+                    className={`group flex items-center gap-3 rounded-full py-1.5 pl-1.5 pr-3 text-left transition-all ${
+                      on ? 'bg-bg/10' : 'hover:bg-bg/5'
                     }`}
                   >
-                    <Ico size={18} stroke={1.7} />
+                    <span
+                      className={`flex size-9 shrink-0 items-center justify-center rounded-full transition-all ${
+                        on
+                          ? 'bg-accent text-text-strong shadow-[0_8px_22px_rgba(232,119,44,0.4)]'
+                          : 'ring-1 ring-bg/15 text-bg/70 group-hover:text-bg'
+                      }`}
+                    >
+                      <Ico size={15} />
+                    </span>
+                    <span className={`flex-1 text-[10px] uppercase tracking-[0.18em] transition-colors ${on ? 'text-bg' : 'text-bg/60 group-hover:text-bg/90'}`}>
+                      {label}
+                    </span>
+                    {on && <span aria-hidden className="size-1.5 rounded-full bg-accent" />}
                   </button>
                 );
               })}
+              <a
+                href="#galerie-photo"
+                className="group flex items-center gap-3 rounded-full py-1.5 pl-1.5 pr-3 hover:bg-bg/5 transition-all"
+              >
+                <span className="flex size-9 shrink-0 items-center justify-center rounded-full ring-1 ring-bg/15 text-bg/70 group-hover:text-bg transition-all">
+                  <LayoutGrid size={15} />
+                </span>
+                <span className="text-[10px] uppercase tracking-[0.18em] text-bg/60 group-hover:text-bg/90 transition-colors">Galerie</span>
+              </a>
+              <button
+                type="button"
+                onClick={() => rootRef.current?.querySelector('[data-univers]')?.scrollIntoView({ behavior: 'smooth', block: 'center' })}
+                className="group flex items-center gap-3 rounded-full py-1.5 pl-1.5 pr-3 text-left hover:bg-bg/5 transition-all"
+              >
+                <span className="flex size-9 shrink-0 items-center justify-center rounded-full ring-1 ring-bg/15 text-bg/70 group-hover:text-bg transition-all">
+                  <Icons.Layers size={15} />
+                </span>
+                <span className="text-[10px] uppercase tracking-[0.18em] text-bg/60 group-hover:text-bg/90 transition-colors">Univers</span>
+              </button>
+            </nav>
+
+            <div className="flex flex-col items-center gap-4 pb-1">
+              <span aria-hidden className="h-px w-10 bg-bg/15" />
+              <span
+                aria-hidden
+                className="flex size-11 items-center justify-center rounded-full bg-accent text-text-strong display text-base"
+                style={{ boxShadow: '0 10px 28px rgba(232,119,44,0.35)' }}
+              >
+                G
+              </span>
             </div>
-            <span
-              aria-hidden
-              className="flex size-11 items-center justify-center rounded-full bg-accent text-text-strong display text-base"
-            >
-              G
-            </span>
           </aside>
 
-          {/* VIEWER CENTRAL */}
+          {/* VIEWER CENTRAL — panneau verre, média dominant */}
           <article
             data-anim="pv-hero"
-            className="relative overflow-hidden rounded-[24px] md:rounded-[26px] aspect-[4/3] md:aspect-auto"
+            className={`relative rounded-[24px] md:rounded-[26px] p-2 md:p-2.5 ${GLASS}`}
           >
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={cur.id + (playing ? '-play' : '')}
-                initial={reduce ? false : { opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={reduce ? undefined : { opacity: 0 }}
-                transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute inset-0"
-              >
-                {playing && cur.video ? (
-                  <video
-                    src={cur.video}
-                    poster={cur.img}
-                    autoPlay
-                    controls
-                    playsInline
-                    className="relative h-full w-full object-contain"
-                  />
-                ) : playing && cur.youtube ? (
-                  <iframe
-                    src={`https://www.youtube.com/embed/${cur.youtube}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
-                    title={cur.title}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    className="absolute inset-0 h-full w-full"
-                  />
-                ) : cur.video ? (
-                  /* poster = PREMIÈRE FRAME réelle, seule, sans fond ajouté */
-                  <video
-                    src={`${cur.video}#t=0.1`}
-                    preload="metadata"
-                    muted
-                    playsInline
-                    className="relative h-full w-full object-contain"
-                  />
-                ) : (
-                  /* média ENTIER, jamais recadré, sans fond ajouté */
-                  <img
-                    src={cur.img}
-                    alt={cur.title}
-                    className="relative h-full w-full object-contain"
-                    loading="lazy"
-                    draggable={false}
-                  />
-                )}
-              </motion.div>
-            </AnimatePresence>
-            {/* bouton lecture si l'item est une vidéo */}
-            {!playing && (cur.video || cur.youtube) && (
-              <motion.button
-                type="button"
-                aria-label={`Lire ${cur.title}`}
-                onClick={() => setPlaying(true)}
-                whileHover={reduce ? undefined : { scale: 1.06 }}
-                whileTap={reduce ? undefined : { scale: 0.95 }}
-                transition={{ duration: 0.18 }}
-                className="absolute left-1/2 top-1/2 z-10 flex size-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-accent text-text-strong"
-                style={{ boxShadow: '0 14px 40px rgba(232,119,44,0.45)' }}
-              >
-                <Icons.Play size={22} />
-              </motion.button>
-            )}
-            {/* chip + compteur */}
-            <div className="absolute top-3 left-3 inline-flex items-center gap-2 rounded-full bg-text-strong/70 backdrop-blur px-3 py-1.5 text-[10px] tracking-[0.18em] uppercase text-bg/90">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-              {cur.video || cur.youtube ? 'Vidéo' : 'Photo'}
-            </div>
-            <div className="absolute top-3 right-3 rounded-full bg-text-strong/70 backdrop-blur px-3 py-1.5 text-[10px] label-mono text-bg/80">
-              {String(Math.min(active, filtered.length - 1) + 1).padStart(2, '0')} / {String(filtered.length).padStart(2, '0')}
-            </div>
-            {/* pill légende façon prompt-bar */}
-            <div className="absolute bottom-3 left-3 right-3 md:right-auto md:max-w-[78%]">
-              <div className="inline-flex max-w-full items-center gap-2.5 rounded-full bg-bg/95 backdrop-blur px-4 py-2.5 shadow-lg">
-                <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-accent text-text-strong">
-                  <Icons.Plus size={13} />
-                </span>
-                <span className="truncate text-sm text-text-strong">
-                  <span className="display">{cur.title}</span>
-                  <span className="text-text-muted"> · {cur.sub}</span>
-                </span>
+            <div className="relative h-full min-h-[230px] overflow-hidden rounded-[18px] md:rounded-[20px] aspect-[4/3] md:aspect-auto">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={cur.id + (playing ? '-play' : '')}
+                  initial={reduce ? false : { opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={reduce ? undefined : { opacity: 0 }}
+                  transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                  className="absolute inset-0"
+                >
+                  {playing && cur.video ? (
+                    <video
+                      src={cur.video}
+                      poster={cur.img}
+                      autoPlay
+                      controls
+                      playsInline
+                      className="relative h-full w-full object-contain"
+                    />
+                  ) : playing && cur.youtube ? (
+                    <iframe
+                      src={`https://www.youtube.com/embed/${cur.youtube}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
+                      title={cur.title}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="absolute inset-0 h-full w-full"
+                    />
+                  ) : cur.video ? (
+                    /* poster = PREMIÈRE FRAME réelle, seule, sans fond ajouté */
+                    <video
+                      src={`${cur.video}#t=0.1`}
+                      preload="metadata"
+                      muted
+                      playsInline
+                      className="relative h-full w-full object-contain"
+                    />
+                  ) : (
+                    /* média ENTIER, jamais recadré, sans fond ajouté */
+                    <img
+                      src={cur.img}
+                      alt={cur.title}
+                      className="relative h-full w-full object-contain"
+                      loading="lazy"
+                      draggable={false}
+                    />
+                  )}
+                </motion.div>
+              </AnimatePresence>
+
+              {/* bouton lecture si l'item est une vidéo */}
+              {!playing && (cur.video || cur.youtube) && (
+                <motion.button
+                  type="button"
+                  aria-label={`Lire ${cur.title}`}
+                  onClick={() => setPlaying(true)}
+                  whileHover={reduce ? undefined : { scale: 1.06 }}
+                  whileTap={reduce ? undefined : { scale: 0.95 }}
+                  transition={{ duration: 0.18 }}
+                  className="absolute left-1/2 top-1/2 z-10 flex size-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-accent text-text-strong"
+                  style={{ boxShadow: '0 14px 40px rgba(232,119,44,0.45)' }}
+                >
+                  <Icons.Play size={22} />
+                </motion.button>
+              )}
+
+              {/* chip média + compteur */}
+              <div className="absolute top-3 left-3 inline-flex items-center gap-2 rounded-full bg-text-strong/60 backdrop-blur px-3.5 py-1.5 text-[10px] tracking-[0.18em] uppercase text-bg/90 ring-1 ring-bg/10">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                {cur.video || cur.youtube ? 'Vidéo' : 'Photo'}
+              </div>
+              <div className="absolute top-3 right-3 rounded-full bg-text-strong/60 backdrop-blur px-3.5 py-1.5 text-[10px] label-mono ring-1 ring-bg/10">
+                <span className="text-accent">{String(counterIdx + 1).padStart(2, '0')}</span>
+                <span className="text-bg/60"> / {String(filtered.length).padStart(2, '0')}</span>
+              </div>
+
+              {/* pill légende — verre fumé, texte crème */}
+              <div className="absolute bottom-3 left-3 right-3 md:right-auto md:max-w-[78%]">
+                <div className="inline-flex max-w-full items-center gap-2.5 rounded-full bg-text-strong/60 backdrop-blur px-4 py-2.5 ring-1 ring-bg/10">
+                  <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-accent text-text-strong">
+                    <Icons.Plus size={13} />
+                  </span>
+                  <span className="truncate text-sm text-bg">
+                    <span className="display">{cur.title}</span>
+                    <span className="text-bg/60"> · {cur.sub}</span>
+                  </span>
+                </div>
               </div>
             </div>
           </article>
 
-          {/* COLONNE DROITE : recherche + vignettes numérotées */}
-          <aside data-anim="pv-side" className="flex flex-col gap-3 md:gap-4 rounded-[24px] md:rounded-[26px] bg-bg-alt p-3 md:p-4">
-            <p className="label-mono shrink-0 px-1 pt-0.5 text-text-muted">Sélection · {String(filtered.length).padStart(2, '0')}</p>
-            <div className="grid grid-cols-3 md:grid-cols-1 gap-2.5 md:gap-3.5 md:overflow-y-auto md:max-h-[420px] md:pr-1 no-scrollbar">
+          {/* COLONNE DROITE — « Sélection » en bandeaux numérotés + showreel */}
+          <aside
+            data-anim="pv-side"
+            className={`row-span-2 flex flex-col rounded-[24px] md:rounded-[26px] p-4 md:p-5 ${GLASS}`}
+          >
+            <p className="label-mono shrink-0 px-1 pb-4 text-bg/60">Sélection · {String(filtered.length).padStart(2, '0')}</p>
+            <div className="grid grid-cols-3 gap-2.5 md:flex md:flex-1 md:flex-col md:gap-3 md:overflow-y-auto md:pr-1 no-scrollbar md:max-h-[420px]">
               {filtered.map((p, i) => {
-                const on = i === Math.min(active, filtered.length - 1);
+                const on = i === counterIdx;
                 return (
                   <motion.button
                     key={p.id}
                     type="button"
                     onClick={() => setActive(i)}
                     aria-label={`Voir ${p.title}`}
-                    whileHover={reduce ? undefined : { scale: 1.02 }}
+                    whileHover={reduce ? undefined : { scale: 1.015 }}
                     transition={{ duration: 0.16 }}
-                    className={`group relative overflow-hidden rounded-[16px] md:rounded-[18px] aspect-[4/5] md:aspect-[16/10] ring-2 transition-colors ${
-                      on ? 'ring-accent' : 'ring-transparent hover:ring-accent/50'
+                    className={`group relative shrink-0 overflow-hidden rounded-[14px] aspect-[4/5] md:aspect-auto md:h-[60px] ring-1 transition-all ${
+                      on ? 'ring-accent shadow-[0_10px_28px_rgba(232,119,44,0.25)]' : 'ring-bg/10 hover:ring-bg/30'
                     }`}
                   >
                     {p.video ? (
@@ -302,17 +339,28 @@ export function PhotoViewer({ photos }: { photos: ViewerPhoto[] }) {
                         preload="metadata"
                         muted
                         playsInline
-                        className="h-full w-full object-cover"
+                        className="absolute inset-0 h-full w-full object-cover"
                       />
                     ) : (
-                      <img src={p.img} alt="" className="h-full w-full object-cover" loading="lazy" draggable={false} />
+                      <img src={p.img} alt="" className="absolute inset-0 h-full w-full object-cover" loading="lazy" draggable={false} />
                     )}
-                    {!on && <span aria-hidden className="absolute inset-0 bg-text-strong/35" />}
-                    <span className={`absolute left-2 top-2 flex size-7 items-center justify-center rounded-full text-[10px] label-mono ${on ? 'bg-accent text-text-strong' : 'bg-bg-alt/90 text-text'}`}>
+                    {!on && <span aria-hidden className="absolute inset-0 bg-text-strong/45 transition-opacity group-hover:opacity-60" />}
+                    <span
+                      className={`absolute left-2 top-1/2 hidden md:flex -translate-y-1/2 size-7 items-center justify-center rounded-full text-[10px] label-mono ${
+                        on ? 'bg-accent text-text-strong' : 'bg-bg/90 text-text-strong'
+                      }`}
+                    >
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <span
+                      className={`absolute left-2 top-2 md:hidden flex size-6 items-center justify-center rounded-full text-[9px] label-mono ${
+                        on ? 'bg-accent text-text-strong' : 'bg-bg/90 text-text-strong'
+                      }`}
+                    >
                       {String(i + 1).padStart(2, '0')}
                     </span>
                     {(p.video || p.youtube) && (
-                      <span aria-hidden className="absolute bottom-2 right-2 flex size-6 items-center justify-center rounded-full bg-text-strong/70 text-bg backdrop-blur">
+                      <span aria-hidden className="absolute bottom-1.5 right-1.5 md:bottom-auto md:top-1/2 md:-translate-y-1/2 md:right-2.5 flex size-6 items-center justify-center rounded-full bg-text-strong/60 text-bg backdrop-blur">
                         <Icons.Play size={10} />
                       </span>
                     )}
@@ -320,21 +368,32 @@ export function PhotoViewer({ photos }: { photos: ViewerPhoto[] }) {
                 );
               })}
             </div>
+            <button
+              type="button"
+              onClick={() => { setStyle('Tout'); setActive(0); setPlaying(true); }}
+              className="mt-4 flex shrink-0 items-center justify-between rounded-[16px] border border-bg/15 px-4 py-3.5 text-[10px] uppercase tracking-[0.18em] text-bg/80 transition-all hover:border-accent/60 hover:text-bg"
+            >
+              Voir tout le showreel
+              <Icons.ArrowUpRight size={13} />
+            </button>
           </aside>
 
-          {/* RANGÉE BASSE : styles + coup de cœur */}
-          <div className="grid gap-2.5 md:gap-4 md:col-span-2 md:grid-cols-[minmax(0,1fr)_260px]">
-            <div data-anim="pv-bottom" className="flex flex-col justify-between rounded-[24px] md:rounded-[26px] bg-bg-alt p-4 md:p-5">
+          {/* RANGÉE BASSE — « Choisir un style » + « Coup de cœur » */}
+          <div className="grid gap-3 md:gap-4 md:col-start-2 md:grid-cols-[minmax(0,1fr)_252px]">
+            <div data-anim="pv-bottom" data-univers className={`flex flex-col justify-between rounded-[24px] md:rounded-[26px] p-4 md:p-5 ${GLASS}`}>
               <div className="flex items-center justify-between">
-                <p className="label-mono flex items-center gap-2 text-text-muted">
-                  <span className="flex size-6 items-center justify-center rounded-full bg-accent/15 text-accent-deep">
+                <p className="label-mono flex items-center gap-2 text-bg/70">
+                  <span className="flex size-6 items-center justify-center rounded-full bg-accent/20 text-accent">
                     <Icons.Layers size={12} />
                   </span>
                   Choisir un style
                 </p>
-                <span className="hidden md:inline text-xs text-text-muted">Filtrez la galerie par univers</span>
+                <span className="hidden md:inline-flex items-center gap-2 text-xs text-bg/50">
+                  Filtrez la galerie par univers
+                  <SlidersHorizontal size={13} className="text-accent" />
+                </span>
               </div>
-              <div className="mt-3 flex flex-wrap gap-2">
+              <div className="mt-4 flex flex-wrap gap-2">
                 {styles.map((s) => {
                   const on = s === style;
                   return (
@@ -345,8 +404,8 @@ export function PhotoViewer({ photos }: { photos: ViewerPhoto[] }) {
                       onClick={() => setStyle(s)}
                       className={`rounded-full px-4 py-2 text-xs md:text-sm transition-all ${
                         on
-                          ? 'bg-text-strong text-bg shadow-[0_8px_22px_rgba(42,24,16,0.25)]'
-                          : 'border border-text-strong/12 bg-bg/60 text-text-muted hover:border-accent/60 hover:text-text-strong'
+                          ? 'bg-bg text-text-strong shadow-[0_8px_22px_rgba(42,24,16,0.35)]'
+                          : 'border border-bg/20 text-bg/70 hover:border-accent/70 hover:text-bg'
                       }`}
                     >
                       {s}
@@ -354,11 +413,11 @@ export function PhotoViewer({ photos }: { photos: ViewerPhoto[] }) {
                   );
                 })}
               </div>
-              <div aria-hidden className="mt-3.5 flex items-center gap-1.5">
+              <div aria-hidden className="mt-4 flex items-center gap-1.5">
                 {styles.map((s) => (
                   <span
                     key={s}
-                    className={`h-1.5 rounded-full transition-all ${s === style ? 'w-5 bg-accent' : 'w-1.5 bg-text-strong/15'}`}
+                    className={`h-1.5 rounded-full transition-all ${s === style ? 'w-5 bg-accent' : 'w-1.5 bg-bg/20'}`}
                   />
                 ))}
               </div>
@@ -373,16 +432,16 @@ export function PhotoViewer({ photos }: { photos: ViewerPhoto[] }) {
               }}
               whileHover={reduce ? undefined : { y: -3 }}
               transition={{ duration: 0.18 }}
-              className="rounded-[24px] md:rounded-[26px] bg-bg-alt p-3.5 md:p-4 text-left"
+              className={`rounded-[24px] md:rounded-[26px] p-4 text-left ${GLASS}`}
             >
-              <p className="label-mono mb-2.5 flex items-center justify-between text-text-muted">
+              <p className="label-mono mb-3 flex items-center justify-between text-bg/70">
                 <span className="flex items-center gap-2">
                   <Icons.Sparkles size={13} className="text-accent" />
                   Coup de cœur
                 </span>
-                <Icons.ArrowUpRight size={13} className="text-text-muted" />
+                <Icons.ArrowUpRight size={13} className="text-bg/50" />
               </p>
-              <span className="block overflow-hidden rounded-[16px] md:rounded-[18px]">
+              <span className="block overflow-hidden rounded-[14px] ring-1 ring-bg/10">
                 {inspired.video ? (
                   <video
                     src={`${inspired.video}#t=0.1`}
@@ -395,7 +454,7 @@ export function PhotoViewer({ photos }: { photos: ViewerPhoto[] }) {
                   <img src={inspired.img} alt={inspired.title} className="aspect-[16/8] md:aspect-[16/7] w-full object-cover" loading="lazy" draggable={false} />
                 )}
               </span>
-              <span className="mt-2 block truncate text-sm text-text-strong display">{inspired.title}</span>
+              <span className="mt-2.5 block truncate text-sm text-bg display">{inspired.title}</span>
             </motion.button>
           </div>
         </div>

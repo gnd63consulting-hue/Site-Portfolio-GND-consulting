@@ -105,7 +105,7 @@ function RealisationsPage() {
       {/* Galerie Photo — bento gallery draggable (composant 21st.dev adapté
           charte). Grille bento horizontale : glisser pour explorer, cliquer
           pour agrandir en modal. (zoom-parallax gardé de côté sur disque.) */}
-      <Section className="pt-20 md:pt-24 pb-16 md:pb-20">
+      <Section id="galerie-photo" className="pt-20 md:pt-24 pb-16 md:pb-20">
         <Container>
           <div className="max-w-3xl mb-4 md:mb-6">
             <Kicker>Galerie Photo</Kicker>

@@ -5,6 +5,8 @@ import { Section, Container, Kicker, Btn, Tag, ImgPlaceholder, CinematicHero } f
 import { FloatingCtaBand } from '../components/FloatingCtaBand';
 import { PhotoViewer } from '../components/PhotoViewer';
 import { Icons } from '../icons';
+import ScrollExpandHero from '@/components/blocks/scroll-expansion-hero';
+import { MarqueeCTA } from '../components/MarqueeCTA';
 
 const SB = "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/";
 const COVER = SB + "portfolio-photos/gnd-cover.png";
@@ -49,6 +51,25 @@ function RealisationsPage() {
 
   return (
     <main id="main">
+      {/* HERO #1, ScrollExpandHero (même hero 1 que toutes les pages). */}
+      <div className="pt-20 md:pt-24 bg-bg-alt">
+        <ScrollExpandHero
+          mediaType="video"
+          mediaSrc="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Creative_Studio_Video_Generation2.mp4"
+          posterSrc="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250919_0006_Vibrant%20Digital%20Collaboration_remix_01k5fdpkfdemjrbt49q10rx0hx.png"
+          bgImageSrc="/assets/hero1-bg-v2.png"
+          title="Nos réalisations."
+          date="GND · Portfolio"
+          scrollToExpand="Scrollez pour révéler"
+          textColorClass="text-bg"
+        />
+      </div>
+
+      {/* Marquee CTA entre Hero #1 et Hero #2 (mirror autres pages). */}
+      <MarqueeCTA />
+
+      {/* HERO #2 — mêmes éléments que le Hero #2 de la page Agence (fond scène
+          desert + texte pleine largeur), seuls les textes changent. */}
       <CinematicHero
         kicker="Portfolio"
         eyebrow="réalisations"
@@ -59,18 +80,7 @@ function RealisationsPage() {
           <Btn href="#/contact" variant="primary">Démarrer un projet</Btn>
           <a href="#all" className="btn !bg-bg/10 !text-bg !border !border-bg/20 hover:!bg-bg/15">Tout voir <Icons.ArrowDown size={14}/></a>
         </>}
-        media={
-          <div className="grid grid-cols-2 gap-3 max-w-[480px] mx-auto">
-            {["esther-seems","sabay-2023","cook-soul","art-en-mouvement"].map(id => {
-              const p = ALL_PROJECTS.find(x => x.id === id);
-              return (
-                <div key={id} className="relative rounded-2xl overflow-hidden" style={{ aspectRatio:"4/5", background:"#E8D8C5" }}>
-                  <Pic p={p} />
-                </div>
-              );
-            })}
-          </div>
-        }
+        bgImage="/assets/agence-hero2-scene.png"
         footerLabel="réalisations · 19 projets"
       />
 

@@ -151,8 +151,12 @@ export function PhotoViewer({ photos }: { photos: ViewerPhoto[] }) {
             className={`row-span-2 hidden md:flex flex-col justify-between rounded-[26px] p-4 ${GLASS}`}
           >
             <div className="px-2 pt-1">
-              <span className="display text-2xl leading-none text-bg">GND</span>
-              <span className="mt-1 block text-[9px] uppercase tracking-[0.3em] text-bg/50">Consulting</span>
+              <img
+                src="/assets/logos/gnd-logo-blanc-cropped.png"
+                alt="GND Consulting"
+                draggable={false}
+                className="w-[108px]"
+              />
             </div>
 
             <nav className="flex flex-col gap-1.5" aria-label="Filtres galerie">

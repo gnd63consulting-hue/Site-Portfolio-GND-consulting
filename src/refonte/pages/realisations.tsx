@@ -7,7 +7,7 @@ import { PhotoViewer } from '../components/PhotoViewer';
 import { Icons } from '../icons';
 import ScrollExpandHero from '@/components/blocks/scroll-expansion-hero';
 import { MarqueeCTA } from '../components/MarqueeCTA';
-import { ZoomParallax } from '@/components/ui/zoom-parallax';
+import InteractiveImageBentoGallery from '@/components/ui/bento-gallery';
 
 const SB = "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/";
 const COVER = SB + "portfolio-photos/gnd-cover.png";
@@ -106,9 +106,10 @@ function RealisationsPage() {
         </Container>
       </Section>
 
-      {/* Galerie Photo — zoom parallax scroll-driven (composant 21st.dev adapté
-          charte). Pleine largeur : la scène sticky zoome les 7 photos au scroll. */}
-      <Section className="pt-20 md:pt-24 pb-0">
+      {/* Galerie Photo — bento gallery draggable (composant 21st.dev adapté
+          charte). Grille bento horizontale : glisser pour explorer, cliquer
+          pour agrandir en modal. (zoom-parallax gardé de côté sur disque.) */}
+      <Section className="pt-20 md:pt-24 pb-16 md:pb-20">
         <Container>
           <div className="max-w-3xl mb-4 md:mb-6">
             <Kicker>Galerie Photo</Kicker>
@@ -116,17 +117,22 @@ function RealisationsPage() {
               Plongez dans <span className="italic text-accent">l'image</span>.
             </h2>
             <p className="mt-5 text-text leading-relaxed max-w-xl">
-              Portraits, studio, événementiel. Scrollez : la galerie s'ouvre.
+              Portraits, studio, événementiel. Glissez pour explorer, cliquez pour agrandir.
             </p>
           </div>
         </Container>
-        <ZoomParallax
-          images={[
-            "art-en-mouvement", "masque-identite", "puissance-creative",
-            "vision-masquee", "energie-collective", "saveurs", "vision-urbaine",
-          ].map(id => {
+        <InteractiveImageBentoGallery
+          imageItems={[
+            { id: "art-en-mouvement", span: "md:col-span-2 md:row-span-2" },
+            { id: "masque-identite", span: "md:row-span-1" },
+            { id: "puissance-creative", span: "md:row-span-1" },
+            { id: "vision-masquee", span: "md:row-span-2" },
+            { id: "energie-collective", span: "md:row-span-1" },
+            { id: "saveurs", span: "md:row-span-1" },
+            { id: "vision-urbaine", span: "md:col-span-2 md:row-span-2" },
+          ].map(({ id, span }) => {
             const p = ALL_PROJECTS.find(x => x.id === id)!;
-            return { src: p.img, alt: p.title };
+            return { id, title: p.title, desc: p.sub, url: p.img, span };
           })}
         />
       </Section>

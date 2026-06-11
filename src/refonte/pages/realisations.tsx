@@ -97,7 +97,7 @@ function RealisationsPage() {
             </p>
           </div>
           <PhotoViewer
-            photos={ALL_PROJECTS.filter(p => p.cat !== "Photo").map(p => ({
+            photos={ALL_PROJECTS.filter(p => p.cat !== "Photo" && p.id !== "lanecdote").map(p => ({
               id: p.id, title: p.title, sub: p.sub, img: p.img, ratio: p.ratio,
               video: (p as any).video, youtube: (p as any).youtube, cat: p.cat,
             }))}

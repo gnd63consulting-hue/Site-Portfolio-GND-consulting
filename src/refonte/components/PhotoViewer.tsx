@@ -205,6 +205,18 @@ export function PhotoViewer({ photos }: { photos: ViewerPhoto[] }) {
                     allowFullScreen
                     className="absolute inset-0 h-full w-full"
                   />
+                ) : cur.video ? (
+                  <>
+                    {/* poster = PREMIÈRE FRAME réelle de la vidéo (pas de cover générique) */}
+                    <div aria-hidden className="absolute inset-0 bg-[#150a05]" />
+                    <video
+                      src={`${cur.video}#t=0.1`}
+                      preload="metadata"
+                      muted
+                      playsInline
+                      className="relative h-full w-full object-contain"
+                    />
+                  </>
                 ) : (
                   <>
                     {/* fond = même image floutée (remplit le cadre) */}
@@ -249,7 +261,7 @@ export function PhotoViewer({ photos }: { photos: ViewerPhoto[] }) {
             {/* chip + compteur */}
             <div className="absolute top-3 left-3 inline-flex items-center gap-2 rounded-full bg-text-strong/70 backdrop-blur px-3 py-1.5 text-[10px] tracking-[0.18em] uppercase text-bg/90">
               <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-              Photo
+              {cur.video || cur.youtube ? 'Vidéo' : 'Photo'}
             </div>
             <div className="absolute top-3 right-3 rounded-full bg-text-strong/70 backdrop-blur px-3 py-1.5 text-[10px] label-mono text-bg/80">
               {String(Math.min(active, filtered.length - 1) + 1).padStart(2, '0')} / {String(filtered.length).padStart(2, '0')}
@@ -286,7 +298,17 @@ export function PhotoViewer({ photos }: { photos: ViewerPhoto[] }) {
                       on ? 'ring-accent' : 'ring-transparent hover:ring-accent/50'
                     }`}
                   >
-                    <img src={p.img} alt="" className="h-full w-full object-cover" loading="lazy" draggable={false} />
+                    {p.video ? (
+                      <video
+                        src={`${p.video}#t=0.1`}
+                        preload="metadata"
+                        muted
+                        playsInline
+                        className="h-full w-full object-cover"
+                      />
+                    ) : (
+                      <img src={p.img} alt="" className="h-full w-full object-cover" loading="lazy" draggable={false} />
+                    )}
                     {!on && <span aria-hidden className="absolute inset-0 bg-text-strong/35" />}
                     <span className={`absolute left-2 top-2 flex size-7 items-center justify-center rounded-full text-[10px] label-mono ${on ? 'bg-accent text-text-strong' : 'bg-bg-alt/90 text-text'}`}>
                       {String(i + 1).padStart(2, '0')}
@@ -363,7 +385,17 @@ export function PhotoViewer({ photos }: { photos: ViewerPhoto[] }) {
                 <Icons.ArrowUpRight size={13} className="text-text-muted" />
               </p>
               <span className="block overflow-hidden rounded-[16px] md:rounded-[18px]">
-                <img src={inspired.img} alt={inspired.title} className="aspect-[16/8] md:aspect-[16/7] w-full object-cover" loading="lazy" draggable={false} />
+                {inspired.video ? (
+                  <video
+                    src={`${inspired.video}#t=0.1`}
+                    preload="metadata"
+                    muted
+                    playsInline
+                    className="aspect-[16/8] md:aspect-[16/7] w-full object-cover"
+                  />
+                ) : (
+                  <img src={inspired.img} alt={inspired.title} className="aspect-[16/8] md:aspect-[16/7] w-full object-cover" loading="lazy" draggable={false} />
+                )}
               </span>
               <span className="mt-2 block truncate text-sm text-text-strong display">{inspired.title}</span>
             </motion.button>

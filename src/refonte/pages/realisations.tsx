@@ -237,4 +237,4 @@ function ProjectDetail({ id }: any) {
   );
 }
 
-export { RealisationsPage, ProjectDetail };
+export { RealisationsPage, ProjectDetail, ALL_PROJECTS };

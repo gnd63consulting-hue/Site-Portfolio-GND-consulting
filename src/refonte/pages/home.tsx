@@ -3,7 +3,8 @@ import * as React from 'react';
 import { createPortal } from 'react-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { CircularGallery, type GalleryItem } from '../../components/ui/circular-gallery-2';
+import InteractiveImageBentoGallery from '@/components/ui/bento-gallery';
+import { ALL_PROJECTS } from './realisations';
 import { HeroScroll } from '../components/HeroScroll';
 import { PhotoViewer } from '../components/PhotoViewer';
 import { Section, Container, Kicker, Btn, PortraitHero, Tag, Faq } from '../ui';
@@ -840,36 +841,20 @@ function MediaLightbox({ items, index, onClose, onIndex }: any) {
    GSAP/ScrollTrigger, CSS structurel et structure = 1:1. Seules adaptations : données
    (vrais projets GND) + couleurs charte crème. Importé en haut de ce fichier. */
 
-/* OUR WORK, CircularGallery (OGL/WebGL) en bandeau plein écran sur scène chocolat.
-   Série « Criminal Designer » : 4 portraits masqués validés par Roodny. Le reste du
-   portfolio vit sur /réalisations (cohérence visuelle stricte = série masquée uniquement).
-   Photos servies via le endpoint Supabase render/image (redimensionnées, légères). */
-const MASKED_RENDER = "https://gublhtivvydkuooooffg.supabase.co/storage/v1/render/image/public/portfolio-photos/";
-// Uniformisation PORTRAIT 2:3 (800×1200), TOUTES les photos arrivent dans le même
-// format, recadrées au centre côté serveur. Les 2 portraits natifs (4251, 4135) sont
-// préservés ; les 2 landscapes (4267, 4149) sont recadrés au centre → le MASQUE,
-// centré dans chaque shot, reste intact. Carrousel à rythme régulier garanti.
-const m = (f: string) => `${MASKED_RENDER}${f}?width=800&height=1200&resize=cover&quality=82`;
-const MASKED_GALLERY: GalleryItem[] = [
-  { image: m("6F0A4251.jpg"), text: "Masque & Identité" },
-  { image: m("6F0A4267.jpg"), text: "Vision Masquée" },
-  { image: m("6F0A4135.jpg"), text: "L'Art en Mouvement" },
-  // Puissance Créative (6F0A4149.jpg) retirée : le shot d'origine est en landscape
-  // avec sujet décalé → le crop centré 2:3 portrait coupait au-dessus du genou.
-  // Visible dans Réalisations, pas ici. Cohérence visuelle prioritaire.
+/* OUR WORK photos — bento gallery draggable, MÊME composant que la page
+   Réalisations (cohérence inter-pages) avec les mêmes 7 photos et spans.
+   (CircularGallery OGL gardée de côté sur disque, plus utilisée ici.) */
+const BENTO_HOME_IDS: { id: string; span: string }[] = [
+  { id: "art-en-mouvement", span: "md:col-span-2 md:row-span-2" },
+  { id: "masque-identite", span: "md:row-span-1" },
+  { id: "puissance-creative", span: "md:row-span-1" },
+  { id: "vision-masquee", span: "md:row-span-2" },
+  { id: "energie-collective", span: "md:row-span-1" },
+  { id: "saveurs", span: "md:row-span-1" },
+  { id: "vision-urbaine", span: "md:col-span-2 md:row-span-2" },
 ];
 
 function ReelsMosaic() {
-  // bend responsive : courbe d'arc seulement en desktop. Sur mobile bend=0
-  // → galerie plate, images droites "carrées" (pas de sliver triangulaire du
-  // voisin courbé). L'animation/scroll reste identique (composant gère bend=0).
-  const [galleryBend, setGalleryBend] = React.useState(2);
-  React.useEffect(() => {
-    const apply = () => setGalleryBend(window.innerWidth < 768 ? 0 : 2);
-    apply();
-    window.addEventListener('resize', apply);
-    return () => window.removeEventListener('resize', apply);
-  }, []);
   return (
     <section className="relative bg-bg-alt">
       {/* Header partagé, éditorial : titre gauche giant / description + arrow link droite décalée
@@ -895,25 +880,19 @@ function ReelsMosaic() {
         </Container>
       </div>
 
-      {/* CircularGallery (OGL), pleine largeur. Couleur de texte forcée en chocolat
-          pour que le label rendu sur canvas reste lisible sur la crème chaude. */}
-      <div
-        className="relative w-full h-[720px] md:h-[880px] pt-8 md:pt-12"
-        style={{ color: '#2A1810' }}
-      >
-        <CircularGallery
-          items={MASKED_GALLERY}
-          bend={galleryBend}
-          borderRadius={0.04}
-          scrollEase={0.05}
-        />
-      </div>
+      {/* Bento gallery draggable (même composant que /realisations) */}
+      <InteractiveImageBentoGallery
+        imageItems={BENTO_HOME_IDS.map(({ id, span }) => {
+          const p = ALL_PROJECTS.find((x: any) => x.id === id)!;
+          return { id, title: p.title, desc: p.sub, url: p.img, span };
+        })}
+      />
 
       {/* Footer band */}
       <div className="relative pt-10 pb-28 md:pb-40">
         <Container className="relative">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-t border-text-strong/10 pt-6">
-            <span className="text-text-muted label-mono">3 portraits ici · série « Criminal Designer » · portfolio complet sur Réalisations</span>
+            <span className="text-text-muted label-mono">7 photos ici · portraits, studio, événementiel · portfolio complet sur Réalisations</span>
             <a href="#/realisations" className="inline-flex items-center gap-2 text-text-strong hover:text-accent transition">
               Découvrir tout le portfolio <Icons.ArrowRight size={18}/>
             </a>

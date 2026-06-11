@@ -7,7 +7,6 @@ import { HeroBuildUpBranding } from '../components/HeroBuildUpBranding';
 import { WhyGndIaBlock } from '../components/WhyGndIaBlock';
 import { HeroBuildUpAudiovisuel } from '../components/HeroBuildUpAudiovisuel';
 import { CircularGallery, type GalleryItem } from '../../components/ui/circular-gallery-2';
-import BasicCarousel from '@/components/ui/carousel-1';
 import { AnimatedTabs, type AnimatedTab } from '@/components/ui/animated-tabs';
 import { MaskedImage } from '@/components/ui/image-mask';
 import ScrollExpandHero from '@/components/blocks/scroll-expansion-hero';
@@ -15,6 +14,7 @@ import { WhyGndBrandingBlock } from '../components/WhyGndBrandingBlock';
 import { WhyGndAudiovisuelBlock } from '../components/WhyGndAudiovisuelBlock';
 import { MarqueeCTA } from '../components/MarqueeCTA';
 import { MethodCarousel } from '../components/MethodCarousel';
+import { PhotoViewer } from '../components/PhotoViewer';
 import { ServicesAccordion } from '@/components/ui/services-accordion';
 import { ProcessGraph } from '../components/ProcessGraph';
 import { InfoCard } from '@/components/ui/info-card';
@@ -1884,10 +1884,21 @@ function AudiovisuelPage() {
               </div>
             </div>
 
-            {/* Carousel Ark UI 21st.dev VERBATIM (carousel-1.tsx), strip
-                horizontal slides Previous/Next + vignettes indicator. onPlay
-                bridge vers setActiveReel = lightbox vidéo existant intact. */}
-            <BasicCarousel reels={REELS} onPlay={(r) => setActiveReel(r as Reel)} />
+            {/* Console média verre fumé, MÊME PhotoViewer que home + /realisations
+                (harmonisation cross-pages). Lecture intégrée au viewer — le
+                lightbox activeReel reste en place mais n'est plus déclenché ici.
+                (BasicCarousel carousel-1.tsx gardé de côté sur disque.) */}
+            <PhotoViewer
+              photos={REELS.map((r) => ({
+                id: r.id,
+                title: r.t,
+                sub: `${r.k} · ${r.y}`,
+                img: r.img,
+                video: r.video,
+                youtube: r.youtube,
+                cat: /clip/i.test(r.k) ? 'Clip' : /live|captation|événementiel/i.test(r.k) ? 'Live' : 'Production',
+              }))}
+            />
 
             <div className="mt-10 flex flex-wrap gap-3">
               <a href="#/realisations" className="btn btn-secondary inline-flex">Voir toutes nos réalisations <Icons.ArrowUpRight size={14}/></a>

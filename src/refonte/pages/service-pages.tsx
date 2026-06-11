@@ -6,7 +6,8 @@ import { Icons } from '../icons';
 import { HeroBuildUpBranding } from '../components/HeroBuildUpBranding';
 import { WhyGndIaBlock } from '../components/WhyGndIaBlock';
 import { HeroBuildUpAudiovisuel } from '../components/HeroBuildUpAudiovisuel';
-import { CircularGallery, type GalleryItem } from '../../components/ui/circular-gallery-2';
+import InteractiveImageBentoGallery from '@/components/ui/bento-gallery';
+import { ALL_PROJECTS } from './realisations';
 import { AnimatedTabs, type AnimatedTab } from '@/components/ui/animated-tabs';
 import { MaskedImage } from '@/components/ui/image-mask';
 import ScrollExpandHero from '@/components/blocks/scroll-expansion-hero';
@@ -1820,48 +1821,29 @@ function AudiovisuelPage() {
           </Container>
         </Section>
 
-        {/* CircularGallery, même composant que la home (ReelsMosaic) pour
-            cohérence cross-pages. Home a 3 photos masquées seulement ;
-            ici les 10 photos GND complètes (CRÉATIONS + PORTRAITS + AMBIANCES).
-            Images servies via Supabase render API (resize uniforme 800×1200 q82).
-            Wrapper hauteur 720-880px verbatim home.
-            CTA "Voir en plein écran" → lightbox modal full-res object-contain. */}
-        <section className="relative bg-bg-alt">
-          <div className="relative w-full h-[720px] md:h-[880px] pt-8 md:pt-12" style={{ color: '#2A1810' }}>
-            <CircularGallery
-              items={(() => {
-                const RENDER = 'https://gublhtivvydkuooooffg.supabase.co/storage/v1/render/image/public/portfolio-photos/';
-                const m = (f: string) => `${RENDER}${f}?width=800&height=1200&resize=cover&quality=82`;
-                const items: GalleryItem[] = [
-                  { image: m('6F0A4251.jpg'),                   text: 'Masque & Identité' },
-                  { image: m('6F0A4135.jpg'),                   text: "L'Art en Mouvement" },
-                  { image: m('6F0A4149.jpg'),                   text: 'Puissance Créative' },
-                  { image: m('6F0A4267.jpg'),                   text: 'Vision Masquée' },
-                  { image: m('6F0A4002.JPG'),                   text: 'Vision Urbaine' },
-                  { image: m('6F0A3992.jpg'),                   text: 'Attitude & Confiance' },
-                  { image: m('6F0A4028.jpg'),                   text: 'Énergie Collective' },
-                  { image: m('6F0A1817.JPG'),                   text: 'Saveurs' },
-                  { image: m('6F0A1873%20-%20copie%202_1.jpg'), text: 'Instants' },
-                  { image: m('6F0A2054.JPG'),                   text: 'Partages' },
-                ];
-                return items;
-              })()}
-              bend={2}
-              borderRadius={0.04}
-              scrollEase={0.05}
-            />
-            {/* CTA flottant ouvrir lightbox, top-right au-dessus du canvas WebGL */}
-            <div className="absolute top-6 md:top-10 right-6 md:right-10 z-10">
-              <button
-                type="button"
-                onClick={() => setCircLightboxIdx(0)}
-                className="btn btn-primary inline-flex items-center gap-2 shadow-xl shadow-text-strong/20"
-              >
-                <Icons.ArrowUpRight size={14}/>
-                Voir les 10 photos en grand
-              </button>
-            </div>
-          </div>
+        {/* Bento gallery draggable, MÊME composant que home + /realisations
+            (harmonisation cross-pages). Les 10 photos GND complètes, données
+            partagées ALL_PROJECTS. Clic = modal plein écran intégré au
+            composant (le lightbox circLightboxIdx n'est plus déclenché ici).
+            (CircularGallery OGL gardée de côté sur disque.) */}
+        <section className="relative bg-bg-alt py-8 md:py-12">
+          <InteractiveImageBentoGallery
+            imageItems={[
+              { id: 'art-en-mouvement', span: 'md:col-span-2 md:row-span-2' },
+              { id: 'masque-identite', span: 'md:row-span-1' },
+              { id: 'puissance-creative', span: 'md:row-span-1' },
+              { id: 'vision-masquee', span: 'md:row-span-2' },
+              { id: 'energie-collective', span: 'md:row-span-1' },
+              { id: 'saveurs', span: 'md:row-span-1' },
+              { id: 'vision-urbaine', span: 'md:col-span-2 md:row-span-2' },
+              { id: 'attitude-confiance', span: 'md:row-span-1' },
+              { id: 'instants', span: 'md:row-span-1' },
+              { id: 'partages', span: 'md:row-span-2' },
+            ].map(({ id, span }) => {
+              const p = ALL_PROJECTS.find((x: any) => x.id === id)!;
+              return { id, title: p.title, desc: p.sub, url: p.img, span };
+            })}
+          />
         </section>
 
         {/* Showreel, réalisations réelles GND audiovisuel.

@@ -980,11 +980,12 @@ function WhyBlock() {
             de l'image et son halo. */}
         <div className="md:absolute md:inset-0 md:pointer-events-none">
           <div
-            className="relative px-6 py-9 w-full pointer-events-auto md:px-0 md:py-0 md:w-[min(42vw,620px)] md:absolute md:top-1/2 md:left-[4vw] md:-translate-y-1/2"
+            className="relative px-6 py-9 w-full pointer-events-auto md:px-10 md:py-10 md:w-[min(44vw,640px)] md:absolute md:top-1/2 md:left-[3.4vw] md:-translate-y-1/2 md:rounded-[36px] md:bg-bg/45 md:backdrop-blur-[6px] md:ring-1 md:ring-text-strong/[0.06]"
+            style={{ boxShadow: '0 24px 70px rgba(83,36,24,0.08)' }}
           >
             {/* ★ VERTICAL ACCENT LINE, éditorial magazine premium, dégradé orange */}
-            <div className="hidden md:block absolute -left-6 top-2 bottom-2 w-px pointer-events-none"
-              style={{ background: 'linear-gradient(to bottom, transparent, rgba(255,149,79,0.5) 30%, rgba(255,149,79,0.5) 70%, transparent)' }}
+            <div className="hidden md:block absolute left-3 top-8 bottom-8 w-px pointer-events-none"
+              style={{ background: 'linear-gradient(to bottom, transparent, rgba(255,149,79,0.4) 30%, rgba(255,149,79,0.4) 70%, transparent)' }}
             />
 
             {/* KICKER avec dot pulsé live + label éditorial, animé fade-up */}
@@ -998,10 +999,11 @@ function WhyBlock() {
               <div className="label-mono text-[10px] !text-text-muted tracking-[0.22em]">STUDIO HYBRIDE</div>
             </div>
 
-            {/* TITRE éditorial avec reveal séquentiel sur 2 lignes */}
-            <h2 className="display text-4xl md:text-5xl lg:text-[58px] text-text-strong leading-[1.02] max-w-[14ch]">
-              <span className="block anim-up d1">Pourquoi le studio hybride</span>
-              <span className="block anim-up d2 mt-1">bat le <span className="italic text-accent">studio classique</span>.</span>
+            {/* TITRE éditorial sur 3 lignes (maquette) — chute sur l'italique orange */}
+            <h2 className="display text-4xl md:text-5xl lg:text-[56px] text-text-strong leading-[1.06] max-w-[13ch]">
+              <span className="block anim-up d1">Pourquoi le studio</span>
+              <span className="block anim-up d2">hybride bat le</span>
+              <span className="block anim-up d2"><span className="italic text-accent">studio classique</span>.</span>
             </h2>
 
             {/* DESCRIPTION avec rail vertical orange dégradé (citation magazine) */}
@@ -1029,31 +1031,31 @@ function WhyBlock() {
                 {
                   num: "01", label: "Bénéfices Garantis",
                   desc: "Résultats concrets et mesurables pour votre entreprise.",
-                  icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-[18px] h-[18px]"><polyline points="20 6 9 17 4 12"/></svg>),
+                  icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-[17px] h-[17px]"><polyline points="20 6 9 17 4 12"/></svg>),
                   active: false,
                 },
                 {
                   num: "02", label: "Excellence Créative",
                   desc: "Des créations uniques qui marquent les esprits.",
-                  icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-[18px] h-[18px]"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>),
+                  icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-[17px] h-[17px]"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>),
                   active: true,
                 },
                 {
                   num: "03", label: "Respect des Délais",
                   desc: "Livraison dans les temps, qualité préservée.",
-                  icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-[18px] h-[18px]"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>),
+                  icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-[17px] h-[17px]"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>),
                   active: false,
                 },
-              ].map((step) => (
+              ].map((step, si) => (
                 <div
                   key={step.num}
-                  className="group relative flex items-start gap-4 mb-7 md:mb-8 last:mb-0 cursor-default"
+                  className={`group relative flex items-start gap-4 cursor-default pb-6 md:pb-7 mb-6 md:mb-7 last:mb-0 last:pb-0 ${si < 2 ? 'border-b border-text-strong/[0.07]' : ''}`}
                 >
-                  {/* Node : cercle fin, actif = orange plein avec glow doux */}
-                  <div className={`relative z-10 w-[38px] h-[38px] rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110 ${
+                  {/* Node : cercle fin ; actif = squircle orange avec glow doux (maquette) */}
+                  <div className={`relative z-10 w-[38px] h-[38px] flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110 ${
                     step.active
-                      ? 'bg-accent text-text-strong shadow-lg shadow-accent/40 ring-4 ring-accent/15'
-                      : 'bg-bg/90 border border-text-strong/12 text-text-strong group-hover:border-accent/70 group-hover:shadow-md group-hover:shadow-accent/20'
+                      ? 'rounded-[13px] bg-accent text-text-strong shadow-lg shadow-accent/40 ring-4 ring-accent/15'
+                      : 'rounded-full bg-bg/90 border border-text-strong/12 text-text-strong group-hover:border-accent/70 group-hover:shadow-md group-hover:shadow-accent/20'
                   }`}>
                     {step.icon}
                   </div>
@@ -1061,7 +1063,7 @@ function WhyBlock() {
                   {/* Content */}
                   <div className="flex-1 pt-1">
                     <div className="flex items-baseline gap-2.5 mb-1">
-                      <span className={`label-mono text-[10px] tracking-widest ${step.active ? '!text-accent' : '!text-text-muted'}`}>{step.num}</span>
+                      <span className="label-mono text-[10px] tracking-widest !text-accent">{step.num}</span>
                       <span className="display text-lg md:text-xl text-text-strong leading-none">{step.label}</span>
                     </div>
                     <p className="text-[12px] md:text-[13px] text-text leading-relaxed max-w-sm">{step.desc}</p>
@@ -1084,12 +1086,9 @@ function WhyBlock() {
 
               <a
                 href="#/realisations"
-                className="group inline-flex items-center gap-2 text-text-strong text-sm font-medium transition-colors hover:text-accent"
+                className="group inline-flex items-center gap-2 rounded-full border border-text-strong/15 bg-bg/40 px-6 py-3.5 text-sm font-medium text-text-strong transition-all hover:border-accent/70 hover:text-accent hover:bg-bg/70"
               >
-                <span className="relative">
-                  Voir la preuve
-                  <span className="absolute -bottom-1.5 left-0 right-0 h-[2px] bg-accent transition-transform origin-left scale-x-100 group-hover:scale-x-110"/>
-                </span>
+                Voir la preuve
                 <Icons.ArrowUpRight size={13} stroke={2} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"/>
               </a>
             </div>

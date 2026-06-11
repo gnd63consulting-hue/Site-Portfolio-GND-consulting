@@ -910,22 +910,30 @@ function WhyBlock() {
   // chocolat enveloppantes, glow orange, particules subtiles, feuille décorative.
   // Le côté GAUCHE de l'image est VIDE (cream uni) → c'est là qu'on pose notre texte HTML.
   // Pas d'overlay décoratif côté droit, l'image s'occupe de tout.
+  // 12/06/26 — Reconstruction fidèle maquette validée : split deux colonnes
+  // (carte éditoriale verre crème ~42% / blob organique image ~58%), glow
+  // chaud autour du blob, carte flottante bas-droite, décor organique discret
+  // haut-droite, grain film. L'image composite (cocon homme + GND) est
+  // recadrée dans le blob via object-position (le côté crème de l'image
+  // composite n'est plus utilisé comme fond).
   return (
-    <Section className="relative py-0 overflow-hidden">
-      {/* IMAGE COMPOSITE pleine largeur EDGE-TO-EDGE.
-          La section hérite désormais du défaut bg-bg-alt → cream uniforme avec le reste du site,
-          plus de démarcation.
-          02/06/26 : image masquée par `clip-inverted` (10e pattern du catalogue
-          ImageMask 21st.dev, forme bandeau wide avec encoches asymétriques).
-          Le clipPath s'applique UNIQUEMENT au <img>, pas au container parent,
-          donc l'overlay texte reste intact. */}
+    <Section className="relative py-16 md:py-24 overflow-hidden">
       {/* Fond travaillé : dégradé chaud très subtil + grain film (cinématique
-          discret) — couche pointer-events-none au-dessus de tout, opacité
-          minuscule, aucun impact lisibilité. */}
+          discret) — couche pointer-events-none, opacité minuscule. */}
       <div
         aria-hidden
         className="absolute inset-0 pointer-events-none z-0"
         style={{ background: 'radial-gradient(90% 70% at 18% 38%, rgba(255,149,79,0.05) 0%, transparent 60%)' }}
+      />
+      {/* Décor organique haut droite (halo doux, abstrait, très discret) */}
+      <div
+        aria-hidden
+        className="absolute -top-16 -right-10 w-[340px] h-[340px] pointer-events-none z-0"
+        style={{
+          background: 'radial-gradient(50% 50% at 50% 50%, rgba(125,62,44,0.10) 0%, rgba(255,149,79,0.06) 45%, transparent 70%)',
+          filter: 'blur(8px)',
+          borderRadius: '58% 42% 55% 45% / 45% 58% 42% 55%',
+        }}
       />
       <div
         aria-hidden
@@ -936,51 +944,11 @@ function WhyBlock() {
         }}
       />
 
-      <div className="relative w-full md:[aspect-ratio:1672/941]">
-        {/* Image : bannière en haut sur mobile (cocon visible via object-position
-            droite), overlay plein écran sur desktop. */}
-        <div className="relative h-[210px] sm:h-[280px] md:absolute md:inset-0 md:h-full">
-          {/* Glow orange très doux derrière la courbe gauche de la découpe */}
+      <Container className="relative z-10">
+        <div className="grid lg:grid-cols-[42fr_58fr] gap-10 lg:gap-14 items-center">
+          {/* ===== CARTE ÉDITORIALE GAUCHE, verre crème ===== */}
           <div
-            aria-hidden
-            className="hidden md:block absolute pointer-events-none"
-            style={{
-              left: '38%', top: '18%', width: '20%', height: '64%',
-              background: 'radial-gradient(50% 50% at 50% 50%, rgba(255,149,79,0.16) 0%, transparent 70%)',
-              filter: 'blur(30px)',
-            }}
-          />
-          <img
-            src="/assets/why-block-composite.png"
-            alt=""
-            draggable={false}
-            loading="lazy"
-            decoding="async"
-            className="w-full h-full object-cover object-[72%_center] md:object-cover md:[clip-path:url(#clip-inverted)] select-none pointer-events-none"
-            style={{ filter: 'drop-shadow(0 24px 48px rgba(83,36,24,0.22))' }}
-          />
-          {/* Voile cinématique chaud, même clip que l'image (reste DANS la forme) */}
-          <div
-            aria-hidden
-            className="hidden md:block absolute inset-0 pointer-events-none md:[clip-path:url(#clip-inverted)]"
-            style={{
-              background:
-                'linear-gradient(105deg, rgba(42,24,16,0.10) 0%, transparent 30%, transparent 72%, rgba(42,24,16,0.16) 100%)',
-            }}
-          />
-          {/* Badge éditorial discret sur l'image */}
-          <div className="hidden md:inline-flex absolute bottom-7 right-8 z-10 items-center gap-2.5 rounded-full bg-text-strong/55 backdrop-blur px-4 py-2 ring-1 ring-bg/15">
-            <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-            <span className="label-mono text-[9px] tracking-[0.22em] !text-bg/90">Humain × IA · Direction créative augmentée</span>
-          </div>
-        </div>
-
-        {/* OVERLAY TEXTE HTML, positionné en absolute relativement au viewport,
-            poussé bien à gauche (left:4vw) et limité à 42vw de large pour rester loin
-            de l'image et son halo. */}
-        <div className="md:absolute md:inset-0 md:pointer-events-none">
-          <div
-            className="relative px-6 py-9 w-full pointer-events-auto md:px-10 md:py-10 md:w-[min(44vw,640px)] md:absolute md:top-1/2 md:left-[3.4vw] md:-translate-y-1/2 md:rounded-[36px] md:bg-bg/45 md:backdrop-blur-[6px] md:ring-1 md:ring-text-strong/[0.06]"
+            className="relative rounded-[36px] bg-bg/60 backdrop-blur-[6px] ring-1 ring-text-strong/[0.06] px-6 py-9 md:px-10 md:py-12"
             style={{ boxShadow: '0 24px 70px rgba(83,36,24,0.08)' }}
           >
             {/* ★ VERTICAL ACCENT LINE, éditorial magazine premium, dégradé orange */}
@@ -1093,8 +1061,73 @@ function WhyBlock() {
               </a>
             </div>
           </div>
+
+          {/* ===== BLOB ORGANIQUE DROITE, scène studio ===== */}
+          <div className="relative">
+            {/* Glow chaud derrière le blob */}
+            <div
+              aria-hidden
+              className="absolute -inset-6 md:-inset-10 pointer-events-none"
+              style={{
+                background: 'radial-gradient(58% 58% at 52% 48%, rgba(242,138,75,0.20) 0%, transparent 70%)',
+                filter: 'blur(36px)',
+              }}
+            />
+            {/* Blob : coins très arrondis irréguliers + halo crème (ring) + glow */}
+            <div
+              className="relative overflow-hidden aspect-[4/3] lg:aspect-auto lg:h-[620px]"
+              style={{
+                borderRadius: '96px 110px 96px 230px / 110px 96px 110px 210px',
+                boxShadow:
+                  '0 0 0 1px rgba(255,243,232,0.9), 0 0 0 9px rgba(255,243,232,0.4), 0 30px 80px rgba(83,36,24,0.20), 0 0 110px rgba(242,138,75,0.22)',
+              }}
+            >
+              <img
+                src="/assets/why-block-composite.png"
+                alt=""
+                draggable={false}
+                loading="lazy"
+                decoding="async"
+                className="absolute inset-0 w-full h-full object-cover object-[76%_center] select-none pointer-events-none"
+              />
+              {/* Voile cinématique chaud très léger */}
+              <div
+                aria-hidden
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  background:
+                    'linear-gradient(105deg, rgba(42,24,16,0.12) 0%, transparent 32%, transparent 70%, rgba(42,24,16,0.14) 100%)',
+                }}
+              />
+              {/* Badge éditorial discret */}
+              <div className="hidden md:inline-flex absolute bottom-7 left-8 z-10 items-center gap-2.5 rounded-full bg-text-strong/55 backdrop-blur px-4 py-2 ring-1 ring-bg/15">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+                <span className="label-mono text-[9px] tracking-[0.22em] !text-bg/90">Humain × IA · Direction créative augmentée</span>
+              </div>
+            </div>
+            {/* Carte flottante bas droite (décorative, partiellement débordante) */}
+            <div
+              className="hidden md:block absolute -bottom-8 right-4 z-10 w-[210px] rounded-[20px] bg-bg/85 backdrop-blur ring-1 ring-text-strong/[0.08] p-2.5"
+              style={{ boxShadow: '0 18px 50px rgba(83,36,24,0.18)' }}
+            >
+              <span className="block overflow-hidden rounded-[13px]">
+                <img
+                  src="/assets/why-block-composite.png"
+                  alt=""
+                  draggable={false}
+                  loading="lazy"
+                  decoding="async"
+                  className="aspect-[16/9] w-full object-cover object-[62%_42%] select-none pointer-events-none"
+                />
+              </span>
+              <span className="mt-2 mb-0.5 flex items-center gap-1.5 px-1 label-mono text-[8px] tracking-[0.2em] !text-text-muted">
+                <span className="w-1 h-1 rounded-full bg-accent" />
+                Station de montage · Studio GND
+              </span>
+            </div>
+          </div>
         </div>
-      </div>
+      </Container>
     </Section>
   );
 }

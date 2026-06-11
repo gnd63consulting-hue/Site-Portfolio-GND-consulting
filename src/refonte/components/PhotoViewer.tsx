@@ -188,15 +188,23 @@ export function PhotoViewer({ photos }: { photos: ViewerPhoto[] }) {
                   </button>
                 );
               })}
-              <a
-                href="#galerie-photo"
-                className="group flex items-center gap-3 rounded-full py-1.5 pl-1.5 pr-3 hover:bg-bg/5 transition-all"
+              <button
+                type="button"
+                onClick={() => {
+                  /* scroll doux si la galerie photo est sur la page (réalisations),
+                     sinon navigation vers la page Réalisations. Pas d'ancre hash :
+                     le routeur hash traiterait #galerie-photo comme une route. */
+                  const el = document.getElementById('galerie-photo');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  else window.location.hash = '#/realisations';
+                }}
+                className="group flex items-center gap-3 rounded-full py-1.5 pl-1.5 pr-3 text-left hover:bg-bg/5 transition-all"
               >
                 <span className="flex size-9 shrink-0 items-center justify-center rounded-full ring-1 ring-bg/15 text-bg/70 group-hover:text-bg transition-all">
                   <LayoutGrid size={15} />
                 </span>
                 <span className="text-[10px] uppercase tracking-[0.18em] text-bg/60 group-hover:text-bg/90 transition-colors">Galerie</span>
-              </a>
+              </button>
               <button
                 type="button"
                 onClick={() => rootRef.current?.querySelector('[data-univers]')?.scrollIntoView({ behavior: 'smooth', block: 'center' })}

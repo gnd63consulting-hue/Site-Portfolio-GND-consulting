@@ -75,7 +75,11 @@ function RealisationsPage() {
         badges={["Clips", "Live", "Production", "Photo"]}
         ctas={<>
           <Btn href="#/contact" variant="primary">Démarrer un projet</Btn>
-          <a href="#galerie" className="btn !bg-bg/10 !text-bg !border !border-bg/20 hover:!bg-bg/15">Tout voir <Icons.ArrowDown size={14}/></a>
+          <button
+            type="button"
+            onClick={() => document.getElementById('galerie')?.scrollIntoView({ behavior: 'smooth' })}
+            className="btn !bg-bg/10 !text-bg !border !border-bg/20 hover:!bg-bg/15"
+          >Tout voir <Icons.ArrowDown size={14}/></button>
         </>}
         bgImage="/assets/agence-hero2-scene.png"
         footerLabel="réalisations · 19 projets"

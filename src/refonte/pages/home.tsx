@@ -5,7 +5,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { CircularGallery, type GalleryItem } from '../../components/ui/circular-gallery-2';
 import { HeroScroll } from '../components/HeroScroll';
-import { HologramShowcase } from '../components/HologramShowcase';
+import { PhotoViewer } from '../components/PhotoViewer';
 import { Section, Container, Kicker, Btn, PortraitHero, Tag, Faq } from '../ui';
 import { FloatingCtaBand } from '../components/FloatingCtaBand';
 import { MarqueeCTA } from '../components/MarqueeCTA';
@@ -2006,7 +2006,24 @@ function HomePage() {
       <IntersectionBlock />
       <ServicesGrid />
       <ReelsMosaic />
-      <HologramShowcase />
+      {/* Partie vidéo de la section portfolio unifiée — console média verre
+          fumé (même PhotoViewer V3 que la page Réalisations), 4 vidéos GND.
+          (HologramShowcase gardé de côté sur disque, plus importé.) */}
+      <Section className="pt-8 md:pt-12 pb-24 md:pb-32">
+        <Container>
+          <div className="text-center mb-10 md:mb-12 text-text-muted label-mono text-xs">
+            la suite, en vidéo ↓
+          </div>
+          <PhotoViewer
+            photos={[
+              { id: 'esther-seems', title: 'Esther Seems', sub: 'BOBINE · Clip musical', youtube: '6oaO6YoWjyQ', cat: 'Clip' },
+              { id: 'leyel-miel', title: 'Leyel, Miel', sub: 'Clip officiel · 2025', youtube: 'UbXQim7iNLI', cat: 'Clip' },
+              { id: 'sabay-2023', title: 'Sabay Festival 2023', sub: 'Grande Pagode de Vincennes', youtube: 'Vyhz7_D4fFU', cat: 'Live' },
+              { id: 'cook-soul', title: 'Cook & Soul', sub: 'Kaoutar · Émission', youtube: 'GksYCOSW3qc', cat: 'Production' },
+            ].map((v) => ({ ...v, img: `https://img.youtube.com/vi/${v.youtube}/hqdefault.jpg` }))}
+          />
+        </Container>
+      </Section>
       <WhyBlock />
       <ValuesBlock />
       <TestimonialsBlock />

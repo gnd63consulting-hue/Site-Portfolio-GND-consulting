@@ -35,10 +35,10 @@ const PROJECTS = [
 ];
 
 const SERVICES_CARDS = [
-  { num: "01", title: "Sites & SEO", desc: "Sites vitrines clé en main, landing pages, SEO local. Livraison en 1 à 2 semaines.", to: "#/services/sites-vitrines" },
-  { num: "02", title: "Branding & Identité", desc: "Marque, logo, charte graphique, direction créative. Supports imprimés sur-mesure.", to: "#/services/branding-identite" },
-  { num: "03", title: "Audiovisuel", desc: "Vidéo, motion design, photographie. Captation 4K/8K, montage cinéma, contenus sociaux.", to: "#/services/audiovisuel" },
-  { num: "04", title: "Automatisation & IA", desc: "Workflows intelligents, agents IA sur-mesure, audit & accompagnement adoption.", to: "#/services/automatisation-ia" },
+  { num: "01", title: "Sites & SEO", desc: "Sites vitrines clé en main, landing pages, SEO local. Livraison en 1 à 2 semaines.", to: "/services/sites-vitrines" },
+  { num: "02", title: "Branding & Identité", desc: "Marque, logo, charte graphique, direction créative. Supports imprimés sur-mesure.", to: "/services/branding-identite" },
+  { num: "03", title: "Audiovisuel", desc: "Vidéo, motion design, photographie. Captation 4K/8K, montage cinéma, contenus sociaux.", to: "/services/audiovisuel" },
+  { num: "04", title: "Automatisation & IA", desc: "Workflows intelligents, agents IA sur-mesure, audit & accompagnement adoption.", to: "/services/automatisation-ia" },
 ];
 
 const VALUES = [
@@ -154,7 +154,7 @@ function HeroHome() {
               Humain<br/><span className="text-accent">× IA</span>
             </div>
             <p className="text-bg/65 text-xs mt-3 leading-relaxed">L'humain décide. L'IA accélère.</p>
-            <a href="#/agence" className="mt-3 inline-flex items-center gap-1.5 text-bg/85 hover:text-accent text-xs">
+            <a href="/agence" className="mt-3 inline-flex items-center gap-1.5 text-bg/85 hover:text-accent text-xs">
               Le manifeste <Icons.ArrowRight size={12}/>
             </a>
           </div>
@@ -173,7 +173,7 @@ function HeroHome() {
               Un projet ?<br/>Échangeons.
             </div>
             <p className="text-text-muted text-xs mt-2">Devis sous 48h. Sans engagement.</p>
-            <a href="#/contact" className="btn btn-primary !py-2.5 !px-4 mt-3 text-xs w-full justify-center">
+            <a href="/contact" className="btn btn-primary !py-2.5 !px-4 mt-3 text-xs w-full justify-center">
               Démarrer <Icons.ArrowUpRight size={12}/>
             </a>
           </div>
@@ -188,8 +188,8 @@ function HeroHome() {
             Studio créatif parisien. Production audiovisuelle, design, automatisation IA. <strong className="text-text-strong">Humain × IA.</strong>
           </p>
           <div className="mt-5 flex flex-wrap gap-2">
-            <a href="#/realisations" className="btn btn-primary !py-3 !px-5 text-sm">Voir nos réalisations <Icons.ArrowUpRight size={14}/></a>
-            <a href="#/contact" className="btn !bg-text-strong/8 !text-text-strong !border !border-text-strong/15 !py-3 !px-5 text-sm">Démarrer <Icons.ArrowUpRight size={14}/></a>
+            <a href="/realisations" className="btn btn-primary !py-3 !px-5 text-sm">Voir nos réalisations <Icons.ArrowUpRight size={14}/></a>
+            <a href="/contact" className="btn !bg-text-strong/8 !text-text-strong !border !border-text-strong/15 !py-3 !px-5 text-sm">Démarrer <Icons.ArrowUpRight size={14}/></a>
           </div>
         </div>
       </div>
@@ -298,7 +298,7 @@ function WhoWeAreBlock() {
         </div>
 
         <div className="text-center mt-14">
-          <Btn href="#/agence" variant="primary">Découvrir notre histoire</Btn>
+          <Btn href="/agence" variant="primary">Découvrir notre histoire</Btn>
         </div>
       </Container>
     </Section>
@@ -451,7 +451,7 @@ function IntersectionBlock() {
             </div>
 
             <div className="mt-8">
-              <Btn href="#/agence" variant="primary">
+              <Btn href="/agence" variant="primary">
                 Découvrir notre histoire <Icons.ArrowUpRight size={14}/>
               </Btn>
             </div>
@@ -829,7 +829,7 @@ function MediaLightbox({ items, index, onClose, onIndex }: any) {
         </div>
         <div className="mt-5 flex items-center justify-between">
           <span className="label-mono" style={{ color: "rgba(253,246,238,.5)" }}>{String(index + 1).padStart(2, "0")} / {String(items.length).padStart(2, "0")}</span>
-          <a href={`#/realisations/${p.id}`} onClick={onClose} className="btn btn-primary !py-3">Étude de cas <Icons.ArrowUpRight size={14}/></a>
+          <a href={`/realisations/${p.id}`} onClick={onClose} className="btn btn-primary !py-3">Étude de cas <Icons.ArrowUpRight size={14}/></a>
         </div>
       </div>
     </div>
@@ -872,7 +872,7 @@ function ReelsMosaic() {
               <p className="text-text text-sm md:text-base leading-relaxed mb-3">
                 Photographies, clips, captations, événementiel, émissions, chaque projet porte une intention, chaque image une signature.
               </p>
-              <a href="#/realisations" className="arrow-link !text-text-strong inline-flex items-center gap-2 hover:text-accent transition text-sm md:text-base">
+              <a href="/realisations" className="arrow-link !text-text-strong inline-flex items-center gap-2 hover:text-accent transition text-sm md:text-base">
                 Voir tout le portfolio <Icons.ArrowRight size={18}/>
               </a>
             </div>
@@ -893,7 +893,7 @@ function ReelsMosaic() {
         <Container className="relative">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-t border-text-strong/10 pt-6">
             <span className="text-text-muted label-mono">7 photos ici · portraits, studio, événementiel · portfolio complet sur Réalisations</span>
-            <a href="#/realisations" className="inline-flex items-center gap-2 text-text-strong hover:text-accent transition">
+            <a href="/realisations" className="inline-flex items-center gap-2 text-text-strong hover:text-accent transition">
               Découvrir tout le portfolio <Icons.ArrowRight size={18}/>
             </a>
           </div>
@@ -1000,7 +1000,7 @@ function WhyBlock() {
 
         {/* CTA posés SUR les pills de l'image (zones mesurées) */}
         <a
-          href="#/agence"
+          href="/agence"
           className="group absolute flex items-center justify-center font-semibold text-text-strong rounded-full transition-transform hover:scale-[1.02]"
           style={{ left: '6.8%', top: '81%', width: '14.3%', height: '7%', fontSize: '0.92vw', gap: '0.5vw' }}
         >
@@ -1008,7 +1008,7 @@ function WhyBlock() {
           <Icons.ArrowUpRight size={14} stroke={2.2} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" style={{ width: '0.9vw', height: '0.9vw' }} />
         </a>
         <a
-          href="#/realisations"
+          href="/realisations"
           className="group absolute flex items-center justify-center font-medium text-text-strong rounded-full transition-all hover:text-accent"
           style={{ left: '23%', top: '81%', width: '14.5%', height: '7%', fontSize: '0.92vw', gap: '0.5vw' }}
         >
@@ -1049,10 +1049,10 @@ function WhyBlock() {
             ))}
           </div>
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <a href="#/agence" className="inline-flex items-center gap-2 bg-accent text-text-strong rounded-full px-6 py-3 font-semibold text-sm shadow-lg shadow-accent/30">
+            <a href="/agence" className="inline-flex items-center gap-2 bg-accent text-text-strong rounded-full px-6 py-3 font-semibold text-sm shadow-lg shadow-accent/30">
               Lire le manifeste <Icons.ArrowUpRight size={14} stroke={2.2}/>
             </a>
-            <a href="#/realisations" className="inline-flex items-center gap-2 rounded-full border border-text-strong/20 px-5 py-3 text-sm font-medium text-text-strong">
+            <a href="/realisations" className="inline-flex items-center gap-2 rounded-full border border-text-strong/20 px-5 py-3 text-sm font-medium text-text-strong">
               Voir la preuve <Icons.ArrowUpRight size={13} stroke={2}/>
             </a>
           </div>
@@ -1264,10 +1264,10 @@ function _LegacyWhyBlock() {
 
             {/* CTA dominant pill orange + lien secondaire chocolat */}
             <div className="mt-10 flex flex-wrap items-center gap-5">
-              <a href="#/agence" className="inline-flex items-center gap-2 bg-accent text-text-strong rounded-full px-7 py-3.5 font-semibold text-base shadow-2xl shadow-accent/40 hover:shadow-accent/60 transition-shadow">
+              <a href="/agence" className="inline-flex items-center gap-2 bg-accent text-text-strong rounded-full px-7 py-3.5 font-semibold text-base shadow-2xl shadow-accent/40 hover:shadow-accent/60 transition-shadow">
                 Lire le manifeste <Icons.ArrowUpRight size={16} stroke={2}/>
               </a>
-              <a href="#/realisations" className="inline-flex items-center gap-2 text-text-strong hover:text-accent text-sm font-medium underline decoration-accent decoration-2 underline-offset-8 transition-colors">
+              <a href="/realisations" className="inline-flex items-center gap-2 text-text-strong hover:text-accent text-sm font-medium underline decoration-accent decoration-2 underline-offset-8 transition-colors">
                 Voir la preuve
               </a>
             </div>
@@ -1545,7 +1545,7 @@ function ValuesBlock() {
 
           {/* CTA centré sous l'infographie */}
           <div data-anim="values-cta" className="text-center mt-12 md:mt-14">
-            <Btn href="#/agence" variant="primary">Lire le manifeste</Btn>
+            <Btn href="/agence" variant="primary">Lire le manifeste</Btn>
           </div>
         </div>
       </Container>
@@ -1602,7 +1602,7 @@ function FaqHome() {
           </div>
           <div className="lg:col-span-8">
             <Faq q="Comment travaillez-vous concrètement ?" a={<>Brief, co-création, validation, livraison, toujours documenté. L'IA accélère certaines étapes (recherche, prototypage, post-production), mais la direction créative reste humaine.</>}/>
-            <Faq q="Quel budget pour un projet ?" a={<>Nous travaillons en approche sur-mesure : chaque projet fait l'objet d'un <strong>devis personnalisé</strong>. Pour les sites vitrines, découvrez nos formules sur la <a href="#/services/sites-vitrines" className="underline decoration-accent underline-offset-4">page dédiée</a>.</>}/>
+            <Faq q="Quel budget pour un projet ?" a={<>Nous travaillons en approche sur-mesure : chaque projet fait l'objet d'un <strong>devis personnalisé</strong>. Pour les sites vitrines, découvrez nos formules sur la <a href="/services/sites-vitrines" className="underline decoration-accent underline-offset-4">page dédiée</a>.</>}/>
             <Faq q="Travaillez-vous à distance ?" a={<>Oui, équipe basée à Paris, captations partout en France et à l'international. Visios pour la phase brief et validation.</>}/>
             <Faq q="Comment utilisez-vous l'IA ?" a={<>Comme un outil de productivité encadré : génération de variantes, automatisations, post-production. Les usages sont documentés et conformes à l'AI Act (UE 2024/1689).</>}/>
             <Faq q="Quels sont les délais habituels ?" a={<>Site vitrine : 1–2 semaines. Identité visuelle : 2–4 semaines. Production vidéo : variable selon ampleur, devis détaillé en 48h.</>}/>

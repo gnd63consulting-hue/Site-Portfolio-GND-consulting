@@ -619,7 +619,7 @@ export function WhyGndBlock({
               <div className="mt-9 flex flex-wrap gap-3">
                 <a
                   data-anim="bh-cta"
-                  href="#/contact"
+                  href="/contact"
                   className="inline-flex items-center gap-2.5 rounded-full bg-accent text-text-strong px-6 py-3.5 text-sm font-medium hover:brightness-95 transition-all"
                   style={{ boxShadow: '0 14px 32px rgba(255,149,79,0.32)' }}
                 >

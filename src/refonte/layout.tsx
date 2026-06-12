@@ -5,17 +5,17 @@ import { Icons } from './icons';
 import { SocialCard } from '@/components/ui/social-card';
 
 const NAV = [
-  { to: "#/agence", label: "L'Agence" },
-  { to: "#/services", label: "Services" },
-  { to: "#/realisations", label: "Réalisations" },
-  { to: "#/contact", label: "Contact" },
+  { to: "/agence", label: "L'Agence" },
+  { to: "/services", label: "Services" },
+  { to: "/realisations", label: "Réalisations" },
+  { to: "/contact", label: "Contact" },
 ];
 
 const SERVICES_MENU = [
-  { to: "#/services/sites-vitrines", label: "Sites & SEO", num: "01", desc: "Sites vitrines · landing · SEO local" },
-  { to: "#/services/branding-identite", label: "Branding & Identité", num: "02", desc: "Marque · logo · charte · direction créative" },
-  { to: "#/services/audiovisuel", label: "Audiovisuel", num: "03", desc: "Vidéo · motion · photo · contenus sociaux" },
-  { to: "#/services/automatisation-ia", label: "Automatisation & IA", num: "04", desc: "Workflows · agents · audit & adoption" },
+  { to: "/services/sites-vitrines", label: "Sites & SEO", num: "01", desc: "Sites vitrines · landing · SEO local" },
+  { to: "/services/branding-identite", label: "Branding & Identité", num: "02", desc: "Marque · logo · charte · direction créative" },
+  { to: "/services/audiovisuel", label: "Audiovisuel", num: "03", desc: "Vidéo · motion · photo · contenus sociaux" },
+  { to: "/services/automatisation-ia", label: "Automatisation & IA", num: "04", desc: "Workflows · agents · audit & adoption" },
 ];
 
 function Header({ route }: any) {
@@ -48,9 +48,9 @@ function Header({ route }: any) {
   const txtMuted = "text-text-muted";
 
   const isActive = (to: string) => {
-    if (to === "#/services") return route.startsWith("/services");
-    if (to === "#/realisations") return route.startsWith("/realisations");
-    return route === to.replace("#", "");
+    if (to === "/services") return route.startsWith("/services");
+    if (to === "/realisations") return route.startsWith("/realisations");
+    return route === to;
   };
 
   return (
@@ -58,7 +58,7 @@ function Header({ route }: any) {
     <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 pt-safe
       ${scrolled ? "bg-bg/85 backdrop-blur-md border-b hairline border-b" : "bg-transparent"}`}>
       <div className="mx-auto max-w-[1500px] px-6 md:px-10 h-20 md:h-24 flex items-center justify-between">
-        <a href="#/" className="flex items-center gap-2.5 group focus-ring" aria-label="GND Consulting, accueil">
+        <a href="/" className="flex items-center gap-2.5 group focus-ring" aria-label="GND Consulting, accueil">
           <img
             src="/assets/logos/gnd-logo-chocolat-cropped.png"
             alt="GND Consulting"
@@ -93,7 +93,7 @@ function Header({ route }: any) {
                   </div>
                   <div className="mt-2 p-3 flex items-center justify-between border-t hairline border-t">
                     <span className="label-mono">Vue d'ensemble</span>
-                    <a href="#/services" className="arrow-link text-sm">Tous les services <Icons.ArrowRight size={14}/></a>
+                    <a href="/services" className="arrow-link text-sm">Tous les services <Icons.ArrowRight size={14}/></a>
                   </div>
                 </div>
                 </div>
@@ -103,7 +103,7 @@ function Header({ route }: any) {
         </nav>
 
         <div className="flex items-center gap-3">
-          <a href="#/contact" className="hidden lg:inline-flex btn btn-primary">
+          <a href="/contact" className="hidden lg:inline-flex btn btn-primary">
             Démarrer un projet <Icons.ArrowUpRight size={14} stroke={1.8}/>
           </a>
           <button aria-label="Menu" onClick={() => setOpen(true)} className={`lg:hidden w-10 h-10 inline-flex items-center justify-center rounded-full border focus-ring ${onDark ? "border-bg/30 text-bg" : "hairline border"}`}>
@@ -120,7 +120,7 @@ function Header({ route }: any) {
       {open && (
         <div className="lg:hidden fixed inset-0 bg-bg z-[60] anim-up overflow-y-auto">
           <div className="px-6 h-16 flex items-center justify-between border-b hairline border-b">
-            <a href="#/" onClick={() => setOpen(false)} className="inline-flex" aria-label="GND Consulting, accueil">
+            <a href="/" onClick={() => setOpen(false)} className="inline-flex" aria-label="GND Consulting, accueil">
               <img
                 src="/assets/logos/gnd-logo-chocolat-cropped.png"
                 alt="GND Consulting"
@@ -158,7 +158,7 @@ function Header({ route }: any) {
                           </li>
                         ))}
                         <li>
-                          <a href="#/services" onClick={() => setOpen(false)}
+                          <a href="/services" onClick={() => setOpen(false)}
                             className="inline-flex items-center gap-2 py-2 text-sm text-accent">
                             Tous les services <Icons.ArrowRight size={14}/>
                           </a>
@@ -176,7 +176,7 @@ function Header({ route }: any) {
                 )
               ))}
             </ul>
-            <a href="#/contact" onClick={() => setOpen(false)} className="btn btn-primary w-full justify-center mt-8">
+            <a href="/contact" onClick={() => setOpen(false)} className="btn btn-primary w-full justify-center mt-8">
               Démarrer un projet <Icons.ArrowUpRight size={14}/>
             </a>
           </div>
@@ -361,10 +361,10 @@ function Footer() {
           <div className="md:col-span-3">
             <div className="text-[10px] label-mono tracking-[0.24em] uppercase text-bg/70 mb-4">Navigation</div>
             <ul className="space-y-2 text-sm">
-              <li><a href="#/agence" className="gnd-link text-bg/85 hover:text-bg transition-colors">L'Agence</a></li>
-              <li><a href="#/services" className="gnd-link text-bg/85 hover:text-bg transition-colors">Services</a></li>
-              <li><a href="#/realisations" className="gnd-link text-bg/85 hover:text-bg transition-colors">Réalisations</a></li>
-              <li><a href="#/contact" className="gnd-link text-bg/85 hover:text-bg transition-colors">Contact</a></li>
+              <li><a href="/agence" className="gnd-link text-bg/85 hover:text-bg transition-colors">L'Agence</a></li>
+              <li><a href="/services" className="gnd-link text-bg/85 hover:text-bg transition-colors">Services</a></li>
+              <li><a href="/realisations" className="gnd-link text-bg/85 hover:text-bg transition-colors">Réalisations</a></li>
+              <li><a href="/contact" className="gnd-link text-bg/85 hover:text-bg transition-colors">Contact</a></li>
             </ul>
           </div>
 
@@ -386,7 +386,7 @@ function Footer() {
             <p className="text-sm text-bg/85 leading-relaxed">
               Paris, France<br />
               <a href="mailto:contact@gndconsulting.fr" className="gnd-link text-bg/85 hover:text-bg transition-colors">contact@gndconsulting.fr</a><br />
-              <a href="#/mentions-legales" className="gnd-link text-bg/55 hover:text-bg transition-colors text-xs">Mentions légales</a>
+              <a href="/mentions-legales" className="gnd-link text-bg/55 hover:text-bg transition-colors text-xs">Mentions légales</a>
             </p>
           </div>
 
@@ -430,7 +430,7 @@ function CookieBanner() {
     <div className="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:bottom-6 md:max-w-md z-40 surface-card p-5 shadow-2xl shadow-text/20 anim-up">
       <div className="kicker mb-2">Cookies</div>
       <p className="text-sm text-text leading-relaxed">
-        Nous utilisons des cookies pour mesurer l'audience et améliorer l'expérience. Refuser n'affecte pas votre navigation. Consultez nos <a href="#/mentions-legales" className="underline decoration-accent underline-offset-4">mentions légales</a>.
+        Nous utilisons des cookies pour mesurer l'audience et améliorer l'expérience. Refuser n'affecte pas votre navigation. Consultez nos <a href="/mentions-legales" className="underline decoration-accent underline-offset-4">mentions légales</a>.
       </p>
       <div className="mt-4 flex gap-2">
         <button onClick={() => decide(false)} className="btn btn-secondary flex-1 justify-center text-xs">Tout refuser</button>

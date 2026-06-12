@@ -128,7 +128,7 @@ function ContactPage() {
                       </Field>
                     </div>
                     <div className="mt-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
-                      <p className="text-xs text-text-muted max-w-sm">Vos données sont sécurisées et ne seront jamais partagées. Voir nos <a href="#/mentions-legales" className="underline decoration-accent underline-offset-4">mentions légales</a>.</p>
+                      <p className="text-xs text-text-muted max-w-sm">Vos données sont sécurisées et ne seront jamais partagées. Voir nos <a href="/mentions-legales" className="underline decoration-accent underline-offset-4">mentions légales</a>.</p>
                       <button type="submit" disabled={status === "loading"} className="btn btn-primary">
                         {status === "loading" ? "Envoi…" : "Envoyer ma demande"}
                         {status !== "loading" && <Icons.ArrowUpRight size={14}/>}

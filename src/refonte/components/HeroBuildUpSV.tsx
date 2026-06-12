@@ -241,7 +241,7 @@ export function HeroBuildUpSV() {
               </a>
               <a
                 data-anim="hs-cta"
-                href="#/contact"
+                href="/contact"
                 className="btn !bg-text-strong/5 !text-text-strong !border !border-text-strong/15 hover:!bg-text-strong/10 transition-colors"
               >
                 Demander un devis

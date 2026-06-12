@@ -74,7 +74,7 @@ function RealisationsPage() {
         subtitle="Clips musicaux, captations live, motion design, photographie et identité visuelle : les projets qui illustrent notre savoir-faire créatif et technique. Tous menés en interne, du brief à la livraison."
         badges={["Clips", "Live", "Production", "Photo"]}
         ctas={<>
-          <Btn href="#/contact" variant="primary">Démarrer un projet</Btn>
+          <Btn href="/contact" variant="primary">Démarrer un projet</Btn>
           <button
             type="button"
             onClick={() => document.getElementById('galerie')?.scrollIntoView({ behavior: 'smooth' })}
@@ -141,7 +141,7 @@ function RealisationsPage() {
         prefix="Un projet"
         rotatingWords={['en tête ?', 'à concrétiser ?', 'à lancer ?', 'à imaginer ?', 'dans les cartons ?']}
         sub="Discutons de votre vision et donnons vie à vos idées créatives."
-        primaryCta={{ label: 'Démarrer un projet', href: '#/contact' }}
+        primaryCta={{ label: 'Démarrer un projet', href: '/contact' }}
       />
     </main>
   );
@@ -158,13 +158,13 @@ function ProjectDetail({ id }: any) {
     <main id="main">
       <CinematicHero
         kicker={`${p.cat}${p.year ? " · " + p.year : ""}`}
-        eyebrow={<><a href="#/realisations" className="hover:text-accent">réalisations</a> / {p.id}</>}
+        eyebrow={<><a href="/realisations" className="hover:text-accent">réalisations</a> / {p.id}</>}
         title={<>{p.title}<span className="text-accent">.</span></>}
         subtitle={p.sub}
         badges={[p.cat, p.year, hasMedia ? "Vidéo" : "Photo"].filter(Boolean)}
         ctas={<>
-          <a href="#/realisations" className="btn btn-primary"><Icons.ArrowRight size={14} className="-scale-x-100"/> Tous les projets</a>
-          <a href="#/contact" className="btn !bg-bg/10 !text-bg !border !border-bg/20 hover:!bg-bg/15">Un projet similaire ? <Icons.ArrowUpRight size={14}/></a>
+          <a href="/realisations" className="btn btn-primary"><Icons.ArrowRight size={14} className="-scale-x-100"/> Tous les projets</a>
+          <a href="/contact" className="btn !bg-bg/10 !text-bg !border !border-bg/20 hover:!bg-bg/15">Un projet similaire ? <Icons.ArrowUpRight size={14}/></a>
         </>}
         media={
           <div className="relative aspect-[4/5] max-w-[480px] mx-auto">
@@ -206,7 +206,7 @@ function ProjectDetail({ id }: any) {
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 {hasMedia && <button onClick={() => setPlaying(true)} className="btn btn-primary">Voir la vidéo <Icons.Play size={14}/></button>}
-                <a href="#/contact" className="btn btn-secondary">Un projet similaire ? <Icons.ArrowUpRight size={14}/></a>
+                <a href="/contact" className="btn btn-secondary">Un projet similaire ? <Icons.ArrowUpRight size={14}/></a>
               </div>
             </div>
             <div className="space-y-3 text-sm h-fit">
@@ -231,7 +231,7 @@ function ProjectDetail({ id }: any) {
         prefix="Un projet dans le même"
         rotatingWords={['esprit ?', 'ton ?', 'univers ?', 'registre ?', 'élan ?']}
         sub="Discutons de votre vision."
-        primaryCta={{ label: 'Démarrer un projet', href: '#/contact' }}
+        primaryCta={{ label: 'Démarrer un projet', href: '/contact' }}
       />
     </main>
   );

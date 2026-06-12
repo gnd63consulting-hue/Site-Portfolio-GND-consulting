@@ -31,7 +31,7 @@ function LegalPage() {
         badges={["AI Act 2024/1689", "RGPD complet", "LCEN"]}
         ctas={<>
           <a href="#sommaire" className="btn btn-primary">Aller au sommaire <Icons.ArrowDown size={14}/></a>
-          <a href="#/contact" className="btn !bg-bg/10 !text-bg !border !border-bg/20 hover:!bg-bg/15">Nous contacter <Icons.ArrowUpRight size={14}/></a>
+          <a href="/contact" className="btn !bg-bg/10 !text-bg !border !border-bg/20 hover:!bg-bg/15">Nous contacter <Icons.ArrowUpRight size={14}/></a>
         </>}
         footerLabel="mentions légales"
       />
@@ -45,7 +45,7 @@ function LegalPage() {
               <ol className="space-y-2 text-sm">
                 {LEGAL_TOC.map(s => (
                   <li key={s.id}>
-                    <a href={`#/mentions-legales#${s.id}`} className="text-text hover:text-accent-deep transition">{s.t}</a>
+                    <a href={`/mentions-legales#${s.id}`} className="text-text hover:text-accent-deep transition">{s.t}</a>
                   </li>
                 ))}
               </ol>
@@ -162,8 +162,8 @@ function NotFoundPage() {
             <h1 className="display text-5xl md:text-6xl mt-5 text-text-strong">Le contenu que vous cherchez s'est <span className="italic text-accent">échappé</span>.</h1>
             <p className="mt-6 text-text text-lg leading-relaxed max-w-md">Soit l'URL est erronée, soit nous avons réorganisé le site. Retournez à l'accueil ou explorez par section.</p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Btn href="#/" variant="primary">Retour à l'accueil</Btn>
-              <Btn href="#/services" variant="secondary">Voir les services</Btn>
+              <Btn href="/" variant="primary">Retour à l'accueil</Btn>
+              <Btn href="/services" variant="secondary">Voir les services</Btn>
             </div>
           </div>
         </div>

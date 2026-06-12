@@ -37,8 +37,8 @@ function ServiceLayout({ kicker, title, subtitle, ctaLabel, badges, hero, sectio
         badges={badges}
         theme={theme}
         ctas={<>
-          <Btn href="#/contact" variant="primary">{ctaLabel}</Btn>
-          <a href="#/realisations" className={light
+          <Btn href="/contact" variant="primary">{ctaLabel}</Btn>
+          <a href="/realisations" className={light
             ? "btn !bg-text-strong/8 !text-text-strong !border !border-text-strong/15 hover:!bg-text-strong/12"
             : "btn !bg-bg/10 !text-bg !border !border-bg/20 hover:!bg-bg/15"}>Voir nos réalisations <Icons.ArrowUpRight size={14}/></a>
         </>}
@@ -259,7 +259,7 @@ function BrandingPage() {
         intro="Notre promesse, la charge cognitive zéro. Vous n'intervenez qu'aux moments de validation stratégique. Entre chaque palier, nous gérons la méthode et l'exécution. Les étapes ne sont jamais sautées. Vous savez toujours où nous en sommes."
         hubLabel="Votre marque"
         ctaLabel="Démarrer le projet"
-        ctaHref="#/contact"
+        ctaHref="/contact"
       />
 
       {/* 4 convictions non négociables, InfoCard pattern (rotating conic border + title clip-path slide) */}
@@ -451,7 +451,7 @@ function MotionPage() {
           prefix="Donnez du mouvement à"
           rotatingWords={['vos messages.', 'votre marque.', 'votre récit.', 'votre image.', 'vos contenus.']}
           sub="Animation produit, storytelling, lancement de marque ou formation interne. Nous composons le motion design qui fera vibrer votre audience."
-          primaryCta={{ label: 'Demander un devis', href: '#/contact' }}
+          primaryCta={{ label: 'Demander un devis', href: '/contact' }}
         />
       }
     />
@@ -620,7 +620,7 @@ function ProductionPage() {
               <div className="mt-7 flex gap-3 flex-wrap">
                 {["Captation", "Montage", "Post-prod", "Live"].map((b) => <span key={b} className="chip">{b}</span>)}
               </div>
-              <a href="#/contact" className="btn btn-primary mt-8 inline-flex">Démarrer un tournage <Icons.ArrowUpRight size={14}/></a>
+              <a href="/contact" className="btn btn-primary mt-8 inline-flex">Démarrer un tournage <Icons.ArrowUpRight size={14}/></a>
             </div>
             <div className="lg:col-span-5 grid grid-cols-2 gap-4">
               <div className="surface-card p-7">
@@ -767,7 +767,7 @@ function ProductionPage() {
         prefix="Prêt à tourner votre prochaine"
         rotatingWords={['vidéo ?', 'captation ?', 'clip ?', 'aftermovie ?', 'campagne ?']}
         sub="Captation, montage, post-production. Chaque étape pensée pour sublimer votre image."
-        primaryCta={{ label: 'Demander un devis', href: '#/contact' }}
+        primaryCta={{ label: 'Demander un devis', href: '/contact' }}
       />
     </ScrollExpandMedia>
   );
@@ -909,7 +909,7 @@ function PhotoPage() {
           prefix="Prêt à créer des"
           rotatingWords={['visuels inoubliables ?', 'images qui vendent ?', 'portraits qui marquent ?', 'shootings premium ?', 'séances cinéma ?']}
           sub="Transformons vos idées en images qui inspirent confiance, désir et engagement. Parlez-nous de votre projet et imaginons ensemble la séance idéale."
-          primaryCta={{ label: 'Réserver une séance', href: '#/contact' }}
+          primaryCta={{ label: 'Réserver une séance', href: '/contact' }}
         />
       }
     />
@@ -1347,7 +1347,7 @@ function IAPage() {
             'pilotées, pas subies.',
           ]}
           sub="Cartographie 7 jours, ROI estimé avant devis. Sur devis. Maintenance 6 mois incluse au contrat."
-          primaryCta={{ label: 'Planifier un audit gratuit', href: '#/contact' }}
+          primaryCta={{ label: 'Planifier un audit gratuit', href: '/contact' }}
         />
       }
     />
@@ -1883,8 +1883,8 @@ function AudiovisuelPage() {
             />
 
             <div className="mt-10 flex flex-wrap gap-3">
-              <a href="#/realisations" className="btn btn-secondary inline-flex">Voir toutes nos réalisations <Icons.ArrowUpRight size={14}/></a>
-              <a href="#/services/production-audiovisuelle" className="btn !bg-text-strong/8 !text-text-strong !border !border-text-strong/15 hover:!bg-text-strong/12 inline-flex">Page production complète <Icons.ArrowUpRight size={14}/></a>
+              <a href="/realisations" className="btn btn-secondary inline-flex">Voir toutes nos réalisations <Icons.ArrowUpRight size={14}/></a>
+              <a href="/services/production-audiovisuelle" className="btn !bg-text-strong/8 !text-text-strong !border !border-text-strong/15 hover:!bg-text-strong/12 inline-flex">Page production complète <Icons.ArrowUpRight size={14}/></a>
             </div>
           </Container>
         </Section>
@@ -2144,7 +2144,7 @@ function AudiovisuelPage() {
             <p className="mt-3 font-medium">Premier échange sans engagement. Devis détaillé sous 48 heures.</p>
           </>
         }
-        primaryCta={{ label: 'Démarrer un projet audiovisuel', href: '#/contact' }}
+        primaryCta={{ label: 'Démarrer un projet audiovisuel', href: '/contact' }}
       />
     </main>
 
@@ -2330,7 +2330,7 @@ function AudiovisuelPage() {
                 <div className="display text-xl md:text-2xl text-text-strong mt-2 truncate">{activeReel.t}</div>
                 <div className="label-mono text-[10px] tracking-[0.22em] text-text-muted mt-1">{activeReel.y}</div>
               </div>
-              <a href="#/contact" className="btn btn-primary shrink-0 inline-flex">Brief similaire <Icons.ArrowUpRight size={14}/></a>
+              <a href="/contact" className="btn btn-primary shrink-0 inline-flex">Brief similaire <Icons.ArrowUpRight size={14}/></a>
             </div>
           </div>
         </div>

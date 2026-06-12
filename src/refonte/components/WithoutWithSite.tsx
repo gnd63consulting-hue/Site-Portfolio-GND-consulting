@@ -209,7 +209,7 @@ function WithBack() {
       </p>
 
       <a
-        href="#/contact"
+        href="/contact"
         className="mt-auto inline-flex items-center justify-between gap-2 rounded-full bg-text-strong text-bg px-5 py-3.5 text-sm font-medium hover:bg-accent hover:text-text-strong transition-colors"
       >
         <span>Demander un devis</span>

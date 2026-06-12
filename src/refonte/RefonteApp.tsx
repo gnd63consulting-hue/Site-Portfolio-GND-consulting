@@ -1,7 +1,11 @@
-/* GND Refonte, hash-based router (ported from prototype app.jsx).
-   Mounted by App.tsx on the `refonte-site` branch. Live site (main) is untouched. */
+/* GND Refonte — routeur History API (vraies URLs, indexables).
+   12/06/26 : migration depuis le hash routing (#/...) — chaque page a
+   désormais une URL propre servie par le rewrite SPA Vercel + snapshots
+   pré-rendus (scripts/prerender.mjs) pour les crawlers. Les anciennes
+   URLs #/... sont migrées au boot (replaceState). */
 import * as React from 'react';
 import './refonte.css';
+import { navigate, NAV_EVENT } from './nav';
 import { Header, Footer, CookieBanner } from './layout';
 import { ImageMaskDefs } from '../components/ui/image-mask';
 import { HomePage, ContactBlock } from './pages/home';
@@ -14,14 +18,28 @@ import { LegalPage, NotFoundPage } from './pages/legal';
 
 function useRoute() {
   const get = () => {
-    const h = window.location.hash.replace(/^#/, "") || "/";
-    return h;
+    let p = window.location.pathname.replace(/\/{2,}/g, "/");
+    if (p.length > 1 && p.endsWith("/")) p = p.slice(0, -1);
+    return p || "/";
   };
-  const [route, setRoute] = React.useState(get());
+  const [route, setRoute] = React.useState(() => {
+    // Migration des anciennes URLs hash (#/realisations → /realisations)
+    if (window.location.hash.startsWith("#/")) {
+      window.history.replaceState({}, "", window.location.hash.slice(1));
+    }
+    return get();
+  });
   React.useEffect(() => {
-    const on = () => { setRoute(get()); window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior }); };
-    window.addEventListener("hashchange", on);
-    return () => window.removeEventListener("hashchange", on);
+    // Navigation interne (clic) : nouvelle route + retour en haut de page.
+    const onNav = () => { setRoute(get()); window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior }); };
+    // Back/forward navigateur : nouvelle route, scroll restauré par le navigateur.
+    const onPop = () => setRoute(get());
+    window.addEventListener(NAV_EVENT, onNav);
+    window.addEventListener("popstate", onPop);
+    return () => {
+      window.removeEventListener(NAV_EVENT, onNav);
+      window.removeEventListener("popstate", onPop);
+    };
   }, []);
   return route;
 }
@@ -54,9 +72,25 @@ function RefonteApp() {
 
   // Detect legacy redirects: /portfolio → /realisations + old service URLs → 4 branches
   React.useEffect(() => {
-    if (route === "/portfolio") window.location.hash = "#/realisations";
-    else if (LEGACY_REDIRECTS[route]) window.location.hash = "#" + LEGACY_REDIRECTS[route];
+    if (route === "/portfolio") navigate("/realisations");
+    else if (LEGACY_REDIRECTS[route]) navigate(LEGACY_REDIRECTS[route]);
   }, [route]);
+
+  // Interception des clics sur liens internes (href="/...") : navigation
+  // History API sans rechargement. Les ancres pures (#contact), liens
+  // externes, target=_blank et clics modifiés gardent le comportement natif.
+  React.useEffect(() => {
+    const onClick = (e: MouseEvent) => {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      const a = (e.target as HTMLElement).closest?.('a');
+      if (!a || a.target === '_blank' || a.hasAttribute('download')) return;
+      const href = a.getAttribute('href') || '';
+      if (href.startsWith('/') && !href.startsWith('//')) { e.preventDefault(); navigate(href); }
+      else if (href.startsWith('#/')) { e.preventDefault(); navigate(href.slice(1)); }
+    };
+    document.addEventListener('click', onClick);
+    return () => document.removeEventListener('click', onClick);
+  }, []);
 
   React.useEffect(() => {
     const base = "GND Consulting";

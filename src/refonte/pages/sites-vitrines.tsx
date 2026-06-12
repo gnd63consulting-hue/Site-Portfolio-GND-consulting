@@ -83,7 +83,7 @@ function PricingGrid() {
           </p>
         </div>
 
-        <PricingCards plans={PLANS} ctaLabel="Demander un devis" ctaHref="#/contact" />
+        <PricingCards plans={PLANS} ctaLabel="Demander un devis" ctaHref="/contact" />
 
         {/* option + mention */}
         <div className="mt-8 surface-card p-5 md:p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -201,7 +201,7 @@ function SitesVitrinesPage() {
         prefix="Prêt à lancer votre"
         rotatingWords={['site ?', 'vitrine ?', 'projet ?', 'présence ?', 'histoire ?']}
         sub="Réponse sous 24 h. Devis détaillé sous 48 h. Sans engagement."
-        primaryCta={{ label: 'Demander un devis', href: '#/contact' }}
+        primaryCta={{ label: 'Demander un devis', href: '/contact' }}
       />
     </main>
   );

@@ -14,6 +14,7 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { Clapperboard, LayoutGrid, SlidersHorizontal } from 'lucide-react';
 import { Icons } from '../icons';
+import { navigate } from '../nav';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -196,7 +197,7 @@ export function PhotoViewer({ photos }: { photos: ViewerPhoto[] }) {
                      le routeur hash traiterait #galerie-photo comme une route. */
                   const el = document.getElementById('galerie-photo');
                   if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  else window.location.hash = '#/realisations';
+                  else navigate('/realisations');
                 }}
                 className="group flex items-center gap-3 rounded-full py-1.5 pl-1.5 pr-3 text-left hover:bg-bg/5 transition-all"
               >

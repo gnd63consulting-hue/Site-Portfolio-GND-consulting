@@ -271,7 +271,7 @@ export function HeroBuildUpAudiovisuel() {
             <div className="mt-9 flex flex-wrap gap-3">
               <a
                 data-anim="ha-cta"
-                href="#/contact"
+                href="/contact"
                 className="btn"
                 style={{ background: '#FF954F', color: '#2A1810' }}
               >
@@ -280,7 +280,7 @@ export function HeroBuildUpAudiovisuel() {
               </a>
               <a
                 data-anim="ha-cta"
-                href="#/realisations"
+                href="/realisations"
                 className="btn !bg-bg/8 !text-white !border !border-bg/25 hover:!bg-bg/15 transition-colors"
               >
                 Voir nos réalisations

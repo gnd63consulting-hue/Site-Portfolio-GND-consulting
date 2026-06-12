@@ -65,7 +65,7 @@ const DarkCheckIcon = ({ className = '' }: { className?: string }) => (
 export function PricingCards({
   plans,
   ctaLabel = 'Demander un devis',
-  ctaHref = '#/contact',
+  ctaHref = '/contact',
 }: PricingCardsProps) {
   return (
     <div className="w-full">

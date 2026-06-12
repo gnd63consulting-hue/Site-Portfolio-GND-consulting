@@ -319,7 +319,7 @@ export function ProcessGraph({
   intro,
   hubLabel = 'Votre marque',
   ctaLabel,
-  ctaHref = '#/contact',
+  ctaHref = '/contact',
   steps = DEFAULT_STEPS,
 }: ProcessGraphProps) {
 

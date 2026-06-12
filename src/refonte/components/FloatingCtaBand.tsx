@@ -35,8 +35,8 @@ export function FloatingCtaBand({
   prefix,
   rotatingWords,
   sub,
-  primaryCta = { label: 'Démarrer le projet', href: '#/contact' },
-  secondaryCta = { label: 'Voir nos réalisations', href: '#/realisations' },
+  primaryCta = { label: 'Démarrer le projet', href: '/contact' },
+  secondaryCta = { label: 'Voir nos réalisations', href: '/realisations' },
   rotationIntervalMs = 2800,
 }: FloatingCtaBandProps) {
   return (

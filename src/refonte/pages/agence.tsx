@@ -16,8 +16,8 @@ function HeroAgence() {
       subtitle={<>GND Consulting est un studio créatif parisien fondé en 2025. Notre signature : <strong className="text-bg">l'humain décide, l'IA accélère</strong>. Une méthode revendiquée, jamais cachée.</>}
       badges={["Paris · FR", "Est. 2025", "AI Act conforme"]}
       ctas={<>
-        <Btn href="#/contact" variant="primary">Échanger avec Roodny</Btn>
-        <a href="#/realisations" className="btn !bg-bg/10 !text-bg !border !border-bg/20 hover:!bg-bg/15">Voir nos réalisations <Icons.ArrowUpRight size={14}/></a>
+        <Btn href="/contact" variant="primary">Échanger avec Roodny</Btn>
+        <a href="/realisations" className="btn !bg-bg/10 !text-bg !border !border-bg/20 hover:!bg-bg/15">Voir nos réalisations <Icons.ArrowUpRight size={14}/></a>
       </>}
       bgImage="/assets/agence-hero2-scene.webp"
       footerLabel="l'agence · manifeste"
@@ -86,7 +86,7 @@ function FounderBlock() {
               <p className="text-text-muted italic">« Nous ne vendons pas l'IA. Nous l'utilisons. La nuance fait toute la différence. »</p>
             </div>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Btn href="#/contact" variant="primary">Échanger avec Roodny</Btn>
+              <Btn href="/contact" variant="primary">Échanger avec Roodny</Btn>
               <Btn href="https://linkedin.com/in/roodny-pierre" variant="secondary">LinkedIn</Btn>
             </div>
           </div>
@@ -173,7 +173,7 @@ function AgencePage() {
         prefix="On vous"
         rotatingWords={['écoute.', 'rencontre.', 'comprend.', 'accompagne.', 'imagine avec vous.']}
         sub="Présentez-nous votre métier, votre contrainte, votre cible. Le reste, on le construit ensemble."
-        primaryCta={{ label: 'Démarrer un projet', href: '#/contact' }}
+        primaryCta={{ label: 'Démarrer un projet', href: '/contact' }}
       />
     </main>
   );

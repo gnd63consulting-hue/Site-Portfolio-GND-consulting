@@ -140,7 +140,7 @@ const Faq = ({ q, a }: any) => (
 );
 
 /* CTA band (re-usable bottom block) */
-const CtaBand = ({ title = "Créons l'impact ensemble.", sub, cta = "Lancer un projet", href = "#/contact" }: any) => (
+const CtaBand = ({ title = "Créons l'impact ensemble.", sub, cta = "Lancer un projet", href = "/contact" }: any) => (
   <Section bg="alt" className="py-28 md:py-40">
     <Container className="text-center">
       <div className="kicker mx-auto inline-flex">contactez-nous</div>
@@ -148,7 +148,7 @@ const CtaBand = ({ title = "Créons l'impact ensemble.", sub, cta = "Lancer un p
       {sub && <p className="mt-6 text-lg text-text max-w-2xl mx-auto">{sub}</p>}
       <div className="mt-10 flex flex-wrap justify-center gap-3">
         <Btn href={href} variant="primary">{cta}</Btn>
-        <Btn href="#/realisations" variant="secondary">Voir nos réalisations</Btn>
+        <Btn href="/realisations" variant="secondary">Voir nos réalisations</Btn>
       </div>
     </Container>
   </Section>
@@ -211,7 +211,7 @@ const CinematicHero = ({ kicker, eyebrow, title, subtitle, ctas, badges, media, 
         <Container>
           <div className={`flex items-center justify-between ${light ? 'text-text-muted' : 'text-bg/65'}`}>
             <div className="flex items-center gap-3 text-xs label-mono">
-              <a href="#/" className="hover:text-accent">accueil</a>
+              <a href="/" className="hover:text-accent">accueil</a>
               <span className="opacity-40">/</span>
               <span className={light ? 'text-text-strong/85' : 'text-bg/85'}>{eyebrow}</span>
             </div>

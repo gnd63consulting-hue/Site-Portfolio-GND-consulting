@@ -905,131 +905,96 @@ function ReelsMosaic() {
 
 /* ===================== Why we need [signature] , Stoicism inspired ===================== */
 function WhyBlock() {
-  // VERSION FINALE, composite Nano Banana V2 utilisé comme background.
-  // L'image apporte : photo du cocon (homme noir) intégrée à droite, vagues organiques
-  // chocolat enveloppantes, glow orange, particules subtiles, feuille décorative.
-  // Le côté GAUCHE de l'image est VIDE (cream uni) → c'est là qu'on pose notre texte HTML.
-  // Pas d'overlay décoratif côté droit, l'image s'occupe de tout.
-  // 12/06/26 — Reconstruction fidèle maquette validée : split deux colonnes
-  // (carte éditoriale verre crème ~42% / blob organique image ~58%), glow
-  // chaud autour du blob, carte flottante bas-droite, décor organique discret
-  // haut-droite, grain film. L'image composite (cocon homme + GND) est
-  // recadrée dans le blob via object-position (le côté crème de l'image
-  // composite n'est plus utilisé comme fond).
+  // 12/06/26 — INTÉGRATION HAUTE FIDÉLITÉ de la maquette validée (ChatGPT
+  // Image 12 juin 01:20, déplacée en public/assets/why-mockup-source.png).
+  // Méthode component-recreation : le visuel droit est DÉCOUPÉ depuis la
+  // maquette elle-même (why-mockup-scene.png = crop x>40%) — la forme
+  // organique, le glow crème, le grain et la feuille décorative sont ceux
+  // de la maquette, pas une reconstruction CSS. Le fond de section reprend
+  // le dégradé exact du bord du crop (#F8E1CB → #EFCFB1) : couture invisible.
+  // Seule la carte texte gauche est reconstruite en HTML (textes réels),
+  // calée sur les couleurs échantillonnées de la maquette (carte #FAEEE0).
   return (
-    <Section className="relative py-16 md:py-24 overflow-hidden">
-      {/* Fond travaillé : dégradé chaud très subtil + grain film (cinématique
-          discret) — couche pointer-events-none, opacité minuscule. */}
+    <Section
+      className="relative py-14 md:py-0 overflow-hidden"
+      style={{ background: 'linear-gradient(180deg, #F9E3CC 0%, #F8E0CA 72%, #EFCFB1 100%)' }}
+    >
+      {/* Grain film très léger (matière maquette) */}
       <div
         aria-hidden
-        className="absolute inset-0 pointer-events-none z-0"
-        style={{ background: 'radial-gradient(90% 70% at 18% 38%, rgba(255,149,79,0.05) 0%, transparent 60%)' }}
-      />
-      {/* Décor organique haut droite (halo doux, abstrait, très discret) */}
-      <div
-        aria-hidden
-        className="absolute -top-16 -right-10 w-[340px] h-[340px] pointer-events-none z-0"
-        style={{
-          background: 'radial-gradient(50% 50% at 50% 50%, rgba(125,62,44,0.10) 0%, rgba(255,149,79,0.06) 45%, transparent 70%)',
-          filter: 'blur(8px)',
-          borderRadius: '58% 42% 55% 45% / 45% 58% 42% 55%',
-        }}
-      />
-      <div
-        aria-hidden
-        className="absolute inset-0 pointer-events-none z-30 opacity-[0.05] mix-blend-multiply"
+        className="absolute inset-0 pointer-events-none z-30 opacity-[0.04] mix-blend-multiply"
         style={{
           backgroundImage:
             "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E\")",
         }}
       />
 
-      <Container className="relative z-10">
-        <div className="grid lg:grid-cols-[42fr_58fr] gap-10 lg:gap-14 items-center">
-          {/* ===== CARTE ÉDITORIALE GAUCHE, verre crème ===== */}
+      <div className="relative grid items-center lg:grid-cols-[40fr_60fr]">
+        {/* ===== CARTE ÉDITORIALE GAUCHE (reconstruite, couleurs maquette) ===== */}
+        <div className="px-5 pt-2 pb-8 md:py-14 md:pl-[4vw] md:pr-0 lg:max-w-[600px] w-full justify-self-start">
           <div
-            className="relative rounded-[36px] bg-bg/60 backdrop-blur-[6px] ring-1 ring-text-strong/[0.06] px-6 py-9 md:px-10 md:py-12"
-            style={{ boxShadow: '0 24px 70px rgba(83,36,24,0.08)' }}
+            className="rounded-[44px] px-7 py-10 md:px-11 md:py-12"
+            style={{ background: 'rgba(250,238,224,0.94)', boxShadow: '0 18px 60px rgba(83,36,24,0.10)' }}
           >
-            {/* ★ VERTICAL ACCENT LINE, éditorial magazine premium, dégradé orange */}
-            <div className="hidden md:block absolute left-3 top-8 bottom-8 w-px pointer-events-none"
-              style={{ background: 'linear-gradient(to bottom, transparent, rgba(255,149,79,0.4) 30%, rgba(255,149,79,0.4) 70%, transparent)' }}
-            />
-
-            {/* KICKER avec dot pulsé live + label éditorial, animé fade-up */}
-            <div className="flex items-center gap-3 mb-6 md:mb-8 anim-up">
-              <div className="relative w-2 h-2">
-                <span className="absolute inset-0 rounded-full bg-accent"/>
-                <span className="absolute inset-0 rounded-full bg-accent animate-ping opacity-60"/>
-              </div>
-              <div className="label-mono text-[10px] !text-accent tracking-[0.22em]">NOTRE CONVICTION</div>
-              <div className="w-8 h-px bg-text-strong/15"/>
-              <div className="label-mono text-[10px] !text-text-muted tracking-[0.22em]">STUDIO HYBRIDE</div>
+            {/* Label : point orange · NOTRE CONVICTION | STUDIO HYBRIDE */}
+            <div className="flex items-center gap-3 mb-7 md:mb-9 anim-up">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+              <span className="label-mono text-[10px] !text-accent tracking-[0.22em]">NOTRE CONVICTION</span>
+              <span className="w-px h-3 bg-text-strong/20" />
+              <span className="label-mono text-[10px] !text-text-muted tracking-[0.22em]">STUDIO HYBRIDE</span>
             </div>
 
-            {/* TITRE éditorial sur 3 lignes (maquette) — chute sur l'italique orange */}
-            <h2 className="display text-4xl md:text-5xl lg:text-[56px] text-text-strong leading-[1.06] max-w-[13ch]">
+            {/* Titre serif 3 lignes, chute italique orange */}
+            <h2 className="display text-4xl md:text-[44px] lg:text-[52px] text-text-strong leading-[1.08]">
               <span className="block anim-up d1">Pourquoi le studio</span>
               <span className="block anim-up d2">hybride bat le</span>
               <span className="block anim-up d2"><span className="italic text-accent">studio classique</span>.</span>
             </h2>
 
-            {/* DESCRIPTION avec rail vertical orange dégradé (citation magazine) */}
-            <div className="mt-7 md:mt-9 relative pl-5 anim-up d3">
-              <span
-                className="absolute left-0 top-1 bottom-1 w-px"
-                style={{ background: 'linear-gradient(to bottom, rgba(255,149,79,0.65), rgba(125,62,44,0.25))' }}
-              />
-              <p className="text-sm md:text-base text-text leading-relaxed max-w-md">
-                Un studio classique vend du temps humain : cher, lent, rare. Une IA brute vend du volume : vide, sans direction. <strong className="text-text-strong">GND fait les deux : direction humaine, exécution augmentée.</strong>
-              </p>
-            </div>
+            {/* Paragraphe (sans rail, comme la maquette) */}
+            <p className="mt-6 md:mt-7 text-sm md:text-[15px] text-text leading-relaxed max-w-md anim-up d3">
+              Un studio classique vend du temps humain : cher, lent, rare.<br className="hidden md:block" />
+              Une IA brute vend du volume : vide, sans direction.<br className="hidden md:block" />
+              <strong className="text-text-strong">GND fait les deux : direction humaine, exécution augmentée.</strong>
+            </p>
 
-            {/* ★ STEPPER VERTICAL, remplace les 3 cards basiques.
-                Trois étapes connectées par une ligne orange dégradée, chaque étape a un node
-                circulaire avec icône, un titre serif et une description.
-                Hover : node grandit + glow orange. */}
-            <div className="mt-9 md:mt-11 relative anim-up d4">
-              {/* Ligne verticale connecteur, fine et fondue aux extrémités */}
+            {/* Bénéfices : ligne verticale fine + nodes cercles fins, item 02 actif squircle orange */}
+            <div className="mt-8 md:mt-9 relative anim-up d4">
               <div className="absolute left-[19px] top-3 bottom-3 w-px"
-                style={{ background: 'linear-gradient(to bottom, transparent, rgba(255,149,79,0.55) 18%, rgba(83,36,24,0.15) 50%, rgba(255,149,79,0.55) 82%, transparent)' }}
+                style={{ background: 'linear-gradient(to bottom, transparent, rgba(255,149,79,0.45) 18%, rgba(83,36,24,0.12) 50%, rgba(255,149,79,0.45) 82%, transparent)' }}
               />
-
               {[
                 {
                   num: "01", label: "Bénéfices Garantis",
                   desc: "Résultats concrets et mesurables pour votre entreprise.",
-                  icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-[17px] h-[17px]"><polyline points="20 6 9 17 4 12"/></svg>),
+                  icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-[16px] h-[16px]"><circle cx="12" cy="8" r="4"/><path d="M5 21c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg>),
                   active: false,
                 },
                 {
                   num: "02", label: "Excellence Créative",
                   desc: "Des créations uniques qui marquent les esprits.",
-                  icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-[17px] h-[17px]"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>),
+                  icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-[16px] h-[16px]"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>),
                   active: true,
                 },
                 {
                   num: "03", label: "Respect des Délais",
                   desc: "Livraison dans les temps, qualité préservée.",
-                  icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-[17px] h-[17px]"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>),
+                  icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-[16px] h-[16px]"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>),
                   active: false,
                 },
               ].map((step, si) => (
                 <div
                   key={step.num}
-                  className={`group relative flex items-start gap-4 cursor-default pb-6 md:pb-7 mb-6 md:mb-7 last:mb-0 last:pb-0 ${si < 2 ? 'border-b border-text-strong/[0.07]' : ''}`}
+                  className={`group relative flex items-start gap-4 cursor-default pb-5 md:pb-6 mb-5 md:mb-6 last:mb-0 last:pb-0 ${si < 2 ? 'border-b border-text-strong/[0.07]' : ''}`}
                 >
-                  {/* Node : cercle fin ; actif = squircle orange avec glow doux (maquette) */}
                   <div className={`relative z-10 w-[38px] h-[38px] flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110 ${
                     step.active
-                      ? 'rounded-[13px] bg-accent text-text-strong shadow-lg shadow-accent/40 ring-4 ring-accent/15'
-                      : 'rounded-full bg-bg/90 border border-text-strong/12 text-text-strong group-hover:border-accent/70 group-hover:shadow-md group-hover:shadow-accent/20'
+                      ? 'rounded-[13px] bg-accent/15 text-accent ring-1 ring-accent/50 shadow-[0_0_22px_rgba(242,138,75,0.35)]'
+                      : 'rounded-full bg-transparent border border-text-strong/15 text-text-strong group-hover:border-accent/60'
                   }`}>
                     {step.icon}
                   </div>
-
-                  {/* Content */}
-                  <div className="flex-1 pt-1">
+                  <div className="flex-1 pt-0.5">
                     <div className="flex items-baseline gap-2.5 mb-1">
                       <span className="label-mono text-[10px] tracking-widest !text-accent">{step.num}</span>
                       <span className="display text-lg md:text-xl text-text-strong leading-none">{step.label}</span>
@@ -1040,94 +1005,39 @@ function WhyBlock() {
               ))}
             </div>
 
-            {/* ★ CTA PREMIUM avec shimmer hover + glow breathing + arrow lift */}
-            <div className="mt-9 md:mt-11 flex flex-wrap items-center gap-5 anim-up d4">
+            {/* CTA : pill orange + pill contour */}
+            <div className="mt-8 md:mt-10 flex flex-wrap items-center gap-4 anim-up d4">
               <a
                 href="#/agence"
-                className="group relative inline-flex items-center gap-2 bg-accent text-text-strong rounded-full px-7 py-3.5 font-semibold text-sm shadow-2xl shadow-accent/40 hover:shadow-accent/70 transition-all overflow-hidden"
+                className="group relative inline-flex items-center gap-2 bg-accent text-text-strong rounded-full px-7 py-3.5 font-semibold text-sm shadow-xl shadow-accent/30 hover:shadow-accent/50 transition-all overflow-hidden"
               >
-                {/* Sheen sweep au hover */}
                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/35 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"/>
                 <span className="relative z-10">Lire le manifeste</span>
                 <Icons.ArrowUpRight size={15} stroke={2.2} className="relative z-10 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"/>
               </a>
-
               <a
                 href="#/realisations"
-                className="group inline-flex items-center gap-2 rounded-full border border-text-strong/15 bg-bg/40 px-6 py-3.5 text-sm font-medium text-text-strong transition-all hover:border-accent/70 hover:text-accent hover:bg-bg/70"
+                className="group inline-flex items-center gap-2 rounded-full border border-text-strong/20 px-6 py-3.5 text-sm font-medium text-text-strong transition-all hover:border-accent/70 hover:text-accent"
               >
                 Voir la preuve
                 <Icons.ArrowUpRight size={13} stroke={2} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"/>
               </a>
             </div>
           </div>
-
-          {/* ===== BLOB ORGANIQUE DROITE, scène studio ===== */}
-          <div className="relative">
-            {/* Glow chaud derrière le blob */}
-            <div
-              aria-hidden
-              className="absolute -inset-6 md:-inset-10 pointer-events-none"
-              style={{
-                background: 'radial-gradient(58% 58% at 52% 48%, rgba(242,138,75,0.20) 0%, transparent 70%)',
-                filter: 'blur(36px)',
-              }}
-            />
-            {/* Blob : coins très arrondis irréguliers + halo crème (ring) + glow */}
-            <div
-              className="relative overflow-hidden aspect-[4/3] lg:aspect-auto lg:h-[620px]"
-              style={{
-                borderRadius: '96px 110px 96px 230px / 110px 96px 110px 210px',
-                boxShadow:
-                  '0 0 0 1px rgba(255,243,232,0.9), 0 0 0 9px rgba(255,243,232,0.4), 0 30px 80px rgba(83,36,24,0.20), 0 0 110px rgba(242,138,75,0.22)',
-              }}
-            >
-              <img
-                src="/assets/why-block-composite.png"
-                alt=""
-                draggable={false}
-                loading="lazy"
-                decoding="async"
-                className="absolute inset-0 w-full h-full object-cover object-[76%_center] select-none pointer-events-none"
-              />
-              {/* Voile cinématique chaud très léger */}
-              <div
-                aria-hidden
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  background:
-                    'linear-gradient(105deg, rgba(42,24,16,0.12) 0%, transparent 32%, transparent 70%, rgba(42,24,16,0.14) 100%)',
-                }}
-              />
-              {/* Badge éditorial discret */}
-              <div className="hidden md:inline-flex absolute bottom-7 left-8 z-10 items-center gap-2.5 rounded-full bg-text-strong/55 backdrop-blur px-4 py-2 ring-1 ring-bg/15">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-                <span className="label-mono text-[9px] tracking-[0.22em] !text-bg/90">Humain × IA · Direction créative augmentée</span>
-              </div>
-            </div>
-            {/* Carte flottante bas droite (décorative, partiellement débordante) */}
-            <div
-              className="hidden md:block absolute -bottom-8 right-4 z-10 w-[210px] rounded-[20px] bg-bg/85 backdrop-blur ring-1 ring-text-strong/[0.08] p-2.5"
-              style={{ boxShadow: '0 18px 50px rgba(83,36,24,0.18)' }}
-            >
-              <span className="block overflow-hidden rounded-[13px]">
-                <img
-                  src="/assets/why-block-composite.png"
-                  alt=""
-                  draggable={false}
-                  loading="lazy"
-                  decoding="async"
-                  className="aspect-[16/9] w-full object-cover object-[62%_42%] select-none pointer-events-none"
-                />
-              </span>
-              <span className="mt-2 mb-0.5 flex items-center gap-1.5 px-1 label-mono text-[8px] tracking-[0.2em] !text-text-muted">
-                <span className="w-1 h-1 rounded-full bg-accent" />
-                Station de montage · Studio GND
-              </span>
-            </div>
-          </div>
         </div>
-      </Container>
+
+        {/* ===== VISUEL DROIT = LA MAQUETTE ELLE-MÊME (crop), formes/glow/grain inclus ===== */}
+        <div className="relative px-5 md:px-0">
+          <img
+            src="/assets/why-mockup-scene.png"
+            alt="Studio GND : station de montage, direction créative humaine augmentée par l'IA"
+            draggable={false}
+            loading="eager"
+            decoding="async"
+            className="w-full h-auto select-none pointer-events-none rounded-[28px] md:rounded-none"
+          />
+        </div>
+      </div>
     </Section>
   );
 }

@@ -406,24 +406,35 @@ function Footer() {
   );
 }
 
-/* Cookie banner */
+/* Cookie banner — conforme CNIL : « Tout refuser » aussi simple et visible
+   que « Accepter ». Le choix est stocké en JSON dans `gnd-cookie-consent`
+   (clé lue par src/utils/analytics.ts) ; GA4 ne se charge QUE si analytics
+   accepté ET VITE_GA_MEASUREMENT_ID défini. */
 function CookieBanner() {
   const [show, setShow] = React.useState(false);
   React.useEffect(() => {
-    const seen = localStorage.getItem("gnd-cookies");
+    const seen = localStorage.getItem("gnd-cookie-consent");
     if (!seen) setTimeout(() => setShow(true), 800);
   }, []);
-  const dismiss = (v: string) => { localStorage.setItem("gnd-cookies", v); setShow(false); };
+  const decide = (analytics: boolean) => {
+    localStorage.setItem("gnd-cookie-consent", JSON.stringify({ analytics, ts: Date.now() }));
+    setShow(false);
+    if (analytics) {
+      import('../utils/analytics').then(({ initAnalytics }) =>
+        initAnalytics((import.meta as any).env?.VITE_GA_MEASUREMENT_ID)
+      );
+    }
+  };
   if (!show) return null;
   return (
     <div className="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:bottom-6 md:max-w-md z-40 surface-card p-5 shadow-2xl shadow-text/20 anim-up">
       <div className="kicker mb-2">Cookies</div>
       <p className="text-sm text-text leading-relaxed">
-        Nous utilisons des cookies pour mesurer l'audience et améliorer l'expérience. Consultez nos <a href="#/mentions-legales" className="underline decoration-accent underline-offset-4">mentions légales</a>.
+        Nous utilisons des cookies pour mesurer l'audience et améliorer l'expérience. Refuser n'affecte pas votre navigation. Consultez nos <a href="#/mentions-legales" className="underline decoration-accent underline-offset-4">mentions légales</a>.
       </p>
       <div className="mt-4 flex gap-2">
-        <button onClick={() => dismiss("custom")} className="btn btn-secondary flex-1 justify-center text-xs">Personnaliser</button>
-        <button onClick={() => dismiss("accept")} className="btn btn-primary flex-1 justify-center text-xs">Accepter</button>
+        <button onClick={() => decide(false)} className="btn btn-secondary flex-1 justify-center text-xs">Tout refuser</button>
+        <button onClick={() => decide(true)} className="btn btn-primary flex-1 justify-center text-xs">Accepter</button>
       </div>
     </div>
   );

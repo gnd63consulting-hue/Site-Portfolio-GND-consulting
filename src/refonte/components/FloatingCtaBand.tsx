@@ -47,7 +47,7 @@ export function FloatingCtaBand({
           className="top-[9%] left-[2%] md:top-[25%] md:left-[5%]"
         >
           <motion.img
-            src="https://images.unsplash.com/photo-1727341554370-80e0fe9ad082?q=80&w=2276&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            src="https://images.unsplash.com/photo-1727341554370-80e0fe9ad082?q=80&w=900&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt=""
             className="w-16 h-12 sm:w-24 sm:h-16 md:w-28 md:h-20 lg:w-32 lg:h-24 object-cover -rotate-[3deg] shadow-2xl rounded-xl"
             initial={{ opacity: 0 }}
@@ -92,7 +92,7 @@ export function FloatingCtaBand({
           className="top-[80%] left-[62%] md:top-[2%] md:left-[83%]"
         >
           <motion.img
-            src="https://images.unsplash.com/photo-1562016600-ece13e8ba570?q=80&w=2838&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            src="https://images.unsplash.com/photo-1562016600-ece13e8ba570?q=80&w=900&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt=""
             className="w-24 h-20 sm:w-48 sm:h-44 md:w-60 md:h-52 lg:w-64 lg:h-56 object-cover rotate-[6deg] shadow-2xl rounded-xl"
             initial={{ opacity: 0 }}

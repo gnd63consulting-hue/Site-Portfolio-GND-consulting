@@ -1,6 +1,6 @@
 /* HeroBuildUpSV, Build-Up Cinematic hero for /services/sites-vitrines
  *
- * Asset: /assets/hero-tablet.png (iPad landscape + hand holding from bottom-right,
+ * Asset: /assets/hero-tablet.webp (iPad landscape + hand holding from bottom-right,
  * GND mockup integrated inside the tablet, palette warm GND only, alpha transparent).
  *
  * Background: cream charte GND (bg-bg-alt + radial glow orange), aligned with home hero.
@@ -279,7 +279,7 @@ export function HeroBuildUpSV() {
           }}
         >
           <img
-            src="/assets/hero-tablet.png?v=2"
+            src="/assets/hero-tablet.webp?v=2"
             alt="GND Consulting, site vitrine clé en main"
             className="w-full h-auto block select-none pointer-events-none"
             draggable={false}

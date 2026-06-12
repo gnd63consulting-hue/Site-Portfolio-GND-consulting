@@ -26,7 +26,7 @@ Allow: /*.mp4$
 Allow: /*.pdf$
 
 # Sitemap
-Sitemap: https://gndconsulting.fr/sitemap.xml
+Sitemap: https://www.gndconsulting.fr/sitemap.xml
 
 # Crawl-delay pour éviter la surcharge serveur
 Crawl-delay: 1

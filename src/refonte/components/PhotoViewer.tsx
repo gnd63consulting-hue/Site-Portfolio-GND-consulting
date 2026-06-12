@@ -130,7 +130,7 @@ export function PhotoViewer({ photos }: { photos: ViewerPhoto[] }) {
       >
         <div aria-hidden className="pointer-events-none absolute inset-0">
           <img
-            src="/assets/viewer-shell-bg.png"
+            src="/assets/viewer-shell-bg.webp"
             alt=""
             draggable={false}
             className="h-full w-full scale-105 object-cover blur-[7px]"
@@ -261,16 +261,10 @@ export function PhotoViewer({ photos }: { photos: ViewerPhoto[] }) {
                       allowFullScreen
                       className="absolute inset-0 h-full w-full"
                     />
-                  ) : cur.video ? (
-                    /* poster = PREMIÈRE FRAME réelle, seule, sans fond ajouté */
-                    <video
-                      src={`${cur.video}#t=0.1`}
-                      preload="metadata"
-                      muted
-                      playsInline
-                      className="relative h-full w-full object-contain"
-                    />
                   ) : (
+                    /* poster statique (première frame extraite côté build pour les
+                       mp4 — un <video preload="metadata"> téléchargeait plusieurs
+                       Mo par vidéo, moov atom en fin de fichier) */
                     /* média ENTIER, jamais recadré, sans fond ajouté */
                     <img
                       src={cur.img}
@@ -345,17 +339,7 @@ export function PhotoViewer({ photos }: { photos: ViewerPhoto[] }) {
                       on ? 'ring-accent shadow-[0_10px_28px_rgba(232,119,44,0.25)]' : 'ring-bg/10 hover:ring-bg/30'
                     }`}
                   >
-                    {p.video ? (
-                      <video
-                        src={`${p.video}#t=0.1`}
-                        preload="metadata"
-                        muted
-                        playsInline
-                        className="absolute inset-0 h-full w-full object-cover"
-                      />
-                    ) : (
-                      <img src={p.img} alt="" className="absolute inset-0 h-full w-full object-cover" loading="lazy" draggable={false} />
-                    )}
+                    <img src={p.img} alt="" className="absolute inset-0 h-full w-full object-cover" loading="lazy" draggable={false} />
                     {!on && <span aria-hidden className="absolute inset-0 bg-text-strong/45 transition-opacity group-hover:opacity-60" />}
                     <span
                       className={`absolute left-2 top-1/2 hidden md:flex -translate-y-1/2 size-7 items-center justify-center rounded-full text-[10px] label-mono ${
@@ -454,17 +438,7 @@ export function PhotoViewer({ photos }: { photos: ViewerPhoto[] }) {
                 <Icons.ArrowUpRight size={13} className="text-bg/50" />
               </p>
               <span className="block overflow-hidden rounded-[14px] ring-1 ring-bg/10">
-                {inspired.video ? (
-                  <video
-                    src={`${inspired.video}#t=0.1`}
-                    preload="metadata"
-                    muted
-                    playsInline
-                    className="aspect-[16/8] md:aspect-[16/7] w-full object-cover"
-                  />
-                ) : (
-                  <img src={inspired.img} alt={inspired.title} className="aspect-[16/8] md:aspect-[16/7] w-full object-cover" loading="lazy" draggable={false} />
-                )}
+                <img src={inspired.img} alt={inspired.title} className="aspect-[16/8] md:aspect-[16/7] w-full object-cover" loading="lazy" draggable={false} />
               </span>
               <span className="mt-2.5 block truncate text-sm text-bg display">{inspired.title}</span>
             </motion.button>

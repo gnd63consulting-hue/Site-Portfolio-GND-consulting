@@ -67,7 +67,7 @@ function HeroHome() {
       {/* Image d'arrière-plan du hero wordmark (Hero #2) — derrière le wordmark
           GND, le personnage et le halo (z-0). Scrim léger pour lisibilité. */}
       <img
-        src="/assets/hero-home-bg.png?v=2"
+        src="/assets/hero-home-bg.webp?v=2"
         alt=""
         aria-hidden="true"
         draggable={false}
@@ -134,7 +134,7 @@ function HeroHome() {
             <div className="relative w-full h-full overflow-hidden">
               {/* HeroScroll, Chicken Drive-style pipeline complet : 150 frames Three.js
                   pré-rendues + scroll-scrub pinné + idle visor pulse + mouse parallax.
-                  Fallback automatique sur /assets/hero-portrait.jpg si frames absentes. */}
+                  Fallback automatique sur /assets/hero-portrait.webp si frames absentes. */}
               <HeroScroll />
             </div>
             {/* glow rim */}
@@ -393,7 +393,7 @@ function IntersectionBlock() {
               storytelling de la section. Forme asymétrique majeure (corner top-left 200px). */}
           <div className="relative bg-bg-alt rounded-tl-[200px] rounded-tr-3xl rounded-br-3xl rounded-bl-3xl overflow-hidden shadow-2xl shadow-text/20 min-h-[480px] md:min-h-[560px]">
             <img
-              src="/assets/intersection-hero.jpg"
+              src="/assets/intersection-hero.webp"
               alt="GND, femme créative noire et assistant IA collaborant dans un studio créatif"
               draggable={false}
               loading="lazy"
@@ -481,7 +481,7 @@ function IntersectionBlock() {
             }}
           >
             <img
-              src="/assets/papillon-shape-v2.png?v=2"
+              src="/assets/papillon-shape-v2.webp?v=2"
               alt=""
               draggable={false}
               className="absolute inset-0 w-full h-full object-contain select-none pointer-events-none"
@@ -624,7 +624,7 @@ function IntersectionBlock() {
               onTouchEnd={() => setIsPaused(false)}
             >
               <img
-                src="/assets/papillon-shape-v2.png?v=2"
+                src="/assets/papillon-shape-v2.webp?v=2"
                 alt=""
                 draggable={false}
                 className="absolute inset-0 w-full h-full object-contain select-none pointer-events-none"
@@ -736,7 +736,7 @@ function ServicesGrid() {
                 <div className="absolute inset-0 overflow-hidden rounded-inherit">
                   <div className="absolute inset-x-0 top-0 h-1/2 md:h-3/5">
                     <img
-                      src={`/assets/${image}.png`}
+                      src={`/assets/${image}.webp`}
                       alt=""
                       draggable={false}
                       className="w-full h-full object-cover object-top select-none pointer-events-none"
@@ -906,7 +906,7 @@ function ReelsMosaic() {
 /* ===================== Why we need [signature] , Stoicism inspired ===================== */
 function WhyBlock() {
   // 12/06/26 v2 — INTÉGRATION SUR MAQUETTE VIERGE fournie par Roodny
-  // (why-mockup-blank.png : même scène, carte vide, pills boutons déjà
+  // (why-mockup-blank.webp : même scène, carte vide, pills boutons déjà
   // dessinées dans l'image). Desktop : l'image vierge est le fond complet de
   // la section (aspect 1672/941) et les textes/icônes HTML sont posés en
   // overlay aux positions mesurées au pixel sur la maquette remplie
@@ -940,7 +940,7 @@ function WhyBlock() {
       {/* ============ DESKTOP : maquette vierge + overlay positionné ============ */}
       <div className="relative hidden lg:block w-full" style={{ aspectRatio: '1672 / 941' }}>
         <img
-          src="/assets/why-mockup-blank.png"
+          src="/assets/why-mockup-blank.webp"
           alt=""
           draggable={false}
           loading="eager"
@@ -1058,7 +1058,7 @@ function WhyBlock() {
           </div>
         </div>
         <img
-          src="/assets/why-mockup-scene.png"
+          src="/assets/why-mockup-scene.webp"
           alt="Studio GND : station de montage, direction créative humaine augmentée par l'IA"
           draggable={false}
           loading="lazy"
@@ -1312,7 +1312,7 @@ function _LegacyWhyBlock() {
               {/* IMAGE CARD, z-10 (au milieu du sandwich) */}
               <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl shadow-text/50" style={{ aspectRatio: '1707 / 926' }}>
                 <img
-                  src="/assets/why-block-hero.jpg"
+                  src="/assets/why-block-hero.webp"
                   alt="GND, créatif au montage couleur dans un cocon studio chocolat avec LED orange"
                   draggable={false}
                   loading="lazy"
@@ -1438,7 +1438,7 @@ function _LegacyWhyBlock() {
 
 /* ===================== Values ===================== */
 function ValuesBlock() {
-  // Infographie = asset Nano Banana (values-infographic.png, 1448×1086, fond transparent) :
+  // Infographie = asset Nano Banana (values-infographic.webp, 1448×1086, fond transparent) :
   // 4 panneaux chocolat zigzag + badges orange en relief + numéros baked. Les zones texte
   // sont vides dans l'image → on overlaye titre + description en HTML par-dessus.
   // Zones texte calées sur les 4 badges détectés (cream rings, composantes connexes).
@@ -1506,7 +1506,7 @@ function ValuesBlock() {
           <div className="hidden sm:block relative sm:-mx-8 md:mx-auto" style={{ maxWidth: '920px', aspectRatio: '1448 / 1086', containerType: 'inline-size' }}>
             <img
               data-anim="values-image"
-              src="/assets/values-infographic.png?v=2"
+              src="/assets/values-infographic.webp?v=2"
               alt=""
               draggable={false}
               loading="lazy"
@@ -1754,7 +1754,7 @@ function ContactBlock() {
           <div className="md:col-span-5 relative bg-text-strong text-bg p-6 md:p-8 lg:p-11 flex flex-col">
             {/* Image de fond + overlay chocolat pour la profondeur */}
             <img
-              src="/assets/intersection-hero.jpg"
+              src="/assets/intersection-hero.webp"
               alt=""
               draggable={false}
               className="absolute inset-0 w-full h-full object-cover opacity-[0.16] select-none pointer-events-none"
@@ -1778,13 +1778,13 @@ function ContactBlock() {
                 Parlons de votre <span className="italic text-accent">projet</span>.
               </h2>
               <p className="mt-4 text-bg/70 text-sm leading-relaxed max-w-xs">
-                Partagez votre vision : réponse sous 24h, devis sous 72h.
+                Partagez votre vision : réponse sous 24h, devis sous 48h.
               </p>
 
               {/* Image arrondie inset, COVER GND (anciennement vignette vidéos hologramme, réutilisé ici) */}
               <div className="mt-5 md:mt-7 rounded-3xl overflow-hidden border border-bg/10 shadow-xl shadow-text/50">
                 <img
-                  src="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/gnd-cover.png"
+                  src="https://gublhtivvydkuooooffg.supabase.co/storage/v1/render/image/public/portfolio-photos/gnd-cover.png?width=1600&quality=82"
                   alt="Studio créatif GND"
                   draggable={false}
                   loading="lazy"
@@ -1952,8 +1952,8 @@ function HomePage() {
         <ScrollExpandHero
           mediaType="video"
           mediaSrc="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Creative_Studio_Video_Generation2.mp4"
-          posterSrc="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250919_0006_Vibrant%20Digital%20Collaboration_remix_01k5fdpkfdemjrbt49q10rx0hx.png"
-          bgImageSrc="/assets/hero1-bg-v2.png"
+          posterSrc="https://gublhtivvydkuooooffg.supabase.co/storage/v1/render/image/public/portfolio-photos/20250919_0006_Vibrant%20Digital%20Collaboration_remix_01k5fdpkfdemjrbt49q10rx0hx.png?width=1600&quality=82"
+          bgImageSrc="/assets/hero1-bg-v2.webp"
           title="Un studio, une vision."
           date="GND · Studio créatif Paris"
           scrollToExpand="Scrollez pour révéler"
@@ -2027,7 +2027,7 @@ function HomePage() {
       <FloatingCtaBand
         prefix="Créons l'impact"
         rotatingWords={['ensemble.', 'à deux.', 'côte à côte.', 'main dans la main.', 'avec vous.']}
-        sub="Échangeons sur votre projet. Réponse sous 24h, devis sous 72h."
+        sub="Échangeons sur votre projet. Réponse sous 24h, devis sous 48h."
       />
     </main>
   );

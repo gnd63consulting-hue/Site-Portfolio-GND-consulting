@@ -1,5 +1,5 @@
 /* HologramShowcase, section "Notre portfolio en mouvement".
-   Asset : public/assets/hologram-scene.jpg (2752x1536, Nano Banana Pro).
+   Asset : public/assets/hologram-scene.webp (2752x1536, Nano Banana Pro).
    Animation séquentielle scroll-triggered niveau A :
      1. Cover mask sombre couvre la scène (hologramme + beam + icônes cachés)
      2. Au scroll-in : mask radial gradient expand from phone position (50%, 92%) → reveal
@@ -316,7 +316,7 @@ export function HologramShowcase() {
         >
           {/* Background image */}
           <img
-            src="/assets/hologram-scene.jpg?v=3"
+            src="/assets/hologram-scene.webp?v=3"
             alt=""
             draggable={false}
             loading="lazy"

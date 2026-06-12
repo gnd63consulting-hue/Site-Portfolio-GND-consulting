@@ -28,7 +28,7 @@ const ITEMS: OwnershipItem[] = [
     shortLabel: 'Domaine',
     title: 'Le nom de domaine',
     body: "Enregistré directement à votre nom, vérifiable publiquement via WHOIS. Le jour où vous partez, vous partez avec votre adresse. Personne ne peut vous le retirer, le revendre ou le verrouiller. Première année offerte par GND, renouvellement direct (10 à 15 € par an) chez le bureau d'enregistrement.",
-    image: '/assets/ownership-tab-domaine.png',
+    image: '/assets/ownership-tab-domaine.webp',
     Icon: Icons.Globe,
   },
   {
@@ -37,7 +37,7 @@ const ITEMS: OwnershipItem[] = [
     shortLabel: 'Code source',
     title: 'Le code source',
     body: "Le code complet du site vous est transmis sur un dépôt Git privé à votre nom. Vous pouvez le confier à un autre prestataire, l'auditer, le modifier, le reprendre en main quand vous voulez. Aucun verrou propriétaire, aucune dépendance à GND pour évoluer.",
-    image: '/assets/ownership-tab-code.png',
+    image: '/assets/ownership-tab-code.webp',
     Icon: Icons.Cpu,
   },
   {
@@ -46,7 +46,7 @@ const ITEMS: OwnershipItem[] = [
     shortLabel: 'Google',
     title: 'Les comptes Google',
     body: "Google Business Profile, Analytics, Search Console : les comptes sont créés à votre adresse e-mail, avec vos identifiants. Vous gardez l'accès permanent à vos données de fréquentation, vos avis, vos rapports SEO. Si vous quittez GND, vous gardez tout.",
-    image: '/assets/ownership-tab-google.png',
+    image: '/assets/ownership-tab-google.webp',
     Icon: Icons.MapPin,
   },
   {
@@ -55,7 +55,7 @@ const ITEMS: OwnershipItem[] = [
     shortLabel: 'Hébergement',
     title: "L'hébergement",
     body: "Compte d'hébergement créé à votre nom, transférable en zéro-downtime vers un autre prestataire si besoin. Aucun contrat d'engagement, aucune captation. Vous payez l'hébergement directement, on documente la configuration pour la rendre reprenable par n'importe quelle équipe technique.",
-    image: '/assets/ownership-tab-hebergement.png',
+    image: '/assets/ownership-tab-hebergement.webp',
     Icon: Icons.Layers,
   },
 ];

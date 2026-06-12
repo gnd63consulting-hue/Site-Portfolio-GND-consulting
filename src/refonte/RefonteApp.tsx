@@ -64,6 +64,14 @@ function RefonteApp() {
     document.title = sub ? `${base}, ${sub}` : `${base}, Studio créatif humain × IA · Paris`;
   }, [route]);
 
+  // Analytics consent-gated : ne charge GA4 que si le visiteur a accepté
+  // (gnd-cookie-consent) ET que VITE_GA_MEASUREMENT_ID est défini.
+  React.useEffect(() => {
+    import('../utils/analytics').then(({ initAnalytics }) =>
+      initAnalytics((import.meta as any).env?.VITE_GA_MEASUREMENT_ID)
+    );
+  }, []);
+
   let page: React.ReactNode;
   if (route === "/" || route === "") page = <HomePage/>;
   else if (route === "/agence") page = <AgencePage/>;

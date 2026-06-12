@@ -108,8 +108,8 @@ const SITES_CATEGORIES: CategoryData[] = [
       glow:
         'radial-gradient(ellipse 70% 60% at 80% 30%, rgba(255,149,79,0.18) 0%, transparent 70%), radial-gradient(ellipse 45% 65% at 10% 80%, rgba(255,149,79,0.10) 0%, transparent 65%)',
       ring: '#3A2418',
-      bgImage: '/assets/why-bg-vue-ensemble.png',
-      bubbleImage: '/assets/why-bubble-vue-ensemble.png',
+      bgImage: '/assets/why-bg-vue-ensemble.webp',
+      bubbleImage: '/assets/why-bubble-vue-ensemble.webp',
       bubbleAlt: 'Laptop flagship 2026 avec sites vitrines GND flottants',
     },
     callout: {
@@ -153,8 +153,8 @@ const SITES_CATEGORIES: CategoryData[] = [
       glow:
         'radial-gradient(ellipse 70% 60% at 25% 30%, rgba(253,246,238,0.14) 0%, transparent 65%), radial-gradient(ellipse 50% 55% at 90% 80%, rgba(255,149,79,0.18) 0%, transparent 60%)',
       ring: '#553420',
-      bgImage: '/assets/why-bg-vitrine-essentiel.png',
-      bubbleImage: '/assets/why-bubble-vitrine-essentiel.jpg',
+      bgImage: '/assets/why-bg-vitrine-essentiel.webp',
+      bubbleImage: '/assets/why-bubble-vitrine-essentiel.webp',
       bubbleAlt: 'Laptop flagship 2026 avec site boutique français en scroll-out',
     },
     callout: {
@@ -198,8 +198,8 @@ const SITES_CATEGORIES: CategoryData[] = [
       glow:
         'radial-gradient(ellipse 75% 65% at 70% 30%, rgba(255,149,79,0.50) 0%, transparent 65%), radial-gradient(ellipse 55% 70% at 15% 85%, rgba(255,149,79,0.22) 0%, transparent 60%)',
       ring: '#5C2A14',
-      bgImage: '/assets/why-bg-reservation.png',
-      bubbleImage: '/assets/why-bubble-reservation.png',
+      bgImage: '/assets/why-bg-reservation.webp',
+      bubbleImage: '/assets/why-bubble-reservation.webp',
       bubbleAlt: 'Entrepreneur travaillant sur réservation site restaurant, chip + Réservation',
     },
     callout: {
@@ -243,8 +243,8 @@ const SITES_CATEGORIES: CategoryData[] = [
       glow:
         'radial-gradient(ellipse 65% 55% at 75% 25%, rgba(255,149,79,0.28) 0%, transparent 60%), radial-gradient(ellipse 55% 65% at 20% 80%, rgba(212,165,42,0.20) 0%, transparent 60%)',
       ring: '#241408',
-      bgImage: '/assets/why-bg-pack-complet.png',
-      bubbleImage: '/assets/why-bubble-pack-complet.png',
+      bgImage: '/assets/why-bg-pack-complet.webp',
+      bubbleImage: '/assets/why-bubble-pack-complet.webp',
       bubbleAlt: 'Entrepreneur travaillant sur site complet e-commerce, chip Pack Complet',
     },
     callout: {
@@ -288,8 +288,8 @@ const SITES_CATEGORIES: CategoryData[] = [
       glow:
         'radial-gradient(ellipse 65% 55% at 35% 30%, rgba(212,165,42,0.24) 0%, transparent 60%), radial-gradient(ellipse 55% 60% at 85% 75%, rgba(255,149,79,0.18) 0%, transparent 60%)',
       ring: '#4A2E1E',
-      bgImage: '/assets/why-bg-seo-local.png',
-      bubbleImage: '/assets/why-bubble-seo-local.png',
+      bgImage: '/assets/why-bg-seo-local.webp',
+      bubbleImage: '/assets/why-bubble-seo-local.webp',
       bubbleAlt: 'Laptop dashboard SEO 3D, chip SEO Local',
     },
     callout: {
@@ -333,8 +333,8 @@ const SITES_CATEGORIES: CategoryData[] = [
       glow:
         'radial-gradient(ellipse 50% 45% at 50% 25%, rgba(255,149,79,0.18) 0%, transparent 55%), radial-gradient(ellipse 65% 55% at 15% 75%, rgba(212,165,42,0.14) 0%, transparent 60%)',
       ring: '#1F1208',
-      bgImage: '/assets/why-bg-garanties.png',
-      bubbleImage: '/assets/why-bubble-garanties.png',
+      bgImage: '/assets/why-bg-garanties.webp',
+      bubbleImage: '/assets/why-bubble-garanties.webp',
       bubbleAlt: 'Laptop site restaurant scroll-out, chip Garanties',
     },
     callout: {
@@ -366,6 +366,18 @@ export function WhyGndBlock({
   const [paused, setPaused] = React.useState(false);
   const active =
     categories.find((c) => c.id === activeCat) ?? categories[0];
+
+  // Préchargement des visuels de TOUTES les slides au montage : évite le
+  // flash de fond chocolat quand l'auto-play ou un clic change de slide
+  // avant que l'image ne soit en cache.
+  React.useEffect(() => {
+    categories.forEach((c) => {
+      [c.palette?.bgImage, c.palette?.bubbleImage].forEach((src) => {
+        if (src) { const im = new Image(); im.src = src; }
+      });
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [categories.length]);
 
   // Auto-play : fait défiler les slides pour que les visiteurs passifs les voient
   // toutes (sinon seule la slide 01 est vue). Reset à chaque changement (clic
@@ -694,7 +706,7 @@ export function WhyGndBlock({
                   <motion.img
                     key={`bubble-${active.id}`}
                     src={
-                      active.palette.bubbleImage ?? '/assets/portrait-cream.png'
+                      active.palette.bubbleImage ?? '/assets/portrait-cream.webp'
                     }
                     alt={
                       active.palette.bubbleAlt ??

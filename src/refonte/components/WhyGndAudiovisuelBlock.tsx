@@ -33,11 +33,11 @@ const AUDIOVISUEL_CATEGORIES: CategoryData[] = [
     ],
     palette: {
       bg: '#2A1810',
-      bgImage: '/assets/why-bg-audiovisuel-01-gnd.png',
+      bgImage: '/assets/why-bg-audiovisuel-01-gnd.webp',
       glow:
         'radial-gradient(ellipse 70% 60% at 80% 30%, rgba(255,149,79,0.18) 0%, transparent 70%), radial-gradient(ellipse 45% 65% at 10% 80%, rgba(255,149,79,0.10) 0%, transparent 65%)',
       ring: '#3A2418',
-      bubbleImage: '/assets/bubble-audiovisuel-01-gnd-v2.png',
+      bubbleImage: '/assets/bubble-audiovisuel-01-gnd-v2.webp',
       bubbleAlt: 'Studio GND, production audiovisuelle',
       bubblePosition: '20% 50%',
     },
@@ -82,11 +82,11 @@ const AUDIOVISUEL_CATEGORIES: CategoryData[] = [
     ],
     palette: {
       bg: '#3F2418',
-      bgImage: '/assets/why-bg-audiovisuel-02-video.png',
+      bgImage: '/assets/why-bg-audiovisuel-02-video.webp',
       glow:
         'radial-gradient(ellipse 70% 60% at 25% 30%, rgba(253,246,238,0.14) 0%, transparent 65%), radial-gradient(ellipse 50% 55% at 90% 80%, rgba(255,149,79,0.18) 0%, transparent 60%)',
       ring: '#553420',
-      bubbleImage: '/assets/bubble-audiovisuel-02-video.png',
+      bubbleImage: '/assets/bubble-audiovisuel-02-video.webp',
       bubbleAlt: 'Vidéo & production, captation 4K/8K',
     },
     callout: {
@@ -130,11 +130,11 @@ const AUDIOVISUEL_CATEGORIES: CategoryData[] = [
     ],
     palette: {
       bg: '#4A1E0A',
-      bgImage: '/assets/why-bg-audiovisuel-03-motion.png',
+      bgImage: '/assets/why-bg-audiovisuel-03-motion.webp',
       glow:
         'radial-gradient(ellipse 75% 65% at 70% 30%, rgba(255,149,79,0.50) 0%, transparent 65%), radial-gradient(ellipse 55% 70% at 15% 85%, rgba(255,149,79,0.22) 0%, transparent 60%)',
       ring: '#5C2A14',
-      bubbleImage: '/assets/bubble-audiovisuel-03-motion.png',
+      bubbleImage: '/assets/bubble-audiovisuel-03-motion.webp',
       bubbleAlt: 'Motion design, animations 2D / 3D',
     },
     callout: {
@@ -178,11 +178,11 @@ const AUDIOVISUEL_CATEGORIES: CategoryData[] = [
     ],
     palette: {
       bg: '#160A04',
-      bgImage: '/assets/why-bg-audiovisuel-04-photo.png',
+      bgImage: '/assets/why-bg-audiovisuel-04-photo.webp',
       glow:
         'radial-gradient(ellipse 65% 55% at 75% 25%, rgba(255,149,79,0.28) 0%, transparent 60%), radial-gradient(ellipse 55% 65% at 20% 80%, rgba(212,165,42,0.20) 0%, transparent 60%)',
       ring: '#241408',
-      bubbleImage: '/assets/bubble-audiovisuel-04-photo.png',
+      bubbleImage: '/assets/bubble-audiovisuel-04-photo.webp',
       bubbleAlt: 'Photographie, portrait studio direction artistique',
     },
     callout: {
@@ -226,11 +226,11 @@ const AUDIOVISUEL_CATEGORIES: CategoryData[] = [
     ],
     palette: {
       bg: '#352014',
-      bgImage: '/assets/why-bg-audiovisuel-05-da.png',
+      bgImage: '/assets/why-bg-audiovisuel-05-da.webp',
       glow:
         'radial-gradient(ellipse 65% 55% at 35% 30%, rgba(212,165,42,0.24) 0%, transparent 60%), radial-gradient(ellipse 55% 60% at 85% 75%, rgba(255,149,79,0.18) 0%, transparent 60%)',
       ring: '#4A2E1E',
-      bubbleImage: '/assets/bubble-audiovisuel-05-da.png',
+      bubbleImage: '/assets/bubble-audiovisuel-05-da.webp',
       bubbleAlt: 'Direction artistique, moodboard et palette',
     },
     callout: {
@@ -274,11 +274,11 @@ const AUDIOVISUEL_CATEGORIES: CategoryData[] = [
     ],
     palette: {
       bg: '#0F0604',
-      bgImage: '/assets/why-bg-audiovisuel-06-livraison.png',
+      bgImage: '/assets/why-bg-audiovisuel-06-livraison.webp',
       glow:
         'radial-gradient(ellipse 50% 45% at 50% 25%, rgba(255,149,79,0.18) 0%, transparent 55%), radial-gradient(ellipse 65% 55% at 15% 75%, rgba(212,165,42,0.14) 0%, transparent 60%)',
       ring: '#1F1208',
-      bubbleImage: '/assets/bubble-audiovisuel-06-livraison.png',
+      bubbleImage: '/assets/bubble-audiovisuel-06-livraison.webp',
       bubbleAlt: 'Livraison & droits, sources transmises',
     },
     callout: {

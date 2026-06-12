@@ -173,7 +173,7 @@ export function HeroBuildUpAudiovisuel() {
           surréaliste 16:9, mood warm). Path mappé sur le nom utilisé par
           l'utilisateur : "Background hero 1 audiovisuel page". */}
       <img
-        src="/assets/hero-1-audiovisuel-bg.png"
+        src="/assets/hero-1-audiovisuel-bg.webp"
         alt=""
         draggable={false}
         loading="eager"

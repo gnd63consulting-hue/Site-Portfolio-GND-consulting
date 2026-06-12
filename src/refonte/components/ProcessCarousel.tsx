@@ -28,7 +28,7 @@ const PROCESS_STEPS: readonly Step[] = [
     description:
       "30 min en visio. On comprend votre métier, vos références, vos contraintes. Devis signé, acompte 50 % pour déclencher la production.",
     // ambient bg : poster Designbr-style "BRIEFING" (Nano Banana gen)
-    bgImage: '/assets/process/brief.jpg?v=1',
+    bgImage: '/assets/process/brief.webp?v=1',
   },
   {
     id: '2',
@@ -37,7 +37,7 @@ const PROCESS_STEPS: readonly Step[] = [
     description:
       "Mockup desktop + mobile. 3 itérations design incluses. Vous validez chaque écran avant qu'on touche au code.",
     // ambient bg : poster Designbr-style "DESIGN" (Nano Banana gen)
-    bgImage: '/assets/process/design.jpg?v=1',
+    bgImage: '/assets/process/design.webp?v=1',
   },
   {
     id: '3',

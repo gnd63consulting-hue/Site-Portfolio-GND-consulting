@@ -139,8 +139,8 @@ function BrandingPage() {
         <ScrollExpandHero
           mediaType="video"
           mediaSrc="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Creative_Studio_Video_Generation2.mp4"
-          posterSrc="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250919_0006_Vibrant%20Digital%20Collaboration_remix_01k5fdpkfdemjrbt49q10rx0hx.png"
-          bgImageSrc="/assets/hero1-bg-v2.png"
+          posterSrc="https://gublhtivvydkuooooffg.supabase.co/storage/v1/render/image/public/portfolio-photos/20250919_0006_Vibrant%20Digital%20Collaboration_remix_01k5fdpkfdemjrbt49q10rx0hx.png?width=1600&quality=82"
+          bgImageSrc="/assets/hero1-bg-v2.webp"
           title="Une marque, une intention."
           date="GND · Direction de marque"
           scrollToExpand="Scrollez pour révéler"
@@ -361,7 +361,7 @@ function MotionPage() {
       hero={
         <div className="relative surface-card p-3 rounded-3xl max-w-[520px] mx-auto">
           <div className="rounded-2xl overflow-hidden relative bg-surface" style={{ aspectRatio:"16/9" }}>
-            <img src="/assets/svc-motion.png" alt="Motion design, GND" loading="lazy" className="absolute inset-0 w-full h-full object-cover"/>
+            <img src="/assets/svc-motion.webp" alt="Motion design, GND" loading="lazy" className="absolute inset-0 w-full h-full object-cover"/>
           </div>
           <button className="absolute inset-0 m-auto w-16 h-16 rounded-full bg-bg text-text-strong inline-flex items-center justify-center shadow-2xl shadow-text/30 hover:bg-accent transition">
             <Icons.Play size={22}/>
@@ -384,7 +384,7 @@ function MotionPage() {
                 { src:"https://img.youtube.com/vi/6oaO6YoWjyQ/maxresdefault.jpg", t:"Esther Seems, Bobine" },
                 { src:"https://img.youtube.com/vi/UbXQim7iNLI/maxresdefault.jpg", t:"Leyel, Miel" },
                 { src:"https://img.youtube.com/vi/galhl8_dYyk/maxresdefault.jpg", t:"Cook & Soul" },
-                { src:"/assets/svc-motion.png", t:"Motion brand" },
+                { src:"/assets/svc-motion.webp", t:"Motion brand" },
                 { src:"https://img.youtube.com/vi/Vyhz7_D4fFU/hqdefault.jpg", t:"Sabay Festival" },
                 { src:"https://img.youtube.com/vi/AGC_2cFHE_0/hqdefault.jpg", t:"L'Anecdote" },
               ].map((m) => (
@@ -602,8 +602,8 @@ function ProductionPage() {
   return (
     <ScrollExpandMedia
       mediaType="image"
-      mediaSrc="/assets/svc-production.png"
-      bgImageSrc="/assets/hero1-bg-v2.png"
+      mediaSrc="/assets/svc-production.webp"
+      bgImageSrc="/assets/hero1-bg-v2.webp"
       title="Production audiovisuelle."
       date="Studio créatif · Paris"
       scrollToExpand="Défilez pour découvrir"
@@ -782,7 +782,7 @@ function PhotoPage() {
     { src: "/assets/photo-02.jpg", label: "Portrait en lumière naturelle" },
     { src: "/assets/photo-05.jpg", label: "Direction artistique" },
     { src: "/assets/photo-04.jpg", label: "Séance photo corporate" },
-    { src: "/assets/photo-06.jpg", label: "Photographie événementielle" },
+    { src: "/assets/photo-06.webp", label: "Photographie événementielle" },
   ];
   const [rot, setRot] = React.useState(0);
   React.useEffect(() => {
@@ -941,8 +941,8 @@ function IAPage() {
           <ScrollExpandHero
             mediaType="video"
             mediaSrc="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Creative_Studio_Video_Generation2.mp4"
-            posterSrc="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250919_0006_Vibrant%20Digital%20Collaboration_remix_01k5fdpkfdemjrbt49q10rx0hx.png"
-            bgImageSrc="/assets/hero1-bg-v2.png"
+            posterSrc="https://gublhtivvydkuooooffg.supabase.co/storage/v1/render/image/public/portfolio-photos/20250919_0006_Vibrant%20Digital%20Collaboration_remix_01k5fdpkfdemjrbt49q10rx0hx.png?width=1600&quality=82"
+            bgImageSrc="/assets/hero1-bg-v2.webp"
             title="Vos opérations qui tournent sans vous."
             date="Automatisation IA · Édition 2026"
             scrollToExpand="Faites défiler pour voir comment"
@@ -963,7 +963,7 @@ function IAPage() {
            accueille une image, pas du texte (tout le texte tient à gauche). */
         <div className="relative surface-card p-3 rounded-3xl max-w-[520px] mx-auto">
           <div className="rounded-2xl overflow-hidden relative bg-surface" style={{ aspectRatio:"4/5" }}>
-            <img src="/assets/svc-ia.png" alt="Automatisation & agents IA, GND" loading="lazy" className="absolute inset-0 w-full h-full object-cover"/>
+            <img src="/assets/svc-ia.webp" alt="Automatisation & agents IA, GND" loading="lazy" className="absolute inset-0 w-full h-full object-cover"/>
           </div>
         </div>
       }
@@ -1151,7 +1151,7 @@ function IAPage() {
             style={{ minHeight: 'clamp(820px, 64vw, 1180px)' }}
           >
             <img
-              src="/assets/svc-ia.png"
+              src="/assets/svc-ia.webp"
               alt=""
               draggable={false}
               loading="lazy"
@@ -1284,13 +1284,13 @@ function IAPage() {
               <h2 className="display text-5xl md:text-7xl mt-5 text-text-strong">Pourquoi accélérer <span className="italic text-accent">maintenant</span> ?</h2>
             </div>
             {/* Infographie = MÊME asset que home "Nos Valeurs Fondatrices"
-               (values-infographic.png : panneaux + badges + numéros bakés,
+               (values-infographic.webp : panneaux + badges + numéros bakés,
                zones texte vides). On overlaye les stats IA aux mêmes positions.
                -translate-y-1/2 = équivalent CSS du yPercent:-50 GSAP de la home
                (centre vertical du texte sur le panneau). */}
             <div className="relative mx-auto" style={{ maxWidth: '920px', aspectRatio: '1448 / 1086' }}>
               <img
-                src="/assets/values-infographic.png?v=2"
+                src="/assets/values-infographic.webp?v=2"
                 alt=""
                 draggable={false}
                 loading="lazy"
@@ -1367,20 +1367,20 @@ function AudiovisuelPage() {
   };
   const SB = 'https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/';
   const SB_VIDS = `${SB}portfolio-videos/`;
-  const SB_PHOTOS = `${SB}portfolio-photos/`;
+  const SB_PHOTOS = `${SB.replace('/object/public/', '/render/image/public/')}portfolio-photos/`;
 
   // Showreel, 11 productions réelles GND (7 YouTube + 4 Supabase MP4).
   // Titres vérifiés via YouTube oEmbed le 31/05/2026.
   const REELS: Reel[] = [
-    { id: 'trinity', t: 'Trinity Rebel, Univers Officiel', k: 'Clip musical', y: '2025', img: `${SB_PHOTOS}gnd-cover.png`, video: `${SB_VIDS}trinity_rebel_univers_officiel.mp4` },
+    { id: 'trinity', t: 'Trinity Rebel, Univers Officiel', k: 'Clip musical', y: '2025', img: '/assets/posters/trinity.webp', video: `${SB_VIDS}trinity_rebel_univers_officiel.mp4` },
     { id: 'esther', t: 'Esther Seems, Bobine', k: 'Clip artiste', y: '2024', img: 'https://img.youtube.com/vi/6oaO6YoWjyQ/maxresdefault.jpg', youtube: '6oaO6YoWjyQ' },
     { id: 'sabay', t: 'Sabay Festival, Pagode de Vincennes', k: 'Événementiel 4K', y: '2023', img: 'https://img.youtube.com/vi/Vyhz7_D4fFU/maxresdefault.jpg', youtube: 'Vyhz7_D4fFU' },
-    { id: 'ali', t: 'Concert Ali', k: 'Captation live', y: '2024', img: `${SB_PHOTOS}gnd-cover.png`, video: `${SB_VIDS}Concert%20Ali.mp4` },
+    { id: 'ali', t: 'Concert Ali', k: 'Captation live', y: '2024', img: '/assets/posters/concert-ali.webp', video: `${SB_VIDS}Concert%20Ali.mp4` },
     { id: 'cooksoul', t: 'Cook & Soul, Kaoutar (Pékin Express)', k: 'Émission culinaire', y: '2023', img: 'https://img.youtube.com/vi/galhl8_dYyk/maxresdefault.jpg', youtube: 'galhl8_dYyk' },
     { id: 'leyel', t: 'Leyel & Julien Ancieaux, Miel', k: 'Clip musical', y: '2023', img: 'https://img.youtube.com/vi/UbXQim7iNLI/maxresdefault.jpg', youtube: 'UbXQim7iNLI' },
     { id: 'eleonore', t: 'Live On Stage, Eléonore « Surprising »', k: 'Live acoustique', y: '2023', img: 'https://img.youtube.com/vi/-E4Uk-Z5qEc/maxresdefault.jpg', youtube: '-E4Uk-Z5qEc' },
     { id: 'leyelpapa', t: 'Live On Stage, LEYEL « Papa »', k: 'Live acoustique', y: '2023', img: 'https://img.youtube.com/vi/GksYCOSW3qc/maxresdefault.jpg', youtube: 'GksYCOSW3qc' },
-    { id: 'yungcally', t: 'Yungcally, Clip officiel', k: 'Clip musical', y: '2024', img: `${SB_PHOTOS}gnd-cover.png`, video: `${SB_VIDS}jyfviku.mp4` },
+    { id: 'yungcally', t: 'Yungcally, Clip officiel', k: 'Clip musical', y: '2024', img: '/assets/posters/yungcally.webp', video: `${SB_VIDS}jyfviku.mp4` },
     // L'Anecdote retirée 01/06/26, vidéo YouTube passée en privé / supprimée
     // (AGC_2cFHE_0 → 404 sur toutes résolutions thumb + oEmbed Forbidden).
     // showreel retiré du carousel 01/06/26, Creative_Studio_Video_Generation2.mp4
@@ -1401,7 +1401,7 @@ function AudiovisuelPage() {
     // CRÉATIONS, Criminal Designer series (4 portraits éditoriaux)
     {
       id: 'creations-1',
-      src: `${SB_PHOTOS}6F0A4251.jpg`,
+      src: `${SB_PHOTOS}6F0A4251.jpg?width=1400&quality=82`,
       title: 'MASQUE & IDENTITÉ',
       caption: "« Un portrait saisissant qui capture l'univers du Criminal Designer. L'anonymat devient une force, transformant le masque en symbole d'expression et de créativité libre. »",
       category: 'CRÉATIONS',
@@ -1409,7 +1409,7 @@ function AudiovisuelPage() {
     },
     {
       id: 'creations-2',
-      src: `${SB_PHOTOS}6F0A4135.jpg`,
+      src: `${SB_PHOTOS}6F0A4135.jpg?width=1400&quality=82`,
       title: "L'ART EN MOUVEMENT",
       caption: "« Dans l'atelier, chaque geste devient performance. Le Criminal Designer exprime son identité à travers la matière brute, fusionnant énergie urbaine et vision artistique. »",
       category: 'CRÉATIONS',
@@ -1417,7 +1417,7 @@ function AudiovisuelPage() {
     },
     {
       id: 'creations-3',
-      src: `${SB_PHOTOS}6F0A4149.jpg`,
+      src: `${SB_PHOTOS}6F0A4149.jpg?width=1400&quality=82`,
       title: 'PUISSANCE CRÉATIVE',
       caption: "« Une mise en scène où se rencontrent charisme et rébellion. Le Criminal Designer impose une esthétique singulière, entre force, style et liberté totale. »",
       category: 'CRÉATIONS',
@@ -1425,7 +1425,7 @@ function AudiovisuelPage() {
     },
     {
       id: 'creations-4',
-      src: `${SB_PHOTOS}6F0A4267.jpg`,
+      src: `${SB_PHOTOS}6F0A4267.jpg?width=1400&quality=82`,
       title: 'VISION MASQUÉE',
       caption: "« Gros plan iconique sur le masque, emblème du Criminal Designer. L'anonymat n'efface pas l'identité, il révèle une puissance créative tournée vers l'avenir. »",
       category: 'CRÉATIONS',
@@ -1434,7 +1434,7 @@ function AudiovisuelPage() {
     // PORTRAITS (3 séries)
     {
       id: 'portraits-1',
-      src: `${SB_PHOTOS}6F0A4028.jpg`,
+      src: `${SB_PHOTOS}6F0A4028.jpg?width=1400&quality=82`,
       title: 'ÉNERGIE COLLECTIVE',
       caption: "« Intensité des regards et force du groupe, un cliché qui exprime la puissance d'une énergie humaine et créative. »",
       category: 'PORTRAITS',
@@ -1442,7 +1442,7 @@ function AudiovisuelPage() {
     },
     {
       id: 'portraits-2',
-      src: `${SB_PHOTOS}6F0A3992.jpg`,
+      src: `${SB_PHOTOS}6F0A3992.jpg?width=1400&quality=82`,
       title: 'ATTITUDE & CONFIANCE',
       caption: "« Une présence naturelle captée en studio, entre assurance et style. Simplicité et charisme au cœur du portrait. »",
       category: 'PORTRAITS',
@@ -1450,7 +1450,7 @@ function AudiovisuelPage() {
     },
     {
       id: 'portraits-3',
-      src: `${SB_PHOTOS}6F0A4002.JPG`,
+      src: `${SB_PHOTOS}6F0A4002.JPG?width=1400&quality=82`,
       title: 'VISION URBAINE',
       caption: "« Jeu de postures et minimalisme graphique, souligné par des contrastes forts pour une esthétique moderne. »",
       category: 'PORTRAITS',
@@ -1459,7 +1459,7 @@ function AudiovisuelPage() {
     // AMBIANCES, Événementiel (3 captations)
     {
       id: 'ambiances-1',
-      src: `${SB_PHOTOS}6F0A1817.JPG`,
+      src: `${SB_PHOTOS}6F0A1817.JPG?width=1400&quality=82`,
       title: 'SAVEURS',
       caption: "« Mise en lumière des détails culinaires et décoratifs qui font l'essence d'un événement. Chaque geste, chaque plat raconte une histoire visuelle unique. »",
       category: 'AMBIANCES',
@@ -1467,7 +1467,7 @@ function AudiovisuelPage() {
     },
     {
       id: 'ambiances-2',
-      src: `${SB_PHOTOS}6F0A1873%20-%20copie%202_1.jpg`,
+      src: `${SB_PHOTOS}6F0A1873%20-%20copie%202_1.jpg?width=1400&quality=82`,
       title: 'INSTANTS',
       caption: "« Immersion dans l'atmosphère et l'énergie d'un événement. Les détails du décor et des ambiances renforcent l'expérience collective. »",
       category: 'AMBIANCES',
@@ -1475,7 +1475,7 @@ function AudiovisuelPage() {
     },
     {
       id: 'ambiances-3',
-      src: `${SB_PHOTOS}6F0A2054.JPG`,
+      src: `${SB_PHOTOS}6F0A2054.JPG?width=1400&quality=82`,
       title: 'PARTAGES',
       caption: "« Focus sur les échanges et connexions entre participants. Chaque interaction devient une scène vivante et authentique de l'événement. »",
       category: 'AMBIANCES',
@@ -1582,8 +1582,8 @@ function AudiovisuelPage() {
       <ScrollExpandHero
         mediaType="video"
         mediaSrc="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Creative_Studio_Video_Generation2.mp4"
-        posterSrc="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/20250919_0006_Vibrant%20Digital%20Collaboration_remix_01k5fdpkfdemjrbt49q10rx0hx.png"
-        bgImageSrc="/assets/hero1-bg-v2.png"
+        posterSrc="https://gublhtivvydkuooooffg.supabase.co/storage/v1/render/image/public/portfolio-photos/20250919_0006_Vibrant%20Digital%20Collaboration_remix_01k5fdpkfdemjrbt49q10rx0hx.png?width=1600&quality=82"
+        bgImageSrc="/assets/hero1-bg-v2.webp"
         title="Une image, une intention."
         date="GND · Direction artistique"
         scrollToExpand="Scrollez pour révéler"
@@ -1751,7 +1751,7 @@ function AudiovisuelPage() {
                     (arche + encoche bas) pour respiration éditoriale. Catalogue
                     masks dispo dans ImageMaskDefs mounté globalement. */}
                 <MaskedImage
-                  src="/assets/svc-motion.png"
+                  src="/assets/svc-motion.webp"
                   alt="Motion design, GND"
                   pattern="clip-pattern3"
                   className="w-full"
@@ -1810,7 +1810,7 @@ function AudiovisuelPage() {
                     (tombstone / dôme arrondi haut), réminiscence frame portrait
                     éditorial premium. */}
                 <MaskedImage
-                  src="/assets/discipline-03-photo.png"
+                  src="/assets/discipline-03-photo.webp"
                   alt="Photographie GND, direction artistique éditoriale"
                   pattern="clip-pattern2"
                   className="w-full"
@@ -1900,7 +1900,7 @@ function AudiovisuelPage() {
             style={{ minHeight: 'clamp(720px, 58vw, 1080px)' }}
           >
             <img
-              src="/assets/manifeste-audiovisuel-bg.png"
+              src="/assets/manifeste-audiovisuel-bg.webp"
               alt=""
               draggable={false}
               loading="lazy"
@@ -2079,10 +2079,10 @@ function AudiovisuelPage() {
                 className="max-w-5xl"
                 tabs={(() => {
                   const items: { n: string; label: string; t: string; d: string; img: string }[] = [
-                    { n: '01', label: 'Équipe', t: 'Un seul interlocuteur, du début à la fin.', d: "Vidéo, motion design et photographie sont pilotés sous une même direction créative afin d'éviter les intermédiaires, les pertes d'information et les allers-retours inutiles. Vous échangez avec une seule équipe. Nous coordonnons le reste.", img: '/assets/svc-production.png' },
-                    { n: '02', label: 'Direction artistique', t: 'Une identité cohérente sur tous vos contenus.', d: "Chaque projet suit la même direction artistique du premier brief jusqu'à la livraison finale. Images, vidéos, animations et supports de communication partagent le même langage visuel. Résultat : une marque plus reconnaissable, plus professionnelle et plus cohérente sur l'ensemble de ses supports.", img: '/assets/svc-photo.png' },
-                    { n: '03', label: 'Agilité', t: "L'agilité d'un studio, la capacité d'une équipe.", d: "Nous travaillons avec une structure légère et réactive, capable de s'entourer des bons profils lorsque le projet l'exige. Cela nous permet de rester flexibles, rapides à exécuter et adaptés aussi bien à une production ciblée qu'à un dispositif plus ambitieux.", img: '/assets/svc-motion.png' },
-                    { n: '04', label: 'Outils IA', t: 'Des outils modernes au service du projet.', d: "Automatisation, intelligence artificielle et workflows optimisés nous permettent de gagner du temps sur les tâches répétitives et de concentrer davantage d'énergie sur ce qui compte réellement : l'idée, le message et la qualité d'exécution. La technologie accélère. La direction créative reste humaine.", img: '/assets/svc-ia.png' },
+                    { n: '01', label: 'Équipe', t: 'Un seul interlocuteur, du début à la fin.', d: "Vidéo, motion design et photographie sont pilotés sous une même direction créative afin d'éviter les intermédiaires, les pertes d'information et les allers-retours inutiles. Vous échangez avec une seule équipe. Nous coordonnons le reste.", img: '/assets/svc-production.webp' },
+                    { n: '02', label: 'Direction artistique', t: 'Une identité cohérente sur tous vos contenus.', d: "Chaque projet suit la même direction artistique du premier brief jusqu'à la livraison finale. Images, vidéos, animations et supports de communication partagent le même langage visuel. Résultat : une marque plus reconnaissable, plus professionnelle et plus cohérente sur l'ensemble de ses supports.", img: '/assets/svc-photo.webp' },
+                    { n: '03', label: 'Agilité', t: "L'agilité d'un studio, la capacité d'une équipe.", d: "Nous travaillons avec une structure légère et réactive, capable de s'entourer des bons profils lorsque le projet l'exige. Cela nous permet de rester flexibles, rapides à exécuter et adaptés aussi bien à une production ciblée qu'à un dispositif plus ambitieux.", img: '/assets/svc-motion.webp' },
+                    { n: '04', label: 'Outils IA', t: 'Des outils modernes au service du projet.', d: "Automatisation, intelligence artificielle et workflows optimisés nous permettent de gagner du temps sur les tâches répétitives et de concentrer davantage d'énergie sur ce qui compte réellement : l'idée, le message et la qualité d'exécution. La technologie accélère. La direction créative reste humaine.", img: '/assets/svc-ia.webp' },
                   ];
                   const tabs: AnimatedTab[] = items.map((it) => ({
                     id: it.n,
@@ -2271,7 +2271,7 @@ function AudiovisuelPage() {
           <div className="max-w-6xl w-full flex flex-col items-center gap-5" onClick={(e) => e.stopPropagation()}>
             {/* Image full res, object-contain pour voir ENTIÈREMENT sans crop */}
             <img
-              src={`https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/${p.file}`}
+              src={`https://gublhtivvydkuooooffg.supabase.co/storage/v1/render/image/public/portfolio-photos/${p.file}?width=1800&quality=85`}
               alt={p.title}
               className="max-h-[80vh] w-auto max-w-full object-contain rounded-2xl shadow-2xl shadow-black/60"
             />

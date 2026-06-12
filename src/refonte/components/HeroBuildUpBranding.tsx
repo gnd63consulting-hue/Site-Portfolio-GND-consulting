@@ -1,6 +1,6 @@
 /* HeroBuildUpBranding, Build-Up Cinematic hero for /services/branding-identite
  *
- * Asset: /assets/svc-design.png (déjà existant, portrait branding réutilisé du services hub)
+ * Asset: /assets/svc-design.webp (déjà existant, portrait branding réutilisé du services hub)
  *
  * Background: cream charte GND (bg-bg-alt + radial glow orange), aligned avec hero home + sites-vitrines.
  *
@@ -167,7 +167,7 @@ export function HeroBuildUpBranding() {
           lisibilité du texte sombre. Thème clair conservé → le cutout (main)
           s'intègre comme à l'origine, sans retoucher l'icône T. */}
       <img
-        src="/assets/branding-hero2-bg-v2.png"
+        src="/assets/branding-hero2-bg-v2.webp"
         alt=""
         aria-hidden
         draggable={false}

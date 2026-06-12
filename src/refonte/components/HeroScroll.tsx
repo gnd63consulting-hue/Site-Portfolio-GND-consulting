@@ -18,7 +18,7 @@ gsap.registerPlugin(ScrollTrigger);
 const FRAME_COUNT = 150;
 const framePath = (i: number) =>
   `/assets/hero-frames/frame_${String(i).padStart(4, '0')}.jpg`;
-const FALLBACK_PATH = '/assets/hero-portrait.png';
+const FALLBACK_PATH = '/assets/hero-portrait.webp';
 
 interface HeroScrollProps {
   /** CSS selector or ref for the section to pin (the trigger of the scrub). */
@@ -53,29 +53,39 @@ export function HeroScroll({ pinTargetSelector = 'section.hero-scroll-root', cla
       fb.src = FALLBACK_PATH;
     };
 
-    for (let i = 0; i < FRAME_COUNT; i++) {
-      const img = new Image();
-      img.onload = () => {
-        if (cancelled) return;
-        loaded++;
-        setFramesLoaded(loaded);
-        // Once first frame is loaded, paint it immediately
-        if (i === 0) drawFrame(img);
-        // Mark as usable once we have enough frames (e.g., 30) to start animating
-        if (loaded >= 30 && !framesUsable) setFramesUsable(true);
-      };
-      img.onerror = () => {
-        if (cancelled) return;
-        errored++;
-        // If a critical share of frames fail, drop to fallback
-        if (errored > FRAME_COUNT * 0.2 && !fallbackImgRef.current) {
-          drawFallback();
-        }
-      };
-      img.src = framePath(i);
-      imgs[i] = img;
-    }
-    framesRef.current = imgs;
+    const loadAllFrames = () => {
+      for (let i = 0; i < FRAME_COUNT; i++) {
+        const img = new Image();
+        img.onload = () => {
+          if (cancelled) return;
+          loaded++;
+          setFramesLoaded(loaded);
+          // Once first frame is loaded, paint it immediately
+          if (i === 0) drawFrame(img);
+          // Mark as usable once we have enough frames (e.g., 30) to start animating
+          if (loaded >= 30 && !framesUsable) setFramesUsable(true);
+        };
+        img.onerror = () => {
+          if (cancelled) return;
+          errored++;
+          // If a critical share of frames fail, drop to fallback
+          if (errored > FRAME_COUNT * 0.2 && !fallbackImgRef.current) {
+            drawFallback();
+          }
+        };
+        img.src = framePath(i);
+        imgs[i] = img;
+      }
+      framesRef.current = imgs;
+    };
+
+    // Sonde : on teste UNE frame avant de lancer les 150 requêtes — si la
+    // séquence n'est pas déployée (cas actuel), fallback direct sans spammer
+    // le réseau de 404.
+    const probe = new Image();
+    probe.onload = () => { if (!cancelled) loadAllFrames(); };
+    probe.onerror = () => { if (!cancelled) drawFallback(); };
+    probe.src = framePath(0);
 
     return () => {
       cancelled = true;

@@ -138,7 +138,7 @@ type MaskedImageProps = {
  *
  * Exemple :
  *   <MaskedImage
- *     src="/assets/svc-motion.png"
+ *     src="/assets/svc-motion.webp"
  *     alt="Motion design GND"
  *     pattern="clip-pattern3"
  *     className="w-full"

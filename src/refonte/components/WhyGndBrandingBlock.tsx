@@ -30,11 +30,11 @@ const BRANDING_CATEGORIES: CategoryData[] = [
     ],
     palette: {
       bg: '#2A1810',
-      bgImage: '/assets/branding-hero3-bg01.png',
+      bgImage: '/assets/branding-hero3-bg01.webp',
       glow:
         'radial-gradient(ellipse 70% 60% at 80% 30%, rgba(255,149,79,0.18) 0%, transparent 70%), radial-gradient(ellipse 45% 65% at 10% 80%, rgba(255,149,79,0.10) 0%, transparent 65%)',
       ring: '#3A2418',
-      bubbleImage: '/assets/branding-hero3-bubble01.png',
+      bubbleImage: '/assets/branding-hero3-bubble01.webp',
       bubbleAlt: 'Studio GND, vision de marque',
     },
     callout: {
@@ -75,11 +75,11 @@ const BRANDING_CATEGORIES: CategoryData[] = [
     ],
     palette: {
       bg: '#3F2418',
-      bgImage: '/assets/branding-hero3-bg02.png',
+      bgImage: '/assets/branding-hero3-bg02.webp',
       glow:
         'radial-gradient(ellipse 70% 60% at 25% 30%, rgba(253,246,238,0.14) 0%, transparent 65%), radial-gradient(ellipse 50% 55% at 90% 80%, rgba(255,149,79,0.18) 0%, transparent 60%)',
       ring: '#553420',
-      bubbleImage: '/assets/branding-hero3-bubble02.png',
+      bubbleImage: '/assets/branding-hero3-bubble02.webp',
       bubbleAlt: 'Stratégie de marque, positionnement & ton',
     },
     callout: {
@@ -120,7 +120,7 @@ const BRANDING_CATEGORIES: CategoryData[] = [
     ],
     palette: {
       bg: '#4A1E0A',
-      bgImage: '/assets/branding-hero3-bg03.png',
+      bgImage: '/assets/branding-hero3-bg03.webp',
       // Slide 03 : moins de teinte chocolat → opacité image quasi pleine + scrim
       // beaucoup plus léger (juste assez à gauche pour la lisibilité du texte).
       bgImageOpacity: 0.96,
@@ -129,7 +129,7 @@ const BRANDING_CATEGORIES: CategoryData[] = [
       glow:
         'radial-gradient(ellipse 75% 65% at 70% 30%, rgba(255,149,79,0.50) 0%, transparent 65%), radial-gradient(ellipse 55% 70% at 15% 85%, rgba(255,149,79,0.22) 0%, transparent 60%)',
       ring: '#5C2A14',
-      bubbleImage: '/assets/branding-hero3-bubble03.png',
+      bubbleImage: '/assets/branding-hero3-bubble03.webp',
       bubbleAlt: 'Logo & système d\'identité, variantes',
     },
     callout: {
@@ -174,7 +174,7 @@ const BRANDING_CATEGORIES: CategoryData[] = [
     ],
     palette: {
       bg: '#160A04',
-      bgImage: '/assets/branding-hero3-bg04.png',
+      bgImage: '/assets/branding-hero3-bg04.webp',
       // Fond clair (brand book blanc) → on baisse l'opacité + scrim plus marqué à
       // gauche pour que le texte blanc reste lisible.
       bgImageOpacity: 0.66,
@@ -183,7 +183,7 @@ const BRANDING_CATEGORIES: CategoryData[] = [
       glow:
         'radial-gradient(ellipse 65% 55% at 75% 25%, rgba(255,149,79,0.28) 0%, transparent 60%), radial-gradient(ellipse 55% 65% at 20% 80%, rgba(212,165,42,0.20) 0%, transparent 60%)',
       ring: '#241408',
-      bubbleImage: '/assets/branding-hero3-bubble04.png',
+      bubbleImage: '/assets/branding-hero3-bubble04.webp',
       bubbleAlt: 'Charte & brand book, système 360°',
     },
     callout: {
@@ -224,14 +224,14 @@ const BRANDING_CATEGORIES: CategoryData[] = [
     ],
     palette: {
       bg: '#352014',
-      bgImage: '/assets/branding-hero3-bg05.png',
+      bgImage: '/assets/branding-hero3-bg05.webp',
       bgImageOpacity: 0.8,
       scrimBackground:
         'linear-gradient(90deg, rgba(42,24,16,0.68) 0%, rgba(42,24,16,0.46) 35%, rgba(42,24,16,0.2) 65%, rgba(42,24,16,0.02) 100%)',
       glow:
         'radial-gradient(ellipse 65% 55% at 35% 30%, rgba(212,165,42,0.24) 0%, transparent 60%), radial-gradient(ellipse 55% 60% at 85% 75%, rgba(255,149,79,0.18) 0%, transparent 60%)',
       ring: '#4A2E1E',
-      bubbleImage: '/assets/branding-hero3-bubble05.png',
+      bubbleImage: '/assets/branding-hero3-bubble05.webp',
       bubbleAlt: 'Activation marketing, déclinaisons digital + print',
     },
     callout: {
@@ -272,7 +272,7 @@ const BRANDING_CATEGORIES: CategoryData[] = [
     ],
     palette: {
       bg: '#0F0604',
-      bgImage: '/assets/branding-hero3-bg06.png',
+      bgImage: '/assets/branding-hero3-bg06.webp',
       // Image claire (extérieur jour) → opacité réduite + scrim gauche pour la
       // lisibilité du texte blanc.
       bgImageOpacity: 0.66,
@@ -281,7 +281,7 @@ const BRANDING_CATEGORIES: CategoryData[] = [
       glow:
         'radial-gradient(ellipse 50% 45% at 50% 25%, rgba(255,149,79,0.18) 0%, transparent 55%), radial-gradient(ellipse 65% 55% at 15% 75%, rgba(212,165,42,0.14) 0%, transparent 60%)',
       ring: '#1F1208',
-      bubbleImage: '/assets/branding-hero3-bubble06.png',
+      bubbleImage: '/assets/branding-hero3-bubble06.webp',
       bubbleAlt: 'Propriété & garanties GND',
     },
     callout: {

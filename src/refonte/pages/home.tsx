@@ -905,138 +905,166 @@ function ReelsMosaic() {
 
 /* ===================== Why we need [signature] , Stoicism inspired ===================== */
 function WhyBlock() {
-  // 12/06/26 — INTÉGRATION HAUTE FIDÉLITÉ de la maquette validée (ChatGPT
-  // Image 12 juin 01:20, déplacée en public/assets/why-mockup-source.png).
-  // Méthode component-recreation : le visuel droit est DÉCOUPÉ depuis la
-  // maquette elle-même (why-mockup-scene.png = crop x>40%) — la forme
-  // organique, le glow crème, le grain et la feuille décorative sont ceux
-  // de la maquette, pas une reconstruction CSS. Le fond de section reprend
-  // le dégradé exact du bord du crop (#F8E1CB → #EFCFB1) : couture invisible.
-  // Seule la carte texte gauche est reconstruite en HTML (textes réels),
-  // calée sur les couleurs échantillonnées de la maquette (carte #FAEEE0).
+  // 12/06/26 v2 — INTÉGRATION SUR MAQUETTE VIERGE fournie par Roodny
+  // (why-mockup-blank.png : même scène, carte vide, pills boutons déjà
+  // dessinées dans l'image). Desktop : l'image vierge est le fond complet de
+  // la section (aspect 1672/941) et les textes/icônes HTML sont posés en
+  // overlay aux positions mesurées au pixel sur la maquette remplie
+  // (why-mockup-source.png, conservée pour référence). Les CTA sont des <a>
+  // posés exactement sur les pills de l'image (orange : x 6.8→21%,
+  // y 81→88% ; contour : x 23→37.5%). Tailles texte fluides en vw (section
+  // full-bleed). Mobile : empilement carte texte + scène (crop existant).
+  const steps = [
+    {
+      num: "01", label: "Bénéfices Garantis",
+      desc: "Résultats concrets et mesurables pour votre entreprise.",
+      icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-[55%] h-[55%]"><circle cx="12" cy="8" r="4"/><path d="M5 21c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg>),
+      active: false,
+    },
+    {
+      num: "02", label: "Excellence Créative",
+      desc: "Des créations uniques qui marquent les esprits.",
+      icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-[55%] h-[55%]"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>),
+      active: true,
+    },
+    {
+      num: "03", label: "Respect des Délais",
+      desc: "Livraison dans les temps, qualité préservée.",
+      icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-[55%] h-[55%]"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>),
+      active: false,
+    },
+  ];
+
   return (
-    <Section
-      className="relative py-14 md:py-0 overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #F9E3CC 0%, #F8E0CA 72%, #EFCFB1 100%)' }}
-    >
-      {/* Grain film très léger (matière maquette) */}
-      <div
-        aria-hidden
-        className="absolute inset-0 pointer-events-none z-30 opacity-[0.04] mix-blend-multiply"
-        style={{
-          backgroundImage:
-            "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E\")",
-        }}
-      />
+    <Section className="relative py-0 overflow-hidden" style={{ background: '#F8E1CB' }}>
+      {/* ============ DESKTOP : maquette vierge + overlay positionné ============ */}
+      <div className="relative hidden lg:block w-full" style={{ aspectRatio: '1672 / 941' }}>
+        <img
+          src="/assets/why-mockup-blank.png"
+          alt=""
+          draggable={false}
+          loading="eager"
+          decoding="async"
+          className="absolute inset-0 w-full h-full select-none pointer-events-none"
+        />
 
-      <div className="relative grid items-center lg:grid-cols-[40fr_60fr]">
-        {/* ===== CARTE ÉDITORIALE GAUCHE (reconstruite, couleurs maquette) ===== */}
-        <div className="px-5 pt-2 pb-8 md:py-14 md:pl-[4vw] md:pr-0 lg:max-w-[600px] w-full justify-self-start">
-          <div
-            className="rounded-[44px] px-7 py-10 md:px-11 md:py-12"
-            style={{ background: 'rgba(250,238,224,0.94)', boxShadow: '0 18px 60px rgba(83,36,24,0.10)' }}
-          >
-            {/* Label : point orange · NOTRE CONVICTION | STUDIO HYBRIDE */}
-            <div className="flex items-center gap-3 mb-7 md:mb-9 anim-up">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-              <span className="label-mono text-[10px] !text-accent tracking-[0.22em]">NOTRE CONVICTION</span>
-              <span className="w-px h-3 bg-text-strong/20" />
-              <span className="label-mono text-[10px] !text-text-muted tracking-[0.22em]">STUDIO HYBRIDE</span>
-            </div>
+        {/* Label · NOTRE CONVICTION | STUDIO HYBRIDE */}
+        <div className="absolute flex items-center gap-[0.8vw]" style={{ left: '6.9%', top: '15.6%' }}>
+          <span className="rounded-full bg-accent" style={{ width: '0.45vw', height: '0.45vw' }} />
+          <span className="label-mono !text-accent" style={{ fontSize: '0.62vw', letterSpacing: '0.22em' }}>NOTRE CONVICTION</span>
+          <span className="bg-text-strong/20" style={{ width: '1px', height: '0.8vw' }} />
+          <span className="label-mono !text-text-muted" style={{ fontSize: '0.62vw', letterSpacing: '0.22em' }}>STUDIO HYBRIDE</span>
+        </div>
 
-            {/* Titre serif 3 lignes, chute italique orange */}
-            <h2 className="display text-4xl md:text-[44px] lg:text-[52px] text-text-strong leading-[1.08]">
-              <span className="block anim-up d1">Pourquoi le studio</span>
-              <span className="block anim-up d2">hybride bat le</span>
-              <span className="block anim-up d2"><span className="italic text-accent">studio classique</span>.</span>
-            </h2>
+        {/* Titre serif 3 lignes */}
+        <h2 className="absolute display text-text-strong" style={{ left: '6.9%', top: '21.5%', fontSize: '3.1vw', lineHeight: 1.12 }}>
+          <span className="block">Pourquoi le studio</span>
+          <span className="block">hybride bat le</span>
+          <span className="block"><span className="italic text-accent">studio classique</span>.</span>
+        </h2>
 
-            {/* Paragraphe (sans rail, comme la maquette) */}
-            <p className="mt-6 md:mt-7 text-sm md:text-[15px] text-text leading-relaxed max-w-md anim-up d3">
-              Un studio classique vend du temps humain : cher, lent, rare.<br className="hidden md:block" />
-              Une IA brute vend du volume : vide, sans direction.<br className="hidden md:block" />
-              <strong className="text-text-strong">GND fait les deux : direction humaine, exécution augmentée.</strong>
-            </p>
+        {/* Paragraphe */}
+        <p className="absolute text-text" style={{ left: '6.9%', top: '44.6%', fontSize: '0.97vw', lineHeight: 1.55, width: '32%' }}>
+          Un studio classique vend du temps humain : cher, lent, rare.<br/>
+          Une IA brute vend du volume : vide, sans direction.<br/>
+          <strong className="text-text-strong">GND fait les deux : direction humaine, exécution augmentée.</strong>
+        </p>
 
-            {/* Bénéfices : ligne verticale fine + nodes cercles fins, item 02 actif squircle orange */}
-            <div className="mt-8 md:mt-9 relative anim-up d4">
-              <div className="absolute left-[19px] top-3 bottom-3 w-px"
-                style={{ background: 'linear-gradient(to bottom, transparent, rgba(255,149,79,0.45) 18%, rgba(83,36,24,0.12) 50%, rgba(255,149,79,0.45) 82%, transparent)' }}
-              />
-              {[
-                {
-                  num: "01", label: "Bénéfices Garantis",
-                  desc: "Résultats concrets et mesurables pour votre entreprise.",
-                  icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-[16px] h-[16px]"><circle cx="12" cy="8" r="4"/><path d="M5 21c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg>),
-                  active: false,
-                },
-                {
-                  num: "02", label: "Excellence Créative",
-                  desc: "Des créations uniques qui marquent les esprits.",
-                  icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-[16px] h-[16px]"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>),
-                  active: true,
-                },
-                {
-                  num: "03", label: "Respect des Délais",
-                  desc: "Livraison dans les temps, qualité préservée.",
-                  icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-[16px] h-[16px]"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>),
-                  active: false,
-                },
-              ].map((step, si) => (
-                <div
-                  key={step.num}
-                  className={`group relative flex items-start gap-4 cursor-default pb-5 md:pb-6 mb-5 md:mb-6 last:mb-0 last:pb-0 ${si < 2 ? 'border-b border-text-strong/[0.07]' : ''}`}
-                >
-                  <div className={`relative z-10 w-[38px] h-[38px] flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110 ${
-                    step.active
-                      ? 'rounded-[13px] bg-accent/15 text-accent ring-1 ring-accent/50 shadow-[0_0_22px_rgba(242,138,75,0.35)]'
-                      : 'rounded-full bg-transparent border border-text-strong/15 text-text-strong group-hover:border-accent/60'
-                  }`}>
-                    {step.icon}
-                  </div>
-                  <div className="flex-1 pt-0.5">
-                    <div className="flex items-baseline gap-2.5 mb-1">
-                      <span className="label-mono text-[10px] tracking-widest !text-accent">{step.num}</span>
-                      <span className="display text-lg md:text-xl text-text-strong leading-none">{step.label}</span>
-                    </div>
-                    <p className="text-[12px] md:text-[13px] text-text leading-relaxed max-w-sm">{step.desc}</p>
-                  </div>
+        {/* Bénéfices 01/02/03 — nodes + ligne + séparateurs */}
+        <div aria-hidden className="absolute" style={{ left: '8.65%', top: '58%', bottom: '26%', width: '1px', background: 'linear-gradient(to bottom, transparent, rgba(255,149,79,0.45) 20%, rgba(83,36,24,0.12) 50%, rgba(255,149,79,0.45) 80%, transparent)' }} />
+        {steps.map((step, si) => {
+          const tops = ['55.4%', '63.6%', '71.8%'];
+          return (
+            <div key={step.num} className="absolute flex items-start" style={{ left: '6.9%', top: tops[si], width: '33%', gap: '1vw' }}>
+              <div
+                className={`relative z-10 flex items-center justify-center flex-shrink-0 ${
+                  step.active
+                    ? 'rounded-[0.8vw] bg-accent/15 text-accent ring-1 ring-accent/50 shadow-[0_0_22px_rgba(242,138,75,0.35)]'
+                    : 'rounded-full border border-text-strong/15 text-text-strong'
+                }`}
+                style={{ width: '2.3vw', height: '2.3vw', background: step.active ? undefined : 'rgba(250,238,224,0.9)' }}
+              >
+                {step.icon}
+              </div>
+              <div className="flex-1" style={{ paddingTop: '0.1vw' }}>
+                <div className="flex items-baseline" style={{ gap: '0.6vw', marginBottom: '0.25vw' }}>
+                  <span className="label-mono !text-accent" style={{ fontSize: '0.6vw', letterSpacing: '0.18em' }}>{step.num}</span>
+                  <span className="display text-text-strong leading-none" style={{ fontSize: '1.25vw' }}>{step.label}</span>
                 </div>
-              ))}
+                <p className="text-text" style={{ fontSize: '0.82vw', lineHeight: 1.5 }}>{step.desc}</p>
+                {si < 2 && <div className="border-b border-text-strong/[0.07]" style={{ marginTop: '1.05vw', width: '92%' }} />}
+              </div>
             </div>
+          );
+        })}
 
-            {/* CTA : pill orange + pill contour */}
-            <div className="mt-8 md:mt-10 flex flex-wrap items-center gap-4 anim-up d4">
-              <a
-                href="#/agence"
-                className="group relative inline-flex items-center gap-2 bg-accent text-text-strong rounded-full px-7 py-3.5 font-semibold text-sm shadow-xl shadow-accent/30 hover:shadow-accent/50 transition-all overflow-hidden"
-              >
-                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/35 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"/>
-                <span className="relative z-10">Lire le manifeste</span>
-                <Icons.ArrowUpRight size={15} stroke={2.2} className="relative z-10 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"/>
-              </a>
-              <a
-                href="#/realisations"
-                className="group inline-flex items-center gap-2 rounded-full border border-text-strong/20 px-6 py-3.5 text-sm font-medium text-text-strong transition-all hover:border-accent/70 hover:text-accent"
-              >
-                Voir la preuve
-                <Icons.ArrowUpRight size={13} stroke={2} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"/>
-              </a>
-            </div>
+        {/* CTA posés SUR les pills de l'image (zones mesurées) */}
+        <a
+          href="#/agence"
+          className="group absolute flex items-center justify-center font-semibold text-text-strong rounded-full transition-transform hover:scale-[1.02]"
+          style={{ left: '6.8%', top: '81%', width: '14.3%', height: '7%', fontSize: '0.92vw', gap: '0.5vw' }}
+        >
+          Lire le manifeste
+          <Icons.ArrowUpRight size={14} stroke={2.2} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" style={{ width: '0.9vw', height: '0.9vw' }} />
+        </a>
+        <a
+          href="#/realisations"
+          className="group absolute flex items-center justify-center font-medium text-text-strong rounded-full transition-all hover:text-accent"
+          style={{ left: '23%', top: '81%', width: '14.5%', height: '7%', fontSize: '0.92vw', gap: '0.5vw' }}
+        >
+          Voir la preuve
+          <Icons.ArrowUpRight size={13} stroke={2} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" style={{ width: '0.85vw', height: '0.85vw' }} />
+        </a>
+      </div>
+
+      {/* ============ MOBILE/TABLET : empilement propre ============ */}
+      <div className="lg:hidden px-5 py-12">
+        <div className="rounded-[32px] px-6 py-9" style={{ background: 'rgba(250,238,224,0.94)', boxShadow: '0 14px 44px rgba(83,36,24,0.10)' }}>
+          <div className="flex items-center gap-3 mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+            <span className="label-mono text-[10px] !text-accent tracking-[0.22em]">NOTRE CONVICTION</span>
+            <span className="w-px h-3 bg-text-strong/20" />
+            <span className="label-mono text-[10px] !text-text-muted tracking-[0.22em]">STUDIO HYBRIDE</span>
+          </div>
+          <h2 className="display text-4xl text-text-strong leading-[1.08]">
+            Pourquoi le studio hybride bat le <span className="italic text-accent">studio classique</span>.
+          </h2>
+          <p className="mt-5 text-sm text-text leading-relaxed">
+            Un studio classique vend du temps humain : cher, lent, rare. Une IA brute vend du volume : vide, sans direction. <strong className="text-text-strong">GND fait les deux : direction humaine, exécution augmentée.</strong>
+          </p>
+          <div className="mt-7 space-y-5">
+            {steps.map((step) => (
+              <div key={step.num} className="flex items-start gap-3.5">
+                <div className={`flex items-center justify-center w-9 h-9 flex-shrink-0 ${step.active ? 'rounded-[11px] bg-accent/15 text-accent ring-1 ring-accent/50' : 'rounded-full border border-text-strong/15 text-text-strong'}`}>
+                  {step.icon}
+                </div>
+                <div>
+                  <div className="flex items-baseline gap-2 mb-0.5">
+                    <span className="label-mono text-[10px] !text-accent tracking-widest">{step.num}</span>
+                    <span className="display text-lg text-text-strong leading-none">{step.label}</span>
+                  </div>
+                  <p className="text-[12px] text-text leading-relaxed">{step.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <a href="#/agence" className="inline-flex items-center gap-2 bg-accent text-text-strong rounded-full px-6 py-3 font-semibold text-sm shadow-lg shadow-accent/30">
+              Lire le manifeste <Icons.ArrowUpRight size={14} stroke={2.2}/>
+            </a>
+            <a href="#/realisations" className="inline-flex items-center gap-2 rounded-full border border-text-strong/20 px-5 py-3 text-sm font-medium text-text-strong">
+              Voir la preuve <Icons.ArrowUpRight size={13} stroke={2}/>
+            </a>
           </div>
         </div>
-
-        {/* ===== VISUEL DROIT = LA MAQUETTE ELLE-MÊME (crop), formes/glow/grain inclus ===== */}
-        <div className="relative px-5 md:px-0">
-          <img
-            src="/assets/why-mockup-scene.png"
-            alt="Studio GND : station de montage, direction créative humaine augmentée par l'IA"
-            draggable={false}
-            loading="eager"
-            decoding="async"
-            className="w-full h-auto select-none pointer-events-none rounded-[28px] md:rounded-none"
-          />
-        </div>
+        <img
+          src="/assets/why-mockup-scene.png"
+          alt="Studio GND : station de montage, direction créative humaine augmentée par l'IA"
+          draggable={false}
+          loading="lazy"
+          decoding="async"
+          className="mt-8 w-full h-auto rounded-[28px] select-none"
+        />
       </div>
     </Section>
   );

@@ -163,7 +163,7 @@ function NotFoundPage() {
             <p className="mt-6 text-text text-lg leading-relaxed max-w-md">Soit l'URL est erronée, soit nous avons réorganisé le site. Retournez à l'accueil ou explorez par section.</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Btn href="/" variant="primary">Retour à l'accueil</Btn>
-              <Btn href="/services" variant="secondary">Voir les services</Btn>
+              <Btn href="/agence" variant="secondary">Découvrir l’agence</Btn>
             </div>
           </div>
         </div>

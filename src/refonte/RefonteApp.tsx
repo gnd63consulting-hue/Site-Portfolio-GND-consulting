@@ -10,7 +10,6 @@ import { Header, Footer, CookieBanner } from './layout';
 import { ImageMaskDefs } from '../components/ui/image-mask';
 import { HomePage, ContactBlock } from './pages/home';
 import { AgencePage } from './pages/agence';
-import { ServicesHub } from './pages/services';
 import { SitesVitrinesPage } from './pages/sites-vitrines';
 import { BrandingPage, AudiovisuelPage, IAPage } from './pages/service-pages';
 import { RealisationsPage, ProjectDetail } from './pages/realisations';
@@ -47,7 +46,6 @@ function useRoute() {
 const ROUTE_LABELS: Record<string, string> = {
   "/": "Studio créatif humain × IA",
   "/agence": "L'Agence, Manifeste Humain × IA",
-  "/services": "Services, Quatre branches, une équipe",
   "/services/sites-vitrines": "Sites & SEO, Sites vitrines clé en main",
   "/services/branding-identite": "Branding & Identité, Marque, logo, charte",
   "/services/audiovisuel": "Audiovisuel, Vidéo, motion, photo",
@@ -59,6 +57,9 @@ const ROUTE_LABELS: Record<string, string> = {
 
 // Legacy URL aliases, keep old links working
 const LEGACY_REDIRECTS: Record<string, string> = {
+  // Page hub /services supprimée (12/06/26) : services détaillés sur
+  // accueil/agence + 4 sous-pages dédiées. Redirige vers l'accueil.
+  "/services": "/",
   "/services/design-identite-visuelle": "/services/branding-identite",
   "/services/motion-design": "/services/audiovisuel",
   "/services/production-audiovisuelle": "/services/audiovisuel",
@@ -108,8 +109,10 @@ function RefonteApp() {
 
   let page: React.ReactNode;
   if (route === "/" || route === "") page = <HomePage/>;
+  // Hub /services supprimé : rend l'accueil pendant que le redirect joue
+  // (évite un flash 404 d'une frame).
+  else if (route === "/services") page = <HomePage/>;
   else if (route === "/agence") page = <AgencePage/>;
-  else if (route === "/services") page = <ServicesHub/>;
   else if (route === "/services/sites-vitrines") page = <SitesVitrinesPage/>;
   else if (route === "/services/branding-identite") page = <BrandingPage/>;
   else if (route === "/services/audiovisuel") page = <AudiovisuelPage/>;

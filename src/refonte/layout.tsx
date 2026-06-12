@@ -72,10 +72,24 @@ function Header({ route }: any) {
             <div key={n.to} className="relative"
               onMouseEnter={() => n.label === "Services" && openServices()}
               onMouseLeave={() => n.label === "Services" && scheduleCloseServices()}>
-              <a href={n.to} data-active={isActive(n.to)}
-                className={`nav-link text-sm font-medium ${txt} hover:text-accent transition-colors`}>
-                {n.label}
-              </a>
+              {n.label === "Services" ? (
+                /* « Services » = déclencheur du menu uniquement (la page hub
+                   /services est supprimée — chaque branche a sa propre page). */
+                <button
+                  type="button"
+                  aria-expanded={services}
+                  data-active={isActive(n.to)}
+                  onClick={() => setServices(v => !v)}
+                  className={`nav-link text-sm font-medium ${txt} hover:text-accent transition-colors`}
+                >
+                  {n.label}
+                </button>
+              ) : (
+                <a href={n.to} data-active={isActive(n.to)}
+                  className={`nav-link text-sm font-medium ${txt} hover:text-accent transition-colors`}>
+                  {n.label}
+                </a>
+              )}
               {n.label === "Services" && services && (
                 <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-[640px]"
                   onMouseEnter={openServices} onMouseLeave={scheduleCloseServices}>
@@ -90,10 +104,6 @@ function Header({ route }: any) {
                         </div>
                       </a>
                     ))}
-                  </div>
-                  <div className="mt-2 p-3 flex items-center justify-between border-t hairline border-t">
-                    <span className="label-mono">Vue d'ensemble</span>
-                    <a href="/services" className="arrow-link text-sm">Tous les services <Icons.ArrowRight size={14}/></a>
                   </div>
                 </div>
                 </div>
@@ -157,12 +167,6 @@ function Header({ route }: any) {
                             </a>
                           </li>
                         ))}
-                        <li>
-                          <a href="/services" onClick={() => setOpen(false)}
-                            className="inline-flex items-center gap-2 py-2 text-sm text-accent">
-                            Tous les services <Icons.ArrowRight size={14}/>
-                          </a>
-                        </li>
                       </ul>
                     )}
                   </li>
@@ -362,7 +366,10 @@ function Footer() {
             <div className="text-[10px] label-mono tracking-[0.24em] uppercase text-bg/70 mb-4">Navigation</div>
             <ul className="space-y-2 text-sm">
               <li><a href="/agence" className="gnd-link text-bg/85 hover:text-bg transition-colors">L'Agence</a></li>
-              <li><a href="/services" className="gnd-link text-bg/85 hover:text-bg transition-colors">Services</a></li>
+              <li><a href="/services/sites-vitrines" className="gnd-link text-bg/85 hover:text-bg transition-colors">Sites &amp; SEO</a></li>
+              <li><a href="/services/branding-identite" className="gnd-link text-bg/85 hover:text-bg transition-colors">Branding &amp; Identité</a></li>
+              <li><a href="/services/audiovisuel" className="gnd-link text-bg/85 hover:text-bg transition-colors">Audiovisuel</a></li>
+              <li><a href="/services/automatisation-ia" className="gnd-link text-bg/85 hover:text-bg transition-colors">Automatisation &amp; IA</a></li>
               <li><a href="/realisations" className="gnd-link text-bg/85 hover:text-bg transition-colors">Réalisations</a></li>
               <li><a href="/contact" className="gnd-link text-bg/85 hover:text-bg transition-colors">Contact</a></li>
             </ul>

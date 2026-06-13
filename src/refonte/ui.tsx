@@ -128,14 +128,19 @@ const Tag = ({ children }: any) => (
 
 /* FAQ item */
 const Faq = ({ q, a }: any) => (
-  <details className="border-b hairline border-b py-6 group">
-    <summary className="flex items-start justify-between gap-6">
-      <span className="display text-2xl md:text-3xl text-text-strong leading-tight max-w-2xl">{q}</span>
-      <span className="faq-icon shrink-0 mt-2 w-9 h-9 rounded-full border hairline border flex items-center justify-center">
+  <details className="border-b hairline border-b group">
+    <summary className="flex items-start justify-between gap-6 py-6 select-none">
+      <span className="faq-q display text-2xl md:text-3xl text-text-strong leading-tight max-w-2xl">{q}</span>
+      <span className="faq-icon shrink-0 mt-1 flex h-10 w-10 items-center justify-center rounded-full border hairline border bg-bg text-text-strong">
         <Icons.Plus size={16} />
       </span>
     </summary>
-    <div className="mt-4 max-w-3xl text-text leading-relaxed">{a}</div>
+    {/* contenu toujours monté (SEO/pré-rendu) + ouverture fluide via CSS */}
+    <div className="faq-content">
+      <div className="faq-content-inner">
+        <div className="pb-6 max-w-3xl text-text leading-relaxed">{a}</div>
+      </div>
+    </div>
   </details>
 );
 

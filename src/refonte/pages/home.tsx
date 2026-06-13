@@ -1595,7 +1595,7 @@ function FaqHome() {
     <Section className="py-28 md:py-40">
       <Container>
         <div className="grid lg:grid-cols-12 gap-12">
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-4 lg:pt-10">
             <Kicker>Questions fréquentes</Kicker>
             <h2 className="display text-5xl md:text-6xl mt-5 text-text-strong">Toutes les <span className="italic text-accent">réponses</span>.</h2>
             <p className="mt-6 text-text">Une question qui ne figure pas ici ? Écrivez-nous, réponse sous 24h.</p>

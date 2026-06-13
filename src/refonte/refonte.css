@@ -113,9 +113,15 @@ details > summary::-webkit-details-marker { display:none; }
 details[open] .faq-content { grid-template-rows: 1fr; }
 .faq-content > .faq-content-inner { overflow: hidden; min-height: 0; }
 
+/* Cartes FAQ : arrondi, anneau fin + ombre douce ; anneau orange + ombre
+   accentuée à l'ouverture, anneau plus marqué au survol. */
+.faq-card { box-shadow: 0 0 0 1px rgba(42,24,16,.08), 0 6px 22px rgba(83,36,24,.05); transition: box-shadow .25s ease; }
+.faq-card:hover { box-shadow: 0 0 0 1px rgba(42,24,16,.16), 0 8px 26px rgba(83,36,24,.08); }
+.faq-card[open] { box-shadow: 0 0 0 1.5px rgba(255,149,79,.55), 0 12px 34px rgba(83,36,24,.10); }
+
 /* Bascule +/× : tourne, passe en orange plein à l'ouverture. */
-.faq-icon { transition: transform .25s ease, background-color .25s ease, color .25s ease, border-color .25s ease; }
-details[open] .faq-icon { transform: rotate(45deg); background: var(--accent); color: var(--text-strong); border-color: var(--accent); }
+.faq-icon { transition: transform .25s ease, background-color .25s ease, color .25s ease; }
+details[open] .faq-icon { transform: rotate(45deg); background: var(--accent); color: var(--text-strong); }
 .faq-q { transition: color .2s ease; }
 details[open] .faq-q { color: var(--accent); }
 

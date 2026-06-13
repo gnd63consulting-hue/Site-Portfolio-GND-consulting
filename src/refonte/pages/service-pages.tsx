@@ -21,6 +21,7 @@ import { ProcessGraph } from '../components/ProcessGraph';
 import { InfoCard } from '@/components/ui/info-card';
 import { Hand, Zap, Unlock, Sparkles as SparklesIcon, Target, ClipboardList, Camera, Film, Send } from 'lucide-react';
 import { FloatingCtaBand } from '../components/FloatingCtaBand';
+import { FaqJsonLd } from '../components/FaqJsonLd';
 
 /* Cinematic shared service page hero.
    `theme="light"` aligns hero with cream cluster (Branding / Sites-Vitrines / Home). */
@@ -320,6 +321,14 @@ function BrandingPage() {
               <p className="mt-5 text-text">Tout ce que vous devez savoir sur nos services branding et identité visuelle. Si une question manque, posez-la directement, réponse écrite sous 48 heures.</p>
             </div>
             <div className="lg:col-span-8">
+              <FaqJsonLd id="branding" items={[
+                { q: 'Quels sont les délais de réalisation ?', a: "Les délais varient selon la complexité. Logo simple, cinq à sept jours. Identité complète, deux à trois semaines. Refonte globale avec brand book et activation marketing, trois à quatre semaines. Un planning précis est établi dès le brief validé." },
+                { q: 'Combien de rounds de modifications sont inclus ?', a: "Trois rounds de modifications inclus dans toutes nos prestations standard. Chaque étape fait l'objet d'une validation avant passage à la suivante." },
+                { q: 'Quels formats de fichiers livrez-vous ?', a: "Tous les formats nécessaires. Vectoriels (AI, EPS, SVG), haute résolution (PNG, JPG), formats web optimisés, avec un guide d'utilisation complet." },
+                { q: "Et si je n'ai aucune idée du design souhaité ?", a: "C'est notre spécialité. On commence par un brief approfondi pour comprendre votre univers, vos valeurs et vos objectifs, puis notre processus créatif vous guide vers une identité qui vous ressemble." },
+                { q: 'Différence entre charte graphique et brand book ?', a: "La charte couvre vos visuels (logo, couleurs, typographies, règles d'usage). Le brand book ajoute la plateforme verbale, le ton de voix et l'application sur tous vos supports. On livre les deux dans un même document." },
+                { q: 'Comment se passe le paiement ?', a: "Cinquante pourcent à la commande pour lancer la production, cinquante pourcent à la livraison. Pas d'abonnement, pas de frais cachés. TVA non applicable (Art. 293 B du CGI)." },
+              ]} />
               <Faq q="Quels sont les délais de réalisation ?" a="Les délais varient selon la complexité. Logo simple, cinq à sept jours. Identité complète, deux à trois semaines. Refonte globale avec brand book et activation marketing, trois à quatre semaines. Un planning précis est établi dès le brief validé."/>
               <Faq q="Combien de rounds de modifications sont inclus ?" a="Trois rounds de modifications inclus dans toutes nos prestations standard. Chaque étape fait l'objet d'une validation avant passage à la suivante, pour garder la cadence et éviter les retours en arrière."/>
               <Faq q="Quels formats de fichiers livrez-vous ?" a="Tous les formats nécessaires. Vectoriels (AI, EPS, SVG), haute résolution (PNG, JPG), formats web optimisés. Vous recevez également un guide d'utilisation complet et un classement clair pour vous y retrouver."/>
@@ -1325,6 +1334,14 @@ function IAPage() {
                 <p className="mt-5 text-text">Pour TPE qui se demande si c'est rentable. Pour grands comptes qui veulent cocher les cases DSI/RSSI/DPO. Les deux ont leur réponse.</p>
               </div>
               <div className="lg:col-span-8">
+                <FaqJsonLd id="ia" items={[
+                  { q: "On est une équipe de 4 personnes, l'automatisation IA est-elle rentable ?", a: "Oui, souvent plus que pour les grandes structures. Le pic de ROI pour une TPE se joue sur 2 à 3 tâches bien ciblées (relances, prise de RDV, saisie). Seules 5 à 6 % des TPE-PME automatisent avec l'IA : la fenêtre est ouverte." },
+                  { q: 'Gérez-vous les contraintes des grandes entreprises (DSI, RSSI, DPO) ?', a: "Oui. On documente, on journalise, on passe par les revues conformité, avec plans de réversibilité, contrats de sous-traitance DPA et architectures self-hosted. La méthode est la même, le formalisme s'adapte." },
+                  { q: 'Combien coûte une automatisation IA ?', a: "Sur devis. Chaque mission part d'une cartographie chiffrée, et le périmètre dicte le budget. Pas de grille standard : on donne un chiffre clair après la cartographie, pas avant." },
+                  { q: "Et si l'IA hallucine ou si le workflow casse ?", a: "Six mois de maintenance inclus, écrits au contrat : on corrige, on ajuste, on remet en route. Au-delà, forfait optionnel (89 / 149 / 249 € par mois selon la criticité). Les angles morts sont documentés à l'avance." },
+                  { q: 'Vos workflows tournent où, avec quelle IA ?', a: "n8n auto-hébergé en France ou en Europe par défaut. Pour les LLM, on présente les options (OpenAI, Anthropic, Mistral, modèles open-source locaux) avec les arbitrages coût/latence/confidentialité. Vous décidez, aucun lock-in." },
+                  { q: "L'IA va-t-elle remplacer nos équipes ?", a: "Non. On enlève ce qui ne mérite pas un cerveau humain (saisie, tri, copier-coller, relances génériques) pour que vos équipes se concentrent sur les décisions, les relations et la créativité. L'IA fait monter les gens." },
+                ]} />
                 <Faq q="On est une équipe de 4 personnes, c'est rentable pour nous ?" a="Oui, souvent plus que pour les grandes structures. Le pic de ROI pour une TPE se joue sur 2-3 tâches bien ciblées (relances, prise de RDV, saisie). Le baromètre France Num 2025 montre que seules 5 à 6 % des TPE-PME utilisent l'IA pour automatiser leurs tâches, la fenêtre de tir est ouverte, la concurrence pas encore arrivée."/>
                 <Faq q="On est une grande entreprise avec DSI, RSSI, DPO. Vous savez gérer ?" a="Oui. On documente, on journalise, on passe par les revues conformité. On a l'habitude des PMR (plans de migration et de réversibilité), des contrats de sous-traitance DPA, des architectures self-hosted. On parle votre langue. La méthode est la même, le formalisme s'adapte."/>
                 <Faq q="Combien ça coûte ?" a="Sur devis. Chaque mission part d'une cartographie chiffrée, et le périmètre dicte le budget. Pas de grille standard affichée parce que le contexte change tout, un cabinet à 3 personnes n'a pas le même besoin qu'une direction opérationnelle de 200. On vous donne un chiffre clair après la cartographie, pas avant."/>
@@ -2119,6 +2136,16 @@ function AudiovisuelPage() {
                 <p className="mt-5 text-text">Délais, budgets, formats livrés : trouvez rapidement les réponses sur nos productions audiovisuelles.</p>
               </div>
               <div className="lg:col-span-8">
+                <FaqJsonLd id="audiovisuel" items={[
+                  { q: 'Combien de temps dure une production vidéo ?', a: "Cela dépend du format : quelques jours pour une capsule sociale, deux à six semaines pour un film abouti (préparation, tournage, post-production). Un rétroplanning précis est établi dès le brief validé." },
+                  { q: 'Combien de temps pour une animation motion design ?', a: "En moyenne deux à quatre semaines selon la durée et la complexité. Planning précis dès la validation du brief pour respecter vos échéances." },
+                  { q: 'Gérez-vous le motion design seul ?', a: "Oui. Habillages, génériques, formats sociaux verticaux, logos animés. Nous travaillons aussi bien sur des projets autonomes que sur la post-production de vos vidéos existantes." },
+                  { q: 'Pour la photo, gérez-vous les droits ?', a: "Cession de droits claire en fin de prestation, périmètre d'usage défini dès le devis (web, print, durée, territoire). Les fichiers sources sont archivés." },
+                  { q: 'Peut-on filmer dans plusieurs lieux ?', a: "Oui. Multi-sites, intérieur, extérieur, repérages inclus : nous organisons la logistique de tournage selon votre projet et vos contraintes." },
+                  { q: 'Pouvez-vous gérer uniquement le montage ?', a: "Absolument. Nous prenons en charge vos rushes existants : montage, étalonnage, sound design, motion et versions sociales, sans obligation de captation." },
+                  { q: 'Quel budget prévoir pour une vidéo ?', a: "Chaque production est chiffrée sur devis selon le format, la durée et le niveau de post-production. Estimation transparente dès le premier échange, sans engagement, sans frais cachés." },
+                  { q: "Quelle est la place de l'IA dans vos productions ?", a: "Outil au service du récit, jamais à sa place. L'IA accélère la post-production (étalonnage assisté, transcription, déclinaisons sociales), mais la décision créative, la direction artistique et le rythme restent humains." },
+                ]} />
                 <Faq q="Combien de temps dure une production vidéo ?" a="Cela dépend du format : quelques jours pour une capsule sociale, deux à six semaines pour un film abouti (préparation, tournage, post-production). Un rétroplanning précis est établi dès le brief validé."/>
                 <Faq q="Combien de temps pour une animation motion design ?" a="En moyenne deux à quatre semaines selon la durée et la complexité. Vidéo explicative courte, habillage social, générique, chaque format a son rythme. Planning précis dès la validation du brief pour respecter vos échéances."/>
                 <Faq q="Vous gérez aussi le motion design seul ?" a="Oui. Habillages, génériques, formats sociaux verticaux, logos animés. Nous travaillons aussi bien sur des projets autonomes que sur la post-production de vos vidéos existantes."/>

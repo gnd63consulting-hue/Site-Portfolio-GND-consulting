@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import InteractiveImageBentoGallery from '@/components/ui/bento-gallery';
 import { ALL_PROJECTS } from './realisations';
 import { HeroScroll } from '../components/HeroScroll';
+import { FaqJsonLd } from '../components/FaqJsonLd';
 import { PhotoViewer } from '../components/PhotoViewer';
 import { Section, Container, Kicker, Btn, PortraitHero, Tag, Faq } from '../ui';
 import { FloatingCtaBand } from '../components/FloatingCtaBand';
@@ -1601,6 +1602,13 @@ function FaqHome() {
             <p className="mt-6 text-text">Une question qui ne figure pas ici ? Écrivez-nous, réponse sous 24h.</p>
           </div>
           <div className="lg:col-span-8">
+            <FaqJsonLd id="home" items={[
+              { q: 'Comment travaillez-vous concrètement ?', a: "Brief, co-création, validation, livraison, toujours documenté. L'IA accélère certaines étapes (recherche, prototypage, post-production), mais la direction créative reste humaine." },
+              { q: 'Quel budget pour un projet ?', a: "Nous travaillons en approche sur-mesure : chaque projet fait l'objet d'un devis personnalisé. Pour les sites vitrines, des formules à prix fixe sont affichées sur la page dédiée (à partir de 800 €)." },
+              { q: 'Travaillez-vous à distance ?', a: "Oui, équipe basée en région parisienne, captations partout en France et à l'international. Visios pour les phases de brief et de validation." },
+              { q: "Comment utilisez-vous l'IA ?", a: "Comme un outil de productivité encadré : génération de variantes, automatisations, post-production. Les usages sont documentés et conformes à l'AI Act (UE 2024/1689)." },
+              { q: 'Quels sont les délais habituels ?', a: "Site vitrine : 1 à 2 semaines. Identité visuelle : 2 à 4 semaines. Production vidéo : variable selon l'ampleur, devis détaillé sous 48h." },
+            ]} />
             <Faq q="Comment travaillez-vous concrètement ?" a={<>Brief, co-création, validation, livraison, toujours documenté. L'IA accélère certaines étapes (recherche, prototypage, post-production), mais la direction créative reste humaine.</>}/>
             <Faq q="Quel budget pour un projet ?" a={<>Nous travaillons en approche sur-mesure : chaque projet fait l'objet d'un <strong>devis personnalisé</strong>. Pour les sites vitrines, découvrez nos formules sur la <a href="/services/sites-vitrines" className="underline decoration-accent underline-offset-4">page dédiée</a>.</>}/>
             <Faq q="Travaillez-vous à distance ?" a={<>Oui, équipe basée à Paris, captations partout en France et à l'international. Visios pour la phase brief et validation.</>}/>

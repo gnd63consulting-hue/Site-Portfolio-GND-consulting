@@ -35,6 +35,9 @@ const ROUTES = [
   { path: '/mentions-legales', title: 'GND Consulting, Mentions légales', desc: 'Mentions légales, informations éditeur et politique cookies du site gndconsulting.fr.' },
   { path: '/guides', title: 'GND Consulting, Guides — Ressources pour votre projet', desc: 'Guides clairs pour réussir votre projet digital : sites web, identité visuelle, vidéo, automatisation IA. Réponses concrètes pour PME et indépendants.' },
   { path: '/guides/freelance-ou-agence', title: 'GND Consulting, Freelance ou agence : qui choisir pour créer son site ?', desc: "Freelance, agence ou studio hybride : avantages, coûts et risques pour créer le site de votre PME en 2026. Le guide GND pour choisir sans se tromper." },
+  { path: '/guides/faut-il-un-site-internet-commerce', title: 'GND Consulting, Faut-il un site internet pour son commerce en 2026 ?', desc: "Faut-il encore un site quand on a une fiche Google ? La réponse claire pour commerces et indépendants : visibilité, crédibilité, propriété. Le guide GND." },
+  { path: '/guides/etre-visible-google-local', title: 'GND Consulting, Comment être visible sur Google quand on est un commerce local ?', desc: "SEO local 2026 : fiche Google Business Profile, avis, site rapide. Les leviers concrets pour apparaître dans Google Maps et le Local Pack. Le guide GND." },
+  { path: '/guides/quand-refaire-son-site', title: "GND Consulting, Quand refaire son site internet ? Les signaux qui ne trompent pas", desc: "Site daté, lent, pas mobile, invisible sur Google : les signaux qui montrent qu'il faut refondre votre site, et comment s'y prendre. Le guide GND." },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');

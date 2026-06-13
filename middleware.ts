@@ -30,6 +30,9 @@ const PRERENDERED = new Set([
   '/mentions-legales',
   '/guides',
   '/guides/freelance-ou-agence',
+  '/guides/faut-il-un-site-internet-commerce',
+  '/guides/etre-visible-google-local',
+  '/guides/quand-refaire-son-site',
 ]);
 
 const BOT =

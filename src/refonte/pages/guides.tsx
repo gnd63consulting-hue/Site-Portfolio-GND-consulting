@@ -4,10 +4,12 @@
  * (éligible featured snippet / AI Overviews), liens internes, FAQ balisée.
  * Charte GND : crème / chocolat / orange, titres display (Marcellus). */
 import * as React from 'react';
-import { Section, Container, Kicker, Btn, Faq } from '../ui';
+import { Section, Container, Kicker, Btn, Faq, CinematicHero } from '../ui';
 import { Icons } from '../icons';
 import { FaqJsonLd, type FaqItem } from '../components/FaqJsonLd';
 import { FloatingCtaBand } from '../components/FloatingCtaBand';
+import { MarqueeCTA } from '../components/MarqueeCTA';
+import ScrollExpandHero from '@/components/blocks/scroll-expansion-hero';
 
 export type GuideMeta = {
   slug: string;
@@ -74,20 +76,47 @@ export function guideBySlug(slug: string): GuideMeta | undefined {
 /* ============================ INDEX /guides ============================ */
 export function GuidesIndex() {
   return (
-    <main id="main" className="pt-24 md:pt-28">
+    <main id="main">
+      {/* HERO #1, ScrollExpandHero (même hero 1 que toutes les pages). */}
+      <div className="pt-20 md:pt-24 bg-bg-alt">
+        <ScrollExpandHero
+          mediaType="video"
+          mediaSrc="/assets/hero1-video.mp4"
+          posterSrc="/assets/hero1-poster.webp"
+          bgImageSrc="/assets/hero1-bg-v2.webp"
+          title="Guides GND."
+          date="GND · Ressources"
+          scrollToExpand="Scrollez pour révéler"
+          textColorClass="text-bg"
+        />
+      </div>
+
+      {/* Marquee CTA entre Hero #1 et Hero #2 (mirror autres pages). */}
+      <MarqueeCTA />
+
+      {/* HERO #2, ressources (CinematicHero). */}
+      <CinematicHero
+        kicker="Ressources"
+        eyebrow="guides"
+        title={<>Guides <span className="italic text-accent">GND</span>.</>}
+        subtitle={<>Des réponses claires aux vraies questions que vous vous posez avant un projet : sites web, identité, vidéo, automatisation. <strong className="text-bg">Sans jargon, sans bla-bla.</strong></>}
+        badges={["Sites web", "Identité", "SEO local", "Refonte"]}
+        ctas={<>
+          <a href="#liste" className="btn btn-primary">Voir les guides <Icons.ArrowDown size={14}/></a>
+          <a href="/contact" className="btn !bg-bg/10 !text-bg !border !border-bg/20 hover:!bg-bg/15">Parler de votre projet <Icons.ArrowRight size={14}/></a>
+        </>}
+        footerLabel="guides"
+      />
+
       <Section className="py-16 md:py-24">
         <Container>
-          <nav className="label-mono text-[10px] tracking-[0.18em] text-text-muted mb-6" aria-label="Fil d'Ariane">
+          <nav id="liste" className="label-mono text-[10px] tracking-[0.18em] text-text-muted mb-6 scroll-mt-28" aria-label="Fil d'Ariane">
             <a href="/" className="hover:text-accent">Accueil</a> <span className="text-text-muted/50">/</span> Guides
           </nav>
-          <Kicker>Ressources</Kicker>
-          <h1 className="display text-5xl md:text-7xl mt-5 text-text-strong leading-[1.02]">
-            Guides <span className="italic text-accent">GND</span>.
-          </h1>
-          <p className="mt-6 text-text text-base md:text-lg leading-relaxed max-w-2xl">
-            Des réponses claires aux vraies questions que vous vous posez avant un projet :
-            sites web, identité, vidéo, automatisation. Sans jargon, sans bla-bla.
-          </p>
+          <Kicker>Tous les guides</Kicker>
+          <h2 className="display text-4xl md:text-5xl mt-4 text-text-strong leading-[1.04]">
+            Choisissez votre <span className="italic text-accent">sujet</span>.
+          </h2>
 
           <div className="mt-12 grid sm:grid-cols-2 gap-5">
             {GUIDES.map((g) => (
@@ -98,7 +127,7 @@ export function GuidesIndex() {
                 style={{ boxShadow: '0 14px 44px rgba(83,36,24,0.07)' }}
               >
                 <div className="label-mono text-[10px] tracking-[0.18em] text-accent">{g.kicker} · {g.readMin} min</div>
-                <h2 className="display text-2xl md:text-[28px] mt-3 text-text-strong leading-tight">{g.title}</h2>
+                <h3 className="display text-2xl md:text-[28px] mt-3 text-text-strong leading-tight">{g.title}</h3>
                 <p className="mt-3 text-sm text-text leading-relaxed">{g.excerpt}</p>
                 <span className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-text-strong group-hover:text-accent transition-colors">
                   Lire le guide <Icons.ArrowRight size={16} />
@@ -108,6 +137,12 @@ export function GuidesIndex() {
           </div>
         </Container>
       </Section>
+
+      <FloatingCtaBand
+        prefix="Votre projet"
+        rotatingWords={['mérite mieux.', 'commence ici.', 'sans bla-bla.', 'clé en main.']}
+        sub="Studio créatif hybride. Réponse sous 24h, devis sous 48h, sans engagement."
+      />
     </main>
   );
 }

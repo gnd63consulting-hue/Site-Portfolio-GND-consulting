@@ -6,6 +6,7 @@
 import * as React from 'react';
 import './refonte.css';
 import { navigate, NAV_EVENT } from './nav';
+import { applyRouteSeo } from './seo';
 import { Header, Footer, CookieBanner } from './layout';
 import { ImageMaskDefs } from '../components/ui/image-mask';
 import { HomePage, ContactBlock } from './pages/home';
@@ -42,18 +43,6 @@ function useRoute() {
   }, []);
   return route;
 }
-
-const ROUTE_LABELS: Record<string, string> = {
-  "/": "Studio créatif humain × IA",
-  "/agence": "L'Agence, Manifeste Humain × IA",
-  "/services/sites-vitrines": "Sites & SEO, Sites vitrines clé en main",
-  "/services/branding-identite": "Branding & Identité, Marque, logo, charte",
-  "/services/audiovisuel": "Audiovisuel, Vidéo, motion, photo",
-  "/services/automatisation-ia": "Automatisation & IA, Workflows & agents",
-  "/realisations": "Réalisations",
-  "/contact": "Contact",
-  "/mentions-legales": "Mentions légales",
-};
 
 // Legacy URL aliases, keep old links working
 const LEGACY_REDIRECTS: Record<string, string> = {
@@ -93,10 +82,10 @@ function RefonteApp() {
     return () => document.removeEventListener('click', onClick);
   }, []);
 
+  // SEO par page : titre, description, canonical, Open Graph, Twitter +
+  // données structurées WebPage / fil d'Ariane. 100 % <head>, invisible.
   React.useEffect(() => {
-    const base = "GND Consulting";
-    const sub = ROUTE_LABELS[route] || ROUTE_LABELS[route.split("/").slice(0, 3).join("/")];
-    document.title = sub ? `${base}, ${sub}` : `${base}, Studio créatif humain × IA · Paris`;
+    applyRouteSeo(route);
   }, [route]);
 
   // Analytics consent-gated : ne charge GA4 que si le visiteur a accepté

@@ -9,6 +9,7 @@ import { Icons } from '../icons';
 import { FaqJsonLd, type FaqItem } from '../components/FaqJsonLd';
 import { FloatingCtaBand } from '../components/FloatingCtaBand';
 import { MarqueeCTA } from '../components/MarqueeCTA';
+import { GuidesShowcase } from '../components/GuidesShowcase';
 import ScrollExpandHero from '@/components/blocks/scroll-expansion-hero';
 
 export type GuideMeta = {
@@ -109,35 +110,7 @@ export function GuidesIndex() {
         footerLabel="guides"
       />
 
-      <Section className="py-16 md:py-24">
-        <Container>
-          <nav id="liste" className="label-mono text-[10px] tracking-[0.18em] text-text-muted mb-6 scroll-mt-28" aria-label="Fil d'Ariane">
-            <a href="/" className="hover:text-accent">Accueil</a> <span className="text-text-muted/50">/</span> Guides
-          </nav>
-          <Kicker>Tous les guides</Kicker>
-          <h2 className="display text-4xl md:text-5xl mt-4 text-text-strong leading-[1.04]">
-            Choisissez votre <span className="italic text-accent">sujet</span>.
-          </h2>
-
-          <div className="mt-12 grid sm:grid-cols-2 gap-5">
-            {GUIDES.map((g) => (
-              <a
-                key={g.slug}
-                href={`/guides/${g.slug}`}
-                className="group block rounded-[24px] bg-bg/70 ring-1 ring-text-strong/[0.07] p-6 md:p-7 transition-all hover:ring-accent/50 hover:-translate-y-0.5"
-                style={{ boxShadow: '0 14px 44px rgba(83,36,24,0.07)' }}
-              >
-                <div className="label-mono text-[10px] tracking-[0.18em] text-accent">{g.kicker} · {g.readMin} min</div>
-                <h3 className="display text-2xl md:text-[28px] mt-3 text-text-strong leading-tight">{g.title}</h3>
-                <p className="mt-3 text-sm text-text leading-relaxed">{g.excerpt}</p>
-                <span className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-text-strong group-hover:text-accent transition-colors">
-                  Lire le guide <Icons.ArrowRight size={16} />
-                </span>
-              </a>
-            ))}
-          </div>
-        </Container>
-      </Section>
+      <GuidesShowcase guides={GUIDES} id="liste" />
 
       <FloatingCtaBand
         prefix="Votre projet"

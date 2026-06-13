@@ -1595,13 +1595,12 @@ function FaqHome() {
   return (
     <Section className="py-28 md:py-40">
       <Container>
-        <div className="grid lg:grid-cols-12 gap-12">
-          <div className="lg:col-span-4 lg:pt-10">
-            <Kicker>Questions fréquentes</Kicker>
-            <h2 className="display text-5xl md:text-6xl mt-5 text-text-strong">Toutes les <span className="italic text-accent">réponses</span>.</h2>
-            <p className="mt-6 text-text">Une question qui ne figure pas ici ? Écrivez-nous, réponse sous 24h.</p>
-          </div>
-          <div className="lg:col-span-8">
+        <div className="max-w-2xl">
+          <Kicker>Questions fréquentes</Kicker>
+          <h2 className="display text-5xl md:text-6xl mt-5 text-text-strong">Toutes les <span className="italic text-accent">réponses</span>.</h2>
+          <p className="mt-6 text-text">Une question qui ne figure pas ici ? Écrivez-nous, réponse sous 24h.</p>
+        </div>
+        <div className="mt-12 max-w-3xl">
             <FaqJsonLd id="home" items={[
               { q: 'Comment travaillez-vous concrètement ?', a: "Brief, co-création, validation, livraison, toujours documenté. L'IA accélère certaines étapes (recherche, prototypage, post-production), mais la direction créative reste humaine." },
               { q: 'Quel budget pour un projet ?', a: "Nous travaillons en approche sur-mesure : chaque projet fait l'objet d'un devis personnalisé. Pour les sites vitrines, des formules à prix fixe sont affichées sur la page dédiée (à partir de 800 €)." },
@@ -1614,7 +1613,6 @@ function FaqHome() {
             <Faq q="Travaillez-vous à distance ?" a={<>Oui, équipe basée à Paris, captations partout en France et à l'international. Visios pour la phase brief et validation.</>}/>
             <Faq q="Comment utilisez-vous l'IA ?" a={<>Comme un outil de productivité encadré : génération de variantes, automatisations, post-production. Les usages sont documentés et conformes à l'AI Act (UE 2024/1689).</>}/>
             <Faq q="Quels sont les délais habituels ?" a={<>Site vitrine : 1–2 semaines. Identité visuelle : 2–4 semaines. Production vidéo : variable selon ampleur, devis détaillé en 48h.</>}/>
-          </div>
         </div>
       </Container>
     </Section>

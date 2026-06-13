@@ -423,20 +423,18 @@ export function GuidePage({ slug }: { slug: string }) {
             {content.body}
           </article>
 
-          {/* FAQ visible (correspond au balisage FaqJsonLd) — même mise en
-              page 2 colonnes que l'accueil, pour une FAQ identique partout. */}
+          {/* FAQ visible (correspond au balisage FaqJsonLd) — titre en haut,
+              questions empilées dessous. Mise en page identique à l'accueil. */}
           <section className="mt-20" aria-label="Questions fréquentes">
-            <div className="grid lg:grid-cols-12 gap-12">
-              <div className="lg:col-span-4 lg:pt-10">
-                <Kicker>Questions fréquentes</Kicker>
-                <h2 className="display text-5xl md:text-6xl mt-5 text-text-strong">Toutes les <span className="italic text-accent">réponses</span>.</h2>
-                <p className="mt-6 text-text">Une question qui ne figure pas ici ? Écrivez-nous, réponse sous 24h.</p>
-              </div>
-              <div className="lg:col-span-8">
-                {content.faq.map((f) => (
-                  <Faq key={f.q} q={f.q} a={f.a} />
-                ))}
-              </div>
+            <div className="max-w-2xl">
+              <Kicker>Questions fréquentes</Kicker>
+              <h2 className="display text-5xl md:text-6xl mt-5 text-text-strong">Toutes les <span className="italic text-accent">réponses</span>.</h2>
+              <p className="mt-6 text-text">Une question qui ne figure pas ici ? Écrivez-nous, réponse sous 24h.</p>
+            </div>
+            <div className="mt-12 max-w-3xl">
+              {content.faq.map((f) => (
+                <Faq key={f.q} q={f.q} a={f.a} />
+              ))}
             </div>
           </section>
 

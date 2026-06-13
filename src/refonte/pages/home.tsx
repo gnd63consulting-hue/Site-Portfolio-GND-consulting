@@ -2027,9 +2027,10 @@ function HomePage() {
       <WhyBlock />
       <ValuesBlock />
       <TestimonialsBlock />
-      <FaqHome />
       <TeamSlider />
       <ContactBlock />
+      {/* FAQ placée après la section Contact, juste au-dessus du footer. */}
+      <FaqHome />
       <FloatingCtaBand
         prefix="Créons l'impact"
         rotatingWords={['ensemble.', 'à deux.', 'côte à côte.', 'main dans la main.', 'avec vous.']}

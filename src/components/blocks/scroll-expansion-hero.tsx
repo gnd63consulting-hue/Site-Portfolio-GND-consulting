@@ -288,6 +288,12 @@ const ScrollExpandMedia = ({
                         controls={false}
                         disablePictureInPicture
                         disableRemotePlayback
+                        /* Garantit lecture + boucle même quand un navigateur
+                           bloque l'autoplay ou stoppe la boucle (onglet
+                           ré-affiché) : play() explicite + relance à la fin. */
+                        onCanPlay={(e) => { e.currentTarget.play().catch(() => {}); }}
+                        onLoadedData={(e) => { e.currentTarget.play().catch(() => {}); }}
+                        onEnded={(e) => { e.currentTarget.currentTime = 0; e.currentTarget.play().catch(() => {}); }}
                       />
                       <div
                         className='absolute inset-0 z-10'

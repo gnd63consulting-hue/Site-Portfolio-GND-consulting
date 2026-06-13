@@ -78,7 +78,14 @@ try {
     });
     let html = await page.evaluate(() => '<!DOCTYPE html>\n' + document.documentElement.outerHTML);
     html = rewriteHead(html, route);
-    const out = route.path === '/' ? 'prerendered/index.html' : join('prerendered', route.path.slice(1), 'index.html');
+    // Snapshots servis UNIQUEMENT aux robots (via middleware.ts) → on retire
+    // le script de l'app : HTML pur, aucune exécution JS, aucun risque de
+    // re-montage. Les visiteurs ne voient jamais ces fichiers.
+    html = html.replace(/<script type="module"[^>]*><\/script>/g, '');
+    const out =
+      route.path === '/'
+        ? 'prerendered/__prerender/index.html'
+        : join('prerendered/__prerender', route.path.slice(1), 'index.html');
     mkdirSync(dirname(out), { recursive: true });
     writeFileSync(out, html);
     console.log('✓', route.path, Math.round(html.length / 1024) + 'KB');

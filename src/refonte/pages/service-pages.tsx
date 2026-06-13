@@ -138,8 +138,8 @@ function BrandingPage() {
       <div className="pt-20 md:pt-24 bg-bg-alt">
         <ScrollExpandHero
           mediaType="video"
-          mediaSrc="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Creative_Studio_Video_Generation2.mp4"
-          posterSrc="https://gublhtivvydkuooooffg.supabase.co/storage/v1/render/image/public/portfolio-photos/20250919_0006_Vibrant%20Digital%20Collaboration_remix_01k5fdpkfdemjrbt49q10rx0hx.png?width=1600&quality=82"
+          mediaSrc="/assets/hero1-video.mp4"
+          posterSrc="/assets/hero1-poster.webp"
           bgImageSrc="/assets/hero1-bg-v2.webp"
           title="Une marque, une intention."
           date="GND · Direction de marque"
@@ -940,8 +940,8 @@ function IAPage() {
         <div className="pt-20 md:pt-24 bg-bg-alt">
           <ScrollExpandHero
             mediaType="video"
-            mediaSrc="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Creative_Studio_Video_Generation2.mp4"
-            posterSrc="https://gublhtivvydkuooooffg.supabase.co/storage/v1/render/image/public/portfolio-photos/20250919_0006_Vibrant%20Digital%20Collaboration_remix_01k5fdpkfdemjrbt49q10rx0hx.png?width=1600&quality=82"
+            mediaSrc="/assets/hero1-video.mp4"
+            posterSrc="/assets/hero1-poster.webp"
             bgImageSrc="/assets/hero1-bg-v2.webp"
             title="Vos opérations qui tournent sans vous."
             date="Automatisation IA · Édition 2026"
@@ -1581,8 +1581,8 @@ function AudiovisuelPage() {
       <div className="pt-20 md:pt-24 bg-bg-alt">
       <ScrollExpandHero
         mediaType="video"
-        mediaSrc="https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-videos/Creative_Studio_Video_Generation2.mp4"
-        posterSrc="https://gublhtivvydkuooooffg.supabase.co/storage/v1/render/image/public/portfolio-photos/20250919_0006_Vibrant%20Digital%20Collaboration_remix_01k5fdpkfdemjrbt49q10rx0hx.png?width=1600&quality=82"
+        mediaSrc="/assets/hero1-video.mp4"
+        posterSrc="/assets/hero1-poster.webp"
         bgImageSrc="/assets/hero1-bg-v2.webp"
         title="Une image, une intention."
         date="GND · Direction artistique"

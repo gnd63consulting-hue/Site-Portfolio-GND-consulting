@@ -94,7 +94,7 @@ export function GuidesIndex() {
       {/* Marquee CTA entre Hero #1 et Hero #2 (mirror autres pages). */}
       <MarqueeCTA />
 
-      {/* HERO #2, ressources (CinematicHero). */}
+      {/* HERO #2, ressources (CinematicHero, même scène cinématique que /agence). */}
       <CinematicHero
         kicker="Ressources"
         eyebrow="guides"
@@ -105,6 +105,7 @@ export function GuidesIndex() {
           <a href="#liste" className="btn btn-primary">Voir les guides <Icons.ArrowDown size={14}/></a>
           <a href="/contact" className="btn !bg-bg/10 !text-bg !border !border-bg/20 hover:!bg-bg/15">Parler de votre projet <Icons.ArrowRight size={14}/></a>
         </>}
+        bgImage="/assets/agence-hero2-scene.webp"
         footerLabel="guides"
       />
 

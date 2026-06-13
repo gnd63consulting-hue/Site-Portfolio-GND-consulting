@@ -1,5 +1,6 @@
 /* /services/sites-vitrines, pricing-driven service page, ported to ES modules */
 import { Section, Container, Kicker, Faq } from '../ui';
+import { FaqJsonLd } from '../components/FaqJsonLd';
 import { FloatingCtaBand } from '../components/FloatingCtaBand';
 import { Icons } from '../icons';
 import ScrollExpandHero from '@/components/blocks/scroll-expansion-hero';
@@ -181,6 +182,22 @@ function SitesVitrinesPage() {
               </p>
             </div>
             <div className="lg:col-span-8">
+              {/* Balisage FAQPage (Schema.org) — éligibilité résultats enrichis
+                  Google + citation IA. Texte fidèle aux réponses visibles. */}
+              <FaqJsonLd
+                id="sites-vitrines"
+                items={[
+                  { q: 'Combien coûte un site vitrine ?', a: "Chez GND, trois formules à prix fixe et public : Vitrine Essentiel à 800 €, Vitrine + Réservation à 1 500 €, Pack Complet à 2 500 €. Paiement unique, sans abonnement, site qui vous appartient. La première année de nom de domaine est offerte." },
+                  { q: 'Suis-je vraiment propriétaire du site ?', a: "Oui. Le nom de domaine est enregistré à votre nom (WHOIS vérifiable), vous recevez tous les accès : hébergement, back-office, code source. Aucune dépendance à GND. Vous pouvez quitter, transférer ou revendre." },
+                  { q: 'Quel est le délai de livraison réel ?', a: "14 jours ouvrés en moyenne (Brief, Maquette, Développement, Mise en ligne). Si un dépassement est nécessaire, il est annoncé dès le départ avec sa raison." },
+                  { q: 'Pourquoi pas Wix, Squarespace ou Shopify ?', a: "Les constructeurs DIY sont bridés sur le SEO local, verrouillent vos données et imposent un abonnement à vie. Le site GND est en propriété, optimisé Google et sans abonnement. Wix dépanne pour tester, GND est fait pour exister durablement sur Google." },
+                  { q: 'Le SEO local est-il vraiment inclus ?', a: "Oui : optimisations techniques (vitesse, balises, structure), données structurées Schema.org, soumission à Google Search Console et configuration de la fiche Google Business Profile. Garantie : sans page 1 sur « votre métier + votre ville » sous 90 jours, la SEO est retravaillée sans surcoût." },
+                  { q: 'Gérez-vous les réservations ou commandes en ligne ?', a: "Oui. La formule Vitrine + Réservation (1 500 €) intègre un widget de réservation sans commission (Zenchef, TheFork ou équivalent). Le Pack Complet (2 500 €) intègre le paiement et le click & collect." },
+                  { q: 'Y a-t-il un abonnement mensuel ?', a: "Non. Paiement unique, aucun forfait annuel imposé. Les évolutions futures se font sur devis transparent (à partir de 50 € l'intervention), et vous restez libre de confier la maintenance à qui vous voulez." },
+                  { q: 'Pour quels secteurs travaillez-vous ?', a: "Restaurants, cafés, coiffeurs, instituts de beauté, auto-écoles, artisans du bâtiment, commerces de proximité et indépendants. Si votre métier n'apparaît pas, demandez : on s'adapte." },
+                ]}
+              />
+              <Faq q="Combien coûte un site vitrine ?" a={<>Trois formules à prix fixe et public : <strong>Vitrine Essentiel à 800 €</strong>, <strong>Vitrine + Réservation à 1 500 €</strong>, <strong>Pack Complet à 2 500 €</strong>. Paiement unique, sans abonnement, site qui vous appartient, première année de domaine offerte.</>}/>
               <Faq q="Suis-je vraiment propriétaire du site ?" a="Oui. Le nom de domaine est enregistré à votre nom (WHOIS vérifiable), vous recevez tous les accès, hébergement, back-office, code source. Aucune dépendance à GND. Vous pouvez quitter, transférer, revendre."/>
               <Faq q="Quel est le délai de livraison réel ?" a="14 jours ouvrés en moyenne (Brief → Maquette → Dev → Mise en ligne). Si on dépasse, on vous le dit dès le départ avec la raison."/>
               <Faq q="Comment se passe le paiement ?" a="50 % à la commande (déclenche la production), 50 % à la livraison. Facture standard, virement bancaire. TVA non applicable (Art. 293 B du CGI)."/>

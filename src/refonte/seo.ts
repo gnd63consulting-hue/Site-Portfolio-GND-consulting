@@ -6,6 +6,8 @@
  * L'Organization + WebSite sont statiques dans index.html (lus sans JS) ;
  * ces snapshots-ci seront vus par Google une fois le pré-rendu en place. */
 
+import { GUIDES } from './pages/guides';
+
 const BASE = 'https://www.gndconsulting.fr';
 
 type Meta = { title: string; description: string };
@@ -56,10 +58,20 @@ export const SEO_META: Record<string, Meta> = {
     description:
       'Mentions légales, informations éditeur et politique cookies du site gndconsulting.fr.',
   },
+  '/guides': {
+    title: 'GND Consulting, Guides — Ressources pour votre projet',
+    description:
+      'Guides clairs pour réussir votre projet digital : sites web, identité visuelle, vidéo, automatisation IA. Réponses concrètes pour PME et indépendants.',
+  },
 };
 
 function metaFor(route: string): Meta {
   if (SEO_META[route]) return SEO_META[route];
+  if (route.startsWith('/guides/')) {
+    const g = GUIDES.find((x) => x.slug === route.replace('/guides/', ''));
+    if (g) return { title: `GND Consulting, ${g.title}`, description: g.description };
+    return SEO_META['/guides'];
+  }
   if (route.startsWith('/realisations/')) {
     return {
       title: 'GND Consulting, Réalisation — Portfolio',

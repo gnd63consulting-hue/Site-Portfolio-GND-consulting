@@ -371,6 +371,7 @@ function Footer() {
               <li><a href="/services/audiovisuel" className="gnd-link text-bg/85 hover:text-bg transition-colors">Audiovisuel</a></li>
               <li><a href="/services/automatisation-ia" className="gnd-link text-bg/85 hover:text-bg transition-colors">Automatisation &amp; IA</a></li>
               <li><a href="/realisations" className="gnd-link text-bg/85 hover:text-bg transition-colors">Réalisations</a></li>
+              <li><a href="/guides" className="gnd-link text-bg/85 hover:text-bg transition-colors">Guides</a></li>
               <li><a href="/contact" className="gnd-link text-bg/85 hover:text-bg transition-colors">Contact</a></li>
             </ul>
           </div>

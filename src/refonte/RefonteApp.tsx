@@ -14,6 +14,7 @@ import { AgencePage } from './pages/agence';
 import { SitesVitrinesPage } from './pages/sites-vitrines';
 import { BrandingPage, AudiovisuelPage, IAPage } from './pages/service-pages';
 import { RealisationsPage, ProjectDetail } from './pages/realisations';
+import { GuidesIndex, GuidePage } from './pages/guides';
 import { LegalPage, NotFoundPage } from './pages/legal';
 
 function useRoute() {
@@ -113,6 +114,8 @@ function RefonteApp() {
         || route === "/services/photographie") page = <AudiovisuelPage/>;
   else if (route === "/realisations") page = <RealisationsPage/>;
   else if (route.startsWith("/realisations/")) page = <ProjectDetail id={route.replace("/realisations/", "")}/>;
+  else if (route === "/guides") page = <GuidesIndex/>;
+  else if (route.startsWith("/guides/")) page = <GuidePage slug={route.replace("/guides/", "")}/>;
   else if (route === "/contact") page = <main id="main" className="pt-24 md:pt-28"><ContactBlock/></main>;
   else if (route === "/mentions-legales") page = <LegalPage/>;
   else page = <NotFoundPage/>;

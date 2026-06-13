@@ -28,6 +28,8 @@ const PRERENDERED = new Set([
   '/realisations',
   '/contact',
   '/mentions-legales',
+  '/guides',
+  '/guides/freelance-ou-agence',
 ]);
 
 const BOT =

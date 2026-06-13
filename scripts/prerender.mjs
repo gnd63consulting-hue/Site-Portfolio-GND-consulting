@@ -33,6 +33,8 @@ const ROUTES = [
   { path: '/realisations', title: 'GND Consulting, Réalisations — Portfolio', desc: "Clips musicaux, captations live, émissions, photographie et identité visuelle : le portfolio GND Consulting. Chaque projet porte une intention, chaque image une signature." },
   { path: '/contact', title: 'GND Consulting, Contact — Démarrer un projet', desc: "Parlez-nous de votre projet : réponse sous 24h, devis sous 48h, sans engagement. Studio créatif humain × IA basé à Paris." },
   { path: '/mentions-legales', title: 'GND Consulting, Mentions légales', desc: 'Mentions légales, informations éditeur et politique cookies du site gndconsulting.fr.' },
+  { path: '/guides', title: 'GND Consulting, Guides — Ressources pour votre projet', desc: 'Guides clairs pour réussir votre projet digital : sites web, identité visuelle, vidéo, automatisation IA. Réponses concrètes pour PME et indépendants.' },
+  { path: '/guides/freelance-ou-agence', title: 'GND Consulting, Freelance ou agence : qui choisir pour créer son site ?', desc: "Freelance, agence ou studio hybride : avantages, coûts et risques pour créer le site de votre PME en 2026. Le guide GND pour choisir sans se tromper." },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');

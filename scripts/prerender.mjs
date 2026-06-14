@@ -42,6 +42,12 @@ const ROUTES = [
   { path: '/guides/etre-proprietaire-de-son-site', title: "GND Consulting, Êtes-vous vraiment propriétaire de votre site internet ?", desc: "Site loué ou site qui vous appartient ? Ce que « propriétaire » veut dire, les pièges de l'abonnement à vie, et comment reprendre la main. Le guide GND." },
   { path: '/guides/n8n-make-zapier-comparatif', title: "GND Consulting, n8n, Make ou Zapier : quel outil d'automatisation choisir ?", desc: "n8n, Make ou Zapier : forces, limites, prix et souveraineté des données. Le comparatif clair pour choisir votre outil d'automatisation. Le guide GND." },
   { path: '/guides/prix-site-vitrine', title: "GND Consulting, Combien coûte un site vitrine en 2026 ?", desc: "Combien coûte un site vitrine en 2026 ? Fourchettes freelance, agence et no-code, ce qui fait varier le prix, et comment budgéter. Le guide GND." },
+  { path: '/guides/prix-identite-visuelle', title: "GND Consulting, Combien coûte une identité visuelle en 2026 ?", desc: "Prix d'un logo, d'une charte graphique, d'un brand book : les fourchettes de marché, ce qui les fait varier, et comment budgéter votre identité. Le guide GND." },
+  { path: '/guides/logo-freelance-ou-agence', title: "GND Consulting, Logo : freelance ou agence ?", desc: "Logo freelance ou agence : prix, qualité, droits et fichiers sources. Comment choisir selon votre projet, sans mauvaise surprise. Le guide GND." },
+  { path: '/guides/prix-clip-musical', title: "GND Consulting, Combien coûte un clip musical en 2026 ?", desc: "Prix d'un clip musical en France : fourchettes selon l'ambition, ce qui fait varier le budget, et comment dépenser utile. Le guide GND." },
+  { path: '/guides/tarif-video-entreprise', title: "GND Consulting, Combien coûte une vidéo d'entreprise en 2026 ?", desc: "Prix d'une vidéo d'entreprise : film institutionnel, interview, motion. Fourchettes de marché et ce qui fait varier le devis. Le guide GND." },
+  { path: '/guides/prix-agent-ia-pme', title: "GND Consulting, Combien coûte un agent IA pour une PME en 2026 ?", desc: "Prix d'un agent IA sur-mesure pour une PME : fourchettes de marché, ce qui fait varier le coût, et comment estimer le retour sur investissement. Le guide GND." },
+  { path: '/guides/agent-ia-vs-chatbot', title: "GND Consulting, Agent IA ou chatbot : quelle différence ?", desc: "Agent IA ou chatbot : la différence claire, ce que chacun sait faire, et lequel choisir selon votre besoin. Le guide GND, sans jargon." },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');

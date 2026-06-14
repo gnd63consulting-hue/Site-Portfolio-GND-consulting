@@ -37,6 +37,12 @@ const PRERENDERED = new Set([
   '/guides/etre-proprietaire-de-son-site',
   '/guides/n8n-make-zapier-comparatif',
   '/guides/prix-site-vitrine',
+  '/guides/prix-identite-visuelle',
+  '/guides/logo-freelance-ou-agence',
+  '/guides/prix-clip-musical',
+  '/guides/tarif-video-entreprise',
+  '/guides/prix-agent-ia-pme',
+  '/guides/agent-ia-vs-chatbot',
 ]);
 
 const BOT =

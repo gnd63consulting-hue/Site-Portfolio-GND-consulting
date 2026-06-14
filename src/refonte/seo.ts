@@ -21,7 +21,7 @@ export const SEO_META: Record<string, Meta> = {
   '/agence': {
     title: "GND Consulting, L'Agence — Manifeste Humain × IA",
     description:
-      "Studio créatif fondé en 2025 : une seule équipe, quatre branches, une direction créative unifiée. Notre manifeste, notre éthique et notre méthode hybride humain × IA.",
+      "Studio créatif fondé en 2025 : une équipe, quatre branches, une direction créative unifiée. Manifeste, éthique et méthode hybride humain × IA.",
   },
   '/services/sites-vitrines': {
     title: 'GND Consulting, Sites vitrines & SEO clé en main',
@@ -63,6 +63,14 @@ export const SEO_META: Record<string, Meta> = {
     description:
       'Guides clairs pour réussir votre projet digital : sites web, identité visuelle, vidéo, automatisation IA. Réponses concrètes pour PME et indépendants.',
   },
+};
+
+/* serviceType par page service — pour le schema Service (résultats enrichis). */
+const SERVICE_TYPE: Record<string, string> = {
+  '/services/sites-vitrines': 'Création de site web',
+  '/services/branding-identite': 'Identité visuelle et branding',
+  '/services/audiovisuel': 'Production audiovisuelle',
+  '/services/automatisation-ia': 'Automatisation et intelligence artificielle',
 };
 
 function metaFor(route: string): Meta {
@@ -117,6 +125,12 @@ function injectJsonLd(id: string, obj: unknown) {
   el.textContent = JSON.stringify(obj);
 }
 
+/* Retire un bloc JSON-LD devenu hors-sujet lors d'un changement de page
+   (ex. le Service ne doit pas rester sur un guide). */
+function removeJsonLd(id: string) {
+  document.getElementById(id)?.remove();
+}
+
 function breadcrumbFor(route: string, title: string) {
   const items: any[] = [
     { '@type': 'ListItem', position: 1, name: 'Accueil', item: `${BASE}/` },
@@ -146,6 +160,8 @@ export function applyRouteSeo(route: string) {
 
   document.title = title;
   setMeta('description', description);
+  // Mentions légales : aucune valeur SEO + boilerplate → noindex (mais suivie).
+  setMeta('robots', route === '/mentions-legales' ? 'noindex, follow' : 'index, follow');
   setCanonical(url);
   setMeta('og:title', title, 'property');
   setMeta('og:description', description, 'property');
@@ -165,4 +181,43 @@ export function applyRouteSeo(route: string) {
     about: { '@id': `${BASE}/#organization` },
   });
   injectJsonLd('gnd-jsonld-breadcrumb', breadcrumbFor(route, title));
+
+  // Schema Service sur les pages service (sinon on le retire).
+  if (SERVICE_TYPE[route]) {
+    injectJsonLd('gnd-jsonld-service', {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      '@id': `${url}#service`,
+      name: title.replace(/^GND Consulting,\s*/, ''),
+      serviceType: SERVICE_TYPE[route],
+      description,
+      url,
+      provider: { '@id': `${BASE}/#organization` },
+      areaServed: [
+        { '@type': 'Country', name: 'France' },
+        { '@type': 'City', name: 'Paris' },
+      ],
+    });
+  } else {
+    removeJsonLd('gnd-jsonld-service');
+  }
+
+  // Schema Article sur les guides (E-E-A-T). Auteur = l'organisation GND
+  // (pas de personne inventée). Pas de date fabriquée.
+  if (route.startsWith('/guides/') && GUIDES.some((g) => g.slug === route.replace('/guides/', ''))) {
+    injectJsonLd('gnd-jsonld-article', {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      '@id': `${url}#article`,
+      headline: title.replace(/^GND Consulting,\s*/, ''),
+      description,
+      url,
+      inLanguage: 'fr-FR',
+      author: { '@id': `${BASE}/#organization` },
+      publisher: { '@id': `${BASE}/#organization` },
+      isPartOf: { '@id': `${BASE}/#website` },
+    });
+  } else {
+    removeJsonLd('gnd-jsonld-article');
+  }
 }

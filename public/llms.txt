@@ -1,0 +1,29 @@
+# GND Consulting
+
+> Studio créatif hybride humain × IA basé en région parisienne (Paris / Île-de-France), au service de clients dans toute la France. GND réunit sous une même direction créative quatre branches : sites web & SEO, branding & identité visuelle, production audiovisuelle et automatisation & IA. Principe : l'œil humain pour signer, l'IA pour accélérer. Devis sous 48h, réponse sous 24h.
+
+## Services
+
+- [Sites vitrines & SEO](https://www.gndconsulting.fr/services/sites-vitrines) : sites vitrines clé en main pour commerces et indépendants, design sur-mesure, SEO local, hébergement configuré, livraison 1 à 2 semaines, paiement unique sans abonnement, site 100 % propriété du client.
+- [Branding & identité visuelle](https://www.gndconsulting.fr/services/branding-identite) : logo, charte graphique, brand book, direction artistique, supports imprimés et déclinaisons digitales.
+- [Production audiovisuelle](https://www.gndconsulting.fr/services/audiovisuel) : clips musicaux, captation live 4K/8K, aftermovies, émissions, vidéo d'entreprise, montage, motion design et photographie professionnelle.
+- [Automatisation & IA](https://www.gndconsulting.fr/services/automatisation-ia) : workflows automatisés (n8n, Make, Zapier), agents IA sur-mesure, chatbots, audit et accompagnement à l'adoption de l'IA pour PME, dans le respect du RGPD.
+
+## Guides
+
+- [Freelance ou agence : qui choisir pour créer son site ?](https://www.gndconsulting.fr/guides/freelance-ou-agence)
+- [Faut-il un site internet pour son commerce en 2026 ?](https://www.gndconsulting.fr/guides/faut-il-un-site-internet-commerce)
+- [Comment être visible sur Google quand on est un commerce local ?](https://www.gndconsulting.fr/guides/etre-visible-google-local)
+- [Quand refaire son site internet ?](https://www.gndconsulting.fr/guides/quand-refaire-son-site)
+
+## En savoir plus
+
+- [L'agence (manifeste, méthode, fondateur)](https://www.gndconsulting.fr/agence)
+- [Réalisations (portfolio)](https://www.gndconsulting.fr/realisations)
+- [Contact](https://www.gndconsulting.fr/contact) — contact@gndconsulting.fr · 07 59 50 63 22
+
+## Notes
+
+- Zone desservie : Paris et Île-de-France en priorité, France entière à distance.
+- Signature : « Charge cognitive zéro » — « L'humain pour guider, l'IA pour accélérer ».
+- Fondé en 2025.

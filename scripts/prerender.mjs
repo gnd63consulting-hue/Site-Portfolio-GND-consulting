@@ -25,7 +25,7 @@ const PORT = 4261;
    ici on fige title + description + canonical dans le HTML statique). */
 const ROUTES = [
   { path: '/', title: 'GND Consulting, Studio créatif humain × IA · Paris', desc: "Studio créatif hybride à Paris : sites web & SEO, branding & identité, production audiovisuelle, automatisation IA. L'œil humain pour signer, l'IA pour accélérer. Devis sous 48h." },
-  { path: '/agence', title: "GND Consulting, L'Agence — Manifeste Humain × IA", desc: "Studio créatif fondé en 2025 : une seule équipe, quatre branches, une direction créative unifiée. Découvrez notre manifeste, notre éthique et notre méthode hybride humain × IA." },
+  { path: '/agence', title: "GND Consulting, L'Agence — Manifeste Humain × IA", desc: "Studio créatif fondé en 2025 : une équipe, quatre branches, une direction créative unifiée. Manifeste, éthique et méthode hybride humain × IA." },
   { path: '/services/sites-vitrines', title: 'GND Consulting, Sites vitrines & SEO clé en main', desc: "Sites vitrines clé en main pour commerces et indépendants : design sur-mesure, SEO local, hébergement configuré, livraison 1 à 2 semaines, 0 € d'abonnement, 100 % propriétaire." },
   { path: '/services/branding-identite', title: 'GND Consulting, Branding & Identité visuelle', desc: "Création de marque complète : logo, charte graphique, direction créative, supports imprimés et déclinaisons digitales. Une identité cohérente qui marque les esprits." },
   { path: '/services/audiovisuel', title: 'GND Consulting, Production audiovisuelle — Vidéo, motion, photo', desc: "Studio parisien : captation 4K/8K, clips musicaux, aftermovies, émissions, montage cinéma, motion design et photographie. De l'écriture à la livraison, tout en interne." },

@@ -110,7 +110,7 @@ function HeroHome() {
       <div className="relative flex-1 z-10 min-h-0">
         {/* Wordmark, sized to viewport height, fills the screen horizontally */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
-          <h1
+          <div
             className="display whitespace-nowrap leading-[.78] tracking-huge"
             style={{
               color: '#FFFFFF',
@@ -118,11 +118,11 @@ function HeroHome() {
               transform:`translate(${mx * -10}px, ${my * -8}px)`,
               textShadow:'0 8px 50px rgba(83,36,24,.18), 0 2px 12px rgba(83,36,24,.10)'
             }}
-            aria-label="GND Consulting">
+            aria-hidden="true">
             <span>G</span>
             <span>N</span>
             <span>D</span>
-          </h1>
+          </div>
         </div>
 
         {/* Central portrait, sized to viewport height */}
@@ -1947,6 +1947,9 @@ function ContactBlock() {
 function HomePage() {
   return (
     <main id="main">
+      {/* H1 unique de la page d'accueil (le hero #1 est un visuel animé, pas un
+          titre sémantique). sr-only = invisible à l'écran, lu par Google/IA. */}
+      <h1 className="sr-only">GND Consulting — Studio créatif humain × IA à Paris : sites web &amp; SEO, branding, audiovisuel, automatisation IA</h1>
       {/* HERO #1, ScrollExpandHero (mirror /audiovisuel).
           Test 03/06/26 demande Roodny : répliquer pattern 3-héros de la page
           audiovisuel sur la home. Hero #1 = ScrollExpand (NEW), Hero #2 =

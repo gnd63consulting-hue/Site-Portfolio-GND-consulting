@@ -27,6 +27,3 @@ Allow: /*.pdf$
 
 # Sitemap
 Sitemap: https://www.gndconsulting.fr/sitemap.xml
-
-# Crawl-delay pour éviter la surcharge serveur
-Crawl-delay: 1

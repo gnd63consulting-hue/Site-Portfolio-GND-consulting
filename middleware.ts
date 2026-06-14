@@ -33,6 +33,10 @@ const PRERENDERED = new Set([
   '/guides/faut-il-un-site-internet-commerce',
   '/guides/etre-visible-google-local',
   '/guides/quand-refaire-son-site',
+  '/guides/charte-graphique-vs-brand-book',
+  '/guides/etre-proprietaire-de-son-site',
+  '/guides/n8n-make-zapier-comparatif',
+  '/guides/prix-site-vitrine',
 ]);
 
 const BOT =

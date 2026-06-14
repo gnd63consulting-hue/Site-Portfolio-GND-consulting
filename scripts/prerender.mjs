@@ -38,6 +38,10 @@ const ROUTES = [
   { path: '/guides/faut-il-un-site-internet-commerce', title: 'GND Consulting, Faut-il un site internet pour son commerce en 2026 ?', desc: "Faut-il encore un site quand on a une fiche Google ? La réponse claire pour commerces et indépendants : visibilité, crédibilité, propriété. Le guide GND." },
   { path: '/guides/etre-visible-google-local', title: 'GND Consulting, Comment être visible sur Google quand on est un commerce local ?', desc: "SEO local 2026 : fiche Google Business Profile, avis, site rapide. Les leviers concrets pour apparaître dans Google Maps et le Local Pack. Le guide GND." },
   { path: '/guides/quand-refaire-son-site', title: "GND Consulting, Quand refaire son site internet ? Les signaux qui ne trompent pas", desc: "Site daté, lent, pas mobile, invisible sur Google : les signaux qui montrent qu'il faut refondre votre site, et comment s'y prendre. Le guide GND." },
+  { path: '/guides/charte-graphique-vs-brand-book', title: "GND Consulting, Charte graphique ou brand book : quelle différence ?", desc: "Charte graphique ou brand book : la différence claire, ce que contient chacun, et lequel choisir selon votre marque. Le guide GND, sans jargon." },
+  { path: '/guides/etre-proprietaire-de-son-site', title: "GND Consulting, Êtes-vous vraiment propriétaire de votre site internet ?", desc: "Site loué ou site qui vous appartient ? Ce que « propriétaire » veut dire, les pièges de l'abonnement à vie, et comment reprendre la main. Le guide GND." },
+  { path: '/guides/n8n-make-zapier-comparatif', title: "GND Consulting, n8n, Make ou Zapier : quel outil d'automatisation choisir ?", desc: "n8n, Make ou Zapier : forces, limites, prix et souveraineté des données. Le comparatif clair pour choisir votre outil d'automatisation. Le guide GND." },
+  { path: '/guides/prix-site-vitrine', title: "GND Consulting, Combien coûte un site vitrine en 2026 ?", desc: "Combien coûte un site vitrine en 2026 ? Fourchettes freelance, agence et no-code, ce qui fait varier le prix, et comment budgéter. Le guide GND." },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');

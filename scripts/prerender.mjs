@@ -75,6 +75,28 @@ try {
     await page.setViewport({ width: 1440, height: 950 });
     await page.goto(`http://localhost:${PORT}${route.path}`, { waitUntil: 'networkidle2', timeout: 90000 });
     await new Promise((r) => setTimeout(r, 3000));
+    // Scroll complet de la page AVANT capture : certaines sections (héros #2
+    // CinematicHero, formulaires, blocs animés sous la ligne de flottaison)
+    // ne se montent qu'après défilement (scroll-hijack / IntersectionObserver).
+    // Sans ça, le snapshot capture une page à moitié rendue (contenu perdu
+    // pour les bots). On descend par paliers, on remonte, on laisse respirer.
+    await page.evaluate(async () => {
+      await new Promise((resolve) => {
+        let y = 0;
+        const tick = () => {
+          window.scrollTo(0, y);
+          y += Math.round(window.innerHeight * 0.8);
+          if (y < document.body.scrollHeight + window.innerHeight) {
+            setTimeout(tick, 120);
+          } else {
+            window.scrollTo(0, 0);
+            resolve();
+          }
+        };
+        tick();
+      });
+    });
+    await new Promise((r) => setTimeout(r, 1500));
     // Bandeau cookies hors snapshot (état UI, pas du contenu)
     await page.evaluate(() => {
       document.querySelectorAll('.fixed').forEach((el) => {

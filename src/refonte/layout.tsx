@@ -368,7 +368,6 @@ function Footer() {
             <ul className="space-y-2 text-sm">
               <li><a href="/agence" className="gnd-link text-bg/85 hover:text-bg transition-colors">L'Agence</a></li>
               <li><a href="/services/sites-vitrines" className="gnd-link text-bg/85 hover:text-bg transition-colors">Sites &amp; SEO</a></li>
-              <li><a href="/creation-site-internet-restaurant" className="gnd-link text-bg/85 hover:text-bg transition-colors">Site pour restaurant</a></li>
               <li><a href="/services/branding-identite" className="gnd-link text-bg/85 hover:text-bg transition-colors">Branding &amp; Identité</a></li>
               <li><a href="/services/audiovisuel" className="gnd-link text-bg/85 hover:text-bg transition-colors">Audiovisuel</a></li>
               <li><a href="/services/automatisation-ia" className="gnd-link text-bg/85 hover:text-bg transition-colors">Automatisation &amp; IA</a></li>

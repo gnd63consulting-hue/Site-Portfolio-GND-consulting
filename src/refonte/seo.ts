@@ -76,7 +76,6 @@ const SERVICE_TYPE: Record<string, string> = {
   '/services/branding-identite': 'Identité visuelle et branding',
   '/services/audiovisuel': 'Production audiovisuelle',
   '/services/automatisation-ia': 'Automatisation et intelligence artificielle',
-  '/creation-site-internet-restaurant': 'Création de site internet pour restaurant',
 };
 
 function metaFor(route: string): Meta {
@@ -166,8 +165,9 @@ export function applyRouteSeo(route: string) {
 
   document.title = title;
   setMeta('description', description);
-  // Mentions légales : aucune valeur SEO + boilerplate → noindex (mais suivie).
-  setMeta('robots', route === '/mentions-legales' ? 'noindex, follow' : 'index, follow');
+  // Pages exclues de l'index (boilerplate, ou en cours de retravail) → noindex.
+  const NOINDEX = ['/mentions-legales', '/creation-site-internet-restaurant'];
+  setMeta('robots', NOINDEX.includes(route) ? 'noindex, follow' : 'index, follow');
   setCanonical(url);
   setMeta('og:title', title, 'property');
   setMeta('og:description', description, 'property');

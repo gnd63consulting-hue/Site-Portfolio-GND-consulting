@@ -213,7 +213,13 @@ export function applyRouteSeo(route: string) {
       description,
       url,
       inLanguage: 'fr-FR',
-      author: { '@id': `${BASE}/#organization` },
+      datePublished: '2026-06-13',
+      dateModified: '2026-06-22',
+      author: {
+        '@type': 'Organization',
+        name: 'GND Consulting',
+        '@id': `${BASE}/#organization`,
+      },
       publisher: { '@id': `${BASE}/#organization` },
       isPartOf: { '@id': `${BASE}/#website` },
     });

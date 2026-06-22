@@ -1137,6 +1137,12 @@ export function GuidePage({ slug }: { slug: string }) {
           <div className="label-mono text-[10px] tracking-[0.18em] text-accent mb-4">{meta.kicker} · {meta.readMin} min de lecture</div>
           <h1 className="display text-4xl md:text-6xl text-text-strong leading-[1.04] max-w-4xl">{meta.h1}</h1>
 
+          {/* Signature auteur + date (signal E-E-A-T, repris par les moteurs IA). */}
+          <p className="mt-5 text-sm text-text-muted">
+            Par <strong className="text-text-strong font-medium">l'équipe GND Consulting</strong>, studio créatif humain × IA.{' '}
+            <span className="text-text-muted/80">Mis à jour le 22 juin 2026.</span>
+          </p>
+
           <article className="mt-10">
             {content.body}
           </article>

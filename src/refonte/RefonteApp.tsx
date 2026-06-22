@@ -15,6 +15,7 @@ import { SitesVitrinesPage } from './pages/sites-vitrines';
 import { BrandingPage, AudiovisuelPage, IAPage } from './pages/service-pages';
 import { RealisationsPage, ProjectDetail } from './pages/realisations';
 import { GuidesIndex, GuidePage } from './pages/guides';
+import { RestaurantPage } from './pages/restaurant';
 import { LegalPage, NotFoundPage } from './pages/legal';
 
 function useRoute() {
@@ -114,6 +115,7 @@ function RefonteApp() {
         || route === "/services/photographie") page = <AudiovisuelPage/>;
   else if (route === "/realisations") page = <RealisationsPage/>;
   else if (route.startsWith("/realisations/")) page = <ProjectDetail id={route.replace("/realisations/", "")}/>;
+  else if (route === "/creation-site-internet-restaurant") page = <RestaurantPage/>;
   else if (route === "/guides") page = <GuidesIndex/>;
   else if (route.startsWith("/guides/")) page = <GuidePage slug={route.replace("/guides/", "")}/>;
   else if (route === "/contact") page = <main id="main" className="pt-24 md:pt-28"><h1 className="sr-only">Contact — GND Consulting, studio créatif humain × IA à Paris : devis sous 48h</h1><ContactBlock/></main>;

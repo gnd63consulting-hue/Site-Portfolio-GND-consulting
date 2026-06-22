@@ -63,6 +63,11 @@ export const SEO_META: Record<string, Meta> = {
     description:
       'Guides clairs pour réussir votre projet digital : sites web, identité visuelle, vidéo, automatisation IA. Réponses concrètes pour PME et indépendants.',
   },
+  '/creation-site-internet-restaurant': {
+    title: 'GND Consulting, Création de site internet pour restaurant',
+    description:
+      "Site internet pour restaurant : design qui donne faim, zéro commission, trouvable sur Google et par les IA. Réservation et commande en direct, site 100 % propriétaire. Dès 800 €.",
+  },
 };
 
 /* serviceType par page service — pour le schema Service (résultats enrichis). */
@@ -71,6 +76,7 @@ const SERVICE_TYPE: Record<string, string> = {
   '/services/branding-identite': 'Identité visuelle et branding',
   '/services/audiovisuel': 'Production audiovisuelle',
   '/services/automatisation-ia': 'Automatisation et intelligence artificielle',
+  '/creation-site-internet-restaurant': 'Création de site internet pour restaurant',
 };
 
 function metaFor(route: string): Meta {

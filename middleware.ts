@@ -28,6 +28,7 @@ const PRERENDERED = new Set([
   '/realisations',
   '/contact',
   '/mentions-legales',
+  '/creation-site-internet-restaurant',
   '/guides',
   '/guides/freelance-ou-agence',
   '/guides/faut-il-un-site-internet-commerce',

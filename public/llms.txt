@@ -11,10 +11,33 @@
 
 ## Guides
 
+- [Tous les guides](https://www.gndconsulting.fr/guides)
+
+### Sites web & SEO
+
 - [Freelance ou agence : qui choisir pour créer son site ?](https://www.gndconsulting.fr/guides/freelance-ou-agence)
 - [Faut-il un site internet pour son commerce en 2026 ?](https://www.gndconsulting.fr/guides/faut-il-un-site-internet-commerce)
 - [Comment être visible sur Google quand on est un commerce local ?](https://www.gndconsulting.fr/guides/etre-visible-google-local)
 - [Quand refaire son site internet ?](https://www.gndconsulting.fr/guides/quand-refaire-son-site)
+- [Êtes-vous vraiment propriétaire de votre site internet ?](https://www.gndconsulting.fr/guides/etre-proprietaire-de-son-site)
+- [Combien coûte un site vitrine en 2026 ?](https://www.gndconsulting.fr/guides/prix-site-vitrine)
+
+### Branding & identité visuelle
+
+- [Charte graphique ou brand book : quelle différence ?](https://www.gndconsulting.fr/guides/charte-graphique-vs-brand-book)
+- [Combien coûte une identité visuelle en 2026 ?](https://www.gndconsulting.fr/guides/prix-identite-visuelle)
+- [Logo : freelance ou agence ?](https://www.gndconsulting.fr/guides/logo-freelance-ou-agence)
+
+### Production audiovisuelle
+
+- [Combien coûte un clip musical en 2026 ?](https://www.gndconsulting.fr/guides/prix-clip-musical)
+- [Combien coûte une vidéo d'entreprise en 2026 ?](https://www.gndconsulting.fr/guides/tarif-video-entreprise)
+
+### Automatisation & IA
+
+- [n8n, Make ou Zapier : quel outil d'automatisation choisir ?](https://www.gndconsulting.fr/guides/n8n-make-zapier-comparatif)
+- [Combien coûte un agent IA pour une PME en 2026 ?](https://www.gndconsulting.fr/guides/prix-agent-ia-pme)
+- [Agent IA ou chatbot : quelle différence ?](https://www.gndconsulting.fr/guides/agent-ia-vs-chatbot)
 
 ## En savoir plus
 

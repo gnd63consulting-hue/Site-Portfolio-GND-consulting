@@ -1,0 +1,59 @@
+# Prerender SEO automatique.
+#
+# À chaque push sur main qui touche au contenu/build, ce workflow régénère
+# les snapshots HTML statiques (dossier prerendered/) servis aux robots par
+# le middleware Vercel, puis les recommit. Fini le `npm run prerender` manuel.
+#
+# Garde-fous :
+#  - paths-ignore sur prerendered/ et sur ce workflow => le commit du bot ne
+#    se redéclenche pas lui-même (pas de boucle infinie).
+#  - concurrency => un seul run à la fois par branche.
+#  - le commit du bot porte [skip ci] par sécurité supplémentaire.
+
+name: Prerender SEO snapshots
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'prerendered/**'
+      - '.github/workflows/prerender.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: prerender-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  prerender:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Génère les snapshots prerender
+        run: npm run prerender
+
+      - name: Commit les snapshots mis à jour
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain prerendered)" ]; then
+            git add prerendered
+            git commit -m "chore(seo): régénère les snapshots prerender [skip ci]"
+            git push
+          else
+            echo "Aucun changement de snapshot à commiter."
+          fi

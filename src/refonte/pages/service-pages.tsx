@@ -22,6 +22,7 @@ import { InfoCard } from '@/components/ui/info-card';
 import { Hand, Zap, Unlock, Sparkles as SparklesIcon, Target, ClipboardList, Camera, Film, Send } from 'lucide-react';
 import { FloatingCtaBand } from '../components/FloatingCtaBand';
 import { FaqJsonLd } from '../components/FaqJsonLd';
+import { ServiceGuidesBlock } from './guides';
 
 /* Cinematic shared service page hero.
    `theme="light"` aligns hero with cream cluster (Branding / Sites-Vitrines / Home). */
@@ -340,6 +341,9 @@ function BrandingPage() {
           </div>
         </Container>
       </Section>
+
+      {/* Maillage interne : guides liés à ce service (liens <a href> crawlables) */}
+      <ServiceGuidesBlock service="branding-identite" />
 
       {/* Final CTA, FloatingCtaBand (cohérence cross-pages) */}
       <FloatingCtaBand
@@ -1352,6 +1356,9 @@ function IAPage() {
             </div>
           </Container>
         </Section>
+
+        {/* Maillage interne : guides liés à ce service (liens <a href> crawlables) */}
+        <ServiceGuidesBlock service="automatisation-ia" />
       </>}
       bottomCta={
         <FloatingCtaBand
@@ -2161,6 +2168,9 @@ function AudiovisuelPage() {
             </div>
           </Container>
         </Section>
+      {/* Maillage interne : guides liés à ce service (liens <a href> crawlables) */}
+      <ServiceGuidesBlock service="audiovisuel" />
+
       <FloatingCtaBand
         prefix="Une histoire à raconter."
         rotatingWords={['Une image à construire.', 'Une marque à révéler.', 'Un message à incarner.', 'Une identité à affirmer.']}
@@ -2368,3 +2378,4 @@ function AudiovisuelPage() {
 }
 
 export { BrandingPage, MotionPage, ProductionPage, PhotoPage, IAPage, AudiovisuelPage };
+

@@ -1106,6 +1106,165 @@ const GUIDE_BODY: Record<string, { body: React.ReactNode; faq: FaqItem[] }> = {
   },
 };
 
+/* ===================== Maillage interne (guides liés + service) =====================
+ * Liens contextuels en fin d'article. De vraies balises <a href> crawlables
+ * (le routeur SPA intercepte les clics), pas de navigate() impératif. */
+type ServiceLink = { href: string; label: string };
+
+/* Slug du guide -> page de service associée. */
+const GUIDE_SERVICE: Record<string, ServiceLink> = {
+  'freelance-ou-agence': { href: '/services/sites-vitrines', label: 'Sites vitrines' },
+  'faut-il-un-site-internet-commerce': { href: '/services/sites-vitrines', label: 'Sites vitrines' },
+  'etre-visible-google-local': { href: '/services/sites-vitrines', label: 'Sites vitrines' },
+  'quand-refaire-son-site': { href: '/services/sites-vitrines', label: 'Sites vitrines' },
+  'etre-proprietaire-de-son-site': { href: '/services/sites-vitrines', label: 'Sites vitrines' },
+  'prix-site-vitrine': { href: '/services/sites-vitrines', label: 'Sites vitrines' },
+  'charte-graphique-vs-brand-book': { href: '/services/branding-identite', label: 'Branding & identité' },
+  'prix-identite-visuelle': { href: '/services/branding-identite', label: 'Branding & identité' },
+  'logo-freelance-ou-agence': { href: '/services/branding-identite', label: 'Branding & identité' },
+  'prix-clip-musical': { href: '/services/audiovisuel', label: 'Audiovisuel' },
+  'tarif-video-entreprise': { href: '/services/audiovisuel', label: 'Audiovisuel' },
+  'n8n-make-zapier-comparatif': { href: '/services/automatisation-ia', label: 'Automatisation & IA' },
+  'prix-agent-ia-pme': { href: '/services/automatisation-ia', label: 'Automatisation & IA' },
+  'agent-ia-vs-chatbot': { href: '/services/automatisation-ia', label: 'Automatisation & IA' },
+};
+
+/* Slug du guide -> 2-3 autres guides du même thème (ou proche). */
+const RELATED_GUIDES: Record<string, string[]> = {
+  // Web / SEO
+  'freelance-ou-agence': ['prix-site-vitrine', 'etre-proprietaire-de-son-site', 'quand-refaire-son-site'],
+  'faut-il-un-site-internet-commerce': ['etre-visible-google-local', 'prix-site-vitrine', 'etre-proprietaire-de-son-site'],
+  'etre-visible-google-local': ['faut-il-un-site-internet-commerce', 'prix-site-vitrine', 'quand-refaire-son-site'],
+  'quand-refaire-son-site': ['etre-proprietaire-de-son-site', 'prix-site-vitrine', 'freelance-ou-agence'],
+  'etre-proprietaire-de-son-site': ['quand-refaire-son-site', 'freelance-ou-agence', 'prix-site-vitrine'],
+  'prix-site-vitrine': ['freelance-ou-agence', 'etre-proprietaire-de-son-site', 'faut-il-un-site-internet-commerce'],
+  // Branding
+  'charte-graphique-vs-brand-book': ['prix-identite-visuelle', 'logo-freelance-ou-agence'],
+  'prix-identite-visuelle': ['charte-graphique-vs-brand-book', 'logo-freelance-ou-agence'],
+  'logo-freelance-ou-agence': ['prix-identite-visuelle', 'charte-graphique-vs-brand-book'],
+  // Audiovisuel
+  'prix-clip-musical': ['tarif-video-entreprise'],
+  'tarif-video-entreprise': ['prix-clip-musical'],
+  // Automatisation & IA
+  'n8n-make-zapier-comparatif': ['prix-agent-ia-pme', 'agent-ia-vs-chatbot'],
+  'prix-agent-ia-pme': ['agent-ia-vs-chatbot', 'n8n-make-zapier-comparatif'],
+  'agent-ia-vs-chatbot': ['prix-agent-ia-pme', 'n8n-make-zapier-comparatif'],
+};
+
+/* Bloc fin d'article : guides liés + service associé. Tout en <a href> natifs. */
+function GuideInternalLinks({ slug }: { slug: string }) {
+  const service = GUIDE_SERVICE[slug];
+  const related = (RELATED_GUIDES[slug] ?? [])
+    .map((s) => guideBySlug(s))
+    .filter((g): g is GuideMeta => Boolean(g));
+
+  if (related.length === 0 && !service) return null;
+
+  return (
+    <section className="mt-20 pt-12 border-t border-text-muted/15" aria-label="Pour aller plus loin">
+      <div className="grid gap-10 md:grid-cols-3">
+        {related.length > 0 && (
+          <div className="md:col-span-2">
+            <div className="label-mono text-[10px] tracking-[0.18em] text-accent mb-5">Continuer la lecture</div>
+            <ul className="space-y-4">
+              {related.map((g) => (
+                <li key={g.slug}>
+                  <a
+                    href={`/guides/${g.slug}`}
+                    className="group block rounded-xl border border-text-muted/15 p-5 transition-colors hover:border-accent/50"
+                  >
+                    <div className="label-mono text-[10px] tracking-[0.18em] text-text-muted mb-1">{g.kicker}</div>
+                    <div className="display text-lg md:text-xl text-text-strong leading-snug group-hover:text-accent transition-colors">{g.title}</div>
+                    <p className="mt-2 text-sm text-text leading-relaxed">{g.excerpt}</p>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {service && (
+          <div>
+            <div className="label-mono text-[10px] tracking-[0.18em] text-accent mb-5">Service associé</div>
+            <a
+              href={service.href}
+              className="group block rounded-xl border border-text-muted/15 p-5 transition-colors hover:border-accent/50"
+            >
+              <div className="display text-lg md:text-xl text-text-strong leading-snug group-hover:text-accent transition-colors">{service.label}</div>
+              <p className="mt-2 text-sm text-text leading-relaxed">Découvrir nos formules, ce qui est inclus et les tarifs, sans engagement.</p>
+              <span className="mt-3 inline-flex items-center gap-1 text-sm text-accent">Voir le service <Icons.ArrowRight size={13}/></span>
+            </a>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+
+/* ===================== Bloc "Guides utiles" pour les pages de service =====================
+ * Réutilisable : <ServiceGuidesBlock service="sites-vitrines" />. Liste 2-4 guides
+ * liés au service via de vraies balises <a href> crawlables. */
+const SERVICE_GUIDES: Record<string, string[]> = {
+  'sites-vitrines': [
+    'prix-site-vitrine',
+    'faut-il-un-site-internet-commerce',
+    'etre-visible-google-local',
+    'etre-proprietaire-de-son-site',
+  ],
+  'branding-identite': [
+    'prix-identite-visuelle',
+    'charte-graphique-vs-brand-book',
+    'logo-freelance-ou-agence',
+  ],
+  'audiovisuel': [
+    'tarif-video-entreprise',
+    'prix-clip-musical',
+  ],
+  'automatisation-ia': [
+    'prix-agent-ia-pme',
+    'agent-ia-vs-chatbot',
+    'n8n-make-zapier-comparatif',
+  ],
+};
+
+export function ServiceGuidesBlock({ service }: { service: string }) {
+  const guides = (SERVICE_GUIDES[service] ?? [])
+    .map((s) => guideBySlug(s))
+    .filter((g): g is GuideMeta => Boolean(g));
+  if (guides.length === 0) return null;
+
+  return (
+    <Section className="py-20 md:py-24">
+      <Container>
+        <div className="max-w-2xl">
+          <Kicker>Ressources</Kicker>
+          <h2 className="display text-4xl md:text-5xl mt-5 text-text-strong leading-tight">
+            Guides <span className="italic text-accent">utiles</span>.
+          </h2>
+          <p className="mt-5 text-text leading-relaxed">
+            Pour préparer votre projet : nos réponses claires, sans jargon.
+          </p>
+        </div>
+        <ul className="mt-10 grid gap-4 md:grid-cols-2">
+          {guides.map((g) => (
+            <li key={g.slug}>
+              <a
+                href={`/guides/${g.slug}`}
+                className="group block h-full rounded-xl border border-text-muted/15 p-5 transition-colors hover:border-accent/50"
+              >
+                <div className="label-mono text-[10px] tracking-[0.18em] text-text-muted mb-1">{g.kicker}</div>
+                <div className="display text-lg md:text-xl text-text-strong leading-snug group-hover:text-accent transition-colors">{g.title}</div>
+                <p className="mt-2 text-sm text-text leading-relaxed">{g.excerpt}</p>
+                <span className="mt-3 inline-flex items-center gap-1 text-sm text-accent">Lire le guide <Icons.ArrowRight size={13}/></span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </Container>
+    </Section>
+  );
+}
+
 /* ============================ PAGE /guides/<slug> ============================ */
 export function GuidePage({ slug }: { slug: string }) {
   const meta = guideBySlug(slug);
@@ -1162,9 +1321,12 @@ export function GuidePage({ slug }: { slug: string }) {
             </div>
           </section>
 
-          {/* Liens connexes */}
+          {/* Maillage interne : guides liés + service associé (liens <a href> crawlables). */}
+          <GuideInternalLinks slug={slug} />
+
+          {/* Liens connexes (CTA) */}
           <div className="mt-14 flex flex-wrap gap-3">
-            <Btn href="/services/sites-vitrines" variant="primary">Voir les formules sites vitrines</Btn>
+            <Btn href={(GUIDE_SERVICE[slug]?.href) ?? '/services/sites-vitrines'} variant="primary">Voir le service associé</Btn>
             <Btn href="/contact" variant="secondary">Parler de votre projet</Btn>
           </div>
         </Container>
@@ -1179,3 +1341,4 @@ export function GuidePage({ slug }: { slug: string }) {
     </main>
   );
 }
+

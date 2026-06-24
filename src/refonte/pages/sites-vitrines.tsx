@@ -17,6 +17,7 @@ import { WhyGndBlock } from '../components/WhyGndBlock';
 import { ProcessCarousel } from '../components/ProcessCarousel';
 import { MarqueeCTA } from '../components/MarqueeCTA';
 import { PricingCards } from '@/components/ui/pricing-component';
+import { ServiceGuidesBlock } from './guides';
 
 const PLANS = [
   {
@@ -213,6 +214,9 @@ function SitesVitrinesPage() {
           </div>
         </Container>
       </Section>
+
+      {/* Maillage interne : guides liés à ce service (liens <a href> crawlables) */}
+      <ServiceGuidesBlock service="sites-vitrines" />
 
       <FloatingCtaBand
         prefix="Prêt à lancer votre"

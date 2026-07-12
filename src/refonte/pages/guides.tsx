@@ -556,6 +556,14 @@ const GUIDE_BODY: Record<string, { body: React.ReactNode; faq: FaqItem[] }> = {
         q: 'En combien de temps un site vitrine est-il livré ?',
         a: "Comptez 1 à 2 semaines pour une vitrine GND (en moyenne 14 jours ouvrés, du brief à la mise en ligne). Tout retard éventuel est annoncé dès le départ, avec sa raison.",
       },
+      {
+        q: 'Pourquoi une agence classique coûte-t-elle plus cher ?',
+        a: "Parce qu'elle mobilise plusieurs spécialistes et une couche de gestion (commercial, chef de projet, réunions). C'est rassurant sur un gros projet, mais pour une PME on paie souvent une structure dont on n'a pas besoin, et on perd la relation directe avec les créatifs.",
+      },
+      {
+        q: 'Quand choisir un freelance plutôt qu\'une agence ?',
+        a: "Pour un site vitrine simple, un budget serré et un besoin ponctuel, un freelance fait le travail. Pour un projet stratégique, un e-commerce ou une continuité dans le temps, une agence ou un studio se justifie.",
+      },
     ],
   },
 
@@ -600,6 +608,33 @@ const GUIDE_BODY: Record<string, { body: React.ReactNode; faq: FaqItem[] }> = {
           revendre. C'est le choix que défend GND.
         </P>
 
+        <H2>Ce qu'un site apporte qu'une fiche Google ne fera jamais</H2>
+        <P>
+          La fiche Google et le site ne jouent pas le même rôle. La fiche capte la recherche locale ; le
+          site transforme cette attention en client. Concrètement, un site vous permet ce qu'aucune fiche
+          n'autorise.
+        </P>
+        <UL>
+          <LI><strong>Raconter votre histoire :</strong> votre univers, vos valeurs, ce qui vous distingue,
+          en images et en mots, sans le carcan d'une fiche standardisée.</LI>
+          <LI><strong>Présenter votre offre en détail :</strong> menu, prestations, tarifs, galerie, sans
+          limite de format.</LI>
+          <LI><strong>Convertir directement :</strong> réservation, prise de rendez-vous, commande, formulaire,
+          sans commission prélevée par une plateforme tierce.</LI>
+          <LI><strong>Capter des recherches hors marque :</strong> être trouvé sur « restaurant italien +
+          quartier » ou « plombier + ville », pas seulement sur votre nom.</LI>
+          <LI><strong>Renvoyer un signal de sérieux :</strong> un site propre rassure un prospect qui hésite
+          entre vous et un concurrent sans site.</LI>
+        </UL>
+
+        <H2>Site vitrine ou simple page réseaux sociaux ?</H2>
+        <P>
+          Une page Instagram ou Facebook est utile, mais elle ne remplace pas un site. Vous n'en êtes pas
+          propriétaire, l'algorithme décide qui vous voit, et vous ne captez aucune recherche Google. Le bon
+          duo en 2026 : des réseaux sociaux vivants pour l'engagement, et un site que vous possédez comme base
+          de votre présence. L'un nourrit l'autre, mais seul le site vous appartient vraiment.
+        </P>
+
         <H2>Par où commencer ?</H2>
         <P>
           Par les deux fondations : une fiche Google optimisée (voir notre guide{' '}
@@ -615,6 +650,9 @@ const GUIDE_BODY: Record<string, { body: React.ReactNode; faq: FaqItem[] }> = {
       { q: 'Un site loué sur une plateforme m\'appartient-il ?', a: "Non. Tant que vous payez l'abonnement, le site existe ; à l'arrêt, il disparaît. Un site en propriété (domaine à votre nom, accès et code) reste le vôtre, transférable et revendable." },
       { q: 'Un site sans abonnement, est-ce possible ?', a: "Oui. Les formules GND sont en paiement unique, sans forfait annuel imposé. Les évolutions futures se font sur devis transparent, et vous restez libre de la maintenance." },
       { q: 'Combien de temps pour mettre un commerce en ligne ?', a: "1 à 2 semaines pour une vitrine GND, du brief à la mise en ligne, fiche Google Business Profile configurée incluse." },
+      { q: 'Une page Facebook ou Instagram suffit-elle ?', a: "Non. Les réseaux sont utiles pour l'engagement, mais vous n'en êtes pas propriétaire, l'algorithme décide qui vous voit, et vous ne captez aucune recherche Google. Le bon duo : réseaux vivants + un site que vous possédez comme base." },
+      { q: 'Que peut faire un site qu\'une fiche Google ne fait pas ?', a: "Raconter votre histoire, présenter votre offre en détail, convertir sans commission (réservation, commande, formulaire), capter des recherches hors marque, et rassurer un prospect qui hésite. La fiche rend visible, le site transforme." },
+      { q: 'Un site aide-t-il vraiment à être trouvé sur Google ?', a: "Oui. Au-delà de votre nom, un site optimisé vous fait apparaître sur des recherches métier (activité + ville). Google s'appuie aussi sur le site pour confirmer votre pertinence locale et renforcer votre fiche." },
     ],
   },
 
@@ -658,6 +696,29 @@ const GUIDE_BODY: Record<string, { body: React.ReactNode; faq: FaqItem[] }> = {
           local de base et la configuration de votre fiche.
         </P>
 
+        <H2>Le rôle des citations et de la cohérence NAP</H2>
+        <P>
+          Au-delà de la fiche, Google vérifie la cohérence de vos informations sur l'ensemble du web. C'est ce
+          qu'on appelle le NAP : Name, Address, Phone, votre nom, adresse et téléphone. S'ils diffèrent entre
+          votre site, votre fiche, les annuaires (PagesJaunes, Yelp, annuaires métier) et vos réseaux, Google
+          doute et vous rétrograde. La règle est simple : les mêmes informations, à l'identique, partout.
+          Quelques citations sur des annuaires sérieux de votre secteur renforcent aussi votre ancrage local.
+        </P>
+
+        <H2>Les erreurs qui plombent la visibilité locale</H2>
+        <UL>
+          <LI><strong>Une fiche incomplète :</strong> catégorie mal choisie, horaires ou photos manquants,
+          description vide. Chaque champ vide est un signal faible envoyé à Google.</LI>
+          <LI><strong>Des coordonnées incohérentes :</strong> un numéro différent entre le site et la fiche,
+          une adresse mal orthographiée. C'est le premier frein au classement local.</LI>
+          <LI><strong>Aucun avis récent :</strong> une fiche sans nouvel avis depuis des mois paraît inactive.
+          Le flux régulier d'avis compte autant que la note.</LI>
+          <LI><strong>Un site lent ou pas mobile :</strong> il freine la visibilité et fait fuir les visiteurs
+          captés par la fiche.</LI>
+          <LI><strong>Ignorer le contenu local :</strong> une page qui parle de votre ville, de votre zone
+          d'intervention et de vos services précis aide Google à vous situer.</LI>
+        </UL>
+
         <H2>Combien de temps avant des résultats ?</H2>
         <P>
           La fiche Google peut produire des effets en quelques semaines ; le référencement du site
@@ -672,6 +733,9 @@ const GUIDE_BODY: Record<string, { body: React.ReactNode; faq: FaqItem[] }> = {
       { q: 'Les avis Google sont-ils importants ?', a: "Oui, déterminants. Beaucoup de clients lisent les avis avant de contacter et évitent les notes sous 4 étoiles. Demandez-en systématiquement et répondez à tous." },
       { q: 'Faut-il un site web pour être visible localement ?', a: "Oui. Google s'appuie sur le site pour confirmer votre ancrage local. Un site rapide et bien structuré soutient la fiche et améliore les conversions." },
       { q: 'En combien de temps voit-on des résultats en SEO local ?', a: "Quelques semaines pour les effets de la fiche Google, quelques mois pour le référencement du site. C'est un travail régulier qui s'installe dans la durée." },
+      { q: 'Qu\'est-ce que la cohérence NAP ?', a: "NAP signifie Name, Address, Phone : votre nom, adresse et téléphone doivent être identiques partout (site, fiche Google, annuaires, réseaux). Toute incohérence fait douter Google et pénalise votre classement local." },
+      { q: 'Les annuaires servent-ils encore au SEO local ?', a: "Oui, à condition qu'ils soient sérieux et cohérents avec vos autres informations. Quelques citations sur des annuaires de votre secteur renforcent votre ancrage local. La cohérence prime sur la quantité." },
+      { q: 'Quelles erreurs plombent la visibilité locale ?', a: "Une fiche incomplète, des coordonnées incohérentes, aucun avis récent, un site lent ou non mobile, et l'absence de contenu local. Corriger ne serait-ce qu'une de ces erreurs améliore souvent le classement." },
     ],
   },
 
@@ -714,6 +778,31 @@ const GUIDE_BODY: Record<string, { body: React.ReactNode; faq: FaqItem[] }> = {
           Google inclus. Détail sur la <A href="/services/sites-vitrines">page sites vitrines</A>.
         </P>
 
+        <H2>Les signaux à surveiller, par ordre de gravité</H2>
+        <P>
+          Tous les signaux ne se valent pas. Certains coûtent des clients immédiatement, d'autres usent votre
+          image plus lentement. Voici comment les hiérarchiser.
+        </P>
+        <UL>
+          <LI><strong>Urgent (vous perdez des clients maintenant) :</strong> le site s'affiche mal sur mobile,
+          il est lent (plus de 3 secondes de chargement), ou il n'apparaît nulle part sur Google. Ces trois-là
+          se règlent sans attendre.</LI>
+          <LI><strong>Important (votre crédibilité s'érode) :</strong> le design est visiblement daté, le
+          contenu n'est plus à jour, ou vous ne pouvez rien modifier vous-même.</LI>
+          <LI><strong>À anticiper (avant que ça devienne un problème) :</strong> la technologie n'est plus
+          maintenue, la plateforme ferme vos options, ou votre offre a évolué sans que le site suive.</LI>
+        </UL>
+
+        <H2>Comment préparer sa refonte sans repartir de zéro</H2>
+        <P>
+          Une refonte réussie ne jette pas tout. Avant de refondre, récupérez ce qui a de la valeur : vos
+          contenus qui fonctionnent, vos pages bien référencées (à conserver ou à rediriger proprement pour ne
+          pas perdre leur SEO), vos avis et preuves. Une bonne refonte améliore le design et la technique tout
+          en préservant ce qui vous apportait déjà des clients. Le piège classique : refondre sans plan de
+          redirection et perdre du jour au lendemain le référencement acquis. Un studio sérieux gère ce point
+          dès le cadrage.
+        </P>
+
         <H2>Comment se passe une refonte chez GND ?</H2>
         <P>
           Brief, maquette, développement, mise en ligne, en 1 à 2 semaines, avec validation à
@@ -728,6 +817,9 @@ const GUIDE_BODY: Record<string, { body: React.ReactNode; faq: FaqItem[] }> = {
       { q: 'Refonte ou nouveau site : que choisir ?', a: "Si la structure est saine mais l'habillage daté, une refonte suffit. Si le site est lent ou bridé par une plateforme fermée, repartir sur une base propre et en propriété est souvent plus rentable." },
       { q: 'Combien coûte une refonte de site ?', a: "Selon l'ampleur. Chez GND, une nouvelle vitrine démarre à 800 € (prix public, paiement unique, sans abonnement), SEO local et fiche Google inclus." },
       { q: 'Combien de temps dure une refonte ?', a: "1 à 2 semaines pour une vitrine, du brief à la mise en ligne, avec validation à chaque étape. Le site final vous appartient." },
+      { q: 'Une refonte fait-elle perdre mon référencement Google ?', a: "Seulement si elle est mal gérée. Le piège est de refondre sans plan de redirection : les pages bien référencées perdent alors leur position. Un studio sérieux conserve ou redirige proprement ces pages dès le cadrage, pour préserver le SEO acquis." },
+      { q: 'Quels signaux sont les plus urgents ?', a: "Un site qui s'affiche mal sur mobile, qui est lent (plus de 3 secondes), ou qui n'apparaît nulle part sur Google : ces trois-là vous font perdre des clients maintenant et se règlent en priorité." },
+      { q: 'Faut-il tout jeter lors d\'une refonte ?', a: "Non. Une bonne refonte préserve ce qui fonctionne : contenus performants, pages bien référencées, avis et preuves. On améliore le design et la technique sans perdre ce qui vous apportait déjà des clients." },
     ],
   },
 
@@ -762,7 +854,29 @@ const GUIDE_BODY: Record<string, { body: React.ReactNode; faq: FaqItem[] }> = {
           La charte graphique couvre l'identité visuelle et tient souvent en quelques pages. Le brand
           book couvre l'identité de marque dans son ensemble (stratégie, verbal, visuel) et constitue un
           document plus épais. La charte se suffit pour rester cohérent au quotidien. Le brand book
-          devient utile quand la marque grandit, recrute ou multiplie les canaux.
+          devient utile quand la marque grandit, recrute ou multiplie les canaux. Voici la distinction en
+          un coup d'œil.
+        </P>
+        <PriceTable
+          head={['Critère', 'Charte graphique', 'Brand book']}
+          rows={[
+            ['Contenu', 'Le visuel (logo, couleurs, typo, règles)', 'Toute la marque (vision, valeurs, ton) + charte'],
+            ['Question à laquelle il répond', 'À quoi ça ressemble ?', 'Qui vous êtes ?'],
+            ['Volume', 'Quelques pages', 'Document plus épais'],
+            ['Rôle', 'Cohérence visuelle au quotidien', 'Aligner équipe, prestataires, partenaires'],
+            ['Quand il devient utile', 'Dès le démarrage', 'Quand la marque grandit ou se structure'],
+          ]}
+          caption="Charte graphique ou brand book : la charte encadre le visuel, le brand book décrit toute la marque et inclut la charte."
+        />
+        <H2>Que contient chacun, concrètement ?</H2>
+        <P>
+          Une charte graphique détaille le logo et ses déclinaisons (horizontal, vertical, monochrome), la
+          palette de couleurs avec tous les codes (RVB, CMJN, hexadécimal, Pantone), les typographies et
+          leurs usages, l'iconographie, et les règles d'application (zones de protection, tailles minimales,
+          fonds autorisés). Un brand book ajoute par-dessus la plateforme de marque : votre mission, vos
+          valeurs, votre personnalité, votre promesse, votre ton de voix, votre récit, et souvent des exemples
+          d'application sur vos supports clés. La charte garantit la cohérence ; le brand book garantit le
+          sens.
         </P>
 
         <H2>De quoi avez-vous besoin selon votre stade ?</H2>
@@ -788,6 +902,9 @@ const GUIDE_BODY: Record<string, { body: React.ReactNode; faq: FaqItem[] }> = {
       { q: 'Un brand book est-il utile pour une petite marque ?', a: "Pas toujours au démarrage : une charte graphique suffit souvent. Le brand book devient utile quand la marque grandit, recrute ou s'adresse à plusieurs audiences et doit aligner tout le monde sur une même vision." },
       { q: 'Peut-on commencer par la charte puis évoluer vers un brand book ?', a: "Oui. C'est même l'approche la plus rentable : une charte solide d'abord, enrichie en brand book quand le besoin se fait sentir." },
       { q: 'Combien de temps pour créer une charte ou un brand book ?', a: "Comptez en général 2 à 4 semaines pour une identité visuelle chez GND. Un brand book complet demande davantage, selon l'ampleur. Devis détaillé sous 48h." },
+      { q: 'Que contient une charte graphique en détail ?', a: "Le logo et ses déclinaisons, la palette de couleurs avec tous les codes (RVB, CMJN, hexadécimal, Pantone), les typographies et leurs usages, l'iconographie, et les règles d'application (zones de protection, tailles minimales, fonds autorisés)." },
+      { q: 'Que contient un brand book en plus de la charte ?', a: "La plateforme de marque : mission, valeurs, personnalité, promesse, ton de voix, récit, et souvent des exemples d'application sur vos supports. La charte garantit la cohérence visuelle, le brand book garantit le sens." },
+      { q: 'Combien coûte une charte ou un brand book ?', a: "Le prix suit l'ampleur du livrable. Pour situer votre budget d'identité, consultez notre guide sur le prix d'une identité visuelle. Une charte solide reste plus accessible qu'un brand book complet." },
     ],
   },
 
@@ -833,6 +950,28 @@ const GUIDE_BODY: Record<string, { body: React.ReactNode; faq: FaqItem[] }> = {
           après.
         </P>
 
+        <H2>Les questions à poser avant de signer</H2>
+        <P>
+          La propriété se vérifie avant de signer, pas après. Posez ces questions à tout prestataire, et
+          exigez des réponses écrites dans le devis ou le contrat.
+        </P>
+        <UL>
+          <LI><strong>Le nom de domaine sera-t-il enregistré à mon nom ?</strong> C'est la base : le domaine
+          est votre adresse, il doit vous appartenir.</LI>
+          <LI><strong>Vais-je recevoir tous les accès ?</strong> Hébergement, back-office, code, analytics.
+          Sans eux, vous ne contrôlez rien.</LI>
+          <LI><strong>Le site est-il transférable ?</strong> Pourrai-je partir chez un autre prestataire ou
+          hébergeur sans tout reconstruire ?</LI>
+          <LI><strong>Y a-t-il un abonnement obligatoire ?</strong> Et si oui, que devient le site si je
+          l'arrête ?</LI>
+          <LI><strong>Sur quelle technologie est-il construit ?</strong> Une technologie ouverte (comme
+          WordPress) est transférable ; une plateforme fermée vous enferme.</LI>
+        </UL>
+        <P>
+          Si le prestataire élude ces questions ou refuse de les écrire, c'est le signe que vous louez plutôt
+          que vous ne possédez.
+        </P>
+
         <H2>L'approche GND : 100&nbsp;% propriété, sans abonnement</H2>
         <P>
           Chez GND, le site vous appartient : domaine à votre nom, code et accès remis, paiement unique
@@ -848,6 +987,9 @@ const GUIDE_BODY: Record<string, { body: React.ReactNode; faq: FaqItem[] }> = {
       { q: 'Comment savoir si je suis propriétaire de mon site ?', a: "Vérifiez trois choses : le domaine est-il à votre nom (via WHOIS), avez-vous tous les accès (hébergement, back-office), et que dit votre contrat sur la propriété. Si l'une des réponses est non, vous louez." },
       { q: 'Comment récupérer mon nom de domaine et mon site ?', a: "Demandez le transfert du domaine vers un registrar à votre nom, récupérez l'export ou le code du site et les accès. La facilité dépend du prestataire, d'où l'intérêt de clarifier la propriété avant de signer." },
       { q: 'Que se passe-t-il si j\'arrête de payer un site loué ?', a: "Le site est généralement coupé et mis hors ligne, et vos contenus peuvent rester inaccessibles. C'est le principal risque de la location par rapport à un site en propriété." },
+      { q: 'Quelles questions poser avant de signer pour un site ?', a: "Le domaine sera-t-il à mon nom ? Vais-je recevoir tous les accès (hébergement, code, back-office) ? Le site est-il transférable ? Y a-t-il un abonnement obligatoire ? Sur quelle technologie est-il construit ? Exigez des réponses écrites dans le contrat." },
+      { q: 'Une technologie ouverte est-elle importante pour la propriété ?', a: "Oui. Une technologie ouverte comme WordPress est transférable vers un autre prestataire ou hébergeur. Une plateforme fermée vous enferme : même en payant, vous ne pouvez pas emporter votre site ailleurs." },
+      { q: 'Pourquoi un site en propriété est-il plus rentable ?', a: "Sur plusieurs années, le coût cumulé d'un abonnement dépasse largement celui d'un site acheté une fois, et vous n'avez toujours rien à vous. Un site en propriété est un actif que vous gardez, transférez ou revendez librement." },
     ],
   },
 
@@ -889,7 +1031,29 @@ const GUIDE_BODY: Record<string, { body: React.ReactNode; faq: FaqItem[] }> = {
           Sur le prix, n8n auto-hébergé est le plus économique à grande échelle, Make est compétitif, et
           Zapier devient cher avec le volume. Sur la facilité, Zapier gagne, Make suit, n8n demande plus
           d'expertise. Sur les données et le RGPD, n8n auto-hébergé prend l'avantage, car rien ne sort de
-          votre infrastructure.
+          votre infrastructure. Voici la synthèse.
+        </P>
+        <PriceTable
+          head={['Critère', 'Zapier', 'Make', 'n8n']}
+          rows={[
+            ['Facilité de prise en main', 'Très facile', 'Moyenne', 'Technique'],
+            ['Puissance / complexité', 'Limitée', 'Élevée', 'Très élevée'],
+            ['Coût à grande échelle', 'Élevé', 'Modéré', 'Faible (auto-hébergé)'],
+            ['Souveraineté / RGPD', 'Données chez l\'éditeur', 'Données chez l\'éditeur', 'Données chez vous'],
+            ['Modèle', 'SaaS', 'SaaS', 'Open source, auto-hébergeable'],
+            ['Idéal pour', 'Connexions simples', 'Workflows complexes', 'Sur-mesure, souveraineté'],
+          ]}
+          caption="Comparatif n8n, Make et Zapier en 2026. Le bon choix dépend de votre volume, de votre sensibilité aux données et de vos compétences techniques."
+        />
+        <H2>Combien coûtent ces outils ?</H2>
+        <P>
+          Zapier démarre gratuitement pour quelques automatisations, puis grimpe vite avec le nombre de
+          tâches (comptez plusieurs dizaines d'euros par mois dès un usage sérieux). Make propose un meilleur
+          rapport opérations-prix pour un volume équivalent. n8n est gratuit en auto-hébergement : vous ne
+          payez que votre serveur (souvent 5 à 20 € par mois), ce qui le rend imbattable dès que le volume
+          monte, au prix d'une mise en place plus technique. Pour un projet d'agent ou d'automatisation
+          complet, voir notre guide{' '}
+          <A href="/guides/prix-agent-ia-pme">combien coûte un agent IA pour une PME</A>.
         </P>
 
         <H2>Lequel pour une PME française ?</H2>
@@ -915,6 +1079,9 @@ const GUIDE_BODY: Record<string, { body: React.ReactNode; faq: FaqItem[] }> = {
       { q: 'Lequel est le plus respectueux du RGPD ?', a: "n8n auto-hébergé prend l'avantage : vos données peuvent rester sur votre infrastructure, en France, sans transiter par un service tiers. C'est un atout fort pour le RGPD et la souveraineté." },
       { q: 'Faut-il savoir coder pour utiliser ces outils ?', a: "Zapier et Make se pilotent sans coder. n8n est no-code dans la majorité des cas, mais sa mise en place et ses scénarios avancés gagnent à être confiés à quelqu'un d'expérimenté." },
       { q: 'Peut-on migrer de Zapier vers n8n ?', a: "Oui. Les scénarios Zapier ou Make peuvent être reconstruits dans n8n, souvent pour réduire les coûts et reprendre le contrôle des données. C'est un chantier courant que GND prend en charge." },
+      { q: 'Combien coûtent Zapier, Make et n8n ?', a: "Zapier est gratuit pour quelques automatisations puis grimpe vite (plusieurs dizaines d'euros/mois en usage sérieux). Make offre un meilleur rapport opérations-prix. n8n est gratuit en auto-hébergement, vous ne payez que le serveur (5 à 20 €/mois), imbattable à grand volume." },
+      { q: 'Quel outil choisir pour débuter l\'automatisation ?', a: "Pour un besoin simple et ponctuel, Zapier dépanne. Pour automatiser sérieusement sans exploser le budget, Make est un bon équilibre. Pour la maîtrise des coûts dans la durée et la souveraineté des données, n8n est souvent le plus pertinent." },
+      { q: 'n8n convient-il aux entreprises sensibles aux données ?', a: "Oui, c'est même son point fort. En auto-hébergement, vos données restent sur votre infrastructure, en France si vous le souhaitez, sans transiter par un service tiers. C'est un atout majeur pour le RGPD et la confidentialité." },
     ],
   },
 
@@ -2544,7 +2711,27 @@ const GUIDE_BODY: Record<string, { body: React.ReactNode; faq: FaqItem[] }> = {
           Posez-vous une question simple : avez-vous besoin de répondre, ou d'agir ? Pour informer vos
           visiteurs, un chatbot suffit. Pour automatiser un processus (qualification, suivi, traitement),
           il faut un agent. Les deux peuvent d'ailleurs se combiner : un chatbot en façade, un agent
-          derrière.
+          derrière. Voici la distinction en clair.
+        </P>
+        <PriceTable
+          head={['Critère', 'Chatbot', 'Agent IA']}
+          rows={[
+            ['Ce qu\'il fait', 'Répond à des questions', 'Accomplit des tâches de bout en bout'],
+            ['Autonomie', 'Suit un scénario', 'Décide des étapes et utilise des outils'],
+            ['Exemples', 'FAQ, support niveau 1, orientation', 'Qualifier un lead, remplir un CRM, relancer'],
+            ['Connexion à vos outils', 'Limitée', 'Profonde (CRM, email, bases de données)'],
+            ['Coût', 'Plus faible', 'Plus élevé (setup + usage)'],
+            ['Idéal quand', 'Vous devez répondre', 'Vous devez agir et automatiser'],
+          ]}
+          caption="Chatbot ou agent IA : le chatbot parle, l'agent agit. Les deux se combinent souvent, un chatbot en façade et un agent qui exécute derrière."
+        />
+        <H2>Combien coûte chacun ?</H2>
+        <P>
+          Un chatbot simple est plus accessible : 500 à 2 000 € en conception, plus un coût récurrent
+          modeste. Un agent IA, qui exécute et se connecte à vos systèmes, démarre plutôt à 3 000 à 8 000 €
+          pour un cas d'usage, avec un coût d'usage mensuel (API, hébergement, maintenance). Le bon choix
+          dépend de la valeur créée, pas du prix seul. Pour le détail, voir notre guide{' '}
+          <A href="/guides/prix-agent-ia-pme">combien coûte un agent IA pour une PME</A>.
         </P>
 
         <H2>Lequel vous faut-il ?</H2>
@@ -2569,6 +2756,8 @@ const GUIDE_BODY: Record<string, { body: React.ReactNode; faq: FaqItem[] }> = {
       { q: "Quand faut-il un agent IA ?", a: "Quand il faut agir, pas seulement répondre : qualifier des leads, mettre à jour un CRM, déclencher des relances, traiter des documents. L'agent automatise un processus complet." },
       { q: "Peut-on combiner les deux ?", a: "Oui. Un chatbot en façade peut s'appuyer sur un agent qui exécute les actions derrière. C'est une configuration courante et efficace." },
       { q: "GND fait-il des chatbots ou des agents IA ?", a: "Les deux, selon votre besoin réel, avec un cadrage RGPD systématique. Réponse sous 24h, devis sous 48h." },
+      { q: "Combien coûte un chatbot par rapport à un agent IA ?", a: "Un chatbot simple coûte 500 à 2 000 € en conception plus un coût récurrent modeste. Un agent IA, qui exécute et se connecte à vos systèmes, démarre à 3 000 à 8 000 € pour un cas d'usage, avec un coût d'usage mensuel. Le choix dépend de la valeur créée." },
+      { q: "Un chatbot peut-il évoluer en agent IA ?", a: "Oui. On commence souvent par un chatbot pour répondre aux questions fréquentes, puis on ajoute un agent derrière pour exécuter des actions (qualifier, relancer, mettre à jour un CRM). Le chatbot devient alors la façade d'un système plus complet." },
     ],
   },
 };

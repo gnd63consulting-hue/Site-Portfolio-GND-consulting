@@ -2090,55 +2090,172 @@ const GUIDE_BODY: Record<string, { body: React.ReactNode; faq: FaqItem[] }> = {
     body: (
       <>
         <Lead>
-          Le prix d'un agent IA sur-mesure varie beaucoup selon sa complexité. Un agent ciblé sur une
-          tâche précise coûte nettement moins qu'un système connecté à plusieurs outils et données. Le
-          marché est très dispersé : raisonnez moins en prix absolu qu'en retour sur investissement.
+          Le prix d'un agent IA pour une PME va de quelques centaines d'euros pour un chatbot simple à
+          plusieurs dizaines de milliers d'euros pour un système d'automatisation intégré à votre SI. Mais
+          le vrai sujet n'est pas le prix affiché : c'est le coût total, car derrière un devis d'agent IA se
+          cachent presque toujours trois postes que la plupart des prestataires n'affichent pas d'emblée, le
+          setup, les coûts d'API et la maintenance. Les ignorer, c'est découvrir une facture deux à trois fois
+          supérieure à ce que vous aviez prévu.
         </Lead>
-
-        <H2>Combien coûte un agent IA pour une PME ?</H2>
         <P>
-          Les fourchettes observées sur le marché vont de quelques milliers d'euros pour un agent simple
-          à plusieurs dizaines de milliers pour un système complexe et intégré. L'écart vient du périmètre :
-          un assistant qui répond à des questions n'a rien à voir avec un agent qui qualifie des leads,
-          met à jour un CRM et déclenche des actions.
+          Ce guide vous donne les vrais tarifs du marché français en 2026, le comparatif entre une solution
+          SaaS et un agent sur-mesure, les coûts récurrents souvent oubliés, et de quoi estimer votre retour
+          sur investissement avant de vous lancer.
         </P>
 
-        <H2>Ce qui fait varier le coût</H2>
+        <H2>Qu'est-ce qu'un agent IA, et pourquoi ça change le prix ?</H2>
         <P>
-          Quatre facteurs : le nombre de tâches automatisées, les connexions à vos outils et données, le
-          niveau de fiabilité exigé, et l'hébergement (cloud ou auto-hébergé pour la souveraineté). À cela
-          s'ajoute un coût d'usage récurrent (les modèles d'IA se paient à la consommation).
+          Le terme « agent IA » recouvre des réalités très différentes, et le prix suit directement le niveau
+          d'autonomie. Un chatbot simple répond à des questions à partir d'une base de connaissances. Un agent
+          IA métier enchaîne plusieurs étapes seul (lire un email, extraire des informations, les comparer à
+          une base, rédiger et envoyer une réponse), en s'appuyant sur un modèle de langage et sur vos outils.
+          Un agent multi-tâches ou un système d'automatisation orchestre plusieurs workflows en parallèle, avec
+          des logiques conditionnelles et des intégrations profondes dans votre système d'information. Plus
+          l'agent est autonome, capable et connecté, plus la conception, l'hébergement et la maintenance
+          coûtent cher.
         </P>
 
-        <H2>Faut-il raisonner en prix ou en retour sur investissement ?</H2>
+        <H2>Combien coûte un agent IA pour une PME ? Les fourchettes du marché</H2>
         <P>
-          La bonne question n'est pas «&nbsp;combien ça coûte&nbsp;» mais «&nbsp;combien ça rapporte ou fait gagner&nbsp;».
-          Un agent qui fait gagner plusieurs heures par semaine à une équipe se rentabilise vite. Estimez
-          le temps gagné et les erreurs évitées avant de regarder le devis.
+          Voici les repères de prix constatés sur le marché français en 2026, selon le type de projet. Ces
+          fourchettes couvrent la conception, le développement, les tests et le déploiement, mais pas toujours
+          la formation ni les évolutions futures.
         </P>
+        <PriceTable
+          head={['Type d\'agent IA', 'Setup (conception + déploiement)', 'Coût récurrent / mois', 'Complexité']}
+          rows={[
+            ['Chatbot simple (FAQ, support)', '500 à 2 000 €', '30 à 100 €', 'Faible'],
+            ['Agent IA métier (1 workflow)', '3 000 à 8 000 €', '80 à 300 €', 'Moyenne'],
+            ['Agent multi-tâches (workflows connectés)', '8 000 à 20 000 €', '200 à 600 €', 'Élevée'],
+            ['Automatisation IA (intégration SI)', '10 000 à 50 000 €', '300 à 1 200 €', 'Très élevée'],
+            ['Abonnement SaaS no-code', '0 à 500 €', 'à partir de ~90 €', 'Variable'],
+          ]}
+          caption="Prix d'un agent IA pour PME en 2026, setup et coût récurrent. Le coût mensuel (API, hébergement, maintenance) est souvent absent des devis."
+        />
 
-        <H2>Par où commencer sans se ruiner ?</H2>
+        <H2>SaaS ou sur-mesure : les deux modèles, deux prix très différents</H2>
         <P>
-          Commencez par un cas d'usage précis et mesurable (relances, qualification, reporting), puis
-          étendez. C'est plus sûr et moins cher qu'un grand projet d'un coup. Pour choisir la brique
-          technique, voir notre comparatif{' '}
+          La première décision structurante, c'est le choix entre deux modèles économiques opposés.
+        </P>
+        <H3>Les plateformes SaaS no-code</H3>
+        <P>
+          Des outils comme Botpress, Copilot Studio ou les briques d'automatisation permettent de construire
+          un agent via une interface, sans coder. Avantages : mise en place rapide, coût d'entrée faible, mises
+          à jour automatiques. Limites : vous ne possédez pas l'agent, vous dépendez des tarifs et des
+          conditions de l'éditeur (souvent facturés en dollars, avec les vraies fonctionnalités réservées aux
+          plans à 200 ou 500 $ par mois), et migrer ailleurs coûte cher. La plupart des PME qui démarrent sur
+          un petit plan finissent vite sur un plan supérieur.
+        </P>
+        <H3>L'agent IA sur-mesure</H3>
+        <P>
+          Un agent sur-mesure est conçu et déployé pour votre contexte, sur des technologies ouvertes (n8n,
+          Make, API OpenAI, Anthropic ou Mistral), connecté à vos outils existants (CRM, ERP, email, base
+          documentaire). Vous en êtes propriétaire, vous maîtrisez vos données, et il évolue sans dépendre d'un
+          éditeur tiers. Le coût de conception est plus élevé au départ, mais le coût total sur trois ans est
+          souvent inférieur à un abonnement SaaS équivalent, avec une autonomie complète en prime. C'est le
+          modèle de GND : sur-mesure, technologies ouvertes, hébergement maîtrisé et conformité RGPD native.
+          Pour choisir la brique technique, voir notre comparatif{' '}
           <A href="/guides/n8n-make-zapier-comparatif">n8n, Make ou Zapier</A>.
         </P>
 
-        <H2>Combien chez GND ?</H2>
+        <H2>Le vrai coût total : ce que les devis oublient</H2>
         <P>
-          GND conçoit des agents IA sur-mesure avec un cadrage RGPD et un devis selon votre périmètre.
-          Voir la <A href="/services/automatisation-ia">page automatisation et IA</A>, ou{' '}
-          <A href="/contact">parlons de votre besoin</A>.
+          C'est le point que la quasi-totalité des présentations commerciales esquivent. Un devis affiche un
+          prix de setup attractif sans détailler les coûts qui s'accumulent ensuite. Trois postes sont à
+          chiffrer impérativement avant de valider un projet.
+        </P>
+        <UL>
+          <LI><strong>Le coût des tokens et des API :</strong> chaque interaction avec un modèle (GPT-4o,
+          Claude, Mistral) consomme des tokens facturés à l'usage. Pour un agent traitant quelques centaines
+          d'interactions par jour, comptez de 80 à 250 € par mois selon le modèle et la complexité des prompts.
+          Ce poste est presque toujours absent des devis.</LI>
+          <LI><strong>L'hébergement et l'infrastructure :</strong> un agent sur-mesure a besoin d'un
+          environnement d'exécution (serveur, base de données, parfois un vecteur pour la mémoire). Comptez 20
+          à 100 € par mois selon la charge et le niveau de disponibilité.</LI>
+          <LI><strong>La maintenance et l'évolution :</strong> les modèles changent, vos processus aussi. Une
+          maintenance corrective et évolutive représente en général 10 à 20 % du setup par an. Pour un agent à
+          6 000 €, comptez 600 à 1 200 € par an au minimum.</LI>
+        </UL>
+        <P>
+          À cela s'ajoutent deux postes selon votre contexte : la conformité RGPD (hébergement européen,
+          pseudonymisation, journalisation, rétention des données) pour les données sensibles, et la formation
+          de vos équipes (500 à 1 500 € pour une journée ou deux), sans laquelle l'outil reste sous-exploité.
+        </P>
+
+        <H2>Coût total d'un agent IA sur trois ans</H2>
+        <P>
+          Le prix d'un agent IA se juge sur la durée, pas au ticket d'entrée. Voici ce que représentent les
+          principaux scénarios sur trois ans, coûts récurrents compris.
+        </P>
+        <PriceTable
+          head={['Scénario', 'Setup', 'Récurrent sur 3 ans', 'Total 3 ans', 'Propriétaire ?']}
+          rows={[
+            ['Chatbot SaaS (plan standard)', '~300 €', '~3 200 €', '~3 500 €', 'Non'],
+            ['Agent métier sur-mesure (1 workflow)', '5 000 €', '~5 400 €', '~10 400 €', 'Oui'],
+            ['Agent multi-tâches sur-mesure', '12 000 €', '~12 600 €', '~24 600 €', 'Oui'],
+            ['SaaS avancé (plan pro)', '~500 €', '~7 200 €', '~7 700 €', 'Non'],
+          ]}
+          caption="Coût total d'un agent IA sur 3 ans selon le modèle. Le SaaS semble moins cher, mais ne vous appartient pas et suit la politique tarifaire de l'éditeur."
+        />
+
+        <H2>Pourquoi le « moins cher » peut coûter le plus cher</H2>
+        <P>
+          Choisir la solution la moins chère à l'instant T sans calculer le coût sur trois à cinq ans est le
+          piège classique des projets IA. Une plateforme SaaS ne vous appartient pas : si l'éditeur augmente
+          ses tarifs (fréquent dans le secteur), change ses conditions ou disparaît, vous repartez de zéro. Un
+          agent sur-mesure est un actif que vous possédez et faites évoluer selon vos besoins. Sur la durée,
+          l'écart de prix initial se comble souvent, et la propriété fait la différence.
+        </P>
+
+        <H2>Quel retour sur investissement attendre ?</H2>
+        <P>
+          La vraie question n'est pas « combien ça coûte » mais « combien ça fait gagner ». Un agent IA se juge
+          au temps qu'il libère et aux erreurs qu'il évite. Trois leviers de valeur reviennent le plus souvent.
+        </P>
+        <UL>
+          <LI><strong>Le temps gagné :</strong> un agent qui traite les relances, la qualification de leads ou
+          le reporting libère plusieurs heures par semaine, soit une fraction d'équivalent temps plein.</LI>
+          <LI><strong>Les erreurs évitées :</strong> une saisie ou une réponse automatisée et cadrée réduit les
+          oublis et les incohérences, souvent coûteux.</LI>
+          <LI><strong>La réactivité :</strong> répondre en secondes, 24h/24, améliore l'expérience client et le
+          taux de transformation.</LI>
+        </UL>
+        <P>
+          Exemple simple : un agent à 5 000 € qui fait gagner cinq heures par semaine à une équipe, valorisées
+          à 30 € de l'heure, représente environ 7 800 € d'économie par an. Le projet est rentabilisé en moins
+          d'un an, maintenance comprise. C'est ce calcul, et non le prix seul, qui doit guider votre décision.
+        </P>
+
+        <H2>Comment obtenir un devis fiable pour votre agent IA</H2>
+        <P>
+          Pour éviter les mauvaises surprises, exigez que le devis chiffre : le setup, le coût récurrent estimé
+          (API, hébergement, maintenance), le périmètre exact (cas d'usage, outils connectés), la propriété du
+          code et des données, le niveau de conformité RGPD, et la formation. Un prestataire qui reste évasif
+          sur les coûts récurrents vous prépare une facture surprise.
+        </P>
+
+        <H2>Combien coûte un agent IA chez GND ?</H2>
+        <P>
+          GND conçoit des agents IA et des automatisations sur-mesure pour PME, sur technologies ouvertes (n8n,
+          Make, API des principaux modèles), avec un cadrage RGPD natif et un devis selon votre périmètre réel.
+          Vous restez propriétaire du système et de vos données, sans abonnement imposé par un éditeur tiers.
+          Nous recommandons de démarrer par un cas d'usage précis et mesurable, puis d'étendre. Découvrez notre{' '}
+          <A href="/services/automatisation-ia">approche automatisation et IA</A>, ou{' '}
+          <A href="/contact">parlons de votre besoin</A>, réponse sous 24h.
         </P>
       </>
     ),
     faq: [
-      { q: "Combien coûte un agent IA pour une PME ?", a: "Le marché est très dispersé : de quelques milliers d'euros pour un agent simple à plusieurs dizaines de milliers pour un système complexe et intégré, plus un coût d'usage récurrent. Le devis dépend du périmètre." },
-      { q: "Qu'est-ce qui fait varier le prix d'un agent IA ?", a: "Le nombre de tâches automatisées, les connexions à vos outils et données, le niveau de fiabilité exigé, l'hébergement (cloud ou auto-hébergé), et le coût d'usage des modèles." },
-      { q: "Comment estimer le retour sur investissement d'un agent IA ?", a: "Estimez le temps gagné par votre équipe et les erreurs évitées. Un agent qui libère plusieurs heures par semaine se rentabilise souvent rapidement. Raisonnez en valeur, pas seulement en prix." },
-      { q: "Par où commencer pour ne pas se ruiner ?", a: "Par un cas d'usage précis et mesurable (relances, qualification de leads, reporting), puis étendez. C'est plus sûr et moins coûteux qu'un grand projet lancé d'un coup." },
-      { q: "Combien coûte un agent IA chez GND ?", a: "GND établit un devis selon votre périmètre, avec un cadrage RGPD. Réponse sous 24h, devis sous 48h." },
+      { q: "Combien coûte un agent IA pour une PME en 2026 ?", a: "De 500 à 2 000 € pour un chatbot simple, 3 000 à 8 000 € pour un agent métier sur un cas d'usage, 8 000 à 20 000 € pour un agent multi-tâches, et 10 000 à 50 000 € pour une automatisation intégrée au SI. À cela s'ajoute un coût récurrent mensuel (API, hébergement, maintenance) souvent oublié." },
+      { q: "Quel est le vrai coût total d'un agent IA ?", a: "Le setup n'est que la partie visible. Ajoutez les tokens et API des modèles (80 à 250 €/mois pour quelques centaines d'interactions/jour), l'hébergement (20 à 100 €/mois) et la maintenance (10 à 20 % du setup par an). Un devis sérieux chiffre ces trois postes." },
+      { q: "Vaut-il mieux un agent IA SaaS ou sur-mesure ?", a: "Le SaaS est rapide et peu cher à l'entrée, mais vous ne le possédez pas et suivez les tarifs de l'éditeur. Le sur-mesure coûte plus au départ mais vous appartient, maîtrise vos données et revient souvent moins cher sur 3 ans. GND travaille en sur-mesure, sur technologies ouvertes et conforme RGPD." },
+      { q: "Combien coûtent les tokens et l'API d'un agent IA ?", a: "Chaque interaction consomme des tokens facturés à l'usage par le fournisseur du modèle (GPT-4o, Claude, Mistral). Pour un agent traitant quelques centaines d'interactions par jour, comptez 80 à 250 € par mois selon le modèle et la longueur des échanges." },
+      { q: "Quel est le tarif d'un chatbot IA pour une entreprise ?", a: "Un chatbot IA simple (FAQ, support de premier niveau) coûte 500 à 2 000 € en conception, plus 30 à 100 € par mois de coût récurrent. En SaaS, comptez un abonnement à partir d'environ 90 € par mois, sans en être propriétaire." },
+      { q: "Comment estimer le retour sur investissement d'un agent IA ?", a: "Estimez le temps gagné et les erreurs évitées. Exemple : un agent à 5 000 € qui libère 5 heures par semaine valorisées à 30 €/h représente environ 7 800 € par an, soit une rentabilité en moins d'un an, maintenance comprise." },
+      { q: "Combien coûte une automatisation IA pour une PME ?", a: "Une automatisation IA connectée à votre système d'information va de 10 000 à 50 000 € en setup, plus 300 à 1 200 € par mois de coût récurrent, selon le nombre de workflows et la profondeur des intégrations. Le ROI se mesure en temps de travail économisé." },
+      { q: "Par où commencer pour ne pas se ruiner ?", a: "Par un cas d'usage précis et mesurable (relances, qualification de leads, reporting), puis étendez. C'est plus sûr et moins coûteux qu'un grand projet lancé d'un coup, et cela permet de mesurer le ROI avant d'investir davantage." },
+      { q: "Un agent IA est-il conforme au RGPD ?", a: "Il peut l'être s'il est conçu pour : hébergement sur infrastructure européenne, pseudonymisation des données, journalisation des accès et politique de rétention. Chez GND, la conformité RGPD est native, avec la possibilité d'un hébergement européen et de modèles comme Mistral." },
+      { q: "Combien coûte un agent IA chez GND ?", a: "GND établit un devis selon votre périmètre réel, sur technologies ouvertes et avec un cadrage RGPD. Vous restez propriétaire du système et de vos données. Réponse sous 24h, devis sous 48h." },
     ],
   },
 

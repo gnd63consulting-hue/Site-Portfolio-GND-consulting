@@ -118,8 +118,8 @@ export const GUIDES: GuideMeta[] = [
     description:
       "Prix d'un logo, d'une charte graphique, d'un brand book : les fourchettes de marché, ce qui les fait varier, et comment budgéter votre identité. Le guide GND.",
     excerpt:
-      "Logo, charte, brand book : les fourchettes de marché et ce qui fait varier la facture.",
-    readMin: 6,
+      "Logo, charte, brand book : les fourchettes de marché 2026 et ce qui fait varier la facture.",
+    readMin: 12,
     kicker: 'Guide · Branding',
   },
   {
@@ -430,6 +430,44 @@ const Lead = ({ children }: any) => (
 );
 const A = ({ href, children }: any) => (
   <a href={href} className="underline decoration-accent underline-offset-4 hover:text-accent transition-colors">{children}</a>
+);
+const H3 = ({ children }: any) => (
+  <h3 className="display text-xl md:text-2xl text-text-strong leading-tight mt-8 mb-3">{children}</h3>
+);
+const UL = ({ children }: any) => (
+  <ul className="mb-5 max-w-3xl space-y-2 text-base md:text-[17px] text-text leading-relaxed">{children}</ul>
+);
+const LI = ({ children }: any) => (
+  <li className="relative pl-5 before:absolute before:left-0 before:top-[0.55em] before:h-1.5 before:w-1.5 before:rounded-full before:bg-accent">{children}</li>
+);
+/* Tableau de prix charté GND (crème / chocolat / orange). */
+const PriceTable = ({ head, rows, caption }: { head: string[]; rows: string[][]; caption?: string }) => (
+  <figure className="my-7 max-w-3xl overflow-x-auto rounded-2xl border border-text-strong/10">
+    <table className="w-full border-collapse text-left text-sm md:text-[15px]">
+      <thead>
+        <tr className="bg-text-strong text-bg">
+          {head.map((h) => <th key={h} className="px-4 py-3 font-semibold">{h}</th>)}
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map((r, i) => (
+          <tr key={i} className={i % 2 ? 'bg-bg-alt' : 'bg-bg'}>
+            {r.map((c, j) => (
+              <td key={j} className={`px-4 py-3 align-top border-t border-text-strong/8 ${j === 0 ? 'font-medium text-text-strong' : 'text-text'}`}>{c}</td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+    {caption && <figcaption className="px-4 py-2.5 text-xs text-text-muted bg-bg-alt border-t border-text-strong/8">{caption}</figcaption>}
+  </figure>
+);
+/* Encart accent (angle différenciant, réassurance). */
+const Callout = ({ title, children }: any) => (
+  <aside className="my-7 max-w-3xl rounded-2xl bg-accent/10 border border-accent/25 p-5 md:p-6">
+    {title && <div className="display text-lg text-text-strong mb-2">{title}</div>}
+    <div className="text-base md:text-[17px] text-text leading-relaxed">{children}</div>
+  </aside>
 );
 
 /* ===================== Contenu des guides (par slug) ===================== */
@@ -951,59 +989,663 @@ const GUIDE_BODY: Record<string, { body: React.ReactNode; faq: FaqItem[] }> = {
     body: (
       <>
         <Lead>
-          Le prix d'une identité visuelle dépend de ce que vous achetez. Un logo seul chez un freelance
-          peut coûter quelques centaines d'euros. Une identité complète (logo, charte, déclinaisons)
-          chez une agence va de quelques centaines à plus de dix mille euros. Le vrai repère, ce n'est
-          pas le tarif, c'est la cohérence obtenue et les droits que vous récupérez.
+          En 2026, le prix d'une identité visuelle va de quelques centaines d'euros pour un logo seul chez
+          un freelance junior à plus de 15 000 € pour une identité complète en agence. Pour la majorité des
+          TPE et PME, une identité professionnelle et durable (logo, charte graphique, déclinaisons) se situe
+          entre 1 500 € et 4 000 €. Le vrai repère n'est pas le tarif le plus bas, c'est ce que vous obtenez
+          vraiment et les droits que vous récupérez. Ce guide détaille le prix d'un logo, le prix d'une charte
+          graphique, le prix d'une identité visuelle complète, et surtout ce qui justifie chaque écart.
         </Lead>
+        <P>
+          Vous cherchez un repère rapide avant de demander un devis ? Voici l'essentiel : comptez 300 à
+          1 500 € pour un logo professionnel chez un freelance, 1 500 à 8 000 € en studio ou en agence, et
+          1 500 à 4 000 € pour une identité complète adaptée à une PME. Le reste de cet article vous explique
+          comment lire un devis, éviter les pièges de prix, et choisir entre freelance, studio et agence sans
+          vous tromper.
+        </P>
+
+        <H2>Prix d'une identité visuelle en 2026 : les fourchettes du marché</H2>
+        <P>
+          Avant d'entrer dans le détail, voici les repères de prix d'une identité visuelle constatés sur le
+          marché français en 2026, selon le type de prestation et de prestataire. Ces fourchettes sont des
+          ordres de grandeur : le prix réel dépend de votre projet, comme nous le détaillons plus bas.
+        </P>
+        <PriceTable
+          head={['Prestation', 'Freelance', 'Studio / Agence']}
+          rows={[
+            ['Logo simple (junior)', '300 à 800 €', 'non applicable'],
+            ['Logo professionnel (confirmé)', '800 à 1 500 €', '1 500 à 3 000 €'],
+            ['Charte graphique', '500 à 3 000 €', '3 000 à 15 000 €'],
+            ['Pack logo + charte', '1 500 à 4 000 €', '3 500 à 8 000 €'],
+            ['Identité visuelle complète', '1 500 à 4 000 €', '4 000 à 15 000 € et plus'],
+            ['Rebranding complet', '3 000 à 6 000 €', '5 000 à 15 000 €+'],
+            ['Génération par IA seule (Canva, Looka…)', '0 à 300 €', 'non applicable'],
+          ]}
+          caption="Fourchettes indicatives du marché français, 2026. Le prix final dépend de l'ampleur du projet, du niveau de recherche créative et des livrables. Sources : Codeur, Malt, BDM et retours d'agences."
+        />
+        <P>
+          Retenez une chose : sur ce marché, un écart de 1 à 10 sur le prix ne veut pas dire un écart de 1 à
+          10 sur la qualité du dessin. Il traduit surtout la profondeur de la réflexion en amont, le nombre
+          de pistes explorées, l'étendue des livrables et, surtout, ce que vous possédez réellement à la fin.
+        </P>
+
+        <H2>Tarif création logo : pourquoi ça va de 50 € à 5 000 €</H2>
+        <P>
+          C'est la question qui revient le plus souvent : pourquoi un tarif de création de logo peut-il aller
+          de 50 € sur une plateforme à 5 000 € en studio, pour ce qui ressemble, de loin, au même livrable ?
+          La réponse tient en un mot : ce que vous ne voyez pas. Un logo à 50 € est un fichier isolé, souvent
+          issu d'un gabarit réutilisé, sans stratégie ni exclusivité. Un logo à 5 000 € est le résultat
+          visible d'un travail invisible : analyse du positionnement, étude des concurrents, exploration de
+          plusieurs territoires créatifs, tests de lisibilité en petit et en grand, déclinaisons et cession
+          de droits.
+        </P>
+        <P>
+          Pour situer votre projet, voici comment se répartit un tarif de création de logo selon la démarche
+          réellement engagée derrière le dessin.
+        </P>
+        <PriceTable
+          head={['Niveau de prestation', 'Tarif création logo', 'Ce qui est inclus']}
+          rows={[
+            ['Générateur en ligne / IA seule', '0 à 100 €', 'Un visuel instantané, non exclusif, sans fichiers sources garantis.'],
+            ['Plateforme de freelances (entrée)', '50 à 300 €', 'Un logo simple, souvent sans recherche ni déclinaisons.'],
+            ['Freelance junior', '300 à 800 €', 'Un logo correct pour un brief clair, fichiers sources à vérifier.'],
+            ['Freelance confirmé', '800 à 1 500 €', 'Recherche, variantes, fichiers sources et cession de droits.'],
+            ['Studio créatif', '1 500 à 5 000 €', 'Stratégie, direction créative, système complet et exclusivité.'],
+          ]}
+          caption="Tarif de création de logo selon la profondeur de la démarche. Le prix ne paie pas le dessin, il paie la réflexion et les droits qui vont avec."
+        />
+        <P>
+          Autrement dit, un tarif de création de logo bas n'est pas une bonne affaire s'il vous oblige à tout
+          refaire six mois plus tard. Le bon réflexe n'est pas de chercher le prix le plus bas, mais le prix
+          juste pour ce que votre marque exige vraiment.
+        </P>
+
+        <H2>Prix logo agence ou freelance : le vrai calcul</H2>
+        <P>
+          Beaucoup d'entreprises hésitent entre un logo chez un freelance et un logo en agence, uniquement sur
+          la base du prix affiché. C'est une erreur de lecture. Le prix d'un logo en agence (souvent 2 000 à
+          8 000 €) intègre une équipe, un processus et une garantie de suivi que le tarif d'un freelance (300 à
+          1 500 €) ne couvre pas toujours. Mais l'inverse est vrai aussi : payer un prix d'agence pour un
+          besoin simple, c'est financer une structure dont vous n'avez pas l'usage.
+        </P>
+        <P>
+          Le bon calcul se fait sur la durée. Un logo bien conçu vous accompagne cinq à dix ans. Ramené à
+          l'année, l'écart entre un freelance à 1 000 € et un studio à 3 000 € devient marginal au regard de
+          ce que ce logo porte : votre crédibilité, votre reconnaissance, la confiance de vos clients. La
+          vraie question n'est donc pas le prix du logo aujourd'hui, mais son coût réel sur toute sa durée de
+          vie, refontes comprises. Pour approfondir ce choix, lisez notre guide{' '}
+          <A href="/guides/logo-freelance-ou-agence">logo freelance ou agence</A>.
+        </P>
 
         <H2>Combien coûte un logo ?</H2>
         <P>
-          Sur le marché, un logo varie fortement selon le prestataire. Chez un freelance, on observe en
-          général de quelques centaines à quelques milliers d'euros. En agence, le ticket est plus élevé
-          car le logo s'inscrit dans une démarche de marque. Méfiez-vous des logos à très bas prix : ils
-          arrivent souvent sans fichiers sources ni déclinaisons, ce qui coûte plus cher ensuite.
+          Le logo est la brique la plus demandée, et celle dont le prix varie le plus. Sur le marché
+          français, un logo se situe le plus souvent entre 300 € et 2 500 €, selon l'expérience du
+          prestataire et la démarche qui l'accompagne.
+        </P>
+        <UL>
+          <LI><strong>Freelance junior (moins de 3 ans) :</strong> 300 à 800 €. Correct pour une activité
+          simple avec un brief clair, à condition de vérifier le portfolio et les fichiers livrés.</LI>
+          <LI><strong>Freelance confirmé (3 à 8 ans) :</strong> 800 à 1 500 €. Le meilleur rapport
+          qualité-prix pour la plupart des TPE et PME.</LI>
+          <LI><strong>Studio ou agence :</strong> 1 500 à 8 000 € et plus. Ici le logo s'inscrit dans une
+          véritable stratégie de marque, avec analyse du positionnement et des concurrents.</LI>
+        </UL>
+        <P>
+          Méfiez-vous des logos à très bas prix (moins de 50 € sur une plateforme, ou générés
+          automatiquement). Ils arrivent presque toujours sans fichiers sources, sans déclinaisons et avec
+          des droits flous. Résultat : vous payez une deuxième fois pour le refaire proprement. Pour aller
+          plus loin sur ce choix, voir notre guide{' '}
+          <A href="/guides/logo-freelance-ou-agence">logo freelance ou agence</A>.
         </P>
 
-        <H2>Combien coûte une charte graphique ?</H2>
+        <H2>Prix d'une charte graphique : combien et pour quoi ?</H2>
         <P>
-          La charte graphique encadre l'usage du logo, des couleurs et des typographies. Son prix dépend
-          du nombre de supports couverts et de la profondeur des règles. C'est un investissement qui
-          évite des dérives coûteuses plus tard, quand plusieurs personnes ou prestataires produisent vos
-          supports. Pour la différence avec le brand book, voir notre guide{' '}
+          La charte graphique est le document qui encadre l'usage de votre logo, de vos couleurs et de vos
+          typographies. C'est elle qui garantit que votre site, vos réseaux sociaux, vos devis et vos
+          supports imprimés racontent la même histoire visuelle. Le prix d'une charte graphique dépend
+          directement du nombre de supports couverts et de la profondeur des règles : une charte de deux
+          pages n'a pas la même valeur qu'un système complet qui anticipe tous vos points de contact.
+        </P>
+        <UL>
+          <LI><strong>Charte basique (freelance) :</strong> 500 à 1 500 €. Couleurs, typographies, règles
+          d'usage du logo. Suffisant pour démarrer.</LI>
+          <LI><strong>Charte complète (freelance confirmé) :</strong> 1 500 à 3 000 €. Ajoute les
+          déclinaisons, les gabarits réseaux sociaux et les principes d'iconographie.</LI>
+          <LI><strong>Charte stratégique (studio ou agence) :</strong> 3 000 à 15 000 €. Intègre la
+          stratégie de marque en amont et une déclinaison large sur tous les points de contact.</LI>
+        </UL>
+        <P>
+          Sans charte, chaque prestataire qui intervient après vous (développeur, imprimeur, community
+          manager) réinterprète votre identité à sa façon. Le résultat est une marque floue et peu
+          mémorable. Pour comprendre la différence avec un brand book, lisez notre guide{' '}
           <A href="/guides/charte-graphique-vs-brand-book">charte graphique ou brand book</A>.
         </P>
 
         <H2>Combien coûte un brand book ?</H2>
         <P>
-          Le brand book va plus loin que la charte : il englobe la plateforme de marque (vision, valeurs,
-          ton, récit). Il représente donc un budget supérieur, justifié quand la marque grandit, recrute
-          ou s'adresse à plusieurs audiences. Une petite structure n'en a pas toujours besoin au démarrage.
+          Le brand book va plus loin que la charte : il englobe la plateforme de marque, c'est-à-dire la
+          vision, les valeurs, le ton de voix et le récit. Comptez généralement 2 000 à 8 000 € chez un
+          freelance confirmé ou un studio, et davantage en agence quand il s'accompagne d'un vrai travail
+          de stratégie. Ce budget se justifie quand la marque grandit, recrute ou s'adresse à plusieurs
+          audiences. Une petite structure n'en a pas toujours besoin dès le démarrage.
         </P>
+
+        <H2>Combien coûte une identité visuelle complète ?</H2>
+        <P>
+          Une identité visuelle complète regroupe le logo, ses variantes, la palette de couleurs, la
+          typographie, les éléments graphiques et la charte qui encadre le tout. C'est le socle sur lequel
+          reposeront ensuite votre site, vos supports et votre communication.
+        </P>
+        <UL>
+          <LI><strong>Freelance :</strong> 1 500 à 4 000 € pour une identité cohérente et bien documentée.</LI>
+          <LI><strong>Studio :</strong> 4 000 à 6 000 €, avec une direction créative affirmée et une
+          exécution soignée.</LI>
+          <LI><strong>Agence :</strong> 6 000 à 15 000 € et plus, pertinent pour les projets complexes
+          (plusieurs marques, marchés internationaux, enjeux de levée de fonds).</LI>
+        </UL>
+
+        <H2>Freelance, studio ou agence : quel écart de prix, et pour quoi ?</H2>
+        <P>
+          On oppose souvent le freelance à l'agence, en oubliant le palier intermédiaire qui convient le
+          mieux à la plupart des projets ambitieux : le studio. Voici comment trancher.
+        </P>
+        <H3>Le freelance</H3>
+        <P>
+          Le plus accessible (300 à 4 000 € selon la prestation). Interlocuteur unique, souplesse, coût
+          maîtrisé. Idéal si votre projet est clair et votre budget serré. La limite : une seule paire de
+          mains, donc une seule sensibilité créative, et une disponibilité qui dépend de son carnet de
+          commandes.
+        </P>
+        <H3>Le studio</H3>
+        <P>
+          Le juste milieu (3 000 à 8 000 €). Une petite équipe soudée, une direction créative qui signe,
+          plusieurs compétences réunies (stratégie, design, parfois rédaction et motion). Vous gagnez la
+          cohérence et le recul d'une structure, sans les frais de structure d'une grande agence. C'est le
+          modèle de GND.
+        </P>
+        <H3>L'agence</H3>
+        <P>
+          Le plus complet et le plus cher (6 000 à 15 000 € et au-delà). Équipe pluridisciplinaire, process
+          rodés, capacité à gérer des projets complexes. Pertinent quand le branding est un enjeu business
+          majeur. En contrepartie, un coût de structure élevé et parfois une relation plus distante.
+        </P>
+
+        <H2>Prix d'une identité par IA, par un humain, ou les deux ?</H2>
+        <P>
+          C'est la question qui change tout en 2026, et que presque aucun guide n'aborde honnêtement. Les
+          outils d'intelligence artificielle (générateurs de logo, Canva, Midjourney) permettent de produire
+          un visuel en quelques minutes pour presque rien. Faut-il s'en méfier ou s'en servir ? La bonne
+          réponse n'est ni l'un ni l'autre : c'est de savoir ce que chaque approche vous apporte réellement.
+        </P>
+        <PriceTable
+          head={['Approche', 'Budget', 'Ce que vous obtenez']}
+          rows={[
+            ['IA seule (générateur, Canva)', '0 à 300 €', 'Un visuel rapide, souvent générique, sans stratégie, avec des droits et une exclusivité flous.'],
+            ['IA + direction humaine', 'selon projet', "La vitesse de l'IA pour explorer, et l'œil humain pour trancher, affiner et garantir une marque unique et cohérente."],
+            ['100 % humain sur-mesure', 'le plus élevé', 'Une identité entièrement pensée main, idéale pour les marques à fort enjeu de différenciation.'],
+          ]}
+          caption="La question n'est pas humain contre IA, mais quelle combinaison sert votre marque."
+        />
+        <Callout title="La position de GND : l'humain pour guider, l'IA pour accélérer">
+          Une identité générée par une IA seule ressemble à des milliers d'autres et ne raconte rien. Chez
+          GND, l'IA sert à explorer vite et large, mais c'est une direction créative humaine qui signe
+          chaque choix. Vous gagnez le meilleur des deux : la richesse d'exploration de l'IA et la
+          singularité d'un regard humain. C'est ce qui fait qu'une marque reste reconnaissable et vous
+          appartient vraiment.
+        </Callout>
+
+        <H2>Droits d'auteur et fichiers sources : ce que vous possédez vraiment</H2>
+        <P>
+          C'est le point le plus important de cet article, et le plus souvent négligé. Payer pour une
+          identité visuelle ne veut pas automatiquement dire la posséder. Deux notions déterminent ce que
+          vous récupérez : les fichiers sources et la cession de droits.
+        </P>
+        <H3>Les fichiers sources : la différence entre louer et posséder</H3>
+        <P>
+          Il faut distinguer deux familles de fichiers. Les fichiers d'export (PNG, JPG, PDF, SVG) sont prêts
+          à l'usage mais non modifiables. Les fichiers sources (AI d'Illustrator, EPS, fichiers Figma ou INDD
+          d'InDesign) sont les fichiers de travail originaux, entièrement modifiables : ce sont eux qui vous
+          permettent de faire évoluer votre logo, de le décliner, ou de le confier à un autre prestataire sans
+          repartir de zéro. Sans fichiers sources, vous ne louez qu'une image figée. Avec, vous possédez
+          vraiment votre identité.
+        </P>
+        <P>
+          Beaucoup de prestataires, notamment les freelances débutants et certaines plateformes, ne livrent
+          pas les fichiers sources par défaut, ou les facturent en supplément. Voici les livrables à exiger
+          systématiquement avant de signer.
+        </P>
+        <PriceTable
+          head={['Livrable', 'Statut', 'À quoi il sert']}
+          rows={[
+            ['Fichier vectoriel AI ou EPS (modifiable)', 'Indispensable', 'La source éditable de votre logo.'],
+            ['Fichier vectoriel SVG', 'Indispensable', "L'usage web, net à toutes les tailles."],
+            ['PDF vectoriel', 'Indispensable', "L'impression sans perte de qualité."],
+            ['PNG transparents (plusieurs tailles)', 'Indispensable', 'Les usages numériques courants.'],
+            ['JPG sur fond blanc', 'Indispensable', 'Les documents bureautiques.'],
+            ['Fichier source Illustrator ou Figma', 'À négocier', 'La modification future en autonomie.'],
+            ['Codes Pantone', 'Recommandé', "L'impression professionnelle fidèle."],
+          ]}
+          caption="Les livrables à demander à la livraison d'une identité visuelle. Sans les formats vectoriels et sources, votre logo n'est pas réellement exploitable."
+        />
+        <H3>La cession de droits : les quatre points à vérifier</H3>
+        <P>
+          En droit français, une création graphique est protégée par le droit d'auteur dès sa création, et
+          les droits appartiennent par défaut à son auteur, c'est-à-dire au designer, pas à vous. Pour utiliser
+          librement votre logo, le contrat doit prévoir une cession de droits patrimoniaux, précise sur quatre
+          points.
+        </P>
+        <UL>
+          <LI><strong>L'étendue :</strong> quels usages sont autorisés (imprimé, web, télévision,
+          merchandising).</LI>
+          <LI><strong>Le territoire :</strong> France, Europe ou monde entier.</LI>
+          <LI><strong>La durée :</strong> temporaire, ou pour toute la durée légale de protection (70 ans
+          après la mort de l'auteur).</LI>
+          <LI><strong>L'exclusivité :</strong> le designer peut-il réutiliser ou revendre des éléments
+          similaires à d'autres clients ?</LI>
+        </UL>
+        <P>
+          Un contrat vague sur ces points peut vous exposer à un litige, ou à un logo qui, juridiquement, ne
+          vous appartient pas totalement. C'est le piège classique des offres à très bas prix, et un point
+          particulièrement sensible avec les logos générés par IA : la propriété intellectuelle de ces
+          créations reste un sujet juridique en débat, et certaines plateformes conservent des droits ou
+          réutilisent vos visuels. Lisez toujours les conditions avant d'utiliser un logo automatisé pour une
+          marque commerciale.
+        </P>
+        <Callout>
+          Chez GND, vous repartez toujours avec vos fichiers sources et une cession de droits claire. Votre
+          identité vous appartient à 100 %, sans dépendance ni surprise. C'est notre définition de la{' '}
+          <A href="/guides/etre-proprietaire-de-son-site">vraie propriété</A>.
+        </Callout>
 
         <H2>Ce qui fait varier le prix</H2>
         <P>
-          Quatre facteurs pèsent le plus : l'ampleur (logo seul ou identité complète), le niveau de
-          recherche créative, le nombre de déclinaisons et de supports, et la remise des fichiers sources.
-          Ce dernier point est décisif : sans les fichiers sources, vous n'êtes pas vraiment propriétaire
-          de votre identité.
+          À prestation égale, quatre facteurs expliquent l'essentiel des écarts de prix. Les comprendre vous
+          aide à lire un devis et à savoir où mettre votre budget.
+        </P>
+        <UL>
+          <LI><strong>L'ampleur du projet :</strong> un logo seul n'a rien à voir avec une identité complète
+          déclinée sur tous vos supports.</LI>
+          <LI><strong>La phase de stratégie :</strong> un prestataire expérimenté commence par analyser votre
+          positionnement, vos concurrents et votre cible. C'est cette étape, invisible mais décisive, qui
+          garantit une identité cohérente et différenciante.</LI>
+          <LI><strong>Le nombre de pistes et d'allers-retours :</strong> une seule proposition coûte moins
+          cher que trois concepts travaillés avec plusieurs cycles de modifications.</LI>
+          <LI><strong>Les livrables :</strong> déclinaisons, formats sources, guide d'usage, gabarits réseaux
+          sociaux. Plus le kit est complet, plus il a de valeur opérationnelle.</LI>
+        </UL>
+
+        <H2>Prix d'une identité visuelle selon votre secteur d'activité</H2>
+        <P>
+          À taille égale, deux entreprises n'ont pas les mêmes attentes selon leur secteur. Le prix d'une
+          identité visuelle s'ajuste au niveau d'exigence visuelle de votre marché et à la place que l'image
+          occupe dans la décision d'achat de vos clients. Voici des repères concrets par secteur.
+        </P>
+        <UL>
+          <LI><strong>Restaurant, café, commerce de bouche :</strong> 1 200 à 4 000 €. L'identité doit donner
+          envie et fonctionner en enseigne, sur un menu, un packaging et les réseaux. La cohérence entre la
+          devanture et Instagram est un vrai levier de fréquentation.</LI>
+          <LI><strong>Artisan, bâtiment, services de proximité :</strong> 800 à 2 500 €. Un logo lisible et
+          une charte simple suffisent à inspirer confiance localement, sur un véhicule, un devis ou une
+          vitrine.</LI>
+          <LI><strong>Startup, SaaS, tech :</strong> 4 000 à 15 000 €. L'identité doit tenir face aux
+          investisseurs, aux recrutements et à un produit qui évolue vite. Une plateforme de marque et un
+          système de design sont souvent justifiés.</LI>
+          <LI><strong>Cabinet, profession libérale, santé :</strong> 1 500 à 5 000 €. L'image porte votre
+          sérieux et votre crédibilité. Sobriété, lisibilité et cohérence documentaire priment.</LI>
+          <LI><strong>Marque premium, luxe, cosmétique :</strong> 6 000 à 20 000 € et plus. Ici l'identité
+          est le produit : chaque détail compte, du logo au packaging, en passant par la typographie et les
+          matières.</LI>
+        </UL>
+        <P>
+          Ces fourchettes ne sont pas des tarifs figés, mais des repères pour situer votre projet avant de
+          demander un devis. Un bon prestataire adapte toujours le prix de l'identité visuelle à votre besoin
+          réel, pas l'inverse.
         </P>
 
-        <H2>Combien chez GND ?</H2>
+        <H2>Comment demander un devis de logo professionnel</H2>
         <P>
-          GND travaille votre identité sur-mesure, avec un devis personnalisé selon votre besoin réel,
-          et vous restez propriétaire des fichiers sources. Réponse sous 24h, devis sous 48h. Voir la{' '}
-          <A href="/services/branding-identite">page branding et identité</A>, ou{' '}
+          Obtenir un devis logo professionnel clair est la meilleure façon de comparer sereinement. Un devis
+          de logo professionnel bien construit détaille les livrables, les droits et les délais, et vous évite
+          les mauvaises surprises. Pour recevoir une proposition juste et éviter les allers-retours inutiles,
+          préparez ces quelques éléments avant de contacter un prestataire.
+        </P>
+        <UL>
+          <LI><strong>Votre besoin réel :</strong> logo seul, logo + charte, ou identité complète ? Plus
+          c'est précis, plus le devis est fiable.</LI>
+          <LI><strong>Vos supports prioritaires :</strong> site, enseigne, réseaux sociaux, packaging,
+          documents commerciaux. Ils déterminent les déclinaisons à prévoir.</LI>
+          <LI><strong>Vos références visuelles :</strong> deux ou trois marques que vous aimez, et pourquoi.
+          Cela cadre la direction créative dès le départ.</LI>
+          <LI><strong>Votre échéance et votre budget indicatif :</strong> même approximatif, un budget aide
+          le prestataire à calibrer la bonne prestation plutôt que de vous sur-vendre ou sous-livrer.</LI>
+        </UL>
+        <P>
+          Un devis de logo professionnel sérieux vous revient sous quelques jours, détaillé, avec les
+          livrables, les droits et les délais. Chez GND, vous recevez votre devis personnalisé sous 48h,
+          sans engagement. Il vous suffit de{' '}
+          <A href="/contact">nous décrire votre projet</A>.
+        </P>
+
+        <H2>Quel budget prévoir selon votre type d'entreprise ?</H2>
+        <P>
+          Le bon budget dépend moins de votre taille que de l'importance de l'image dans votre activité.
+          Voici des repères concrets selon votre profil.
+        </P>
+        <UL>
+          <LI><strong>Artisan, commerce de proximité :</strong> 800 à 2 000 €. Un logo solide et une charte
+          simple suffisent souvent à inspirer confiance localement. La priorité est la lisibilité sur une
+          enseigne, un véhicule ou une carte de visite.</LI>
+          <LI><strong>Indépendant, profession libérale :</strong> 1 000 à 2 500 €. L'identité porte votre
+          crédibilité personnelle. Un logo, une charte et des gabarits pour vos documents professionnels
+          font la différence.</LI>
+          <LI><strong>E-commerce, boutique en ligne :</strong> 2 000 à 5 000 €. L'identité se décline sur de
+          nombreux points de contact (site, fiches produit, réseaux, packaging). La cohérence devient un
+          enjeu de conversion.</LI>
+          <LI><strong>Startup, SaaS, entreprise en croissance :</strong> 4 000 à 15 000 €. L'identité doit
+          tenir la route face aux investisseurs, aux recrutements et à une communication qui monte en
+          puissance. Une plateforme de marque complète est souvent justifiée.</LI>
+        </UL>
+
+        <H2>Quels délais prévoir ?</H2>
+        <UL>
+          <LI><strong>Logo simple :</strong> 1 à 2 semaines.</LI>
+          <LI><strong>Identité visuelle complète :</strong> 3 à 6 semaines.</LI>
+          <LI><strong>Identité + stratégie de marque :</strong> 6 à 12 semaines.</LI>
+        </UL>
+        <P>
+          Comptez toujours une marge pour les allers-retours. Même avec un brief précis, deux ou trois cycles
+          de retours sont la norme et sont le signe d'un travail sérieux, pas d'un retard.
+        </P>
+
+        <H2>Que doit contenir un bon devis d'identité visuelle ?</H2>
+        <P>
+          Un devis clair n'est pas une simple liste de prix : c'est un document qui protège les deux parties
+          et définit ce qui est inclus, et surtout ce qui ne l'est pas. Voici les points à vérifier avant de
+          signer, et le risque concret quand ils manquent.
+        </P>
+        <PriceTable
+          head={['Point du devis', 'Statut', 'Risque si absent']}
+          rows={[
+            ['Cession des droits d\'auteur explicite', 'Indispensable', 'Vous n\'êtes pas propriétaire du logo.'],
+            ['Étendue, territoire et durée de la cession', 'Indispensable', 'Un usage limité dans le temps ou l\'espace.'],
+            ['Liste précise des livrables', 'Indispensable', 'Des fichiers manquants, refacturés ensuite.'],
+            ['Remise des fichiers sources', 'À négocier', 'Une dépendance totale au prestataire.'],
+            ['Nombre de concepts et d\'allers-retours', 'Indispensable', 'Des surcoûts non anticipés.'],
+            ['Clause d\'exclusivité', 'Recommandé', 'Un logo similaire revendu à un concurrent.'],
+            ['Délais de livraison réalistes', 'Indispensable', 'Un projet qui glisse sans recours.'],
+            ['Conditions financières (HT, TTC, acompte)', 'Indispensable', 'Des malentendus sur le paiement.'],
+          ]}
+          caption="La checklist d'un devis d'identité visuelle sérieux. Un devis vague, sans droits ni livrables détaillés, est le premier signal d'alerte."
+        />
+        <P>
+          Un devis anormalement bas ou qui reste flou sur ces points mérite d'être questionné avant toute
+          signature. Un bon prestataire documente précisément ce qu'il livre, et n'a aucune raison de rester
+          évasif.
+        </P>
+
+        <H2>Les 3 erreurs de budget à éviter</H2>
+        <P>
+          Sur ce marché, les mauvaises surprises viennent rarement du prix affiché, mais de ce qu'on n'avait
+          pas anticipé. Trois pièges reviennent le plus souvent.
+        </P>
+        <UL>
+          <LI><strong>Choisir uniquement au prix le plus bas.</strong> Un logo à 30 € ou généré
+          automatiquement finit presque toujours par être refait. Vous payez alors deux fois, et vous perdez
+          du temps et de la crédibilité entre les deux.</LI>
+          <LI><strong>Oublier les coûts cachés.</strong> Les déclinaisons, les fichiers sources, la cession
+          de droits ou un support de dernière minute peuvent être facturés en supplément s'ils ne sont pas
+          dans le devis initial. Faites tout chiffrer dès le départ.</LI>
+          <LI><strong>Tout vouloir d'un coup sans priorités.</strong> Si votre budget est serré, mieux vaut
+          un logo et une charte de base solides maintenant, puis une extension plus tard, qu'une grosse
+          prestation à moitié aboutie. Un bon prestataire vous aide à séquencer.</LI>
+        </UL>
+
+        <H2>Les questions à poser avant de choisir votre prestataire</H2>
+        <P>
+          Le prix ne dit pas tout. Deux devis au même montant peuvent cacher des prestations très
+          différentes. Avant de signer, posez systématiquement ces questions : elles révèlent le sérieux du
+          prestataire et vous évitent les mauvaises surprises.
+        </P>
+        <UL>
+          <LI><strong>Les fichiers sources sont-ils inclus ?</strong> Sans les formats éditables (AI, EPS,
+          SVG), vous ne possédez qu'une image plate.</LI>
+          <LI><strong>La cession des droits d'auteur est-elle totale et écrite ?</strong> C'est ce qui fait
+          que le logo vous appartient vraiment.</LI>
+          <LI><strong>Combien de pistes et d'allers-retours sont compris ?</strong> Une seule proposition sans
+          révision est un signal d'alerte.</LI>
+          <LI><strong>Y a-t-il une phase de stratégie en amont ?</strong> C'est elle qui différencie une
+          identité durable d'un joli dessin interchangeable.</LI>
+          <LI><strong>Le portfolio montre-t-il des projets comparables au vôtre ?</strong> Vérifiez la
+          diversité et la cohérence des réalisations, pas seulement leur esthétique.</LI>
+        </UL>
+        <P>
+          Un prestataire qui répond clairement à ces cinq questions vous fera gagner un temps précieux, quel
+          que soit son prix. Un prestataire qui les élude, même bon marché, vous coûtera cher au final.
+        </P>
+
+        <H2>Comment optimiser votre budget d'identité visuelle sans sacrifier la qualité</H2>
+        <P>
+          Optimiser un budget d'identité visuelle ne veut pas dire chercher le prix le plus bas, mais mettre
+          chaque euro là où il crée le plus de valeur pour votre marque. Voici les leviers qui font la
+          différence, quel que soit votre budget de départ.
+        </P>
+        <UL>
+          <LI><strong>Priorisez le socle.</strong> Un logo solide, une palette et une typographie cohérentes
+          valent mieux qu'une longue liste de supports mal pensés. Le socle d'abord, les extensions ensuite.</LI>
+          <LI><strong>Fournissez un brief clair.</strong> Plus votre brief est précis (références, valeurs,
+          cible), moins il y a d'allers-retours facturés. Un bon brief peut réduire sensiblement le coût
+          final.</LI>
+          <LI><strong>Groupez ce qui va ensemble.</strong> Commander un logo, puis une charte, puis des
+          gabarits séparément coûte souvent plus cher qu'un pack cohérent commandé d'un bloc.</LI>
+          <LI><strong>Exigez les fichiers sources et la cession de droits.</strong> Ce ne sont pas des
+          options : sans eux, chaque évolution future vous sera refacturée. C'est le meilleur investissement
+          de protection à long terme.</LI>
+          <LI><strong>Choisissez la bonne échelle de prestataire.</strong> Payer un prix d'agence pour un
+          besoin simple, ou confier une marque à fort enjeu à un tarif de logo d'entrée de gamme : deux
+          erreurs symétriques. L'adéquation prestataire-besoin est le premier levier d'optimisation.</LI>
+        </UL>
+        <P>
+          Bien piloté, un budget d'identité visuelle même modeste peut produire un résultat professionnel et
+          durable. Mal piloté, un gros budget peut se diluer dans des livrables inutiles. La différence se
+          joue moins sur le montant que sur les priorités et la clarté de votre demande.
+        </P>
+
+        <H2>Quel retour sur investissement attendre ?</H2>
+        <P>
+          Une identité visuelle n'est pas une dépense, c'est un actif. Une marque cohérente inspire confiance,
+          se retient plus facilement et justifie des prix plus élevés. Une étude de l'université Loyola indique
+          que la couleur seule augmente la reconnaissance d'une marque de près de 80 %. Au-delà du chiffre,
+          l'effet est concret sur trois plans.
+        </P>
+        <UL>
+          <LI><strong>La reconnaissance :</strong> une identité mémorable réduit votre coût d'acquisition sur
+          la durée. Une marque immédiatement reconnaissable dépense moins en publicité pour rester en tête.</LI>
+          <LI><strong>Le positionnement perçu :</strong> une identité soignée permet souvent de facturer plus
+          cher, car elle élève la perception de qualité de votre offre.</LI>
+          <LI><strong>La cohérence :</strong> une charte bien construite fait gagner du temps et de l'argent à
+          vos équipes et prestataires, qui n'ont plus à réinventer chaque support.</LI>
+        </UL>
+        <P>
+          Un cadre simple pour estimer votre retour : additionnez le gain de conversion (une image plus
+          professionnelle qui améliore votre taux de transformation), le gain tarifaire (un positionnement qui
+          justifie des prix plus élevés) et l'économie publicitaire (une marque mieux mémorisée). Si la somme
+          sur trois ans dépasse le coût de l'identité, l'investissement est justifié, ce qui est le cas pour
+          la grande majorité des entreprises. À l'inverse, une identité bâclée devra souvent être refaite, ce
+          qui coûte toujours plus cher qu'un projet bien mené dès le départ.
+        </P>
+
+        <H2>Refonte ou création : quel budget d'identité visuelle prévoir ?</H2>
+        <P>
+          Toutes les demandes ne partent pas de zéro. Beaucoup d'entreprises ont déjà un logo mais veulent le
+          moderniser, ou faire évoluer leur identité pour accompagner une nouvelle étape. Le prix d'une
+          identité visuelle n'est pas le même selon que vous créez ou que vous rafraîchissez.
+        </P>
+        <UL>
+          <LI><strong>Rafraîchissement léger (lifting) :</strong> 800 à 2 500 €. On garde l'essentiel et on
+          modernise les détails (typographie, couleurs, proportions). Idéal quand votre marque est encore
+          reconnue mais paraît datée.</LI>
+          <LI><strong>Refonte complète (rebranding) :</strong> 3 000 à 15 000 € et plus. On repense le logo,
+          la charte et souvent le positionnement. Pertinent lors d'un changement de cap, d'une fusion ou d'une
+          montée en gamme.</LI>
+          <LI><strong>Création from scratch :</strong> 1 500 à 15 000 € selon l'ampleur. Vous partez d'une
+          page blanche, ce qui laisse toute liberté créative mais demande une phase de cadrage plus longue.</LI>
+        </UL>
+        <P>
+          Un conseil : ne refondez pas une identité qui fonctionne juste par lassitude interne. Vos clients
+          voient votre marque bien moins souvent que vous. En revanche, si votre image vous dessert
+          commercialement, la refonte se rentabilise vite. Notre guide{' '}
+          <A href="/guides/quand-refaire-son-site">quand refaire son site</A> applique la même logique de
+          décision à votre présence en ligne.
+        </P>
+
+        <H2>Prix identité visuelle : les erreurs de comparaison à éviter</H2>
+        <P>
+          Comparer deux devis d'identité visuelle uniquement sur le prix total, c'est comme comparer deux
+          voitures sur leur seul prix d'achat, sans regarder la consommation, la fiabilité ni la revente.
+          Voici les biais de comparaison qui coûtent le plus cher.
+        </P>
+        <UL>
+          <LI><strong>Comparer un logo seul avec une identité complète.</strong> Ce ne sont pas les mêmes
+          livrables. Un prix identité visuelle bas cache souvent un périmètre réduit.</LI>
+          <LI><strong>Oublier la valeur des droits.</strong> Un logo sans cession de droits ni fichiers
+          sources n'est pas moins cher, il est incomplet. Le vrai coût apparaît le jour où vous voulez le
+          décliner ou le faire imprimer.</LI>
+          <LI><strong>Ignorer la phase de stratégie.</strong> Deux devis identiques en prix peuvent recouvrir
+          l'un une simple exécution, l'autre une vraie réflexion de marque. La différence se voit sur le
+          résultat, pas sur la facture.</LI>
+          <LI><strong>Sous-estimer le suivi.</strong> Un bon prestataire reste joignable pour les déclinaisons
+          futures. Un logo livré puis abandonné vous laisse seul face à vos besoins suivants.</LI>
+        </UL>
+        <Callout title="Le bon réflexe : comparer la valeur, pas seulement le prix">
+          Demandez toujours à ce que chaque devis détaille les livrables, les droits et le nombre de pistes.
+          Vous comparerez alors des prestations comparables, et le prix retrouvera son vrai sens : celui de ce
+          que vous obtenez réellement.
+        </Callout>
+
+        <H2>Prix charte graphique, logo, identité : le récapitulatif</H2>
+        <P>
+          Pour vous aider à mémoriser l'essentiel, voici la synthèse des fourchettes de prix abordées dans ce
+          guide. Gardez en tête que ces repères servent à situer votre projet, jamais à remplacer un devis
+          personnalisé qui, seul, tient compte de votre besoin réel.
+        </P>
+        <PriceTable
+          head={['Prestation', 'Fourchette de prix 2026', 'Pour qui']}
+          rows={[
+            ['Prix logo (freelance)', '300 à 1 500 €', 'TPE, indépendants, projets clairs'],
+            ['Prix logo agence / studio', '1 500 à 8 000 €', 'Marques à fort enjeu de différenciation'],
+            ['Prix charte graphique', '500 à 15 000 €', 'Toute marque qui veut de la cohérence'],
+            ['Pack logo + charte', '1 500 à 8 000 €', 'La demande la plus fréquente en PME'],
+            ['Identité visuelle complète', '1 500 à 15 000 €+', 'Marques structurées, e-commerce, startups'],
+            ['Rebranding', '3 000 à 15 000 €+', 'Repositionnement, fusion, montée en gamme'],
+          ]}
+          caption="Synthèse des prix : logo, charte graphique et identité visuelle complète, marché français 2026."
+        />
+
+        <H2>Faut-il investir dans une identité visuelle quand on démarre ?</H2>
+        <P>
+          C'est l'hésitation classique de l'entrepreneur qui lance son activité : mieux vaut-il consacrer son
+          budget à une identité visuelle soignée, ou le garder pour le produit et l'acquisition de clients ?
+          La réponse honnête : tout dépend de la place de l'image dans votre marché, mais négliger totalement
+          son identité coûte presque toujours plus cher à terme.
+        </P>
+        <P>
+          Une identité bâclée envoie un signal, même inconscient, à vos prospects : si le logo semble amateur,
+          le service est-il sérieux ? À l'inverse, une identité même simple mais cohérente crée immédiatement
+          un capital confiance. Vous n'avez pas besoin d'un budget d'agence dès le premier jour, mais d'un
+          socle propre : un logo lisible, deux ou trois couleurs, une typographie, et la cohérence de bout en
+          bout. C'est précisément ce qu'un pack logo + charte à 1 500 à 4 000 € vous apporte.
+        </P>
+        <P>
+          La bonne stratégie quand le budget est serré : investir dans un socle de qualité maintenant, puis
+          étendre progressivement (gabarits, supports, brand book) à mesure que l'activité grandit. Mieux vaut
+          un socle solide et évolutif qu'une grosse prestation à moitié aboutie, ou pire, un logo gratuit que
+          vous devrez refaire dans un an. Rappelez-vous : le prix d'une identité visuelle refaite deux fois
+          dépasse toujours celui d'une identité bien pensée dès le départ.
+        </P>
+        <Callout>
+          Chez GND, nous aidons aussi les jeunes structures à séquencer leur investissement : un socle d'abord,
+          des extensions ensuite, sans jamais vous faire repartir de zéro. Votre identité grandit avec vous.
+        </Callout>
+
+        <H2>Prix d'un pack logo + charte graphique : la formule la plus demandée</H2>
+        <P>
+          Dans la pratique, la demande la plus fréquente en PME n'est ni le logo seul ni l'identité complète,
+          mais le pack logo + charte graphique. C'est le meilleur compromis : vous obtenez un logo
+          professionnel et les règles qui garantissent sa bonne utilisation partout, sans payer pour des
+          livrables dont vous n'avez pas encore l'usage. Comptez 1 500 à 4 000 € chez un freelance confirmé,
+          et 3 500 à 8 000 € en studio.
+        </P>
+        <P>
+          Ce format couvre l'essentiel des besoins d'une entreprise qui démarre ou se structure : un logo et
+          ses variantes, une palette de couleurs, une ou deux typographies, et une charte qui explique comment
+          tout assembler. Vous pouvez ensuite étendre progressivement (gabarits réseaux sociaux, papeterie,
+          signalétique) au fil de vos besoins, sans repartir de zéro. C'est souvent le point de départ idéal
+          avant d'investir, plus tard, dans un brand book complet.
+        </P>
+        <P>
+          Si vous hésitez sur le périmètre, le plus simple reste de demander un devis de logo professionnel
+          détaillé : un bon prestataire vous proposera le pack adapté à votre stade, sans vous sur-vendre.
+        </P>
+
+        <H2>Exemples concrets de budget d'identité visuelle</H2>
+        <P>
+          Rien ne vaut des cas réels pour situer un prix d'identité visuelle. Voici trois profils types et le
+          budget cohérent pour chacun, avec ce que ce budget finance concrètement.
+        </P>
+        <H3>Un restaurant de quartier</H3>
+        <P>
+          Budget cohérent : 1 500 à 3 000 €. Il finance un logo qui fonctionne en enseigne comme sur un menu,
+          une palette et une typographie appétissantes, des gabarits pour les réseaux sociaux et un format
+          prêt pour l'imprimeur (carte, flyer). L'objectif est la cohérence entre la devanture, le menu et
+          Instagram, un vrai levier de fréquentation locale.
+        </P>
+        <H3>Un artisan du bâtiment</H3>
+        <P>
+          Budget cohérent : 800 à 2 000 €. Il finance un logo lisible et robuste, décliné sur un véhicule, un
+          devis, une carte de visite et une enseigne. Ici, la priorité n'est pas la sophistication mais la
+          clarté et la confiance immédiate qu'inspire une image soignée face à un concurrent au logo bricolé.
+        </P>
+        <H3>Une startup SaaS</H3>
+        <P>
+          Budget cohérent : 5 000 à 12 000 €. Il finance une identité qui tient face aux investisseurs et aux
+          recrutements : logo, système de couleurs et de composants, plateforme de marque, et déclinaisons
+          pour le produit, le site et les supports de levée. À ce niveau, l'identité est un actif stratégique
+          autant qu'esthétique.
+        </P>
+        <P>
+          Dans les trois cas, le prix suit le rôle que joue l'image dans la décision d'achat. Un prestataire
+          sérieux part toujours de votre réalité, pas d'un tarif standard.
+        </P>
+
+        <H2>Combien coûte une identité visuelle chez GND ?</H2>
+        <P>
+          GND travaille votre identité sur-mesure, avec un devis personnalisé selon votre besoin réel plutôt
+          qu'une grille figée. Notre modèle de studio réunit stratégie, direction créative et exécution, avec
+          une méthode hybride où l'humain signe et l'IA accélère. Vous repartez toujours propriétaire de vos
+          fichiers sources, avec une cession de droits claire. Réponse sous 24h, devis sous 48h, sans
+          engagement. Découvrez notre{' '}
+          <A href="/services/branding-identite">approche branding et identité visuelle</A>, ou{' '}
           <A href="/contact">parlons de votre projet</A>.
         </P>
       </>
     ),
     faq: [
-      { q: "Quel est le prix d'une identité visuelle complète ?", a: "Selon le marché, de quelques centaines à plus de dix mille euros, en fonction de l'ampleur (logo seul ou identité complète), du niveau de recherche créative et du nombre de déclinaisons. C'est une fourchette de marché, pas une promesse." },
-      { q: "Combien coûte un logo professionnel ?", a: "Chez un freelance, souvent de quelques centaines à quelques milliers d'euros. En agence, davantage, car le logo s'inscrit dans une démarche de marque. Les logos très bon marché arrivent souvent sans fichiers sources." },
-      { q: "Pourquoi de tels écarts de prix ?", a: "Parce que l'ampleur et la démarche varient : un logo isolé n'a rien à voir avec une identité complète (logo, charte, déclinaisons, fichiers sources) conçue dans une logique de marque." },
-      { q: "Vais-je récupérer les fichiers sources ?", a: "C'est le point clé à vérifier. Chez GND, vous restez propriétaire des fichiers sources de votre identité. Sans eux, vous ne pouvez pas faire évoluer librement votre marque." },
-      { q: "Combien coûte une identité visuelle chez GND ?", a: "GND travaille sur-mesure : le prix dépend de votre besoin réel, avec un devis personnalisé sous 48h. Vous gardez la propriété des fichiers sources." },
+      { q: "Quel est le prix d'une identité visuelle complète en 2026 ?", a: "De 1 500 à 4 000 € chez un freelance, de 4 000 à 6 000 € en studio, et de 6 000 à plus de 15 000 € en agence. Pour la majorité des TPE et PME, une identité professionnelle et durable se situe entre 1 500 et 4 000 €. Le prix dépend de l'ampleur, du niveau de recherche créative et des livrables." },
+      { q: "Combien coûte un logo professionnel ?", a: "Entre 300 et 800 € chez un freelance junior, 800 à 1 500 € chez un freelance confirmé (le meilleur rapport qualité-prix pour une PME), et 1 500 à 8 000 € et plus en studio ou agence. Méfiez-vous des logos à moins de 50 € : ils arrivent souvent sans fichiers sources ni cession de droits." },
+      { q: "Combien coûte une charte graphique ?", a: "De 500 à 1 500 € pour une charte basique chez un freelance, 1 500 à 3 000 € pour une charte complète, et 3 000 à 15 000 € pour une charte stratégique en studio ou agence. Le prix dépend du nombre de supports couverts et de la profondeur des règles." },
+      { q: "Quelle différence entre un logo et une identité visuelle ?", a: "Le logo est un seul élément. L'identité visuelle complète regroupe le logo, ses variantes, les couleurs, la typographie, les éléments graphiques et la charte qui encadre le tout. C'est le socle de toute votre communication." },
+      { q: "Freelance, studio ou agence : que choisir ?", a: "Le freelance (300 à 4 000 €) pour un projet clair et un budget serré. Le studio (3 000 à 8 000 €) pour la cohérence d'une équipe sans les frais d'une grande agence : c'est le modèle de GND. L'agence (6 000 à 15 000 €+) pour les projets complexes à fort enjeu." },
+      { q: "Le prix inclut-il la cession des droits d'auteur ?", a: "Pas automatiquement, et c'est un piège fréquent. En droit français, l'auteur garde ses droits tant qu'il ne les a pas cédés par écrit. Exigez une clause de cession complète et définitive dans le devis. Chez GND, elle est toujours incluse." },
+      { q: "Vais-je récupérer les fichiers sources ?", a: "C'est le point clé à vérifier. Les fichiers sources (AI, EPS, SVG) permettent d'agrandir, décliner et faire imprimer votre logo. Sans eux, vous n'avez qu'une image plate inexploitable. Chez GND, vous repartez toujours avec vos fichiers sources." },
+      { q: "Combien de temps prend la création d'une identité visuelle ?", a: "Comptez 1 à 2 semaines pour un logo simple, 3 à 6 semaines pour une identité complète, et 6 à 12 semaines avec une stratégie de marque. Prévoyez une marge pour les allers-retours, qui sont normaux." },
+      { q: "Une identité générée par IA, ça vaut le coup ?", a: "Une IA seule produit un visuel rapide mais générique, sans stratégie et avec des droits flous. La vraie valeur vient de l'IA combinée à une direction créative humaine : la vitesse d'exploration de l'IA et la singularité d'un regard humain. C'est l'approche de GND." },
+      { q: "Que doit contenir un bon devis d'identité visuelle ?", a: "Le détail des livrables (fichiers sources inclus), le nombre de concepts et d'allers-retours, la cession complète des droits d'auteur, les délais réalistes, et les conditions financières (HT, TTC, acompte). Un devis vague ou anormalement bas est un signal d'alerte." },
+      { q: "Combien coûte une identité visuelle chez GND ?", a: "GND travaille sur-mesure : le prix dépend de votre besoin réel, avec un devis personnalisé sous 48h. Notre modèle de studio réunit stratégie, direction créative et exécution, avec une méthode où l'humain signe et l'IA accélère. Vous gardez la propriété de vos fichiers sources." },
+      { q: "Quel est le tarif de création d'un logo ?", a: "Le tarif de création d'un logo va de 0 à 100 € par une IA ou un générateur, 50 à 300 € sur une plateforme d'entrée de gamme, 300 à 800 € chez un freelance junior, 800 à 1 500 € chez un freelance confirmé, et 1 500 à 5 000 € en studio. L'écart s'explique par la stratégie, l'exclusivité et les droits, pas seulement par le dessin." },
+      { q: "Quelle différence de prix entre un logo freelance et un logo agence ?", a: "Un logo freelance coûte généralement 300 à 1 500 €, un logo en agence 2 000 à 8 000 €. Le prix agence intègre une équipe, un processus et un suivi. Le bon calcul se fait sur la durée de vie du logo (5 à 10 ans) : l'écart annuel est souvent marginal au regard de ce que le logo porte pour votre marque." },
+      { q: "Comment obtenir un devis de logo professionnel ?", a: "Préparez votre besoin (logo seul, logo + charte ou identité complète), vos supports prioritaires, deux ou trois références visuelles et un budget indicatif. Un prestataire sérieux vous renvoie un devis détaillé sous quelques jours. Chez GND, le devis personnalisé arrive sous 48h, sans engagement." },
+      { q: "Le prix d'une identité visuelle change-t-il selon le secteur ?", a: "Oui. Comptez 1 200 à 4 000 € pour un restaurant, 800 à 2 500 € pour un artisan, 4 000 à 15 000 € pour une startup ou un SaaS, 1 500 à 5 000 € pour un cabinet, et 6 000 à 20 000 € et plus pour une marque premium. Le prix suit le niveau d'exigence visuelle de votre marché." },
     ],
   },
 

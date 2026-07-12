@@ -271,7 +271,7 @@ select:focus {
 
 /* === TYPOGRAPHIES STITCH DESIGN SYSTEM === */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Clash Display', 'Syne', sans-serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-weight: 600;
   line-height: 0.95;
   letter-spacing: -0.02em;
@@ -280,7 +280,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Titres principaux — Stitch style */
 .section-title {
-  font-family: 'Clash Display', 'Syne', sans-serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 600;
   color: #1A1A1A;
@@ -302,7 +302,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .card-title {
-  font-family: 'Clash Display', 'Syne', sans-serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 1.25rem;
   font-weight: 600;
   color: #1A1A1A;

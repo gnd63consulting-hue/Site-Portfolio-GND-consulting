@@ -19,19 +19,20 @@ gsap.registerPlugin(ScrollTrigger);
 
 /* Real portfolio, source: live src/data/videosData.js (9 real video projects).
    Media is lazy / poster-first / click-to-play (jamais bloquant, cf. bug Supabase 24 s du live). */
-const SB = "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/";
-const COVER = SB + "portfolio-photos/gnd-cover.png";
+/* COVER : gnd-cover.png perdue avec le projet Supabase (cf. portfolio-assets.ts),
+   poster hero en remplacement provisoire. */
+const COVER = "/assets/hero1-poster.webp";
 const yt = (id: string) => `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
 
 const PROJECTS = [
   { id: "esther-seems", title: "Esther Seems", subtitle: "BOBINE", tag: "Clip musical", year: "2024", ratio: "4/5", credit: "Réalisation · Jonathan Ransau", img: yt("6oaO6YoWjyQ"), youtube: "6oaO6YoWjyQ", desc: "Clip musical de l'artiste Esther Seems, esthétique hip-hop/R&B sobre et émotive, en hommage à un proche disparu. En collaboration avec AMS Visions." },
-  { id: "trinity-rebel", title: "Trinity Rebel ft Dafxcx", subtitle: "L'Univers Officiel", tag: "Clip musical", year: "2025", ratio: "4/5", credit: "Réalisation · Julien Ancieaux", img: COVER, video: SB + "portfolio-videos/trinity_rebel_univers_officiel.mp4", desc: "Clip musical officiel, sonorités chaleureuses et festives, inspirées des rythmes urbains et caribéens." },
+  { id: "trinity-rebel", title: "Trinity Rebel ft Dafxcx", subtitle: "L'Univers Officiel", tag: "Clip musical", year: "2025", ratio: "4/5", credit: "Réalisation · Julien Ancieaux", img: COVER, desc: "Clip musical officiel, sonorités chaleureuses et festives, inspirées des rythmes urbains et caribéens." },
   { id: "sabay-2023", title: "Sabay Festival 2023", subtitle: "Grande Pagode de Vincennes", tag: "Événementiel", year: "2023", ratio: "16/9", credit: "Production · GND Consulting", img: "https://img.youtube.com/vi/Vyhz7_D4fFU/hqdefault.jpg", youtube: "Vyhz7_D4fFU", desc: "Captation et aftermovie officiel du Sabay Festival, traditions cambodgiennes, Grande Pagode de Vincennes." },
-  { id: "concert-ali", title: "Concert Ali 45 Scientific", subtitle: "Café LaPêche · Montreuil", tag: "Captation live", year: "2024", ratio: "3/4", credit: "Captation · IAMTV / O2M / GND", img: COVER, video: SB + "portfolio-videos/Concert%20Ali.mp4", desc: "Captation live du concert d'Ali, cofondateur du collectif 45 Scientific aux côtés de Booba." },
+  { id: "concert-ali", title: "Concert Ali 45 Scientific", subtitle: "Café LaPêche · Montreuil", tag: "Captation live", year: "2024", ratio: "3/4", credit: "Captation · IAMTV / O2M / GND", img: COVER, desc: "Captation live du concert d'Ali, cofondateur du collectif 45 Scientific aux côtés de Booba." },
   { id: "leyel-miel", title: "Leyel, Miel", subtitle: "Clip officiel", tag: "Clip musical", year: "2025", ratio: "4/5", credit: "Réalisation · Jonathan Ransau", img: yt("UbXQim7iNLI"), youtube: "UbXQim7iNLI", desc: "Clip officiel de l'artiste Leyel, variété française, mise en scène délicate. Collaboration O2M." },
   { id: "cook-soul", title: "Cook & Soul", subtitle: "Kaoutar · Pékin Express", tag: "Production", year: "2024", ratio: "16/9", credit: "Réalisation · Gwen Templier", img: yt("galhl8_dYyk"), youtube: "galhl8_dYyk", desc: "Émission musicale produite pour IAMTV, avec Kaoutar (Pékin Express). Collaboration O2M." },
-  { id: "yungcally", title: "Yungcally", subtitle: "Clip officiel", tag: "Clip musical", year: "2024", ratio: "1/1", credit: "Réalisation · Jonathan Ransau", img: COVER, video: SB + "portfolio-videos/jyfviku.mp4", desc: "Clip officiel de Yungcally, jeune artiste franco-américain, vibe Wiz Khalifa / Post Malone." },
-  { id: "sabay-2022", title: "Sabay Festival 2022", subtitle: "Grande Pagode de Vincennes", tag: "Événementiel", year: "2022", ratio: "4/3", credit: "Production · GND Consulting", img: COVER, video: SB + "portfolio-videos/Thiek%20au%20Sabay%20Festival%202022%20Haute%20def%204k%20v2.mp4", desc: "Aftermovie officiel du Sabay Festival 2022, captation 4K." },
+  { id: "yungcally", title: "Yungcally", subtitle: "Clip officiel", tag: "Clip musical", year: "2024", ratio: "1/1", credit: "Réalisation · Jonathan Ransau", img: COVER, desc: "Clip officiel de Yungcally, jeune artiste franco-américain, vibe Wiz Khalifa / Post Malone." },
+  { id: "sabay-2022", title: "Sabay Festival 2022", subtitle: "Grande Pagode de Vincennes", tag: "Événementiel", year: "2022", ratio: "4/3", credit: "Production · GND Consulting", img: COVER, desc: "Aftermovie officiel du Sabay Festival 2022, captation 4K." },
   { id: "lanecdote", title: "L'Anecdote", subtitle: "Émission · interviews", tag: "Production", year: "2024", ratio: "16/9", credit: "Réalisation · GND Consulting", img: "https://img.youtube.com/vi/AGC_2cFHE_0/hqdefault.jpg", youtube: "AGC_2cFHE_0", desc: "Émission L'Anecdote, format original mêlant interviews et moments de partage." },
 ];
 
@@ -1790,7 +1791,7 @@ function ContactBlock() {
               {/* Image arrondie inset, COVER GND (anciennement vignette vidéos hologramme, réutilisé ici) */}
               <div className="mt-5 md:mt-7 rounded-3xl overflow-hidden border border-bg/10 shadow-xl shadow-text/50">
                 <img
-                  src="https://gublhtivvydkuooooffg.supabase.co/storage/v1/render/image/public/portfolio-photos/gnd-cover.png?width=1600&quality=82"
+                  src="/assets/hero1-poster.webp"
                   alt="Studio créatif GND"
                   draggable={false}
                   loading="lazy"

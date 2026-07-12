@@ -8,6 +8,7 @@ import { WhyGndIaBlock } from '../components/WhyGndIaBlock';
 import { HeroBuildUpAudiovisuel } from '../components/HeroBuildUpAudiovisuel';
 import InteractiveImageBentoGallery from '@/components/ui/bento-gallery';
 import { ALL_PROJECTS } from './realisations';
+import { photo } from '../portfolio-assets';
 import { AnimatedTabs, type AnimatedTab } from '@/components/ui/animated-tabs';
 import { MaskedImage } from '@/components/ui/image-mask';
 import ScrollExpandHero from '@/components/blocks/scroll-expansion-hero';
@@ -602,14 +603,13 @@ function ScrollExpandMedia({ mediaType = "image", mediaSrc, posterSrc, bgImageSr
 
 function ProductionPage() {
   const [active, setActive] = React.useState<any>(null);
-  const SB = "https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/";
-  const COVER = SB + "portfolio-photos/gnd-cover.png";
+  const COVER = "/assets/hero1-poster.webp";
   const reels = [
-    { id: "trinity", t:"Trinity Rebel, Univers Officiel", k:"Clip musical", y:"2025", img: COVER, video: SB+"portfolio-videos/trinity_rebel_univers_officiel.mp4" },
-    { id: "ali", t:"Concert Ali", k:"Captation live", y:"2024", img: COVER, video: SB+"portfolio-videos/Concert%20Ali.mp4" },
+    { id: "trinity", t:"Trinity Rebel, Univers Officiel", k:"Clip musical", y:"2025", img: COVER },
+    { id: "ali", t:"Concert Ali", k:"Captation live", y:"2024", img: COVER },
     { id: "sabay", t:"Thiek, Sabay Festival 2022", k:"Événementiel 4K", y:"2022", img:"https://img.youtube.com/vi/Vyhz7_D4fFU/hqdefault.jpg", youtube:"Vyhz7_D4fFU" },
     { id: "esther", t:"Esther Seems, BOBINE", k:"Production", y:"2024", img:"https://img.youtube.com/vi/6oaO6YoWjyQ/maxresdefault.jpg", youtube:"6oaO6YoWjyQ" },
-    { id: "yungcally", t:"Yungcally, Clip officiel", k:"Clip musical", y:"2024", img: COVER, video: SB+"portfolio-videos/jyfviku.mp4" },
+    { id: "yungcally", t:"Yungcally, Clip officiel", k:"Clip musical", y:"2024", img: COVER },
   ];
 
   return (
@@ -1389,22 +1389,20 @@ function AudiovisuelPage() {
     video?: string;
     youtube?: string;
   };
-  const SB = 'https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/';
-  const SB_VIDS = `${SB}portfolio-videos/`;
-  const SB_PHOTOS = `${SB.replace('/object/public/', '/render/image/public/')}portfolio-photos/`;
+  // Storage Supabase disparu (12/07/26) : photos servies depuis /portfolio (repo).
 
   // Showreel, 11 productions réelles GND (7 YouTube + 4 Supabase MP4).
   // Titres vérifiés via YouTube oEmbed le 31/05/2026.
   const REELS: Reel[] = [
-    { id: 'trinity', t: 'Trinity Rebel, Univers Officiel', k: 'Clip musical', y: '2025', img: '/assets/posters/trinity.webp', video: `${SB_VIDS}trinity_rebel_univers_officiel.mp4` },
+    { id: 'trinity', t: 'Trinity Rebel, Univers Officiel', k: 'Clip musical', y: '2025', img: '/assets/posters/trinity.webp' },
     { id: 'esther', t: 'Esther Seems, Bobine', k: 'Clip artiste', y: '2024', img: 'https://img.youtube.com/vi/6oaO6YoWjyQ/maxresdefault.jpg', youtube: '6oaO6YoWjyQ' },
     { id: 'sabay', t: 'Sabay Festival, Pagode de Vincennes', k: 'Événementiel 4K', y: '2023', img: 'https://img.youtube.com/vi/Vyhz7_D4fFU/maxresdefault.jpg', youtube: 'Vyhz7_D4fFU' },
-    { id: 'ali', t: 'Concert Ali', k: 'Captation live', y: '2024', img: '/assets/posters/concert-ali.webp', video: `${SB_VIDS}Concert%20Ali.mp4` },
+    { id: 'ali', t: 'Concert Ali', k: 'Captation live', y: '2024', img: '/assets/posters/concert-ali.webp' },
     { id: 'cooksoul', t: 'Cook & Soul, Kaoutar (Pékin Express)', k: 'Émission culinaire', y: '2023', img: 'https://img.youtube.com/vi/galhl8_dYyk/maxresdefault.jpg', youtube: 'galhl8_dYyk' },
     { id: 'leyel', t: 'Leyel & Julien Ancieaux, Miel', k: 'Clip musical', y: '2023', img: 'https://img.youtube.com/vi/UbXQim7iNLI/maxresdefault.jpg', youtube: 'UbXQim7iNLI' },
     { id: 'eleonore', t: 'Live On Stage, Eléonore « Surprising »', k: 'Live acoustique', y: '2023', img: 'https://img.youtube.com/vi/-E4Uk-Z5qEc/maxresdefault.jpg', youtube: '-E4Uk-Z5qEc' },
     { id: 'leyelpapa', t: 'Live On Stage, LEYEL « Papa »', k: 'Live acoustique', y: '2023', img: 'https://img.youtube.com/vi/GksYCOSW3qc/maxresdefault.jpg', youtube: 'GksYCOSW3qc' },
-    { id: 'yungcally', t: 'Yungcally, Clip officiel', k: 'Clip musical', y: '2024', img: '/assets/posters/yungcally.webp', video: `${SB_VIDS}jyfviku.mp4` },
+    { id: 'yungcally', t: 'Yungcally, Clip officiel', k: 'Clip musical', y: '2024', img: '/assets/posters/yungcally.webp' },
     // L'Anecdote retirée 01/06/26, vidéo YouTube passée en privé / supprimée
     // (AGC_2cFHE_0 → 404 sur toutes résolutions thumb + oEmbed Forbidden).
     // showreel retiré du carousel 01/06/26, Creative_Studio_Video_Generation2.mp4
@@ -1425,7 +1423,7 @@ function AudiovisuelPage() {
     // CRÉATIONS, Criminal Designer series (4 portraits éditoriaux)
     {
       id: 'creations-1',
-      src: `${SB_PHOTOS}6F0A4251.jpg?width=1400&quality=82`,
+      src: photo('6F0A4251.jpg'),
       title: 'MASQUE & IDENTITÉ',
       caption: "« Un portrait saisissant qui capture l'univers du Criminal Designer. L'anonymat devient une force, transformant le masque en symbole d'expression et de créativité libre. »",
       category: 'CRÉATIONS',
@@ -1433,7 +1431,7 @@ function AudiovisuelPage() {
     },
     {
       id: 'creations-2',
-      src: `${SB_PHOTOS}6F0A4135.jpg?width=1400&quality=82`,
+      src: photo('6F0A4135.jpg'),
       title: "L'ART EN MOUVEMENT",
       caption: "« Dans l'atelier, chaque geste devient performance. Le Criminal Designer exprime son identité à travers la matière brute, fusionnant énergie urbaine et vision artistique. »",
       category: 'CRÉATIONS',
@@ -1441,7 +1439,7 @@ function AudiovisuelPage() {
     },
     {
       id: 'creations-3',
-      src: `${SB_PHOTOS}6F0A4149.jpg?width=1400&quality=82`,
+      src: photo('6F0A4149.jpg'),
       title: 'PUISSANCE CRÉATIVE',
       caption: "« Une mise en scène où se rencontrent charisme et rébellion. Le Criminal Designer impose une esthétique singulière, entre force, style et liberté totale. »",
       category: 'CRÉATIONS',
@@ -1449,7 +1447,7 @@ function AudiovisuelPage() {
     },
     {
       id: 'creations-4',
-      src: `${SB_PHOTOS}6F0A4267.jpg?width=1400&quality=82`,
+      src: photo('6F0A4267.jpg'),
       title: 'VISION MASQUÉE',
       caption: "« Gros plan iconique sur le masque, emblème du Criminal Designer. L'anonymat n'efface pas l'identité, il révèle une puissance créative tournée vers l'avenir. »",
       category: 'CRÉATIONS',
@@ -1458,7 +1456,7 @@ function AudiovisuelPage() {
     // PORTRAITS (3 séries)
     {
       id: 'portraits-1',
-      src: `${SB_PHOTOS}6F0A4028.jpg?width=1400&quality=82`,
+      src: photo('6F0A4028.jpg'),
       title: 'ÉNERGIE COLLECTIVE',
       caption: "« Intensité des regards et force du groupe, un cliché qui exprime la puissance d'une énergie humaine et créative. »",
       category: 'PORTRAITS',
@@ -1466,7 +1464,7 @@ function AudiovisuelPage() {
     },
     {
       id: 'portraits-2',
-      src: `${SB_PHOTOS}6F0A3992.jpg?width=1400&quality=82`,
+      src: photo('6F0A3992.jpg'),
       title: 'ATTITUDE & CONFIANCE',
       caption: "« Une présence naturelle captée en studio, entre assurance et style. Simplicité et charisme au cœur du portrait. »",
       category: 'PORTRAITS',
@@ -1474,7 +1472,7 @@ function AudiovisuelPage() {
     },
     {
       id: 'portraits-3',
-      src: `${SB_PHOTOS}6F0A4002.JPG?width=1400&quality=82`,
+      src: photo('6F0A4002.JPG'),
       title: 'VISION URBAINE',
       caption: "« Jeu de postures et minimalisme graphique, souligné par des contrastes forts pour une esthétique moderne. »",
       category: 'PORTRAITS',
@@ -1483,7 +1481,7 @@ function AudiovisuelPage() {
     // AMBIANCES, Événementiel (3 captations)
     {
       id: 'ambiances-1',
-      src: `${SB_PHOTOS}6F0A1817.JPG?width=1400&quality=82`,
+      src: photo('6F0A1817.JPG'),
       title: 'SAVEURS',
       caption: "« Mise en lumière des détails culinaires et décoratifs qui font l'essence d'un événement. Chaque geste, chaque plat raconte une histoire visuelle unique. »",
       category: 'AMBIANCES',
@@ -1491,7 +1489,7 @@ function AudiovisuelPage() {
     },
     {
       id: 'ambiances-2',
-      src: `${SB_PHOTOS}6F0A1873%20-%20copie%202_1.jpg?width=1400&quality=82`,
+      src: photo('6F0A1873%20-%20copie%202_1.jpg'),
       title: 'INSTANTS',
       caption: "« Immersion dans l'atmosphère et l'énergie d'un événement. Les détails du décor et des ambiances renforcent l'expérience collective. »",
       category: 'AMBIANCES',
@@ -1499,7 +1497,7 @@ function AudiovisuelPage() {
     },
     {
       id: 'ambiances-3',
-      src: `${SB_PHOTOS}6F0A2054.JPG?width=1400&quality=82`,
+      src: photo('6F0A2054.JPG'),
       title: 'PARTAGES',
       caption: "« Focus sur les échanges et connexions entre participants. Chaque interaction devient une scène vivante et authentique de l'événement. »",
       category: 'AMBIANCES',
@@ -2308,7 +2306,7 @@ function AudiovisuelPage() {
           <div className="max-w-6xl w-full flex flex-col items-center gap-5" onClick={(e) => e.stopPropagation()}>
             {/* Image full res, object-contain pour voir ENTIÈREMENT sans crop */}
             <img
-              src={`https://gublhtivvydkuooooffg.supabase.co/storage/v1/render/image/public/portfolio-photos/${p.file}?width=1800&quality=85`}
+              src={photo(p.file)}
               alt={p.title}
               className="max-h-[80vh] w-auto max-w-full object-contain rounded-2xl shadow-2xl shadow-black/60"
             />

@@ -20,8 +20,8 @@ interface Product {
    qui redimensionne à la volée : ~330 Ko au lieu des 6,7 Mo de l'original → fluide pour
    un carrousel scrub. Le champ `price` est réutilisé pour la discipline (studio créatif,
    pas e-commerce). prodImg/modelImg = 2 photos jumelles → l'effet de survol reste exact. */
-const SB_RENDER = "https://gublhtivvydkuooooffg.supabase.co/storage/v1/render/image/public/portfolio-photos/";
-const ph = (f: string, w = 720) => `${SB_RENDER}${f}?width=${w}&quality=72&resize=cover`;
+import { photo } from "@/refonte/portfolio-assets";
+const ph = (f: string, _w = 720) => photo(f);
 const SOURCE = [
   { title: "Masque & Identité",   price: "Portrait · Corporate",    prodImg: ph("6F0A4251.jpg"),                    modelImg: ph("6F0A4267.jpg") },
   { title: "Vision Masquée",      price: "Portrait · Artistique",   prodImg: ph("6F0A4267.jpg"),                    modelImg: ph("6F0A4251.jpg") },

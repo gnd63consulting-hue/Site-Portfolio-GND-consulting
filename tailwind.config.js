@@ -1,6 +1,19 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  // Périmètre limité aux fichiers atteignables depuis l'app LIVE (App →
+  // RefonteApp). src/components/*.tsx racine = ANCIEN site (charte bleue),
+  // jamais rendu : le scanner générait ses classes pour rien (~CSS x2).
+  content: [
+    './index.html',
+    './src/App.tsx',
+    './src/main.tsx',
+    './src/refonte/**/*.{js,ts,jsx,tsx}',
+    './src/components/blocks/**/*.{js,ts,jsx,tsx}',
+    './src/components/ui/**/*.{js,ts,jsx,tsx}',
+    './src/hooks/**/*.{js,ts,jsx,tsx}',
+    './src/lib/**/*.{js,ts,jsx,tsx}',
+    './src/utils/**/*.{js,ts,jsx,tsx}',
+  ],
   // Safelist : classes générées dynamiquement (template literals dans data) que
   // le JIT scanner ne peut pas détecter statiquement. Utilisé par
   // InteractiveBentoGallery (`item.span` strings) qui définit col-span/row-span

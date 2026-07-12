@@ -154,7 +154,7 @@ function extractFirstFrame(videoUrl: string): Promise<string> {
  *     dimensions et on fallback à hqdefault.jpg (480×360, toujours dispo).
  */
 const YT_FINAL_FALLBACK =
-  'https://gublhtivvydkuooooffg.supabase.co/storage/v1/object/public/portfolio-photos/gnd-cover.png';
+  '/assets/hero1-poster.webp';
 
 function handleYoutubeImgError(e: React.SyntheticEvent<HTMLImageElement>) {
   const img = e.currentTarget;

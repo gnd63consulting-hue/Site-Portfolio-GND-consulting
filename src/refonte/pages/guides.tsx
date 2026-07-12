@@ -9,7 +9,6 @@ import { Icons } from '../icons';
 import { FaqJsonLd, type FaqItem } from '../components/FaqJsonLd';
 import { FloatingCtaBand } from '../components/FloatingCtaBand';
 import { MarqueeCTA } from '../components/MarqueeCTA';
-import { GuidesShowcase } from '../components/GuidesShowcase';
 import ScrollExpandHero from '@/components/blocks/scroll-expansion-hero';
 
 export type GuideMeta = {
@@ -180,6 +179,193 @@ export const GUIDES: GuideMeta[] = [
   },
 ];
 
+/* ============ Listing façon blog (disposition Mindycoach, charte GND) ============
+   Structure reprise du template : post vedette pleine largeur au-dessus,
+   puis rangée 3/9 (sidebar à GAUCHE, pile 1 colonne à droite), texte en
+   surimpression sur l'image (badge catégorie + titre + extrait), ligne méta
+   SOUS l'image. Couleurs/typo : 100 % charte GND. */
+
+const GUIDE_IMG: Record<string, string> = {
+  'freelance-ou-agence': '/assets/hero-portrait.webp',
+  'faut-il-un-site-internet-commerce': '/assets/hero-home-bg.webp',
+  'etre-visible-google-local': '/assets/ownership-tab-google.webp',
+  'quand-refaire-son-site': '/assets/hero-tablet.webp',
+  'charte-graphique-vs-brand-book': '/assets/branding-hero.webp',
+  'etre-proprietaire-de-son-site': '/assets/ownership-tab-code.webp',
+  'n8n-make-zapier-comparatif': '/assets/svc-ia.webp',
+  'prix-site-vitrine': '/assets/svc-design.webp',
+  'prix-identite-visuelle': '/assets/branding-hero2-bg-v2.webp',
+  'logo-freelance-ou-agence': '/assets/branding-hero3-bg01.webp',
+  'prix-clip-musical': '/assets/svc-production.webp',
+  'tarif-video-entreprise': '/assets/svc-motion.webp',
+  'prix-agent-ia-pme': '/assets/hologram-scene.webp',
+  'agent-ia-vs-chatbot': '/assets/intersection-hero.webp',
+};
+const guideImg = (slug: string) => GUIDE_IMG[slug] ?? '/assets/hero1-bg-v2.webp';
+const GUIDE_DATE = '22 juin 2026';
+const FEATURED_SLUG = 'prix-site-vitrine';
+const catOf = (g: GuideMeta) => g.kicker.split('·')[1]?.trim() ?? 'Guides';
+
+function GuideCardMeta({ g }: { g: GuideMeta }) {
+  return (
+    <div className="mt-3 flex flex-wrap items-center justify-between gap-x-6 gap-y-1 text-sm text-text-muted">
+      <div className="flex items-center gap-3">
+        <span>Mis à jour le {GUIDE_DATE}</span>
+        <span className="hidden sm:inline-block w-px h-4 bg-text-strong/20" aria-hidden="true" />
+        <span className="hidden sm:inline">Par <span className="font-semibold text-text-strong">l'équipe GND</span></span>
+      </div>
+      <span className="inline-flex items-center gap-1.5">
+        <Icons.ArrowRight size={13} className="text-accent" /> {g.readMin} min de lecture
+      </span>
+    </div>
+  );
+}
+
+function GuideBlogCard({ g, featured = false }: { g: GuideMeta; featured?: boolean }) {
+  const Title = featured ? 'h2' : 'h3';
+  return (
+    <article>
+      <a
+        href={`/guides/${g.slug}`}
+        className="group block relative overflow-hidden rounded-[20px] focus-ring"
+        aria-label={g.title}
+      >
+        <img
+          src={guideImg(g.slug)}
+          alt=""
+          loading={featured ? 'eager' : 'lazy'}
+          decoding="async"
+          className={`w-full object-cover transition-transform duration-700 group-hover:scale-[1.07] ${featured ? 'aspect-[16/9] md:aspect-[12/5]' : 'aspect-[4/3] sm:aspect-[21/9]'}`}
+        />
+        {/* Voile sombre bas (lisibilité du texte en surimpression, cf. template) */}
+        <div className="absolute inset-x-0 bottom-0 h-[78%] bg-gradient-to-t from-[#1F1208]/90 via-[#1F1208]/45 to-transparent" aria-hidden="true" />
+        <div className={`absolute bottom-0 left-0 right-0 z-[2] ${featured ? 'p-6 md:p-12' : 'p-5 md:p-10'}`}>
+          <span className="inline-block bg-bg text-text-strong label-mono text-[10px] tracking-[0.16em] rounded-full px-4 py-1.5 mb-4">
+            {catOf(g)}
+          </span>
+          <Title className={`display text-bg leading-[1.08] ${featured ? 'text-3xl md:text-5xl max-w-4xl' : 'text-2xl md:text-3xl max-w-2xl'}`}>
+            {g.title}
+          </Title>
+          <p className={`mt-3 text-bg/85 ${featured ? 'text-base md:text-lg max-w-3xl' : 'text-sm md:text-[15px] max-w-2xl hidden sm:block'}`}>
+            {g.excerpt}
+          </p>
+        </div>
+      </a>
+      <GuideCardMeta g={g} />
+    </article>
+  );
+}
+
+/* Sidebar (ordre des widgets = template : recherche, thèmes, catégories, récents). */
+function GuidesSidebar({
+  query,
+  onQuery,
+  currentSlug,
+}: {
+  query?: string;
+  onQuery?: (q: string) => void;
+  currentSlug?: string;
+}) {
+  const cats = React.useMemo(() => {
+    const m = new Map<string, number>();
+    GUIDES.forEach((g) => m.set(catOf(g), (m.get(catOf(g)) ?? 0) + 1));
+    return Array.from(m.entries());
+  }, []);
+  const recent = GUIDES.slice(-2).reverse().filter((g) => g.slug !== currentSlug);
+  const widgetTitle = 'display text-2xl md:text-3xl text-text-strong mb-5';
+  return (
+    <div className="space-y-10">
+      <div>
+        <h2 className={widgetTitle}>Recherche.</h2>
+        <div className="relative">
+          <Icons.ArrowRight size={14} className="absolute left-0 top-1/2 -translate-y-1/2 text-accent" aria-hidden="true" />
+          <input
+            type="search"
+            value={query ?? ''}
+            onChange={(e) => {
+              if (onQuery) onQuery(e.target.value);
+              else if (e.target.value) window.location.href = '/guides#liste';
+            }}
+            placeholder="Chercher un guide…"
+            aria-label="Rechercher un guide"
+            className="w-full bg-transparent border-0 border-b border-text-strong/25 focus:border-accent outline-none h-12 pl-6 text-[15px] text-text-strong placeholder:text-text-muted/70"
+          />
+        </div>
+      </div>
+      <div>
+        <h2 className={widgetTitle}>Catégories.</h2>
+        <ul className="space-y-2.5">
+          {cats.map(([c, n]) => (
+            <li key={c}>
+              <a
+                href="/guides#liste"
+                className="flex items-center justify-between rounded-full bg-accent/10 hover:bg-accent/20 transition-colors px-4 py-2 text-[15px] text-text-strong"
+              >
+                <span>{c}</span>
+                <span className="text-text-muted text-sm">{n}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h2 className={widgetTitle}>Guides récents.</h2>
+        <ul className="space-y-7">
+          {recent.map((g) => (
+            <li key={g.slug}>
+              <a href={`/guides/${g.slug}`} className="group block max-w-[260px]">
+                <span className="block overflow-hidden rounded-[16px] mb-3">
+                  <img
+                    src={guideImg(g.slug)}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full aspect-[3/2] object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                </span>
+                <span className="display text-lg leading-snug text-text-strong group-hover:text-accent transition-colors">{g.title}</span>
+                <span className="block mt-1.5 text-sm text-text-muted">Mis à jour le {GUIDE_DATE}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+function GuidesBlogListing({ id }: { id?: string }) {
+  const [q, setQ] = React.useState('');
+  const norm = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+  const match = (g: GuideMeta) => !q || norm(`${g.title} ${g.excerpt} ${g.kicker}`).includes(norm(q));
+  const featured = GUIDES.find((g) => g.slug === FEATURED_SLUG)!;
+  const rest = GUIDES.filter((g) => (q ? match(g) : g.slug !== FEATURED_SLUG));
+  return (
+    <Section id={id} bg="alt" className="py-16 md:py-24">
+      <Container className="!max-w-[1400px]">
+        {!q && (
+          <div className="pb-10 border-b-2 border-text-strong/10">
+            <GuideBlogCard g={featured} featured />
+          </div>
+        )}
+        <div className="mt-10 grid lg:grid-cols-12 gap-10 lg:gap-12">
+          <aside className="lg:col-span-3 order-last lg:order-first" aria-label="Filtres et guides récents">
+            <GuidesSidebar query={q} onQuery={setQ} />
+          </aside>
+          <div className="lg:col-span-9 space-y-12">
+            {rest.map((g) => (
+              <GuideBlogCard key={g.slug} g={g} />
+            ))}
+            {rest.length === 0 && (
+              <p className="text-text-muted">Aucun guide ne correspond à « {q} ». <button className="underline decoration-accent underline-offset-4" onClick={() => setQ('')}>Tout afficher</button></p>
+            )}
+          </div>
+        </div>
+      </Container>
+    </Section>
+  );
+}
+
 export function guideBySlug(slug: string): GuideMeta | undefined {
   return GUIDES.find((g) => g.slug === slug);
 }
@@ -220,7 +406,8 @@ export function GuidesIndex() {
         footerLabel="guides"
       />
 
-      <GuidesShowcase guides={GUIDES} id="liste" />
+      {/* Listing façon blog (disposition Mindycoach) : vedette + sidebar gauche + pile. */}
+      <GuidesBlogListing id="liste" />
 
       <FloatingCtaBand
         prefix="Votre projet"
@@ -1282,55 +1469,120 @@ export function GuidePage({ slug }: { slug: string }) {
     );
   }
 
+  const pageUrl = `https://www.gndconsulting.fr/guides/${slug}`;
+  const shareLinks = [
+    { label: 'in', title: 'Partager sur LinkedIn', href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(pageUrl)}` },
+    { label: 'X', title: 'Partager sur X', href: `https://twitter.com/intent/tweet?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(meta.title)}` },
+    { label: 'f', title: 'Partager sur Facebook', href: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageUrl)}` },
+  ];
+  const tags = [catOf(meta), 'Guide GND', GUIDE_SERVICE[slug]?.label ?? 'Studio créatif'];
+
   return (
     <main id="main" className="pt-24 md:pt-28">
       <FaqJsonLd id={`guide-${slug}`} items={content.faq} />
-      <Section className="py-14 md:py-20">
-        <Container>
-          <nav className="label-mono text-[10px] tracking-[0.18em] text-text-muted mb-6" aria-label="Fil d'Ariane">
+      {/* Boîte arrondie à fond dégradé englobant tout l'article (disposition
+          blog-details Mindycoach), dégradé crème → beige charte. */}
+      <div className="mx-3 md:mx-6 rounded-[20px] bg-gradient-to-b from-bg-alt to-[#F2E3D2] py-12 md:py-20 px-4 md:px-10">
+        <Container className="!max-w-[1400px]">
+          <nav className="label-mono text-[10px] tracking-[0.18em] text-text-muted mb-8" aria-label="Fil d'Ariane">
             <a href="/" className="hover:text-accent">Accueil</a> <span className="text-text-muted/50">/</span>{' '}
             <a href="/guides" className="hover:text-accent">Guides</a> <span className="text-text-muted/50">/</span>{' '}
             <span className="text-text-strong">{meta.title}</span>
           </nav>
 
-          <div className="label-mono text-[10px] tracking-[0.18em] text-accent mb-4">{meta.kicker} · {meta.readMin} min de lecture</div>
-          <h1 className="display text-4xl md:text-6xl text-text-strong leading-[1.04] max-w-4xl">{meta.h1}</h1>
-
-          {/* Signature auteur + date (signal E-E-A-T, repris par les moteurs IA). */}
-          <p className="mt-5 text-sm text-text-muted">
-            Par <strong className="text-text-strong font-medium">l'équipe GND Consulting</strong>, studio créatif humain × IA.{' '}
-            <span className="text-text-muted/80">Mis à jour le 22 juin 2026.</span>
-          </p>
-
-          <article className="mt-10">
-            {content.body}
-          </article>
-
-          {/* FAQ visible (correspond au balisage FaqJsonLd) — titre en haut,
-              questions empilées dessous. Mise en page identique à l'accueil. */}
-          <section className="mt-20" aria-label="Questions fréquentes">
-            <div className="max-w-2xl">
-              <Kicker>Questions fréquentes</Kicker>
-              <h2 className="display text-5xl md:text-6xl mt-5 text-text-strong">Toutes les <span className="italic text-accent">réponses</span>.</h2>
-              <p className="mt-6 text-text">Une question qui ne figure pas ici ? Écrivez-nous, réponse sous 24h.</p>
+          {/* En-tête pleine largeur : image AVANT le titre, méta ENTRE les deux (template). */}
+          <div className="pb-12 border-b-2 border-text-strong/10">
+            <img
+              src={guideImg(slug)}
+              alt=""
+              fetchPriority="high"
+              decoding="async"
+              className="w-full aspect-[16/9] md:aspect-[12/5] object-cover rounded-[20px]"
+            />
+            {/* Ligne méta : date + auteur (signal E-E-A-T) à gauche, lecture + catégorie à droite. */}
+            <div className="mt-5 mb-8 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 text-sm md:text-base text-text-muted">
+              <div className="flex items-center gap-3">
+                <span>Mis à jour le {GUIDE_DATE}</span>
+                <span className="inline-block w-px h-4 bg-text-strong/20" aria-hidden="true" />
+                <span>Par <strong className="text-text-strong font-semibold">l'équipe GND Consulting</strong>, studio créatif humain × IA</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="inline-block bg-bg text-text-strong label-mono text-[10px] tracking-[0.16em] rounded-full px-4 py-1.5">{catOf(meta)}</span>
+                <span>{meta.readMin} min de lecture</span>
+              </div>
             </div>
-            <div className="mt-12 max-w-3xl">
-              {content.faq.map((f) => (
-                <Faq key={f.q} q={f.q} a={f.a} />
-              ))}
+            <h1 className="display text-4xl md:text-6xl text-text-strong leading-[1.04] max-w-5xl">{meta.h1}</h1>
+          </div>
+
+          {/* Rangée 3/9 : sidebar à gauche, article à droite (template). */}
+          <div className="mt-12 grid lg:grid-cols-12 gap-10 lg:gap-12">
+            <aside className="lg:col-span-3 order-last lg:order-first" aria-label="Autres guides">
+              <GuidesSidebar currentSlug={slug} />
+            </aside>
+            <div className="lg:col-span-9">
+              <article>
+                {content.body}
+              </article>
+
+              {/* Pied d'article : tags à gauche, partage à droite (template). */}
+              <div className="mt-16 pt-5 border-t-2 border-text-strong/10 flex flex-wrap items-center justify-between gap-6">
+                <div className="flex flex-wrap items-center gap-3">
+                  <h2 className="display text-xl text-text-strong">Tags :</h2>
+                  <ul className="flex flex-wrap gap-2.5">
+                    {tags.map((t) => (
+                      <li key={t}>
+                        <a href="/guides#liste" className="inline-block rounded-full bg-accent/10 hover:bg-accent/20 transition-colors px-4 py-1 text-[15px] text-text-strong">{t}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="flex items-center gap-3">
+                  <h2 className="display text-xl text-text-strong">Partager :</h2>
+                  <ul className="flex gap-2.5">
+                    {shareLinks.map((s) => (
+                      <li key={s.label}>
+                        <a
+                          href={s.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title={s.title}
+                          aria-label={s.title}
+                          className="flex items-center justify-center w-11 h-11 rounded-full border border-text-strong/15 text-text-strong hover:bg-accent/15 hover:border-accent/40 transition-colors text-sm font-semibold"
+                        >
+                          {s.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              {/* FAQ visible (correspond au balisage FaqJsonLd). */}
+              <section className="mt-16" aria-label="Questions fréquentes">
+                <div className="max-w-2xl">
+                  <Kicker>Questions fréquentes</Kicker>
+                  <h2 className="display text-4xl md:text-5xl mt-5 text-text-strong">Toutes les <span className="italic text-accent">réponses</span>.</h2>
+                  <p className="mt-6 text-text">Une question qui ne figure pas ici ? Écrivez-nous, réponse sous 24h.</p>
+                </div>
+                <div className="mt-10 max-w-3xl">
+                  {content.faq.map((f) => (
+                    <Faq key={f.q} q={f.q} a={f.a} />
+                  ))}
+                </div>
+              </section>
+
+              {/* Maillage interne : guides liés + service associé (liens <a href> crawlables). */}
+              <GuideInternalLinks slug={slug} />
+
+              {/* Liens connexes (CTA) */}
+              <div className="mt-14 flex flex-wrap gap-3">
+                <Btn href={(GUIDE_SERVICE[slug]?.href) ?? '/services/sites-vitrines'} variant="primary">Voir le service associé</Btn>
+                <Btn href="/contact" variant="secondary">Parler de votre projet</Btn>
+              </div>
             </div>
-          </section>
-
-          {/* Maillage interne : guides liés + service associé (liens <a href> crawlables). */}
-          <GuideInternalLinks slug={slug} />
-
-          {/* Liens connexes (CTA) */}
-          <div className="mt-14 flex flex-wrap gap-3">
-            <Btn href={(GUIDE_SERVICE[slug]?.href) ?? '/services/sites-vitrines'} variant="primary">Voir le service associé</Btn>
-            <Btn href="/contact" variant="secondary">Parler de votre projet</Btn>
           </div>
         </Container>
-      </Section>
+      </div>
 
       <FloatingCtaBand
         prefix="Votre site"

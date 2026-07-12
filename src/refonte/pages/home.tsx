@@ -1716,14 +1716,26 @@ function ContactBlock() {
     e.preventDefault();
     if (status !== 'idle') return;
     setStatus('sending');
-    // Simulation envoi, à câbler sur backend / Formspree / Resend plus tard
+    /* Fallback mailto (12/07/26) : tant qu'aucun backend d'envoi n'est branché,
+       le formulaire ouvre l'email pré-rempli du prospect vers GND, pour ne
+       perdre aucun lead. À remplacer par un vrai endpoint (Web3Forms / Resend)
+       dès que la clé est fournie. */
+    const subject = `Demande de projet${service ? ` · ${service}` : ''}${name ? ` · ${name}` : ''}`;
+    const body =
+      `Nom : ${name}\n` +
+      `Email : ${email}\n` +
+      `Service souhaité : ${service || 'non précisé'}\n\n` +
+      `Message :\n${message}`;
+    const mailto = `mailto:contact@gndconsulting.fr?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    // Laisse le temps à l'animation « Envoi… » puis ouvre le client mail.
     setTimeout(() => {
+      window.location.href = mailto;
       setStatus('success');
       setTimeout(() => {
         setStatus('idle');
         setName(''); setEmail(''); setService(''); setMessage('');
       }, 3500);
-    }, 1200);
+    }, 600);
   };
 
   // Floating label : input "filled" si valeur OU focus (gestion via state OU CSS :placeholder-shown)
@@ -1883,7 +1895,7 @@ function ContactBlock() {
                 >
                   <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/35 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"/>
                   <span className="relative z-10">
-                    {status === 'success' ? '✓ Message envoyé' : status === 'sending' ? 'Envoi…' : 'Envoyer ma demande'}
+                    {status === 'success' ? '✓ Votre email est prêt' : status === 'sending' ? 'Préparation…' : 'Envoyer ma demande'}
                   </span>
                   {status === 'idle' && <Icons.ArrowRight size={15} stroke={2.2} className="relative z-10 transition-transform group-hover:translate-x-1"/>}
                 </button>

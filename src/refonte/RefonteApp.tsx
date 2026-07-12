@@ -9,14 +9,27 @@ import { navigate, NAV_EVENT } from './nav';
 import { applyRouteSeo } from './seo';
 import { Header, Footer, CookieBanner } from './layout';
 import { ImageMaskDefs } from '../components/ui/image-mask';
-import { HomePage, ContactBlock } from './pages/home';
-import { AgencePage } from './pages/agence';
-import { SitesVitrinesPage } from './pages/sites-vitrines';
-import { BrandingPage, AudiovisuelPage, IAPage } from './pages/service-pages';
-import { RealisationsPage, ProjectDetail } from './pages/realisations';
-import { GuidesIndex, GuidePage } from './pages/guides';
-import { RestaurantPage } from './pages/restaurant';
-import { LegalPage, NotFoundPage } from './pages/legal';
+/* Code-splitting par route (perf 12/07/26) : chaque module de pages devient
+   un chunk chargé à la demande — le bundle initial ne porte plus que le
+   routeur + layout. Les imports croisés (agence→home, service-pages→
+   realisations/guides…) sont dédupliqués par Rollup en chunks partagés. */
+const lazyPage = <T,>(load: () => Promise<T>, pick: (m: T) => React.ComponentType<any>) =>
+  React.lazy(() => load().then((m) => ({ default: pick(m) })));
+
+const HomePage = lazyPage(() => import('./pages/home'), (m) => m.HomePage);
+const ContactBlock = lazyPage(() => import('./pages/home'), (m) => m.ContactBlock);
+const AgencePage = lazyPage(() => import('./pages/agence'), (m) => m.AgencePage);
+const SitesVitrinesPage = lazyPage(() => import('./pages/sites-vitrines'), (m) => m.SitesVitrinesPage);
+const BrandingPage = lazyPage(() => import('./pages/service-pages'), (m) => m.BrandingPage);
+const AudiovisuelPage = lazyPage(() => import('./pages/service-pages'), (m) => m.AudiovisuelPage);
+const IAPage = lazyPage(() => import('./pages/service-pages'), (m) => m.IAPage);
+const RealisationsPage = lazyPage(() => import('./pages/realisations'), (m) => m.RealisationsPage);
+const ProjectDetail = lazyPage(() => import('./pages/realisations'), (m) => m.ProjectDetail);
+const GuidesIndex = lazyPage(() => import('./pages/guides'), (m) => m.GuidesIndex);
+const GuidePage = lazyPage(() => import('./pages/guides'), (m) => m.GuidePage);
+const RestaurantPage = lazyPage(() => import('./pages/restaurant'), (m) => m.RestaurantPage);
+const LegalPage = lazyPage(() => import('./pages/legal'), (m) => m.LegalPage);
+const NotFoundPage = lazyPage(() => import('./pages/legal'), (m) => m.NotFoundPage);
 
 function useRoute() {
   const get = () => {
@@ -128,7 +141,13 @@ function RefonteApp() {
           réutilisable sur n'importe quelle page via id `clip-pattern{0..8}` ou `clip-inverted`. */}
       <ImageMaskDefs />
       <Header route={route}/>
-      <div key={route}>{page}</div>
+      {/* Fallback = écran crème plein viewport : évite le flash blanc/vide
+          pendant le chargement du chunk de la route (~100-300ms). */}
+      <div key={route}>
+        <React.Suspense fallback={<div style={{ minHeight: '100vh' }} aria-hidden="true" />}>
+          {page}
+        </React.Suspense>
+      </div>
       <Footer/>
       <CookieBanner/>
     </>

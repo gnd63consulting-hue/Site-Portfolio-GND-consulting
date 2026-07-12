@@ -739,7 +739,7 @@ function ServicesGrid() {
                   <div className="absolute inset-x-0 top-0 h-1/2 md:h-3/5">
                     <img
                       src={`/assets/${image}.webp`}
-                      alt=""
+                      alt={`GND Consulting, ${s.title}`}
                       draggable={false}
                       className="w-full h-full object-cover object-top select-none pointer-events-none"
                       style={{ filter:'drop-shadow(0 22px 44px rgba(42,24,16,.26))' }}
@@ -943,7 +943,7 @@ function WhyBlock() {
       <div className="relative hidden lg:block w-full" style={{ aspectRatio: '1672 / 941' }}>
         <img
           src="/assets/why-mockup-blank.webp"
-          alt=""
+          alt="Aperçu d'un site vitrine réalisé par GND Consulting"
           draggable={false}
           loading="eager"
           decoding="async"
@@ -1509,7 +1509,7 @@ function ValuesBlock() {
             <img
               data-anim="values-image"
               src="/assets/values-infographic.webp?v=2"
-              alt=""
+              alt="Les valeurs fondatrices de GND Consulting : artisanat, rigueur, IA maîtrisée, collaboration"
               draggable={false}
               loading="lazy"
               decoding="async"
@@ -1762,7 +1762,7 @@ function ContactBlock() {
             {/* Image de fond + overlay chocolat pour la profondeur */}
             <img
               src="/assets/intersection-hero.webp"
-              alt=""
+              alt="L'humain et l'IA au cœur de la méthode GND Consulting"
               draggable={false}
               className="absolute inset-0 w-full h-full object-cover opacity-[0.16] select-none pointer-events-none"
             />

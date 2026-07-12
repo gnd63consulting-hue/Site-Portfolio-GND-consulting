@@ -16,7 +16,7 @@ export const SEO_META: Record<string, Meta> = {
   '/': {
     title: 'GND Consulting, Studio créatif humain × IA · Paris',
     description:
-      "Studio créatif hybride à Paris : sites web & SEO, branding & identité, production audiovisuelle, automatisation IA. L'œil humain pour signer, l'IA pour accélérer. Devis sous 48h.",
+      "Studio créatif hybride à Paris : sites web & SEO, branding, audiovisuel, automatisation IA. L'œil humain pour signer, l'IA pour accélérer. Devis sous 48h.",
   },
   '/agence': {
     title: "GND Consulting, L'Agence — Manifeste Humain × IA",
@@ -26,7 +26,7 @@ export const SEO_META: Record<string, Meta> = {
   '/services/sites-vitrines': {
     title: 'GND Consulting, Sites vitrines & SEO clé en main',
     description:
-      "Sites vitrines clé en main pour commerces et indépendants : design sur-mesure, SEO local, hébergement configuré, livraison 1 à 2 semaines, 0 € d'abonnement, 100 % propriétaire.",
+      "Sites vitrines clé en main pour commerces et indépendants : design sur-mesure, SEO local, livraison en 1 à 2 semaines, sans abonnement, site 100 % propriétaire.",
   },
   '/services/branding-identite': {
     title: 'GND Consulting, Branding & Identité visuelle',
@@ -36,7 +36,7 @@ export const SEO_META: Record<string, Meta> = {
   '/services/audiovisuel': {
     title: 'GND Consulting, Production audiovisuelle — Vidéo, motion, photo',
     description:
-      "Studio parisien : captation 4K/8K, clips musicaux, aftermovies, émissions, montage cinéma, motion design et photographie. De l'écriture à la livraison, tout en interne.",
+      "Studio parisien : captation 4K/8K, clips, aftermovies, émissions, montage, motion design et photographie. De l'écriture à la livraison, tout en interne.",
   },
   '/services/automatisation-ia': {
     title: 'GND Consulting, Automatisation & IA',
@@ -46,7 +46,7 @@ export const SEO_META: Record<string, Meta> = {
   '/realisations': {
     title: 'GND Consulting, Réalisations — Portfolio',
     description:
-      'Clips musicaux, captations live, émissions, photographie et identité visuelle : le portfolio GND Consulting. Chaque projet porte une intention, chaque image une signature.',
+      'Clips, captations live, émissions, photographie et identité visuelle : le portfolio GND Consulting. Chaque projet porte une intention, chaque image une signature.',
   },
   '/contact': {
     title: 'GND Consulting, Contact — Démarrer un projet',
@@ -56,7 +56,7 @@ export const SEO_META: Record<string, Meta> = {
   '/mentions-legales': {
     title: 'GND Consulting, Mentions légales',
     description:
-      'Mentions légales, informations éditeur et politique cookies du site gndconsulting.fr.',
+      'Mentions légales de GND Consulting : informations sur l\'éditeur, l\'hébergeur, la propriété intellectuelle, les données personnelles et la politique cookies du site.',
   },
   '/guides': {
     title: 'GND Consulting, Guides — Ressources pour votre projet',

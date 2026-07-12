@@ -232,7 +232,7 @@ function GuideBlogCard({ g, featured = false }: { g: GuideMeta; featured?: boole
       >
         <img
           src={guideImg(g.slug)}
-          alt=""
+          alt={g.title}
           loading={featured ? 'eager' : 'lazy'}
           decoding="async"
           className={`w-full object-cover transition-transform duration-700 group-hover:scale-[1.07] ${featured ? 'aspect-[16/9] md:aspect-[12/5]' : 'aspect-[4/3] sm:aspect-[21/9]'}`}
@@ -317,7 +317,7 @@ function GuidesSidebar({
                 <span className="block overflow-hidden rounded-[16px] mb-3">
                   <img
                     src={guideImg(g.slug)}
-                    alt=""
+                    alt={g.title}
                     loading="lazy"
                     decoding="async"
                     className="w-full aspect-[3/2] object-cover transition-transform duration-500 group-hover:scale-110"
@@ -1494,7 +1494,7 @@ export function GuidePage({ slug }: { slug: string }) {
           <div className="pb-12 border-b-2 border-text-strong/10">
             <img
               src={guideImg(slug)}
-              alt=""
+              alt={meta.title}
               fetchPriority="high"
               decoding="async"
               className="w-full aspect-[16/9] md:aspect-[12/5] object-cover rounded-[20px]"

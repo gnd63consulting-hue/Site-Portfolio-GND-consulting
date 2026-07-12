@@ -607,9 +607,9 @@ function ProductionPage() {
   const reels = [
     { id: "trinity", t:"Trinity Rebel, Univers Officiel", k:"Clip musical", y:"2025", img: COVER },
     { id: "ali", t:"Concert Ali", k:"Captation live", y:"2024", img: COVER },
-    { id: "sabay", t:"Thiek, Sabay Festival 2022", k:"Événementiel 4K", y:"2022", img:"https://img.youtube.com/vi/Vyhz7_D4fFU/hqdefault.jpg", youtube:"Vyhz7_D4fFU" },
+    { id: "sabay", video: "/portfolio-videos/sabay-2022.mp4", t:"Thiek, Sabay Festival 2022", k:"Événementiel 4K", y:"2022", img:"https://img.youtube.com/vi/Vyhz7_D4fFU/hqdefault.jpg", youtube:"Vyhz7_D4fFU" },
     { id: "esther", t:"Esther Seems, BOBINE", k:"Production", y:"2024", img:"https://img.youtube.com/vi/6oaO6YoWjyQ/maxresdefault.jpg", youtube:"6oaO6YoWjyQ" },
-    { id: "yungcally", t:"Yungcally, Clip officiel", k:"Clip musical", y:"2024", img: COVER },
+    { id: "yungcally", video: "/portfolio-videos/yungcally.mp4", t:"Yungcally, Clip officiel", k:"Clip musical", y:"2024", img: COVER },
   ];
 
   return (
@@ -1396,13 +1396,13 @@ function AudiovisuelPage() {
   const REELS: Reel[] = [
     { id: 'trinity', t: 'Trinity Rebel, Univers Officiel', k: 'Clip musical', y: '2025', img: '/assets/posters/trinity.webp' },
     { id: 'esther', t: 'Esther Seems, Bobine', k: 'Clip artiste', y: '2024', img: 'https://img.youtube.com/vi/6oaO6YoWjyQ/maxresdefault.jpg', youtube: '6oaO6YoWjyQ' },
-    { id: 'sabay', t: 'Sabay Festival, Pagode de Vincennes', k: 'Événementiel 4K', y: '2023', img: 'https://img.youtube.com/vi/Vyhz7_D4fFU/maxresdefault.jpg', youtube: 'Vyhz7_D4fFU' },
+    { id: 'sabay', video: "/portfolio-videos/sabay-2022.mp4", t: 'Sabay Festival, Pagode de Vincennes', k: 'Événementiel 4K', y: '2023', img: 'https://img.youtube.com/vi/Vyhz7_D4fFU/maxresdefault.jpg', youtube: 'Vyhz7_D4fFU' },
     { id: 'ali', t: 'Concert Ali', k: 'Captation live', y: '2024', img: '/assets/posters/concert-ali.webp' },
     { id: 'cooksoul', t: 'Cook & Soul, Kaoutar (Pékin Express)', k: 'Émission culinaire', y: '2023', img: 'https://img.youtube.com/vi/galhl8_dYyk/maxresdefault.jpg', youtube: 'galhl8_dYyk' },
     { id: 'leyel', t: 'Leyel & Julien Ancieaux, Miel', k: 'Clip musical', y: '2023', img: 'https://img.youtube.com/vi/UbXQim7iNLI/maxresdefault.jpg', youtube: 'UbXQim7iNLI' },
     { id: 'eleonore', t: 'Live On Stage, Eléonore « Surprising »', k: 'Live acoustique', y: '2023', img: 'https://img.youtube.com/vi/-E4Uk-Z5qEc/maxresdefault.jpg', youtube: '-E4Uk-Z5qEc' },
     { id: 'leyelpapa', t: 'Live On Stage, LEYEL « Papa »', k: 'Live acoustique', y: '2023', img: 'https://img.youtube.com/vi/GksYCOSW3qc/maxresdefault.jpg', youtube: 'GksYCOSW3qc' },
-    { id: 'yungcally', t: 'Yungcally, Clip officiel', k: 'Clip musical', y: '2024', img: '/assets/posters/yungcally.webp' },
+    { id: 'yungcally', video: "/portfolio-videos/yungcally.mp4", t: 'Yungcally, Clip officiel', k: 'Clip musical', y: '2024', img: '/assets/posters/yungcally.webp' },
     // L'Anecdote retirée 01/06/26, vidéo YouTube passée en privé / supprimée
     // (AGC_2cFHE_0 → 404 sur toutes résolutions thumb + oEmbed Forbidden).
     // showreel retiré du carousel 01/06/26, Creative_Studio_Video_Generation2.mp4

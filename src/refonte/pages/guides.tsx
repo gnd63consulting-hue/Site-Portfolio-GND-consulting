@@ -922,66 +922,330 @@ const GUIDE_BODY: Record<string, { body: React.ReactNode; faq: FaqItem[] }> = {
     body: (
       <>
         <Lead>
-          Il n'y a pas un prix unique : un site vitrine va de quelques centaines d'euros (solution
-          no-code que vous montez vous-même) à plusieurs milliers d'euros (agence sur-mesure). Le bon
-          repère n'est pas le tarif le plus bas, mais ce que vous obtenez vraiment, et si le site vous
-          appartient.
+          Le prix d'un site vitrine en 2026 va de quelques centaines d'euros pour une solution no-code que
+          vous montez vous-même à plus de 15 000 € pour un site d'agence sur-mesure. Cette dispersion
+          s'explique par des différences de méthode, de propriété, et surtout par des coûts que la plupart des
+          devis n'affichent jamais. Le bon repère n'est pas le tarif le plus bas, mais ce que vous obtenez
+          vraiment, et si le site vous appartient.
         </Lead>
-
-        <H2>Combien coûte un site vitrine ? La réponse en fourchettes</H2>
         <P>
-          En no-code ou en faisant tout vous-même, le coût est faible mais le temps passé et les limites
-          sont réels. Avec un freelance, on est souvent sur quelques centaines à quelques milliers
-          d'euros selon l'ampleur. Avec une agence sur-mesure, le budget monte avec le nombre de
-          personnes mobilisées. Ce sont des fourchettes de marché, pas une promesse.
+          Ce guide vous donne les tarifs réels du marché français, un comparatif honnête entre no-code,
+          freelance et agence, le prix par type de site (one-page, multi-pages, avec réservation), et surtout
+          une analyse de ce que vous payez réellement sur trois à cinq ans, abonnement compris. Chez GND, les
+          sites vitrines ont un prix public : à partir de 800 €, ou 1 500 € avec module de réservation, en
+          paiement unique et sans abonnement.
         </P>
 
-        <H2>Ce qui fait varier le prix</H2>
+        <H2>Combien coûte un site vitrine ? Les fourchettes du marché</H2>
         <P>
-          Quatre facteurs pèsent le plus : le nombre de pages, le design (template ou sur-mesure), ce
-          qui est inclus côté SEO, et les fonctionnalités (réservation, paiement, multilingue). Un
-          cinquième facteur, souvent oublié : devenez-vous propriétaire du site, ou payez-vous un
-          abonnement à vie ?
+          Avant d'entrer dans le détail, voici les repères de prix d'un site vitrine constatés sur le marché
+          français en 2026, selon le type de prestataire. Ces fourchettes sont des ordres de grandeur : le prix
+          d'un site vitrine, comme son tarif de maintenance, dépend du nombre de pages, du design, du SEO
+          inclus et des fonctionnalités.
+        </P>
+        <PriceTable
+          head={['Critère', 'No-code (vous-même)', 'Freelance', 'Agence']}
+          rows={[
+            ['Coût de création', '0 à 360 € / an', '800 à 5 000 €', '3 000 à 15 000 €'],
+            ['Propriété du site', 'Non (plateforme)', 'Oui', 'Oui'],
+            ['Qualité SEO', 'Basique', 'Bonne à très bonne', 'Variable'],
+            ['Personnalisation', 'Limitée', 'Élevée', 'Très élevée'],
+            ['Délais', '1 à 7 jours', '2 à 6 semaines', '4 à 16 semaines'],
+            ['Risque de dépendance', 'Élevé', 'Faible', 'Faible à moyen'],
+            ['Adapté à', 'Tests, très petits budgets', 'TPE, PME, indépendants', 'Marques, gros budgets'],
+          ]}
+          caption="Comparatif des trois grandes options pour créer un site vitrine en 2026. Le prix le plus bas cache souvent une location et un SEO limité."
+        />
+
+        <H2>Le vrai coût d'un site vitrine : loué ou acheté ?</H2>
+        <P>
+          C'est la question que beaucoup oublient de poser, et pourtant elle change tout : achetez-vous un
+          site, ou le louez-vous ? La majorité des offres « à partir de X € par mois » sont un modèle locatif.
+          Vous payez un abonnement, et si vous arrêtez de payer, le site disparaît. Vous n'êtes propriétaire ni
+          du code, parfois ni du domaine, et vous dépendez entièrement de la plateforme.
+        </P>
+        <P>
+          À l'inverse, un site développé sur une technologie ouverte comme WordPress, ou livré en fichiers que
+          vous hébergez, vous appartient : vous pouvez le transférer, le modifier, le confier à un autre
+          prestataire. C'est un actif, pas une charge. Voici ce que cette différence représente sur cinq ans.
+        </P>
+        <PriceTable
+          head={['Solution', 'Coût initial', 'Coût annuel', 'Total 5 ans', 'Propriétaire ?']}
+          rows={[
+            ['Plateforme no-code (Wix, Squarespace)', '0 €', '200 à 240 €', '1 000 à 1 200 €', 'Non'],
+            ['Offre agence « en location »', '500 €', '720 €', '4 100 €', 'Non'],
+            ['Freelance WordPress', '1 500 €', '200 €', '2 500 €', 'Oui'],
+            ['Agence classique', '5 000 €', '300 €', '6 500 €', 'Oui'],
+            ['GND, offre de base', '800 €', '0 € d\'abonnement', '800 €', 'Oui'],
+            ['GND, avec réservation', '1 500 €', '0 € d\'abonnement', '1 500 €', 'Oui'],
+          ]}
+          caption="Coût total d'un site vitrine sur 5 ans. Un site « pas cher » en mensualités revient souvent 3 à 5 fois plus cher qu'un achat unique, sans jamais vous appartenir."
+        />
+        <Callout title="Le piège du « 50 € par mois »">
+          Une offre à 59 € par mois avec site inclus revient à 708 € par an, soit 3 540 € sur cinq ans. Si vous
+          résiliez, votre site disparaît et vous n'avez rien. Un site acheté une fois, sur un hébergement que
+          vous contrôlez, reste à vous indéfiniment. C'est notre définition de la{' '}
+          <A href="/guides/etre-proprietaire-de-son-site">vraie propriété</A>.
+        </Callout>
+
+        <H2>Ce que les devis oublient de chiffrer</H2>
+        <P>
+          Un devis de création de site internet mentionne rarement tous les postes de dépense. Voici ce que
+          vous devez systématiquement demander avant de comparer deux prix.
+        </P>
+        <UL>
+          <LI><strong>Le nom de domaine :</strong> 10 à 20 € par an. Parfois offert la première année, puis
+          facturé au renouvellement.</LI>
+          <LI><strong>L'hébergement :</strong> 5 à 30 € par mois selon la performance. Un hébergement
+          sous-dimensionné ralentit le site et pénalise le référencement.</LI>
+          <LI><strong>Le certificat SSL :</strong> souvent inclus aujourd'hui, mais à vérifier. Sans lui, le
+          site s'affiche « non sécurisé » dans les navigateurs.</LI>
+          <LI><strong>La maintenance et les mises à jour :</strong> WordPress, ses thèmes et ses extensions
+          évoluent régulièrement. Qui s'en charge, et à quel tarif ?</LI>
+          <LI><strong>Les sauvegardes automatiques :</strong> indispensables en cas de piratage ou de bug.</LI>
+          <LI><strong>Le SEO de base :</strong> beaucoup de sites sont livrés sans balises méta, sans
+          optimisation de vitesse, sans structure sémantique. Un beau site que personne ne trouve.</LI>
+          <LI><strong>La fiche Google Business :</strong> essentielle pour la visibilité locale, presque jamais
+          incluse dans un devis standard.</LI>
+          <LI><strong>La formation :</strong> qui vous apprend à modifier vos textes, photos et tarifs ?</LI>
+          <LI><strong>Les évolutions futures :</strong> ajouter une page, un formulaire, une section. Souvent
+          facturées en régie, de 50 à 120 € de l'heure.</LI>
+        </UL>
+        <P>
+          Chez GND, l'ensemble de ces éléments est inclus dans le prix annoncé : hébergement configuré,
+          première année de domaine, SEO local, fiche Google et formation. Vous ne découvrez pas de surprise en
+          fin de projet.
         </P>
 
-        <H2>Freelance, agence ou no-code : que payez-vous vraiment ?</H2>
+        <H2>Prix par type de site vitrine</H2>
+        <H3>Le site one-page</H3>
         <P>
-          Le no-code est économique mais repose sur vous. Le freelance offre proximité et bon prix, avec
-          un risque de continuité. L'agence apporte structure et pluri-compétence, à un coût plus élevé.
-          Pour creuser, lisez notre guide{' '}
+          Une seule page longue qui présente votre activité, vos services, quelques réalisations et un
+          formulaire de contact. La solution la plus simple et la plus rapide.
+        </P>
+        <PriceTable
+          head={['Prestataire', 'Fourchette de prix']}
+          rows={[
+            ['No-code (Carrd, Wix, Framer)', '0 à 200 € / an'],
+            ['Freelance', '800 à 1 500 €'],
+            ['Agence', '1 500 à 4 000 €'],
+            ['GND (paiement unique, propriétaire)', 'à partir de 800 €'],
+          ]}
+          caption="Prix d'un site vitrine one-page en 2026."
+        />
+        <H3>Le site vitrine multi-pages (3 à 7 pages)</H3>
+        <P>
+          La configuration la plus courante pour une TPE ou une profession libérale : accueil, services, à
+          propos, contact, et parfois réalisations ou blog. L'écart de prix entre freelance et agence tient
+          surtout au nombre d'interlocuteurs impliqués et aux frais de structure.
+        </P>
+        <PriceTable
+          head={['Prestataire', 'Fourchette de prix']}
+          rows={[
+            ['No-code (Wix, Squarespace, Webflow)', '200 à 500 € / an'],
+            ['Freelance', '1 500 à 4 000 €'],
+            ['Agence', '3 000 à 8 000 €'],
+          ]}
+          caption="Prix d'un site vitrine multi-pages en 2026."
+        />
+        <H3>Le site vitrine avec module de réservation</H3>
+        <P>
+          Ajouter la prise de rendez-vous en ligne (calendrier, synchronisation des disponibilités,
+          notifications, parfois paiement) représente une complexité supplémentaire. Chez GND, ce type de site
+          est à 1 500 € en paiement unique, module intégré au site propriétaire, sans abonnement lié à une
+          plateforme tierce.
+        </P>
+        <PriceTable
+          head={['Prestataire', 'Fourchette de prix']}
+          rows={[
+            ['No-code avec extension réservation', '300 à 800 € / an'],
+            ['Freelance', '1 500 à 3 000 €'],
+            ['Agence', '4 000 à 10 000 €'],
+            ['GND (paiement unique, propriétaire)', '1 500 €'],
+          ]}
+          caption="Prix d'un site vitrine avec réservation en ligne en 2026."
+        />
+
+        <H2>Prix création site internet : ce qui justifie l'écart</H2>
+        <P>
+          Pourquoi le prix de création d'un site internet peut-il aller de 0 € à plus de 15 000 € pour ce qui
+          ressemble, de loin, au même résultat : quelques pages et un formulaire ? Parce que le prix ne paie
+          pas les pages, il paie ce qu'il y a derrière. Un tarif de site vitrine bas correspond presque
+          toujours à un gabarit réutilisé, monté vite, sans stratégie ni optimisation. Un tarif plus élevé
+          finance une vraie démarche : compréhension de votre activité, architecture pensée pour la conversion,
+          rédaction et structure au service du SEO, et un site qui vous appartient.
+        </P>
+        <P>
+          Concrètement, cinq éléments expliquent l'essentiel de l'écart de prix : le nombre de pages, le design
+          (gabarit ou sur-mesure), le niveau de SEO inclus, les fonctionnalités (réservation, paiement,
+          multilingue), et le modèle de propriété (site loué ou acheté). Un prix de création de site internet
+          se lit toujours à la lumière de ces cinq critères, jamais sur le seul chiffre affiché en bas du
+          devis.
+        </P>
+
+        <H2>Prix d'un site vitrine selon votre métier</H2>
+        <P>
+          À nombre de pages égal, deux activités n'ont pas les mêmes besoins. Le prix d'un site vitrine
+          s'ajuste au rôle que joue le site dans votre acquisition de clients. Voici des repères concrets par
+          profil.
+        </P>
+        <UL>
+          <LI><strong>Artisan, commerce de proximité :</strong> 800 à 2 500 €. Un site clair, rapide, optimisé
+          en SEO local et couplé à la fiche Google suffit souvent à capter la demande de votre zone.</LI>
+          <LI><strong>Restaurant, café :</strong> 1 200 à 3 500 €. Le site doit donner envie, afficher la carte,
+          les horaires, l'accès, et souvent intégrer la réservation. La cohérence avec les réseaux compte.</LI>
+          <LI><strong>Profession libérale, consultant :</strong> 1 200 à 4 000 €. Le site porte votre
+          crédibilité. Une page services claire, des preuves, et un module de prise de rendez-vous font la
+          différence.</LI>
+          <LI><strong>PME, activité B2B :</strong> 2 500 à 8 000 €. Plusieurs pages, du contenu qui répond aux
+          questions de vos prospects, une vraie stratégie SEO pour être trouvé sur vos requêtes métier.</LI>
+        </UL>
+        <P>
+          Ces fourchettes ne sont pas des tarifs figés, mais des repères pour situer votre projet avant de
+          demander un devis. Un bon prestataire part toujours de votre réalité et de vos objectifs, pas d'un
+          prix standard.
+        </P>
+
+        <H2>Comment budgéter votre site vitrine sans vous tromper</H2>
+        <P>
+          Un prix de site vitrine se compare mal sur le seul montant affiché, et un tarif de site vitrine bas
+          cache souvent des coûts qui arrivent ensuite. Pour budgéter juste et éviter les mauvaises surprises,
+          appliquez ces quelques réflexes avant de signer.
+        </P>
+        <UL>
+          <LI><strong>Raisonnez sur cinq ans, pas sur le prix d'entrée.</strong> Un abonnement mensuel faible
+          peut dépasser largement le coût d'un site acheté une fois. Calculez toujours le coût total.</LI>
+          <LI><strong>Vérifiez la propriété.</strong> Le site, le domaine et l'hébergement sont-ils à votre
+          nom ? Pouvez-vous partir avec, sans tout perdre ?</LI>
+          <LI><strong>Exigez le détail de ce qui est inclus.</strong> Hébergement, domaine, SSL, SEO de base,
+          fiche Google, formation, sauvegardes. Ce qui n'est pas écrit n'est pas inclus.</LI>
+          <LI><strong>Chiffrez les évolutions futures.</strong> Ajouter une page ou un formulaire dans un an,
+          combien ça coûte ? Un tarif horaire clair vaut mieux qu'une bonne surprise qui n'en est pas une.</LI>
+          <LI><strong>Comparez à périmètre égal.</strong> Un site one-page monté en no-code et un site
+          multi-pages sur-mesure optimisé SEO ne sont pas le même produit, même si les deux s'appellent « site
+          vitrine ».</LI>
+        </UL>
+        <P>
+          Bien piloté, un budget de site vitrine même modeste produit un actif rentable et durable. Mal piloté,
+          un gros budget se dilue dans des fonctionnalités inutiles ou un abonnement sans fin. La différence se
+          joue sur la clarté de votre demande et sur la propriété de ce que vous obtenez.
+        </P>
+
+        <H2>Site vitrine WordPress ou no-code : que choisir et à quel prix ?</H2>
+        <P>
+          Les solutions no-code (Wix, Squarespace, Webflow, Framer, Carrd) permettent de créer un site
+          soi-même sans coder, mais reposent sur l'abonnement : le site cesse d'exister si vous arrêtez de
+          payer. Elles conviennent à un test, une carte de visite digitale ou un très petit budget, pas à un
+          site vitrine professionnel destiné à générer des clients sur la durée.
+        </P>
+        <P>
+          Un site vitrine WordPress (ou livré en fichiers propriétaires) coûte plus cher à la création, mais
+          vous appartient, se référence mieux et ne dépend d'aucun abonnement de plateforme. Sur cinq ans, il
+          revient presque toujours moins cher qu'une location no-code, tout en restant un actif transférable.
+          Pour trancher entre les deux modèles de prestataire, lisez notre guide{' '}
           <A href="/guides/freelance-ou-agence">freelance ou agence</A>.
         </P>
 
-        <H2>Attention au coût caché : site loué ou acheté ?</H2>
+        <H2>Comment lire un devis de site vitrine</H2>
         <P>
-          Un site à «&nbsp;50&nbsp;€ par mois&nbsp;» paraît accessible, mais sur plusieurs années il coûte plus cher
-          qu'un site acheté une fois, et vous n'en êtes pas propriétaire. Avant de comparer les prix,
-          vérifiez ce point. Notre guide détaille{' '}
-          <A href="/guides/etre-proprietaire-de-son-site">comment être vraiment propriétaire de son site</A>.
+          Un devis contient souvent des lignes libellées vaguement. Voici ce qui est habituellement inclus, et
+          ce qui manque le plus souvent.
+        </P>
+        <UL>
+          <LI><strong>Généralement inclus :</strong> conception graphique et maquettage, intégration et
+          développement, responsive (mobile et tablette), optimisation SEO on-page, et parfois la rédaction du
+          contenu (qui augmente le prix mais la valeur SEO).</LI>
+          <LI><strong>Souvent absent :</strong> hébergement et domaine au renouvellement, certificat SSL,
+          sauvegardes automatiques, référencement local et fiche Google, évolutions après livraison, et
+          maintenance de sécurité.</LI>
+        </UL>
+        <P>
+          Demandez systématiquement une ligne détaillée sur ces éléments. Un devis qui ne les mentionne pas ne
+          les inclut probablement pas, et le prix d'appel se transforme vite en facture finale plus salée.
         </P>
 
-        <H2>Combien chez GND ?</H2>
+        <H2>Quels délais prévoir ?</H2>
+        <PriceTable
+          head={['Prestataire', 'Délai moyen']}
+          rows={[
+            ['No-code (vous-même)', '1 à 7 jours'],
+            ['Freelance (one-page)', '1 à 3 semaines'],
+            ['Freelance (multi-pages)', '3 à 6 semaines'],
+            ['Studio hybride (GND)', '2 à 4 semaines'],
+            ['Agence (projet standard)', '6 à 16 semaines'],
+          ]}
+          caption="Délais de création d'un site vitrine selon le prestataire."
+        />
         <P>
-          Les prix sont publics et fixes : une vitrine démarre à 800&nbsp;€, et la formule avec module de
-          réservation est à 1&nbsp;500&nbsp;€. Paiement unique, sans abonnement, SEO local et configuration de
-          la fiche Google inclus, site 100&nbsp;% propriétaire. Détail sur la{' '}
-          <A href="/services/sites-vitrines">page sites vitrines</A>.
+          Un délai long n'est pas un gage de qualité : il reflète souvent l'organisation interne et le carnet
+          de commandes. Si vous avez un lancement ou une date butoir, précisez-le dès le premier contact. Notre
+          méthode hybride, où l'humain signe et l'IA accélère, permet de livrer vite sans sacrifier le
+          sur-mesure.
         </P>
 
-        <H2>Comment budgéter sans se tromper</H2>
+        <H2>Quel retour sur investissement attendre ?</H2>
         <P>
-          Demandez ce qui est inclus (hébergement, domaine la première année, SEO de base, formation),
-          si le site vous appartient, et quel est le coût des évolutions futures. Un devis clair vaut
-          mieux qu'un prix d'appel. <A href="/contact">Demandez le vôtre</A>, réponse sous 24h.
+          Le prix d'un site vitrine ne se juge pas seul, mais au regard de ce qu'il rapporte. Un site à 800 €
+          qui vous amène un client par mois est rentabilisé en quelques semaines. Un site à 5 000 € que
+          personne ne trouve sur Google est une dépense pure. Quatre facteurs déterminent ce retour.
+        </P>
+        <UL>
+          <LI><strong>Le SEO :</strong> un site bien structuré, rapide et pensé pour les moteurs génère du
+          trafic organique sans coût publicitaire.</LI>
+          <LI><strong>La conversion :</strong> un site beau mais sans appel à l'action clair, sans téléphone
+          visible ni formulaire simple, ne transforme pas.</LI>
+          <LI><strong>La visibilité locale :</strong> pour un commerce, un artisan ou un indépendant, la fiche
+          Google couplée à un site optimisé en SEO local est souvent la première source de contacts.</LI>
+          <LI><strong>La crédibilité :</strong> un site professionnel rassure et augmente le taux de
+          transformation de vos contacts entrants.</LI>
+        </UL>
+        <P>
+          Exemple concret : un consultant indépendant qui investit 1 500 € dans un site avec réservation, et
+          génère 80 à 200 visiteurs par mois en SEO local avec un taux de prise de rendez-vous de 2 à 5 %,
+          rentabilise son site en une à deux missions. Au-delà, tout est bénéfice.
+        </P>
+
+        <H2>Prix d'un site vitrine : le récapitulatif</H2>
+        <P>
+          Pour retenir l'essentiel, voici la synthèse des fourchettes vues dans ce guide. Ces repères servent à
+          situer votre projet, jamais à remplacer un devis qui, seul, tient compte de votre besoin réel et de
+          la propriété du site.
+        </P>
+        <PriceTable
+          head={['Type de site vitrine', 'Fourchette de prix 2026', 'Pour qui']}
+          rows={[
+            ['One-page', '800 à 4 000 € (dès 800 € chez GND)', 'Indépendants, lancement rapide'],
+            ['Multi-pages (3 à 7 pages)', '1 500 à 8 000 €', 'TPE, PME, professions libérales'],
+            ['Avec réservation en ligne', '1 500 à 10 000 € (1 500 € chez GND)', 'Services, prise de RDV'],
+            ['Avec boutique légère', '2 500 à 15 000 €', 'Quelques produits, vente en ligne'],
+            ['No-code (location)', '0 à 500 € / an', 'Test, très petit budget'],
+          ]}
+          caption="Synthèse du prix d'un site vitrine par type de projet, marché français 2026."
+        />
+
+        <H2>Combien coûte un site vitrine chez GND ?</H2>
+        <P>
+          Contrairement à la plupart des prestataires, GND affiche des prix publics et fixes pour ses sites
+          vitrines : une vitrine démarre à 800 €, et la formule avec module de réservation est à 1 500 €.
+          Paiement unique, sans abonnement, avec hébergement configuré, première année de domaine, SEO local et
+          configuration de la fiche Google inclus, et un site 100 % propriétaire. Vous repartez avec un actif,
+          pas une location. Découvrez le détail sur notre{' '}
+          <A href="/services/sites-vitrines">page sites vitrines</A>, ou{' '}
+          <A href="/contact">demandez votre devis</A>, réponse sous 24h.
         </P>
       </>
     ),
     faq: [
-      { q: 'Quel est le prix moyen d\'un site vitrine en 2026 ?', a: "Il n'y a pas de prix unique : de quelques centaines d'euros en no-code à plusieurs milliers en agence sur-mesure. Le prix dépend du nombre de pages, du design, du SEO inclus et des fonctionnalités." },
-      { q: 'Pourquoi de tels écarts de prix ?', a: "Parce que l'ampleur varie : un template monté soi-même n'a rien à voir avec un site sur-mesure conçu par une équipe. Le design, le SEO, les fonctionnalités et la propriété du site font la différence." },
-      { q: 'Un site pas cher est-il un mauvais choix ?', a: "Pas forcément, si vous savez ce que vous achetez. Le piège, c'est le prix d'appel qui cache une location à vie ou un site bridé sur le SEO. Regardez ce qui est inclus et si le site vous appartient." },
-      { q: 'L\'hébergement et le domaine sont-ils inclus ?', a: "Cela dépend du prestataire, à vérifier systématiquement. Chez GND, la configuration de l'hébergement est incluse et la première année de domaine est offerte, sans abonnement imposé ensuite." },
-      { q: 'Combien coûte un site vitrine chez GND ?', a: "À partir de 800 € pour une vitrine, 1 500 € avec module de réservation. Prix publics, paiement unique, sans abonnement, SEO local et fiche Google inclus, site 100 % propriétaire." },
+      { q: 'Quel est le prix d\'un site vitrine en 2026 ?', a: "De quelques centaines d'euros en no-code (avec abonnement) à plus de 15 000 € en agence sur-mesure. Pour une TPE ou un indépendant, comptez 1 500 à 4 000 € chez un freelance propriétaire, et 3 000 à 8 000 € en agence. Chez GND, une vitrine démarre à 800 € en paiement unique." },
+      { q: 'Combien coûte un site vitrine chez GND ?', a: "À partir de 800 € pour une vitrine, 1 500 € avec module de réservation. Prix publics et fixes, paiement unique, sans abonnement, avec hébergement, première année de domaine, SEO local et fiche Google inclus, site 100 % propriétaire." },
+      { q: 'Vaut-il mieux un site loué ou acheté ?', a: "Un site loué (abonnement mensuel) semble accessible mais coûte souvent 3 à 5 fois plus cher sur cinq ans, et disparaît si vous arrêtez de payer. Un site acheté une fois, sur un hébergement que vous contrôlez, vous appartient et reste un actif transférable. Sur la durée, l'achat est presque toujours plus rentable." },
+      { q: 'Quels coûts un devis de site vitrine oublie souvent ?', a: "Le domaine au renouvellement, l'hébergement, le certificat SSL, les sauvegardes, la maintenance de sécurité, le SEO de base, la fiche Google Business, la formation et les évolutions futures (souvent 50 à 120 € de l'heure). Demandez une ligne détaillée sur chacun." },
+      { q: 'Combien coûte un site vitrine WordPress ?', a: "Entre 1 500 et 4 000 € chez un freelance et 3 000 à 8 000 € en agence pour un site multi-pages. Plus cher à la création qu'un no-code, mais vous en êtes propriétaire, il se référence mieux et ne dépend d'aucun abonnement de plateforme." },
+      { q: 'Quel est le prix d\'un site vitrine avec réservation en ligne ?', a: "De 1 500 à 3 000 € chez un freelance et 4 000 à 10 000 € en agence. Chez GND, ce type de site est à 1 500 € en paiement unique, avec le module de réservation intégré au site propriétaire, sans abonnement lié à une plateforme tierce." },
+      { q: 'Combien coûte un site one-page ?', a: "De 0 à 200 € par an en no-code, 800 à 1 500 € chez un freelance, 1 500 à 4 000 € en agence. Chez GND, un site vitrine professionnel démarre à 800 €, en paiement unique et 100 % propriétaire, SEO local et fiche Google inclus." },
+      { q: 'L\'hébergement et le domaine sont-ils inclus dans le prix ?', a: "Cela dépend du prestataire, à vérifier systématiquement. Chez GND, l'hébergement est configuré et la première année de domaine est offerte, sans abonnement imposé ensuite." },
+      { q: 'Quels délais pour créer un site vitrine ?', a: "1 à 7 jours en no-code, 1 à 6 semaines chez un freelance selon le nombre de pages, 2 à 4 semaines dans un studio hybride comme GND, et 6 à 16 semaines en agence. Un délai long n'est pas un gage de qualité." },
+      { q: 'Un site vitrine pas cher est-il un mauvais choix ?', a: "Pas forcément, si vous savez ce que vous achetez. Le piège, c'est le prix d'appel qui cache une location à vie, un site bridé sur le SEO ou des évolutions facturées cher. Regardez ce qui est inclus, si le site vous appartient, et le coût réel sur cinq ans." },
     ],
   },
 

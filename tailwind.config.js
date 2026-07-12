@@ -35,6 +35,10 @@ export default {
         accent: {
           DEFAULT: '#FF954F',
           deep: '#E8772C',
+          // Version « encre » : orange lisible sur fonds clairs (4,6:1 sur
+          // crème #FDF6EE = WCAG AA texte normal). Appliquée automatiquement
+          // via refonte.css dans les sections claires.
+          ink: '#B4551C',
         },
         success: '#10b981',
         warning: '#f59e0b',

@@ -152,7 +152,7 @@ const ChocolatePanel: React.FC<ChocolatePanelProps> = ({
     <section
       ref={rootRef}
       id={id}
-      className="relative overflow-hidden py-24 md:py-32"
+      className="chocolate-panel relative overflow-hidden py-24 md:py-32"
       style={{ background: '#2A1810', color: '#FFF3E8' }}
     >
       {/* Cream organic S-curve blob, décor de fond */}

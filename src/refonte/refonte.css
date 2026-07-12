@@ -158,3 +158,27 @@ html, body { overflow-x: hidden; overflow-x: clip; } /* clip : ne casse pas posi
 
 /* === Better French hyphenation === */
 .hyphens-fr { hyphens: auto; -webkit-hyphens: auto; }
+
+/* === Accessibilité contraste (WCAG AA, 12/07/26) ===
+   L'orange accent #FF954F ne tient que 2:1 sur crème → sur les fonds CLAIRS,
+   le texte accent bascule vers la version encre #B4551C (4,6:1). Les fonds
+   sombres (footer bg-text-strong, panneaux chocolat) GARDENT l'orange clair,
+   où il contraste bien. Les boutons bg-accent (texte foncé dessus) ne sont
+   pas concernés. */
+.bg-bg .text-accent,
+.bg-bg-alt .text-accent,
+.bg-bg .text-accent-deep,
+.bg-bg-alt .text-accent-deep {
+  color: #B4551C;
+}
+/* Conteneurs sombres imbriqués dans une section claire : on ré-éclaircit.
+   [class*=...] couvre aussi les variantes d'opacité (bg-text-strong/85…). */
+[class*="bg-text-strong"] .text-accent,
+[class*="bg-text "] .text-accent,
+.chocolate-panel .text-accent,
+.gnd-dark .text-accent,
+[class*="bg-text-strong"] .text-accent-deep,
+.chocolate-panel .text-accent-deep,
+.gnd-dark .text-accent-deep {
+  color: #FF954F;
+}

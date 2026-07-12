@@ -1917,56 +1917,146 @@ const GUIDE_BODY: Record<string, { body: React.ReactNode; faq: FaqItem[] }> = {
     body: (
       <>
         <Lead>
-          Pour un logo simple et un budget serré, un freelance fait très bien le travail. Pour une marque
-          qui veut une vraie démarche (recherche, déclinaisons, cohérence dans le temps), une agence ou un
-          studio rassure. Dans les deux cas, exigez les fichiers sources : c'est ce qui garantit que le
-          logo est vraiment le vôtre.
+          Freelance, agence, plateforme IA ou studio hybride : le marché de la création de logo n'a jamais été
+          aussi fragmenté qu'en 2026, et les écarts de prix sont considérables, de quelques dizaines d'euros
+          sur un générateur automatisé à plusieurs milliers d'euros en agence. Le problème, c'est que les
+          livrables ne sont pas comparables. Ce guide vous aide à comprendre ce que vous achetez vraiment, à
+          comparer les modèles, et à choisir selon votre budget, votre projet et vos ambitions de marque.
         </Lead>
 
-        <H2>Logo par un freelance : forces et limites</H2>
+        <H2>Ce que recouvre vraiment un logo professionnel</H2>
         <P>
-          Le freelance offre proximité, réactivité et un tarif souvent plus accessible. C'est un bon choix
-          pour un logo ponctuel. Les limites : la continuité (s'il n'est plus disponible) et le périmètre
-          (il est rarement à la fois logo, charte, et stratégie de marque).
+          Un logo n'est pas une image, c'est un système : un signe, une typographie, une palette, des règles
+          d'usage, un jeu de fichiers exploitables et des droits clairement définis. Avant de comparer les
+          prix, exigez de savoir ce qui est livré. Un projet de logo sérieux comprend en général les fichiers
+          sources modifiables (AI, EPS), les fichiers d'export prêts à l'emploi (SVG, PNG transparent, JPEG,
+          PDF vectoriel), les déclinaisons (couleur, monochrome, version négative sur fond sombre), une charte
+          d'usage minimale (couleurs en RVB, CMJN, Pantone, typographies, espaces de protection) et une
+          présentation des choix créatifs.
+        </P>
+        <Callout title="Le point à ne jamais négliger : les fichiers sources">
+          Les fichiers sources sont les fichiers originaux, vectoriels et modifiables. Sans eux, vous ne pouvez
+          ni faire évoluer votre logo si votre prestataire disparaît, ni l'adapter à de nouveaux supports
+          (enseigne, broderie, grande impression), ni le confier à quelqu'un d'autre sans repartir de zéro.
+          Certaines plateformes IA et prestataires peu sérieux ne livrent que des PNG ou des JPEG. Vérifiez
+          toujours que les fichiers sources sont dans le contrat.
+        </Callout>
+
+        <H2>Les cinq façons de faire faire son logo en 2026</H2>
+        <P>
+          Le marché s'est structuré autour de cinq modèles, avec des niveaux de prix, d'implication et de
+          qualité très différents. Voici comment les situer.
+        </P>
+        <PriceTable
+          head={['Modèle', 'Prix logo', 'Convient si']}
+          rows={[
+            ['Plateforme IA / générateur', '0 à 200 €', 'Test, logo provisoire, budget minimal'],
+            ['Freelance junior', '300 à 800 €', 'Budget limité, projet simple, brief clair'],
+            ['Freelance confirmé', '800 à 2 000 €', 'Logo stratégique, charte propre'],
+            ['Studio hybride (humain + IA)', 'sur devis', 'Le juste milieu : proximité + pluri-compétence'],
+            ['Agence de communication', '2 000 à 15 000 €+', 'Marque à fort enjeu, projet complexe'],
+          ]}
+          caption="Les cinq modèles de création de logo et leurs prix, marché français 2026."
+        />
+        <H3>La plateforme IA ou le générateur</H3>
+        <P>
+          Des outils génèrent un logo en quelques minutes à partir d'un formulaire. Le résultat est souvent
+          correct au premier regard, mais rarement original au sens juridique : il s'appuie sur des
+          combinaisons de gabarits et de symboles préexistants. Les droits d'auteur restent flous et les
+          fichiers sources sont souvent absents. À réserver à un test ou un logo provisoire.
+        </P>
+        <H3>Le freelance junior</H3>
+        <P>
+          Un graphiste en début de carrière, au portfolio en construction. Il produit des logos corrects pour
+          300 à 800 €, à condition d'un brief précis et de votre disponibilité pour l'accompagner. La maîtrise
+          des enjeux de marque est encore en développement, et les allers-retours peuvent être nombreux.
+        </P>
+        <H3>Le freelance confirmé</H3>
+        <P>
+          Un designer expérimenté, au portfolio solide, capable de comprendre les enjeux marketing de votre
+          marque. Comptez 800 à 2 000 € pour un logo bien construit livré avec une charte propre, davantage
+          pour une identité complète. Sa limite : une seule paire de mains, donc une disponibilité variable et
+          une seule sensibilité créative.
+        </P>
+        <H3>Le studio hybride (humain + IA)</H3>
+        <P>
+          C'est le modèle émergent de 2026, et celui de GND : un directeur artistique humain qui signe le
+          travail, épaulé par l'IA pour explorer vite et large. Vous gagnez la proximité et la réactivité d'un
+          freelance, la pluri-compétence d'une équipe, et une singularité qu'un générateur ne produit jamais.
+          Un logo signé par une direction humaine est aussi juridiquement plus solide qu'une génération
+          automatisée.
+        </P>
+        <H3>L'agence de communication</H3>
+        <P>
+          Le modèle le plus complet et le plus cher (2 000 à 15 000 € et au-delà pour un logo inscrit dans une
+          identité). Équipe pluridisciplinaire, process rodés, pertinents pour les marques à fort enjeu. En
+          contrepartie, un coût de structure élevé et parfois une relation plus distante, le design étant
+          parfois sous-traité.
         </P>
 
-        <H2>Logo par une agence ou un studio : forces et limites</H2>
+        <H2>Logo freelance ou agence : le vrai comparatif</H2>
         <P>
-          Une agence ou un studio inscrit le logo dans une identité complète, avec plusieurs compétences
-          et une cohérence sur l'ensemble de vos supports. C'est plus structurant, à un coût plus élevé.
-          Le bon intermédiaire pour une PME est souvent le studio hybride, qui garde la proximité tout en
-          offrant la pluri-compétence.
+          On oppose souvent le freelance à l'agence en oubliant le studio, qui réconcilie les deux. Voici les
+          forces et limites de chaque option pour trancher selon votre projet.
         </P>
+        <UL>
+          <LI><strong>Le freelance :</strong> proximité, réactivité, prix accessible. Idéal pour un logo
+          ponctuel avec un brief clair. Limites : la continuité s'il n'est plus disponible, et un périmètre
+          rarement complet (logo, charte et stratégie à la fois).</LI>
+          <LI><strong>L'agence :</strong> vision globale, ressources, capacité à gérer des projets complexes.
+          Limites : les tarifs les plus élevés, des process longs, une relation parfois distante.</LI>
+          <LI><strong>Le studio hybride :</strong> le juste milieu. La proximité du freelance, la
+          pluri-compétence d'une équipe, sans les frais de structure d'une grande agence.</LI>
+        </UL>
 
-        <H2>La vraie question : les droits et les fichiers sources</H2>
+        <H2>Comment choisir selon votre projet et votre budget</H2>
         <P>
-          Au-delà du prix, vérifiez ce que vous récupérez : les fichiers sources vectoriels, les droits
-          d'usage complets, et les déclinaisons. Un logo livré uniquement en image, sans source, vous
-          enferme. C'est le même principe que pour un site : mieux vaut être propriétaire.
-        </P>
-
-        <H2>Comment choisir selon votre projet ?</H2>
-        <P>
-          Logo seul, besoin rapide, budget limité : un freelance suffit. Marque à construire, plusieurs
-          supports, cohérence dans la durée : une agence ou un studio se justifie. Pour comprendre les
-          budgets, lisez notre guide{' '}
+          Logo seul, besoin rapide, budget serré : un freelance suffit. Marque à construire, plusieurs
+          supports, cohérence dans la durée : un studio ou une agence se justifie. Test ou logo provisoire : un
+          générateur peut dépanner, à condition d'accepter ses limites de droits et de fichiers. Dans tous les
+          cas, le prix ne dit pas tout : ce qui compte, c'est ce que vous récupérez et si le logo vous
+          appartient vraiment. Pour situer les budgets d'une identité complète, lisez notre guide{' '}
           <A href="/guides/prix-identite-visuelle">combien coûte une identité visuelle</A>.
         </P>
 
+        <H2>Ce que doit contenir un devis logo professionnel</H2>
+        <P>
+          Un devis sérieux ne se résume pas à un prix. Il détaille les étapes, les livrables, les révisions et
+          les droits cédés. Vérifiez qu'il précise :
+        </P>
+        <UL>
+          <LI><strong>La découverte :</strong> entretien de lancement, analyse de votre secteur et de vos
+          concurrents, questionnaire de style ou moodboard.</LI>
+          <LI><strong>La recherche créative :</strong> nombre de pistes proposées (2 à 3 en général), nombre de
+          tours de révision inclus, et tarif des révisions supplémentaires.</LI>
+          <LI><strong>La finalisation :</strong> fichiers sources livrés (formats précisés), fichiers d'export,
+          charte d'usage minimale.</LI>
+          <LI><strong>Le contrat :</strong> cession de droits d'auteur (étendue, territoire, durée), conditions
+          de paiement, délais garantis.</LI>
+          <LI><strong>Ce qui n'est pas inclus :</strong> la charte graphique complète et l'application sur les
+          supports (carte de visite, site) sont souvent en option, à faire chiffrer.</LI>
+        </UL>
+
         <H2>L'approche GND</H2>
         <P>
-          GND est un studio hybride : proximité du freelance, pluri-compétence d'une équipe, et fichiers
-          sources remis. Voir la <A href="/services/branding-identite">page branding</A>, ou{' '}
-          <A href="/contact">parlons de votre logo</A>.
+          GND est un studio hybride : la proximité et la réactivité d'un freelance, la pluri-compétence d'une
+          équipe, et une méthode où l'humain signe et l'IA accélère. Vous repartez toujours propriétaire de vos
+          fichiers sources, avec une cession de droits claire. Le devis est établi selon votre projet. Voir
+          notre <A href="/services/branding-identite">page branding et identité visuelle</A>, ou{' '}
+          <A href="/contact">parlons de votre logo</A>, réponse sous 24h.
         </P>
       </>
     ),
     faq: [
-      { q: "Logo freelance ou agence : lequel choisir ?", a: "Freelance pour un logo simple, rapide et à budget serré. Agence ou studio pour une marque à construire, avec déclinaisons et cohérence dans le temps. Dans les deux cas, exigez les fichiers sources." },
-      { q: "Pourquoi un logo d'agence coûte-t-il plus cher ?", a: "Parce qu'il s'inscrit dans une démarche de marque : recherche, plusieurs compétences, déclinaisons, cohérence sur tous les supports. Un freelance facture surtout le logo lui-même." },
-      { q: "Vais-je récupérer les fichiers sources de mon logo ?", a: "C'est le point à verrouiller avant de signer. Sans fichiers sources vectoriels, vous ne pouvez pas faire évoluer votre logo librement. Chez GND, les sources vous sont remises." },
-      { q: "Un logo pas cher est-il un mauvais choix ?", a: "Pas toujours, mais attention aux logos très bon marché livrés sans source ni déclinaison : ils coûtent plus cher à corriger ensuite. Regardez ce qui est inclus." },
-      { q: "Le studio hybride, c'est quoi par rapport au freelance et à l'agence ?", a: "C'est une petite structure qui garde la proximité du freelance tout en offrant la pluri-compétence d'une équipe. C'est le modèle de GND." },
+      { q: "Logo freelance ou agence : lequel choisir ?", a: "Freelance pour un logo simple, rapide et à budget serré (300 à 2 000 €). Agence pour une marque à fort enjeu (2 000 à 15 000 €+). Entre les deux, le studio hybride réunit la proximité du freelance et la pluri-compétence d'une équipe. Dans tous les cas, exigez les fichiers sources." },
+      { q: "Quel est le prix d'un logo chez un freelance ?", a: "De 300 à 800 € chez un freelance junior, et 800 à 2 000 € chez un freelance confirmé pour un logo bien construit avec une charte propre. Un générateur IA descend sous 200 € mais livre rarement des fichiers sources ni des droits clairs." },
+      { q: "Pourquoi un logo d'agence coûte-t-il plus cher ?", a: "Parce qu'il s'inscrit dans une démarche de marque : recherche stratégique, plusieurs compétences, déclinaisons, cohérence sur tous les supports, et un coût de structure. Un freelance facture surtout le logo lui-même." },
+      { q: "Vais-je récupérer les fichiers sources de mon logo ?", a: "C'est le point à verrouiller avant de signer. Sans fichiers sources vectoriels (AI, EPS), vous ne pouvez pas faire évoluer votre logo librement ni le confier à un autre prestataire. Chez GND, les sources vous sont toujours remises." },
+      { q: "Un logo généré par IA, ça vaut le coup ?", a: "Pour un test ou un logo provisoire, oui. Pour une marque durable, non : les logos IA sont rarement originaux au sens juridique, les droits sont flous et les fichiers sources souvent absents. Un logo signé par une direction humaine est plus solide." },
+      { q: "Le studio hybride, c'est quoi par rapport au freelance et à l'agence ?", a: "C'est une petite structure qui garde la proximité et la réactivité du freelance tout en offrant la pluri-compétence d'une équipe, sans les frais d'une grande agence. Un directeur artistique humain signe, l'IA accélère l'exploration. C'est le modèle de GND." },
+      { q: "Combien de pistes et de révisions dans un projet de logo ?", a: "Un devis standard inclut généralement 2 à 3 pistes créatives et 2 à 3 tours de révision. Au-delà, les révisions sont facturées en supplément. Vérifiez ces chiffres avant de signer." },
+      { q: "Que doit contenir un devis logo professionnel ?", a: "La phase de découverte, le nombre de pistes et de révisions, les fichiers sources et d'export livrés, la charte d'usage, la cession de droits d'auteur (étendue, territoire, durée), les délais et les conditions de paiement. Ce qui n'est pas écrit n'est pas inclus." },
+      { q: "Un logo pas cher est-il un mauvais choix ?", a: "Pas toujours, mais méfiez-vous des logos très bon marché livrés sans source ni déclinaison : ils coûtent plus cher à refaire ensuite. Regardez ce qui est inclus et si le logo vous appartient vraiment." },
     ],
   },
 
@@ -1974,59 +2064,151 @@ const GUIDE_BODY: Record<string, { body: React.ReactNode; faq: FaqItem[] }> = {
     body: (
       <>
         <Lead>
-          Le prix d'un clip musical varie énormément selon l'ambition. Pour un artiste indépendant, on
-          démarre à quelques centaines d'euros. Pour une production léchée, proche du cinéma, le budget
-          peut dépasser dix mille euros. Ce qui fait le prix : l'équipe, le matériel, les décors, et le
-          temps de préparation et de montage.
+          Le prix d'un clip musical va de quelques centaines d'euros pour un tournage smartphone à plusieurs
+          dizaines de milliers d'euros pour une production cinématographique. Entre les deux, il existe un
+          niveau accessible et diffusable pour tout artiste indépendant. Ce qui fait vraiment le budget, ce
+          n'est pas le hasard : c'est l'équipe, le matériel, le nombre de jours de tournage et l'ampleur de la
+          post-production. Ce guide vous donne les tarifs par niveau d'ambition, la décomposition réelle d'un
+          budget, le prix de chaque poste, et comment dépenser utile quand le budget est serré.
         </Lead>
 
-        <H2>Combien coûte un clip musical ?</H2>
+        <H2>Combien coûte un clip musical ? Les quatre niveaux de production</H2>
         <P>
-          Sur le marché, les fourchettes observées vont de quelques centaines d'euros (format simple,
-          petite équipe) à plus de dix mille euros (réalisation ambitieuse, plusieurs jours de tournage,
-          post-production poussée). Un artiste indépendant et un label n'ont ni les mêmes besoins ni les
-          mêmes budgets.
+          Le marché français du clip s'est structuré autour de quatre niveaux, chacun répondant à un objectif
+          et à une cible de diffusion différents. Voici comment situer votre projet.
+        </P>
+        <PriceTable
+          head={['Niveau', 'Budget', 'Équipe', 'Jours', 'Diffusion visée']}
+          rows={[
+            ['DIY / smartphone', '0 à 300 €', 'Artiste seul', '0,5', 'Réseaux sociaux uniquement'],
+            ['Indépendant / vidéaste local', '500 à 1 500 €', '3 à 4 pers.', '1', 'Plateformes + réseaux'],
+            ['Semi-pro / mid-range', '3 000 à 8 000 €', '5 à 8 pers.', '1 à 2', 'Labels indé, TV, presse'],
+            ['Pro / premium / cinéma', '8 000 à 50 000 €+', '10 à 30 pers.', '2 à 5', 'Majors, médias, international'],
+          ]}
+          caption="Prix d'un clip musical par niveau de production, marché parisien 2026."
+        />
+        <H3>Le clip DIY ou smartphone (0 à 300 €)</H3>
+        <P>
+          Réalisé par l'artiste, avec un téléphone récent, une lumière naturelle et un montage gratuit. Parfait
+          pour du contenu réseaux sociaux, insuffisant pour une sortie officielle soumise aux médias ou aux
+          labels : l'image, le son et la direction artistique restent limités.
+        </P>
+        <H3>Le clip indépendant avec un vidéaste local (500 à 1 500 €)</H3>
+        <P>
+          Le seuil d'entrée recommandé pour un artiste indépendant qui veut un clip diffusable partout. Une
+          petite équipe de 3 à 4 personnes, une demi-journée à une journée de tournage, un montage soigné et un
+          étalonnage propre. À ce budget, bien pensé, un clip peut nourrir la communication d'un artiste
+          pendant six mois en générant des formats courts pour Reels et TikTok.
+        </P>
+        <H3>Le clip semi-pro ou mid-range (3 000 à 8 000 €)</H3>
+        <P>
+          Une production professionnelle accessible : une journée complète de tournage, une équipe de 5 à 8
+          personnes (réalisateur, chef opérateur, lumière, étalonneur), une à deux locations soignées, une
+          vraie direction artistique. Le format standard pour les artistes confirmés et les petits labels qui
+          visent une diffusion TV ou presse.
+        </P>
+        <H3>Le clip pro, premium ou cinématographique (8 000 à 50 000 € et au-delà)</H3>
+        <P>
+          Pour les artistes établis et les majors : plusieurs jours de tournage, casting professionnel, effets
+          spéciaux, plusieurs lieux, une équipe de 15 à 30 personnes. Chaque poste est traité au niveau d'un
+          long métrage, sans plafond pour les projets à VFX complexes.
         </P>
 
-        <H2>Ce qui fait varier le budget</H2>
+        <H2>Ce qui compose vraiment le budget d'un clip</H2>
         <P>
-          Cinq facteurs principaux : la taille de l'équipe, le matériel (caméras, lumière, machinerie),
-          les décors et lieux de tournage, le nombre de jours, et l'ampleur de la post-production
-          (montage, étalonnage, effets). Un clip tourné en une demi-journée n'a rien à voir avec une
-          production sur plusieurs jours.
+          Un budget de clip se répartit sur trois grandes phases. Comprendre leur poids vous aide à lire un
+          devis et à savoir où mettre votre argent.
+        </P>
+        <H3>La préproduction, l'étape sous-estimée</H3>
+        <P>
+          Concept, repérage des décors, casting, storyboard, planning. La préprod représente 10 à 15 % du
+          budget, mais la bâcler est l'erreur la plus coûteuse : un tournage mal préparé génère des
+          dépassements, des problèmes de décor et une qualité finale décevante. Elle existe toujours, même
+          absorbée dans les honoraires du réalisateur sur les petits projets.
+        </P>
+        <H3>Le tournage, le poste le plus visible</H3>
+        <P>
+          C'est là que se concentre la majorité du budget. Une journée de tournage professionnel à Paris avec
+          une équipe complète coûte entre 6 000 et 12 000 € (réalisateur, chef opérateur et équipe, location du
+          matériel et du décor, régie, casting). Pour un binôme vidéaste, la journée descend à 600-1 000 €,
+          avec un niveau de couverture plus limité.
+        </P>
+        <H3>La post-production, ne pas confondre vitesse et précipitation</H3>
+        <P>
+          Montage, étalonnage, mixage son et, selon les projets, effets visuels et motion design. Voici les
+          tarifs moyens constatés sur le marché parisien en 2026.
+        </P>
+        <PriceTable
+          head={['Poste de post-production', 'Tarif moyen (par jour)']}
+          rows={[
+            ['Montage', '350 € HT'],
+            ['Étalonnage', '650 € HT'],
+            ['VFX / motion design', '500 à 900 € HT'],
+            ['Sound design / mixage', '150 à 400 € HT'],
+            ['Formats verticaux (Reels, TikTok, Shorts)', '200 à 500 € HT'],
+          ]}
+          caption="Prix des postes de post-production d'un clip musical, Paris 2026. Un clip mid-range demande 2 à 4 jours de post-production."
+        />
+        <P>
+          Nouveauté 2026 : le tournage est désormais pensé multi-plateforme. Un clip doit générer des extraits
+          verticaux (30, 15, 9 secondes) pour Reels, TikTok et YouTube Shorts sans recadrage destructif. Prévoir
+          ces formats dès le tournage évite d'y revenir à perte ensuite.
         </P>
 
-        <H2>Clip d'artiste indépendant ou de label : quelles différences ?</H2>
+        <H2>Décomposition d'un budget clip à 10 000 €</H2>
         <P>
-          L'artiste indépendant cherche souvent le meilleur impact avec un budget maîtrisé : on
-          privilégie une idée forte et une exécution propre. Un label peut viser une production plus
-          ambitieuse, avec une équipe élargie. Dans les deux cas, c'est l'idée et la direction artistique
-          qui font la différence, pas seulement le budget.
+          Pour une vision concrète, voici comment se répartit typiquement un budget de 10 000 € sur un clip
+          mid-range à Paris.
+        </P>
+        <PriceTable
+          head={['Poste', 'Montant', '% du budget']}
+          rows={[
+            ['Réalisation et direction artistique', '1 000 €', '10 %'],
+            ['Préproduction', '800 €', '8 %'],
+            ['Équipe technique (tournage)', '1 900 €', '19 %'],
+            ['Location matériel', '1 200 €', '12 %'],
+            ['Location décor / studio', '800 €', '8 %'],
+            ['Casting et figurants', '500 €', '5 %'],
+            ['Régie (transport, catering, imprévus)', '300 €', '3 %'],
+            ['Montage (3 jours)', '1 050 €', '10,5 %'],
+            ['Étalonnage (2 jours)', '1 300 €', '13 %'],
+            ['Formats verticaux', '350 €', '3,5 %'],
+            ['Marge et imprévus', '800 €', '8 %'],
+          ]}
+          caption="Répartition type d'un budget de clip musical de 10 000 € à Paris en 2026."
+        />
+
+        <H2>Quel budget pour un artiste indépendant ?</H2>
+        <P>
+          Bonne nouvelle : un impact fort ne dépend pas d'un gros budget. Un artiste indépendant obtient un
+          excellent rapport qualité-prix entre 500 et 1 500 € en misant sur une idée claire et une exécution
+          propre plutôt que sur des effets coûteux. La règle : mettez le budget là où il se voit (un concept,
+          une belle image, un montage rythmé) et concevez le tournage pour en tirer plusieurs formats. Un bon
+          clip raconte quelque chose et sert l'artiste, avant d'aligner les moyens techniques.
         </P>
 
-        <H2>Comment dépenser utile ?</H2>
+        <H2>Combien coûte un clip chez GND ?</H2>
         <P>
-          Mettez le budget là où il se voit : un concept clair, une belle image, un montage rythmé.
-          Évitez de disperser l'argent sur des effets gadgets. Un bon clip raconte quelque chose et sert
-          l'artiste, avant d'aligner les moyens techniques.
-        </P>
-
-        <H2>Combien chez GND ?</H2>
-        <P>
-          L'audiovisuel est l'activité historique de GND. Chaque clip fait l'objet d'un devis selon votre
-          ambition et votre budget, avec une direction artistique soignée. Voir nos{' '}
-          <A href="/realisations">réalisations</A> et la{' '}
+          L'audiovisuel est l'activité historique de GND, à Paris. Chaque clip fait l'objet d'un devis selon
+          votre ambition et votre budget, avec une direction artistique soignée et une exécution où l'humain
+          signe et l'IA accélère certaines étapes. Nous concevons le tournage pour qu'il alimente aussi vos
+          formats courts. Voir nos <A href="/realisations">réalisations</A> et la{' '}
           <A href="/services/audiovisuel">page audiovisuel</A>, ou{' '}
-          <A href="/contact">parlons de votre projet</A>.
+          <A href="/contact">parlons de votre projet</A>, réponse sous 24h.
         </P>
       </>
     ),
     faq: [
-      { q: "Combien coûte un clip musical en France ?", a: "Selon l'ambition, de quelques centaines d'euros pour un format simple à plus de dix mille euros pour une production proche du cinéma. C'est une fourchette de marché, le devis dépend de votre projet." },
-      { q: "Qu'est-ce qui fait varier le prix d'un clip ?", a: "La taille de l'équipe, le matériel, les décors et lieux, le nombre de jours de tournage, et l'ampleur de la post-production (montage, étalonnage, effets)." },
-      { q: "Quel budget pour un clip d'artiste indépendant ?", a: "On peut démarrer avec un budget maîtrisé en misant sur une idée forte et une exécution propre plutôt que sur de gros moyens. L'important est la direction artistique." },
-      { q: "Combien de temps pour réaliser un clip ?", a: "Cela dépend de l'ampleur : de quelques jours pour un format simple à plusieurs semaines avec préparation, tournage et post-production. Devis et planning détaillés sous 48h." },
-      { q: "Combien coûte un clip chez GND ?", a: "GND établit un devis selon votre ambition et votre budget, avec une direction artistique soignée. Réponse sous 24h, devis sous 48h." },
+      { q: "Combien coûte un clip musical en 2026 ?", a: "De 0 à 300 € en DIY smartphone, 500 à 1 500 € avec un vidéaste indépendant, 3 000 à 8 000 € en semi-pro, et 8 000 à 50 000 € et plus pour une production cinématographique. Le prix dépend de l'équipe, des jours de tournage et de la post-production." },
+      { q: "Quel budget pour un clip d'artiste indépendant ?", a: "Le seuil recommandé pour un clip diffusable partout est de 500 à 1 500 €, avec un vidéaste et une petite équipe sur une journée. Bien pensé, ce budget peut nourrir votre communication pendant six mois en générant des formats courts." },
+      { q: "Qu'est-ce qui fait varier le prix d'un clip ?", a: "La taille de l'équipe, le matériel (caméras, lumières, machinerie), les décors et lieux, le nombre de jours de tournage, et l'ampleur de la post-production (montage, étalonnage, VFX). Un tournage d'une demi-journée n'a rien à voir avec plusieurs jours." },
+      { q: "Combien coûte une journée de tournage à Paris ?", a: "Entre 6 000 et 12 000 € pour une équipe professionnelle complète (réalisateur, chef opérateur et équipe, matériel, décor, régie, casting). Pour un binôme vidéaste, la journée descend à 600-1 000 €, avec une couverture plus limitée." },
+      { q: "Combien coûte la post-production d'un clip ?", a: "Environ 350 € HT par jour de montage, 650 € HT par jour d'étalonnage, 500 à 900 € HT pour les VFX, et 150 à 400 € HT pour le mixage son. Un clip mid-range demande 2 à 4 jours de post-production, soit 1 000 à 2 500 €." },
+      { q: "Comment se décompose un budget de clip ?", a: "En trois phases : la préproduction (10 à 15 %), le tournage (le poste le plus lourd) et la post-production (montage, étalonnage, effets). Sur un clip à 10 000 €, comptez environ 1 000 € de réalisation, 1 900 € d'équipe de tournage et 2 350 € de montage-étalonnage." },
+      { q: "Faut-il prévoir les formats verticaux dès le tournage ?", a: "Oui, c'est la tendance forte de 2026. Concevoir le tournage pour générer des extraits verticaux (Reels, TikTok, Shorts) évite un recadrage destructif ensuite. Comptez 200 à 500 € si ces formats sont externalisés à un monteur." },
+      { q: "Combien de temps pour réaliser un clip ?", a: "De quelques jours pour un format simple à plusieurs semaines avec préparation, tournage et post-production pour un projet ambitieux. Chez GND, devis et planning détaillés sous 48h." },
+      { q: "Comment dépenser utile avec un petit budget ?", a: "Misez sur une idée forte et une exécution propre plutôt que sur des effets gadgets. Mettez le budget là où il se voit : concept, image, montage rythmé. Et concevez le tournage pour en tirer plusieurs formats de diffusion." },
+      { q: "Combien coûte un clip chez GND ?", a: "GND établit un devis selon votre ambition et votre budget, avec une direction artistique soignée. L'audiovisuel est notre activité historique. Réponse sous 24h, devis sous 48h." },
     ],
   },
 
@@ -2034,55 +2216,130 @@ const GUIDE_BODY: Record<string, { body: React.ReactNode; faq: FaqItem[] }> = {
     body: (
       <>
         <Lead>
-          Une vidéo d'entreprise va, selon le format, de l'ordre du millier d'euros (interview courte,
-          captation simple) à plusieurs milliers d'euros (film institutionnel soigné, plusieurs jours de
-          tournage). Le prix dépend du format, de l'équipe, du tournage et de la post-production.
+          Le tarif d'une vidéo d'entreprise va de l'ordre du millier d'euros pour une interview ou une capsule
+          réseaux sociaux à plusieurs dizaines de milliers d'euros pour un spot publicitaire ou un film
+          institutionnel long. Le budget médian d'une vidéo professionnelle se situe autour de 6 500 € HT sur
+          le marché français. Ce qui fait le prix, c'est le format, les jours de tournage, la taille de
+          l'équipe et l'ampleur de la post-production. Ce guide vous donne la grille de prix par format, la
+          décomposition poste par poste, et de quoi choisir le bon format selon votre objectif.
         </Lead>
 
-        <H2>Combien coûte une vidéo d'entreprise ?</H2>
+        <H2>Tarif d'une vidéo d'entreprise par format</H2>
         <P>
-          Les fourchettes de marché varient selon l'ampleur. Une interview ou un format court mobilisent
-          peu de moyens. Un film institutionnel avec scénario, plusieurs lieux et une post-production
-          soignée représente un budget plus élevé. Le motion design et l'animation suivent leur propre
-          logique de prix.
+          Le prix d'une vidéo d'entreprise dépend d'abord de son format. Voici les fourchettes constatées sur
+          le marché français en 2026, hors taxes. Elles servent à situer votre projet avant un devis.
+        </P>
+        <PriceTable
+          head={['Format', 'Durée', 'Prix HT']}
+          rows={[
+            ['Témoignage client / interview', '1 à 3 min', '1 000 à 2 500 €'],
+            ['Vidéo corporate courte', '1 à 3 min', '1 200 à 5 000 €'],
+            ['Capsules réseaux sociaux (lot)', '15 à 60 s', '800 à 2 500 €'],
+            ['Motion design animé', '30 à 90 s', '1 500 à 6 000 €'],
+            ['Film institutionnel', '2 à 5 min', '2 500 à 8 000 €'],
+            ['Brand content / storytelling', '3 à 6 min', '4 000 à 12 000 €'],
+            ['Podcast vidéo / émission B2B', 'série', '2 000 à 8 000 € / épisode'],
+            ['Captation événementielle', 'live / différé', '2 000 à 20 000 €'],
+            ['Film institutionnel long (multi-sites)', '3 à 5 min', '15 000 à 35 000 €'],
+            ['Spot publicitaire', '30 à 60 s', '15 000 à 50 000 €'],
+          ]}
+          caption="Tarif d'une vidéo d'entreprise par format, marché français 2026. Budget médian d'une vidéo professionnelle : environ 6 500 € HT, souvent 4 600 à 15 000 € HT."
+        />
+        <P>
+          Une tendance forte de 2026 : le format court et vertical (15 à 60 secondes, 9:16) est devenu un
+          standard pour la communication sur mobile, LinkedIn et Instagram. Un même tournage peut désormais être
+          décliné en plusieurs formats dès le cadrage, ce qui améliore le rendement de votre budget.
         </P>
 
-        <H2>Les formats et leurs budgets</H2>
+        <H2>Ce qui compose le prix d'une vidéo d'entreprise</H2>
         <P>
-          Interview ou témoignage client : format efficace et accessible. Film institutionnel : présente
-          l'entreprise, demande plus de préparation. Brand content et vidéo de marque : production plus
-          créative. Capsules pour les réseaux sociaux : format court, souvent par lot. Chaque format a son
-          niveau d'investissement.
+          La largeur des fourchettes reflète des réalités de production très différentes. Un budget se répartit
+          sur trois phases, et comprendre leur poids vous aide à lire un devis.
+        </P>
+        <H3>La préproduction (10 à 20 % du budget)</H3>
+        <P>
+          Brief et définition de l'objectif, écriture du script, repérage, casting, storyboard, logistique.
+          Une préproduction bien menée conditionne la qualité du résultat. La négliger pour réduire les coûts
+          revient souvent à multiplier les allers-retours en post-production, et donc les frais.
+        </P>
+        <H3>Le tournage, le poste le plus visible</H3>
+        <P>
+          C'est la part la plus visible du budget. Voici les tarifs journaliers pratiqués à Paris en 2026, qui
+          donnent une bonne base pour lire un devis.
+        </P>
+        <PriceTable
+          head={['Poste', 'Tarif par jour HT (Paris)']}
+          rows={[
+            ['Réalisateur / directeur artistique', '600 à 1 200 €'],
+            ['Cadreur (avec matériel)', '500 à 900 €'],
+            ['Chef opérateur son', '350 à 600 €'],
+            ['Chargé de production', '300 à 500 €'],
+            ['Comédien ou présentateur', '400 à 1 500 €'],
+            ['Location matériel (caméra, lumières)', '300 à 800 €'],
+            ['Location studio ou décor', '200 à 1 500 €'],
+          ]}
+          caption="Tarifs journaliers d'un tournage vidéo d'entreprise à Paris en 2026. Un binôme cadreur-réalisateur se facture 640 à 1 000 € la journée."
+        />
+        <H3>La post-production (30 à 40 % du budget)</H3>
+        <P>
+          Montage, étalonnage, sound design, musique, habillage graphique, sous-titres et déclinaisons de
+          formats (1:1, 9:16, 16:9). C'est la valeur ajoutée qui distingue une vidéo professionnelle d'une
+          captation brute. Un poste souvent oublié dans les devis : les droits musicaux. Une musique de
+          bibliothèque libre de droits coûte peu, mais une composition originale ou une licence commerciale
+          représente un budget à part, à chiffrer dès le départ.
         </P>
 
-        <H2>Ce qui fait varier le devis</H2>
+        <H2>Comment choisir le bon format selon votre objectif</H2>
         <P>
-          Le nombre de jours de tournage, la taille de l'équipe, le matériel, le nombre de lieux, et
-          l'ampleur de la post-production (montage, étalonnage, motion, sous-titres). Les droits musicaux
-          et la déclinaison en plusieurs formats jouent aussi.
+          Le bon format découle de l'usage, pas l'inverse. Partez de votre objectif de communication.
+        </P>
+        <UL>
+          <LI><strong>Convaincre un prospect :</strong> un témoignage client ou une vidéo corporate courte,
+          concrets et rassurants.</LI>
+          <LI><strong>Présenter l'entreprise :</strong> un film institutionnel, qui structure votre récit et
+          vos valeurs.</LI>
+          <LI><strong>Travailler l'image de marque :</strong> du brand content scénarisé, plus créatif et
+          mémorable.</LI>
+          <LI><strong>Alimenter les réseaux :</strong> des capsules courtes verticales, produites par lot pour
+          un bon rendement.</LI>
+          <LI><strong>Expliquer un produit ou un service :</strong> du motion design, clair et pédagogique.</LI>
+        </UL>
+        <P>
+          Une vidéo bien ciblée et réutilisable sur plusieurs canaux rentabilise mieux qu'une grosse production
+          unique mal diffusée. Pensez la production pour qu'elle serve plusieurs usages.
         </P>
 
-        <H2>Comment investir intelligemment ?</H2>
+        <H2>Quel retour sur investissement attendre ?</H2>
         <P>
-          Partez de l'objectif : convaincre un prospect, recruter, expliquer un produit. Le bon format
-          découle de l'usage, pas l'inverse. Une vidéo bien ciblée et réutilisable sur plusieurs canaux
-          rentabilise mieux qu'une grosse production unique mal diffusée.
+          Une vidéo d'entreprise n'est pas une dépense d'image, c'est un actif de communication. Elle augmente
+          le temps passé sur vos pages, clarifie votre offre, rassure vos prospects et se décline sur tous vos
+          canaux. Une vidéo qui raccourcit un cycle de vente ou améliore un taux de conversion se rentabilise
+          vite. Le bon calcul n'est pas le prix seul, mais la valeur générée sur la durée de vie de la vidéo,
+          souvent deux à trois ans, formats courts compris.
         </P>
 
-        <H2>Combien chez GND ?</H2>
+        <H2>Combien coûte une vidéo d'entreprise chez GND ?</H2>
         <P>
-          GND gère la vidéo d'entreprise de l'écriture à la livraison, en interne, avec un devis selon
-          votre besoin. Voir la <A href="/services/audiovisuel">page audiovisuel</A> et nos{' '}
-          <A href="/realisations">réalisations</A>, ou <A href="/contact">demandez un devis</A>.
+          GND gère votre vidéo d'entreprise de l'écriture à la livraison, en interne, à Paris, avec une
+          direction artistique soignée et un devis selon votre besoin réel. Nous concevons chaque production
+          pour qu'elle serve plusieurs canaux, formats courts inclus. Voir la{' '}
+          <A href="/services/audiovisuel">page audiovisuel</A> et nos{' '}
+          <A href="/realisations">réalisations</A>, ou <A href="/contact">demandez un devis</A>, réponse sous
+          24h.
         </P>
       </>
     ),
     faq: [
-      { q: "Combien coûte une vidéo d'entreprise ?", a: "Selon le format, de l'ordre du millier d'euros pour une interview courte à plusieurs milliers pour un film institutionnel soigné. Le prix dépend du tournage, de l'équipe et de la post-production." },
-      { q: "Quel format de vidéo pour mon entreprise ?", a: "Cela dépend de l'objectif : interview ou témoignage pour la preuve, film institutionnel pour présenter l'entreprise, brand content pour l'image, capsules courtes pour les réseaux sociaux." },
-      { q: "Qu'est-ce qui fait varier le prix ?", a: "Le nombre de jours de tournage, la taille de l'équipe, le matériel, le nombre de lieux, et l'ampleur de la post-production (montage, étalonnage, motion, sous-titres)." },
-      { q: "Combien de temps pour produire une vidéo d'entreprise ?", a: "Variable selon l'ampleur, de quelques jours à plusieurs semaines avec préparation, tournage et montage. GND donne un planning détaillé avec le devis." },
-      { q: "Combien coûte une vidéo d'entreprise chez GND ?", a: "GND établit un devis selon votre besoin, de l'écriture à la livraison, tout en interne. Réponse sous 24h, devis sous 48h." },
+      { q: "Combien coûte une vidéo d'entreprise en 2026 ?", a: "De 1 000 à 2 500 € pour un témoignage client, 2 500 à 8 000 € pour un film institutionnel, 4 000 à 12 000 € pour du brand content, et 15 000 à 50 000 € pour un spot publicitaire. Le budget médian d'une vidéo professionnelle se situe autour de 6 500 € HT." },
+      { q: "Combien coûte un film institutionnel ?", a: "De 2 500 à 8 000 € HT pour un film institutionnel standard (2 à 5 minutes, multi-interviews, direction artistique, motion), et 15 000 à 35 000 € pour une version longue multi-sites avec talents castés et post-production renforcée." },
+      { q: "Quel est le tarif d'une capsule pour les réseaux sociaux ?", a: "De 800 à 2 500 € HT pour un lot de capsules verticales (15 à 60 secondes) avec sous-titrage et déclinaisons. Produire plusieurs capsules à partir d'un même tournage améliore nettement le rendement du budget." },
+      { q: "Qu'est-ce qui fait varier le prix d'une vidéo d'entreprise ?", a: "Le format, le nombre de jours de tournage, la taille de l'équipe, le matériel, le nombre de lieux, l'ampleur de la post-production (montage, étalonnage, motion, sous-titres) et les droits musicaux." },
+      { q: "Combien coûte une journée de tournage à Paris ?", a: "Un binôme cadreur-réalisateur se facture 640 à 1 000 € HT la journée. Pour une équipe étoffée (son, lumière, assistants), comptez deux à trois fois plus, plus la location du matériel (300 à 800 €) et du décor (200 à 1 500 €)." },
+      { q: "Comment se décompose le budget d'une vidéo ?", a: "En trois phases : la préproduction (10 à 20 %), le tournage (le poste le plus visible) et la post-production (30 à 40 %). Négliger la préproduction pour réduire les coûts multiplie souvent les frais en post-production." },
+      { q: "Les droits musicaux sont-ils inclus dans le prix ?", a: "Pas toujours, et c'est un poste souvent oublié. Une musique de bibliothèque libre de droits coûte peu, mais une composition originale ou une licence commerciale représente un budget à part. Faites-le chiffrer dès le départ." },
+      { q: "Quel format de vidéo choisir pour mon entreprise ?", a: "Cela dépend de l'objectif : témoignage ou corporate courte pour convaincre un prospect, film institutionnel pour présenter l'entreprise, brand content pour l'image, capsules courtes pour les réseaux, motion design pour expliquer un produit." },
+      { q: "Combien de temps pour produire une vidéo d'entreprise ?", a: "De quelques jours pour un format court à plusieurs semaines pour un film institutionnel avec écriture, tournage et post-production. Chez GND, un planning détaillé est fourni avec le devis." },
+      { q: "Combien coûte une vidéo d'entreprise chez GND ?", a: "GND établit un devis selon votre besoin, de l'écriture à la livraison, tout en interne à Paris. Réponse sous 24h, devis sous 48h." },
     ],
   },
 

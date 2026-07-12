@@ -153,7 +153,7 @@ export function PhotoViewer({ photos }: { photos: ViewerPhoto[] }) {
           >
             <div className="px-2 pt-1">
               <img
-                src="/assets/logos/gnd-logo-blanc-cropped.webp"
+                src="/assets/logos/gnd-logo-full-creme.svg"
                 alt="GND Consulting"
                 draggable={false}
                 className="w-[108px]"

@@ -103,7 +103,7 @@ export function GuidesShowcase({ guides, id = 'liste' }: { guides: GuideMeta[]; 
                   aria-hidden
                 />
                 <img
-                  src="/assets/logos/gnd-logo-chocolat-cropped.png"
+                  src="/assets/logos/gnd-logo-full-chocolat.svg"
                   alt="GND Consulting"
                   className="relative w-24 md:w-28 select-none"
                   draggable={false}

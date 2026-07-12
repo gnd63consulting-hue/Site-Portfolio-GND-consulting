@@ -61,7 +61,7 @@ function Header({ route }: any) {
       <div className="mx-auto max-w-[1500px] px-6 md:px-10 h-20 md:h-24 flex items-center justify-between">
         <a href="/" className="flex items-center gap-2.5 group focus-ring" aria-label="GND Consulting, accueil">
           <img
-            src="/assets/logos/gnd-logo-chocolat-cropped.png"
+            src="/assets/logos/gnd-logo-full-chocolat.svg"
             alt="GND Consulting"
             className="h-11 md:h-12 w-auto select-none"
             draggable={false}
@@ -133,7 +133,7 @@ function Header({ route }: any) {
           <div className="px-6 h-16 flex items-center justify-between border-b hairline border-b">
             <a href="/" onClick={() => setOpen(false)} className="inline-flex" aria-label="GND Consulting, accueil">
               <img
-                src="/assets/logos/gnd-logo-chocolat-cropped.png"
+                src="/assets/logos/gnd-logo-full-chocolat.svg"
                 alt="GND Consulting"
                 className="h-11 w-auto select-none"
                 draggable={false}

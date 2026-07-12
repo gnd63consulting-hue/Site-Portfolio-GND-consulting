@@ -605,11 +605,11 @@ function ProductionPage() {
   const [active, setActive] = React.useState<any>(null);
   const COVER = "/assets/hero1-poster.webp";
   const reels = [
-    { id: "trinity", t:"Trinity Rebel, Univers Officiel", k:"Clip musical", y:"2025", img: COVER },
-    { id: "ali", t:"Concert Ali", k:"Captation live", y:"2024", img: COVER },
+    { id: "trinity", youtube: "gekXlJ65GK4", t:"Trinity Rebel, Univers Officiel", k:"Clip musical", y:"2025", img: "/assets/posters/trinity.webp" },
+    { id: "ali", t:"Concert Ali", k:"Captation live", y:"2024", img: "/assets/posters/concert-ali.webp" },
     { id: "sabay", video: "/portfolio-videos/sabay-2022.mp4", t:"Thiek, Sabay Festival 2022", k:"Événementiel 4K", y:"2022", img:"https://img.youtube.com/vi/Vyhz7_D4fFU/hqdefault.jpg", youtube:"Vyhz7_D4fFU" },
     { id: "esther", t:"Esther Seems, BOBINE", k:"Production", y:"2024", img:"https://img.youtube.com/vi/6oaO6YoWjyQ/maxresdefault.jpg", youtube:"6oaO6YoWjyQ" },
-    { id: "yungcally", video: "/portfolio-videos/yungcally.mp4", t:"Yungcally, Clip officiel", k:"Clip musical", y:"2024", img: COVER },
+    { id: "yungcally", video: "/portfolio-videos/yungcally.mp4", t:"Yungcally, Clip officiel", k:"Clip musical", y:"2024", img: "/assets/posters/yungcally.webp" },
   ];
 
   return (
@@ -1394,7 +1394,7 @@ function AudiovisuelPage() {
   // Showreel, 11 productions réelles GND (7 YouTube + 4 Supabase MP4).
   // Titres vérifiés via YouTube oEmbed le 31/05/2026.
   const REELS: Reel[] = [
-    { id: 'trinity', t: 'Trinity Rebel, Univers Officiel', k: 'Clip musical', y: '2025', img: '/assets/posters/trinity.webp' },
+    { id: 'trinity', youtube: "gekXlJ65GK4", t: 'Trinity Rebel, Univers Officiel', k: 'Clip musical', y: '2025', img: '/assets/posters/trinity.webp' },
     { id: 'esther', t: 'Esther Seems, Bobine', k: 'Clip artiste', y: '2024', img: 'https://img.youtube.com/vi/6oaO6YoWjyQ/maxresdefault.jpg', youtube: '6oaO6YoWjyQ' },
     { id: 'sabay', video: "/portfolio-videos/sabay-2022.mp4", t: 'Sabay Festival, Pagode de Vincennes', k: 'Événementiel 4K', y: '2023', img: 'https://img.youtube.com/vi/Vyhz7_D4fFU/maxresdefault.jpg', youtube: 'Vyhz7_D4fFU' },
     { id: 'ali', t: 'Concert Ali', k: 'Captation live', y: '2024', img: '/assets/posters/concert-ali.webp' },

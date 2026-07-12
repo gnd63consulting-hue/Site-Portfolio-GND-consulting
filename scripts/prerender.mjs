@@ -83,6 +83,10 @@ try {
   for (const route of ROUTES) {
     const page = await browser.newPage();
     await page.setViewport({ width: 1440, height: 950 });
+    // Drapeau lu par DeferMount (home.tsx) : en prerender, toutes les sections
+    // différées se montent immédiatement — le scroll ci-dessous ne suffit pas,
+    // le hero ScrollExpand épingle window.scrollY tant qu'il n'est pas étendu.
+    await page.evaluateOnNewDocument(() => { window.__PRERENDER__ = true; });
     await page.goto(`http://localhost:${PORT}${route.path}`, { waitUntil: 'networkidle2', timeout: 90000 });
     await new Promise((r) => setTimeout(r, 3000));
     // Scroll complet de la page AVANT capture : certaines sections (héros #2

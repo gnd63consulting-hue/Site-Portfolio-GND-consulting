@@ -54,6 +54,15 @@ const ScrollExpandMedia = ({
   // Mid-page safety : composant n'intercepte la molette/touch QUE quand
   // sa section est visible à l'écran.
   const [isInView, setIsInView] = useState<boolean>(false);
+  // Perf LCP : la vidéo (~2,4 Mo) ne doit pas concurrencer le chemin critique.
+  // On n'attache son src qu'après l'événement load ; le poster couvre l'attente.
+  const [deferredVideoSrc, setDeferredVideoSrc] = useState<string | undefined>(undefined);
+  useEffect(() => {
+    const arm = () => setDeferredVideoSrc(mediaSrc);
+    if (document.readyState === 'complete') { arm(); return; }
+    window.addEventListener('load', arm, { once: true });
+    return () => window.removeEventListener('load', arm);
+  }, [mediaSrc]);
 
   const sectionRef = useRef<HTMLDivElement | null>(null);
   // Top absolu de la section dans le document (pour scroll-lock ancré ici
@@ -222,6 +231,8 @@ const ScrollExpandMedia = ({
               src={bgImageSrc}
               alt='Background'
               className='w-full h-full'
+              fetchPriority='high'
+              decoding='async'
               style={{
                 objectFit: 'cover',
                 objectPosition: 'center',
@@ -277,13 +288,13 @@ const ScrollExpandMedia = ({
                   ) : (
                     <div className='relative w-full h-full pointer-events-none'>
                       <video
-                        src={mediaSrc}
+                        src={deferredVideoSrc}
                         poster={posterSrc}
                         autoPlay
                         muted
                         loop
                         playsInline
-                        preload='auto'
+                        preload='metadata'
                         className='w-full h-full object-cover rounded-xl'
                         controls={false}
                         disablePictureInPicture

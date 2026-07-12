@@ -1944,6 +1944,28 @@ function ContactBlock() {
   );
 }
 
+/* Monte ses enfants à l'approche du viewport (marge 1200px) : allège le
+   chargement initial mobile (LCP) sans perte SEO — scripts/prerender.mjs
+   scrolle toute la page avant capture, donc les snapshots bots restent
+   complets. Fallback : montage immédiat si IntersectionObserver absent. */
+function DeferMount({ children }: { children: React.ReactNode }) {
+  const ref = React.useRef<HTMLDivElement>(null);
+  const [show, setShow] = React.useState(false);
+  React.useEffect(() => {
+    // Prerender (scripts/prerender.mjs) : le hero ScrollExpand épingle le
+    // scroll, l'IO ne se déclencherait jamais → montage immédiat via drapeau.
+    if ((window as unknown as { __PRERENDER__?: boolean }).__PRERENDER__) { setShow(true); return; }
+    if (typeof IntersectionObserver === 'undefined') { setShow(true); return; }
+    const io = new IntersectionObserver(
+      (entries) => { if (entries[0].isIntersecting) { setShow(true); io.disconnect(); } },
+      { rootMargin: '1200px 0px' }
+    );
+    if (ref.current) io.observe(ref.current);
+    return () => io.disconnect();
+  }, []);
+  return show ? <>{children}</> : <div ref={ref} style={{ minHeight: '50vh' }} aria-hidden="true" />;
+}
+
 function HomePage() {
   return (
     <main id="main">
@@ -2002,16 +2024,17 @@ function HomePage() {
 
       {/* HERO #3, WhyGndHomeBlock (mirror WhyGndAudiovisuelBlock structure)
           avec 5 catégories home : GND · Sites · Branding · Audiovisuel · IA. */}
-      <WhyGndHomeBlock />
+      <DeferMount><WhyGndHomeBlock /></DeferMount>
 
-      <MarqueeProjects />
-      <WhoWeAreBlock />
-      <IntersectionBlock />
-      <ServicesGrid />
-      <ReelsMosaic />
+      <DeferMount><MarqueeProjects /></DeferMount>
+      <DeferMount><WhoWeAreBlock /></DeferMount>
+      <DeferMount><IntersectionBlock /></DeferMount>
+      <DeferMount><ServicesGrid /></DeferMount>
+      <DeferMount><ReelsMosaic /></DeferMount>
       {/* Partie vidéo de la section portfolio unifiée — console média verre
           fumé (même PhotoViewer V3 que la page Réalisations), 4 vidéos GND.
           (HologramShowcase gardé de côté sur disque, plus importé.) */}
+      <DeferMount>
       <Section className="pt-8 md:pt-12 pb-24 md:pb-32">
         <Container>
           <div className="text-center mb-10 md:mb-12 text-text-muted label-mono text-xs">
@@ -2027,12 +2050,14 @@ function HomePage() {
           />
         </Container>
       </Section>
-      <WhyBlock />
-      <ValuesBlock />
-      <TestimonialsBlock />
-      <TeamSlider />
-      <ContactBlock />
-      {/* FAQ placée après la section Contact, juste au-dessus du footer. */}
+      </DeferMount>
+      <DeferMount><WhyBlock /></DeferMount>
+      <DeferMount><ValuesBlock /></DeferMount>
+      <DeferMount><TestimonialsBlock /></DeferMount>
+      <DeferMount><TeamSlider /></DeferMount>
+      <DeferMount><ContactBlock /></DeferMount>
+      {/* FAQ placée après la section Contact, juste au-dessus du footer.
+          Hors DeferMount : porte le FAQPage JSON-LD (SEO). */}
       <FaqHome />
       <FloatingCtaBand
         prefix="Créons l'impact"

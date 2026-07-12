@@ -95,6 +95,9 @@
       "publisher": { "@id": "https://www.gndconsulting.fr/#organization" }
     }
     </script>
+    <!-- LCP : le fond du hero est injecté par React après le parsing du bundle ;
+         sans ce preload le navigateur ne le découvre qu'à ~800ms. -->
+    <link rel="preload" as="image" href="/assets/hero1-bg-v2.webp" fetchpriority="high" />
   </head>
   <body>
     <div id="root">

@@ -313,6 +313,84 @@ function BrandingPage() {
         </Container>
       </Section>
 
+      {/* Bloc de contenu SEO (fusion Léa BotSEO + voix GND, 12/07/26) :
+          prose crawlable ciblée transactionnel (agence branding Paris,
+          création identité de marque, agence identité visuelle, refonte de
+          marque, studio de branding). Placé avant la FAQ, sans casser le
+          tunnel de conversion. Cross-link vers le guide prix. */}
+      <Section className="py-20 md:py-28">
+        <Container className="!max-w-4xl">
+          <Kicker>Agence branding · Paris</Kicker>
+          <h2 className="display text-4xl md:text-5xl mt-5 text-text-strong leading-tight">
+            L'identité de marque que vous <span className="italic text-accent">méritez vraiment</span>.
+          </h2>
+          <div className="mt-8 space-y-5 text-base md:text-[17px] text-text leading-relaxed">
+            <p>
+              Des dizaines d'outils génèrent aujourd'hui un logo en quelques secondes. Ce qu'ils ne savent pas
+              faire, c'est comprendre ce qui rend votre marque irremplaçable. En tant que studio de branding
+              parisien, GND combine la puissance de l'intelligence artificielle et la direction créative
+              humaine pour produire des identités qui ont du sens, de la cohérence et de la durée. L'IA
+              accélère l'exploration, l'humain tranche, arbitre et signe. Ce n'est pas un argument marketing,
+              c'est notre méthode : l'œil humain pour guider, l'IA pour accélérer.
+            </p>
+
+            <h3 className="display text-2xl md:text-3xl text-text-strong pt-4">Création d'identité de marque : bien plus qu'un logo</h3>
+            <p>
+              Une identité de marque forte ne se résume pas à un symbole. Elle englobe la manière dont vous
+              vous présentez, la confiance que vous inspirez et la cohérence que vous tenez sur chaque point de
+              contact. C'est un actif qui travaille pour vous en continu, sur votre site comme sur votre
+              enseigne. Notre accompagnement en création d'identité de marque couvre tout le spectre : le
+              logotype et ses déclinaisons, pensés pour fonctionner du digital à l'impression ; la palette et
+              la typographie, choisies pour transmettre vos valeurs exactes ; la charte graphique complète, qui
+              garantit la cohérence dans le temps ; et les règles d'usage, pour que vos équipes et partenaires
+              appliquent l'identité sans la trahir.
+            </p>
+            <p>
+              À la fin de chaque projet, vous repartez propriétaire de l'intégralité de vos fichiers sources.
+              Pas de dépendance, pas de frais cachés, pas de retour en arrière imposé. Pour situer votre budget,
+              consultez notre guide détaillé sur le{' '}
+              <a href="/guides/prix-identite-visuelle" className="underline decoration-accent underline-offset-4 hover:text-accent transition-colors">prix d'une identité visuelle</a>.
+            </p>
+
+            <h3 className="display text-2xl md:text-3xl text-text-strong pt-4">Refonte de marque : quand votre identité ne vous ressemble plus</h3>
+            <p>
+              Une refonte de marque n'est pas un aveu d'échec, c'est une décision stratégique. Plusieurs
+              signaux indiquent qu'elle devient nécessaire : une identité qui date de plus de cinq ans et ne
+              reflète plus votre positionnement, des supports incohérents entre eux, de nouveaux marchés à
+              adresser, une fusion ou un changement de cap, ou une marque perçue comme générique dans votre
+              secteur. En tant qu'agence identité visuelle basée à Paris, nous intervenons à chaque étape :
+              diagnostic de l'existant, recommandations stratégiques, production graphique et déploiement.
+              Notre approche assistée par IA multiplie les pistes créatives en phase d'exploration, tout en
+              gardant une exigence de direction artistique sur chaque livrable final.
+            </p>
+
+            <h3 className="display text-2xl md:text-3xl text-text-strong pt-4">Pourquoi choisir un studio de branding parisien en 2026 ?</h3>
+            <p>
+              L'essor des outils génératifs a inondé le web de visuels standardisés. En réaction, les marques
+              les plus solides privilégient l'intention humaine assumée : la texture, les tracés visibles, les
+              choix qui signalent une décision réfléchie derrière chaque forme. Choisir un studio de branding
+              ancré à Paris, c'est bénéficier d'une connaissance fine des marchés français et européens, des
+              codes de votre secteur et des attentes de vos décideurs, avec une équipe réactive et disponible,
+              capable d'échanger en présentiel si votre projet le demande. Notre positionnement hybride nous
+              permet de livrer plus vite qu'une agence traditionnelle, avec la profondeur stratégique et la
+              singularité qu'un générateur de logo en ligne ne vous offrira jamais.
+            </p>
+
+            <h3 className="display text-2xl md:text-3xl text-text-strong pt-4">Comment se déroule un accompagnement branding chez GND</h3>
+            <p>
+              Chaque projet démarre par une phase de découverte approfondie : votre marché, vos concurrents,
+              vos clients cibles, et surtout ce qui vous différencie fondamentalement. Vient ensuite
+              l'exploration créative (directions artistiques multiples, moodboards, tests assistés par IA),
+              puis la production graphique (logotype, typographie, couleurs, iconographie, charte complète), et
+              enfin la livraison et le déploiement, avec vos fichiers sources (AI, PDF, PNG, SVG) et le guide
+              d'utilisation. Pour comprendre ce qui distingue une charte d'un brand book, lisez aussi notre
+              guide{' '}
+              <a href="/guides/charte-graphique-vs-brand-book" className="underline decoration-accent underline-offset-4 hover:text-accent transition-colors">charte graphique ou brand book</a>.
+            </p>
+          </div>
+        </Container>
+      </Section>
+
       {/* FAQ 7 questions v2 */}
       <Section bg="alt" className="py-24 md:py-32">
         <Container>

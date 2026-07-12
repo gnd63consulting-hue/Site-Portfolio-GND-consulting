@@ -45,8 +45,13 @@ const PRERENDERED = new Set([
   '/guides/agent-ia-vs-chatbot',
 ]);
 
+/* Liste explicite + filet générique (crawler|spider|scraper|"bot" en mot) :
+   couvre les outils SEO (BotSEO, Ahrefs, Screaming Frog…) et les futurs
+   crawlers IA sans maintenance. Les navigateurs humains ne matchent jamais ;
+   headless Chrome (Lighthouse/PageSpeed) non plus → il garde le SPA et
+   mesure la vraie expérience visiteur. */
 const BOT =
-  /(googlebot|google-inspectiontool|storebot-google|bingbot|bingpreview|slurp|duckduckbot|baiduspider|yandex|sogou|exabot|facebookexternalhit|facebot|twitterbot|linkedinbot|embedly|quora link preview|pinterest|slackbot|vkshare|w3c_validator|applebot|ia_archiver|gptbot|oai-searchbot|chatgpt-user|perplexitybot|claudebot|claude-web|anthropic-ai|ccbot|amazonbot|bytespider|petalbot)/i;
+  /(googlebot|google-inspectiontool|storebot-google|bingbot|bingpreview|slurp|duckduckbot|baiduspider|yandex|sogou|exabot|facebookexternalhit|facebot|twitterbot|linkedinbot|embedly|quora link preview|pinterest|slackbot|vkshare|w3c_validator|applebot|ia_archiver|gptbot|oai-searchbot|chatgpt-user|perplexitybot|claudebot|claude-web|anthropic-ai|ccbot|amazonbot|bytespider|petalbot|crawler|spider|scraper|linkpreview|\bbot\b|bot\/\d)/i;
 
 export default function middleware(req: Request) {
   // Filet de sécurité : toute erreur → next() (application normale). Le

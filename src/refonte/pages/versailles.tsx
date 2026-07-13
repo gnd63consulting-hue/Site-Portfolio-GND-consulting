@@ -56,8 +56,8 @@ const PALETTE = `
 .vsl-blob{position:absolute;inset:0;background:var(--o);border-radius:44% 56% 52% 48% / 40% 62% 38% 60%;transform:rotate(-26deg);overflow:hidden;box-shadow:0 30px 80px rgba(83,36,24,.18);}
 .vsl-blob .script{position:absolute;left:8%;top:52%;transform:rotate(26deg);font-family:var(--serif);font-style:italic;font-size:96px;color:rgba(255,255,255,.34);white-space:nowrap;pointer-events:none;letter-spacing:-.02em;}
 .vsl-blobin{position:absolute;inset:0;transform:rotate(26deg) scale(1.02);transform-origin:58% 64%;display:flex;align-items:flex-end;justify-content:center;}
-.vsl-fig .person{position:relative;height:99%;margin-bottom:-3%;object-fit:contain;filter:drop-shadow(0 12px 26px rgba(83,36,24,.22));}
-.vsl-spin{position:absolute;left:120px;bottom:85px;width:120px;height:120px;z-index:4;}
+.vsl-fig .person{position:relative;height:99%;margin-bottom:-3%;transform:translateY(64px);object-fit:contain;filter:drop-shadow(0 12px 26px rgba(83,36,24,.22));}
+.vsl-spin{position:absolute;left:70px;bottom:320px;width:118px;height:118px;z-index:4;}
 .vsl-spin .ring{transform-origin:center;animation:vslspin 9s linear infinite;}
 @keyframes vslspin{to{transform:rotate(360deg);}}
 @media(prefers-reduced-motion:reduce){.vsl-spin .ring{animation:none;}}

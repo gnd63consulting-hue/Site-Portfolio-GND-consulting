@@ -43,6 +43,7 @@ const PRERENDERED = new Set([
   '/guides/tarif-video-entreprise',
   '/guides/prix-agent-ia-pme',
   '/guides/agent-ia-vs-chatbot',
+  '/agence-web-versailles',
 ]);
 
 /* Liste explicite + filet générique (crawler|spider|scraper|"bot" en mot) :

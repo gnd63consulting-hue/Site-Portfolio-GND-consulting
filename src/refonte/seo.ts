@@ -68,6 +68,21 @@ export const SEO_META: Record<string, Meta> = {
     description:
       "Site internet pour restaurant : design qui donne faim, zéro commission, trouvable sur Google et par les IA. Réservation et commande en direct, site 100 % propriétaire. Dès 800 €.",
   },
+  '/agence-web-versailles': {
+    title: 'Agence web Versailles, création de site internet (78) | GND Consulting',
+    description:
+      "Studio créatif parisien intervenant à Versailles et dans les Yvelines (78). Création de site internet, sites vitrines dès 800 €, référencement local inclus, paiement unique sans abonnement.",
+  },
+};
+
+/* Pages locales : schema LocalBusiness + Service avec areaServed précis
+   (ville + département) pour le SEO local. 1 page = 1 ville. */
+const LOCAL_PAGES: Record<string, { serviceType: string; city: string; region: string }> = {
+  '/agence-web-versailles': {
+    serviceType: 'Création de site internet',
+    city: 'Versailles',
+    region: 'Yvelines',
+  },
 };
 
 /* serviceType par page service — pour le schema Service (résultats enrichis). */
@@ -206,6 +221,37 @@ export function applyRouteSeo(route: string) {
     });
   } else {
     removeJsonLd('gnd-jsonld-service');
+  }
+
+  // Pages locales : Service ancré à une ville (LocalBusiness comme provider,
+  // areaServed = ville + département) pour le référencement local.
+  if (LOCAL_PAGES[route]) {
+    const { serviceType, city, region } = LOCAL_PAGES[route];
+    injectJsonLd('gnd-jsonld-local', {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      '@id': `${url}#service`,
+      name: title.replace(/\s*\|\s*GND Consulting.*$/, '').trim(),
+      serviceType,
+      description,
+      url,
+      provider: {
+        '@type': 'ProfessionalService',
+        name: 'GND Consulting',
+        '@id': `${BASE}/#organization`,
+        url: `${BASE}/`,
+        areaServed: [
+          { '@type': 'City', name: city },
+          { '@type': 'AdministrativeArea', name: region },
+        ],
+      },
+      areaServed: [
+        { '@type': 'City', name: city },
+        { '@type': 'AdministrativeArea', name: region },
+      ],
+    });
+  } else {
+    removeJsonLd('gnd-jsonld-local');
   }
 
   // Schema Article sur les guides (E-E-A-T). Auteur = l'organisation GND

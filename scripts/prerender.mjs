@@ -48,6 +48,7 @@ const ROUTES = [
   { path: '/guides/tarif-video-entreprise', title: "GND Consulting, Combien coûte une vidéo d'entreprise en 2026 ?", desc: "Prix d'une vidéo d'entreprise : film institutionnel, interview, motion. Fourchettes de marché et ce qui fait varier le devis. Le guide GND." },
   { path: '/guides/prix-agent-ia-pme', title: "GND Consulting, Combien coûte un agent IA pour une PME en 2026 ?", desc: "Prix d'un agent IA sur-mesure pour une PME : fourchettes de marché, ce qui fait varier le coût, et comment estimer le retour sur investissement. Le guide GND." },
   { path: '/guides/agent-ia-vs-chatbot', title: "GND Consulting, Agent IA ou chatbot : quelle différence ?", desc: "Agent IA ou chatbot : la différence claire, ce que chacun sait faire, et lequel choisir selon votre besoin. Le guide GND, sans jargon." },
+  { path: '/agence-web-versailles', title: 'Agence web Versailles, création de site internet (78) | GND Consulting', desc: "Studio créatif parisien intervenant à Versailles et dans les Yvelines (78). Création de site internet, sites vitrines dès 800 €, référencement local inclus, paiement unique sans abonnement." },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');

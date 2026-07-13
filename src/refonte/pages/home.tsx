@@ -1712,30 +1712,57 @@ function ContactBlock() {
     "Audiovisuel", "Photographie", "IA & Automatisation",
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (status !== 'idle') return;
-    setStatus('sending');
-    /* Fallback mailto (12/07/26) : tant qu'aucun backend d'envoi n'est branché,
-       le formulaire ouvre l'email pré-rempli du prospect vers GND, pour ne
-       perdre aucun lead. À remplacer par un vrai endpoint (Web3Forms / Resend)
-       dès que la clé est fournie. */
+  /* Envoi via Web3Forms (13/07/26) : POST direct vers l'API, les leads
+     arrivent dans la boîte contact@gndconsulting.fr sans quitter le site.
+     La clé est PUBLIQUE (prévue pour le client). Filet de secours : si
+     l'appel échoue (réseau, API down), on bascule sur le mailto pré-rempli
+     pour ne perdre aucun lead. */
+  const WEB3FORMS_KEY = '35ede887-e929-498e-bda8-dc48922d5775';
+
+  const openMailtoFallback = () => {
     const subject = `Demande de projet${service ? ` · ${service}` : ''}${name ? ` · ${name}` : ''}`;
     const body =
       `Nom : ${name}\n` +
       `Email : ${email}\n` +
       `Service souhaité : ${service || 'non précisé'}\n\n` +
       `Message :\n${message}`;
-    const mailto = `mailto:contact@gndconsulting.fr?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    // Laisse le temps à l'animation « Envoi… » puis ouvre le client mail.
-    setTimeout(() => {
-      window.location.href = mailto;
-      setStatus('success');
-      setTimeout(() => {
+    window.location.href = `mailto:contact@gndconsulting.fr?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (status !== 'idle') return;
+    setStatus('sending');
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `Nouvelle demande de projet${service ? ` · ${service}` : ''}${name ? ` · ${name}` : ''}`,
+          from_name: name || 'Formulaire gndconsulting.fr',
+          name,
+          email,
+          service: service || 'non précisé',
+          message,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setStatus('success');
+        setTimeout(() => {
+          setStatus('idle');
+          setName(''); setEmail(''); setService(''); setMessage('');
+        }, 3500);
+      } else {
+        openMailtoFallback();
         setStatus('idle');
-        setName(''); setEmail(''); setService(''); setMessage('');
-      }, 3500);
-    }, 600);
+      }
+    } catch {
+      // API injoignable : on ne perd pas le lead, on ouvre l'email pré-rempli.
+      openMailtoFallback();
+      setStatus('idle');
+    }
   };
 
   // Floating label : input "filled" si valeur OU focus (gestion via state OU CSS :placeholder-shown)
@@ -1895,7 +1922,7 @@ function ContactBlock() {
                 >
                   <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/35 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"/>
                   <span className="relative z-10">
-                    {status === 'success' ? '✓ Votre email est prêt' : status === 'sending' ? 'Préparation…' : 'Envoyer ma demande'}
+                    {status === 'success' ? '✓ Message envoyé, réponse sous 24h' : status === 'sending' ? 'Envoi…' : 'Envoyer ma demande'}
                   </span>
                   {status === 'idle' && <Icons.ArrowRight size={15} stroke={2.2} className="relative z-10 transition-transform group-hover:translate-x-1"/>}
                 </button>

@@ -1842,7 +1842,7 @@ function ContactBlock() {
 
               {/* Service souhaité, pills */}
               <div>
-                <div className="label-mono text-[10px] !text-text-muted tracking-widest mb-3">SERVICE SOUHAITÉ <span className="text-accent">*</span></div>
+                <div className="label-mono text-[10px] !text-text-muted tracking-widest mb-3">SERVICE SOUHAITÉ <span className="normal-case tracking-normal opacity-70">(optionnel)</span></div>
                 <div className="flex flex-wrap gap-2">
                   {SERVICES.map(s => (
                     <button
@@ -1904,6 +1904,17 @@ function ContactBlock() {
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-3 h-3"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
                   Données sécurisées.
                 </p>
+              </div>
+
+              {/* Réassurance au point de décision (CRO) : lève les 4 freins
+                  juste sous le bouton, là où l'hésitation se joue. */}
+              <div className="flex flex-wrap gap-x-4 gap-y-1.5 pt-1">
+                {['Réponse sous 24h', 'Devis sous 48h', 'Sans engagement', 'Site 100 % à vous'].map((t) => (
+                  <span key={t} className="inline-flex items-center gap-1.5 text-[11px] text-text-muted">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-3 h-3 text-accent"><polyline points="20 6 9 17 4 12"/></svg>
+                    {t}
+                  </span>
+                ))}
               </div>
             </form>
 

@@ -46,6 +46,7 @@ const PRERENDERED = new Set([
   '/agence-web-versailles',
   '/agence-web-boulogne-billancourt',
   '/agence-web-nanterre',
+  '/agence-web-creteil',
 ]);
 
 /* Liste explicite + filet générique (crawler|spider|scraper|"bot" en mot) :

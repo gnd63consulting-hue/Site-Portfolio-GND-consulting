@@ -83,6 +83,11 @@ export const SEO_META: Record<string, Meta> = {
     description:
       "Studio créatif parisien intervenant à Nanterre et dans les Hauts-de-Seine (92). Création de site internet, sites vitrines dès 800 €, référencement local inclus, paiement unique sans abonnement.",
   },
+  '/agence-web-creteil': {
+    title: 'Agence web Créteil, création de site internet (94) | GND Consulting',
+    description:
+      "Studio créatif parisien intervenant à Créteil et dans le Val-de-Marne (94). Création de site internet, sites vitrines dès 800 €, référencement local inclus, paiement unique sans abonnement.",
+  },
 };
 
 /* Pages locales : schema LocalBusiness + Service avec areaServed précis
@@ -102,6 +107,11 @@ const LOCAL_PAGES: Record<string, { serviceType: string; city: string; region: s
     serviceType: 'Création de site internet',
     city: 'Nanterre',
     region: 'Hauts-de-Seine',
+  },
+  '/agence-web-creteil': {
+    serviceType: 'Création de site internet',
+    city: 'Créteil',
+    region: 'Val-de-Marne',
   },
 };
 

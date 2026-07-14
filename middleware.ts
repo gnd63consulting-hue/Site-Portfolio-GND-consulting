@@ -45,6 +45,7 @@ const PRERENDERED = new Set([
   '/guides/agent-ia-vs-chatbot',
   '/agence-web-versailles',
   '/agence-web-boulogne-billancourt',
+  '/agence-web-nanterre',
 ]);
 
 /* Liste explicite + filet générique (crawler|spider|scraper|"bot" en mot) :

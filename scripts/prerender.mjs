@@ -50,6 +50,7 @@ const ROUTES = [
   { path: '/guides/agent-ia-vs-chatbot', title: "GND Consulting, Agent IA ou chatbot : quelle différence ?", desc: "Agent IA ou chatbot : la différence claire, ce que chacun sait faire, et lequel choisir selon votre besoin. Le guide GND, sans jargon." },
   { path: '/agence-web-versailles', title: 'Agence web Versailles, création de site internet (78) | GND Consulting', desc: "Studio créatif parisien intervenant à Versailles et dans les Yvelines (78). Création de site internet, sites vitrines dès 800 €, référencement local inclus, paiement unique sans abonnement." },
   { path: '/agence-web-boulogne-billancourt', title: 'Agence web Boulogne-Billancourt, création de site internet (92) | GND Consulting', desc: "Studio créatif parisien intervenant à Boulogne-Billancourt et dans les Hauts-de-Seine (92). Création de site internet, sites vitrines dès 800 €, référencement local inclus, paiement unique sans abonnement." },
+  { path: '/agence-web-nanterre', title: 'Agence web Nanterre, création de site internet (92) | GND Consulting', desc: "Studio créatif parisien intervenant à Nanterre et dans les Hauts-de-Seine (92). Création de site internet, sites vitrines dès 800 €, référencement local inclus, paiement unique sans abonnement." },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');

@@ -29,6 +29,7 @@ const GuidesIndex = lazyPage(() => import('./pages/guides'), (m) => m.GuidesInde
 const GuidePage = lazyPage(() => import('./pages/guides'), (m) => m.GuidePage);
 const RestaurantPage = lazyPage(() => import('./pages/restaurant'), (m) => m.RestaurantPage);
 const VersaillesPage = lazyPage(() => import('./pages/versailles'), (m) => m.VersaillesPage);
+const BoulognePage = lazyPage(() => import('./pages/boulogne'), (m) => m.BoulognePage);
 const LegalPage = lazyPage(() => import('./pages/legal'), (m) => m.LegalPage);
 const NotFoundPage = lazyPage(() => import('./pages/legal'), (m) => m.NotFoundPage);
 
@@ -131,6 +132,7 @@ function RefonteApp() {
   else if (route.startsWith("/realisations/")) page = <ProjectDetail id={route.replace("/realisations/", "")}/>;
   else if (route === "/creation-site-internet-restaurant") page = <RestaurantPage/>;
   else if (route === "/agence-web-versailles") page = <VersaillesPage/>;
+  else if (route === "/agence-web-boulogne-billancourt") page = <BoulognePage/>;
   else if (route === "/guides") page = <GuidesIndex/>;
   else if (route.startsWith("/guides/")) page = <GuidePage slug={route.replace("/guides/", "")}/>;
   else if (route === "/contact") page = <main id="main" className="pt-24 md:pt-28"><h1 className="sr-only">Contact — GND Consulting, studio créatif humain × IA à Paris : devis sous 48h</h1><ContactBlock/></main>;

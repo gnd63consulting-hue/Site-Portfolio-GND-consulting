@@ -73,6 +73,11 @@ export const SEO_META: Record<string, Meta> = {
     description:
       "Studio créatif parisien intervenant à Versailles et dans les Yvelines (78). Création de site internet, sites vitrines dès 800 €, référencement local inclus, paiement unique sans abonnement.",
   },
+  '/agence-web-boulogne-billancourt': {
+    title: 'Agence web Boulogne-Billancourt, création de site internet (92) | GND Consulting',
+    description:
+      "Studio créatif parisien intervenant à Boulogne-Billancourt et dans les Hauts-de-Seine (92). Création de site internet, sites vitrines dès 800 €, référencement local inclus, paiement unique sans abonnement.",
+  },
 };
 
 /* Pages locales : schema LocalBusiness + Service avec areaServed précis
@@ -82,6 +87,11 @@ const LOCAL_PAGES: Record<string, { serviceType: string; city: string; region: s
     serviceType: 'Création de site internet',
     city: 'Versailles',
     region: 'Yvelines',
+  },
+  '/agence-web-boulogne-billancourt': {
+    serviceType: 'Création de site internet',
+    city: 'Boulogne-Billancourt',
+    region: 'Hauts-de-Seine',
   },
 };
 

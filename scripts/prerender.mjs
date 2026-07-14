@@ -52,6 +52,7 @@ const ROUTES = [
   { path: '/agence-web-boulogne-billancourt', title: 'Agence web Boulogne-Billancourt, création de site internet (92) | GND Consulting', desc: "Studio créatif parisien intervenant à Boulogne-Billancourt et dans les Hauts-de-Seine (92). Création de site internet, sites vitrines dès 800 €, référencement local inclus, paiement unique sans abonnement." },
   { path: '/agence-web-nanterre', title: 'Agence web Nanterre, création de site internet (92) | GND Consulting', desc: "Studio créatif parisien intervenant à Nanterre et dans les Hauts-de-Seine (92). Création de site internet, sites vitrines dès 800 €, référencement local inclus, paiement unique sans abonnement." },
   { path: '/agence-web-creteil', title: 'Agence web Créteil, création de site internet (94) | GND Consulting', desc: "Studio créatif parisien intervenant à Créteil et dans le Val-de-Marne (94). Création de site internet, sites vitrines dès 800 €, référencement local inclus, paiement unique sans abonnement." },
+  { path: '/agence-web-montreuil', title: 'Agence web Montreuil, création de site internet (93) | GND Consulting', desc: "Studio créatif parisien intervenant à Montreuil et en Seine-Saint-Denis (93). Création de site internet, sites vitrines dès 800 €, référencement local inclus, paiement unique sans abonnement." },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');

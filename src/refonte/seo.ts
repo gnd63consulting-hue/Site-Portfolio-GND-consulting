@@ -93,6 +93,11 @@ export const SEO_META: Record<string, Meta> = {
     description:
       "Studio créatif parisien intervenant à Montreuil et en Seine-Saint-Denis (93). Création de site internet, sites vitrines dès 800 €, référencement local inclus, paiement unique sans abonnement.",
   },
+  '/agence-automatisation-ia-paris': {
+    title: 'Agence automatisation IA à Paris, agents IA et workflows | GND Consulting',
+    description:
+      "Studio hybride humain × IA à Paris. Agents IA, chatbots et automatisation de vos process connectés à vos outils. Diagnostic gratuit, devis sur-mesure, vos données restent à vous.",
+  },
 };
 
 /* Pages locales : schema LocalBusiness + Service avec areaServed précis
@@ -122,6 +127,11 @@ const LOCAL_PAGES: Record<string, { serviceType: string; city: string; region: s
     serviceType: 'Création de site internet',
     city: 'Montreuil',
     region: 'Seine-Saint-Denis',
+  },
+  '/agence-automatisation-ia-paris': {
+    serviceType: 'Automatisation IA',
+    city: 'Paris',
+    region: 'Île-de-France',
   },
 };
 

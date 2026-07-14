@@ -48,6 +48,7 @@ const PRERENDERED = new Set([
   '/agence-web-nanterre',
   '/agence-web-creteil',
   '/agence-web-montreuil',
+  '/agence-automatisation-ia-paris',
 ]);
 
 /* Liste explicite + filet générique (crawler|spider|scraper|"bot" en mot) :

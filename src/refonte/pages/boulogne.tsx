@@ -10,7 +10,7 @@ import * as React from 'react';
 import { Icons } from '../icons';
 import { FaqJsonLd } from '../components/FaqJsonLd';
 
-const HERO_IMG = '/assets/boulogne-hero-commercante.webp';
+const HERO_IMG = '/assets/boulogne-hero-entrepreneur.webp';
 const RUE_IMG = '/assets/boulogne-rue.webp';
 const MOBILE_IMG = '/assets/boulogne-mobile-seo.webp';
 
@@ -134,7 +134,7 @@ export function BoulognePage() {
           <div className="vsl-blob">
             <span className="script">Boulogne</span>
             <div className="vsl-blobin">
-              <img className="person" src={HERO_IMG} alt="Commerçante accueillante dans sa boutique à Boulogne-Billancourt" loading="eager" width={900} height={1200} />
+              <img className="person" src={HERO_IMG} alt="Entrepreneur accueillant à Boulogne-Billancourt" loading="eager" width={900} height={1200} />
             </div>
           </div>
           <svg className="vsl-spin" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">

@@ -397,6 +397,33 @@ function Footer() {
               <a href="mailto:contact@gndconsulting.fr" className="gnd-link text-bg/85 hover:text-bg transition-colors">contact@gndconsulting.fr</a><br />
               <a href="/mentions-legales" className="gnd-link text-bg/55 hover:text-bg transition-colors text-xs">Mentions légales</a>
             </p>
+
+            {/*
+              Badge annuaire, version statique et volontaire.
+              On n'utilise PAS le script badge.js fourni par La Fabrique du Net :
+              celui-ci injecte deux liens suivis (sans nofollow) dont un vers leur
+              page commerciale, avec un texte d'ancre masqué visuellement. Ici :
+              un seul lien, vers notre propre fiche, en nofollow, zéro script tiers,
+              zéro requête externe, aucun impact Core Web Vitals.
+            */}
+            <a
+              href="https://www.lafabriquedunet.fr/agences/agence/gnd-consulting"
+              target="_blank"
+              rel="nofollow noopener noreferrer"
+              title="GND Consulting, agence certifiée sur La Fabrique du Net"
+              className="mt-5 inline-flex items-center gap-2.5 rounded-lg border border-bg/15 bg-bg/[0.06] px-3 py-2 no-underline transition-colors hover:bg-bg/[0.12] focus-ring"
+            >
+              <span
+                aria-hidden="true"
+                className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent text-[10px] font-bold text-text-strong"
+              >
+                F
+              </span>
+              <span className="flex flex-col leading-tight">
+                <span className="text-[11px] font-medium text-bg/90">Agence certifiée</span>
+                <span className="text-[10px] label-mono uppercase tracking-[0.16em] text-bg/70">La Fabrique du Net</span>
+              </span>
+            </a>
           </div>
 
           {/* Social, SocialCard hover-reveal staggered */}

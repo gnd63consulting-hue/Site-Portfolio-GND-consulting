@@ -2,6 +2,7 @@
 import { Section, Container, Kicker, Faq } from '../ui';
 import { FaqJsonLd } from '../components/FaqJsonLd';
 import { FloatingCtaBand } from '../components/FloatingCtaBand';
+import { LocalAreaLinks } from '../components/LocalAreaLinks';
 import { Icons } from '../icons';
 import ScrollExpandHero from '@/components/blocks/scroll-expansion-hero';
 import { HeroBuildUpSV } from '../components/HeroBuildUpSV';
@@ -217,6 +218,12 @@ function SitesVitrinesPage() {
 
       {/* Maillage interne : guides liés à ce service (liens <a href> crawlables) */}
       <ServiceGuidesBlock service="sites-vitrines" />
+
+      {/* Maillage vers les pages locales (31/07/26). C'est la page service la
+          plus proche en intention d'une requête « agence web [ville] » : elle
+          leur transmet donc de l'autorité descendante, en plus du footer.
+          `showPillars` désactivé, cette page EST l'un des piliers. */}
+      <LocalAreaLinks showPillars={false} />
 
       <FloatingCtaBand
         prefix="Prêt à lancer votre"

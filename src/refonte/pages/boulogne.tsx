@@ -9,6 +9,7 @@
 import * as React from 'react';
 import { Icons } from '../icons';
 import { FaqJsonLd } from '../components/FaqJsonLd';
+import { LocalAreaLinks } from '../components/LocalAreaLinks';
 
 const HERO_IMG = '/assets/boulogne-hero-entrepreneur.webp';
 const RUE_IMG = '/assets/boulogne-rue.webp';
@@ -252,6 +253,10 @@ export function BoulognePage() {
       </section>
 
       {/* CTA FINAL */}
+      {/* Maillage interne (31/07/26) : ces pages étaient orphelines,
+          aucun lien entrant ni sortant hors /contact et /realisations. */}
+      <LocalAreaLinks current="/agence-web-boulogne-billancourt" city="Boulogne-Billancourt" />
+
       <div className="vsl">
         <div className="vsl-final">
           <h2>Un projet de site à Boulogne-Billancourt ?</h2>

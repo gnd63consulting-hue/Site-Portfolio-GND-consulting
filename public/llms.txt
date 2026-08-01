@@ -9,6 +9,17 @@
 - [Production audiovisuelle](https://www.gndconsulting.fr/services/audiovisuel) : clips musicaux, captation live 4K/8K, aftermovies, émissions, vidéo d'entreprise, montage, motion design et photographie professionnelle.
 - [Automatisation & IA](https://www.gndconsulting.fr/services/automatisation-ia) : workflows automatisés (n8n, Make, Zapier), agents IA sur-mesure, chatbots, audit et accompagnement à l'adoption de l'IA pour PME, dans le respect du RGPD.
 
+## Zones d'intervention
+
+Pages dédiées, chacune avec l'offre, les tarifs publics et le référencement local de la commune concernée.
+
+- [Agence web à Versailles (Yvelines, 78)](https://www.gndconsulting.fr/agence-web-versailles)
+- [Agence web à Boulogne-Billancourt (Hauts-de-Seine, 92)](https://www.gndconsulting.fr/agence-web-boulogne-billancourt)
+- [Agence web à Nanterre (Hauts-de-Seine, 92)](https://www.gndconsulting.fr/agence-web-nanterre)
+- [Agence web à Montreuil (Seine-Saint-Denis, 93)](https://www.gndconsulting.fr/agence-web-montreuil)
+- [Agence web à Créteil (Val-de-Marne, 94)](https://www.gndconsulting.fr/agence-web-creteil)
+- [Agence automatisation IA à Paris](https://www.gndconsulting.fr/agence-automatisation-ia-paris) : agents IA, workflows et automatisation pour les PME parisiennes.
+
 ## Guides
 
 - [Tous les guides](https://www.gndconsulting.fr/guides)

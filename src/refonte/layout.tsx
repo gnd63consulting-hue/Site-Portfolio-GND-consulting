@@ -3,6 +3,7 @@ import * as React from 'react';
 import { Container } from './ui';
 import { Icons } from './icons';
 import { SocialCard } from '@/components/ui/social-card';
+import { LOCAL_AREAS } from './local-areas';
 
 const NAV = [
   { to: "/agence", label: "L'Agence" },
@@ -377,13 +378,19 @@ function Footer() {
             </ul>
           </div>
 
-          {/* Branches */}
+          {/* Zones desservies — remplace l'ancienne colonne « Branches » (31/07/26).
+              Celle-ci reprenait à l'identique les 4 liens services déjà présents
+              dans la colonne Navigation juste à gauche : un doublon qui ne
+              transmettait rien. Les 6 pages locales, elles, étaient orphelines
+              (aucun lien entrant sur tout le site). Ce footer leur donne un lien
+              depuis chaque page, ce qui est leur seule source d'autorité interne
+              en attendant les liens contextuels dans le corps des pages. */}
           <div className="md:col-span-3">
-            <div className="text-[10px] label-mono tracking-[0.24em] uppercase text-bg/70 mb-4">Branches</div>
+            <div className="text-[10px] label-mono tracking-[0.24em] uppercase text-bg/70 mb-4">Zones desservies</div>
             <ul className="space-y-2 text-sm">
-              {SERVICES_MENU.map(s => (
-                <li key={s.to}>
-                  <a href={s.to} className="gnd-link text-bg/85 hover:text-bg transition-colors">{s.label}</a>
+              {LOCAL_AREAS.map(a => (
+                <li key={a.slug}>
+                  <a href={a.slug} className="gnd-link text-bg/85 hover:text-bg transition-colors">{a.short}</a>
                 </li>
               ))}
             </ul>

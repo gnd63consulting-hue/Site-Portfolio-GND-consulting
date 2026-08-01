@@ -10,6 +10,7 @@
 import * as React from 'react';
 import { Icons } from '../icons';
 import { FaqJsonLd } from '../components/FaqJsonLd';
+import { LocalAreaLinks } from '../components/LocalAreaLinks';
 
 const HERO_IMG = '/assets/ia-paris-hero-fondateur.webp';
 const OFFICE_IMG = '/assets/ia-paris-bureau.webp';
@@ -231,6 +232,10 @@ export function AgenceIaParisPage() {
           </div>
         </div>
       </section>
+
+      {/* Maillage interne (31/07/26) : ces pages étaient orphelines,
+          aucun lien entrant ni sortant hors /contact et /realisations. */}
+      <LocalAreaLinks current="/agence-automatisation-ia-paris" city="Paris" />
 
       <div className="vsl">
         <div className="vsl-final">

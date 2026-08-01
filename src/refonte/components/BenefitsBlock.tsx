@@ -44,11 +44,22 @@ import { Section, Container } from '../ui';
 
 /* Icônes dessinées ici plutôt que puisées dans icons.tsx : aucune des
    existantes ne dit « pas d'abonnement » ou « paiement en deux fois » sans
-   forcer le sens. Même grammaire que le reste du site (grille 24, trait
-   unique, currentColor). Le gabarit d'origine utilise une police d'icônes,
-   qu'on ne réimporte pas pour quatre glyphes. */
+   forcer le sens. Le gabarit d'origine utilise une police d'icônes
+   illustratives, qu'on ne réimporte pas pour quatre glyphes.
+ *
+ * V2 des icônes (31/07/26). La première passe tenait en un seul glyphe
+ * géométrique par carte : ça lisait comme une icône d'interface générique,
+ * pas comme un argument de vente. Trois changements :
+ *   - grille portée de 24 à 40, pour avoir la place de détailler ;
+ *   - deux objets composés par icône plutôt qu'un pictogramme abstrait
+ *     (un billet ET un badge annulé, deux billets décalés, un devis ET un
+ *     crayon), ce qui donne la densité des icônes du gabarit ;
+ *   - deux valeurs de trait et une touche d'orange sur un détail par icône,
+ *     pour sortir du monochrome plat.
+ * Les éléments qui se superposent portent un fond blanc explicite, sinon le
+ * trait de l'objet du dessous transparaît à travers celui du dessus. */
 const Ico = ({ children }: { children: React.ReactNode }) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.4}
+  <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth={1.6}
     strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
     {children}
   </svg>
@@ -59,13 +70,15 @@ const BENEFITS = [
     num: '01',
     title: "Pas d'abonnement",
     text: "Paiement unique. Aucun forfait annuel imposé : vous ne payez pas tous les mois pour que votre site continue d'exister.",
+    /* Un billet, et par-dessus un badge d'annulation : le prélèvement
+       récurrent qui n'aura pas lieu. */
     icon: (
       <Ico>
-        <path d="M17 2.5l3.5 3.5L17 9.5" />
-        <path d="M3.5 11.5V10a4 4 0 0 1 4-4h13" />
-        <path d="M7 21.5L3.5 18 7 14.5" />
-        <path d="M20.5 12.5V14a4 4 0 0 1-4 4h-13" />
-        <path d="M2.5 2.5l19 19" />
+        <rect x="3" y="9" width="30" height="18" rx="3.2" />
+        <circle cx="18" cy="18" r="4.2" />
+        <circle cx="30.5" cy="29.5" r="7.5" fill="#FFFFFF" />
+        <circle cx="30.5" cy="29.5" r="7.5" className="acc" />
+        <path d="M27.8 26.8l5.4 5.4M33.2 26.8l-5.4 5.4" className="acc" />
       </Ico>
     ),
   },
@@ -73,12 +86,16 @@ const BENEFITS = [
     num: '02',
     title: 'Vous êtes propriétaire',
     text: "Nom de domaine à votre nom, accès à l'hébergement, au back-office et au code. Vous pouvez partir quand vous voulez.",
+    /* Clé posée à l'horizontale : anneau percé, tige, deux dents vers le
+       bas. En diagonale, l'anneau et la tige se lisaient comme une loupe.
+       Le trou de l'anneau porte le point orange, seul aplat de l'icône. */
     icon: (
       <Ico>
-        <circle cx="7.5" cy="15.5" r="4.5" />
-        <path d="M10.9 12.1L21 2" />
-        <path d="M17.5 5.5L20 8" />
-        <path d="M14.8 8.2l2.5 2.5" />
+        <circle cx="11.5" cy="20" r="8" />
+        <circle cx="11.5" cy="20" r="3.1" className="accf" />
+        <path d="M19.5 20H36" />
+        <path d="M29.5 20v6.2" />
+        <path d="M35 20v4.6" />
       </Ico>
     ),
   },
@@ -86,11 +103,15 @@ const BENEFITS = [
     num: '03',
     title: 'Paiement en 2 fois',
     text: "50 % à la commande, qui lance la production, 50 % à la livraison. Facture standard, TVA non applicable, article 293 B du CGI.",
+    /* Deux billets décalés : les deux versements. Celui du dessus est
+       opaque pour passer nettement devant l'autre. */
     icon: (
       <Ico>
-        <rect x="2.5" y="5" width="19" height="14" rx="2.2" />
-        <path d="M2.5 10h19" />
-        <path d="M12 10v9" />
+        <rect x="3" y="7" width="25" height="15" rx="2.6" />
+        <circle cx="15.5" cy="14.5" r="3.2" />
+        <rect x="12" y="18" width="25" height="15" rx="2.6" fill="#FFFFFF" />
+        <rect x="12" y="18" width="25" height="15" rx="2.6" />
+        <circle cx="24.5" cy="25.5" r="3.2" className="accf" />
       </Ico>
     ),
   },
@@ -98,12 +119,14 @@ const BENEFITS = [
     num: '04',
     title: 'Modifications sur devis',
     text: "Une évolution plus tard ? Devis transparent, à partir de 50 € l'intervention. Vous restez libre de confier la suite à qui vous voulez.",
+    /* Un devis à coin replié, et le crayon qui vient l'amender. */
     icon: (
       <Ico>
-        <path d="M14 3H6.5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2H13" />
-        <path d="M14 3l5 5v3.5" />
-        <path d="M14 3v5h5" />
-        <path d="M21.3 14.4L16 19.7l-2.9.8.8-2.9 5.3-5.3a1.5 1.5 0 0 1 2.1 2.1z" />
+        <path d="M23 3.5H8.5A2.6 2.6 0 0 0 5.9 6.1v27.3a2.6 2.6 0 0 0 2.6 2.6h11" />
+        <path d="M23 3.5l8.1 8.1v5.9" />
+        <path d="M23 3.5v8.1h8.1" />
+        <path d="M11 17.5h11M11 22.5h7.5" strokeWidth={1.25} />
+        <path d="M35 22.6L24.2 33.4l-4.7 1.4 1.4-4.7 10.8-10.8a2.35 2.35 0 0 1 3.3 3.3z" className="acc" />
       </Ico>
     ),
   },
@@ -251,6 +274,10 @@ const CSS = `
 .bn-hex-ico{position:relative;width:32%;color:var(--bn-txt);display:block;
   transition:transform .5s ease,color .3s ease;transform-style:preserve-3d;}
 .bn-hex-ico svg{width:100%;height:100%;display:block;}
+/* Bichromie : un détail par icône passe en orange encre, le reste garde la
+   couleur du texte. .acc pour un trait, .accf pour un aplat. */
+.bn-hex-ico .acc{stroke:var(--bn-ink);}
+.bn-hex-ico .accf{fill:var(--bn-base);stroke:none;}
 .bn-single:hover .bn-hex-ico{transform:rotateY(180deg);color:var(--bn-ink);}
 
 /* Badge numéro : 56x56, bordure haute 5px, coins bas arrondis 28px. */

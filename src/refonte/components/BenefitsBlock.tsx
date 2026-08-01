@@ -257,7 +257,12 @@ const CSS = `
 .bn-single:not(.is-flipped) .bn-hex{order:2;margin-top:26px;}
 .bn-single:not(.is-flipped) .bn-body{order:1;}
 .bn-single.is-flipped .bn-hex{order:1;}
-.bn-single.is-flipped .bn-body{order:2;margin-top:-19px;}
+/* Espacement symétrique de celui des colonnes impaires (26px entre le texte
+   et l'hexagone). Le gabarit d'origine remonte le badge de 19px sur son
+   icône, mais son PNG réserve une large marge transparente sous l'hexagone :
+   le chevauchement y reste optique. Notre hexagone SVG occupe tout son
+   viewBox, donc la même valeur collait le trait orange sur l'arête basse. */
+.bn-single.is-flipped .bn-body{order:2;margin-top:26px;}
 
 /* Diagonales pointillées : élément sans largeur, 300px de haut, bordure
    1px dashed, tourné à ±53°, ancré au bord droit. Reprise exacte des
@@ -287,7 +292,10 @@ const CSS = `
   box-shadow:0 4px 20px 0 rgba(0,0,0,.05);
   font-family:"Playfair Display",Georgia,serif;font-weight:700;font-size:24px;
   line-height:34px;color:var(--bn-txt);}
-.bn-single.is-flipped .bn-num{margin:-19px auto 22px;}
+/* Même marge que sur les colonnes impaires : le décalage vertical vient de
+   l'inversion de l'ordre, pas d'un rattrapage négatif qui viendrait s'ajouter
+   à celui du corps. Les deux se cumulaient (-19px + -19px). */
+.bn-single.is-flipped .bn-num{margin:0 auto 14px;}
 .bn-h3{font-family:"Playfair Display",Georgia,serif;font-weight:700;color:var(--bn-txt);
   font-size:clamp(18px,2vw,24px);line-height:1.32;margin:0 0 14px;}
 .bn-p{color:var(--bn-gray);font-size:clamp(13.5px,1.05vw,15px);line-height:1.62;

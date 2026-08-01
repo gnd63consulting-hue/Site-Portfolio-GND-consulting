@@ -10,6 +10,8 @@ import { MarqueeCTA } from '../components/MarqueeCTA';
 import InteractiveImageBentoGallery from '@/components/ui/bento-gallery';
 
 import { photo } from "../portfolio-assets";
+import { markRouteNotFound } from '../seo';
+import { NotFoundPage } from './legal';
 const COVER = "/assets/hero1-poster.webp";
 const yt = (id: string) => `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
 const ph = (f: string) => photo(f);
@@ -149,9 +151,15 @@ function RealisationsPage() {
 
 /* Project detail, real synopsis + real credit, real media (click-to-play). No invented metrics. */
 function ProjectDetail({ id }: any) {
-  const p = ALL_PROJECTS.find(x => x.id === id) || ALL_PROJECTS[0];
+  /* Repli sur ALL_PROJECTS[0] supprimé (31/07/26). N'importe quelle URL sous
+     /realisations/ servait la première réalisation en 200 : autant de
+     doublons indexables que d'URL inventées, tous présentés comme la même
+     page. Un id inconnu rend désormais la page introuvable, en noindex. */
+  const p = ALL_PROJECTS.find(x => x.id === id);
   const [playing, setPlaying] = React.useState(false);
   React.useEffect(() => { setPlaying(false); }, [id]);
+  React.useEffect(() => { if (!p) markRouteNotFound(); }, [p]);
+  if (!p) return <NotFoundPage />;
   const hasMedia = !!(p.youtube || p.video);
 
   return (

@@ -163,6 +163,27 @@ function metaFor(route: string): Meta {
   return SEO_META['/'];
 }
 
+/* Routes réellement servies par l'application.
+ *
+ * Toute autre URL rend la page « introuvable » (NotFoundPage). Sans ce
+ * garde-fou, `metaFor` retombait sur SEO_META['/'] : une URL inexistante
+ * héritait donc du titre et de la description de l'accueil, se déclarait
+ * `index, follow` ET posait un canonical sur elle-même. Résultat, autant
+ * de pages fantômes indexables que d'URL erronées pointant vers le site,
+ * chacune se présentant comme un doublon de la page d'accueil.
+ *
+ * `/realisations/<id>` reste accepté sans vérifier l'id : ces pages ne
+ * sont pas au sitemap et n'ont pas de snapshot, on ne veut pas les casser
+ * pour autant. */
+export function isKnownRoute(route: string): boolean {
+  if (SEO_META[route]) return true;
+  if (route.startsWith('/guides/')) {
+    return GUIDES.some((g) => g.slug === route.replace('/guides/', ''));
+  }
+  if (route.startsWith('/realisations/')) return true;
+  return false;
+}
+
 /* Helpers <head> — créent la balise si absente, sinon la mettent à jour. */
 function setMeta(key: string, content: string, attr: 'name' | 'property' = 'name') {
   let el = document.head.querySelector<HTMLMetaElement>(`meta[${attr}="${key}"]`);
@@ -182,6 +203,26 @@ function setCanonical(href: string) {
     document.head.appendChild(el);
   }
   el.setAttribute('href', href);
+}
+
+/* Une page introuvable ne doit se déclarer canonique de rien : on retire la
+   balise héritée de la route précédente (navigation SPA, le <head> persiste). */
+function removeCanonical() {
+  document.head.querySelector('link[rel="canonical"]')?.remove();
+}
+
+/* Déclare a posteriori la route courante comme introuvable.
+ *
+ * Sert aux routes dont la validité ne peut pas être tranchée par
+ * `isKnownRoute` : `/realisations/<id>` dépend de la liste des projets, qui
+ * vit dans le module lazy de la page. L'importer ici la ferait entrer dans
+ * le bundle d'entrée et annulerait le code-splitting. C'est donc la page
+ * qui signale le cas, une fois qu'elle a cherché l'id. */
+export function markRouteNotFound() {
+  if (typeof document === 'undefined') return;
+  document.title = 'Page introuvable · GND Consulting';
+  setMeta('robots', 'noindex, follow');
+  removeCanonical();
 }
 
 function injectJsonLd(id: string, obj: unknown) {
@@ -225,15 +266,24 @@ function breadcrumbFor(route: string, title: string) {
 
 export function applyRouteSeo(route: string) {
   if (typeof document === 'undefined') return;
-  const { title, description } = metaFor(route);
+  const known = isKnownRoute(route);
+  const { title, description } = known
+    ? metaFor(route)
+    : {
+        title: 'Page introuvable · GND Consulting',
+        description: "Cette page n'existe pas ou a été déplacée. Retrouvez nos services, nos réalisations et nos guides depuis l'accueil.",
+      };
   const url = BASE + (route === '/' ? '/' : route);
 
   document.title = title;
   setMeta('description', description);
   // Pages exclues de l'index (boilerplate, ou en cours de retravail) → noindex.
+  // Les URL inconnues aussi : elles rendent la page 404, elles n'ont rien
+  // d'indexable et ne doivent pas diluer le budget de crawl.
   const NOINDEX = ['/mentions-legales', '/creation-site-internet-restaurant'];
-  setMeta('robots', NOINDEX.includes(route) ? 'noindex, follow' : 'index, follow');
-  setCanonical(url);
+  setMeta('robots', !known || NOINDEX.includes(route) ? 'noindex, follow' : 'index, follow');
+  if (known) setCanonical(url);
+  else removeCanonical();
   setMeta('og:title', title, 'property');
   setMeta('og:description', description, 'property');
   setMeta('og:url', url, 'property');
